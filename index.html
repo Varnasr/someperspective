@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Some Perspective - India's Economic Reality 2014-2025</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Data-driven analysis of India's economic performance from 2014-2025, examining employment, inequality, and democratic institutions.">
+    <meta name="keywords" content="India economy, GDP growth, unemployment, inequality, fiscal federalism, democracy">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Some Perspective - India's Economic Reality">
+    <meta property="og:description" content="Where narratives meet numbers: A comprehensive assessment of India's political economy">
+    <meta property="og:url" content="https://someperspective.info">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="India's Economic Reality 2014-2025">
+    <meta name="twitter:description" content="Data-driven analysis beyond GDP headlines">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -20,8 +35,7 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     
-    <!-- Google Analytics -->
-    <!-- Add your GA code here -->
+    <!-- Google Analytics - Add your tracking code here when ready -->
     
     <style>
         .chart-container {
@@ -76,9 +90,10 @@
                     View Key Findings
                 </button>
                 <button onclick="scrollToSection('data')" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-700">
-                    Download Report
+                    Download Data
                 </button>
             </div>
+            <p class="text-sm mt-4 opacity-80">Complete academic paper coming soon</p>
         </div>
     </section>
 
@@ -239,18 +254,21 @@
     <section id="data" class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl font-bold mb-8">Download Complete Dataset</h3>
-            <p class="mb-8">Access all raw data, methodology notes, and replication codes</p>
-            <div class="flex justify-center space-x-4">
-                <button class="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700">
-                    📊 Download Excel Data
+            <p class="mb-8">Access raw data, methodology notes, and source code</p>
+            <div class="flex justify-center space-x-4 flex-wrap gap-4">
+                <button onclick="downloadData()" class="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    📊 Download Data (JSON)
                 </button>
-                <button class="bg-green-600 px-6 py-3 rounded-lg hover:bg-green-700">
-                    📄 Download PDF Report
+                <button class="bg-gray-600 px-6 py-3 rounded-lg cursor-not-allowed opacity-70" disabled>
+                    📄 Full Report (Coming Soon)
                 </button>
-                <button class="bg-purple-600 px-6 py-3 rounded-lg hover:bg-purple-700">
-                    💻 GitHub Repository
+                <button onclick="window.open('https://github.com/yourusername/someperspective', '_blank')" class="bg-purple-600 px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                    💻 View Source Code
                 </button>
             </div>
+            <p class="text-sm mt-6 opacity-70">
+                Complete academic paper with 100+ citations coming soon
+            </p>
         </div>
     </section>
 
@@ -266,8 +284,27 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Charts -->
+    <!-- JavaScript for Charts and Functionality -->
     <script>
+        // Load data from JSON file
+        let chartData = null;
+        
+        // Function to download data
+        function downloadData() {
+            if (chartData) {
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(chartData, null, 2));
+                const downloadAnchorNode = document.createElement('a');
+                downloadAnchorNode.setAttribute("href", dataStr);
+                downloadAnchorNode.setAttribute("download", "india-economy-data-2014-2025.json");
+                document.body.appendChild(downloadAnchorNode);
+                downloadAnchorNode.click();
+                downloadAnchorNode.remove();
+            } else {
+                // Fallback - direct link to GitHub raw file
+                window.open('https://raw.githubusercontent.com/yourusername/someperspective/main/data.json', '_blank');
+            }
+        }
+
         // GDP vs Employment Chart
         const gdpCtx = document.getElementById('gdpEmploymentChart').getContext('2d');
         new Chart(gdpCtx, {
@@ -346,19 +383,6 @@
                         title: {
                             display: true,
                             text: 'Elasticity Coefficient'
-                        }
-                    }
-                },
-                plugins: {
-                    annotation: {
-                        annotations: {
-                            line1: {
-                                type: 'line',
-                                yMin: 0,
-                                yMax: 0,
-                                borderColor: 'rgb(255, 99, 132)',
-                                borderWidth: 2,
-                            }
                         }
                     }
                 }
@@ -631,9 +655,19 @@
         $(document).ready(function() {
             $('#dataTable').DataTable({
                 "pageLength": 10,
-                "responsive": true,
-                "dom": 'Bfrtip'
+                "responsive": true
             });
+            
+            // Try to load data.json if available
+            fetch('./data.json')
+                .then(response => response.json())
+                .then(data => {
+                    chartData = data;
+                    console.log('Data loaded successfully');
+                })
+                .catch(error => {
+                    console.log('Could not load data.json:', error);
+                });
         });
 
         // Smooth scroll function
