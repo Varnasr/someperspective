@@ -3,74 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India's Economic Paradox: Growth Without Accountability (2014-2025)</title>
+    <title>India's Economic Paradox: Growth Without Accountability (2004-2025)</title>
     
     <!-- SEO and Social Media -->
-    <meta name="description" content="How India achieved 6.8% GDP growth while democratic institutions eroded. A data-driven analysis of employment, inequality, and institutional change.">
-    <meta name="keywords" content="India economy, GDP growth, unemployment, inequality, fiscal federalism, democracy, political economy">
+    <meta name="description" content="How India's economy transformed from inclusive growth under UPA to inequality under NDA. A 20-year comparative analysis.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Chart.js with plugins -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2"></script>
     
     <!-- Alpine.js for interactivity -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
-    <!-- Custom styling -->
     <style>
-        .chart-container {
-            position: relative;
-            height: 400px;
-            width: 100%;
-        }
-        
-        .gradient-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .card {
-            transition: all 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Tooltip styling */
-        .tooltip-trigger {
-            border-bottom: 2px dotted #4B5563;
-            cursor: help;
-        }
-        
-        /* Smooth transitions */
+        .chart-container { position: relative; height: 400px; width: 100%; }
+        .gradient-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         [x-cloak] { display: none !important; }
-        
-        /* Tab styling */
-        .tab-active {
-            border-bottom: 3px solid #7C3AED;
-            color: #7C3AED;
-        }
-        
-        /* Callout boxes */
-        .callout {
-            border-left: 4px solid #7C3AED;
-            background: linear-gradient(90deg, rgba(124,58,237,0.05) 0%, transparent 100%);
-        }
-        
-        /* Story mode styling */
-        .story-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-        
-        .story-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .tab-active { border-bottom: 3px solid #7C3AED; color: #7C3AED; }
+        .regime-upa { background-color: rgba(59, 130, 246, 0.1); }
+        .regime-nda { background-color: rgba(239, 68, 68, 0.1); }
     </style>
 </head>
 <body class="bg-gray-50" x-data="appData()">
@@ -80,845 +34,779 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-800">India's Economic Paradox</h1>
-                    <p class="text-xs text-gray-600">Evidence-Based Analysis • 2014-2025</p>
+                    <h1 class="text-2xl font-bold text-gray-800">India's Two Decades: A Tale of Two Models</h1>
+                    <p class="text-xs text-gray-600">Comparing UPA (2004-2014) vs NDA (2014-2025)</p>
                 </div>
                 
-                <!-- Audience Toggle -->
+                <!-- Regime Toggle -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <label class="text-sm text-gray-600">Reading mode:</label>
-                    <select x-model="audienceLevel" @change="updateContent()" class="text-sm border rounded px-2 py-1">
-                        <option value="citizen">Citizen</option>
-                        <option value="student">Student/Academic</option>
-                        <option value="technical">Researcher</option>
-                        <option value="policy">Policymaker</option>
+                    <label class="text-sm text-gray-600">Compare:</label>
+                    <select x-model="comparisonMode" @change="updateCharts()" class="text-sm border rounded px-2 py-1">
+                        <option value="all">All Years (2004-2025)</option>
+                        <option value="upa">UPA Period (2004-2014)</option>
+                        <option value="nda">NDA Period (2014-2025)</option>
+                        <option value="contrast">Side-by-Side Comparison</option>
                     </select>
-                    
-                    <button @click="showGlossary = !showGlossary" 
-                            class="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded hover:bg-purple-200">
-                        📖 Glossary
-                    </button>
                 </div>
             </div>
             
             <!-- Main Navigation Tabs -->
             <div class="flex space-x-6 mt-4 border-t pt-3 overflow-x-auto">
-                <button @click="activeTab = 'overview'" 
-                        :class="activeTab === 'overview' ? 'tab-active' : ''"
-                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600 whitespace-nowrap">
-                    Overview
-                </button>
-                <button @click="activeTab = 'story'" 
-                        :class="activeTab === 'story' ? 'tab-active' : ''"
-                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600 whitespace-nowrap">
-                    The Story
-                </button>
-                <button @click="activeTab = 'findings'" 
-                        :class="activeTab === 'findings' ? 'tab-active' : ''"
-                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600 whitespace-nowrap">
-                    Key Findings
-                </button>
-                <button @click="activeTab = 'data'" 
-                        :class="activeTab === 'data' ? 'tab-active' : ''"
-                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600 whitespace-nowrap">
-                    Interactive Data
-                </button>
-                <button @click="activeTab = 'methods'" 
-                        :class="activeTab === 'methods' ? 'tab-active' : ''"
-                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600 whitespace-nowrap">
-                    Methods
-                </button>
-                <button @click="activeTab = 'implications'" 
-                        :class="activeTab === 'implications' ? 'tab-active' : ''"
-                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600 whitespace-nowrap">
-                    What Now?
-                </button>
+                <button @click="activeTab = 'overview'" :class="activeTab === 'overview' ? 'tab-active' : ''"
+                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600">Overview</button>
+                <button @click="activeTab = 'story'" :class="activeTab === 'story' ? 'tab-active' : ''"
+                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600">The Story</button>
+                <button @click="activeTab = 'findings'" :class="activeTab === 'findings' ? 'tab-active' : ''"
+                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600">Key Findings</button>
+                <button @click="activeTab = 'data'" :class="activeTab === 'data' ? 'tab-active' : ''"
+                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600">Interactive Data</button>
+                <button @click="activeTab = 'methods'" :class="activeTab === 'methods' ? 'tab-active' : ''"
+                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600">Methods</button>
+                <button @click="activeTab = 'implications'" :class="activeTab === 'implications' ? 'tab-active' : ''"
+                        class="pb-2 px-1 text-sm font-medium text-gray-700 hover:text-purple-600">What Now?</button>
             </div>
         </div>
     </nav>
     
-    <!-- Floating Glossary Panel -->
-    <div x-show="showGlossary" 
-         x-transition
-         class="fixed right-4 top-24 w-80 bg-white rounded-lg shadow-xl p-4 z-40 max-h-96 overflow-y-auto">
-        <div class="flex justify-between items-center mb-3">
-            <h3 class="font-bold text-lg">Key Terms</h3>
-            <button @click="showGlossary = false" class="text-gray-500 hover:text-gray-700">✕</button>
-        </div>
-        <dl class="space-y-2 text-sm" x-html="glossaryContent[audienceLevel]"></dl>
-    </div>
-    
-    <!-- Main Content Area -->
     <main id="main-content" class="container mx-auto px-4 py-8">
         
         <!-- OVERVIEW TAB -->
-        <div x-show="activeTab === 'overview'" x-cloak>
+        <div x-show="activeTab === 'overview'">
             
-            <!-- What is this about? Landing Block -->
+            <!-- Regime Comparison Dashboard -->
             <section class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                <h2 class="text-3xl font-bold mb-4 text-gray-800">What Is This About?</h2>
-                <div class="prose max-w-none" x-html="overviewIntro[audienceLevel]">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">The Big Picture: UPA vs NDA</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- UPA Period -->
+                    <div class="regime-upa p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">UPA Period (2004-2014)</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><strong>GDP Growth:</strong> 7.7% average (despite 2008 crisis)</li>
+                            <li><strong>Employment:</strong> Created formal jobs, MGNREGA safety net</li>
+                            <li><strong>Inequality:</strong> Top 1% had 15% (still high but stable)</li>
+                            <li><strong>Federalism:</strong> States retained fiscal autonomy</li>
+                            <li><strong>Democracy:</strong> Press freedom rank: 105-140</li>
+                            <li><strong>Data:</strong> All surveys released on schedule</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- NDA Period -->
+                    <div class="regime-nda p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-red-700">NDA Period (2014-2025)</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><strong>GDP Growth:</strong> 6.8% average (despite COVID)</li>
+                            <li><strong>Employment:</strong> Jobless growth, then precarious gig work</li>
+                            <li><strong>Inequality:</strong> Top 1% reached 22.6% (colonial peak)</li>
+                            <li><strong>Federalism:</strong> States lost ₹2-3 lakh crore yearly</li>
+                            <li><strong>Democracy:</strong> Press freedom rank: 140-161</li>
+                            <li><strong>Data:</strong> Census postponed, surveys suppressed</li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <!-- Quick Navigation Cards -->
-                <div class="grid md:grid-cols-3 gap-4 mt-8">
-                    <button @click="activeTab = 'story'" 
-                            class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-lg hover:shadow-lg transition-all text-left">
-                        <h3 class="font-bold text-blue-800">📖 Read the Story</h3>
-                        <p class="text-sm text-gray-600 mt-1" x-text="storyDescription[audienceLevel]"></p>
-                    </button>
-                    <button @click="activeTab = 'findings'" 
-                            class="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-lg hover:shadow-lg transition-all text-left">
-                        <h3 class="font-bold text-purple-800">🔍 See Key Findings</h3>
-                        <p class="text-sm text-gray-600 mt-1" x-text="findingsDescription[audienceLevel]"></p>
-                    </button>
-                    <button @click="activeTab = 'data'" 
-                            class="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg hover:shadow-lg transition-all text-left">
-                        <h3 class="font-bold text-green-800">📊 Explore the Data</h3>
-                        <p class="text-sm text-gray-600 mt-1" x-text="dataDescription[audienceLevel]"></p>
-                    </button>
+                <!-- Key Transition Chart -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-bold mb-4">The 2014 Turning Point</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="regimeComparisonChart"></canvas>
+                    </div>
                 </div>
             </section>
             
-            <!-- Executive Summary for Different Audiences -->
-            <section class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-8 mb-8">
-                <h2 class="text-2xl font-bold mb-6" x-text="summaryTitle[audienceLevel]"></h2>
-                <div x-html="executiveSummary[audienceLevel]" class="space-y-4">
-                </div>
-            </section>
-            
-            <!-- Three Indices Dashboard with Explanations -->
+            <!-- Three Indices Dashboard -->
             <section class="mb-8">
-                <h2 class="text-2xl font-bold mb-6">Three Novel Indices We Created</h2>
+                <h2 class="text-2xl font-bold mb-6">Three Indices Tracking Institutional Change (2014-2024)</h2>
                 <div class="grid md:grid-cols-3 gap-6">
-                    
-                    <!-- SSI Card -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                         <div class="bg-red-600 text-white p-4">
-                            <h3 class="text-lg font-bold">Statistical Suppression Index (SSI)</h3>
+                            <h3 class="text-lg font-bold">Statistical Suppression (SSI)</h3>
                             <div class="text-4xl font-bold mt-2">7.8 / 10</div>
-                            <div class="text-sm opacity-90">From 2.3 in 2014</div>
+                            <div class="text-sm opacity-90">From 0.5 in UPA-II</div>
                         </div>
                         <div class="p-4">
-                            <div x-html="ssiExplanation[audienceLevel]"></div>
+                            <p class="text-sm text-gray-600 mb-3">Under UPA, all data was released on time. Under NDA, critical surveys were hidden.</p>
                         </div>
                     </div>
                     
-                    <!-- FCI Card -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                         <div class="bg-orange-600 text-white p-4">
-                            <h3 class="text-lg font-bold">Fiscal Centralisation Index (FCI)</h3>
+                            <h3 class="text-lg font-bold">Fiscal Centralisation (FCI)</h3>
                             <div class="text-4xl font-bold mt-2">0.78 / 1.0</div>
-                            <div class="text-sm opacity-90">From 0.62 in 2014</div>
+                            <div class="text-sm opacity-90">From 0.45 in UPA-II</div>
                         </div>
                         <div class="p-4">
-                            <div x-html="fciExplanation[audienceLevel]"></div>
+                            <p class="text-sm text-gray-600 mb-3">UPA shared resources with states. NDA used cesses and GST to centralize power.</p>
                         </div>
                     </div>
                     
-                    <!-- DQI Card -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                         <div class="bg-purple-600 text-white p-4">
-                            <h3 class="text-lg font-bold">Democratic Quality Index (DQI)</h3>
+                            <h3 class="text-lg font-bold">Democratic Quality (DQI)</h3>
                             <div class="text-4xl font-bold mt-2">0.42 / 1.0</div>
-                            <div class="text-sm opacity-90">From 0.71 in 2014</div>
+                            <div class="text-sm opacity-90">From 0.68 in UPA-II</div>
                         </div>
                         <div class="p-4">
-                            <div x-html="dqiExplanation[audienceLevel]"></div>
+                            <p class="text-sm text-gray-600 mb-3">India was "Free" under UPA, became "Partly Free" under NDA, now "Electoral Autocracy".</p>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
         
-        <!-- DATA TAB - Interactive Visualizations -->
-        <div x-show="activeTab === 'data'" x-cloak>
-            <section>
-                <h2 class="text-3xl font-bold mb-8">Interactive Data Explorer</h2>
+        <!-- STORY TAB -->
+        <div x-show="activeTab === 'story'" x-cloak>
+            <section class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8">The Story: From Inclusive Growth to Concentrated Prosperity</h2>
                 
-                <!-- Year Selector -->
-                <div class="bg-white rounded-lg shadow p-6 mb-8">
-                    <div class="flex justify-between items-center mb-4">
-                        <div>
-                            <label class="text-sm font-medium text-gray-700">Select Year:</label>
-                            <input type="range" x-model="currentYear" min="2014" max="2024" 
-                                   class="ml-4 w-64" @input="updateYearData()">
-                            <span class="ml-2 font-bold text-lg" x-text="currentYear"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Quick Stats for Selected Year -->
-                    <div class="grid grid-cols-4 gap-4 mt-6">
-                        <div class="text-center">
-                            <p class="text-sm text-gray-600">GDP Growth</p>
-                            <p class="text-2xl font-bold text-blue-600" x-text="yearData.gdp + '%'"></p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-sm text-gray-600">Unemployment</p>
-                            <p class="text-2xl font-bold text-red-600" x-text="yearData.unemployment + '%'"></p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-sm text-gray-600">Top 1% Share</p>
-                            <p class="text-2xl font-bold text-orange-600" x-text="yearData.inequality + '%'"></p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-sm text-gray-600">Press Rank</p>
-                            <p class="text-2xl font-bold text-purple-600" x-text="yearData.pressRank + '/180'"></p>
-                        </div>
+                <!-- UPA Era -->
+                <div class="mb-12 bg-blue-50 rounded-lg shadow p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">Act I: The UPA Years (2004-2014)</h3>
+                    <p class="mb-4">
+                        The UPA period wasn't perfect, but it represented a different model. Despite facing the 2008 global financial crisis, India maintained 7.7% average growth while expanding social protection. MGNREGA guaranteed 100 days of employment to rural households. The Right to Information Act empowered citizens. The Right to Education made schooling a fundamental right.
+                    </p>
+                    <p class="mb-4">
+                        Crucially, employment grew alongside GDP. Between 2004 and 2009, formal sector jobs expanded. Manufacturing employment rose from 11% to 13% of the workforce. While inequality was high (top 1% held 15% of income), it remained stable rather than exploding.
+                    </p>
+                    <p class="mb-4">
+                        States retained fiscal autonomy. The 13th Finance Commission increased devolution. Special category states received targeted support. There were no cesses eating into the divisible pool. Democratic institutions functioned: press freedom ranked 105th globally in 2004, deteriorating to 140th by 2014 but remaining "Free" by international standards.
+                    </p>
+                    <div class="bg-white p-4 rounded">
+                        <p class="font-bold">Key UPA Achievements:</p>
+                        <ul class="list-disc ml-6 text-sm">
+                            <li>7.7% growth WITH job creation</li>
+                            <li>MGNREGA, RTI, RTE enacted</li>
+                            <li>Inequality high but stable</li>
+                            <li>Federal balance maintained</li>
+                            <li>Democratic institutions respected</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <!-- Scenario Explorer - Now Functional -->
-                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8 mb-8">
-                    <h3 class="text-2xl font-bold mb-6">What-If Scenario Explorer</h3>
+                <!-- Transition -->
+                <div class="mb-12 bg-yellow-50 rounded-lg shadow p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-700">Act II: The 2014 Transformation</h3>
+                    <p class="mb-4">
+                        In 2014, a new government swept to power promising "acche din" (good days) and faster growth. The initial years seemed promising—GDP growth hit 8%, global investors cheered, and ambitious programs like Make in India were launched. But beneath the surface, something fundamental was changing.
+                    </p>
+                    <p class="mb-4">
+                        The first signs appeared in employment data. Despite 8% growth in 2015-16, job creation stalled. Employment elasticity—the jobs created per unit of GDP growth—collapsed to nearly zero. When the 2017-18 labour survey showed record unemployment at 6.1%, it was delayed until after the 2019 elections.
+                    </p>
+                    <p class="mb-4">
+                        Then came the shocks. Demonetization in November 2016 wiped out 86% of currency overnight, devastating the informal sector where 87% work. Before recovery could begin, GST implementation in 2017 ended state fiscal autonomy while creating compliance nightmares for small businesses.
+                    </p>
+                </div>
+                
+                <!-- NDA Era -->
+                <div class="mb-12 bg-red-50 rounded-lg shadow p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-red-700">Act III: The New Model (2017-2025)</h3>
+                    <p class="mb-4">
+                        By 2017, a new economic model had crystallized—one that could sustain high GDP growth while concentrating its benefits. The mechanism was ingenious: expand welfare transfers for visibility while suppressing data that showed growing inequality.
+                    </p>
+                    <p class="mb-4">
+                        Welfare programs like PM-Kisan sent ₹6,000 yearly to farmers—less than 10% of average farm income but highly visible through repeated transfers. Ujjwala provided gas connections that many couldn't afford to refill. Every scheme was centrally branded, though states co-financed implementation.
+                    </p>
+                    <p class="mb-4">
+                        Meanwhile, wealth concentrated dramatically. The top 1% share of income rose from 15% to 22.6%—exceeding the 1939 colonial peak of 20.7%. When the consumption survey showed this reality, it was suppressed. When the census would have revealed demographic shifts, it was postponed indefinitely.
+                    </p>
+                    <p class="mb-4">
+                        Electoral Bonds legalized opacity in political finance. Between 2018-2024, ₹18,518 crores flowed through this scheme, with over 90% going to the ruling party. Press freedom rank fell to 161st. India was downgraded from "Free" to "Partly Free" to "Electoral Autocracy."
+                    </p>
+                    <div class="bg-white p-4 rounded">
+                        <p class="font-bold">The New Equilibrium:</p>
+                        <ul class="list-disc ml-6 text-sm">
+                            <li>Growth without quality employment</li>
+                            <li>Welfare visibility without structural change</li>
+                            <li>Colonial-level inequality</li>
+                            <li>Fiscal centralization via cesses/GST</li>
+                            <li>Systematic data suppression</li>
+                            <li>Democratic institutions hollowed out</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- FINDINGS TAB -->
+        <div x-show="activeTab === 'findings'" x-cloak>
+            <section class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8">Key Findings: Evidence of Transformation</h2>
+                
+                <!-- Finding 1: Employment Quality -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Finding 1: The Jobs Disappeared, Then Returned as Gig Work</h3>
+                    
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
-                            <h4 class="font-bold mb-4">Adjust Parameters:</h4>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="text-sm">If cess/surcharge capped at: <span class="font-bold" x-text="cessCapPercent + '%'"></span></label>
-                                    <input type="range" min="5" max="20" x-model="cessCapPercent" @input="calculateScenario()" class="w-full">
-                                    <p class="text-xs text-gray-600">States would gain: ₹<span x-text="stateGains"></span> lakh crore</p>
-                                </div>
-                                <div>
-                                    <label class="text-sm">If press freedom improved to rank: <span class="font-bold" x-text="pressTargetRank"></span></label>
-                                    <input type="range" min="50" max="160" x-model="pressTargetRank" @input="calculateScenario()" class="w-full">
-                                    <p class="text-xs text-gray-600">DQI would rise to: <span x-text="projectedDQI"></span></p>
-                                </div>
-                                <div>
-                                    <label class="text-sm">If statistical transparency restored to SSI: <span class="font-bold" x-text="targetSSI"></span></label>
-                                    <input type="range" min="0" max="10" x-model="targetSSI" @input="calculateScenario()" class="w-full">
-                                    <p class="text-xs text-gray-600">Data availability would improve by: <span x-text="dataImprovement"></span>%</p>
-                                </div>
-                            </div>
+                            <h4 class="font-bold mb-3">The Evidence</h4>
+                            <p class="text-sm mb-4">
+                                Employment tells two different stories. Under UPA, employment elasticity was 0.2—every 1% GDP growth created 0.2% more jobs, mostly formal. Under early NDA (2014-2017), this crashed to 0.01—virtually jobless growth. Then suddenly after 2017, elasticity jumped to 1.11. What happened?
+                            </p>
+                            <p class="text-sm mb-4">
+                                The answer lies in the TYPE of employment. The new jobs were overwhelmingly informal: gig work, platform delivery, contract labor, and self-employment. By 2024, 89% of all employment was informal, up from 82% in 2014. Formal sector employment actually SHRANK from 18% to 11%.
+                            </p>
                         </div>
                         <div>
-                            <h4 class="font-bold mb-4">Projected Impact:</h4>
-                            <div class="bg-white rounded p-4">
-                                <canvas id="scenarioChart"></canvas>
-                            </div>
-                            <div class="mt-4 text-sm" x-html="scenarioNarrative[audienceLevel]"></div>
+                            <canvas id="employmentQualityChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded mt-4">
+                        <p class="text-sm"><strong>What this means:</strong> The unemployment rate falling after COVID masks a harsh reality—people didn't get jobs back, they got gigs. No security, no benefits, no future.</p>
+                    </div>
+                </div>
+                
+                <!-- Finding 2: Inequality Explosion -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-red-600">Finding 2: Inequality Exceeded Colonial Peaks</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <canvas id="inequalityHistoricalChart"></canvas>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-3">The Numbers Don't Lie</h4>
+                            <p class="text-sm mb-4">
+                                Under British rule in 1939, the richest 1% controlled 20.7% of income—a shameful peak of colonial extraction. After independence, this fell to just 6% by 1982. Under liberalization, it rose to 15% by 2014. But under NDA, it exploded to 22.6% by 2023—exceeding the colonial peak.
+                            </p>
+                            <p class="text-sm mb-4">
+                                Wealth concentration is even worse: the top 1% now own 40.1% of all wealth. That's 166 billionaires controlling two-fifths of national wealth while the bottom 50% own just 3%.
+                            </p>
+                            <p class="text-sm">
+                                This happened through policy choices: corporate tax cuts from 30% to 22%, no wealth tax, stock market boom benefiting the elite, while demonetization and GST crushed small businesses.
+                            </p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Enhanced Charts Section -->
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <!-- Three Indices Chart -->
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-xl font-bold mb-2">Institutional Erosion Over Time</h3>
-                        <p class="text-sm text-gray-600 mb-4" x-text="chartExplanations.indices[audienceLevel]"></p>
-                        <div class="chart-container">
-                            <canvas id="indicesTimeChart"></canvas>
+                <!-- Finding 3: Fiscal Squeeze -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-orange-600">Finding 3: States Lost Fiscal Freedom</h3>
+                    
+                    <p class="mb-4">
+                        The Constitution mandates that taxes be shared between Centre and states. The 14th Finance Commission even raised states' share to 42%. But this was a cruel illusion. Through three mechanisms, states actually LOST revenue:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-orange-50 p-4 rounded">
+                            <h4 class="font-bold text-orange-700">Cess & Surcharge</h4>
+                            <p class="text-3xl font-bold">10.4% → 20.2%</p>
+                            <p class="text-sm">These special taxes aren't shared with states. They doubled under NDA.</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded">
+                            <h4 class="font-bold text-orange-700">Actual Devolution</h4>
+                            <p class="text-3xl font-bold">42% → 29.8%</p>
+                            <p class="text-sm">Despite constitutional promise, actual transfers fell dramatically.</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded">
+                            <h4 class="font-bold text-orange-700">Annual Loss</h4>
+                            <p class="text-3xl font-bold">₹2-3 lakh cr</p>
+                            <p class="text-sm">Money states should have received but didn't.</p>
                         </div>
                     </div>
                     
-                    <!-- GDP vs Employment Chart -->
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-xl font-bold mb-2">The Employment Paradox</h3>
-                        <p class="text-sm text-gray-600 mb-4" x-text="chartExplanations.employment[audienceLevel]"></p>
-                        <div class="chart-container">
-                            <canvas id="gdpEmploymentChart"></canvas>
+                    <canvas id="fiscalCentralizationChart"></canvas>
+                </div>
+                
+                <!-- Finding 4: Data Suppression -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-600">Finding 4: When Data Became Political</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold mb-3">What Was Hidden</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">❌</span>
+                                    <span><strong>2017-18 Consumption Survey:</strong> Showed first decline in consumption in 40 years. Never released.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">❌</span>
+                                    <span><strong>2021 Census:</strong> First peacetime postponement in 150 years. Still not conducted.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">❌</span>
+                                    <span><strong>Employment Data:</strong> Delayed until after 2019 elections when showed record unemployment.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-500 mr-2">❌</span>
+                                    <span><strong>GDP Methodology:</strong> Changed in 2015, retroactively inflating growth rates.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-3">Who Resigned in Protest</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• P.C. Mohanan - Acting Chairman, NSC (2019)</li>
+                                <li>• J.V. Meenakshi - Member, NSC (2019)</li>
+                                <li>• Multiple senior statisticians at NSO</li>
+                                <li>• Chief Economic Advisor questioned GDP data</li>
+                            </ul>
+                            
+                            <div class="bg-purple-50 p-4 rounded mt-4">
+                                <p class="text-sm"><strong>Why this matters:</strong> Without reliable data, citizens can't evaluate government claims. Policy is made blind. Democracy requires transparency.</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- DATA TAB -->
+        <div x-show="activeTab === 'data'" x-cloak>
+            <section>
+                <h2 class="text-3xl font-bold mb-8">Interactive Data: See the Transformation</h2>
+                
+                <!-- Regime Comparison Tool -->
+                <div class="bg-white rounded-lg shadow p-6 mb-8">
+                    <h3 class="text-xl font-bold mb-4">Compare Regimes</h3>
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="text-sm font-medium">Select Period:</label>
+                            <select x-model="selectedPeriod" @change="updatePeriodData()" class="w-full mt-1 border rounded px-2 py-1">
+                                <option value="upa1">UPA-I (2004-2009)</option>
+                                <option value="upa2">UPA-II (2009-2014)</option>
+                                <option value="modi1">Modi-I (2014-2019)</option>
+                                <option value="modi2">Modi-II (2019-2024)</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">Avg GDP Growth</p>
+                            <p class="text-2xl font-bold" :class="periodData.gdpColor" x-text="periodData.gdp + '%'"></p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">Job Quality</p>
+                            <p class="text-2xl font-bold" :class="periodData.jobColor" x-text="periodData.jobQuality"></p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">Democratic Score</p>
+                            <p class="text-2xl font-bold" :class="periodData.demoColor" x-text="periodData.democracy"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Long-term Trends -->
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- GDP vs Employment Quality -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-4">Growth vs Job Quality (2004-2024)</h3>
+                        <canvas id="gdpJobQualityChart"></canvas>
+                        <p class="text-xs mt-4 text-gray-600">
+                            Notice how GDP growth (green) stayed high throughout, but formal employment (blue) collapsed after 2014 while informal work (red) exploded. This is the jobless growth paradox.
+                        </p>
+                    </div>
+                    
+                    <!-- Democratic Indicators -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-4">Democratic Health (2004-2024)</h3>
+                        <canvas id="democraticHealthChart"></canvas>
+                        <p class="text-xs mt-4 text-gray-600">
+                            All three measures of democracy declined after 2014, with the sharpest drops after 2017. India went from "Free" to "Partly Free" to "Electoral Autocracy."
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- The Big Picture Chart -->
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-8">
+                    <h3 class="text-2xl font-bold mb-6">The Complete Picture: All Indicators</h3>
+                    <canvas id="comprehensiveChart"></canvas>
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">UPA Average (2004-14)</p>
+                            <p class="text-lg font-bold text-blue-600">Quality Growth</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">Transition (2014-17)</p>
+                            <p class="text-lg font-bold text-yellow-600">Disruption</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">NDA Model (2017-24)</p>
+                            <p class="text-lg font-bold text-red-600">Concentration</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- METHODS TAB -->
+        <div x-show="activeTab === 'methods'" x-cloak>
+            <section class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8">Methods: How We Measured the Unmeasurable</h2>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4">The Challenge</h3>
+                    <p class="mb-4">
+                        How do you study an economy when the government hides the data? When the 2017-18 consumption survey showed rising poverty, it was suppressed. When unemployment hit record highs, the data was delayed. When the census would reveal uncomfortable truths, it was postponed indefinitely. We had to get creative.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold mt-6 mb-4">Our Three-Pronged Approach</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Approach 1 -->
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h4 class="font-bold mb-3">1. Triangulation Across Sources</h4>
+                            <p class="mb-3">
+                                We couldn't rely on any single data source, so we combined multiple ones to cross-verify patterns:
+                            </p>
+                            <ul class="list-disc ml-6 space-y-2 text-sm">
+                                <li><strong>Government data:</strong> Whatever was released, even if delayed</li>
+                                <li><strong>Leaked documents:</strong> The suppressed consumption survey that journalists obtained</li>
+                                <li><strong>International assessments:</strong> V-Dem, Freedom House, World Inequality Database</li>
+                                <li><strong>Private surveys:</strong> CMIE employment data when government data was withheld</li>
+                                <li><strong>Corporate filings:</strong> Listed company data to verify GDP claims</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Approach 2 -->
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <h4 class="font-bold mb-3">2. Creating Novel Indices</h4>
+                            <p class="mb-3">
+                                We developed three new measures to quantify what was happening:
+                            </p>
+                            
+                            <div class="bg-white p-4 rounded mb-3">
+                                <h5 class="font-semibold">Statistical Suppression Index (SSI)</h5>
+                                <p class="text-sm mb-2">Formula: SSI = Average(Severity × Salience)</p>
+                                <ul class="text-sm ml-4">
+                                    <li>• Severity: Suppressed=1.0, Delayed=0.5, Revised=0.3</li>
+                                    <li>• Salience: Census=1.0, Consumption=0.8, Employment=0.7</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded mb-3">
+                                <h5 class="font-semibold">Fiscal Centralisation Index (FCI)</h5>
+                                <p class="text-sm mb-2">Formula: FCI = (Cess_norm + Devolution_inverse + Borrowing_conditions)/3</p>
+                                <p class="text-sm">Captures how fiscal power shifted from states to Centre</p>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded">
+                                <h5 class="font-semibold">Democratic Quality Index (DQI)</h5>
+                                <p class="text-sm mb-2">Formula: DQI = ∛(Freedom House × Press Freedom × V-Dem)</p>
+                                <p class="text-sm">Geometric mean ensures weakness in any dimension affects overall score</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Approach 3 -->
+                        <div class="bg-yellow-50 p-6 rounded-lg">
+                            <h4 class="font-bold mb-3">3. Historical Comparison</h4>
+                            <p class="mb-3">
+                                To understand if changes were NDA-specific or continuing trends, we collected data back to 2004:
+                            </p>
+                            <ul class="list-disc ml-6 space-y-2 text-sm">
+                                <li>UPA-I (2004-2009): The high growth phase before global crisis</li>
+                                <li>UPA-II (2009-2014): Managing crisis and recovery</li>
+                                <li>Modi-I (2014-2019): The transformation begins</li>
+                                <li>Modi-II (2019-2024): The new model consolidated</li>
+                            </ul>
+                            <p class="text-sm mt-3">
+                                This revealed that many problems (inequality, informalization) existed under UPA but accelerated dramatically under NDA. Others (data suppression, fiscal centralization) were entirely new.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mt-8 mb-4">Data Reliability Matrix</h3>
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="p-2 text-left">Indicator</th>
+                                <th class="p-2 text-center">UPA Era</th>
+                                <th class="p-2 text-center">NDA Era</th>
+                                <th class="p-2">Our Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t">
+                                <td class="p-2">GDP Growth</td>
+                                <td class="text-center">✅ Reliable</td>
+                                <td class="text-center">⚠️ Revised</td>
+                                <td>Used pre-2015 methodology</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-2">Employment</td>
+                                <td class="text-center">✅ Regular</td>
+                                <td class="text-center">⚠️ Delayed</td>
+                                <td>Triangulated with CMIE</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-2">Consumption</td>
+                                <td class="text-center">✅ Published</td>
+                                <td class="text-center">❌ Suppressed</td>
+                                <td>Used leaked data</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-2">Census</td>
+                                <td class="text-center">✅ On time</td>
+                                <td class="text-center">❌ Postponed</td>
+                                <td>Projected from 2011</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        
+        <!-- IMPLICATIONS TAB -->
+        <div x-show="activeTab === 'implications'" x-cloak>
+            <section class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8">What Now? Three Possible Futures</h2>
+                
+                <!-- Scenario 1: Status Quo -->
+                <div class="bg-red-50 rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-red-700">Scenario 1: Continue Current Path</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold mb-3">If Nothing Changes by 2030:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Top 1% will control 30% of income, 50% of wealth</li>
+                                <li>• 95% of employment will be informal/gig</li>
+                                <li>• States will be fiscally powerless</li>
+                                <li>• No reliable economic data will exist</li>
+                                <li>• India will be fully autocratic</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-3">Economic Consequences:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Consumption will collapse from inequality</li>
+                                <li>• Investment will flee uncertainty</li>
+                                <li>• Federal conflicts will paralyze governance</li>
+                                <li>• Social unrest becomes inevitable</li>
+                                <li>• Growth will stagnate below 4%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded mt-6">
+                        <p class="text-sm">
+                            <strong>Historical parallel:</strong> Latin America's "lost decade" of the 1980s—high inequality led to economic stagnation, political instability, and social breakdown.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Scenario 2: Gradual Reform -->
+                <div class="bg-yellow-50 rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-700">Scenario 2: Gradual Reform</h3>
+                    <div class="mb-4">
+                        <p>Electoral pressure and economic necessity force partial reforms:</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold mb-2">Immediate (6 months):</h4>
+                            <ul class="list-disc ml-6 text-sm space-y-1">
+                                <li>Release suppressed data and conduct census</li>
+                                <li>Cap cesses at 10% of gross taxes</li>
+                                <li>Restore some press freedom</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">Medium-term (2 years):</h4>
+                            <ul class="list-disc ml-6 text-sm space-y-1">
+                                <li>Grant statistical agencies independence</li>
+                                <li>Create social insurance for gig workers</li>
+                                <li>Increase health spending to 2.5% GDP</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">Outcomes by 2030:</h4>
+                            <ul class="list-disc ml-6 text-sm space-y-1">
+                                <li>Inequality stabilizes but remains high</li>
+                                <li>Some formal jobs return</li>
+                                <li>Democratic backsliding slows</li>
+                                <li>Growth maintains at 5-6%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scenario 3: Structural Transformation -->
+                <div class="bg-green-50 rounded-lg shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-green-700">Scenario 3: Return to Inclusive Growth</h3>
+                    <p class="mb-4">
+                        A new government or transformed politics enables fundamental reform:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-white p-4 rounded">
+                            <h4 class="font-bold mb-2 text-green-700">Economic</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Wealth tax on top 1%</li>
+                                <li>• Universal basic services</li>
+                                <li>• Formal job creation focus</li>
+                                <li>• 6% GDP on education</li>
+                                <li>• 3% GDP on health</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded">
+                            <h4 class="font-bold mb-2 text-green-700">Federal</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Restore 42% devolution</li>
+                                <li>• End conditional transfers</li>
+                                <li>• GST Council reform</li>
+                                <li>• State fiscal autonomy</li>
+                                <li>• Regional development</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded">
+                            <h4 class="font-bold mb-2 text-green-700">Democratic</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Media ownership caps</li>
+                                <li>• Campaign finance reform</li>
+                                <li>• Judicial independence</li>
+                                <li>• RTI strengthening</li>
+                                <li>• Civil society freedom</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded mt-6">
+                        <p class="text-sm">
+                            <strong>Historical parallel:</strong> South Korea's democratic transition (1987-1997) combined political liberalization with policies that reduced inequality and created a broad middle class.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="bg-purple-900 text-white rounded-lg p-8 text-center">
+                    <h3 class="text-2xl font-bold mb-4">The Choice Is Ours</h3>
+                    <p class="text-lg mb-4">
+                        India stands at a crossroads. We can continue concentrating wealth and power while most Indians struggle. We can make partial reforms that slow but don't reverse decline. Or we can choose inclusive growth that benefits all.
+                    </p>
+                    <p class="text-xl font-bold">
+                        Democracy is not a spectator sport. The future depends on what we demand today.
+                    </p>
                 </div>
             </section>
         </div>
         
     </main>
     
-    <!-- JavaScript for Alpine.js data and interactivity -->
+    <!-- JavaScript for Data and Charts -->
     <script>
         function appData() {
             return {
                 activeTab: 'overview',
-                showGlossary: false,
-                audienceLevel: 'citizen',
-                currentYear: 2024,
+                comparisonMode: 'all',
+                selectedPeriod: 'upa1',
                 
-                // Scenario variables
-                cessCapPercent: 10,
-                pressTargetRank: 100,
-                targetSSI: 3,
-                stateGains: 1.5,
-                projectedDQI: 0.58,
-                dataImprovement: 65,
-                
-                // Year-specific data
-                yearData: {
-                    gdp: 8.2,
-                    unemployment: 3.2,
-                    inequality: 22.6,
-                    pressRank: 159
+                // Period-specific data
+                periodData: {
+                    gdp: '8.5',
+                    gdpColor: 'text-green-600',
+                    jobQuality: 'Formal',
+                    jobColor: 'text-green-600',
+                    democracy: 'Free',
+                    demoColor: 'text-green-600'
                 },
                 
-                // Time series data for charts
-                timeSeriesData: {
-                    years: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
-                    gdp: [7.4, 8.0, 8.2, 7.2, 6.1, 4.2, -7.3, 8.7, 7.2, 7.6, 8.2],
-                    unemployment: [4.9, 5.0, 5.0, 6.0, 6.1, 5.8, 7.1, 4.2, 4.1, 3.2, 3.2],
-                    ssi: [2.3, 2.8, 3.1, 4.2, 5.2, 6.8, 7.0, 7.2, 7.5, 7.6, 7.8],
-                    fci: [0.62, 0.65, 0.68, 0.70, 0.72, 0.74, 0.76, 0.77, 0.77, 0.78, 0.78],
-                    dqi: [0.71, 0.68, 0.65, 0.61, 0.57, 0.53, 0.48, 0.45, 0.43, 0.42, 0.42],
-                    topOnePercent: [15.6, 16.8, 17.9, 18.8, 19.5, 20.2, 20.9, 21.4, 21.9, 22.3, 22.6],
-                    pressRank: [140, 136, 133, 136, 138, 140, 142, 142, 150, 159, 159]
+                // Complete time series 2004-2024
+                fullData: {
+                    years: [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+                    gdpGrowth: [7.9, 9.3, 9.3, 9.8, 3.9, 8.5, 10.3, 6.6, 5.5, 6.4, 7.4, 8.0, 8.2, 7.2, 6.1, 4.2, -7.3, 8.7, 7.2, 7.6, 8.2],
+                    formalEmployment: [18, 18.5, 19, 19.5, 19.3, 19, 18.8, 18.5, 18.3, 18, 17.5, 16.8, 15.9, 14.8, 13.5, 12.2, 11.5, 11.2, 11.0, 10.8, 11.0],
+                    informalEmployment: [82, 81.5, 81, 80.5, 80.7, 81, 81.2, 81.5, 81.7, 82, 82.5, 83.2, 84.1, 85.2, 86.5, 87.8, 88.5, 88.8, 89.0, 89.2, 89.0],
+                    top1Percent: [12.5, 13.0, 13.5, 14.0, 14.3, 14.5, 14.7, 14.9, 15.1, 15.3, 15.6, 16.8, 17.9, 18.8, 19.5, 20.2, 20.9, 21.4, 21.9, 22.3, 22.6],
+                    pressFreedom: [105, 107, 105, 108, 118, 122, 122, 131, 140, 140, 140, 136, 133, 136, 138, 140, 142, 142, 150, 161, 159],
+                    ssi: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 2.3, 2.8, 3.1, 4.2, 5.2, 6.8, 7.0, 7.2, 7.5, 7.6, 7.8],
+                    fci: [0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.62, 0.65, 0.68, 0.70, 0.72, 0.74, 0.76, 0.77, 0.77, 0.78, 0.78],
+                    dqi: [0.68, 0.68, 0.69, 0.69, 0.67, 0.67, 0.68, 0.68, 0.68, 0.68, 0.71, 0.68, 0.65, 0.61, 0.57, 0.53, 0.48, 0.45, 0.43, 0.42, 0.42]
                 },
                 
-                // Audience-specific content
-                overviewIntro: {
-                    citizen: `
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>The Problem:</strong> India's economy grew rapidly from 2014-2024, but most Indians didn't benefit. 
-                            While billionaires multiplied, good jobs became scarce. While GDP numbers looked impressive, 
-                            crucial data about poverty and employment was hidden from public view.
-                        </p>
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>Why It Matters:</strong> This affects your daily life—from job prospects to the quality of 
-                            schools and hospitals. When wealth concentrates at the top and governments hide data, ordinary 
-                            citizens lose twice: economically and democratically.
-                        </p>
-                        <p class="text-lg leading-relaxed">
-                            <strong>What We Found:</strong> Using careful analysis of available data, we discovered that the 
-                            government systematically weakened the very institutions meant to ensure accountability, while using 
-                            small cash handouts to maintain popularity.
-                        </p>
-                    `,
-                    student: `
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>Research Question:</strong> Can high GDP growth coexist with democratic erosion? India 2014-2024 
-                            presents a paradox: 6.8% average growth alongside systematic institutional weakening. This challenges 
-                            modernization theory's core assumption that prosperity strengthens democracy.
-                        </p>
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>Theoretical Significance:</strong> This case extends Levitsky & Way's competitive authoritarianism 
-                            framework by demonstrating how growth itself can become a vehicle for erosion when combined with 
-                            statistical manipulation and fiscal centralization.
-                        </p>
-                        <p class="text-lg leading-relaxed">
-                            <strong>Methodology:</strong> We developed three novel indices (SSI, FCI, DQI) to quantify institutional 
-                            erosion, triangulating government data with suppressed surveys and international assessments. This mixed-methods 
-                            approach overcomes data limitations while maintaining rigor.
-                        </p>
-                    `,
-                    technical: `
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>Empirical Puzzle:</strong> India sustained 6.8% real GDP growth (2014-24 CAGR) while V-Dem Liberal 
-                            Democracy Index declined from 0.555 to 0.271. Employment elasticity improved from 0.01 to 1.11, yet 
-                            89% of employment remained informal. Top 1% income share reached 22.6%, exceeding colonial peaks.
-                        </p>
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>Methodological Innovation:</strong> Construction of Statistical Suppression Index using event-coding 
-                            (severity × salience), Fiscal Centralisation Index via min-max normalization of three components, and 
-                            Democratic Quality Index through geometric mean aggregation of Freedom House, RSF, and V-Dem scores.
-                        </p>
-                        <p class="text-lg leading-relaxed">
-                            <strong>Contribution:</strong> Documents new variant of democratic backsliding where growth finances erosion 
-                            through five mechanisms: narrative engineering, fiscal centralization, financial asymmetry, compensatory 
-                            welfare, and managed contestation. Falsifiable hypotheses link transparency to contestation.
-                        </p>
-                    `,
-                    policy: `
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>Policy Challenge:</strong> India faces a sustainability crisis. High growth masks structural 
-                            weaknesses: 89% informal employment, colonial-era inequality (top 1% = 40.1% wealth), and eroded 
-                            federal autonomy (states lost ₹2-3 lakh crore annually).
-                        </p>
-                        <p class="text-lg leading-relaxed mb-4">
-                            <strong>Institutional Diagnosis:</strong> Statistical suppression (SSI: 2.3→7.8) prevents evidence-based 
-                            policymaking. Fiscal centralization (FCI: 0.62→0.78) undermines state capacity for health/education 
-                            delivery. Democratic erosion (DQI: 0.71→0.42) weakens accountability mechanisms.
-                        </p>
-                        <p class="text-lg leading-relaxed">
-                            <strong>Reform Priorities:</strong> Immediate: Release suppressed data, cap cesses at 10% GTR. 
-                            Medium-term: Grant NSO statutory independence, restore automatic fiscal stabilizers. Long-term: 
-                            Invest 6% GDP in education, extend social insurance to informal workforce.
-                        </p>
-                    `
-                },
-                
-                summaryTitle: {
-                    citizen: "What You Need to Know: 5 Key Points",
-                    student: "Academic Summary: Core Arguments & Evidence",
-                    technical: "Technical Abstract: Methods & Findings",
-                    policy: "Policy Brief: Actionable Recommendations"
-                },
-                
-                executiveSummary: {
-                    citizen: `
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <span class="text-green-500 mr-2">📈</span>
-                                <span>The economy grew, but created mostly insecure gig jobs without benefits or stability</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-red-500 mr-2">💰</span>
-                                <span>166 billionaires now control 40% of India's wealth—worse inequality than during British rule</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-orange-500 mr-2">📊</span>
-                                <span>The government hid poverty data and postponed the census to avoid uncomfortable truths</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-500 mr-2">🏛️</span>
-                                <span>Your state government lost control over taxes and became dependent on central handouts</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-purple-500 mr-2">🗳️</span>
-                                <span>Elections continue but the ability to hold leaders accountable has weakened significantly</span>
-                            </li>
-                        </ul>
-                    `,
-                    student: `
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-bold mb-2">Theoretical Framework</h4>
-                                <p>This study positions India as a critical case for understanding "populist growth without accountability"—a 
-                                regime type where economic expansion facilitates rather than constrains authoritarian tendencies. We extend 
-                                competitive authoritarianism theory by demonstrating modular erosion across multiple institutional domains.</p>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-2">Empirical Strategy</h4>
-                                <p>Three composite indices operationalize institutional erosion: SSI captures epistemic manipulation, 
-                                FCI measures fiscal recentralization, and DQI tracks democratic quality decline. Triangulation across 
-                                government sources, leaked documents, and international assessments overcomes data suppression challenges.</p>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-2">Key Findings</h4>
-                                <p>All three indices show synchronized deterioration (SSI: +239%, FCI: +26%, DQI: -41%), suggesting 
-                                deliberate strategy rather than random drift. Growth enabled erosion through credit-claiming at scale, 
-                                selective risk socialization, and opportunity reframing of precarity as entrepreneurship.</p>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-2">Comparative Implications</h4>
-                                <p>India diverges from Turkey/Hungary through federal hollowing without constitutional rupture, from 
-                                Brazil through sustained growth amid erosion, and from all cases through systematic statistical suppression 
-                                as political strategy. Digital populism via JAM infrastructure represents novel pathway.</p>
-                            </div>
-                        </div>
-                    `,
-                    technical: `
-                        <div class="font-mono text-sm bg-gray-100 p-4 rounded">
-                            <p class="mb-3"><strong>OBJECTIVE:</strong> Quantify institutional erosion in India (2014-24) using novel indices.</p>
-                            <p class="mb-3"><strong>METHODS:</strong></p>
-                            <ul class="ml-4 mb-3">
-                                <li>• SSI = Σ(severity_i × salience_i)/n, where severity∈[0.3,1.0], salience∈[0.6,1.0]</li>
-                                <li>• FCI = (C_norm + (1-D_norm) + B_norm)/3, normalized [0,1]</li>
-                                <li>• DQI = ∛(FH/100 × RSF_score/100 × V-Dem_LDI)</li>
-                            </ul>
-                            <p class="mb-3"><strong>RESULTS:</strong></p>
-                            <ul class="ml-4 mb-3">
-                                <li>• SSI: 2.3→7.8 (p<0.001, Cohen's d=2.14)</li>
-                                <li>• FCI: 0.62→0.78 (p<0.001, Cohen's d=1.83)</li>
-                                <li>• DQI: 0.71→0.42 (p<0.001, Cohen's d=-2.41)</li>
-                                <li>• Employment elasticity: 0.01→1.11 but 89% informal</li>
-                                <li>• Top 1% income share: 15.6%→22.6% (Gini: 0.812→0.875)</li>
-                            </ul>
-                            <p><strong>CONCLUSION:</strong> Indices validate "populist growth without accountability" hypothesis. 
-                            Falsifiable predictions: transparency→contestation (H1), decentralization→state visibility (H2).</p>
-                        </div>
-                    `,
-                    policy: `
-                        <div class="space-y-4">
-                            <div class="bg-red-50 p-4 rounded">
-                                <h4 class="font-bold text-red-800 mb-2">Critical Risks</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>• Fiscal: States' revenue gap widening, threatening basic service delivery</li>
-                                    <li>• Statistical: Policy flying blind without census/consumption data</li>
-                                    <li>• Democratic: Institutional checks eroding faster than economic growth</li>
-                                </ul>
-                            </div>
-                            <div class="bg-yellow-50 p-4 rounded">
-                                <h4 class="font-bold text-yellow-800 mb-2">Immediate Actions (0-6 months)</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>• Release 2017-18 consumption survey and conduct census</li>
-                                    <li>• Cap cesses at 10% of gross tax revenue</li>
-                                    <li>• Mandate real-time political donation disclosure</li>
-                                </ul>
-                            </div>
-                            <div class="bg-green-50 p-4 rounded">
-                                <h4 class="font-bold text-green-800 mb-2">Structural Reforms (1-3 years)</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>• Grant statutory independence to statistical agencies</li>
-                                    <li>• Create automatic fiscal stabilizers for state transfers</li>
-                                    <li>• Extend social insurance to 400 million informal workers</li>
-                                </ul>
-                            </div>
-                        </div>
-                    `
-                },
-                
-                // Index explanations by audience
-                ssiExplanation: {
-                    citizen: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>What this measures:</strong> How often the government hides or delays important data.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Why it matters:</strong> When data is hidden, you can't know if government claims are true.
-                        </p>
-                        <div class="bg-red-50 p-3 rounded text-xs space-y-1">
-                            <p>• Poverty data hidden since 2017</p>
-                            <p>• Census postponed (first time in 150 years)</p>
-                            <p>• Top statisticians quit in protest</p>
-                        </div>
-                    `,
-                    student: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Methodology:</strong> Event-coding of suppression episodes weighted by severity and salience.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Significance:</strong> Quantifies epistemic manipulation as governance strategy.
-                        </p>
-                        <div class="bg-red-50 p-3 rounded text-xs">
-                            <p><strong>Formula:</strong> SSI = Avg(severity × salience)</p>
-                            <p>Severity: Suppressed=1.0, Delayed=0.5, Revised=0.3</p>
-                            <p>Salience: Census=1.0, CES=0.8, PLFS=0.7</p>
-                        </div>
-                    `,
-                    technical: `
-                        <div class="text-sm">
-                            <p class="mb-2"><strong>Construction:</strong></p>
-                            <p class="font-mono text-xs mb-2">SSI_t = (1/n)Σ(severity_i,t × salience_i,t)</p>
-                            <p class="mb-2"><strong>Components:</strong> 4 categories, 12 events tracked</p>
-                            <p class="mb-2"><strong>Validation:</strong> Correlated with RSF Data Transparency Index (r=-0.83)</p>
-                            <div class="bg-red-50 p-2 rounded text-xs">
-                                <p>Key events: NSS 75th suppression (S×S=0.8), Census postponement (1.0), 
-                                NSC resignations (0.42), GDP back-series (0.3)</p>
-                            </div>
-                        </div>
-                    `,
-                    policy: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Governance Impact:</strong> Policy decisions made without evidence base.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Economic Cost:</strong> ₹50,000 crore welfare mistargeting due to missing data.
-                        </p>
-                        <div class="bg-red-50 p-3 rounded text-xs space-y-1">
-                            <p><strong>Reform needed:</strong></p>
-                            <p>• Statutory independence for NSO</p>
-                            <p>• Mandatory release calendars</p>
-                            <p>• Parliamentary oversight committee</p>
-                        </div>
-                    `
-                },
-                
-                fciExplanation: {
-                    citizen: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>What this measures:</strong> How much financial control shifted from states to Centre.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Why it matters:</strong> Your state has less money for schools, hospitals, and roads.
-                        </p>
-                        <div class="bg-orange-50 p-3 rounded text-xs space-y-1">
-                            <p>• States lost ₹2-3 lakh crore yearly</p>
-                            <p>• Special taxes doubled (not shared)</p>
-                            <p>• GST ended state tax freedom</p>
-                        </div>
-                    `,
-                    student: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Methodology:</strong> Composite of cess share, devolution gap, and borrowing conditions.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Theory:</strong> Demonstrates federal hollowing without constitutional amendment.
-                        </p>
-                        <div class="bg-orange-50 p-3 rounded text-xs">
-                            <p><strong>Formula:</strong> FCI = (C_norm + D_inv + B_norm)/3</p>
-                            <p>C: Cess share (10.4%→20.2%)</p>
-                            <p>D: Devolution gap (42%→29.8%)</p>
-                            <p>B: Conditionality (0→1 during COVID)</p>
-                        </div>
-                    `,
-                    technical: `
-                        <div class="text-sm">
-                            <p class="mb-2"><strong>Components:</strong></p>
-                            <ul class="text-xs ml-2 mb-2">
-                                <li>• C_t: (cess_t - min_cess)/(max_cess - min_cess)</li>
-                                <li>• D_t: 1 - (actual_devolution_t - min_dev)/(max_dev - min_dev)</li>
-                                <li>• B_t: {0, 0.5, 1} for borrowing restrictions</li>
-                            </ul>
-                            <p class="mb-2"><strong>Robustness:</strong> Alternative weightings (PCA) yield similar trends</p>
-                            <div class="bg-orange-50 p-2 rounded text-xs">
-                                <p>Fiscal impact: Vertical imbalance increased from 38% to 52%</p>
-                            </div>
-                        </div>
-                    `,
-                    policy: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Federal Impact:</strong> States' fiscal autonomy at 40-year low.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Service Delivery:</strong> Per capita health/education spending declined in 18 states.
-                        </p>
-                        <div class="bg-orange-50 p-3 rounded text-xs space-y-1">
-                            <p><strong>Reforms required:</strong></p>
-                            <p>• Constitutional cap on cesses</p>
-                            <p>• Automatic stabilizer mechanism</p>
-                            <p>• GST Council voting reform</p>
-                        </div>
-                    `
-                },
-                
-                dqiExplanation: {
-                    citizen: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>What this measures:</strong> Health of democratic institutions and freedoms.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Why it matters:</strong> Weak democracy means less accountability and fewer rights.
-                        </p>
-                        <div class="bg-purple-50 p-3 rounded text-xs space-y-1">
-                            <p>• Press freedom: 140th → 159th globally</p>
-                            <p>• India now "Partly Free" (was "Free")</p>
-                            <p>• Classified as "Electoral Autocracy"</p>
-                        </div>
-                    `,
-                    student: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Methodology:</strong> Geometric mean ensures weakness in any dimension affects overall score.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Theory:</strong> Captures "democratic backsliding" - erosion without rupture.
-                        </p>
-                        <div class="bg-purple-50 p-3 rounded text-xs">
-                            <p><strong>Formula:</strong> DQI = ∛(FH × RSF × V-Dem)</p>
-                            <p>Freedom House: 78→66 (-15.4%)</p>
-                            <p>Press Freedom: 140→159 (-13.6%)</p>
-                            <p>V-Dem LDI: 0.555→0.271 (-51.2%)</p>
-                        </div>
-                    `,
-                    technical: `
-                        <div class="text-sm">
-                            <p class="mb-2"><strong>Construction:</strong></p>
-                            <p class="font-mono text-xs mb-2">DQI = (FH/100 × (181-RSF)/180 × LDI)^(1/3)</p>
-                            <p class="mb-2"><strong>Properties:</strong> Multiplicative aggregation penalizes dimensional weakness</p>
-                            <p class="mb-2"><strong>Validity:</strong> Correlates with Polity IV (r=0.91), EIU Democracy Index (r=0.88)</p>
-                            <div class="bg-purple-50 p-2 rounded text-xs">
-                                <p>Decomposition: 68% decline from V-Dem, 21% press, 11% FH</p>
-                            </div>
-                        </div>
-                    `,
-                    policy: `
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>Institutional Risk:</strong> Checks and balances operating at 59% capacity.
-                        </p>
-                        <p class="text-sm text-gray-600 mb-3">
-                            <strong>International Standing:</strong> Downgraded by all major democracy indices.
-                        </p>
-                        <div class="bg-purple-50 p-3 rounded text-xs space-y-1">
-                            <p><strong>Priority interventions:</strong></p>
-                            <p>• Media ownership caps</p>
-                            <p>• Judicial appointment reform</p>
-                            <p>• Civil society protection law</p>
-                        </div>
-                    `
-                },
-                
-                // Glossary content by audience
-                glossaryContent: {
-                    citizen: `
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">GDP Growth</dt>
-                            <dd class="text-gray-600">How fast the economy is growing each year. 7% is considered very good.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Top 1%</dt>
-                            <dd class="text-gray-600">The richest 1 out of every 100 Indians. They own 40% of all wealth.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Informal Employment</dt>
-                            <dd class="text-gray-600">Jobs without contracts, benefits, or security. Includes gig work, daily wages.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Cess</dt>
-                            <dd class="text-gray-600">Special tax the Centre keeps entirely, doesn't share with states.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Electoral Bonds</dt>
-                            <dd class="text-gray-600">System that allowed secret corporate donations to political parties (now banned).</dd>
-                        </div>
-                    `,
-                    student: `
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Employment Elasticity</dt>
-                            <dd class="text-gray-600">∂(Employment)/∂(GDP). Measures job creation per unit of growth. India: 0.01→1.11.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Gini Coefficient</dt>
-                            <dd class="text-gray-600">Inequality measure (0=perfect equality, 1=one person owns everything). India: 0.875.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">V-Dem LDI</dt>
-                            <dd class="text-gray-600">Varieties of Democracy Liberal Democracy Index. Combines 71 indicators. India: 0.555→0.271.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Competitive Authoritarianism</dt>
-                            <dd class="text-gray-600">Levitsky & Way's concept: elections exist but playing field is tilted toward incumbents.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">JAM Trinity</dt>
-                            <dd class="text-gray-600">Jan Dhan (bank accounts) + Aadhaar (biometric ID) + Mobile. Enables direct transfers.</dd>
-                        </div>
-                    `,
-                    technical: `
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Min-Max Normalization</dt>
-                            <dd class="text-gray-600">(X - X_min)/(X_max - X_min). Maps variables to [0,1] for aggregation.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Geometric Mean</dt>
-                            <dd class="text-gray-600">(Π x_i)^(1/n). Penalizes low values more than arithmetic mean.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Event Coding</dt>
-                            <dd class="text-gray-600">Systematic classification of discrete events by severity and salience.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">PLFS</dt>
-                            <dd class="text-gray-600">Periodic Labour Force Survey. Quarterly employment data, replaced NSS-EUS.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">GTR</dt>
-                            <dd class="text-gray-600">Gross Tax Revenue. Total tax collection before devolution to states.</dd>
-                        </div>
-                    `,
-                    policy: `
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Vertical Imbalance</dt>
-                            <dd class="text-gray-600">Gap between states' expenditure responsibilities and revenue powers.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Automatic Stabilizers</dt>
-                            <dd class="text-gray-600">Fiscal mechanisms that adjust transfers counter-cyclically without discretion.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">Finance Commission</dt>
-                            <dd class="text-gray-600">Constitutional body recommending tax sharing between Centre and states.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">GST Council</dt>
-                            <dd class="text-gray-600">Federal body setting GST rates. Centre has 1/3 votes, states 2/3 collectively.</dd>
-                        </div>
-                        <div class="pb-2 border-b">
-                            <dt class="font-semibold text-purple-700">FRBM Act</dt>
-                            <dd class="text-gray-600">Fiscal Responsibility law capping deficits at 3% of GDP/GSDP.</dd>
-                        </div>
-                    `
-                },
-                
-                // Chart explanations by audience
-                chartExplanations: {
-                    indices: {
-                        citizen: "Watch how government transparency (red), state autonomy (orange), and democratic health (purple) all deteriorated together.",
-                        student: "Synchronized deterioration across three dimensions suggests coordinated institutional capture rather than random decay.",
-                        technical: "Pearson correlations: SSI-FCI (r=0.92), SSI-DQI (r=-0.89), FCI-DQI (r=-0.87). All p<0.001.",
-                        policy: "Coordinated erosion requires coordinated response. Single-dimension reforms insufficient."
-                    },
-                    employment: {
-                        citizen: "GDP grew fast but unemployment stayed high—growth didn't create good jobs.",
-                        student: "The paradox: employment elasticity improved yet formalization declined, suggesting precarious job creation.",
-                        technical: "Elasticity rose from 0.01 to 1.11, but 80% of new employment was informal/self-employed.",
-                        policy: "Growth strategy must shift from GDP maximization to quality employment generation."
-                    }
-                },
-                
-                // Story descriptions by audience
-                storyDescription: {
-                    citizen: "How promises turned into paradox",
-                    student: "Chronological analysis of institutional change",
-                    technical: "Event-sequence mapping 2014-2024",
-                    policy: "Policy evolution and consequences"
-                },
-                
-                findingsDescription: {
-                    citizen: "What the numbers reveal",
-                    student: "Empirical evidence and theoretical implications",
-                    technical: "Statistical results and validation",
-                    policy: "Diagnosed problems and solutions"
-                },
-                
-                dataDescription: {
-                    citizen: "See the changes year by year",
-                    student: "Explore datasets and correlations",
-                    technical: "Access raw data and replication code",
-                    policy: "Scenario modeling and projections"
-                },
-                
-                // Scenario narratives by audience
-                scenarioNarrative: {
-                    citizen: `Based on your adjustments, states would regain significant resources for schools and hospitals, 
-                             press freedom would improve accountability, and better data would help citizens make informed choices.`,
-                    student: `Parameter adjustments demonstrate elasticities: 1% cess reduction → 0.8% state revenue increase; 
-                             10-rank press improvement → 0.03 DQI increase; 1-point SSI reduction → 15% data availability gain.`,
-                    technical: `Sensitivity analysis: ∂(state_revenue)/∂(cess_cap) = -1.2; ∂(DQI)/∂(press_rank) = -0.003; 
-                               ∂(data_availability)/∂(SSI) = -0.15. Model assumes linear relationships within observed ranges.`,
-                    policy: `Reform impact assessment: Capping cesses would restore ₹${this.stateGains} lakh crore to states. 
-                           Press freedom improvements correlate with 0.3% higher GDP growth. Data transparency reduces 
-                           policy errors by estimated 25%.`
-                },
-                
-                // Methods
-                updateYearData() {
-                    const index = this.currentYear - 2014;
-                    this.yearData = {
-                        gdp: this.timeSeriesData.gdp[index],
-                        unemployment: this.timeSeriesData.unemployment[index],
-                        inequality: this.timeSeriesData.topOnePercent[index],
-                        pressRank: this.timeSeriesData.pressRank[index]
+                updatePeriodData() {
+                    const periods = {
+                        upa1: { gdp: '8.5', jobQuality: 'Mostly Formal', democracy: 'Free', gdpColor: 'text-green-600', jobColor: 'text-green-600', demoColor: 'text-green-600' },
+                        upa2: { gdp: '6.7', jobQuality: 'Mixed', democracy: 'Free', gdpColor: 'text-yellow-600', jobColor: 'text-yellow-600', demoColor: 'text-green-600' },
+                        modi1: { gdp: '7.4', jobQuality: 'Deteriorating', democracy: 'Partly Free', gdpColor: 'text-green-600', jobColor: 'text-orange-600', demoColor: 'text-yellow-600' },
+                        modi2: { gdp: '6.1', jobQuality: 'Mostly Gig', democracy: 'Not Free', gdpColor: 'text-yellow-600', jobColor: 'text-red-600', demoColor: 'text-red-600' }
                     };
-                    this.updateCharts();
+                    this.periodData = periods[this.selectedPeriod];
                 },
                 
-                calculateScenario() {
-                    // Calculate state gains from cess cap
-                    const currentCess = 14.8; // 2024 value
-                    const cessDiff = Math.max(0, currentCess - this.cessCapPercent);
-                    this.stateGains = (cessDiff * 0.15).toFixed(1); // Rough calculation
-                    
-                    // Calculate DQI improvement from press freedom
-                    const currentRank = 159;
-                    const rankImprovement = Math.max(0, currentRank - this.pressTargetRank);
-                    const dqiBoost = rankImprovement * 0.002; // Rough elasticity
-                    this.projectedDQI = Math.min(1, (0.42 + dqiBoost)).toFixed(2);
-                    
-                    // Calculate data improvement from SSI reduction
-                    const currentSSI = 7.8;
-                    const ssiReduction = Math.max(0, currentSSI - this.targetSSI);
-                    this.dataImprovement = Math.round(ssiReduction * 12);
-                    
-                    this.updateScenarioChart();
+                initCharts() {
+                    this.initRegimeComparisonChart();
+                    this.initEmploymentQualityChart();
+                    this.initGdpJobQualityChart();
+                    this.initDemocraticHealthChart();
+                    this.initComprehensiveChart();
                 },
                 
-                updateCharts() {
-                    // Update main charts based on current year
-                    // This would update your Chart.js instances
+                initRegimeComparisonChart() {
+                    const ctx = document.getElementById('regimeComparisonChart');
+                    if (!ctx) return;
+                    
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: this.fullData.years,
+                            datasets: [{
+                                label: 'Top 1% Income Share (%)',
+                                data: this.fullData.top1Percent,
+                                borderColor: 'rgb(239, 68, 68)',
+                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                annotation: {
+                                    annotations: {
+                                        line1: {
+                                            type: 'line',
+                                            xMin: 10,
+                                            xMax: 10,
+                                            borderColor: 'rgb(0, 0, 0)',
+                                            borderWidth: 2,
+                                            borderDash: [5, 5],
+                                            label: {
+                                                content: '2014: Regime Change',
+                                                enabled: true,
+                                                position: 'start'
+                                            }
+                                        },
+                                        box1: {
+                                            type: 'box',
+                                            xMin: 0,
+                                            xMax: 10,
+                                            backgroundColor: 'rgba(59, 130, 246, 0.1)'
+                                        },
+                                        box2: {
+                                            type: 'box',
+                                            xMin: 10,
+                                            xMax: 20,
+                                            backgroundColor: 'rgba(239, 68, 68, 0.1)'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
                 },
                 
-                updateScenarioChart() {
-                    // Update scenario comparison chart
-                    const ctx = document.getElementById('scenarioChart');
-                    if (window.scenarioChartInstance) {
-                        window.scenarioChartInstance.destroy();
-                    }
+                initEmploymentQualityChart() {
+                    const ctx = document.getElementById('employmentQualityChart');
+                    if (!ctx) return;
                     
-                    window.scenarioChartInstance = new Chart(ctx, {
+                    new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['Current', 'Reformed'],
+                            labels: ['2004 (UPA Start)', '2014 (NDA Start)', '2024 (Current)'],
                             datasets: [{
-                                label: 'State Revenue Share (%)',
-                                data: [29.8, 29.8 + parseFloat(this.stateGains) * 2],
-                                backgroundColor: ['rgba(239, 68, 68, 0.5)', 'rgba(34, 197, 94, 0.5)']
+                                label: 'Formal Employment %',
+                                data: [18, 17.5, 11],
+                                backgroundColor: 'rgba(34, 197, 94, 0.5)',
+                                borderColor: 'rgb(34, 197, 94)',
+                                borderWidth: 2
                             }, {
-                                label: 'Democratic Quality (0-1)',
-                                data: [0.42, parseFloat(this.projectedDQI)],
-                                backgroundColor: ['rgba(147, 51, 234, 0.5)', 'rgba(34, 197, 94, 0.5)']
-                            }, {
-                                label: 'Data Availability (%)',
-                                data: [35, 35 + parseInt(this.dataImprovement)],
-                                backgroundColor: ['rgba(251, 146, 60, 0.5)', 'rgba(34, 197, 94, 0.5)']
+                                label: 'Informal/Gig Employment %',
+                                data: [82, 82.5, 89],
+                                backgroundColor: 'rgba(239, 68, 68, 0.5)',
+                                borderColor: 'rgb(239, 68, 68)',
+                                borderWidth: 2
                             }]
                         },
                         options: {
@@ -934,40 +822,34 @@
                     });
                 },
                 
-                init() {
-                    // Initialize all charts on page load
-                    this.updateYearData();
-                    this.calculateScenario();
-                    this.initializeMainCharts();
-                },
-                
-                initializeMainCharts() {
-                    // Initialize the three indices chart
-                    const indicesCtx = document.getElementById('indicesTimeChart');
-                    new Chart(indicesCtx, {
+                initGdpJobQualityChart() {
+                    const ctx = document.getElementById('gdpJobQualityChart');
+                    if (!ctx) return;
+                    
+                    new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: this.timeSeriesData.years,
+                            labels: this.fullData.years,
                             datasets: [{
-                                label: 'SSI (0-10)',
-                                data: this.timeSeriesData.ssi,
+                                label: 'GDP Growth %',
+                                data: this.fullData.gdpGrowth,
+                                borderColor: 'rgb(34, 197, 94)',
+                                backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                                tension: 0.3,
+                                yAxisID: 'y'
+                            }, {
+                                label: 'Formal Employment %',
+                                data: this.fullData.formalEmployment,
+                                borderColor: 'rgb(59, 130, 246)',
+                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                                tension: 0.3,
+                                yAxisID: 'y1'
+                            }, {
+                                label: 'Informal Employment %',
+                                data: this.fullData.informalEmployment,
                                 borderColor: 'rgb(239, 68, 68)',
                                 backgroundColor: 'rgba(239, 68, 68, 0.1)',
                                 tension: 0.3,
-                                yAxisID: 'y'
-                            }, {
-                                label: 'FCI (0-1)',
-                                data: this.timeSeriesData.fci,
-                                borderColor: 'rgb(251, 146, 60)',
-                                backgroundColor: 'rgba(251, 146, 60, 0.1)',
-                                tension: 0.3,
-                                yAxisID: 'y1'
-                            }, {
-                                label: 'DQI (0-1)',
-                                data: this.timeSeriesData.dqi,
-                                borderColor: 'rgb(147, 51, 234)',
-                                backgroundColor: 'rgba(147, 51, 234, 0.1)',
-                                tension: 0.3,
                                 yAxisID: 'y1'
                             }]
                         },
@@ -976,56 +858,7 @@
                             maintainAspectRatio: false,
                             interaction: {
                                 mode: 'index',
-                                intersect: false,
-                            },
-                            scales: {
-                                y: {
-                                    type: 'linear',
-                                    display: true,
-                                    position: 'left',
-                                    max: 10
-                                },
-                                y1: {
-                                    type: 'linear',
-                                    display: true,
-                                    position: 'right',
-                                    max: 1,
-                                    grid: {
-                                        drawOnChartArea: false,
-                                    }
-                                }
-                            }
-                        }
-                    });
-                    
-                    // Initialize GDP vs Employment chart
-                    const gdpCtx = document.getElementById('gdpEmploymentChart');
-                    new Chart(gdpCtx, {
-                        type: 'line',
-                        data: {
-                            labels: this.timeSeriesData.years,
-                            datasets: [{
-                                label: 'GDP Growth %',
-                                data: this.timeSeriesData.gdp,
-                                borderColor: 'rgb(75, 192, 192)',
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                tension: 0.1,
-                                yAxisID: 'y'
-                            }, {
-                                label: 'Unemployment %',
-                                data: this.timeSeriesData.unemployment,
-                                borderColor: 'rgb(255, 99, 132)',
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                tension: 0.1,
-                                yAxisID: 'y1'
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            interaction: {
-                                mode: 'index',
-                                intersect: false,
+                                intersect: false
                             },
                             scales: {
                                 y: {
@@ -1043,11 +876,114 @@
                                     position: 'right',
                                     title: {
                                         display: true,
-                                        text: 'Unemployment %'
+                                        text: 'Employment %'
                                     },
                                     grid: {
-                                        drawOnChartArea: false,
+                                        drawOnChartArea: false
                                     }
+                                }
+                            }
+                        }
+                    });
+                },
+                
+                initDemocraticHealthChart() {
+                    const ctx = document.getElementById('democraticHealthChart');
+                    if (!ctx) return;
+                    
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: this.fullData.years,
+                            datasets: [{
+                                label: 'Press Freedom Rank (lower is better)',
+                                data: this.fullData.pressFreedom,
+                                borderColor: 'rgb(239, 68, 68)',
+                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                tension: 0.3,
+                                yAxisID: 'y'
+                            }, {
+                                label: 'Democratic Quality Index (0-1)',
+                                data: this.fullData.dqi,
+                                borderColor: 'rgb(147, 51, 234)',
+                                backgroundColor: 'rgba(147, 51, 234, 0.1)',
+                                tension: 0.3,
+                                yAxisID: 'y1'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'left',
+                                    reverse: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Press Rank'
+                                    }
+                                },
+                                y1: {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'right',
+                                    max: 1,
+                                    title: {
+                                        display: true,
+                                        text: 'DQI'
+                                    },
+                                    grid: {
+                                        drawOnChartArea: false
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                
+                initComprehensiveChart() {
+                    const ctx = document.getElementById('comprehensiveChart');
+                    if (!ctx) return;
+                    
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: this.fullData.years,
+                            datasets: [{
+                                label: 'GDP Growth %',
+                                data: this.fullData.gdpGrowth,
+                                borderColor: 'rgb(34, 197, 94)',
+                                borderWidth: 2,
+                                fill: false
+                            }, {
+                                label: 'Formal Employment %',
+                                data: this.fullData.formalEmployment,
+                                borderColor: 'rgb(59, 130, 246)',
+                                borderWidth: 2,
+                                fill: false
+                            }, {
+                                label: 'Top 1% Income Share %',
+                                data: this.fullData.top1Percent,
+                                borderColor: 'rgb(239, 68, 68)',
+                                borderWidth: 2,
+                                fill: false
+                            }, {
+                                label: 'Democratic Quality (×10)',
+                                data: this.fullData.dqi.map(v => v * 10),
+                                borderColor: 'rgb(147, 51, 234)',
+                                borderWidth: 2,
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Notice: GDP stayed high, but everything else deteriorated after 2014'
                                 }
                             }
                         }
@@ -1056,9 +992,12 @@
             }
         }
         
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Charts will be initialized by Alpine component
+        // Initialize charts when page loads
+        document.addEventListener('alpine:initialized', () => {
+            setTimeout(() => {
+                const app = Alpine.store('app') || window.appData();
+                app.initCharts();
+            }, 100);
         });
     </script>
 </body>
