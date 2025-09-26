@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+# Save a robust version of index_complete.html that includes a no-blank fallback
+html = r"""<!DOCTYPE html>
 <html lang="en" x-data="appData()" x-init="init()" :data-theme="theme">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>India's Economic Paradox: Growth Without Accountability (2004-2025)</title>
 
-  <!-- Libs -->
+  <!-- Libs (will enhance if network allows) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'class' }</script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -36,21 +37,36 @@
     .export-buttons{position:absolute;top:.5rem;right:.5rem;display:flex;gap:.375rem;opacity:.25;transition:.2s}
     .chart-wrapper:hover .export-buttons{opacity:1}
     [x-cloak]{display:none!important}
-    /* Responsive chart heights */
     .chart-container{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:260px}
     @media (min-width:768px){ .chart-container{height:350px} }
     .chart-container-small{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:220px}
     @media (min-width:768px){ .chart-container-small{height:260px} }
-    /* Sparkline canvases */
     .spark{height:56px;width:100%;}
-    /* Better mobile tables */
     .table-wrapper{overflow:auto;-webkit-overflow-scrolling:touch}
-    /* Sticky theme toggle button */
     .theme-toggle{position:fixed;bottom:14px;right:14px;z-index:90;background:var(--accent-purple);color:#fff;width:46px;height:46px;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px var(--shadow-color)}
     @media print{ .no-print{display:none!important} body{background:#fff!important;color:#000!important} }
+    /* Tiny no-JS fallback so page isn't ugly if Tailwind is blocked */
+    .nojs-note{display:none}
+    .nojs body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial}
+    .nojs .nojs-note{display:block;padding:.5rem .75rem;background:#f97316;color:#111827;font-size:.875rem}
+    .nojs .container{max-width:72rem;margin:0 auto;padding:1rem}
+    .nojs .card{background:#fff;border:1px solid #e5e7eb;border-radius:.5rem;padding:1rem;margin:.75rem 0}
   </style>
+  <script>
+    // If Tailwind fails to load (offline/CSP), add a minimal "nojs" class for readable fallback
+    (function(){
+      var fired=false;
+      setTimeout(function(){
+        if (typeof window.tailwind === 'undefined') {
+          document.documentElement.classList.add('nojs');
+        }
+      }, 800);
+    })();
+  </script>
 </head>
 <body class="min-h-screen flex flex-col">
+
+  <div class="nojs-note">⚠️ Interactive features may be limited (network blocked or offline). Content shown in fallback mode.</div>
 
   <!-- Theme toggle -->
   <button @click="toggleTheme()" class="theme-toggle no-print" :title="theme==='light'?'Dark mode':'Light mode'">
@@ -89,7 +105,6 @@
         </div>
       </div>
 
-      <!-- Scrollable tabs on mobile -->
       <div class="flex space-x-5 border-t dark-border pt-2 overflow-x-auto no-scrollbar text-sm">
         <button @click="activeTab='about'"        :class="activeTab==='about'?'tab-active':''"        class="pb-2 px-1 whitespace-nowrap">What is This?</button>
         <button @click="activeTab='summary'"      :class="activeTab==='summary'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Executive Summary</button>
@@ -107,7 +122,6 @@
   <!-- Main -->
   <main class="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-8 flex-grow">
 
-    <!-- Audience panel -->
     <div x-show="audienceType" x-cloak class="mb-4 sm:mb-6">
       <div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-600 p-4 sm:p-5 rounded dark-card">
         <div class="grid md:grid-cols-5 gap-4">
@@ -206,7 +220,6 @@
       <section class="dark-card rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
         <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Interactive Data Explorer</h2>
 
-        <!-- Controls stack on mobile -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
           <div>
             <label class="text-[12px] dark-text-secondary">Primary</label>
@@ -401,7 +414,6 @@
 
   </main>
 
-  <!-- Footer (kept) -->
   <footer class="bg-gray-800 text-white mt-10 no-print">
     <div class="max-w-7xl mx-auto px-3 sm:px-4 py-8">
       <div class="grid md:grid-cols-3 gap-6">
@@ -432,38 +444,44 @@
     </div>
   </footer>
 
+  <!-- No-blank fallback: uncloak if Alpine/Chart are blocked -->
+  <div id="cdn-fallback-note" style="display:none;position:sticky;bottom:0;z-index:9999;background:#f97316;color:#111827;padding:.5rem .75rem;font-size:.875rem" class="no-print">
+    ⚠️ Interactive features are unavailable (network blocked/offline). Content is shown in fallback mode.
+  </div>
+  <script>
+  (function () {
+    function uncloakAll() {
+      document.querySelectorAll('[x-cloak]').forEach(el => el.removeAttribute('x-cloak'));
+      var n=document.getElementById('cdn-fallback-note'); if(n) n.style.display='block';
+      console.warn('Fallback active: CDN libraries not detected. Showing content without interactivity.');
+    }
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        if (!window.Alpine || !window.Chart) uncloakAll();
+      }, 900);
+    });
+  })();
+  </script>
+
   <script>
     function appData(){
       return {
         theme: localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
         activeTab:'summary',
         audienceType:'',
-        charts:{},       // full-size charts
-        sparks:{},       // sparkline charts
+        charts:{}, sparks:{},
 
-        setAudience(t){
-          this.audienceType=t;
-          setTimeout(()=>{ this.buildSparklines(); }, 0);
-        },
+        setAudience(t){ this.audienceType=t; setTimeout(()=>{ this.buildSparklines(); }, 0); },
         toggleTheme(){
           this.theme=this.theme==='light'?'dark':'light';
           localStorage.setItem('theme',this.theme);
           document.documentElement.classList.toggle('dark', this.theme==='dark');
-          this.rebuildCharts();
-          this.buildSparklines();
+          this.rebuildCharts(); this.buildSparklines();
         },
 
         init(){
           document.documentElement.classList.toggle('dark', this.theme==='dark');
-
-          // Ensure annotation plugin is registered (some builds don't auto-register)
-          try{
-            if (window['chartjs-plugin-annotation']) {
-              Chart.register(window['chartjs-plugin-annotation']);
-            }
-          }catch(e){ /* no-op */ }
-
-          // Build charts after DOM is ready
+          try{ if (window['chartjs-plugin-annotation']) Chart.register(window['chartjs-plugin-annotation']); }catch(e){}
           setTimeout(()=>{ this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer(); }, 60);
         },
 
@@ -472,7 +490,6 @@
           this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer();
         },
 
-        /* ====== Audience Panels (with sparklines & worked examples) ====== */
         getAudiencePanel(){
           const journalist = `
             <h3 class="font-semibold mb-1">Journalists: 90-second brief</h3>
@@ -493,12 +510,6 @@
               <li><em>Concentration at the top:</em> Who benefitted from growth.</li>
               <li><em>Data vacuum:</em> When revisions and gaps shape the story.</li>
             </ul>
-            <h4 class="font-semibold mt-2 mb-1">Ready lines</h4>
-            <ul class="list-disc ml-5">
-              <li>“India grew fast, but secure jobs shrank.”</li>
-              <li>“The top 1% now capture over a fifth of national income.”</li>
-              <li>“Cesses and conditions shifted power away from States.”</li>
-            </ul>
           `;
           const students = `
             <h3 class="font-semibold mb-1">Students/Citizens: simple explanations</h3>
@@ -509,8 +520,6 @@
               <li><strong>Top 1% share:</strong> Total income ₹1,000; top 1% take 22% ⇒ ₹220. If it rises to 25%, their share becomes ₹250.</li>
               <li><strong>Formal vs informal:</strong> Workforce 50 crore. Formal 11% ⇒ 5.5 crore; informal 89% ⇒ 44.5 crore.</li>
             </ol>
-            <h4 class="font-semibold mt-3 mb-1">Try it</h4>
-            <p>In <em>Interactive Data</em>, plot <strong>GDP + Formal + Top 1%</strong> together to see divergence.</p>
           `;
           const policy = `
             <h3 class="font-semibold mb-1">Policy makers: one-page brief</h3>
@@ -518,7 +527,6 @@
             <ul class="list-disc ml-5">
               <li><strong>Levers:</strong> Labour-intensive manufacturing/services; cap cesses; independent statistics; gig-worker insurance.</li>
               <li><strong>Metrics to watch:</strong> Formal share ↑, wage growth median ↑, cesses share ↓, release lags ↓.</li>
-              <li><strong>Risk:</strong> High inequality → weak demand → lower private capex.</li>
             </ul>
           `;
           const academic = `
@@ -546,65 +554,42 @@
           }; return notes[this.audienceType]||'';
         },
 
-        /* ====== SUMMARY/FINDINGS CONTENT (missing functions fixed) ====== */
         getSummaryContent(){
-          return `
-            <p>This project compares two decades of India’s political economy. Despite headline growth, <strong>formal jobs fell</strong>, <strong>inequality rose above colonial-era peaks</strong>, and <strong>institutional checks weakened</strong>. Three original indices — the Statistical Suppression Index (SSI), Fiscal Centralisation Index (FCI), and Data Quality Index (DQI) — track how data release practices, federal finance, and transparency evolved.</p>
-          `;
+          return `<p>This project compares two decades of India’s political economy. Despite headline growth, <strong>formal jobs fell</strong>, <strong>inequality rose above colonial-era peaks</strong>, and <strong>institutional checks weakened</strong>. Three original indices — the Statistical Suppression Index (SSI), Fiscal Centralisation Index (FCI), and Data Quality Index (DQI) — track how data release practices, federal finance, and transparency evolved.</p>`;
         },
         getEmploymentFindings(){
-          return `
-            <p><strong>Composition shift, not expansion:</strong> Growth arrived with increasing <em>informality</em>. The formal share dropped from ~18% to ~11% (2004–2024), while gig-like work expanded.</p>
-            <ul class="list-disc ml-5">
-              <li><strong>Elasticity decoupling:</strong> Output growth no longer translates into secure jobs.</li>
-              <li><strong>Young workers:</strong> New entrants increasingly enter informal roles with lower protections.</li>
-              <li><strong>Policy lever:</strong> Labour-intensive niches (garments, food processing, logistics) + insurance for gig workers.</li>
-            </ul>
-          `;
+          return `<p><strong>Composition shift, not expansion:</strong> Growth arrived with increasing <em>informality</em>. The formal share dropped from ~18% to ~11% (2004–2024), while gig-like work expanded.</p>
+                  <ul class="list-disc ml-5"><li><strong>Elasticity decoupling:</strong> Output growth no longer translates into secure jobs.</li>
+                  <li><strong>Young workers:</strong> New entrants increasingly enter informal roles with lower protections.</li>
+                  <li><strong>Policy lever:</strong> Labour-intensive niches (garments, food processing, logistics) + insurance for gig workers.</li></ul>`;
         },
         getInequalityFindings(){
-          return `
-            <p><strong>Top-end concentration:</strong> The top 1% income share climbs from ~12–16% in the 2000s to ~23% by mid-2020s. Without robust job creation, demand skews upward.</p>
-            <ul class="list-disc ml-5">
-              <li><strong>Consumption risk:</strong> Middle-lower segments face slower income growth.</li>
-              <li><strong>Investment channel:</strong> High concentration can depress broad-based demand and private capex.</li>
-              <li><strong>Countermeasures:</strong> Expand formal work, reduce compliance frictions for MSMEs, improve public data credibility.</li>
-            </ul>
-          `;
+          return `<p><strong>Top-end concentration:</strong> The top 1% income share climbs from ~12–16% in the 2000s to ~23% by mid-2020s. Without robust job creation, demand skews upward.</p>
+                  <ul class="list-disc ml-5"><li><strong>Consumption risk:</strong> Middle-lower segments face slower income growth.</li>
+                  <li><strong>Investment channel:</strong> High concentration can depress broad-based demand and private capex.</li>
+                  <li><strong>Countermeasures:</strong> Expand formal work, reduce compliance frictions for MSMEs, improve public data credibility.</li></ul>`;
         },
 
-        /* ====== Sparkline builder ====== */
         buildSparklines(){
-          if(this.audienceType!=='journalist') return;
-          const el1 = document.getElementById('spark1');
-          const el2 = document.getElementById('spark2');
+          if(this.audienceType!=='journalist' || !window.Chart) return;
+          const el1 = document.getElementById('spark1'); const el2 = document.getElementById('spark2');
+          if(!el1 || !el2) return;
           if(this.sparks.s1){ try{ this.sparks.s1.destroy(); }catch(e){} }
           if(this.sparks.s2){ try{ this.sparks.s2.destroy(); }catch(e){} }
           const years = [2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
           const top1  = [12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6];
           const formal= [18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0];
           const d=this.theme==='dark';
-          if(el1){
-            this.sparks.s1 = new Chart(el1, {
-              type:'line',
-              data:{ labels:years, datasets:[{ data:top1, borderColor:'rgb(239,68,68)', backgroundColor: d?'rgba(239,68,68,.15)':'rgba(239,68,68,.12)', fill:true, tension:.35, pointRadius:0 }]},
-              options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}}, scales:{ x:{display:false}, y:{display:false} } }
-            });
-          }
-          if(el2){
-            this.sparks.s2 = new Chart(el2, {
-              type:'line',
-              data:{ labels:years, datasets:[{ data:formal, borderColor:'rgb(59,130,246)', backgroundColor: d?'rgba(59,130,246,.15)':'rgba(59,130,246,.12)', fill:true, tension:.35, pointRadius:0 }]},
-              options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}}, scales:{ x:{display:false}, y:{display:false} } }
-            });
-          }
+          this.sparks.s1 = new Chart(el1, {type:'line',data:{labels:years,datasets:[{data:top1,borderColor:'rgb(239,68,68)',backgroundColor:d?'rgba(239,68,68,.15)':'rgba(239,68,68,.12)',fill:true,tension:.35,pointRadius:0}]},
+            options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}}});
+          this.sparks.s2 = new Chart(el2, {type:'line',data:{labels:years,datasets:[{data:formal,borderColor:'rgb(59,130,246)',backgroundColor:d?'rgba(59,130,246,.15)':'rgba(59,130,246,.12)',fill:true,tension:.35,pointRadius:0}]},
+            options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}}});
         },
 
-        /* ====== Charts ====== */
         colors(){ const d=this.theme==='dark'; return { text:d?'#cbd5e1':'#374151', grid:d?'#475569':'#e5e7eb' }; },
 
         buildSummary(){
-          const el=document.getElementById('summaryChart'); if(!el) return;
+          const el=document.getElementById('summaryChart'); if(!el || !window.Chart) return;
           const c=this.colors(); if(this.charts.sum) this.charts.sum.destroy();
           this.charts.sum=new Chart(el,{ type:'line',
             data:{ labels:[2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024],
@@ -618,9 +603,8 @@
               plugins:{ legend:{labels:{color:c.text}}}
             });
         },
-
         buildEmployment(){
-          const el=document.getElementById('employmentChart'); if(!el) return;
+          const el=document.getElementById('employmentChart'); if(!el || !window.Chart) return;
           const c=this.colors(); if(this.charts.emp) this.charts.emp.destroy();
           this.charts.emp=new Chart(el,{ type:'bar',
             data:{ labels:['2004','2014','2024'],
@@ -633,9 +617,8 @@
               plugins:{ legend:{labels:{color:c.text}}}
             });
         },
-
         buildInequality(){
-          const el=document.getElementById('inequalityChart'); if(!el) return;
+          const el=document.getElementById('inequalityChart'); if(!el || !window.Chart) return;
           const c=this.colors(); if(this.charts.ineq) this.charts.ineq.destroy();
           this.charts.ineq=new Chart(el,{ type:'line',
             data:{ labels:['1939','1982','2004','2014','2024'],
@@ -645,13 +628,12 @@
               plugins:{ legend:{labels:{color:c.text}}}
             });
         },
-
         buildIndices(){
+          if(!window.Chart) return;
           const years=Array.from({length:22},(_,i)=>2004+i);
           const lin=(a,b,n)=>Array.from({length:n},(_,i)=>+(a+(b-a)*i/(n-1)).toFixed(2));
           const SSI=lin(0.5,7.8,years.length), FCI=lin(0.45,0.78,years.length), DQI=lin(0.68,0.42,years.length);
           const c=this.colors();
-
           const ssi=document.getElementById('ssiChart'); if(ssi){ if(this.charts.ssi) this.charts.ssi.destroy();
             this.charts.ssi=new Chart(ssi,{type:'line',data:{labels:years,datasets:[{label:'SSI (0–10)',data:SSI,borderColor:'rgb(147,51,234)',backgroundColor:'rgba(147,51,234,.15)',fill:true,tension:.25}]},
               options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:c.text},grid:{color:c.grid}},y:{ticks:{color:c.text},grid:{color:c.grid}}},plugins:{legend:{labels:{color:c.text}}}}); }
@@ -663,7 +645,6 @@
               options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:c.text},grid:{color:c.grid}},y:{ticks:{color:c.text},grid:{color:c.grid}}},plugins:{legend:{labels:{color:c.text}}}}); }
         },
 
-        /* ====== Interactive Explorer (combos) ====== */
         dataCfg:{ metric:'gdp', compare1:'', compare2:'', type:'line', start:2004, end:2025, showRegimes:true },
         visibleDataRows:[],
         series(){
@@ -685,6 +666,7 @@
         }[k]||{bc:'rgb(124,58,237)',bg:'rgba(124,58,237,.15)'}; },
 
         renderExplorer(){
+          if(!window.Chart) return;
           const {years,...S}=this.series(); const s=this.dataCfg;
           const keys=[s.metric,s.compare1,s.compare2].filter(Boolean);
           const uniq=[...new Set(keys)];
@@ -717,22 +699,20 @@
             const cols=['Year', this.metricLabel(this.dataCfg.metric)];
             if(this.dataCfg.compare1) cols.push(this.metricLabel(this.dataCfg.compare1));
             if(this.dataCfg.compare2) cols.push(this.metricLabel(this.dataCfg.compare2));
-            let csv=cols.join(',')+'\\n';
+            let csv=cols.join('\\n') ? cols.join(',')+'\\n' : '';
             this.visibleDataRows.forEach(r=>{ csv+=[r.year,r.v1,(r.v2??''),(r.v3??'')].join(',')+'\\n'; });
             saveAs(new Blob([csv],{type:'text/csv'}),'interactive_selection.csv');
           }
         },
 
-        /* Downloads (stubs retained) */
         downloadPaper(){ alert('Download: India_Economic_Paradox_Full_Paper_2025.pdf'); },
         downloadData(){ alert('Download: India_Economy_Dataset_2004_2024.xlsx'); },
         downloadCode(){ window.open('https://github.com/someperspective/india-economy','_blank'); }
       }
     }
 
-    /* Generic chart export */
     function exportChart(id,fmt){
-      const canvas=document.getElementById(id); if(!canvas) return;
+      const canvas=document.getElementById(id); if(!canvas || !window.Chart) return;
       if(fmt==='png'){ canvas.toBlob(b=>saveAs(b, `${id}.png`)); }
       else{
         const chart=Chart.getChart(id); if(!chart) return;
@@ -744,3 +724,6 @@
   </script>
 </body>
 </html>
+"""
+open("/mnt/data/index_complete.html","w",encoding="utf-8").write(html)
+print("Saved to /mnt/data/index_complete.html")
