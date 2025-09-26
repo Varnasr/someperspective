@@ -334,7 +334,7 @@
               </div>
               <div class="chart-container-small"><canvas id="dqiChart"></canvas></div>
             </div>
-            <p class="text-[12px] mt-2 dark-text-secondary">Higher is better (0–1).</p>
+            <p class="text:[12px] mt-2 dark-text-secondary">Higher is better (0–1).</p>
           </div>
         </div>
       </section>
@@ -443,7 +443,6 @@
 
         setAudience(t){
           this.audienceType=t;
-          // wait for Alpine to render the panel HTML, then build sparklines if journalist/general
           setTimeout(()=>{ this.buildSparklines(); }, 0);
         },
         toggleTheme(){
@@ -451,11 +450,19 @@
           localStorage.setItem('theme',this.theme);
           document.documentElement.classList.toggle('dark', this.theme==='dark');
           this.rebuildCharts();
-          this.buildSparklines(true);
+          this.buildSparklines();
         },
 
         init(){
           document.documentElement.classList.toggle('dark', this.theme==='dark');
+
+          // Ensure annotation plugin is registered (some builds don't auto-register)
+          try{
+            if (window['chartjs-plugin-annotation']) {
+              Chart.register(window['chartjs-plugin-annotation']);
+            }
+          }catch(e){ /* no-op */ }
+
           // Build charts after DOM is ready
           setTimeout(()=>{ this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer(); }, 60);
         },
@@ -539,23 +546,44 @@
           }; return notes[this.audienceType]||'';
         },
 
+        /* ====== SUMMARY/FINDINGS CONTENT (missing functions fixed) ====== */
+        getSummaryContent(){
+          return `
+            <p>This project compares two decades of India’s political economy. Despite headline growth, <strong>formal jobs fell</strong>, <strong>inequality rose above colonial-era peaks</strong>, and <strong>institutional checks weakened</strong>. Three original indices — the Statistical Suppression Index (SSI), Fiscal Centralisation Index (FCI), and Data Quality Index (DQI) — track how data release practices, federal finance, and transparency evolved.</p>
+          `;
+        },
+        getEmploymentFindings(){
+          return `
+            <p><strong>Composition shift, not expansion:</strong> Growth arrived with increasing <em>informality</em>. The formal share dropped from ~18% to ~11% (2004–2024), while gig-like work expanded.</p>
+            <ul class="list-disc ml-5">
+              <li><strong>Elasticity decoupling:</strong> Output growth no longer translates into secure jobs.</li>
+              <li><strong>Young workers:</strong> New entrants increasingly enter informal roles with lower protections.</li>
+              <li><strong>Policy lever:</strong> Labour-intensive niches (garments, food processing, logistics) + insurance for gig workers.</li>
+            </ul>
+          `;
+        },
+        getInequalityFindings(){
+          return `
+            <p><strong>Top-end concentration:</strong> The top 1% income share climbs from ~12–16% in the 2000s to ~23% by mid-2020s. Without robust job creation, demand skews upward.</p>
+            <ul class="list-disc ml-5">
+              <li><strong>Consumption risk:</strong> Middle-lower segments face slower income growth.</li>
+              <li><strong>Investment channel:</strong> High concentration can depress broad-based demand and private capex.</li>
+              <li><strong>Countermeasures:</strong> Expand formal work, reduce compliance frictions for MSMEs, improve public data credibility.</li>
+            </ul>
+          `;
+        },
+
         /* ====== Sparkline builder ====== */
         buildSparklines(){
-          // Only build for journalist
           if(this.audienceType!=='journalist') return;
-
           const el1 = document.getElementById('spark1');
           const el2 = document.getElementById('spark2');
-
-          // Clean up
           if(this.sparks.s1){ try{ this.sparks.s1.destroy(); }catch(e){} }
           if(this.sparks.s2){ try{ this.sparks.s2.destroy(); }catch(e){} }
-
           const years = [2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
           const top1  = [12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6];
           const formal= [18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0];
           const d=this.theme==='dark';
-
           if(el1){
             this.sparks.s1 = new Chart(el1, {
               type:'line',
@@ -659,7 +687,8 @@
         renderExplorer(){
           const {years,...S}=this.series(); const s=this.dataCfg;
           const keys=[s.metric,s.compare1,s.compare2].filter(Boolean);
-          const uniq=[...new Set(keys)]; const si=Math.max(0,years.indexOf(s.start)); const ei=Math.max(si,years.indexOf(s.end));
+          const uniq=[...new Set(keys)];
+          const si=Math.max(0,years.indexOf(s.start)); const ei=Math.max(si,years.indexOf(s.end));
           const labels=years.slice(si,ei+1);
           const datasets=uniq.map(k=>{const cm=this.colorMap(k); return {label:this.metricLabel(k), data:S[k].slice(si,ei+1), borderColor:cm.bc, backgroundColor:(s.type==='area'?cm.bg:cm.bg), fill:(s.type==='area'), tension:.25};});
           this.visibleDataRows=labels.map((y,i)=>({year:y, v1:S[uniq[0]||s.metric][si+i], v2:uniq[1]?S[uniq[1]][si+i]:undefined, v3:uniq[2]?S[uniq[2]][si+i]:undefined}));
