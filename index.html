@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="appData()" :data-theme="theme">
+<html lang="en" x-data="appData()" x-init="init()" :data-theme="theme">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,6 +41,8 @@
     @media (min-width:768px){ .chart-container{height:350px} }
     .chart-container-small{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:220px}
     @media (min-width:768px){ .chart-container-small{height:260px} }
+    /* Sparkline canvases */
+    .spark{height:56px;width:100%;}
     /* Better mobile tables */
     .table-wrapper{overflow:auto;-webkit-overflow-scrolling:touch}
     /* Sticky theme toggle button */
@@ -89,15 +91,15 @@
 
       <!-- Scrollable tabs on mobile -->
       <div class="flex space-x-5 border-t dark-border pt-2 overflow-x-auto no-scrollbar text-sm">
-        <button @click="activeTab='about'"      :class="activeTab==='about'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">What is This?</button>
-        <button @click="activeTab='summary'"    :class="activeTab==='summary'?'tab-active':''"    class="pb-2 px-1 whitespace-nowrap">Executive Summary</button>
-        <button @click="activeTab='findings'"   :class="activeTab==='findings'?'tab-active':''"   class="pb-2 px-1 whitespace-nowrap">Key Findings</button>
-        <button @click="activeTab='data'"       :class="activeTab==='data'?'tab-active':''"       class="pb-2 px-1 whitespace-nowrap">Interactive Data</button>
-        <button @click="activeTab='indices'"    :class="activeTab==='indices'?'tab-active':''"    class="pb-2 px-1 whitespace-nowrap">Three Indices</button>
-        <button @click="activeTab='methods'"    :class="activeTab==='methods'?'tab-active':''"    class="pb-2 px-1 whitespace-nowrap">Methodology</button>
-        <button @click="activeTab='glossary'"   :class="activeTab==='glossary'?'tab-active':''"   class="pb-2 px-1 whitespace-nowrap">Glossary</button>
+        <button @click="activeTab='about'"        :class="activeTab==='about'?'tab-active':''"        class="pb-2 px-1 whitespace-nowrap">What is This?</button>
+        <button @click="activeTab='summary'"      :class="activeTab==='summary'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Executive Summary</button>
+        <button @click="activeTab='findings'"     :class="activeTab==='findings'?'tab-active':''"     class="pb-2 px-1 whitespace-nowrap">Key Findings</button>
+        <button @click="activeTab='data'"         :class="activeTab==='data'?'tab-active':''"         class="pb-2 px-1 whitespace-nowrap">Interactive Data</button>
+        <button @click="activeTab='indices'"      :class="activeTab==='indices'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Three Indices</button>
+        <button @click="activeTab='methods'"      :class="activeTab==='methods'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Methodology</button>
+        <button @click="activeTab='glossary'"     :class="activeTab==='glossary'?'tab-active':''"     class="pb-2 px-1 whitespace-nowrap">Glossary</button>
         <button @click="activeTab='implications'" :class="activeTab==='implications'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Implications</button>
-        <button @click="activeTab='whatnext'"   :class="activeTab==='whatnext'?'tab-active':''"   class="pb-2 px-1 whitespace-nowrap">What Next?</button>
+        <button @click="activeTab='whatnext'"     :class="activeTab==='whatnext'?'tab-active':''"     class="pb-2 px-1 whitespace-nowrap">What Next?</button>
       </div>
     </div>
   </div>
@@ -105,7 +107,7 @@
   <!-- Main -->
   <main class="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-8 flex-grow">
 
-    <!-- Audience panel (now substantive and mobile-first) -->
+    <!-- Audience panel -->
     <div x-show="audienceType" x-cloak class="mb-4 sm:mb-6">
       <div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-600 p-4 sm:p-5 rounded dark-card">
         <div class="grid md:grid-cols-5 gap-4">
@@ -208,7 +210,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
           <div>
             <label class="text-[12px] dark-text-secondary">Primary</label>
-            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.metric" @change="renderDataExplorer()">
+            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.metric" @change="renderExplorer()">
               <option value="gdp">GDP Growth %</option>
               <option value="top1">Top 1% Income Share %</option>
               <option value="formal">Formal Employment %</option>
@@ -218,7 +220,7 @@
           </div>
           <div>
             <label class="text-[12px] dark-text-secondary">Compare</label>
-            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.compare1" @change="renderDataExplorer()">
+            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.compare1" @change="renderExplorer()">
               <option value="">None</option>
               <option value="gdp">GDP Growth %</option>
               <option value="top1">Top 1% Income Share %</option>
@@ -229,7 +231,7 @@
           </div>
           <div>
             <label class="text-[12px] dark-text-secondary">+ Another</label>
-            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.compare2" @change="renderDataExplorer()">
+            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.compare2" @change="renderExplorer()">
               <option value="">None</option>
               <option value="gdp">GDP Growth %</option>
               <option value="top1">Top 1% Income Share %</option>
@@ -240,7 +242,7 @@
           </div>
           <div>
             <label class="text-[12px] dark-text-secondary">Type</label>
-            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.type" @change="renderDataExplorer()">
+            <select class="w-full p-2 border rounded dark-border" x-model="dataCfg.type" @change="renderExplorer()">
               <option value="line">Line</option>
               <option value="bar">Bar</option>
               <option value="area">Area</option>
@@ -249,12 +251,12 @@
           <div>
             <label class="text-[12px] dark-text-secondary">Years</label>
             <div class="flex items-center gap-2">
-              <input type="number" class="w-full p-2 border rounded dark-border" x-model.number="dataCfg.start" @change="renderDataExplorer()">
+              <input type="number" class="w-full p-2 border rounded dark-border" x-model.number="dataCfg.start" @change="renderExplorer()">
               <span class="text-xs dark-text-secondary">→</span>
-              <input type="number" class="w-full p-2 border rounded dark-border" x-model.number="dataCfg.end" @change="renderDataExplorer()">
+              <input type="number" class="w-full p-2 border rounded dark-border" x-model.number="dataCfg.end" @change="renderExplorer()">
             </div>
             <label class="inline-flex items-center gap-2 mt-2">
-              <input type="checkbox" class="rounded" x-model="dataCfg.showRegimes" @change="renderDataExplorer()">
+              <input type="checkbox" class="rounded" x-model="dataCfg.showRegimes" @change="renderExplorer()">
               <span class="text-[12px] dark-text-secondary">UPA/NDA shading</span>
             </label>
           </div>
@@ -262,8 +264,8 @@
 
         <div class="chart-wrapper relative mt-3">
           <div class="export-buttons">
-            <button @click="exportDataExplorer('png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-            <button @click="exportDataExplorer('csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+            <button @click="exportExplorer('png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
+            <button @click="exportExplorer('csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
           </div>
           <div class="chart-container"><canvas id="dataExplorerChart"></canvas></div>
         </div>
@@ -350,7 +352,7 @@
       </section>
     </div>
 
-    <!-- GLOSSARY (restored) -->
+    <!-- GLOSSARY -->
     <div x-show="activeTab==='glossary'" x-cloak>
       <section class="dark-card rounded-lg shadow p-4 sm:p-6">
         <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Glossary</h2>
@@ -436,13 +438,25 @@
         theme: localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
         activeTab:'summary',
         audienceType:'',
-        charts:{},
+        charts:{},       // full-size charts
+        sparks:{},       // sparkline charts
 
-        setAudience(t){ this.audienceType=t; },
-        toggleTheme(){ this.theme=this.theme==='light'?'dark':'light'; localStorage.setItem('theme',this.theme); document.documentElement.classList.toggle('dark', this.theme==='dark'); this.rebuildCharts(); },
+        setAudience(t){
+          this.audienceType=t;
+          // wait for Alpine to render the panel HTML, then build sparklines if journalist/general
+          setTimeout(()=>{ this.buildSparklines(); }, 0);
+        },
+        toggleTheme(){
+          this.theme=this.theme==='light'?'dark':'light';
+          localStorage.setItem('theme',this.theme);
+          document.documentElement.classList.toggle('dark', this.theme==='dark');
+          this.rebuildCharts();
+          this.buildSparklines(true);
+        },
 
         init(){
           document.documentElement.classList.toggle('dark', this.theme==='dark');
+          // Build charts after DOM is ready
           setTimeout(()=>{ this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer(); }, 60);
         },
 
@@ -451,24 +465,28 @@
           this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer();
         },
 
-        /* ====== Audience Panels (substantive) ====== */
+        /* ====== Audience Panels (with sparklines & worked examples) ====== */
         getAudiencePanel(){
           const journalist = `
             <h3 class="font-semibold mb-1">Journalists: 90-second brief</h3>
             <p>GDP grew across both regimes, but <strong>formal jobs shrank</strong> and the <strong>top 1% share rose to ~22.6%</strong>. Institutions shifted: statistics became <em>slower/thinner</em> (SSI↑), Centre’s fiscal grip <em>tightened</em> (FCI↑), and democratic quality <em>weakened</em> (DQI↓).</p>
-            <h4 class="font-semibold mt-3 mb-1">What the data shows</h4>
-            <ul class="list-disc ml-5">
-              <li>Formal share: ~18% → ~11% (2004–2024)</li>
-              <li>Top 1% share: ~12.5% → ~22.6%</li>
-              <li>Press rank: ~105–140 → ~140–161 (higher = worse)</li>
-            </ul>
-            <h4 class="font-semibold mt-3 mb-1">Angles & nut-grafs</h4>
+            <div class="grid grid-cols-2 gap-3 my-3">
+              <div class="dark-card border dark-border rounded p-2">
+                <div class="text-[11px] dark-text-secondary mb-1">Top 1% share ↑</div>
+                <canvas id="spark1" class="spark"></canvas>
+              </div>
+              <div class="dark-card border dark-border rounded p-2">
+                <div class="text-[11px] dark-text-secondary mb-1">Formal employment ↓</div>
+                <canvas id="spark2" class="spark"></canvas>
+              </div>
+            </div>
+            <h4 class="font-semibold mt-2 mb-1">Angles & nut-grafs</h4>
             <ul class="list-disc ml-5">
               <li><em>Growth without jobs:</em> Why secure work lagged.</li>
               <li><em>Concentration at the top:</em> Who benefitted from growth.</li>
               <li><em>Data vacuum:</em> When revisions and gaps shape the story.</li>
             </ul>
-            <h4 class="font-semibold mt-3 mb-1">Ready lines</h4>
+            <h4 class="font-semibold mt-2 mb-1">Ready lines</h4>
             <ul class="list-disc ml-5">
               <li>“India grew fast, but secure jobs shrank.”</li>
               <li>“The top 1% now capture over a fifth of national income.”</li>
@@ -478,14 +496,14 @@
           const students = `
             <h3 class="font-semibold mb-1">Students/Citizens: simple explanations</h3>
             <p><strong>GDP growth</strong> is like your school adding more rooms; <strong>formal jobs</strong> are full-time teachers with benefits; <strong>gig work</strong> is a substitute teacher called when needed.</p>
-            <h4 class="font-semibold mt-3 mb-1">Examples</h4>
-            <ul class="list-disc ml-5">
-              <li>If GDP grows 7% but formal jobs fall, growth isn’t helping most workers.</li>
-              <li>If the press rank gets worse (bigger number), it’s harder to question mistakes.</li>
-              <li>If cesses rise, States get less share for schools/hospitals.</li>
-            </ul>
+            <h4 class="font-semibold mt-3 mb-1">Worked examples</h4>
+            <ol class="list-decimal ml-5 space-y-1">
+              <li><strong>Elasticity:</strong> If GDP grows 6% and elasticity is 0.5, jobs grow ≈ 3%. If elasticity drops to 0.1, jobs grow ≈ 0.6%.</li>
+              <li><strong>Top 1% share:</strong> Total income ₹1,000; top 1% take 22% ⇒ ₹220. If it rises to 25%, their share becomes ₹250.</li>
+              <li><strong>Formal vs informal:</strong> Workforce 50 crore. Formal 11% ⇒ 5.5 crore; informal 89% ⇒ 44.5 crore.</li>
+            </ol>
             <h4 class="font-semibold mt-3 mb-1">Try it</h4>
-            <p>Use the “Interactive Data” tab to plot <em>GDP + Formal + Top 1%</em> together.</p>
+            <p>In <em>Interactive Data</em>, plot <strong>GDP + Formal + Top 1%</strong> together to see divergence.</p>
           `;
           const policy = `
             <h3 class="font-semibold mb-1">Policy makers: one-page brief</h3>
@@ -519,6 +537,39 @@
             policy:`<li>Track cesses (FCI) & release lags (SSI).</li><li>Elasticity post-2017 ≈ 1 via informalisation.</li><li>Publish backlogged datasets to de-risk.</li>`,
             academic:`<li>Indices/components in Methods.</li><li>Exports are tidy CSV.</li><li>Contact for replication package.</li>`
           }; return notes[this.audienceType]||'';
+        },
+
+        /* ====== Sparkline builder ====== */
+        buildSparklines(){
+          // Only build for journalist
+          if(this.audienceType!=='journalist') return;
+
+          const el1 = document.getElementById('spark1');
+          const el2 = document.getElementById('spark2');
+
+          // Clean up
+          if(this.sparks.s1){ try{ this.sparks.s1.destroy(); }catch(e){} }
+          if(this.sparks.s2){ try{ this.sparks.s2.destroy(); }catch(e){} }
+
+          const years = [2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
+          const top1  = [12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6];
+          const formal= [18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0];
+          const d=this.theme==='dark';
+
+          if(el1){
+            this.sparks.s1 = new Chart(el1, {
+              type:'line',
+              data:{ labels:years, datasets:[{ data:top1, borderColor:'rgb(239,68,68)', backgroundColor: d?'rgba(239,68,68,.15)':'rgba(239,68,68,.12)', fill:true, tension:.35, pointRadius:0 }]},
+              options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}}, scales:{ x:{display:false}, y:{display:false} } }
+            });
+          }
+          if(el2){
+            this.sparks.s2 = new Chart(el2, {
+              type:'line',
+              data:{ labels:years, datasets:[{ data:formal, borderColor:'rgb(59,130,246)', backgroundColor: d?'rgba(59,130,246,.15)':'rgba(59,130,246,.12)', fill:true, tension:.35, pointRadius:0 }]},
+              options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}}, scales:{ x:{display:false}, y:{display:false} } }
+            });
+          }
         },
 
         /* ====== Charts ====== */
@@ -630,7 +681,7 @@
             });
         },
 
-        exportDataExplorer(fmt){
+        exportExplorer(fmt){
           if(!this.charts.explorer) return;
           if(fmt==='png'){ this.charts.explorer.canvas.toBlob(b=>saveAs(b,'interactive_selection.png')); }
           else{
