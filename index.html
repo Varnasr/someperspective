@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>India's Economic Paradox: Growth Without Accountability (2004–2025)</title>
 
-  <!-- Enhance via CDN (interactive). If blocked/offline, fallback below keeps page visible. -->
+  <!-- No-blank fix: only cloak when JS runs -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Libraries -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'class' }</script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -13,67 +16,42 @@
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
 
-  <!-- Theme tokens + responsive layout -->
   <style>
     :root{
       --bg-primary:#fff; --bg-secondary:#f9fafb; --bg-card:#fff;
       --text-primary:#111827; --text-secondary:#4b5563; --text-muted:#9ca3af;
-      --border-color:#e5e7eb; --accent:#7C3AED; --shadow:rgba(0,0,0,.08);
-      --chart-bg:#fff; --nav-bg:#fff;
+      --border-color:#e5e7eb; --accent:#7C3AED; --chart-bg:#fff; --nav-bg:#fff;
     }
     [data-theme="dark"]{
       --bg-primary:#0f172a; --bg-secondary:#111827; --bg-card:#1f2937;
       --text-primary:#e5e7eb; --text-secondary:#cbd5e1; --text-muted:#94a3b8;
-      --border-color:#374151; --accent:#8b5cf6; --shadow:rgba(0,0,0,.35);
-      --chart-bg:#0f172a; --nav-bg:#0b1220;
+      --border-color:#374151; --accent:#8b5cf6; --chart-bg:#0f172a; --nav-bg:#0b1220;
     }
-    html,body{height:100%}
-    body{background:var(--bg-secondary);color:var(--text-primary);transition:background .25s,color .25s}
-    .dark-card{background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border-color)}
+    body{background:var(--bg-secondary);color:var(--text-primary)}
+    .dark-card{background:var(--bg-card);border:1px solid var(--border-color)}
     .dark-nav{background:var(--nav-bg);border-bottom:1px solid var(--border-color)}
     .dark-text-primary{color:var(--text-primary)} .dark-text-secondary{color:var(--text-secondary)}
     .dark-border{border-color:var(--border-color)}
-    .tab-active{border-bottom:3px solid var(--accent); color:var(--accent)}
+    .tab-active{border-bottom:3px solid var(--accent);color:var(--accent)}
     .audience-active{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
     .export-buttons{position:absolute;top:.5rem;right:.5rem;display:flex;gap:.375rem;opacity:.25;transition:.2s}
     .chart-wrapper:hover .export-buttons{opacity:1}
-    [x-cloak]{display:none !important}
+    [x-cloak]{display:none!important} .js [x-cloak]{display:none!important}
     .chart-container{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:300px}
     @media (min-width:768px){ .chart-container{height:380px} }
     .chart-container-sm{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:230px}
     @media (min-width:768px){ .chart-container-sm{height:270px} }
     .spark{height:56px;width:100%}
     .table-wrap{overflow:auto;-webkit-overflow-scrolling:touch}
-    .theme-toggle{position:fixed;right:12px;bottom:14px;z-index:80;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px var(--shadow)}
-    /* No-JS fallback (when CDNs blocked) */
-    .nojs-note{display:none}
-    .nojs .nojs-note{display:block;position:sticky;top:0;z-index:90;background:#f97316;color:#111827;padding:.5rem .75rem;font-size:.875rem}
-    .nojs .fallback{max-width:72rem;margin:0 auto;padding:1rem}
-    .nojs .fallback .card{background:#fff;border:1px solid #e5e7eb;padding:1rem;border-radius:.5rem;margin:.75rem 0}
+    .theme-toggle{position:fixed;right:12px;bottom:14px;z-index:80;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:9999px;display:flex;align-items:center;justify-content:center}
     @media print{ .no-print{display:none!important} body{background:#fff!important;color:#000!important} }
   </style>
-
-  <!-- If Tailwind fails (offline/CSP), switch to minimal fallback so page isn't blank -->
-  <script>
-    (function(){
-      setTimeout(function(){
-        if (typeof window.tailwind === 'undefined') {
-          document.documentElement.classList.add('nojs');
-        }
-      }, 800);
-    })();
-  </script>
+  <noscript><style>[x-cloak]{display:block!important}</style></noscript>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- No-JS/fallback banner -->
-  <div class="nojs-note">⚠️ Interactive features may be limited (offline/CSP). Showing readable fallback.</div>
-
   <!-- Theme toggle -->
-  <button @click="toggleTheme()" class="theme-toggle no-print" :title="theme==='light'?'Dark mode':'Light mode'">
-    <svg x-show="theme==='light'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
-    <svg x-show="theme==='dark'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m7-9h2M3 12H1m15.364 6.364l1.414 1.414M4.222 4.222L5.636 5.636m12.728 0l1.414-1.414M4.222 19.778l1.414-1.414"/></svg>
-  </button>
+  <button @click="toggleTheme()" class="theme-toggle no-print" :title="theme==='light'?'Dark mode':'Light mode'">🌙</button>
 
   <!-- Top info bar -->
   <div class="bg-purple-900 text-white py-2 px-3 sm:px-4 no-print">
@@ -106,36 +84,36 @@
         </div>
       </div>
 
-      <!-- Tabs (scrollable on mobile) -->
-      <div class="flex space-x-5 border-t dark-border pt-2 overflow-x-auto no-scrollbar text-sm">
-        <button @click="activeTab='about'"        :class="activeTab==='about'?'tab-active':''"        class="pb-2 px-1 whitespace-nowrap">What is This?</button>
-        <button @click="activeTab='summary'"      :class="activeTab==='summary'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Executive Summary</button>
-        <button @click="activeTab='findings'"     :class="activeTab==='findings'?'tab-active':''"     class="pb-2 px-1 whitespace-nowrap">Key Findings</button>
-        <button @click="activeTab='data'"         :class="activeTab==='data'?'tab-active':''"         class="pb-2 px-1 whitespace-nowrap">Interactive Data</button>
-        <button @click="activeTab='indices'"      :class="activeTab==='indices'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Three Indices</button>
-        <button @click="activeTab='methods'"      :class="activeTab==='methods'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Methodology</button>
-        <button @click="activeTab='glossary'"     :class="activeTab==='glossary'?'tab-active':''"     class="pb-2 px-1 whitespace-nowrap">Glossary</button>
+      <!-- Tabs -->
+      <div class="flex space-x-5 border-t dark-border pt-2 overflow-x-auto text-sm">
+        <button @click="activeTab='about'"        :class="activeTab==='about'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">What is This?</button>
+        <button @click="activeTab='summary'"      :class="activeTab==='summary'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Executive Summary</button>
+        <button @click="activeTab='findings'"     :class="activeTab==='findings'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Key Findings</button>
+        <button @click="activeTab='data'"         :class="activeTab==='data'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Interactive Data</button>
+        <button @click="activeTab='indices'"      :class="activeTab==='indices'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Three Indices</button>
+        <button @click="activeTab='methods'"      :class="activeTab==='methods'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Methodology</button>
+        <button @click="activeTab='glossary'"     :class="activeTab==='glossary'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Glossary</button>
         <button @click="activeTab='implications'" :class="activeTab==='implications'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">Implications</button>
-        <button @click="activeTab='whatnext'"     :class="activeTab==='whatnext'?'tab-active':''"     class="pb-2 px-1 whitespace-nowrap">What Next?</button>
+        <button @click="activeTab='whatnext'"     :class="activeTab==='whatnext'?'tab-active':''" class="pb-2 px-1 whitespace-nowrap">What Next?</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audience panel -->
+  <div x-show="audienceType" x-cloak class="mb-4 sm:mb-6">
+    <div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-600 p-4 sm:p-5 rounded dark-card">
+      <div class="grid md:grid-cols-5 gap-4">
+        <div class="md:col-span-3 text-sm dark-text-primary" x-html="getAudiencePanel()"></div>
+        <div class="md:col-span-2">
+          <div class="text-xs font-semibold mb-2 dark-text-primary">Quick Notes</div>
+          <ul class="text-xs dark-text-secondary space-y-1" x-html="getAudienceQuickNotes()"></ul>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- MAIN -->
   <main class="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-8 flex-grow">
-
-    <!-- Audience panel (appears when a type is selected). Sits above the tab content to preserve layout. -->
-    <div x-show="audienceType" x-cloak class="mb-4 sm:mb-6">
-      <div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-600 p-4 sm:p-5 rounded dark-card">
-        <div class="grid md:grid-cols-5 gap-4">
-          <div class="md:col-span-3 text-sm dark-text-primary" x-html="getAudiencePanel()"></div>
-          <div class="md:col-span-2">
-            <div class="text-xs font-semibold mb-2 dark-text-primary">Quick Notes</div>
-            <ul class="text-xs dark-text-secondary space-y-1" x-html="getAudienceQuickNotes()"></ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- ABOUT -->
     <div x-show="activeTab==='about'">
@@ -182,7 +160,7 @@
           The three indices chart a shift in statistical practice, fiscal federalism, and openness.
         </p>
 
-        <!-- Combined chart with GDP + Top1% + Formal Employment -->
+        <!-- Combined chart -->
         <div class="chart-wrapper relative mt-4">
           <div class="export-buttons">
             <button onclick="exportChart('summaryChart','png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
@@ -246,7 +224,6 @@
       <section class="dark-card rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
         <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">Interactive Data Explorer</h2>
 
-        <!-- Controls (mobile-first grid) -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
           <div>
             <label class="text-[12px] dark-text-secondary">Primary</label>
@@ -497,21 +474,6 @@
     </div>
   </footer>
 
-  <!-- Anti-blank fallback: uncloak content if CDNs are blocked -->
-  <script>
-    (function(){
-      function uncloak(){
-        document.querySelectorAll('[x-cloak]').forEach(el=>el.removeAttribute('x-cloak'));
-        console.warn('Fallback active: CDN libraries not detected. Content shown without interactivity.');
-      }
-      window.addEventListener('load', function(){
-        setTimeout(function(){
-          if (!window.Alpine || !window.Chart) uncloak();
-        }, 900);
-      });
-    })();
-  </script>
-
   <!-- App logic -->
   <script>
     function appData(){
@@ -519,12 +481,9 @@
         theme: localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
         activeTab: 'summary',
         audienceType: '',
-        charts: {},
-        sparks: {},
-        visibleDataRows: [],
+        charts: {}, sparks: {}, visibleDataRows: [],
         dataCfg: { metric:'gdp', compare1:'', compare2:'', type:'line', start:2004, end:2025, showRegimes:true },
 
-        // UI
         setAudience(t){ this.audienceType=t; this.$nextTick(()=>this.buildSparklines()); },
         toggleTheme(){
           this.theme = this.theme==='light' ? 'dark' : 'light';
@@ -533,11 +492,9 @@
           this.rebuildCharts(); this.buildSparklines();
         },
 
-        // Init
         init(){
           document.documentElement.classList.toggle('dark', this.theme==='dark');
           try{ if (window['chartjs-plugin-annotation']) Chart.register(window['chartjs-plugin-annotation']); }catch(e){}
-          // build charts a beat later for layout
           setTimeout(()=>{ this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer(); this.buildSparklines(); }, 80);
         },
 
@@ -546,7 +503,6 @@
           this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer();
         },
 
-        // AUDIENCE CONTENT
         getAudiencePanel(){
           const journalist = `
             <h3 class="font-semibold mb-1">Journalists: 90-second brief</h3>
@@ -611,21 +567,6 @@
           }; return notes[this.audienceType]||'';
         },
 
-        buildSparklines(){
-          if(this.audienceType!=='journalist' || !window.Chart) return;
-          const el1=document.getElementById('spark1'), el2=document.getElementById('spark2');
-          if(!el1 || !el2) return;
-          if(this.sparks.s1){ try{ this.sparks.s1.destroy(); }catch(e){} }
-          if(this.sparks.s2){ try{ this.sparks.s2.destroy(); }catch(e){} }
-          const years=[2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
-          const top1=[12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6];
-          const formal=[18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0];
-          const d=this.theme==='dark';
-          this.sparks.s1=new Chart(el1,{type:'line',data:{labels:years,datasets:[{data:top1,borderColor:'rgb(239,68,68)',backgroundColor:d?'rgba(239,68,68,.15)':'rgba(239,68,68,.12)',fill:true,tension:.35,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}});
-          this.sparks.s2=new Chart(el2,{type:'line',data:{labels:years,datasets:[{data:formal,borderColor:'rgb(59,130,246)',backgroundColor:d?'rgba(59,130,246,.15)':'rgba(59,130,246,.12)',fill:true,tension:.35,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}});
-        },
-
-        // Init charts
         series(){
           const years = Array.from({length:22},(_,i)=>2004+i);
           const gdp =    [7.9,8.5,9.3,9.8,3.9,8.5,10.3,8.5,5.5,6.9,7.4,8.2,7.9,6.1,3.8,-7.3,8.9,7.2,8.2,7.0,6.5,6.8];
@@ -649,7 +590,6 @@
         },
         colors(){ const d=this.theme==='dark'; return { text:d?'#cbd5e1':'#374151', grid:d?'#374151':'#e5e7eb' }; },
 
-        // SUMMARY chart
         buildSummary(){
           const el = document.getElementById('summaryChart'); if(!el || !window.Chart) return;
           if(this.charts.sum) this.charts.sum.destroy();
@@ -676,7 +616,6 @@
           });
         },
 
-        // FINDINGS charts
         buildEmployment(){
           const el=document.getElementById('employmentChart'); if(!el || !window.Chart) return;
           if(this.charts.emp) this.charts.emp.destroy();
@@ -709,7 +648,6 @@
           });
         },
 
-        // INDICES
         buildIndices(){
           if(!window.Chart) return;
           const years=Array.from({length:22},(_,i)=>2004+i);
@@ -728,7 +666,6 @@
               options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:c.text},grid:{color:c.grid}},y:{ticks:{color:c.text},grid:{color:c.grid}}},plugins:{legend:{labels:{color:c.text}}}}); }
         },
 
-        // Explorer
         renderExplorer(){
           if(!window.Chart) return;
           const {years,...S}=this.series(); const s=this.dataCfg;
@@ -761,7 +698,20 @@
           });
         },
 
-        // Exports
+        buildSparklines(){
+          if(this.audienceType!=='journalist' || !window.Chart) return;
+          const el1=document.getElementById('spark1'), el2=document.getElementById('spark2');
+          if(!el1 || !el2) return;
+          if(this.sparks.s1){ try{ this.sparks.s1.destroy(); }catch(e){} }
+          if(this.sparks.s2){ try{ this.sparks.s2.destroy(); }catch(e){} }
+          const years=[2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
+          const top1=[12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6];
+          const formal=[18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0];
+          const d=this.theme==='dark';
+          this.sparks.s1=new Chart(el1,{type:'line',data:{labels:years,datasets:[{data:top1,borderColor:'rgb(239,68,68)',backgroundColor:d?'rgba(239,68,68,.15)':'rgba(239,68,68,.12)',fill:true,tension:.35,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}});
+          this.sparks.s2=new Chart(el2,{type:'line',data:{labels:years,datasets:[{data:formal,borderColor:'rgb(59,130,246)',backgroundColor:d?'rgba(59,130,246,.15)':'rgba(59,130,246,.12)',fill:true,tension:.35,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}});
+        },
+
         exportExplorer(fmt){
           if(!this.charts.explorer) return;
           if(fmt==='png'){ this.charts.explorer.canvas.toBlob(b=>saveAs(b,'interactive_selection.png')); }
@@ -775,14 +725,12 @@
           }
         },
 
-        // Downloads (stubs)
         downloadPaper(){ alert('Download: India_Economic_Paradox_Full_Paper_2025.pdf'); },
         downloadData(){ alert('Download: India_Economy_Dataset_2004_2024.xlsx'); },
         downloadCode(){ window.open('https://github.com/someperspective/india-economy','_blank'); }
       }
     }
 
-    // CSV/PNG export for non-explorer charts
     function exportChart(id, fmt){
       const canvas=document.getElementById(id); if(!canvas || !window.Chart) return;
       if(fmt==='png'){ canvas.toBlob(b=>saveAs(b, `${id}.png`)); return; }
