@@ -1,12 +1,11 @@
-# Save a robust version of index_complete.html that includes a no-blank fallback
-html = r"""<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" x-data="appData()" x-init="init()" :data-theme="theme">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>India's Economic Paradox: Growth Without Accountability (2004-2025)</title>
+  <title>India's Economic Paradox: Growth Without Accountability (2004–2025)</title>
 
-  <!-- Libs (will enhance if network allows) -->
+  <!-- Enhance via CDN (interactive). If blocked/offline, fallback below keeps page visible. -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'class' }</script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -14,48 +13,49 @@ html = r"""<!DOCTYPE html>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
 
+  <!-- Theme tokens + responsive layout -->
   <style>
     :root{
       --bg-primary:#fff; --bg-secondary:#f9fafb; --bg-card:#fff;
       --text-primary:#111827; --text-secondary:#4b5563; --text-muted:#9ca3af;
-      --border-color:#e5e7eb; --shadow-color:rgba(0,0,0,.1);
-      --accent-purple:#7C3AED; --chart-bg:#fff; --nav-bg:#fff;
+      --border-color:#e5e7eb; --accent:#7C3AED; --shadow:rgba(0,0,0,.08);
+      --chart-bg:#fff; --nav-bg:#fff;
     }
     [data-theme="dark"]{
-      --bg-primary:#0f172a; --bg-secondary:#1e293b; --bg-card:#334155;
-      --text-primary:#f1f5f9; --text-secondary:#cbd5e1; --text-muted:#94a3b8;
-      --border-color:#475569; --shadow-color:rgba(0,0,0,.5);
-      --chart-bg:#1e293b; --nav-bg:#1e293b;
+      --bg-primary:#0f172a; --bg-secondary:#111827; --bg-card:#1f2937;
+      --text-primary:#e5e7eb; --text-secondary:#cbd5e1; --text-muted:#94a3b8;
+      --border-color:#374151; --accent:#8b5cf6; --shadow:rgba(0,0,0,.35);
+      --chart-bg:#0f172a; --nav-bg:#0b1220;
     }
-    body{background:var(--bg-secondary);color:var(--text-primary);transition:.3s ease}
-    .dark-card{background:var(--bg-card);color:var(--text-primary)}
-    .dark-nav{background:var(--nav-bg)}
+    html,body{height:100%}
+    body{background:var(--bg-secondary);color:var(--text-primary);transition:background .25s,color .25s}
+    .dark-card{background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border-color)}
+    .dark-nav{background:var(--nav-bg);border-bottom:1px solid var(--border-color)}
     .dark-text-primary{color:var(--text-primary)} .dark-text-secondary{color:var(--text-secondary)}
     .dark-border{border-color:var(--border-color)}
-    .tab-active{border-bottom:3px solid var(--accent-purple); color:var(--accent-purple)}
-    .audience-active{background:var(--accent-purple)!important;color:#fff!important;border-color:var(--accent-purple)!important}
+    .tab-active{border-bottom:3px solid var(--accent); color:var(--accent)}
+    .audience-active{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
     .export-buttons{position:absolute;top:.5rem;right:.5rem;display:flex;gap:.375rem;opacity:.25;transition:.2s}
     .chart-wrapper:hover .export-buttons{opacity:1}
-    [x-cloak]{display:none!important}
-    .chart-container{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:260px}
-    @media (min-width:768px){ .chart-container{height:350px} }
-    .chart-container-small{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:220px}
-    @media (min-width:768px){ .chart-container-small{height:260px} }
-    .spark{height:56px;width:100%;}
-    .table-wrapper{overflow:auto;-webkit-overflow-scrolling:touch}
-    .theme-toggle{position:fixed;bottom:14px;right:14px;z-index:90;background:var(--accent-purple);color:#fff;width:46px;height:46px;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px var(--shadow-color)}
-    @media print{ .no-print{display:none!important} body{background:#fff!important;color:#000!important} }
-    /* Tiny no-JS fallback so page isn't ugly if Tailwind is blocked */
+    [x-cloak]{display:none !important}
+    .chart-container{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:300px}
+    @media (min-width:768px){ .chart-container{height:380px} }
+    .chart-container-sm{position:relative;width:100%;background:var(--chart-bg);padding:.5rem;border-radius:.5rem;height:230px}
+    @media (min-width:768px){ .chart-container-sm{height:270px} }
+    .spark{height:56px;width:100%}
+    .table-wrap{overflow:auto;-webkit-overflow-scrolling:touch}
+    .theme-toggle{position:fixed;right:12px;bottom:14px;z-index:80;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px var(--shadow)}
+    /* No-JS fallback (when CDNs blocked) */
     .nojs-note{display:none}
-    .nojs body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial}
-    .nojs .nojs-note{display:block;padding:.5rem .75rem;background:#f97316;color:#111827;font-size:.875rem}
-    .nojs .container{max-width:72rem;margin:0 auto;padding:1rem}
-    .nojs .card{background:#fff;border:1px solid #e5e7eb;border-radius:.5rem;padding:1rem;margin:.75rem 0}
+    .nojs .nojs-note{display:block;position:sticky;top:0;z-index:90;background:#f97316;color:#111827;padding:.5rem .75rem;font-size:.875rem}
+    .nojs .fallback{max-width:72rem;margin:0 auto;padding:1rem}
+    .nojs .fallback .card{background:#fff;border:1px solid #e5e7eb;padding:1rem;border-radius:.5rem;margin:.75rem 0}
+    @media print{ .no-print{display:none!important} body{background:#fff!important;color:#000!important} }
   </style>
+
+  <!-- If Tailwind fails (offline/CSP), switch to minimal fallback so page isn't blank -->
   <script>
-    // If Tailwind fails to load (offline/CSP), add a minimal "nojs" class for readable fallback
     (function(){
-      var fired=false;
       setTimeout(function(){
         if (typeof window.tailwind === 'undefined') {
           document.documentElement.classList.add('nojs');
@@ -66,7 +66,8 @@ html = r"""<!DOCTYPE html>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <div class="nojs-note">⚠️ Interactive features may be limited (network blocked or offline). Content shown in fallback mode.</div>
+  <!-- No-JS/fallback banner -->
+  <div class="nojs-note">⚠️ Interactive features may be limited (offline/CSP). Showing readable fallback.</div>
 
   <!-- Theme toggle -->
   <button @click="toggleTheme()" class="theme-toggle no-print" :title="theme==='light'?'Dark mode':'Light mode'">
@@ -74,7 +75,7 @@ html = r"""<!DOCTYPE html>
     <svg x-show="theme==='dark'" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m7-9h2M3 12H1m15.364 6.364l1.414 1.414M4.222 4.222L5.636 5.636m12.728 0l1.414-1.414M4.222 19.778l1.414-1.414"/></svg>
   </button>
 
-  <!-- Top notice/download bar (kept) -->
+  <!-- Top info bar -->
   <div class="bg-purple-900 text-white py-2 px-3 sm:px-4 no-print">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row gap-1 sm:gap-4 justify-between items-start sm:items-center text-[13px]">
       <span>📊 Evidence-based research on India's economic transformation</span>
@@ -86,8 +87,8 @@ html = r"""<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- Sticky Nav -->
-  <div class="dark-nav shadow sticky top-0 z-40 no-print">
+  <!-- Nav -->
+  <div class="dark-nav sticky top-0 z-40 no-print">
     <div class="max-w-7xl mx-auto px-3 sm:px-4 py-3">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-2">
         <div>
@@ -105,6 +106,7 @@ html = r"""<!DOCTYPE html>
         </div>
       </div>
 
+      <!-- Tabs (scrollable on mobile) -->
       <div class="flex space-x-5 border-t dark-border pt-2 overflow-x-auto no-scrollbar text-sm">
         <button @click="activeTab='about'"        :class="activeTab==='about'?'tab-active':''"        class="pb-2 px-1 whitespace-nowrap">What is This?</button>
         <button @click="activeTab='summary'"      :class="activeTab==='summary'?'tab-active':''"      class="pb-2 px-1 whitespace-nowrap">Executive Summary</button>
@@ -119,9 +121,10 @@ html = r"""<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- Main -->
+  <!-- MAIN -->
   <main class="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-8 flex-grow">
 
+    <!-- Audience panel (appears when a type is selected). Sits above the tab content to preserve layout. -->
     <div x-show="audienceType" x-cloak class="mb-4 sm:mb-6">
       <div class="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-600 p-4 sm:p-5 rounded dark-card">
         <div class="grid md:grid-cols-5 gap-4">
@@ -136,80 +139,103 @@ html = r"""<!DOCTYPE html>
 
     <!-- ABOUT -->
     <div x-show="activeTab==='about'">
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6 mb-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Welcome</h2>
-        <p class="text-sm sm:text-base dark-text-secondary">This companion site showcases the evidence behind the paper <strong>“Narratives, Numbers, and Democratic Accountability: A Political Economy Assessment of India, 2014–2025.”</strong></p>
+      <section class="dark-card rounded-lg p-4 sm:p-6 mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">What is this?</h2>
+        <p class="text-sm sm:text-base dark-text-secondary">
+          A companion website to the paper <strong>“Narratives, Numbers, and Democratic Accountability: A Political Economy Assessment of India, 2014–2025.”</strong>
+          It presents comparable series across 2004–2025, three original institutional indices, and triangulated evidence from official and survey sources.
+        </p>
         <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mt-4">
           <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded">
-            <h4 class="font-semibold mb-2 dark-text-primary">What’s Unique</h4>
+            <h4 class="font-semibold mb-2 dark-text-primary">What’s included</h4>
             <ul class="text-sm dark-text-secondary space-y-1">
-              <li>• 20 years of comparable series</li>
-              <li>• Three original institutional indices</li>
-              <li>• Triangulated official & survey data</li>
+              <li>• Growth, jobs, inequality, press freedom</li>
+              <li>• SSI, FCI, DQI indices</li>
+              <li>• Interactive explorer with export</li>
             </ul>
           </div>
           <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
-            <h4 class="font-semibold mb-2 dark-text-primary">Questions We Answer</h4>
+            <h4 class="font-semibold mb-2 dark-text-primary">Navigation</h4>
             <ul class="text-sm dark-text-secondary space-y-1">
-              <li>• Why didn’t growth deliver secure jobs?</li>
-              <li>• How did inequality surpass colonial peaks?</li>
-              <li>• What changed in statistics & federal finance?</li>
+              <li>• <em>Executive Summary</em> for the headline story</li>
+              <li>• <em>Key Findings</em> for topic sections</li>
+              <li>• <em>Interactive Data</em> to build your own views</li>
             </ul>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- EXECUTIVE SUMMARY -->
+    <!-- SUMMARY -->
     <div x-show="activeTab==='summary'" x-cloak>
       <section class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
-        <div class="dark-card rounded shadow p-4"><div class="text-xs dark-text-secondary">GDP Growth Avg</div><div class="text-lg font-bold text-blue-600">UPA 7.7%</div><div class="text-lg font-bold text-red-600">NDA 6.8%</div></div>
-        <div class="dark-card rounded shadow p-4"><div class="text-xs dark-text-secondary">Top 1% Income Share</div><div class="text-lg font-bold text-blue-600">UPA ~15%</div><div class="text-lg font-bold text-red-600">NDA ~22.6%</div></div>
-        <div class="dark-card rounded shadow p-4"><div class="text-xs dark-text-secondary">Press Freedom Rank</div><div class="text-lg font-bold text-blue-600">~105–140</div><div class="text-lg font-bold text-red-600">~140–161</div></div>
-        <div class="dark-card rounded shadow p-4"><div class="text-xs dark-text-secondary">Formal Employment</div><div class="text-lg font-bold text-blue-600">~18%</div><div class="text-lg font-bold text-red-600">~11%</div></div>
+        <div class="dark-card rounded p-4"><div class="text-xs dark-text-secondary">GDP Growth Avg</div><div class="text-lg font-bold text-emerald-600">UPA 7.7%</div><div class="text-lg font-bold text-rose-600">NDA 6.8%</div></div>
+        <div class="dark-card rounded p-4"><div class="text-xs dark-text-secondary">Top 1% Income Share</div><div class="text-lg font-bold text-emerald-600">UPA ~15%</div><div class="text-lg font-bold text-rose-600">NDA ~22.6%</div></div>
+        <div class="dark-card rounded p-4"><div class="text-xs dark-text-secondary">Press Freedom Rank</div><div class="text-lg font-bold text-emerald-600">~105–140</div><div class="text-lg font-bold text-rose-600">~140–161</div></div>
+        <div class="dark-card rounded p-4"><div class="text-xs dark-text-secondary">Formal Employment</div><div class="text-lg font-bold text-emerald-600">~18%</div><div class="text-lg font-bold text-rose-600">~11%</div></div>
       </section>
 
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">The Core Finding</h2>
-        <div x-html="getSummaryContent()" class="prose max-w-none text-sm sm:text-base dark-text-secondary"></div>
+      <section class="dark-card rounded-lg p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">Core narrative</h2>
+        <p class="text-sm sm:text-base dark-text-secondary">
+          Growth continued across both regimes but secure, formal jobs declined, and the top 1% share rose to historical highs.
+          The three indices chart a shift in statistical practice, fiscal federalism, and openness.
+        </p>
+
+        <!-- Combined chart with GDP + Top1% + Formal Employment -->
         <div class="chart-wrapper relative mt-4">
           <div class="export-buttons">
             <button onclick="exportChart('summaryChart','png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-            <button onclick="exportChart('summaryChart','csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+            <button onclick="exportChart('summaryChart','csv')" class="bg-green-600 text-white px-2 py-1 rounded text-xs">CSV</button>
           </div>
           <div class="chart-container"><canvas id="summaryChart"></canvas></div>
         </div>
-        <p class="text-[12px] mt-2 dark-text-secondary">Formal Employment plotted on right axis. Lower rank = better in Press metric.</p>
+        <p class="text-[12px] mt-2 dark-text-secondary">Formal Employment uses right axis. Lower rank = better for Press Freedom.</p>
       </section>
     </div>
 
-    <!-- KEY FINDINGS -->
+    <!-- FINDINGS -->
     <div x-show="activeTab==='findings'" x-cloak>
       <section class="space-y-4 sm:space-y-6">
-        <div class="dark-card rounded-lg shadow p-4 sm:p-6">
-          <h3 class="text-lg sm:text-xl font-bold mb-3 dark-text-primary">Finding 1: Jobs Transformed, Not Created</h3>
+        <div class="dark-card rounded-lg p-4 sm:p-6">
+          <h3 class="text-lg sm:text-xl font-bold mb-3 dark-text-primary">Finding 1: Jobs transformed, not created</h3>
           <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
-            <div x-html="getEmploymentFindings()" class="text-sm dark-text-secondary"></div>
+            <div class="text-sm dark-text-secondary">
+              <p>Formal share fell from ~18% to ~11% (2004–2024), while informal/gig expanded.</p>
+              <ul class="list-disc ml-5 mt-2">
+                <li>Elasticity decoupling: output ↑ without secure jobs ↑</li>
+                <li>Young entrants concentrated in informal roles</li>
+                <li>Policy lever: labour-intensive niches + gig insurance</li>
+              </ul>
+            </div>
             <div class="chart-wrapper relative">
               <div class="export-buttons">
                 <button onclick="exportChart('employmentChart','png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-                <button onclick="exportChart('employmentChart','csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+                <button onclick="exportChart('employmentChart','csv')" class="bg-green-600 text-white px-2 py-1 rounded text-xs">CSV</button>
               </div>
-              <div class="chart-container-small"><canvas id="employmentChart"></canvas></div>
+              <div class="chart-container-sm"><canvas id="employmentChart"></canvas></div>
             </div>
           </div>
         </div>
-        <div class="dark-card rounded-lg shadow p-4 sm:p-6">
-          <h3 class="text-lg sm:text-xl font-bold mb-3 dark-text-primary">Finding 2: Inequality Exceeds Colonial-Era Levels</h3>
+
+        <div class="dark-card rounded-lg p-4 sm:p-6">
+          <h3 class="text-lg sm:text-xl font-bold mb-3 dark-text-primary">Finding 2: Inequality exceeds colonial-era peaks</h3>
           <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
             <div class="chart-wrapper relative">
               <div class="export-buttons">
                 <button onclick="exportChart('inequalityChart','png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-                <button onclick="exportChart('inequalityChart','csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+                <button onclick="exportChart('inequalityChart','csv')" class="bg-green-600 text-white px-2 py-1 rounded text-xs">CSV</button>
               </div>
-              <div class="chart-container-small"><canvas id="inequalityChart"></canvas></div>
+              <div class="chart-container-sm"><canvas id="inequalityChart"></canvas></div>
             </div>
-            <div x-html="getInequalityFindings()" class="text-sm dark-text-secondary"></div>
+            <div class="text-sm dark-text-secondary">
+              <p>Top 1% income share climbs from ~12–16% in the 2000s to ~23% by mid-2020s.</p>
+              <ul class="list-disc ml-5 mt-2">
+                <li>Demand skew: consumption risk for middle-lower segments</li>
+                <li>Capex channel: high concentration can depress broad demand</li>
+                <li>Countermeasures: expand formal work; reduce MSME frictions; improve data credibility</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -217,9 +243,10 @@ html = r"""<!DOCTYPE html>
 
     <!-- INTERACTIVE DATA -->
     <div x-show="activeTab==='data'" x-cloak>
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Interactive Data Explorer</h2>
+      <section class="dark-card rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">Interactive Data Explorer</h2>
 
+        <!-- Controls (mobile-first grid) -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
           <div>
             <label class="text-[12px] dark-text-secondary">Primary</label>
@@ -278,15 +305,15 @@ html = r"""<!DOCTYPE html>
         <div class="chart-wrapper relative mt-3">
           <div class="export-buttons">
             <button @click="exportExplorer('png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-            <button @click="exportExplorer('csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+            <button @click="exportExplorer('csv')" class="bg-green-600 text-white px-2 py-1 rounded text-xs">CSV</button>
           </div>
           <div class="chart-container"><canvas id="dataExplorerChart"></canvas></div>
         </div>
       </section>
 
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6">
-        <h3 class="text-base sm:text-lg font-semibold mb-2 dark-text-primary">Visible Data (current selection)</h3>
-        <div class="table-wrapper">
+      <section class="dark-card rounded-lg p-4 sm:p-6">
+        <h3 class="text-base sm:text-lg font-semibold mb-2 dark-text-primary">Visible data (current selection)</h3>
+        <div class="table-wrap">
           <table class="min-w-full text-sm">
             <thead>
               <tr class="text-left">
@@ -313,41 +340,41 @@ html = r"""<!DOCTYPE html>
 
     <!-- INDICES -->
     <div x-show="activeTab==='indices'" x-cloak>
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Three Indices</h2>
+      <section class="dark-card rounded-lg p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">Three Indices</h2>
         <div class="grid md:grid-cols-3 gap-4 sm:gap-6">
-          <div class="dark-card rounded border dark-border p-4">
-            <h4 class="font-semibold mb-2">SSI</h4>
+          <div class="dark-card rounded p-4">
+            <h4 class="font-semibold mb-2">SSI (Statistical Suppression Index)</h4>
             <div class="chart-wrapper relative">
               <div class="export-buttons">
                 <button onclick="exportChart('ssiChart','png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-                <button onclick="exportChart('ssiChart','csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+                <button onclick="exportChart('ssiChart','csv')" class="bg-green-600 text-white px-2 py-1 rounded text-xs">CSV</button>
               </div>
-              <div class="chart-container-small"><canvas id="ssiChart"></canvas></div>
+              <div class="chart-container-sm"><canvas id="ssiChart"></canvas></div>
             </div>
             <p class="text-[12px] mt-2 dark-text-secondary">Higher = more suppression (0–10).</p>
           </div>
-          <div class="dark-card rounded border dark-border p-4">
-            <h4 class="font-semibold mb-2">FCI</h4>
+          <div class="dark-card rounded p-4">
+            <h4 class="font-semibold mb-2">FCI (Fiscal Centralisation Index)</h4>
             <div class="chart-wrapper relative">
               <div class="export-buttons">
                 <button onclick="exportChart('fciChart','png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-                <button onclick="exportChart('fciChart','csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+                <button onclick="exportChart('fciChart','csv')" class="bg-green-600 text-white px-2 py-1 rounded text-xs">CSV</button>
               </div>
-              <div class="chart-container-small"><canvas id="fciChart"></canvas></div>
+              <div class="chart-container-sm"><canvas id="fciChart"></canvas></div>
             </div>
-            <p class="text-[12px] mt-2 dark-text-secondary">Share of centralised revenues/controls (0–1).</p>
+            <p class="text-[12px] mt-2 dark-text-secondary">Higher = more central control (0–1).</p>
           </div>
-          <div class="dark-card rounded border dark-border p-4">
-            <h4 class="font-semibold mb-2">DQI</h4>
+          <div class="dark-card rounded p-4">
+            <h4 class="font-semibold mb-2">DQI (Data Quality Index)</h4>
             <div class="chart-wrapper relative">
               <div class="export-buttons">
                 <button onclick="exportChart('dqiChart','png')" class="bg-blue-500 text-white px-2 py-1 rounded text-xs">PNG</button>
-                <button onclick="exportChart('dqiChart','csv')" class="bg-green-500 text-white px-2 py-1 rounded text-xs">CSV</button>
+                <button onclick="exportChart('dqiChart','csv')" class="bg-green-600 text-white px-2 py-1 rounded text-xs">CSV</button>
               </div>
-              <div class="chart-container-small"><canvas id="dqiChart"></canvas></div>
+              <div class="chart-container-sm"><canvas id="dqiChart"></canvas></div>
             </div>
-            <p class="text:[12px] mt-2 dark-text-secondary">Higher is better (0–1).</p>
+            <p class="text-[12px] mt-2 dark-text-secondary">Higher = better (0–1).</p>
           </div>
         </div>
       </section>
@@ -355,37 +382,62 @@ html = r"""<!DOCTYPE html>
 
     <!-- METHODS -->
     <div x-show="activeTab==='methods'" x-cloak>
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Methodology (Brief)</h2>
+      <section class="dark-card rounded-lg p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">Methodology (Brief)</h2>
         <div class="grid md:grid-cols-3 gap-4 sm:gap-6 text-sm dark-text-secondary">
-          <div><h4 class="font-semibold mb-2 dark-text-primary">Data</h4><ul class="space-y-1"><li>• National Accounts; ASI</li><li>• PLFS/CMIE</li><li>• Tax (cess/surcharge)</li><li>• RBI BoP/FDI</li><li>• Press freedom & governance</li></ul></div>
-          <div><h4 class="font-semibold mb-2 dark-text-primary">Estimands</h4><ul class="space-y-1"><li>• Employment elasticity</li><li>• Top 1% share</li><li>• Fiscal centralisation</li><li>• SSI, FCI, DQI</li></ul></div>
-          <div><h4 class="font-semibold mb-2 dark-text-primary">Robustness</h4><ul class="space-y-1"><li>• Base-year sensitivity</li><li>• Alt. weights/components</li><li>• Pre-trend checks</li><li>• External validation</li></ul></div>
+          <div>
+            <h4 class="font-semibold mb-1 dark-text-primary">Data Sources</h4>
+            <ul class="space-y-1">
+              <li>• National Accounts, ASI</li>
+              <li>• PLFS/CMIE</li>
+              <li>• Tax: cess/surcharge</li>
+              <li>• RBI BoP/FDI</li>
+              <li>• Press freedom & governance</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-1 dark-text-primary">Estimands</h4>
+            <ul class="space-y-1">
+              <li>• Employment elasticity</li>
+              <li>• Top 1% income share</li>
+              <li>• Fiscal centralisation</li>
+              <li>• SSI, FCI, DQI</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-1 dark-text-primary">Robustness</h4>
+            <ul class="space-y-1">
+              <li>• Base-year sensitivity</li>
+              <li>• Alternative weights/components</li>
+              <li>• Pre-trend checks</li>
+              <li>• External validation</li>
+            </ul>
+          </div>
         </div>
       </section>
     </div>
 
     <!-- GLOSSARY -->
     <div x-show="activeTab==='glossary'" x-cloak>
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Glossary</h2>
-        <div class="table-wrapper">
+      <section class="dark-card rounded-lg p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">Glossary</h2>
+        <div class="table-wrap">
           <table class="min-w-full text-sm">
             <thead>
               <tr class="text-left">
                 <th class="px-3 py-2 border-b dark-border">Term</th>
-                <th class="px-3 py-2 border-b dark-border">Plain-English Meaning</th>
+                <th class="px-3 py-2 border-b dark-border">Meaning (plain English)</th>
                 <th class="px-3 py-2 border-b dark-border">Example</th>
               </tr>
             </thead>
             <tbody class="align-top">
-              <tr><td class="px-3 py-2 border-b dark-border font-medium">GDP growth (%)</td><td class="px-3 py-2 border-b dark-border">How fast the economy grows each year.</td><td class="px-3 py-2 border-b dark-border">₹100 → ₹107 ⇒ ~7%.</td></tr>
-              <tr><td class="px-3 py-2 border-b dark-border font-medium">Formal employment</td><td class="px-3 py-2 border-b dark-border">Jobs with contracts/benefits.</td><td class="px-3 py-2 border-b dark-border">Factory worker with PF vs gig rider.</td></tr>
-              <tr><td class="px-3 py-2 border-b dark-border font-medium">Informal/Gig</td><td class="px-3 py-2 border-b dark-border">Temp/daily-wage/app-based work.</td><td class="px-3 py-2 border-b dark-border">Ride-share driver; shop helper.</td></tr>
-              <tr><td class="px-3 py-2 border-b dark-border font-medium">Top 1% income share</td><td class="px-3 py-2 border-b dark-border">Slice of income to richest 1%.</td><td class="px-3 py-2 border-b dark-border">If total ₹100; top 1% ₹22 ⇒ 22%.</td></tr>
-              <tr><td class="px-3 py-2 border-b dark-border font-medium">Press Freedom rank</td><td class="px-3 py-2 border-b dark-border">Lower rank means freer media.</td><td class="px-3 py-2 border-b dark-border">105 is freer than 150.</td></tr>
-              <tr><td class="px-3 py-2 border-b dark-border font-medium">Cess/Surcharge</td><td class="px-3 py-2 border-b dark-border">Taxes kept by Centre, not shared.</td><td class="px-3 py-2 border-b dark-border">Education cess on income tax.</td></tr>
-              <tr><td class="px-3 py-2 border-b dark-border font-medium">SSI / FCI / DQI</td><td class="px-3 py-2 border-b dark-border">Institutional indices (see Methods).</td><td class="px-3 py-2 border-b dark-border">Suppression ↑ ⇒ SSI ↑.</td></tr>
+              <tr><td class="px-3 py-2 border-b dark-border font-medium">GDP growth (%)</td><td class="px-3 py-2 border-b dark-border">How fast the economy grows each year</td><td class="px-3 py-2 border-b dark-border">₹100 → ₹107 ⇒ ~7%</td></tr>
+              <tr><td class="px-3 py-2 border-b dark-border font-medium">Formal employment</td><td class="px-3 py-2 border-b dark-border">Jobs with contracts and benefits</td><td class="px-3 py-2 border-b dark-border">Factory worker with PF vs gig rider</td></tr>
+              <tr><td class="px-3 py-2 border-b dark-border font-medium">Informal/Gig</td><td class="px-3 py-2 border-b dark-border">Temporary/daily-wage/app-based work</td><td class="px-3 py-2 border-b dark-border">Ride-share driver; shop helper</td></tr>
+              <tr><td class="px-3 py-2 border-b dark-border font-medium">Top 1% income share</td><td class="px-3 py-2 border-b dark-border">Slice of income to richest 1%</td><td class="px-3 py-2 border-b dark-border">If total ₹100; top 1% ₹22 ⇒ 22%</td></tr>
+              <tr><td class="px-3 py-2 border-b dark-border font-medium">Press Freedom rank</td><td class="px-3 py-2 border-b dark-border">Lower rank means freer media</td><td class="px-3 py-2 border-b dark-border">105 is freer than 150</td></tr>
+              <tr><td class="px-3 py-2 border-b dark-border font-medium">Cess/Surcharge</td><td class="px-3 py-2 border-b dark-border">Taxes kept by Centre, not shared</td><td class="px-3 py-2 border-b dark-border">Education cess on income tax</td></tr>
+              <tr><td class="px-3 py-2 border-b dark-border font-medium">SSI / FCI / DQI</td><td class="px-3 py-2 border-b dark-border">Institutional indices (see Methods)</td><td class="px-3 py-2 border-b dark-border">Suppression ↑ ⇒ SSI ↑</td></tr>
             </tbody>
           </table>
         </div>
@@ -394,32 +446,33 @@ html = r"""<!DOCTYPE html>
 
     <!-- IMPLICATIONS -->
     <div x-show="activeTab==='implications'" x-cloak>
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">Implications</h2>
+      <section class="dark-card rounded-lg p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">Implications</h2>
         <div class="grid md:grid-cols-3 gap-4 sm:gap-6 text-sm dark-text-secondary">
-          <div><h4 class="font-semibold mb-1 text-red-600">Economic</h4><ul class="space-y-1"><li>• Weak job creation</li><li>• Demand fragility</li><li>• Investment uncertainty</li></ul></div>
-          <div><h4 class="font-semibold mb-1 text-blue-600">Federal</h4><ul class="space-y-1"><li>• States constrained</li><li>• Less for health/education</li><li>• GST tensions</li></ul></div>
-          <div><h4 class="font-semibold mb-1 text-green-600">Democratic</h4><ul class="space-y-1"><li>• Media plurality shrinks</li><li>• Lower transparency</li><li>• Weaker citizen voice</li></ul></div>
+          <div><h4 class="font-semibold mb-1 text-rose-600">Economic</h4><ul class="space-y-1"><li>• Weak job creation</li><li>• Demand fragility</li><li>• Private capex risk</li></ul></div>
+          <div><h4 class="font-semibold mb-1 text-indigo-600">Federal</h4><ul class="space-y-1"><li>• States fiscally constrained</li><li>• Less for health/education</li><li>• GST tensions</li></ul></div>
+          <div><h4 class="font-semibold mb-1 text-emerald-600">Democratic</h4><ul class="space-y-1"><li>• Media plurality shrinks</li><li>• Lower transparency</li><li>• Weaker citizen voice</li></ul></div>
         </div>
       </section>
     </div>
 
     <!-- WHAT NEXT -->
     <div x-show="activeTab==='whatnext'" x-cloak>
-      <section class="dark-card rounded-lg shadow p-4 sm:p-6">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3 dark-text-primary">What Next?</h2>
-        <p class="text-sm dark-text-secondary">Scenarios and actions (unchanged structure).</p>
+      <section class="dark-card rounded-lg p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl font-bold mb-2 dark-text-primary">What Next?</h2>
+        <p class="text-sm dark-text-secondary">Scenario planning and policy sequences to restore job quality, rebalance federal finances, and strengthen statistical credibility.</p>
       </section>
     </div>
 
   </main>
 
-  <footer class="bg-gray-800 text-white mt-10 no-print">
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white mt-10 no-print">
     <div class="max-w-7xl mx-auto px-3 sm:px-4 py-8">
       <div class="grid md:grid-cols-3 gap-6">
         <div>
           <h4 class="font-bold mb-3">About This Research</h4>
-          <p class="text-sm text-gray-400">Independent, evidence-based analysis of India's economic transformation.</p>
+          <p class="text-sm text-gray-300">Independent, evidence-based analysis of India's economic transformation.</p>
           <div class="mt-3 flex flex-wrap gap-3 text-sm">
             <a href="#" @click.prevent="downloadPaper()" class="text-blue-300 underline">Full Paper (PDF)</a>
             <a href="#" @click.prevent="downloadData()" class="text-blue-300 underline">Dataset (Excel)</a>
@@ -433,7 +486,7 @@ html = r"""<!DOCTYPE html>
         </div>
         <div>
           <h4 class="font-bold mb-3">License & Usage</h4>
-          <p class="text-sm text-gray-400">Released under <a href="https://opensource.org/licenses/MIT" class="underline">MIT License</a></p>
+          <p class="text-sm text-gray-300">Released under <a href="https://opensource.org/licenses/MIT" class="underline">MIT License</a></p>
           <p class="text-xs text-gray-400 mt-2">Permission to use, copy, modify, and distribute with attribution.</p>
           <p class="text-xs text-gray-400 mt-3"><strong>Citation:</strong> Raman, V.S. (2025). India's Economic Paradox: Growth Without Accountability. someperspective.info</p>
         </div>
@@ -444,45 +497,48 @@ html = r"""<!DOCTYPE html>
     </div>
   </footer>
 
-  <!-- No-blank fallback: uncloak if Alpine/Chart are blocked -->
-  <div id="cdn-fallback-note" style="display:none;position:sticky;bottom:0;z-index:9999;background:#f97316;color:#111827;padding:.5rem .75rem;font-size:.875rem" class="no-print">
-    ⚠️ Interactive features are unavailable (network blocked/offline). Content is shown in fallback mode.
-  </div>
+  <!-- Anti-blank fallback: uncloak content if CDNs are blocked -->
   <script>
-  (function () {
-    function uncloakAll() {
-      document.querySelectorAll('[x-cloak]').forEach(el => el.removeAttribute('x-cloak'));
-      var n=document.getElementById('cdn-fallback-note'); if(n) n.style.display='block';
-      console.warn('Fallback active: CDN libraries not detected. Showing content without interactivity.');
-    }
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        if (!window.Alpine || !window.Chart) uncloakAll();
-      }, 900);
-    });
-  })();
+    (function(){
+      function uncloak(){
+        document.querySelectorAll('[x-cloak]').forEach(el=>el.removeAttribute('x-cloak'));
+        console.warn('Fallback active: CDN libraries not detected. Content shown without interactivity.');
+      }
+      window.addEventListener('load', function(){
+        setTimeout(function(){
+          if (!window.Alpine || !window.Chart) uncloak();
+        }, 900);
+      });
+    })();
   </script>
 
+  <!-- App logic -->
   <script>
     function appData(){
       return {
         theme: localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-        activeTab:'summary',
-        audienceType:'',
-        charts:{}, sparks:{},
+        activeTab: 'summary',
+        audienceType: '',
+        charts: {},
+        sparks: {},
+        visibleDataRows: [],
+        dataCfg: { metric:'gdp', compare1:'', compare2:'', type:'line', start:2004, end:2025, showRegimes:true },
 
-        setAudience(t){ this.audienceType=t; setTimeout(()=>{ this.buildSparklines(); }, 0); },
+        // UI
+        setAudience(t){ this.audienceType=t; this.$nextTick(()=>this.buildSparklines()); },
         toggleTheme(){
-          this.theme=this.theme==='light'?'dark':'light';
-          localStorage.setItem('theme',this.theme);
+          this.theme = this.theme==='light' ? 'dark' : 'light';
+          localStorage.setItem('theme', this.theme);
           document.documentElement.classList.toggle('dark', this.theme==='dark');
           this.rebuildCharts(); this.buildSparklines();
         },
 
+        // Init
         init(){
           document.documentElement.classList.toggle('dark', this.theme==='dark');
           try{ if (window['chartjs-plugin-annotation']) Chart.register(window['chartjs-plugin-annotation']); }catch(e){}
-          setTimeout(()=>{ this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer(); }, 60);
+          // build charts a beat later for layout
+          setTimeout(()=>{ this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer(); this.buildSparklines(); }, 80);
         },
 
         rebuildCharts(){
@@ -490,6 +546,7 @@ html = r"""<!DOCTYPE html>
           this.buildSummary(); this.buildEmployment(); this.buildInequality(); this.buildIndices(); this.renderExplorer();
         },
 
+        // AUDIENCE CONTENT
         getAudiencePanel(){
           const journalist = `
             <h3 class="font-semibold mb-1">Journalists: 90-second brief</h3>
@@ -554,86 +611,112 @@ html = r"""<!DOCTYPE html>
           }; return notes[this.audienceType]||'';
         },
 
-        getSummaryContent(){
-          return `<p>This project compares two decades of India’s political economy. Despite headline growth, <strong>formal jobs fell</strong>, <strong>inequality rose above colonial-era peaks</strong>, and <strong>institutional checks weakened</strong>. Three original indices — the Statistical Suppression Index (SSI), Fiscal Centralisation Index (FCI), and Data Quality Index (DQI) — track how data release practices, federal finance, and transparency evolved.</p>`;
-        },
-        getEmploymentFindings(){
-          return `<p><strong>Composition shift, not expansion:</strong> Growth arrived with increasing <em>informality</em>. The formal share dropped from ~18% to ~11% (2004–2024), while gig-like work expanded.</p>
-                  <ul class="list-disc ml-5"><li><strong>Elasticity decoupling:</strong> Output growth no longer translates into secure jobs.</li>
-                  <li><strong>Young workers:</strong> New entrants increasingly enter informal roles with lower protections.</li>
-                  <li><strong>Policy lever:</strong> Labour-intensive niches (garments, food processing, logistics) + insurance for gig workers.</li></ul>`;
-        },
-        getInequalityFindings(){
-          return `<p><strong>Top-end concentration:</strong> The top 1% income share climbs from ~12–16% in the 2000s to ~23% by mid-2020s. Without robust job creation, demand skews upward.</p>
-                  <ul class="list-disc ml-5"><li><strong>Consumption risk:</strong> Middle-lower segments face slower income growth.</li>
-                  <li><strong>Investment channel:</strong> High concentration can depress broad-based demand and private capex.</li>
-                  <li><strong>Countermeasures:</strong> Expand formal work, reduce compliance frictions for MSMEs, improve public data credibility.</li></ul>`;
-        },
-
         buildSparklines(){
           if(this.audienceType!=='journalist' || !window.Chart) return;
-          const el1 = document.getElementById('spark1'); const el2 = document.getElementById('spark2');
+          const el1=document.getElementById('spark1'), el2=document.getElementById('spark2');
           if(!el1 || !el2) return;
           if(this.sparks.s1){ try{ this.sparks.s1.destroy(); }catch(e){} }
           if(this.sparks.s2){ try{ this.sparks.s2.destroy(); }catch(e){} }
-          const years = [2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
-          const top1  = [12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6];
-          const formal= [18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0];
+          const years=[2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
+          const top1=[12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6];
+          const formal=[18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0];
           const d=this.theme==='dark';
-          this.sparks.s1 = new Chart(el1, {type:'line',data:{labels:years,datasets:[{data:top1,borderColor:'rgb(239,68,68)',backgroundColor:d?'rgba(239,68,68,.15)':'rgba(239,68,68,.12)',fill:true,tension:.35,pointRadius:0}]},
-            options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}}});
-          this.sparks.s2 = new Chart(el2, {type:'line',data:{labels:years,datasets:[{data:formal,borderColor:'rgb(59,130,246)',backgroundColor:d?'rgba(59,130,246,.15)':'rgba(59,130,246,.12)',fill:true,tension:.35,pointRadius:0}]},
-            options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}}});
+          this.sparks.s1=new Chart(el1,{type:'line',data:{labels:years,datasets:[{data:top1,borderColor:'rgb(239,68,68)',backgroundColor:d?'rgba(239,68,68,.15)':'rgba(239,68,68,.12)',fill:true,tension:.35,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}});
+          this.sparks.s2=new Chart(el2,{type:'line',data:{labels:years,datasets:[{data:formal,borderColor:'rgb(59,130,246)',backgroundColor:d?'rgba(59,130,246,.15)':'rgba(59,130,246,.12)',fill:true,tension:.35,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}});
         },
 
-        colors(){ const d=this.theme==='dark'; return { text:d?'#cbd5e1':'#374151', grid:d?'#475569':'#e5e7eb' }; },
+        // Init charts
+        series(){
+          const years = Array.from({length:22},(_,i)=>2004+i);
+          const gdp =    [7.9,8.5,9.3,9.8,3.9,8.5,10.3,8.5,5.5,6.9,7.4,8.2,7.9,6.1,3.8,-7.3,8.9,7.2,8.2,7.0,6.5,6.8];
+          const top1 =   [12.5,12.9,13.5,13.9,14.3,14.5,14.7,14.9,15.1,15.4,15.6,16.5,17.9,18.7,19.5,20.1,20.9,21.3,21.9,22.3,22.5,22.6];
+          const formal = [18.0,17.9,17.8,17.7,17.6,17.5,17.4,17.2,17.0,16.5,16.0,15.0,14.0,13.5,13.0,12.5,12.0,11.8,11.5,11.3,11.1,11.0];
+          const informal = formal.map(v=>+(100-v).toFixed(1));
+          const press =  [120,125,130,128,126,124,122,120,118,116,114,130,135,138,142,150,155,160,161,160,159,158];
+          return {years,gdp,top1,formal,informal,press};
+        },
+        metricLabel(k){
+          return { gdp:'GDP Growth %', top1:'Top 1% Income Share %', formal:'Formal Employment %', informal:'Informal/Gig %', press:'Press Freedom Rank' }[k]||k;
+        },
+        colorMap(k){
+          return {
+            gdp:{bc:'rgb(16,185,129)',bg:'rgba(16,185,129,.15)'},
+            top1:{bc:'rgb(239,68,68)',bg:'rgba(239,68,68,.15)'},
+            formal:{bc:'rgb(59,130,246)',bg:'rgba(59,130,246,.15)'},
+            informal:{bc:'rgb(245,158,11)',bg:'rgba(245,158,11,.15)'},
+            press:{bc:'rgb(99,102,241)',bg:'rgba(99,102,241,.15)'}
+          }[k] || {bc:'rgb(124,58,237)',bg:'rgba(124,58,237,.15)'};
+        },
+        colors(){ const d=this.theme==='dark'; return { text:d?'#cbd5e1':'#374151', grid:d?'#374151':'#e5e7eb' }; },
 
+        // SUMMARY chart
         buildSummary(){
-          const el=document.getElementById('summaryChart'); if(!el || !window.Chart) return;
-          const c=this.colors(); if(this.charts.sum) this.charts.sum.destroy();
-          this.charts.sum=new Chart(el,{ type:'line',
-            data:{ labels:[2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024],
+          const el = document.getElementById('summaryChart'); if(!el || !window.Chart) return;
+          if(this.charts.sum) this.charts.sum.destroy();
+          const c = this.colors();
+          this.charts.sum = new Chart(el, {
+            type:'line',
+            data:{
+              labels:[2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024],
               datasets:[
-                {label:'GDP Growth %', data:[7.9,9.3,3.9,10.3,5.5,7.4,8.2,6.1,-7.3,7.2,8.2], borderColor:'rgb(34,197,94)', backgroundColor:'rgba(34,197,94,.1)', tension:.3},
-                {label:'Top 1% Income Share %', data:[12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6], borderColor:'rgb(239,68,68)', backgroundColor:'rgba(239,68,68,.1)', tension:.3},
-                {label:'Formal Employment %', data:[18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0], borderColor:'rgb(59,130,246)', backgroundColor:'rgba(59,130,246,.1)', tension:.3, yAxisID:'y2'}
-              ]},
-            options:{ responsive:true, maintainAspectRatio:false,
-              scales:{ x:{ticks:{color:c.text},grid:{color:c.grid}}, y:{position:'left',ticks:{color:c.text},grid:{color:c.grid}}, y2:{position:'right',ticks:{color:c.text},grid:{drawOnChartArea:false}}},
-              plugins:{ legend:{labels:{color:c.text}}}
-            });
+                {label:'GDP Growth %', data:[7.9,9.3,3.9,10.3,5.5,7.4,8.2,6.1,-7.3,7.2,8.2], borderColor:this.colorMap('gdp').bc, backgroundColor:this.colorMap('gdp').bg, tension:.3},
+                {label:'Top 1% Income Share %', data:[12.5,13.5,14.3,14.7,15.1,15.6,17.9,19.5,20.9,21.9,22.6], borderColor:this.colorMap('top1').bc, backgroundColor:this.colorMap('top1').bg, tension:.3},
+                {label:'Formal Employment %', data:[18.0,17.8,17.6,17.4,17.0,16.0,14.0,13.0,12.0,11.5,11.0], borderColor:this.colorMap('formal').bc, backgroundColor:this.colorMap('formal').bg, tension:.3, yAxisID:'y2'}
+              ]
+            },
+            options:{
+              responsive:true, maintainAspectRatio:false,
+              scales:{
+                x:{ ticks:{color:c.text}, grid:{color:c.grid} },
+                y:{ position:'left', ticks:{color:c.text}, grid:{color:c.grid} },
+                y2:{ position:'right', ticks:{color:c.text}, grid:{drawOnChartArea:false} }
+              },
+              plugins:{ legend:{labels:{color:c.text}} }
+            }
+          });
         },
+
+        // FINDINGS charts
         buildEmployment(){
           const el=document.getElementById('employmentChart'); if(!el || !window.Chart) return;
-          const c=this.colors(); if(this.charts.emp) this.charts.emp.destroy();
-          this.charts.emp=new Chart(el,{ type:'bar',
+          if(this.charts.emp) this.charts.emp.destroy();
+          const c=this.colors();
+          this.charts.emp=new Chart(el,{
+            type:'bar',
             data:{ labels:['2004','2014','2024'],
               datasets:[
-                {label:'Formal Employment %', data:[18.0,17.5,11.0], backgroundColor:'rgba(59,130,246,.6)'},
-                {label:'Informal/Gig %', data:[82.0,82.5,89.0], backgroundColor:'rgba(239,68,68,.6)'}
+                {label:'Formal Employment %', data:[18.0,17.5,11.0], backgroundColor:'rgba(59,130,246,.65)'},
+                {label:'Informal/Gig %', data:[82.0,82.5,89.0], backgroundColor:'rgba(239,68,68,.65)'}
               ]},
             options:{ responsive:true, maintainAspectRatio:false,
-              scales:{ x:{ticks:{color:c.text},grid:{color:c.grid}}, y:{ticks:{color:c.text},grid:{color:c.grid}}},
-              plugins:{ legend:{labels:{color:c.text}}}
-            });
+              scales:{ x:{ticks:{color:c.text},grid:{color:c.grid}}, y:{ticks:{color:c.text},grid:{color:c.grid}} },
+              plugins:{ legend:{labels:{color:c.text}} }
+            }
+          });
         },
         buildInequality(){
           const el=document.getElementById('inequalityChart'); if(!el || !window.Chart) return;
-          const c=this.colors(); if(this.charts.ineq) this.charts.ineq.destroy();
-          this.charts.ineq=new Chart(el,{ type:'line',
+          if(this.charts.ineq) this.charts.ineq.destroy();
+          const c=this.colors();
+          this.charts.ineq=new Chart(el,{
+            type:'line',
             data:{ labels:['1939','1982','2004','2014','2024'],
-              datasets:[{label:'Top 1% Income Share %', data:[20.7,6,12.5,15.6,22.6], borderColor:'rgb(239,68,68)', backgroundColor:'rgba(239,68,68,.15)', fill:true, tension:.25}]},
+              datasets:[{label:'Top 1% Income Share %', data:[20.7,6,12.5,15.6,22.6], borderColor:this.colorMap('top1').bc, backgroundColor:this.colorMap('top1').bg, fill:true, tension:.25}]},
             options:{ responsive:true, maintainAspectRatio:false,
-              scales:{ x:{ticks:{color:c.text},grid:{color:c.grid}}, y:{ticks:{color:c.text},grid:{color:c.grid}}},
-              plugins:{ legend:{labels:{color:c.text}}}
-            });
+              scales:{ x:{ticks:{color:c.text},grid:{color:c.grid}}, y:{ticks:{color:c.text},grid:{color:c.grid}} },
+              plugins:{ legend:{labels:{color:c.text}} }
+            }
+          });
         },
+
+        // INDICES
         buildIndices(){
           if(!window.Chart) return;
           const years=Array.from({length:22},(_,i)=>2004+i);
           const lin=(a,b,n)=>Array.from({length:n},(_,i)=>+(a+(b-a)*i/(n-1)).toFixed(2));
           const SSI=lin(0.5,7.8,years.length), FCI=lin(0.45,0.78,years.length), DQI=lin(0.68,0.42,years.length);
           const c=this.colors();
+
           const ssi=document.getElementById('ssiChart'); if(ssi){ if(this.charts.ssi) this.charts.ssi.destroy();
             this.charts.ssi=new Chart(ssi,{type:'line',data:{labels:years,datasets:[{label:'SSI (0–10)',data:SSI,borderColor:'rgb(147,51,234)',backgroundColor:'rgba(147,51,234,.15)',fill:true,tension:.25}]},
               options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:c.text},grid:{color:c.grid}},y:{ticks:{color:c.text},grid:{color:c.grid}}},plugins:{legend:{labels:{color:c.text}}}}); }
@@ -641,57 +724,44 @@ html = r"""<!DOCTYPE html>
             this.charts.fci=new Chart(fci,{type:'line',data:{labels:years,datasets:[{label:'FCI (0–1)',data:FCI,borderColor:'rgb(59,130,246)',backgroundColor:'rgba(59,130,246,.15)',fill:true,tension:.25}]},
               options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:c.text},grid:{color:c.grid}},y:{ticks:{color:c.text},grid:{color:c.grid}}},plugins:{legend:{labels:{color:c.text}}}}); }
           const dqi=document.getElementById('dqiChart'); if(dqi){ if(this.charts.dqi) this.charts.dqi.destroy();
-            this.charts.dqi=new Chart(dqi,{type:'line',data:{labels:years,datasets:[{label:'DQI (0–1)',data:DQI,borderColor:'rgb(34,197,94)',backgroundColor:'rgba(34,197,94,.15)',fill:true,tension:.25}]},
+            this.charts.dqi=new Chart(dqi,{type:'line',data:{labels:years,datasets:[{label:'DQI (0–1)',data:DQI,borderColor:'rgb(16,185,129)',backgroundColor:'rgba(16,185,129,.15)',fill:true,tension:.25}]},
               options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:c.text},grid:{color:c.grid}},y:{ticks:{color:c.text},grid:{color:c.grid}}},plugins:{legend:{labels:{color:c.text}}}}); }
         },
 
-        dataCfg:{ metric:'gdp', compare1:'', compare2:'', type:'line', start:2004, end:2025, showRegimes:true },
-        visibleDataRows:[],
-        series(){
-          const years=Array.from({length:22},(_,i)=>2004+i);
-          const gdp=[7.9,8.5,9.3,9.8,3.9,8.5,10.3,8.5,5.5,6.9,7.4,8.2,7.9,6.1,3.8,-7.3,8.9,7.2,8.2,7.0,6.5,6.8];
-          const top1=[12.5,12.9,13.5,13.9,14.3,14.5,14.7,14.9,15.1,15.4,15.6,16.5,17.9,18.7,19.5,20.1,20.9,21.3,21.9,22.3,22.5,22.6];
-          const formal=[18.0,17.9,17.8,17.7,17.6,17.5,17.4,17.2,17.0,16.5,16.0,15.0,14.0,13.5,13.0,12.5,12.0,11.8,11.5,11.3,11.1,11.0];
-          const informal=formal.map(v=>+(100-v).toFixed(1));
-          const press=[120,125,130,128,126,124,122,120,118,116,114,130,135,138,142,150,155,160,161,160,159,158];
-          return {years,gdp,top1,formal,informal,press};
-        },
-        metricLabel(k){ return { gdp:'GDP Growth %', top1:'Top 1% Income Share %', formal:'Formal Employment %', informal:'Informal/Gig %', press:'Press Freedom Rank' }[k]||k; },
-        colorMap(k){ return {
-          gdp:{bc:'rgb(34,197,94)',bg:'rgba(34,197,94,.15)'},
-          top1:{bc:'rgb(239,68,68)',bg:'rgba(239,68,68,.15)'},
-          formal:{bc:'rgb(59,130,246)',bg:'rgba(59,130,246,.15)'},
-          informal:{bc:'rgb(245,158,11)',bg:'rgba(245,158,11,.15)'},
-          press:{bc:'rgb(99,102,241)',bg:'rgba(99,102,241,.15)'}
-        }[k]||{bc:'rgb(124,58,237)',bg:'rgba(124,58,237,.15)'}; },
-
+        // Explorer
         renderExplorer(){
           if(!window.Chart) return;
           const {years,...S}=this.series(); const s=this.dataCfg;
           const keys=[s.metric,s.compare1,s.compare2].filter(Boolean);
           const uniq=[...new Set(keys)];
-          const si=Math.max(0,years.indexOf(s.start)); const ei=Math.max(si,years.indexOf(s.end));
-          const labels=years.slice(si,ei+1);
-          const datasets=uniq.map(k=>{const cm=this.colorMap(k); return {label:this.metricLabel(k), data:S[k].slice(si,ei+1), borderColor:cm.bc, backgroundColor:(s.type==='area'?cm.bg:cm.bg), fill:(s.type==='area'), tension:.25};});
+          const si=Math.max(0, years.indexOf(s.start)); const ei=Math.max(si, years.indexOf(s.end));
+          const labels=years.slice(si, ei+1);
+          const datasets=uniq.map(k=>{
+            const cm=this.colorMap(k);
+            return {label:this.metricLabel(k), data:S[k].slice(si,ei+1), borderColor:cm.bc, backgroundColor:(s.type==='area'?cm.bg:cm.bg), fill:(s.type==='area'), tension:.25};
+          });
           this.visibleDataRows=labels.map((y,i)=>({year:y, v1:S[uniq[0]||s.metric][si+i], v2:uniq[1]?S[uniq[1]][si+i]:undefined, v3:uniq[2]?S[uniq[2]][si+i]:undefined}));
 
           const el=document.getElementById('dataExplorerChart'); if(!el) return;
           if(this.charts.explorer) this.charts.explorer.destroy();
           const c=this.colors();
-          this.charts.explorer=new Chart(el,{ type:(s.type==='area'?'line':s.type),
+          this.charts.explorer=new Chart(el,{
+            type:(s.type==='area'?'line':s.type),
             data:{ labels, datasets },
             options:{
               responsive:true, maintainAspectRatio:false,
-              scales:{ x:{ticks:{color:c.text},grid:{color:c.grid}}, y:{ticks:{color:c.text},grid:{color:c.grid}}},
+              scales:{ x:{ticks:{color:c.text},grid:{color:c.grid}}, y:{ticks:{color:c.text},grid:{color:c.grid}} },
               plugins:{ legend:{labels:{color:c.text}},
                 annotation: s.showRegimes ? { annotations:{
                   upa:{ type:'box', xMin: labels.includes(2004)?2004:labels[0], xMax: labels.includes(2014)?2014:labels[labels.length-1], yMin:-Infinity,yMax:Infinity, backgroundColor:'rgba(59,130,246,.08)', borderWidth:0 },
                   nda:{ type:'box', xMin: labels.includes(2014)?2014:labels[0], xMax: labels[labels.length-1], yMin:-Infinity,yMax:Infinity, backgroundColor:'rgba(239,68,68,.08)', borderWidth:0 }
                 }}:undefined
               }
-            });
+            }
+          });
         },
 
+        // Exports
         exportExplorer(fmt){
           if(!this.charts.explorer) return;
           if(fmt==='png'){ this.charts.explorer.canvas.toBlob(b=>saveAs(b,'interactive_selection.png')); }
@@ -699,31 +769,30 @@ html = r"""<!DOCTYPE html>
             const cols=['Year', this.metricLabel(this.dataCfg.metric)];
             if(this.dataCfg.compare1) cols.push(this.metricLabel(this.dataCfg.compare1));
             if(this.dataCfg.compare2) cols.push(this.metricLabel(this.dataCfg.compare2));
-            let csv=cols.join('\\n') ? cols.join(',')+'\\n' : '';
+            let csv=cols.join(',')+'\\n';
             this.visibleDataRows.forEach(r=>{ csv+=[r.year,r.v1,(r.v2??''),(r.v3??'')].join(',')+'\\n'; });
             saveAs(new Blob([csv],{type:'text/csv'}),'interactive_selection.csv');
           }
         },
 
+        // Downloads (stubs)
         downloadPaper(){ alert('Download: India_Economic_Paradox_Full_Paper_2025.pdf'); },
         downloadData(){ alert('Download: India_Economy_Dataset_2004_2024.xlsx'); },
         downloadCode(){ window.open('https://github.com/someperspective/india-economy','_blank'); }
       }
     }
 
-    function exportChart(id,fmt){
+    // CSV/PNG export for non-explorer charts
+    function exportChart(id, fmt){
       const canvas=document.getElementById(id); if(!canvas || !window.Chart) return;
-      if(fmt==='png'){ canvas.toBlob(b=>saveAs(b, `${id}.png`)); }
-      else{
-        const chart=Chart.getChart(id); if(!chart) return;
-        let csv='Label,'+chart.data.datasets.map(d=>d.label).join(',')+'\\n';
-        chart.data.labels.forEach((lab,i)=>{ csv+= lab+','+chart.data.datasets.map(d=>(d.data[i]??'')).join(',')+'\\n'; });
-        saveAs(new Blob([csv],{type:'text/csv'}), `${id}.csv`);
-      }
+      if(fmt==='png'){ canvas.toBlob(b=>saveAs(b, `${id}.png`)); return; }
+      const chart=Chart.getChart(id); if(!chart) return;
+      let csv='Label,' + chart.data.datasets.map(d=>d.label).join(',') + '\\n';
+      chart.data.labels.forEach((lab,i)=>{
+        csv+= lab + ',' + chart.data.datasets.map(d=>(d.data[i]??'')).join(',') + '\\n';
+      });
+      saveAs(new Blob([csv],{type:'text/csv'}), `${id}.csv`);
     }
   </script>
 </body>
 </html>
-"""
-open("/mnt/data/index_complete.html","w",encoding="utf-8").write(html)
-print("Saved to /mnt/data/index_complete.html")
