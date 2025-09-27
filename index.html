@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India's Economic Paradox: Growth Without Accountability (2004-2025)</title>
+    <title>Narratives, Numbers, and Democratic Accountability: India 2014-2025</title>
     
     <!-- SEO and Social Media Meta Tags -->
-    <meta name="description" content="Evidence-based analysis of India's economic transformation from 2004-2025. Academic research on growth, inequality, and democratic institutions.">
-    <meta name="keywords" content="India economy, UPA, NDA, economic inequality, fiscal federalism, democratic backsliding, data suppression">
+    <meta name="description" content="A Political Economy Assessment of India, 2014-2025. Evidence-based analysis of growth, inequality, fiscal federalism, and democratic institutions.">
+    <meta name="keywords" content="India economy, political economy, inequality, fiscal federalism, statistical integrity, democratic backsliding, populist authoritarianism, data suppression">
     <meta name="author" content="Dr. Varna Sri Raman">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph for Social Media -->
-    <meta property="og:title" content="India's Economic Paradox: Two Decades of Transformation">
-    <meta property="og:description" content="Data-driven research on India's shift from inclusive growth to concentrated prosperity">
+    <meta property="og:title" content="Narratives, Numbers, and Democratic Accountability">
+    <meta property="og:description" content="A Political Economy Assessment of India's transformation from inclusive growth to concentrated prosperity">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://someperspective.info">
     <meta property="og:image" content="https://someperspective.info/assets/og-image.png">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="India Economic Analysis 2004-2025">
+    <meta name="twitter:title" content="India Political Economy Assessment 2014-2025">
     <meta name="twitter:description" content="Evidence-based research on growth without accountability">
     <meta name="twitter:image" content="https://someperspective.info/assets/twitter-card.png">
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Critical CSS for no-JS fallback -->
     <style>
@@ -34,13 +39,15 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #111827;
             background: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         /* Container */
@@ -52,8 +59,8 @@
         }
         
         /* Typography */
-        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
-        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.75rem; }
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
         h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
         h4 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; }
         p { margin-bottom: 1rem; }
@@ -61,28 +68,50 @@
         /* Dark Mode Variables */
         :root {
             --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
+            --bg-secondary: #f8fafc;
             --bg-card: #ffffff;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --text-muted: #9ca3af;
-            --border-color: #e5e7eb;
-            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --purple: #7c3aed;
             --purple-light: #ede9fe;
+            --purple-dark: #6d28d9;
+            --blue: #3b82f6;
+            --blue-light: #dbeafe;
+            --green: #10b981;
+            --green-light: #d1fae5;
+            --red: #ef4444;
+            --red-light: #fee2e2;
+            --orange: #f97316;
+            --orange-light: #fed7aa;
         }
         
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
-            --bg-card: #334155;
+            --bg-card: #1e293b;
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
-            --border-color: #475569;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
             --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
             --purple: #a78bfa;
             --purple-light: #4c1d95;
+            --purple-dark: #a78bfa;
+            --blue: #60a5fa;
+            --blue-light: #1e3a8a;
+            --green: #34d399;
+            --green-light: #064e3b;
+            --red: #f87171;
+            --red-light: #7f1d1d;
+            --orange: #fb923c;
+            --orange-light: #7c2d12;
         }
         
         body[data-theme="dark"] {
@@ -93,11 +122,11 @@
         /* Theme Toggle Button */
         .theme-toggle {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 24px;
+            right: 24px;
             z-index: 1000;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--purple);
             color: white;
@@ -106,23 +135,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow);
-            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.2s ease;
         }
         
         .theme-toggle:hover {
             transform: scale(1.1);
         }
         
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
         /* Navigation */
         nav {
             background: var(--bg-card);
             border-bottom: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        [data-theme="dark"] nav {
+            background: rgba(15, 23, 42, 0.95);
         }
         
         .nav-header {
-            padding: 1rem 0;
+            padding: 1.25rem 0;
             border-bottom: 1px solid var(--border-color);
         }
         
@@ -130,12 +171,14 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
         }
         
         .nav-subtitle {
             font-size: 0.875rem;
             color: var(--text-secondary);
+            font-weight: 400;
         }
         
         /* Tab Navigation */
@@ -143,8 +186,13 @@
             display: flex;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            padding: 0.5rem 0;
-            gap: 0.5rem;
+            padding: 0.75rem 0;
+            gap: 0.25rem;
+            scrollbar-width: none;
+        }
+        
+        .tab-nav::-webkit-scrollbar {
+            display: none;
         }
         
         .tab-nav button {
@@ -154,8 +202,9 @@
             color: var(--text-secondary);
             cursor: pointer;
             white-space: nowrap;
-            border-bottom: 3px solid transparent;
+            border-bottom: 2px solid transparent;
             font-size: 0.875rem;
+            font-weight: 500;
             transition: all 0.2s;
         }
         
@@ -166,6 +215,7 @@
         .tab-nav button.active {
             color: var(--purple);
             border-bottom-color: var(--purple);
+            font-weight: 600;
         }
         
         /* Audience Selector */
@@ -177,24 +227,27 @@
         }
         
         .audience-selector button {
-            padding: 0.375rem 0.75rem;
-            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border: 1.5px solid var(--border-color);
             background: var(--bg-card);
             color: var(--text-primary);
-            border-radius: 0.375rem;
+            border-radius: 0.5rem;
             cursor: pointer;
             font-size: 0.875rem;
+            font-weight: 500;
             transition: all 0.2s;
         }
         
         .audience-selector button:hover {
             border-color: var(--purple);
+            box-shadow: var(--shadow-sm);
         }
         
         .audience-selector button.active {
             background: var(--purple);
             color: white;
             border-color: var(--purple);
+            box-shadow: var(--shadow-sm);
         }
         
         /* Content Sections */
@@ -215,10 +268,16 @@
         /* Cards */
         .card {
             background: var(--bg-card);
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             padding: 1.5rem;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow);
         }
         
         /* Chart Containers */
@@ -227,9 +286,11 @@
             height: 400px;
             width: 100%;
             background: var(--bg-card);
-            border-radius: 0.5rem;
-            padding: 1rem;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
             margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
         
         .chart-container-small {
@@ -237,20 +298,24 @@
             height: 250px;
             width: 100%;
             background: var(--bg-card);
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             padding: 1rem;
             margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
         
         /* Buttons */
         .btn {
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
             border: none;
             cursor: pointer;
             font-size: 0.875rem;
+            font-weight: 500;
             transition: all 0.2s;
             display: inline-block;
+            letter-spacing: -0.01em;
         }
         
         .btn-primary {
@@ -259,18 +324,20 @@
         }
         
         .btn-primary:hover {
-            opacity: 0.9;
+            background: var(--purple-dark);
+            box-shadow: var(--shadow);
         }
         
         .btn-secondary {
             background: transparent;
             color: var(--purple);
-            border: 1px solid var(--purple);
+            border: 1.5px solid var(--purple);
         }
         
         .btn-secondary:hover {
             background: var(--purple);
             color: white;
+            box-shadow: var(--shadow-sm);
         }
         
         /* Grid System */
@@ -379,17 +446,30 @@
 
 <body data-theme="light" x-data="appData()" x-init="init()" x-cloak>
     
-    <!-- Theme Toggle Button -->
+    <!-- Theme Toggle Button with SVG Icons -->
     <button onclick="toggleTheme()" class="theme-toggle no-print" aria-label="Toggle dark mode">
-        <span id="theme-icon">🌙</span>
+        <svg id="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
     </button>
     
     <!-- Navigation -->
     <nav class="sticky top-0 z-50">
         <div class="container">
             <div class="nav-header">
-                <h1 class="nav-title">India's Economic Paradox: Growth Without Accountability</h1>
-                <p class="nav-subtitle">Evidence-based analysis of India's political economy (2004-2025)</p>
+                <h1 class="nav-title">Narratives, Numbers, and Democratic Accountability</h1>
+                <p class="nav-subtitle">A Political Economy Assessment of India, 2014–2025</p>
                 
                 <!-- Audience Selector -->
                 <div class="audience-selector mt-4">
@@ -471,7 +551,7 @@
                 </div>
                 
                 <div class="mt-6 p-4 rounded" style="background: #fef3c7; border: 1px solid #f59e0b;">
-                    <p class="text-sm font-bold mb-2">⚠️ Research Independence Statement</p>
+                    <p class="text-sm font-bold mb-2">Research Independence Statement</p>
                     <p class="text-xs">
                         This is independent academic research based on publicly available data from government sources, 
                         international organizations, and peer-reviewed studies. It receives no funding from political parties, 
@@ -493,18 +573,18 @@
                 <h3 class="text-xl font-bold mt-6 mb-4">The Two Models: UPA vs NDA</h3>
                 
                 <div class="grid grid-2 gap-4 mb-6">
-                    <div class="card" style="background: #dbeafe;">
+                    <div class="card" style="background: var(--blue-light);">
                         <h4 class="font-bold mb-3">UPA Period (2004-2014)</h4>
                         <ul class="space-y-2 text-sm">
                             <li>• <strong>GDP Growth:</strong> 7.7% average</li>
-                            <li>• <strong>Employment:</strong> 2.0 elasticity</li>
+                            <li>• <strong>Employment:</strong> 0.20 elasticity</li>
                             <li>• <strong>Inequality:</strong> Stable at 15%</li>
                             <li>• <strong>Fiscal:</strong> 42% to states</li>
                             <li>• <strong>Democracy:</strong> "Free" rating</li>
                             <li>• <strong>Data:</strong> Regular releases</li>
                         </ul>
                     </div>
-                    <div class="card" style="background: #fce7f3;">
+                    <div class="card" style="background: var(--red-light);">
                         <h4 class="font-bold mb-3">NDA Period (2014-2025)</h4>
                         <ul class="space-y-2 text-sm">
                             <li>• <strong>GDP Growth:</strong> 6.8% average</li>
@@ -516,6 +596,14 @@
                         </ul>
                         <p class="text-xs mt-2">*Recovery driven by informal gig economy</p>
                     </div>
+                </div>
+                
+                <div class="mt-4 p-3 rounded" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+                    <p class="text-xs" style="color: var(--text-secondary);">
+                        <strong>Note on unemployment data:</strong> The unemployment percentages shown represent the unemployment rate 
+                        (% of labor force seeking but unable to find work), not the percentage of formal employment. 
+                        Formal employment is shown separately and declined from 18% to 11% of the total workforce.
+                    </p>
                 </div>
                 
                 <!-- Summary Chart -->
@@ -750,6 +838,10 @@
                 <!-- Data Table -->
                 <div class="mt-6">
                     <h3 class="text-lg font-bold mb-3">Data Table</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                        Note: Unemployment Rate shows the percentage of the labor force seeking work. 
+                        Formal Employment shows the percentage of total workers in formal sector jobs with social security.
+                    </p>
                     <div style="overflow-x: auto;">
                         <table id="dataTable" class="w-full text-sm">
                             <thead>
@@ -757,7 +849,7 @@
                                     <th class="p-2 text-left">Year</th>
                                     <th class="p-2 text-right">Period</th>
                                     <th class="p-2 text-right">GDP Growth</th>
-                                    <th class="p-2 text-right">Unemployment</th>
+                                    <th class="p-2 text-right">Unemployment Rate</th>
                                     <th class="p-2 text-right">Top 1% Share</th>
                                     <th class="p-2 text-right">Formal Emp.</th>
                                 </tr>
@@ -1309,14 +1401,14 @@ Periods:
                         All data from official sources or peer-reviewed research.
                     </p>
                     <div class="space-y-1">
-                        <a href="#" onclick="downloadPaper(); return false;" class="text-sm text-purple-400 hover:underline block">
-                            📄 Download Full Paper (PDF)
+                        <a href="#" onclick="downloadPaper(); return false;" class="text-sm block hover:underline" style="color: var(--purple);">
+                            Download Full Paper (PDF)
                         </a>
-                        <a href="#" onclick="downloadDataset(); return false;" class="text-sm text-purple-400 hover:underline block">
-                            📊 Download Dataset (Excel)
+                        <a href="#" onclick="downloadDataset(); return false;" class="text-sm block hover:underline" style="color: var(--purple);">
+                            Download Dataset (Excel)
                         </a>
-                        <a href="https://github.com/someperspective/india-economy" class="text-sm text-purple-400 hover:underline block">
-                            💻 View Code on GitHub
+                        <a href="https://github.com/someperspective/india-economy" class="text-sm block hover:underline" style="color: var(--purple);">
+                            View Code on GitHub
                         </a>
                     </div>
                 </div>
@@ -1339,7 +1431,7 @@ Periods:
                 <div>
                     <h4 class="font-bold mb-3">License & Usage</h4>
                     <p class="text-sm opacity-90 mb-2">
-                        Released under <a href="https://opensource.org/licenses/MIT" class="text-purple-400 hover:underline">MIT License</a>
+                        Released under <a href="https://opensource.org/licenses/MIT" class="hover:underline" style="color: var(--purple);">MIT License</a>
                     </p>
                     <p class="text-xs opacity-75 mb-3">
                         Free to use, copy, modify, and distribute with attribution.
@@ -1361,7 +1453,7 @@ Periods:
                     <a href="mailto:research@someperspective.info" class="hover:underline">Contact</a>
                 </p>
                 <p class="mt-2">
-                    Made with commitment to truth and transparency. Data sovereignty for digital India. 🇮🇳
+                    Made with commitment to truth and transparency. Data sovereignty for digital India.
                 </p>
             </div>
         </div>
@@ -1422,7 +1514,17 @@ Periods:
             currentTheme = theme;
             document.body.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'light' ? '🌙' : '☀️';
+            
+            // Update icon visibility
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            if (theme === 'light') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
             
             // Update chart themes if they exist
             if (Object.keys(charts).length > 0) {
@@ -1500,10 +1602,10 @@ Periods:
             const textEl = document.getElementById('audience-text');
             
             const messages = {
-                researcher: "📚 <strong>For Researchers:</strong> Full methodology, data sources, and statistical analysis provided. All claims are referenced with replication code available. Focus on novel indices and causal mechanisms.",
-                policy: "📋 <strong>For Policy Makers:</strong> Actionable findings with specific reform proposals. Each recommendation includes implementation timelines and expected outcomes. Jump to Implications for detailed policy options.",
-                journalist: "📰 <strong>For Journalists:</strong> Key statistics are highlighted with quotable summaries. All data is fact-checked with sources. Infographics optimized for publication with attribution.",
-                citizen: "👥 <strong>For Citizens/Students:</strong> Complex concepts explained simply with real-world examples. Focus on how these changes affect daily life, jobs, and opportunities."
+                researcher: "<strong>For Researchers:</strong> Full methodology, data sources, and statistical analysis provided. All claims are referenced with replication code available. Focus on novel indices and causal mechanisms.",
+                policy: "<strong>For Policy Makers:</strong> Actionable findings with specific reform proposals. Each recommendation includes implementation timelines and expected outcomes. Jump to Implications for detailed policy options.",
+                journalist: "<strong>For Journalists:</strong> Key statistics are highlighted with quotable summaries. All data is fact-checked with sources. Infographics optimized for publication with attribution.",
+                citizen: "<strong>For Citizens/Students:</strong> Complex concepts explained simply with real-world examples. Focus on how these changes affect daily life, jobs, and opportunities."
             };
             
             if (messages[type]) {
@@ -1561,11 +1663,20 @@ Periods:
         function getChartColors() {
             const isDark = currentTheme === 'dark';
             return {
-                gridColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-                textColor: isDark ? '#e5e7eb' : '#374151',
-                upaColor: 'rgba(59, 130, 246, 0.8)',  // Blue
-                ndaColor: 'rgba(239, 68, 68, 0.8)',    // Red
-                backgroundColor: isDark ? '#1e293b' : '#ffffff'
+                gridColor: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
+                textColor: isDark ? '#cbd5e1' : '#475569',
+                upaColor: '#3b82f6',  // Blue
+                ndaColor: '#ef4444',  // Red
+                backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                colors: {
+                    green: '#10b981',
+                    red: '#ef4444',
+                    orange: '#f97316',
+                    purple: '#7c3aed',
+                    blue: '#3b82f6',
+                    gray: '#6b7280',
+                    yellow: '#eab308'
+                }
             };
         }
         
@@ -1587,23 +1698,26 @@ Periods:
                         {
                             label: 'GDP Growth (%)',
                             data: economicData.gdpGrowth,
-                            borderColor: 'rgb(34, 197, 94)',
-                            backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                            tension: 0.4
+                            borderColor: colors.colors.green,
+                            backgroundColor: colors.colors.green + '20',
+                            tension: 0.4,
+                            borderWidth: 2
                         },
                         {
-                            label: 'Unemployment (%)',
+                            label: 'Unemployment Rate (%)',
                             data: economicData.unemployment,
-                            borderColor: 'rgb(239, 68, 68)',
-                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                            tension: 0.4
+                            borderColor: colors.colors.red,
+                            backgroundColor: colors.colors.red + '20',
+                            tension: 0.4,
+                            borderWidth: 2
                         },
                         {
                             label: 'Top 1% Share (%)',
                             data: economicData.inequality,
-                            borderColor: 'rgb(251, 146, 60)',
-                            backgroundColor: 'rgba(251, 146, 60, 0.1)',
-                            tension: 0.4
+                            borderColor: colors.colors.orange,
+                            backgroundColor: colors.colors.orange + '20',
+                            tension: 0.4,
+                            borderWidth: 2
                         }
                     ]
                 },
@@ -1669,7 +1783,9 @@ Periods:
                     datasets: [{
                         label: 'Employment Elasticity',
                         data: [0.20, 0.01, 1.11],
-                        backgroundColor: ['rgba(34, 197, 94, 0.6)', 'rgba(239, 68, 68, 0.6)', 'rgba(251, 146, 60, 0.6)']
+                        backgroundColor: [colors.colors.green, colors.colors.red, colors.colors.orange],
+                        borderColor: [colors.colors.green, colors.colors.red, colors.colors.orange],
+                        borderWidth: 2
                     }]
                 },
                 options: {
@@ -1717,9 +1833,10 @@ Periods:
                     datasets: [{
                         label: 'Formal Employment (%)',
                         data: economicData.formalEmployment,
-                        borderColor: 'rgb(139, 92, 246)',
-                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                        tension: 0.4
+                        borderColor: colors.colors.purple,
+                        backgroundColor: colors.colors.purple + '20',
+                        tension: 0.4,
+                        borderWidth: 2
                     }]
                 },
                 options: {
@@ -2043,23 +2160,26 @@ Periods:
                         {
                             label: 'Statistical Suppression Index',
                             data: normalizedSSI,
-                            borderColor: 'rgb(239, 68, 68)',
-                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                            tension: 0.4
+                            borderColor: colors.colors.red,
+                            backgroundColor: colors.colors.red + '20',
+                            tension: 0.4,
+                            borderWidth: 2
                         },
                         {
                             label: 'Fiscal Centralization Index',
                             data: normalizedFCI,
-                            borderColor: 'rgb(251, 146, 60)',
-                            backgroundColor: 'rgba(251, 146, 60, 0.1)',
-                            tension: 0.4
+                            borderColor: colors.colors.orange,
+                            backgroundColor: colors.colors.orange + '20',
+                            tension: 0.4,
+                            borderWidth: 2
                         },
                         {
                             label: 'Democratic Quality Index',
                             data: normalizedDQI,
-                            borderColor: 'rgb(59, 130, 246)',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            tension: 0.4
+                            borderColor: colors.colors.blue,
+                            backgroundColor: colors.colors.blue + '20',
+                            tension: 0.4,
+                            borderWidth: 2
                         }
                     ]
                 },
