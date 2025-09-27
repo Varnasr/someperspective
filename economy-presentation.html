@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Narratives, Numbers, and Democratic Accountability: India 2014–2025</title>
+  <meta name="theme-color" content="#0b2a55">
+  <!-- Inter font (academic, neutral). Falls back gracefully if blocked. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b2a55;              /* deep academic blue */
+      --bg2:#113a72;
+      --paper:#ffffff;
+      --ink:#0f172a;              /* slate-900 */
+      --muted:#475569;            /* slate-600 */
+      --accent:#1e40af;           /* indigo-800 */
+      --accent-2:#3b82f6;         /* blue-500 */
+      --accent-3:#0ea5e9;         /* sky-500 */
+      --good:#15803d;             /* green-700 */
+      --bad:#b91c1c;              /* red-700 */
+      --soft:#eef2ff;             /* indigo-50 */
+      --border:#e5e7eb;           /* gray-200 */
+      --chip:#e2e8f0;             /* slate-200 */
+      --warn:#b45309;             /* amber-700 */
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 900px at 20% 10%, var(--bg2) 0%, var(--bg) 45%, #081c3a 100%);
+      color: var(--ink);
+      margin:0; overflow:hidden;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Presentation frame */
+    .presentation{
+      height:100vh; display:flex; align-items:center; justify-content:center; position:relative; padding:24px;
+    }
+
+    .slide{
+      width:min(1200px, 92vw); height:84vh; background:var(--paper);
+      border-radius:18px; padding:40px; box-shadow: 0 24px 60px rgba(0,0,0,.28);
+      display:none; overflow:auto; border:1px solid var(--border);
+    }
+    .slide.active{ display:block; }
+
+    /* Headings & text */
+    h1{ font-weight:800; font-size:clamp(28px, 4.2vw, 46px); line-height:1.12; margin:0 0 10px; color:var(--accent); text-align:center;}
+    .subtitle{ text-align:center; color:var(--muted); font-style:italic; margin:10px 0 24px; font-size:clamp(16px,2.2vw,20px); }
+
+    h2{ font-weight:700; font-size:clamp(22px, 3.2vw, 34px); color:var(--accent); margin:0 0 14px; }
+    h3{ font-weight:700; font-size:clamp(16px, 2.2vw, 20px); color:#0f172a; margin:18px 0 10px; }
+    h4{ font-weight:700; font-size:16px; margin:14px 0 6px; color:#111827; }
+
+    p, li{ font-size:clamp(14px, 1.8vw, 18px); line-height:1.55; color:#1f2937; }
+    ul{ margin:10px 0 14px 22px; }
+
+    /* Blocks */
+    .highlight{
+      background: var(--soft);
+      padding:18px 22px;
+      border-left:4px solid var(--accent);
+      margin:18px 0;
+      border-radius:6px;
+    }
+    .highlight h3{ margin:0 0 10px; color:var(--accent); }
+    .highlight p{ margin:8px 0; }
+
+    .key-point{
+      background: #fef3c7;
+      padding:16px 20px;
+      border:1px solid #f59e0b;
+      border-radius:8px;
+      margin:18px 0;
+    }
+    .key-point p{ margin:6px 0; font-weight:500; }
+
+    /* Two column */
+    .two-column{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:28px;
+      margin:20px 0;
+    }
+    @media(max-width:768px){
+      .two-column{ grid-template-columns: 1fr; }
+    }
+
+    /* Metrics */
+    .metrics{
+      display:flex;
+      justify-content:space-around;
+      gap:12px;
+      margin:22px 0;
+      flex-wrap:wrap;
+    }
+    .metric{
+      text-align:center;
+      padding:8px;
+      background:var(--soft);
+      border-radius:8px;
+      flex:1;
+      min-width:100px;
+    }
+    .metric-value{
+      font-size:clamp(20px,3vw,28px);
+      font-weight:800;
+      color:var(--accent);
+    }
+    .metric-label{
+      font-size:clamp(11px,1.4vw,13px);
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    /* Visual flow */
+    .visual-flow{
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      margin:30px 0;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .flow-item{
+      text-align:center;
+      padding:14px;
+      background:var(--soft);
+      border-radius:10px;
+      flex:1;
+      min-width:120px;
+    }
+    .flow-arrow{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 8px;
+      opacity:.7;
+    }
+
+    /* Tables */
+    .comparison-table{
+      width:100%;
+      border-collapse:collapse;
+      margin:20px 0;
+      font-size:clamp(13px,1.6vw,15px);
+    }
+    .comparison-table thead{ background:var(--soft); }
+    .comparison-table th, .comparison-table td{
+      padding:10px;
+      text-align:left;
+      border:1px solid var(--border);
+    }
+    .comparison-table th{ font-weight:700; color:var(--accent); }
+    .trend-up{ color:var(--bad); font-weight:700; }
+    .trend-down{ color:var(--good); font-weight:700; }
+
+    /* Index visual */
+    .index-visual{
+      background: linear-gradient(135deg, var(--soft) 0%, #fff 100%);
+      padding:24px;
+      border-radius:12px;
+      margin:20px 0;
+      border:1px solid var(--border);
+    }
+
+    /* Website link */
+    .website-link{
+      background:var(--accent);
+      color:#fff;
+      padding:24px;
+      border-radius:12px;
+      text-align:center;
+      margin:24px 0;
+    }
+    .website-link h3{ color:#fff; margin:0 0 8px; }
+    .website-link a{ color:#fbbf24; text-decoration:underline; font-weight:700; }
+    .website-link p{ color:#e0e7ff; margin-top:8px; }
+
+    /* Author info */
+    .author-info{
+      text-align:center;
+      margin-top:22px;
+      padding-top:12px;
+      border-top:1px solid var(--border);
+    }
+
+    /* Controls */
+    .control-bar{
+      position:fixed; top:16px; right:16px; z-index:1200; display:flex; gap:8px;
+    }
+    .ctrl{
+      background: rgba(7, 20, 44, .75); color:#fff; border:1px solid rgba(255,255,255,.18);
+      padding:9px 12px; border-radius:999px; font-weight:600; cursor:pointer; backdrop-filter: blur(10px);
+      display:flex; align-items:center; gap:8px;
+    }
+    .ctrl:hover{ background: rgba(7, 20, 44, .9); }
+
+    /* Navigation */
+    .navigation{
+      position:fixed; bottom:28px; right:28px; display:flex; gap:10px; z-index:1100;
+    }
+    .nav-btn{
+      background: rgba(7, 20, 44, .75); color:#fff; border:1px solid rgba(255,255,255,.18);
+      padding:12px 16px; border-radius:999px; font-weight:700; cursor:pointer; backdrop-filter: blur(8px);
+      display:flex; align-items:center; gap:6px;
+    }
+    .nav-btn:hover{ background: rgba(7, 20, 44, .9); }
+    .nav-btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+    .slide-counter{
+      position:fixed; bottom:28px; left:28px; background:rgba(7,20,44,.85);
+      color:#fff; padding:8px 12px; border-radius:999px; font-weight:700;
+      border:1px solid rgba(255,255,255,.18); z-index:1100;
+    }
+
+    /* Progress */
+    .progress{ position:fixed; left:0; bottom:0; height:5px; width:100%; background:rgba(255,255,255,.16); z-index:1100; }
+    .progress > span{ display:block; height:100%; width:0%; background:linear-gradient(90deg, #0ea5e9, #3b82f6); transition: width .25s ease; }
+
+    /* Blackout for pausing */
+    .blackout{ position:fixed; inset:0; background:#000; opacity:0; pointer-events:none; transition:opacity .2s; z-index:1300;}
+    .blackout.on{ opacity:1; pointer-events:auto; }
+
+    /* Overview grid */
+    body.gridview .presentation{ display:none; }
+    body.gridview::before{
+      content:'Overview – click a slide to jump (press G to exit)';
+      position:fixed; top:12px; left:50%; transform:translateX(-50%);
+      background:rgba(7, 20, 44, .9); color:#fff; padding:8px 14px; border-radius:999px; font-weight:700; z-index:1500;
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .grid{
+      display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap:16px; padding:70px 16px 16px;
+    }
+    .thumb{
+      cursor:pointer; overflow:hidden; background:var(--paper);
+      border:2px solid var(--border); border-radius:10px; box-shadow: 0 4px 12px rgba(0,0,0,.1);
+      transition: all .2s;
+    }
+    .thumb:hover{
+      transform:scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+      border-color:var(--accent);
+    }
+    .thumb .slide{
+      pointer-events:none; transform:scale(0.2); transform-origin:top left; width:500%; height:500%; padding:200px;
+      border-radius:0; box-shadow:none;
+    }
+    body.gridview .grid{ display:grid; }
+    body:not(.gridview) .grid{ display:none; }
+
+    /* Print styles */
+    @media print{
+      body{ background:#fff; }
+      .slide{ box-shadow:none; border:1px solid #000; page-break-after:always; height:auto; }
+      .control-bar, .navigation, .slide-counter, .progress, .wip{ display:none; }
+    }
+
+    /* Responsive adjustments */
+    @media(max-width:600px){
+      .slide{ padding:20px; }
+      h1{ font-size:24px; }
+      h2{ font-size:20px; }
+      h3{ font-size:16px; }
+      .metrics{ flex-direction:column; }
+      .visual-flow{ flex-direction:column; }
+      .flow-arrow{ transform:rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Work in Progress Banner -->
+  <div class="wip">⚠️ Research Presentation – September 2025 Data</div>
+
+  <!-- Controls -->
+  <div class="control-bar">
+    <button class="ctrl" id="blackoutBtn" aria-label="Black screen">
+      <!-- eye-off icon -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+      </svg>
+      Black
+    </button>
+    <button class="ctrl" id="gridBtn" aria-label="Overview Grid">
+      <!-- grid icon -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+      </svg>
+      Overview
+    </button>
+    <button class="ctrl" id="printBtn" aria-label="Print / Save PDF">
+      <!-- printer icon -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      PDF
+    </button>
+  </div>
+
+  <!-- Slides -->
+  <div class="presentation" id="deck">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <h1>Narratives, Numbers, and Democratic Accountability</h1>
+      <p class="subtitle">A Political Economy Assessment of India, 2014–2025</p>
+
+      <div class="highlight">
+        <h3>Research Question</h3>
+        <p><strong>Why did India experience high economic growth alongside systematic weakening of democratic institutions?</strong></p>
+      </div>
+
+      <div class="author-info">
+        <p><strong>Research Presentation</strong></p>
+        <p><em>Based on: "Populist Growth Without Accountability"</em></p>
+        <p>Full analysis: <strong>someperspective.info</strong></p>
+        <p style="margin-top:10px; color:#6b7280; font-size:14px;"><em>September 2025 – Latest data included</em></p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <h2>The Central Paradox</h2>
+
+      <div class="visual-flow">
+        <div class="flow-item">
+          <div class="metric-value" style="color:var(--good);">6.2%</div>
+          <div class="metric-label">Average GDP Growth<br>2014–2025</div>
+        </div>
+        <div class="flow-arrow">
+          <!-- plus icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </div>
+        <div class="flow-item">
+          <div class="metric-value" style="color:var(--bad);">↓ 44%</div>
+          <div class="metric-label">Democratic Quality<br>Decline</div>
+        </div>
+        <div class="flow-arrow">
+          <!-- equals icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="9" x2="19" y2="9"></line><line x1="5" y1="15" x2="19" y2="15"></line>
+          </svg>
+        </div>
+        <div class="flow-item">
+          <div class="metric-value" style="color:#0f172a;">New Model</div>
+          <div class="metric-label">of Governance</div>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <p><strong>Conventional view:</strong> Economic growth should strengthen democratic institutions.</p>
+        <p><strong>What the evidence suggests:</strong> Growth was used to <em>legitimise</em> institutional weakening.</p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>What the Headlines Emphasised</h3>
+          <ul>
+            <li>"World's fastest-growing major economy"</li>
+            <li>"Hundreds of millions lifted out of poverty"</li>
+            <li>"Digital infrastructure revolution"</li>
+            <li>"Infrastructure boom"</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What the Research Reveals</h3>
+          <ul>
+            <li>Wealth inequality near colonial-era peaks</li>
+            <li>Statistical data systematically suppressed</li>
+            <li>Federal powers centralised via fiscal design</li>
+            <li>Democratic institutions quietly weakened</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <h2>How I Studied the Problem</h2>
+
+      <div class="highlight">
+        <p><strong>Challenge:</strong> When the state suppresses data, how do we study what is actually happening?</p>
+      </div>
+
+      <h3>Solution: Build New Measurement Tools</h3>
+
+      <div class="index-visual">
+        <h3>Three Novel Indices</h3>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-value">SSI</div>
+            <div class="metric-label">Statistical Suppression<br>Index</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">FCI</div>
+            <div class="metric-label">Fiscal Centralisation<br>Index</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">DQI</div>
+            <div class="metric-label">Democratic Quality<br>Index</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>Data Sources</h3>
+          <ul>
+            <li>Official statistics (when available)</li>
+            <li>International databases (V-Dem, World Bank)</li>
+            <li>State-level panel data (28 states)</li>
+            <li>Triangulation when official data suppressed</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Methodology</h3>
+          <ul>
+            <li>Comparative period analysis (UPA vs NDA)</li>
+            <li>Fixed effects models</li>
+            <li>Synthetic control methods</li>
+            <li>Robustness checks across sources</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <h2>Finding 1: Growth Without Jobs</h2>
+
+      <div class="key-point">
+        <p><strong>The paradox:</strong> GDP grew at 6.2% average, but formal employment <em>fell</em> from 17.5% to 10.8%</p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><span class="metric-value">6.2%</span><div class="metric-label">GDP Growth<br>(2014–2025 avg)</div></div>
+        <div class="metric"><span class="metric-value">-38%</span><div class="metric-label">Formal Employment<br>Decline</div></div>
+        <div class="metric"><span class="metric-value">23%</span><div class="metric-label">Youth Unemployment<br>(2025)</div></div>
+        <div class="metric"><span class="metric-value">45.8%</span><div class="metric-label">Agriculture Share<br>(2025)</div></div>
+      </div>
+
+      <table class="comparison-table">
+        <thead><tr><th>Indicator</th><th>2014</th><th>2025</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Formal Employment</strong></td><td>17.5%</td><td>10.8%</td><td class="trend-down">−6.7 pts</td></tr>
+          <tr><td><strong>Manufacturing Jobs</strong></td><td>13.1%</td><td>11.2%</td><td class="trend-down">−1.9 pts</td></tr>
+          <tr><td><strong>Service Sector</strong></td><td>31%</td><td>29%</td><td class="trend-down">−2.0 pts</td></tr>
+          <tr><td><strong>Agriculture</strong></td><td>43%</td><td>45.8%</td><td class="trend-up">+2.8 pts</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight">
+        <p><strong>Structural regression:</strong> More Indians work in agriculture in 2025 than in 2014, despite GDP doubling.</p>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <h2>Finding 2: Colonial-Era Inequality Returns</h2>
+
+      <div class="key-point">
+        <p><strong>Historic milestone:</strong> Top 1% income share (23.4%) exceeds 1939 colonial peak (20.7%)</p>
+      </div>
+
+      <div class="visual-flow">
+        <div class="flow-item">
+          <div class="metric-value">20.7%</div>
+          <div class="metric-label">Top 1% Share<br>1939</div>
+        </div>
+        <div class="flow-arrow"><span style="font-weight:800;">vs</span></div>
+        <div class="flow-item">
+          <div class="metric-value trend-up">23.4%</div>
+          <div class="metric-label">Top 1% Share<br>2025</div>
+        </div>
+        <div class="flow-arrow">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+        <div class="flow-item">
+          <div class="metric-value">Historic</div>
+          <div class="metric-label">Concentration</div>
+        </div>
+      </div>
+
+      <table class="comparison-table">
+        <thead><tr><th>Income Group</th><th>2014 Share</th><th>2025 Share</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Top 1%</strong></td><td>15.6%</td><td>23.4%</td><td class="trend-up">+7.8 pts</td></tr>
+          <tr><td><strong>Top 10%</strong></td><td>52.0%</td><td>58.2%</td><td class="trend-up">+6.2 pts</td></tr>
+          <tr><td><strong>Bottom 50%</strong></td><td>18.5%</td><td>12.8%</td><td class="trend-down">−5.7 pts</td></tr>
+        </tbody>
+      </table>
+
+      <div class="two-column">
+        <div>
+          <h3>Policy Drivers</h3>
+          <ul>
+            <li>Abolition of wealth tax (2016)</li>
+            <li>Corporate tax cuts (2019)</li>
+            <li>Capital gains concessions</li>
+            <li>Regressive GST structure</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Consequences</h3>
+          <ul>
+            <li>Consumption demand collapse</li>
+            <li>Savings rate decline</li>
+            <li>K-shaped recovery post-COVID</li>
+            <li>Social mobility frozen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+      <h2>Finding 3: Fiscal Federalism Eroded</h2>
+
+      <div class="key-point">
+        <p><strong>Constitutional subversion:</strong> States' fiscal autonomy systematically undermined through design</p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><span class="metric-value">38.5%</span><div class="metric-label">States' Share<br>of Taxes (2025)</div></div>
+        <div class="metric"><span class="metric-value">21.2%</span><div class="metric-label">Cess/Surcharge<br>of Gross Tax</div></div>
+        <div class="metric"><span class="metric-value">104%</span><div class="metric-label">Increase in<br>Cess/Surcharge</div></div>
+        <div class="metric"><span class="metric-value">₹5.1L Cr</span><div class="metric-label">Revenue Not<br>Shared</div></div>
+      </div>
+
+      <table class="comparison-table">
+        <thead><tr><th>Fiscal Indicator</th><th>2014</th><th>2025</th><th>Impact</th></tr></thead>
+        <tbody>
+          <tr><td>States' Tax Share</td><td>42.0%</td><td>38.5%</td><td>₹1.8L Cr loss</td></tr>
+          <tr><td>Conditional Transfers</td><td>28%</td><td>47%</td><td>Autonomy lost</td></tr>
+          <tr><td>GST Compensation</td><td>N/A</td><td>Ended</td><td>₹2.7L Cr gap</td></tr>
+          <tr><td>Borrowing Freedom</td><td>High</td><td>Restricted</td><td>Development constrained</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight">
+        <h3>The Mechanism</h3>
+        <p>1. Increase cess/surcharge (not shared with states)</p>
+        <p>2. Reduce basic tax rates (shared with states)</p>
+        <p>3. Impose conditions on borrowing and spending</p>
+        <p>4. Result: States dependent on Centre's discretion</p>
+      </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+      <h2>Finding 4: Statistical System Compromised</h2>
+
+      <div class="key-point">
+        <p><strong>Data as political tool:</strong> When numbers contradict narrative, suppress the numbers</p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><span class="metric-value">2017-18</span><div class="metric-label">Consumption Survey<br>Suppressed</div></div>
+        <div class="metric"><span class="metric-value">14 Years</span><div class="metric-label">No Census<br>(2011-2025)</div></div>
+        <div class="metric"><span class="metric-value">2+ Years</span><div class="metric-label">Employment Data<br>Delays</div></div>
+        <div class="metric"><span class="metric-value">8.1/10</span><div class="metric-label">Statistical<br>Suppression Index</div></div>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>What Was Suppressed</h3>
+          <ul>
+            <li>Consumption decline evidence</li>
+            <li>Employment crisis data</li>
+            <li>Poverty increase estimates</li>
+            <li>Caste census results</li>
+            <li>COVID mortality figures</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Impact on Policy</h3>
+          <ul>
+            <li>Cannot target welfare properly</li>
+            <li>Business planning compromised</li>
+            <li>Academic research hindered</li>
+            <li>International credibility lost</li>
+            <li>Democratic debate undermined</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <p><strong>Statistical Suppression Index (SSI):</strong> Rose from 2.3 (2014) to 8.1 (2025) — a 252% increase</p>
+      </div>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide">
+      <h2>Finding 5: Democratic Quality Declined 44%</h2>
+
+      <div class="key-point">
+        <p><strong>V-Dem Assessment:</strong> India moved from "Electoral Democracy" to "Electoral Autocracy"</p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><span class="metric-value">161/180</span><div class="metric-label">Press Freedom<br>Rank</div></div>
+        <div class="metric"><span class="metric-value">95</span><div class="metric-label">Internet Shutdowns<br>in 2025</div></div>
+        <div class="metric"><span class="metric-value">6,677</span><div class="metric-label">NGO Licenses<br>Cancelled</div></div>
+        <div class="metric"><span class="metric-value">0.40</span><div class="metric-label">DQI Score<br>(was 0.71)</div></div>
+      </div>
+
+      <table class="comparison-table">
+        <thead><tr><th>Democratic Indicator</th><th>2014</th><th>2025</th><th>% Change</th></tr></thead>
+        <tbody>
+          <tr><td>Liberal Democracy Index</td><td>0.71</td><td>0.40</td><td class="trend-down">−44%</td></tr>
+          <tr><td>Civil Liberties</td><td>0.68</td><td>0.35</td><td class="trend-down">−49%</td></tr>
+          <tr><td>Rule of Law</td><td>0.62</td><td>0.38</td><td class="trend-down">−39%</td></tr>
+          <tr><td>Electoral Integrity</td><td>0.78</td><td>0.51</td><td class="trend-down">−35%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight">
+        <p><strong>The pattern:</strong> Electoral competition continues, but the playing field is systematically tilted through institutional capture, media control, and financial asymmetry.</p>
+      </div>
+    </div>
+
+    <!-- Slide 9 -->
+    <div class="slide">
+      <h2>The Mechanisms: How It Happened</h2>
+
+      <div class="visual-flow">
+        <div class="flow-item">
+          <div class="metric-value">1</div>
+          <div class="metric-label"><strong>Narrative Control</strong><br>Shape perception</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="metric-value">2</div>
+          <div class="metric-label"><strong>Data Suppression</strong><br>Hide evidence</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="metric-value">3</div>
+          <div class="metric-label"><strong>Institutional Capture</strong><br>Weaken checks</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="metric-value">4</div>
+          <div class="metric-label"><strong>Fiscal Control</strong><br>Centralise resources</div>
+        </div>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>Enabling Factors</h3>
+          <ul>
+            <li><strong>Technology:</strong> Digital surveillance scaled</li>
+            <li><strong>Media:</strong> Ownership concentrated</li>
+            <li><strong>Capital:</strong> Crony relationships deepened</li>
+            <li><strong>Opposition:</strong> Fragmented and weakened</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legitimation Strategy</h3>
+          <ul>
+            <li><strong>Nationalism:</strong> External threats emphasised</li>
+            <li><strong>Welfare:</strong> Direct transfers expanded</li>
+            <li><strong>Infrastructure:</strong> Visible projects prioritised</li>
+            <li><strong>Global stature:</strong> G20, rankings highlighted</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <p><strong>Key insight:</strong> Democratic erosion was <em>incremental</em> and <em>legal</em> — using democratic instruments against democratic norms.</p>
+      </div>
+    </div>
+
+    <!-- Slide 10 -->
+    <div class="slide">
+      <h2>International Comparison</h2>
+
+      <div class="highlight">
+        <p><strong>Question:</strong> Is India unique, or part of a global pattern?</p>
+      </div>
+
+      <table class="comparison-table">
+        <thead><tr><th>Country</th><th>Growth Rate</th><th>Democratic Decline</th><th>Inequality Rise</th><th>Pattern</th></tr></thead>
+        <tbody>
+          <tr><td><strong>India</strong></td><td>6.2%</td><td>−44%</td><td>+50%</td><td>High growth, high erosion</td></tr>
+          <tr><td><strong>Turkey</strong></td><td>5.1%</td><td>−38%</td><td>+35%</td><td>Similar trajectory</td></tr>
+          <tr><td><strong>Hungary</strong></td><td>3.2%</td><td>−41%</td><td>+28%</td><td>Lower growth, similar erosion</td></tr>
+          <tr><td><strong>Brazil</strong></td><td>1.8%</td><td>−15%</td><td>+18%</td><td>Resistance & recovery</td></tr>
+          <tr><td><strong>Philippines</strong></td><td>5.8%</td><td>−32%</td><td>+31%</td><td>Parallel pattern</td></tr>
+        </tbody>
+      </table>
+
+      <div class="two-column">
+        <div>
+          <h3>Common Features</h3>
+          <ul>
+            <li>Populist leadership</li>
+            <li>Media capture</li>
+            <li>Judicial weakening</li>
+            <li>Electoral manipulation</li>
+            <li>Crony capitalism</li>
+          </ul>
+        </div>
+        <div>
+          <h3>India's Distinctions</h3>
+          <ul>
+            <li>Scale (1.4 billion people)</li>
+            <li>Federal complexity</li>
+            <li>Statistical suppression depth</li>
+            <li>Speed of concentration</li>
+            <li>Growth-erosion correlation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <p><strong>Finding:</strong> India represents an extreme case of the global "competitive authoritarian" model.</p>
+      </div>
+    </div>
+
+    <!-- Slide 11 -->
+    <div class="slide">
+      <h2>Theoretical Contributions</h2>
+
+      <div class="two-column">
+        <div>
+          <h3>1) Reframing Modernisation Theory</h3>
+          <div class="key-point">
+            <p><strong>Traditional:</strong> Growth → democracy</p>
+            <p><strong>Refinement:</strong> Growth can legitimise erosion</p>
+          </div>
+          <ul>
+            <li>Economic success as political capital</li>
+            <li>Middle class co-optation</li>
+            <li>Development without democracy</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>2) Extending Competitive Authoritarianism</h3>
+          <div class="key-point">
+            <p><strong>Levitsky & Way:</strong> Electoral competition + unfair advantage</p>
+            <p><strong>Extension:</strong> Quantised accountability erosion</p>
+          </div>
+          <ul>
+            <li>Incremental institutional capture</li>
+            <li>Legal mechanisms of erosion</li>
+            <li>Democratic form without substance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <h3>3) Novel Concept: "Fiscal Authoritarianism"</h3>
+        <p>Using federal fiscal architecture to centralise political power while maintaining constitutional facade.</p>
+        <ul>
+          <li>Revenue instruments as control mechanisms</li>
+          <li>Conditional transfers as political tools</li>
+          <li>Fiscal federalism subversion</li>
+        </ul>
+      </div>
+
+      <div class="index-visual">
+        <h3>4) Measurement Innovation</h3>
+        <p>Three composite indices (SSI, FCI, DQI) provide quantitative framework for tracking institutional erosion.</p>
+      </div>
+    </div>
+
+    <!-- Slide 12 -->
+    <div class="slide">
+      <h2>Policy Implications</h2>
+
+      <div class="highlight">
+        <p><strong>The challenge:</strong> How to reverse institutional erosion while maintaining growth?</p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>Immediate Priorities</h3>
+          <ul>
+            <li><strong>Statistical independence:</strong> Constitutional protection</li>
+            <li><strong>Fiscal rebalancing:</strong> Restore states' share</li>
+            <li><strong>Electoral finance:</strong> Post-Electoral Bonds reform</li>
+            <li><strong>Media plurality:</strong> Anti-concentration rules</li>
+            <li><strong>Civil society:</strong> Restore NGO licenses</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Structural Reforms</h3>
+          <ul>
+            <li><strong>Employment guarantee:</strong> Urban MGNREGA</li>
+            <li><strong>Wealth taxation:</strong> Restore & strengthen</li>
+            <li><strong>Federal council:</strong> Institutionalise GST model</li>
+            <li><strong>Judicial reform:</strong> Appointment transparency</li>
+            <li><strong>Digital rights:</strong> Privacy & surveillance limits</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <p><strong>Critical insight:</strong> Technical solutions exist, but require political will to overcome vested interests benefiting from concentration.</p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><span class="metric-value">₹8.2L Cr</span><div class="metric-label">Annual Revenue<br>Lost to States</div></div>
+        <div class="metric"><span class="metric-value">25 Million</span><div class="metric-label">Formal Jobs<br>Needed</div></div>
+        <div class="metric"><span class="metric-value">₹3.5L Cr</span><div class="metric-label">Wealth Tax<br>Potential</div></div>
+      </div>
+    </div>
+
+    <!-- Slide 13 -->
+    <div class="slide">
+      <h2>Research Agenda</h2>
+
+      <div class="highlight">
+        <p><strong>This study opens multiple research questions requiring investigation:</strong></p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>Empirical Extensions</h3>
+          <ul>
+            <li><strong>State-level variation:</strong> Why did some states resist better?</li>
+            <li><strong>Sectoral analysis:</strong> Which industries benefited/suffered?</li>
+            <li><strong>Social stratification:</strong> Caste/religion/gender dimensions</li>
+            <li><strong>District-level indices:</strong> Granular measurement</li>
+            <li><strong>Media ownership:</strong> Concentration patterns</li>
+          </ul>
+
+          <h3>Methodological Advances</h3>
+          <ul>
+            <li>Machine learning for data imputation</li>
+            <li>Satellite data for economic proxies</li>
+            <li>Network analysis of crony relationships</li>
+            <li>Text analysis of judgments/policies</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Comparative Studies</h3>
+          <ul>
+            <li><strong>Cross-national:</strong> India vs. other democracies</li>
+            <li><strong>Historical:</strong> Emergency vs. current period</li>
+            <li><strong>Subnational:</strong> State governance models</li>
+            <li><strong>Sectoral:</strong> Agriculture vs. services vs. manufacturing</li>
+          </ul>
+
+          <h3>Policy Research</h3>
+          <ul>
+            <li>Institutional design for resilience</li>
+            <li>Early warning systems</li>
+            <li>Reversal mechanisms</li>
+            <li>International accountability</li>
+            <li>Technology and democracy</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="key-point">
+        <p><strong>For researchers:</strong> How can we study democracy when the data about democracy is itself suppressed?</p>
+      </div>
+    </div>
+
+    <!-- Slide 14 -->
+    <div class="slide">
+      <h2>Explore the Full Research</h2>
+
+      <div class="website-link">
+        <h3>Visit: <a href="https://someperspective.info" target="_blank" rel="noopener">someperspective.info</a></h3>
+        <p>Complete analysis · Interactive data · Datasets · Methods appendix</p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>What You'll Find</h3>
+          <ul>
+            <li><strong>Interactive Explorer:</strong> Visualise trends</li>
+            <li><strong>Full Paper:</strong> 80+ pages, 200+ citations</li>
+            <li><strong>Replication Files:</strong> Data and code</li>
+            <li><strong>State Profiles:</strong> 28 states analysed</li>
+            <li><strong>Policy Briefs:</strong> Targeted recommendations</li>
+            <li><strong>Media Kit:</strong> Graphics and summaries</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Why Open Access</h3>
+          <ul>
+            <li><strong>Transparency:</strong> Counter suppression with openness</li>
+            <li><strong>Accessibility:</strong> Research for all citizens</li>
+            <li><strong>Replication:</strong> Verify and extend findings</li>
+            <li><strong>Impact:</strong> Enable evidence-based debate</li>
+            <li><strong>Accountability:</strong> Democracy needs data</li>
+          </ul>
+
+          <div class="highlight">
+            <p><strong>Commitment:</strong> All data, code, and analysis freely available under Creative Commons license.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><span class="metric-value">11</span><div class="metric-label">Years of Data<br>(2014–2025)</div></div>
+        <div class="metric"><span class="metric-value">28</span><div class="metric-label">States<br>Analysed</div></div>
+        <div class="metric"><span class="metric-value">15+</span><div class="metric-label">Data<br>Sources</div></div>
+        <div class="metric"><span class="metric-value">3</span><div class="metric-label">Novel<br>Indices</div></div>
+      </div>
+    </div>
+
+    <!-- Slide 15 -->
+    <div class="slide">
+      <h2>Discussion & Questions</h2>
+
+      <div class="highlight">
+        <h3>Key Takeaways</h3>
+        <p>1. India experienced high GDP growth alongside democratic erosion — a new governance model</p>
+        <p>2. Inequality reached colonial-era peaks while employment collapsed</p>
+        <p>3. Fiscal federalism was systematically undermined through design</p>
+        <p>4. Statistical suppression became a tool of narrative control</p>
+        <p>5. Reform is possible but requires confronting concentrated interests</p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>Questions to Consider</h3>
+          <ul>
+            <li>Is this model sustainable long-term?</li>
+            <li>Can democracy recover without economic crisis?</li>
+            <li>What role can civil society play?</li>
+            <li>How should international community respond?</li>
+            <li>What are the generational implications?</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact & Collaboration</h3>
+          <p><strong>Website:</strong> someperspective.info</p>
+          <p><strong>Email:</strong> research@someperspective.info</p>
+          <p><strong>GitHub:</strong> github.com/someperspective</p>
+          <p style="margin-top:20px;">
+            <em>Open to collaboration on replication studies, 
+            state-level analysis, and policy research.</em>
+          </p>
+        </div>
+      </div>
+
+      <div class="author-info">
+        <p><strong>Thank you for your attention</strong></p>
+        <p style="margin-top:8px; color:#6b7280; font-size:14px;">
+          <em>This research is dedicated to strengthening India's democratic institutions through evidence.</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid Overview -->
+  <div class="grid" id="grid"></div>
+
+  <!-- Counters & Nav -->
+  <div class="slide-counter">
+    <span id="slideNumber">1</span> / <span id="totalSlides">15</span>
+  </div>
+
+  <div class="navigation">
+    <button class="nav-btn" id="prevBtn" aria-label="Previous">
+      ← Previous
+    </button>
+    <button class="nav-btn" id="nextBtn" aria-label="Next">
+      Next →
+    </button>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress">
+    <span id="progressBar"></span>
+  </div>
+
+  <!-- Blackout -->
+  <div class="blackout" id="blackout"></div>
+
+  <!-- JavaScript -->
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const slideNumber = document.getElementById('slideNumber');
+    const totalSlides = document.getElementById('totalSlides');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const blackoutEl = document.getElementById('blackout');
+    const blackoutBtn = document.getElementById('blackoutBtn');
+    const gridBtn = document.getElementById('gridBtn');
+    const printBtn = document.getElementById('printBtn');
+    const gridEl = document.getElementById('grid');
+
+    let currentSlide = 0;
+    totalSlides.textContent = slides.length;
+
+    function showSlide(n, opts = {}) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      slideNumber.textContent = currentSlide + 1;
+      progressBar.style.width = ((currentSlide + 1) / slides.length * 100) + '%';
+      
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === slides.length - 1;
+      
+      if (!opts.fromGrid) {
+        window.location.hash = currentSlide > 0 ? currentSlide + 1 : '';
+      }
+      if (opts.fromGrid) {
+        document.body.classList.remove('gridview');
+      }
+    }
+
+    function changeSlide(delta) {
+      showSlide(currentSlide + delta);
+    }
+
+    function parseHash() {
+      const hash = window.location.hash.slice(1);
+      const slideNum = parseInt(hash) || 1;
+      return Math.max(0, Math.min(slideNum - 1, slides.length - 1));
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', () => changeSlide(-1));
+    nextBtn.addEventListener('click', () => changeSlide(1));
+
+    blackoutBtn.addEventListener('click', () => {
+      blackoutEl.classList.toggle('on');
+    });
+
+    gridBtn.addEventListener('click', () => {
+      document.body.classList.toggle('gridview');
+    });
+
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      
+      switch(e.key) {
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          changeSlide(-1);
+          break;
+        case 'ArrowRight':
+        case 'ArrowDown':
+        case ' ':
+          changeSlide(1);
+          break;
+        case 'Home':
+          showSlide(0);
+          break;
+        case 'End':
+          showSlide(slides.length - 1);
+          break;
+        case 'b':
+        case 'B':
+          blackoutEl.classList.toggle('on');
+          break;
+        case 'g':
+        case 'G':
+          document.body.classList.toggle('gridview');
+          break;
+        case 'Escape':
+          blackoutEl.classList.remove('on');
+          document.body.classList.remove('gridview');
+          break;
+      }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+      const diffX = touchStartX - touchEndX;
+      const diffY = touchStartY - touchEndY;
+
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        changeSlide(diffX > 0 ? 1 : -1);
+      }
+    });
+
+    // Build grid
+    slides.forEach((slide, i) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'thumb';
+      thumb.title = `Go to slide ${i + 1}`;
+      const clone = slide.cloneNode(true);
+      clone.classList.add('active');
+      thumb.appendChild(clone);
+      thumb.addEventListener('click', () => showSlide(i, {fromGrid: true}));
+      gridEl.appendChild(thumb);
+    });
+
+    // Initialize
+    window.addEventListener('hashchange', () => showSlide(parseHash()));
+    showSlide(parseHash());
+  </script>
+</body>
+</html>
