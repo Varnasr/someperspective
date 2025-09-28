@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India's Economic Paradox: Growth Without Accountability (2014-2025)</title>
+  <meta name="theme-color" content="#1e40af">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #1e40af;
+      --secondary: #3730a3;
+      --accent: #dc2626;
+      --success: #16a34a;
+      --warning: #ea580c;
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Presentation Container */
+    .presentation-container {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    /* Slides */
+    .slide {
+      width: min(1100px, 95vw);
+      height: min(700px, 85vh);
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      display: none;
+      overflow-y: auto;
+      animation: slideIn 0.4s ease;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Typography */
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* Key Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .stat-description {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-top: 0.5rem;
+    }
+
+    /* Paradox Visual */
+    .paradox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: var(--bg);
+      border-radius: 12px;
+    }
+
+    .paradox-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .paradox-arrow {
+      font-size: 2rem;
+      color: var(--warning);
+    }
+
+    /* Findings List */
+    .findings-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .findings-list li {
+      padding: 1rem 1rem 1rem 3rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg);
+      border-radius: 8px;
+      position: relative;
+      border-left: 3px solid var(--primary);
+    }
+
+    .findings-list li:before {
+      content: "→";
+      position: absolute;
+      left: 1rem;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    /* Two Column Layout */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    /* Highlight Box */
+    .highlight-box {
+      background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+      border: 2px solid var(--warning);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-box h3 {
+      color: var(--warning);
+      margin-top: 0;
+    }
+
+    /* Index Display */
+    .index-display {
+      display: flex;
+      justify-content: space-around;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .index-item {
+      text-align: center;
+    }
+
+    .index-name {
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .index-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    .index-change {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .increase { color: var(--accent); }
+    .decrease { color: var(--success); }
+
+    /* Navigation */
+    .nav-container {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1rem;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--paper);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Slide Counter */
+    .slide-counter {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      background: var(--paper);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+      z-index: 101;
+    }
+
+    /* Print Button */
+    .print-btn {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--success);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        overflow: visible;
+      }
+      
+      .slide {
+        display: block !important;
+        page-break-after: always;
+        height: auto;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 2rem;
+      }
+      
+      .nav-container, .slide-counter, .progress-bar, .print-btn {
+        display: none !important;
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .slide {
+        padding: 2rem;
+      }
+      
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .paradox-container {
+        flex-direction: column;
+      }
+      
+      .index-display {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-radius: 12px;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: white;
+      color: var(--primary);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progress"></div>
+
+  <!-- Print Button -->
+  <button class="print-btn" onclick="window.print()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z"/>
+    </svg>
+    Print / PDF
+  </button>
+
+  <!-- Slide Counter -->
+  <div class="slide-counter">
+    <span id="current">1</span> / <span id="total">12</span>
+  </div>
+
+  <!-- Presentation Container -->
+  <div class="presentation-container">
+    
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+      <h1>India's Economic Paradox: Growth Without Accountability</h1>
+      <p class="subtitle">A Political Economy Assessment (2014-2025)</p>
+      
+      <div class="highlight-box">
+        <h3>Core Question</h3>
+        <p><strong>How did India sustain high GDP growth while experiencing systematic institutional erosion and rising inequality?</strong></p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">6.8%</div>
+          <div class="stat-label">Average GDP Growth</div>
+          <div class="stat-description">2014-2024</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">22.6%</div>
+          <div class="stat-label">Top 1% Income Share</div>
+          <div class="stat-description">Colonial-era extreme</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">29.8%</div>
+          <div class="stat-label">States' Tax Share</div>
+          <div class="stat-description">Down from 42%</div>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">
+        <em>Based on triangulated data from government sources, independent surveys, and international assessments</em>
+      </p>
+    </div>
+
+    <!-- Slide 2: The Central Paradox -->
+    <div class="slide">
+      <h2>The Central Paradox</h2>
+      
+      <div class="paradox-container">
+        <div class="paradox-item">
+          <div class="stat-number">↑</div>
+          <h3>Economic Growth</h3>
+          <p>GDP: 6.8% average<br>
+          Stock market: Record highs<br>
+          FDI: $85 billion (2024)</p>
+        </div>
+        
+        <div class="paradox-arrow">⚡</div>
+        
+        <div class="paradox-item">
+          <div class="stat-number">↓</div>
+          <h3>Democratic Quality</h3>
+          <p>Freedom House: "Partly Free"<br>
+          Press Freedom: 161/180<br>
+          V-Dem: "Electoral Autocracy"</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Key Insight</h3>
+        <p>Growth became the <strong>medium</strong> of erosion, not a protection against it. Rising revenues financed populist transfers while institutions weakened.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3: Three Novel Indices -->
+    <div class="slide">
+      <h2>Measuring the Unmeasured: Three Novel Indices</h2>
+      
+      <div class="index-display">
+        <div class="index-item">
+          <div class="index-name">Statistical Suppression Index (SSI)</div>
+          <div class="index-value increase">7.8</div>
+          <div class="index-change">↑ from 2.3 (2014)</div>
+        </div>
+        <div class="index-item">
+          <div class="index-name">Fiscal Centralisation Index (FCI)</div>
+          <div class="index-value increase">0.78</div>
+          <div class="index-change">↑ from 0.62 (2014)</div>
+        </div>
+        <div class="index-item">
+          <div class="index-name">Democratic Quality Index (DQI)</div>
+          <div class="index-value decrease">0.42</div>
+          <div class="index-change">↓ from 0.71 (2014)</div>
+        </div>
+      </div>
+
+      <ul class="findings-list">
+        <li><strong>SSI:</strong> Captures data delays, survey suppression, methodological changes, and institutional resignations</li>
+        <li><strong>FCI:</strong> Measures fiscal centralization through cesses, reduced devolution, and conditional transfers</li>
+        <li><strong>DQI:</strong> Combines V-Dem, Freedom House, and Press Freedom indices using geometric mean</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4: Employment Paradox -->
+    <div class="slide">
+      <h2>The Employment Illusion</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">1.11</div>
+          <div class="stat-label">Employment Elasticity</div>
+          <div class="stat-description">2017-2023 (up from 0.01)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">45.8%</div>
+          <div class="stat-label">Self-Employment</div>
+          <div class="stat-description">Distress-driven increase</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">46%</div>
+          <div class="stat-label">Informal Sector</div>
+          <div class="stat-description">No social protection</div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Hidden Reality</h3>
+        <p>• <strong>Women's LFPR collapse:</strong> 23.3% → 19.2% (urban)<br>
+        • <strong>Youth unemployment:</strong> 17.3% for graduates<br>
+        • <strong>Real wages stagnant:</strong> ₹169/day rural, ₹254/day urban<br>
+        • <strong>Quality deficit:</strong> 83% workers earn below ₹10,000/month</p>
+      </div>
+    </div>
+
+    <!-- Slide 5: Inequality Crisis -->
+    <div class="slide">
+      <h2>Inequality: Back to Colonial Extremes</h2>
+      
+      <div class="two-column">
+        <div>
+          <h3>Wealth Concentration</h3>
+          <ul class="findings-list">
+            <li>Top 1%: 22.6% of income (highest since 1920s)</li>
+            <li>Top 10%: 57.1% of income</li>
+            <li>Bottom 50%: 15% of income</li>
+            <li>Billionaire wealth: 7.5% → 25% of GDP</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Consumption Collapse</h3>
+          <ul class="findings-list">
+            <li>Rural consumption: -3.6% (2017-2023)</li>
+            <li>FMCG volume growth: Near zero</li>
+            <li>Two-wheeler sales: Below 2018 levels</li>
+            <li>Household savings: 5.3% of GDP (lowest in 47 years)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Policy Failure</h3>
+        <p>Corporate tax cuts (₹1.45 lakh crore) coincided with investment decline. Capital formation fell from 34% to 29% of GDP.</p>
+      </div>
+    </div>
+
+    <!-- Slide 6: Fiscal Federalism Erosion -->
+    <div class="slide">
+      <h2>Fiscal Federalism: Constitutional Subversion</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">20.2%</div>
+          <div class="stat-label">Cesses & Surcharges</div>
+          <div class="stat-description">Up from 10.4% (2014)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">29.8%</div>
+          <div class="stat-label">Actual Devolution</div>
+          <div class="stat-description">vs 42% mandated</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4.6%</div>
+          <div class="stat-label">States' Fiscal Deficit</div>
+          <div class="stat-description">Limited borrowing autonomy</div>
+        </div>
+      </div>
+
+      <ul class="findings-list">
+        <li><strong>GST Design:</strong> Multiple rate structure increased compliance burden by 40%</li>
+        <li><strong>CSS Proliferation:</strong> 740 schemes with 138 different sharing patterns</li>
+        <li><strong>Conditional Transfers:</strong> 65% of transfers tied to central schemes</li>
+        <li><strong>Borrowing Restrictions:</strong> States need center's approval beyond 3% deficit</li>
+      </ul>
+    </div>
+
+    <!-- Slide 7: Statistical Manipulation -->
+    <div class="slide">
+      <h2>Statistical Suppression: Engineering Narratives</h2>
+      
+      <div class="two-column">
+        <div>
+          <h3>Suppressed Data</h3>
+          <ul class="findings-list">
+            <li>2017-18 Consumption Survey (withheld)</li>
+            <li>2021 Census (indefinitely postponed)</li>
+            <li>PLFS delayed by 2 years</li>
+            <li>Employment data methodology changed</li>
+            <li>Poverty estimates discontinued</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Institutional Capture</h3>
+          <ul class="findings-list">
+            <li>NSC resignations (2019)</li>
+            <li>Chief Statistician tensions</li>
+            <li>108 economists' protest letter</li>
+            <li>GDP back-series controversy</li>
+            <li>International credibility loss</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Impact</h3>
+        <p>SSI rose from 2.3 to 7.8 - highest among major democracies. Policy made without evidence, accountability without data.</p>
+      </div>
+    </div>
+
+    <!-- Slide 8: Democratic Erosion -->
+    <div class="slide">
+      <h2>Democratic Institutions: Systematic Weakening</h2>
+      
+      <div class="index-display">
+        <div class="index-item">
+          <div class="index-name">Press Freedom</div>
+          <div class="index-value">161/180</div>
+          <div class="index-change">↓ from 140 (2014)</div>
+        </div>
+        <div class="index-item">
+          <div class="index-name">Freedom House</div>
+          <div class="index-value">"Partly Free"</div>
+          <div class="index-change">↓ from "Free"</div>
+        </div>
+        <div class="index-item">
+          <div class="index-name">V-Dem Rating</div>
+          <div class="index-value">"Electoral Autocracy"</div>
+          <div class="index-change">↓ from "Democracy"</div>
+        </div>
+      </div>
+
+      <ul class="findings-list">
+        <li><strong>Electoral Bonds:</strong> ₹16,518 crore in opaque political funding</li>
+        <li><strong>ED/CBI Raids:</strong> 95% targets were opposition leaders</li>
+        <li><strong>UAPA Arrests:</strong> 10,552 cases, 72% without trial</li>
+        <li><strong>Internet Shutdowns:</strong> 665 instances (highest globally)</li>
+        <li><strong>NGO Crackdown:</strong> 16,000 FCRA licenses cancelled</li>
+      </ul>
+    </div>
+
+    <!-- Slide 9: Comparative Analysis -->
+    <div class="slide">
+      <h2>India in Comparative Perspective</h2>
+      
+      <div class="two-column">
+        <div>
+          <h3>Similar to Turkey/Hungary</h3>
+          <ul class="findings-list">
+            <li>Electoral competition continues</li>
+            <li>Formal institutions persist</li>
+            <li>Majoritarian populism</li>
+            <li>Media concentration</li>
+            <li>Civil society restrictions</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Unique Features</h3>
+          <ul class="findings-list">
+            <li>Statistical suppression as primary tool</li>
+            <li>Fiscal federalism subversion</li>
+            <li>Digital welfare for legitimacy</li>
+            <li>No constitutional amendments needed</li>
+            <li>Growth narrative despite inequality</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Key Difference</h3>
+        <p>India achieved authoritarian outcomes through <strong>procedural means</strong> - no emergency, no constitutional rupture, just systematic institutional capture.</p>
+      </div>
+    </div>
+
+    <!-- Slide 10: Policy Solutions -->
+    <div class="slide">
+      <h2>Pathways to Restoration: Priority Reforms</h2>
+      
+      <div class="two-column">
+        <div>
+          <h3>Immediate (0-6 months)</h3>
+          <ul class="findings-list">
+            <li>Statistical Independence Act</li>
+            <li>Electoral finance transparency</li>
+            <li>Cess/surcharge cap at 10%</li>
+            <li>Media ownership audit</li>
+            <li>FCRA reform</li>
+          </ul>
+          
+          <h3>Short-term (6-12 months)</h3>
+          <ul class="findings-list">
+            <li>GST Council reform</li>
+            <li>State borrowing autonomy</li>
+            <li>Labor code implementation</li>
+            <li>Judicial appointments reform</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Medium-term (1-2 years)</h3>
+          <ul class="findings-list">
+            <li>National Employment Mission</li>
+            <li>Universal health coverage</li>
+            <li>Education spending to 6% GDP</li>
+            <li>Progressive wealth taxation</li>
+            <li>Federal institutions strengthening</li>
+          </ul>
+          
+          <h3>Expected Impact</h3>
+          <ul class="findings-list">
+            <li>SSI below 3.0</li>
+            <li>FCI below 0.65</li>
+            <li>DQI above 0.60</li>
+            <li>10 million formal jobs/year</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 11: Future Scenarios -->
+    <div class="slide">
+      <h2>Two Futures: Choice Point for India</h2>
+      
+      <div class="two-column">
+        <div style="background: #fee2e2; padding: 1.5rem; border-radius: 12px;">
+          <h3 style="color: var(--accent);">Scenario 1: Continued Erosion</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.75rem;">📉 Growth slows to 4-5% as contradictions deepen</li>
+            <li style="margin-bottom: 0.75rem;">💔 Social cohesion fractures</li>
+            <li style="margin-bottom: 0.75rem;">🏭 Manufacturing dreams unrealized</li>
+            <li style="margin-bottom: 0.75rem;">📊 International isolation</li>
+            <li style="margin-bottom: 0.75rem;">⚡ Youth unemployment crisis</li>
+          </ul>
+        </div>
+        <div style="background: #dcfce7; padding: 1.5rem; border-radius: 12px;">
+          <h3 style="color: var(--success);">Scenario 2: Democratic Renewal</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.75rem;">📈 Inclusive growth at 7-8%</li>
+            <li style="margin-bottom: 0.75rem;">🤝 Strengthened federalism</li>
+            <li style="margin-bottom: 0.75rem;">🏛️ Institutional independence</li>
+            <li style="margin-bottom: 0.75rem;">💼 Formal job creation</li>
+            <li style="margin-bottom: 0.75rem;">🌏 Regional leadership</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Critical Window</h3>
+        <p>The next 2-3 years will determine whether India consolidates authoritarian populism or reverses course toward accountable growth. The choice is still open.</p>
+      </div>
+    </div>
+
+    <!-- Slide 12: Call to Action -->
+    <div class="slide">
+      <h2>From Research to Action</h2>
+      
+      <div class="cta">
+        <h2>The Evidence is Clear. The Path is Known.</h2>
+        <p>India's future depends on restoring the balance between growth and accountability. This is not partisan but empirical, not ideological but factual.</p>
+        <a href="https://someperspective.info" class="cta-btn">Access Full Research</a>
+        <a href="#" onclick="window.print(); return false;" class="cta-btn">Download Presentation</a>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">11</div>
+          <div class="stat-label">Years of Data</div>
+          <div class="stat-description">2014-2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">28</div>
+          <div class="stat-label">States Analyzed</div>
+          <div class="stat-description">All Indian states</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Sources</div>
+          <div class="stat-description">Triangulated data</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Novel Indices</div>
+          <div class="stat-description">SSI, FCI, DQI</div>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">
+        <strong>Full Research:</strong> someperspective.info<br>
+        <strong>Contact:</strong> research@someperspective.info<br>
+        <em>September 2025</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-container">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    
+    document.getElementById('total').textContent = totalSlides;
+    
+    function showSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+      
+      document.getElementById('current').textContent = currentSlide + 1;
+      document.getElementById('prevBtn').disabled = currentSlide === 0;
+      document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+      
+      // Update progress bar
+      const progress = ((currentSlide + 1) / totalSlides) * 100;
+      document.getElementById('progress').style.width = progress + '%';
+    }
+    
+    function changeSlide(delta) {
+      const newSlide = Math.min(totalSlides - 1, Math.max(0, currentSlide + delta));
+      showSlide(newSlide);
+    }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') changeSlide(1);
+      else if (e.key === 'ArrowLeft') changeSlide(-1);
+      else if (e.key === 'Home') showSlide(0);
+      else if (e.key === 'End') showSlide(totalSlides - 1);
+    });
+    
+    // Touch support for mobile
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        changeSlide(diff > 0 ? 1 : -1);
+      }
+    });
+    
+    // Initialize
+    showSlide(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Kit - India's Economic Paradox: Key Facts & Infographics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            background: #ffffff;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .quick-facts {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .quick-facts h2 {
+            color: #92400e;
+            margin-bottom: 1rem;
+        }
+        
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .fact-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #fbbf24;
+        }
+        
+        .fact-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #dc2626;
+        }
+        
+        .fact-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            color: #7c3aed;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #e5e7eb;
+        }
+        
+        h3 {
+            color: #374151;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .infographic {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            page-break-inside: avoid;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            height: 200px;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, #7c3aed, #a78bfa);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 0.5rem;
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        
+        .bar-value {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-viz {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-points {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .timeline-point {
+            text-align: center;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #7c3aed;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            border: 3px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .quote-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .quote-source {
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-table th {
+            background: #7c3aed;
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .sparkline {
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        
+        .trend-up {
+            color: #dc2626;
+        }
+        
+        .trend-down {
+            color: #059669;
+        }
+        
+        .key-visual {
+            background: white;
+            border: 3px solid #7c3aed;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .big-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .big-label {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #7c3aed;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background: #6d28d9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                max-width: 100%;
+            }
+            
+            .print-button {
+                display: none;
+            }
+            
+            .infographic {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .fact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">📄 Save as PDF</button>
+    
+    <div class="header">
+        <h1>📰 Media Kit</h1>
+        <p class="subtitle">India's Economic Paradox: Growth Without Accountability<br>Key Facts, Quotes, and Infographics for Journalists</p>
+    </div>
+    
+    <div class="quick-facts">
+        <h2>⚡ 90-Second Brief</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+            <strong>The Story:</strong> India's economic "miracle" masks a darker reality. While GDP grew 6.8% annually (2014-2025), formal jobs collapsed, inequality hit colonial-era peaks, and democracy eroded to "electoral autocracy" status. Official data was suppressed, including the 2017-18 consumption survey and 2021 census. States lost fiscal autonomy as their tax share fell from 42% to 29.8%. The top 1% now control 22.6% of income—more than during British rule.
+        </p>
+        
+        <div class="fact-grid">
+            <div class="fact-card">
+                <div class="fact-number">45-year</div>
+                <div class="fact-label">Unemployment High (6.1%)</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-number">22.6%</div>
+                <div class="fact-label">Income to Top 1%</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-number">161/180</div>
+                <div class="fact-label">Press Freedom Rank</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-number">₹18,518 Cr</div>
+                <div class="fact-label">Electoral Bonds</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📊 Infographic 1: The Two Indias</h2>
+        
+        <div class="infographic">
+            <h3 style="text-align: center; color: #7c3aed;">GDP vs Reality: The Divergence</h3>
+            
+            <div class="bar-chart">
+                <div class="bar" style="height: 80%;">
+                    <span class="bar-value">6.8%</span>
+                    <span class="bar-label">GDP Growth</span>
+                </div>
+                <div class="bar" style="height: 30%; background: linear-gradient(to top, #dc2626, #f87171);">
+                    <span class="bar-value">-7pp</span>
+                    <span class="bar-label">Formal Jobs</span>
+                </div>
+                <div class="bar" style="height: 95%; background: linear-gradient(to top, #dc2626, #f87171);">
+                    <span class="bar-value">+50%</span>
+                    <span class="bar-label">Inequality</span>
+                </div>
+                <div class="bar" style="height: 60%; background: linear-gradient(to top, #dc2626, #f87171);">
+                    <span class="bar-value">-40%</span>
+                    <span class="bar-label">Democracy</span>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 3rem; color: #6b7280;">
+                <strong>The Paradox:</strong> Economic growth coexists with social regression
+            </p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>💼 Infographic 2: Employment Crisis</h2>
+        
+        <div class="key-visual">
+            <div class="big-number">11%</div>
+            <div class="big-label">Formal Employment Share (Down from 18%)</div>
+            
+            <div style="margin-top: 2rem; display: flex; justify-content: space-around;">
+                <div>
+                    <h4 style="color: #dc2626; font-size: 2rem;">89%</h4>
+                    <p style="color: #6b7280;">In Informal Sector</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626; font-size: 2rem;">45%</h4>
+                    <p style="color: #6b7280;">Youth Underemployed</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626; font-size: 2rem;">0.01</h4>
+                    <p style="color: #6b7280;">Employment Elasticity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📈 Infographic 3: Inequality Timeline</h2>
+        
+        <div class="infographic">
+            <h3 style="text-align: center;">Top 1% Income Share: Return to Colonial Era</h3>
+            
+            <div class="timeline-viz">
+                <div class="timeline-line"></div>
+                <div class="timeline-points">
+                    <div class="timeline-point">
+                        <div class="timeline-dot"></div>
+                        <strong>1939</strong><br>
+                        <span style="color: #dc2626;">20.7%</span><br>
+                        <small>Colonial Peak</small>
+                    </div>
+                    <div class="timeline-point">
+                        <div class="timeline-dot" style="background: #059669;"></div>
+                        <strong>1982</strong><br>
+                        <span style="color: #059669;">6%</span><br>
+                        <small>Post-Independence Low</small>
+                    </div>
+                    <div class="timeline-point">
+                        <div class="timeline-dot"></div>
+                        <strong>2014</strong><br>
+                        <span>15%</span><br>
+                        <small>Pre-NDA</small>
+                    </div>
+                    <div class="timeline-point">
+                        <div class="timeline-dot" style="background: #dc2626;"></div>
+                        <strong>2023</strong><br>
+                        <span style="color: #dc2626;">22.6%</span><br>
+                        <small>Current</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>🏛️ Infographic 4: Fiscal Centralization</h2>
+        
+        <div class="chart-container">
+            <h3>States' Shrinking Share</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Fiscal Indicator</th>
+                        <th>Constitutional Mandate</th>
+                        <th>2014 Reality</th>
+                        <th>2024 Reality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tax Devolution</td>
+                        <td>42%</td>
+                        <td>35%</td>
+                        <td style="color: #dc2626; font-weight: 700;">29.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Cess/Surcharge (Bypasses States)</td>
+                        <td>Minimal</td>
+                        <td>10.4%</td>
+                        <td style="color: #dc2626; font-weight: 700;">20.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Conditional Transfers</td>
+                        <td>Exception</td>
+                        <td>45%</td>
+                        <td style="color: #dc2626; font-weight: 700;">68%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>🚨 Infographic 5: Democratic Decline</h2>
+        
+        <div class="infographic" style="background: #fef2f2; border-color: #dc2626;">
+            <h3 style="text-align: center; color: #dc2626;">International Democracy Rankings</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
+                <div style="text-align: center;">
+                    <h4>Freedom House</h4>
+                    <div style="font-size: 1.5rem; margin: 1rem 0;">
+                        <span style="color: #059669;">2014: FREE</span><br>
+                        ↓<br>
+                        <span style="color: #dc2626;">2024: PARTLY FREE</span>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h4>V-Dem Institute</h4>
+                    <div style="font-size: 1.5rem; margin: 1rem 0;">
+                        <span style="color: #059669;">2014: Democracy</span><br>
+                        ↓<br>
+                        <span style="color: #dc2626;">2024: Electoral Autocracy</span>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h4>Press Freedom</h4>
+                    <div style="font-size: 1.5rem; margin: 1rem 0;">
+                        <span style="color: #059669;">2014: 140/180</span><br>
+                        ↓<br>
+                        <span style="color: #dc2626;">2024: 161/180</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>💬 Quotable Quotes</h2>
+        
+        <div class="quote-box">
+            "India has achieved the dubious distinction of becoming the world's most unequal democracy, where the top 1% control more wealth than during British colonial rule."
+            <div class="quote-source">— From the research findings</div>
+        </div>
+        
+        <div class="quote-box">
+            "The suppression of the 2017-18 consumption survey and indefinite postponement of the census represent the most serious assault on statistical integrity since independence."
+            <div class="quote-source">— Statistical analysis section</div>
+        </div>
+        
+        <div class="quote-box">
+            "Employment elasticity of 0.01 means that for every 1% GDP growth, employment grew by just 0.01%—essentially jobless growth."
+            <div class="quote-source">— Employment findings</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📱 Social Media Graphics</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+            <div class="key-visual">
+                <h3 style="color: #7c3aed;">Twitter/X Card 1</h3>
+                <div class="big-number">6.1%</div>
+                <div class="big-label">45-YEAR UNEMPLOYMENT HIGH</div>
+                <p style="margin-top: 1rem; color: #6b7280;">#IndiaEconomy #JobsCrisis</p>
+            </div>
+            
+            <div class="key-visual">
+                <h3 style="color: #7c3aed;">Twitter/X Card 2</h3>
+                <div class="big-number">22.6%</div>
+                <div class="big-label">TOP 1% INCOME SHARE</div>
+                <p style="margin-top: 1rem; color: #6b7280;">#Inequality #IndiaData</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📋 Story Angles</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+            <div>
+                <h3>Economic Stories</h3>
+                <ul>
+                    <li>"The Missing 40 Million Jobs: Where Did They Go?"</li>
+                    <li>"India's Wealth Gap: Worse Than Colonial Era"</li>
+                    <li>"States vs Centre: The ₹5 Lakh Crore Fight"</li>
+                    <li>"Why MSMEs Are Dying Despite GDP Growth"</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Political Stories</h3>
+                <ul>
+                    <li>"The ₹18,518 Crore Electoral Bonds Scandal"</li>
+                    <li>"Democracy to Autocracy: India's 10-Year Slide"</li>
+                    <li>"The Census That Never Was: Political Fears?"</li>
+                    <li>"Media Capture: From 140 to 161 in Press Freedom"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📊 Data for Graphics</h2>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Indicator</th>
+                    <th>2014</th>
+                    <th>2025</th>
+                    <th>Change</th>
+                    <th>Visual Suggestion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GDP Growth</td>
+                    <td>7.7%</td>
+                    <td>6.8%</td>
+                    <td class="trend-down">-0.9pp</td>
+                    <td>Line chart</td>
+                </tr>
+                <tr>
+                    <td>Unemployment</td>
+                    <td>4.9%</td>
+                    <td>6.1%</td>
+                    <td class="trend-up">+1.2pp</td>
+                    <td>Area chart</td>
+                </tr>
+                <tr>
+                    <td>Top 1% Share</td>
+                    <td>15%</td>
+                    <td>22.6%</td>
+                    <td class="trend-up">+7.6pp</td>
+                    <td>Pie chart</td>
+                </tr>
+                <tr>
+                    <td>Press Freedom</td>
+                    <td>140/180</td>
+                    <td>161/180</td>
+                    <td class="trend-up">-21 ranks</td>
+                    <td>Bar chart</td>
+                </tr>
+                <tr>
+                    <td>States' Tax Share</td>
+                    <td>42%</td>
+                    <td>29.8%</td>
+                    <td class="trend-down">-12.2pp</td>
+                    <td>Donut chart</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>📞 Expert Contacts</h2>
+        
+        <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px;">
+            <p><strong>For fact-checking and additional data:</strong></p>
+            <p>Email: research@someperspective.info</p>
+            <p>Website: someperspective.info</p>
+            <p style="margin-top: 1rem;"><strong>Available for:</strong></p>
+            <ul>
+                <li>Background briefings</li>
+                <li>Data clarification</li>
+                <li>Custom analysis</li>
+                <li>Television/radio interviews</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📄 Usage Rights</h2>
+        
+        <div style="background: #ecfdf5; border: 2px solid #10b981; padding: 1.5rem; border-radius: 8px;">
+            <h3>Free to Use With Attribution</h3>
+            <p>All infographics, data, and quotes can be freely used with attribution to:</p>
+            <p style="margin-top: 0.5rem;"><strong>"someperspective.info research"</strong> or <strong>"India Political Economy Assessment 2014-2025"</strong></p>
+            <p style="margin-top: 1rem;">High-resolution graphics available on request.</p>
+        </div>
+    </div>
+    
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+        <p style="text-align: center; color: #6b7280; font-size: 0.9rem;">
+            Media Kit | India Political Economy Assessment 2014-2025<br>
+            Full research: <strong>someperspective.info</strong><br>
+            Press Contact: research@someperspective.info | September 2025
+        </p>
+    </div>
+</body>
+</html>

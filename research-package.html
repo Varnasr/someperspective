@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Package: India's Political Economy Assessment 2014-2025</title>
+    <meta name="description" content="Complete research package with data, code, documentation, and resources for India's political economy assessment">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3730a3;
+            --accent: #dc2626;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --text: #111827;
+            --text-muted: #6b7280;
+            --bg: #ffffff;
+            --bg-light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50%, -50%); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            background: var(--bg-light);
+            border-bottom: 2px solid var(--border);
+            padding: 0;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs .container {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            color: var(--text);
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Content Sections */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .resource-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-light);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .resource-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .resource-description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .resource-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: var(--bg-light);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background: var(--bg-light);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        /* Stats Overview */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .download-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Citation Box */
+        .citation-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .citation-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .citation-text {
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                font-size: 10pt;
+            }
+            
+            .print-btn, .nav-tabs {
+                display: none !important;
+            }
+            
+            .tab-content {
+                display: block !important;
+            }
+            
+            .resource-card {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-overview {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .print-btn {
+                position: static;
+                margin: 1rem auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Print Button -->
+    <button class="print-btn" onclick="window.print()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z"/>
+        </svg>
+        Print / Save PDF
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Research Package</h1>
+            <p class="subtitle">Complete Materials for India's Political Economy Assessment (2014-2025)</p>
+            <div class="meta-info">
+                <div class="meta-item">
+                    📅 September 2025
+                </div>
+                <div class="meta-item">
+                    📊 11 Years of Data
+                </div>
+                <div class="meta-item">
+                    📁 15+ Resources
+                </div>
+                <div class="meta-item">
+                    🔓 Open Access
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <div class="container">
+            <button class="nav-tab active" data-tab="overview">Overview</button>
+            <button class="nav-tab" data-tab="documents">Documents</button>
+            <button class="nav-tab" data-tab="data">Data & Code</button>
+            <button class="nav-tab" data-tab="presentations">Presentations</button>
+            <button class="nav-tab" data-tab="guides">Guides & Briefs</button>
+            <button class="nav-tab" data-tab="citation">Citation</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Overview Tab -->
+        <div class="tab-content active" id="overview">
+            <h2>Research Package Overview</h2>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                This comprehensive research package contains all materials from the study "Narratives, Numbers, and Democratic Accountability: 
+                A Political Economy Assessment of India, 2014-2025". All resources are open access and designed for researchers, policy makers, 
+                journalists, and citizens.
+            </p>
+
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">Full Research Paper</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Novel Indices</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">11</div>
+                    <div class="stat-label">Years of Data</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">28</div>
+                    <div class="stat-label">States Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100+</div>
+                    <div class="stat-label">Data Sources</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">Resources</div>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2>Quick Download Options</h2>
+                <p>Download the complete research package or select individual components</p>
+                <div class="download-buttons">
+                    <a href="#" class="download-btn" onclick="alert('Complete package download: 250MB ZIP file will be available at someperspective.info/package.zip'); return false;">
+                        📦 Complete Package (ZIP)
+                    </a>
+                    <a href="#" class="download-btn" onclick="alert('Paper PDF will be available at someperspective.info/paper.pdf'); return false;">
+                        📄 Research Paper (PDF)
+                    </a>
+                    <a href="#" class="download-btn" onclick="alert('Dataset will be available at someperspective.info/data.xlsx'); return false;">
+                        📊 Dataset (Excel)
+                    </a>
+                    <a href="https://github.com/someperspective/india-economy" class="download-btn">
+                        💻 Code Repository
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents Tab -->
+        <div class="tab-content" id="documents">
+            <h2>Research Documents</h2>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <span class="resource-type">Main Paper</span>
+                    <h3 class="resource-title">Full Research Paper</h3>
+                    <p class="resource-description">
+                        Complete academic paper with methodology, findings, and comprehensive analysis of India's political economy (2014-2025).
+                    </p>
+                    <div class="resource-meta">
+                        <span>📄 95 pages</span>
+                        <span>📊 45 figures</span>
+                        <span>📑 12 tables</span>
+                    </div>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="alert('PDF download available at someperspective.info/paper.pdf')">Download PDF</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='#'">Read Online</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Summary</span>
+                    <h3 class="resource-title">Executive Summary</h3>
+                    <p class="resource-description">
+                        8-page concise overview of key findings, indices, and policy implications for quick reference.
+                    </p>
+                    <div class="resource-meta">
+                        <span>📄 8 pages</span>
+                        <span>⏱️ 10 min read</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="executive-summary.html" class="btn btn-primary">View HTML</a>
+                        <button class="btn btn-secondary" onclick="window.print()">Print PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Technical</span>
+                    <h3 class="resource-title">Methodology Paper</h3>
+                    <p class="resource-description">
+                        Detailed technical documentation of index construction, data sources, and analytical methods.
+                    </p>
+                    <div class="resource-meta">
+                        <span>📄 25 pages</span>
+                        <span>🔬 Technical detail</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="methodology.html" class="btn btn-primary">View HTML</a>
+                        <button class="btn btn-secondary" onclick="window.print()">Print PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Appendix</span>
+                    <h3 class="resource-title">Technical Appendix</h3>
+                    <p class="resource-description">
+                        Supplementary materials including robustness checks, alternative specifications, and detailed calculations.
+                    </p>
+                    <div class="resource-meta">
+                        <span>📄 40 pages</span>
+                        <span>📈 Additional analysis</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="technical-appendix.html" class="btn btn-primary">View HTML</a>
+                        <button class="btn btn-secondary" onclick="window.print()">Print PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data & Code Tab -->
+        <div class="tab-content" id="data">
+            <h2>Data & Code</h2>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <span class="resource-type">Dataset</span>
+                    <h3 class="resource-title">Master Dataset</h3>
+                    <p class="resource-description">
+                        Complete dataset with all economic indicators, indices, and state-level data (2014-2025).
+                    </p>
+                    <div class="resource-meta">
+                        <span>📊 Excel format</span>
+                        <span>📈 1,200+ data points</span>
+                    </div>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="alert('Dataset available at someperspective.info/data.xlsx')">Download Excel</button>
+                        <button class="btn btn-secondary" onclick="alert('CSV available at someperspective.info/data.csv')">Download CSV</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Code</span>
+                    <h3 class="resource-title">Replication Code</h3>
+                    <p class="resource-description">
+                        Complete R and Python code for replicating all analyses, figures, and index calculations.
+                    </p>
+                    <div class="resource-meta">
+                        <span>💻 R/Python</span>
+                        <span>📝 Documented</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="https://github.com/someperspective/india-economy" class="btn btn-primary">View on GitHub</a>
+                        <button class="btn btn-secondary" onclick="alert('Download ZIP from GitHub')">Download ZIP</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Indices</span>
+                    <h3 class="resource-title">SSI, FCI, DQI Data</h3>
+                    <p class="resource-description">
+                        Detailed calculations and components for the three novel indices introduced in the paper.
+                    </p>
+                    <div class="resource-meta">
+                        <span>📊 3 indices</span>
+                        <span>📅 Annual data</span>
+                    </div>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="alert('Indices data available at someperspective.info/indices.xlsx')">Download Excel</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='#'">View Online</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+# Sample Code: Calculate Statistical Suppression Index (SSI)
+import pandas as pd
+import numpy as np
+
+def calculate_ssi(data):
+    """Calculate Statistical Suppression Index from components"""
+    components = ['surveys_withheld', 'delays', 'revisions', 'resignations']
+    z_scores = (data[components] - data[components].mean()) / data[components].std()
+    ssi = z_scores.mean(axis=1)
+    return (ssi - ssi.min()) / (ssi.max() - ssi.min()) * 10
+
+# Load data and calculate
+data = pd.read_csv('india_stats.csv')
+data['SSI'] = calculate_ssi(data)
+print(f"SSI increased from {data['SSI'].iloc[0]:.1f} to {data['SSI'].iloc[-1]:.1f}")
+            </div>
+        </div>
+
+        <!-- Presentations Tab -->
+        <div class="tab-content" id="presentations">
+            <h2>Presentations</h2>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <span class="resource-type">Interactive</span>
+                    <h3 class="resource-title">Research Presentation</h3>
+                    <p class="resource-description">
+                        12-slide interactive presentation covering key findings, paradoxes, and policy implications.
+                    </p>
+                    <div class="resource-meta">
+                        <span>🎯 12 slides</span>
+                        <span>⏱️ 15 min</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="research-presentation.html" class="btn btn-primary">View Presentation</a>
+                        <button class="btn btn-secondary" onclick="window.print()">Print Slides</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Academic</span>
+                    <h3 class="resource-title">Conference Presentation</h3>
+                    <p class="resource-description">
+                        Extended academic presentation with detailed methodology and robustness checks.
+                    </p>
+                    <div class="resource-meta">
+                        <span>🎯 25 slides</span>
+                        <span>⏱️ 30 min</span>
+                    </div>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="alert('Conference slides available at someperspective.info/conference.pdf')">Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Workshop</span>
+                    <h3 class="resource-title">Data Workshop</h3>
+                    <p class="resource-description">
+                        Interactive workshop materials for hands-on data analysis and index calculation.
+                    </p>
+                    <div class="resource-meta">
+                        <span>💻 Jupyter notebooks</span>
+                        <span>📊 Sample data</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="https://github.com/someperspective/workshop" class="btn btn-primary">Access Materials</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guides & Briefs Tab -->
+        <div class="tab-content" id="guides">
+            <h2>Guides & Policy Briefs</h2>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <span class="resource-type">Policy</span>
+                    <h3 class="resource-title">Policy Brief</h3>
+                    <p class="resource-description">
+                        Actionable policy recommendations for restoring growth with accountability.
+                    </p>
+                    <div class="resource-meta">
+                        <span>🎯 15 reforms</span>
+                        <span>📅 Implementation timeline</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="policy-brief.html" class="btn btn-primary">View HTML</a>
+                        <button class="btn btn-secondary" onclick="window.print()">Print PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Public</span>
+                    <h3 class="resource-title">Citizen Guide</h3>
+                    <p class="resource-description">
+                        Accessible explanation with examples and visualizations for general public understanding.
+                    </p>
+                    <div class="resource-meta">
+                        <span>👥 Public audience</span>
+                        <span>📊 Simple examples</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="citizen-guide.html" class="btn btn-primary">View HTML</a>
+                        <button class="btn btn-secondary" onclick="window.print()">Print PDF</button>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <span class="resource-type">Media</span>
+                    <h3 class="resource-title">Media Kit</h3>
+                    <p class="resource-description">
+                        Press-ready materials with key findings, infographics, and quotable insights.
+                    </p>
+                    <div class="resource-meta">
+                        <span>📰 Press ready</span>
+                        <span>📊 Infographics</span>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="media-kit.html" class="btn btn-primary">View HTML</a>
+                        <button class="btn btn-secondary" onclick="alert('Download press kit')">Download Kit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Citation Tab -->
+        <div class="tab-content" id="citation">
+            <h2>How to Cite</h2>
+            
+            <div class="citation-box">
+                <h3>Academic Citation (APA)</h3>
+                <p class="citation-text">
+                    Raman, V. S. (2025). <em>Narratives, Numbers, and Democratic Accountability: A Political Economy Assessment of India, 2014-2025</em>. 
+                    Retrieved from https://someperspective.info
+                </p>
+            </div>
+
+            <div class="citation-box">
+                <h3>BibTeX</h3>
+                <pre class="citation-text">@article{raman2025india,
+  title={Narratives, Numbers, and Democratic Accountability: A Political Economy Assessment of India, 2014-2025},
+  author={Raman, Varna Sri},
+  year={2025},
+  month={September},
+  url={https://someperspective.info}
+}</pre>
+            </div>
+
+            <div class="citation-box">
+                <h3>Data Citation</h3>
+                <p class="citation-text">
+                    Raman, V. S. (2025). <em>India Political Economy Dataset 2014-2025</em> [Data set]. 
+                    Retrieved from https://someperspective.info/data
+                </p>
+            </div>
+
+            <div class="citation-box">
+                <h3>License</h3>
+                <p>
+                    All materials are released under the MIT License. You are free to use, copy, modify, and distribute 
+                    with attribution. For commercial use or reproduction in academic journals, please contact the author.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Contact:</strong> research@someperspective.info
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© September 2025 | India Political Economy Assessment | someperspective.info</p>
+            <p>All materials open access under MIT License</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
