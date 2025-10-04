@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narratives, Numbers, and Democratic Accountability: India 2014-2025</title>
+    
+    <!-- SEO and Social Media Meta Tags -->
+    <meta name="description" content="A Political Economy Assessment of India, 2014-2025. Evidence-based analysis of growth, inequality, fiscal federalism, and democratic institutions.">
+    <meta name="keywords" content="India economy, political economy, inequality, fiscal federalism, statistical integrity, democratic backsliding, populist authoritarianism, data suppression">
+    <meta name="author" content="Dr. Varna Sri Raman">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Narratives, Numbers, and Democratic Accountability">
+    <meta property="og:description" content="A Political Economy Assessment of India's transformation from inclusive growth to concentrated prosperity">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://someperspective.info">
+    <meta property="og:image" content="https://someperspective.info/assets/og-image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="India Political Economy Assessment 2014-2025">
+    <meta name="twitter:description" content="Evidence-based research on growth without accountability">
+    <meta name="twitter:image" content="https://someperspective.info/assets/twitter-card.png">
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS for no-JS fallback -->
+    <style>
+        /* Core Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        
+        /* Typography */
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        h4 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; }
+        p { margin-bottom: 1rem; }
+        
+        /* Dark Mode Variables */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --purple: #7c3aed;
+            --purple-light: #ede9fe;
+            --purple-dark: #6d28d9;
+            --blue: #3b82f6;
+            --blue-light: #dbeafe;
+            --green: #10b981;
+            --green-light: #d1fae5;
+            --red: #ef4444;
+            --red-light: #fee2e2;
+            --orange: #f97316;
+            --orange-light: #fed7aa;
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --purple: #a78bfa;
+            --purple-light: #4c1d95;
+            --purple-dark: #a78bfa;
+            --blue: #60a5fa;
+            --blue-light: #1e3a8a;
+            --green: #34d399;
+            --green-light: #064e3b;
+            --red: #f87171;
+            --red-light: #7f1d1d;
+            --orange: #fb923c;
+            --orange-light: #7c2d12;
+        }
+        
+        body[data-theme="dark"] {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--purple);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.2s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        [data-theme="dark"] nav {
+            background: rgba(15, 23, 42, 0.95);
+        }
+        
+        .nav-header {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.75rem 0;
+            gap: 0.25rem;
+            scrollbar-width: none;
+        }
+        
+        .tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab-nav button {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .tab-nav button:hover {
+            color: var(--purple);
+        }
+        
+        .tab-nav button.active {
+            color: var(--purple);
+            border-bottom-color: var(--purple);
+            font-weight: 600;
+        }
+        
+        /* Audience Selector */
+        .audience-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .audience-selector button {
+            padding: 0.5rem 1rem;
+            border: 1.5px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .audience-selector button:hover {
+            border-color: var(--purple);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .audience-selector button.active {
+            background: var(--purple);
+            color: white;
+            border-color: var(--purple);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        /* Chart Containers */
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .chart-container-small {
+            position: relative;
+            height: 250px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-block;
+            letter-spacing: -0.01em;
+        }
+        
+        .btn-primary {
+            background: var(--purple);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--purple-dark);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--purple);
+            border: 1.5px solid var(--purple);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--purple);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+        
+        /* Loading State */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+        
+        .loading-spinner {
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--purple);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Utilities */
+        .hidden { display: none !important; }
+        .block { display: block; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-4 { gap: 1rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-xs { font-size: 0.75rem; }
+        .font-bold { font-weight: 700; }
+        .text-center { text-align: center; }
+        .space-y-1 > * + * { margin-top: 0.25rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; }
+            h3 { font-size: 1.125rem; }
+            .container { padding: 0 0.75rem; }
+            .card { padding: 1rem; }
+            .chart-container { height: 300px; }
+            .chart-container-small { height: 200px; }
+            .tab-nav button { font-size: 0.75rem; padding: 0.375rem 0.5rem; }
+            .nav-title { font-size: 1.25rem; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            .theme-toggle { display: none !important; }
+            body { background: white; color: black; }
+        }
+        
+        /* No-JS Fallback */
+        .no-js .content-section {
+            display: block;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+        
+        .no-js .tab-nav {
+            display: none;
+        }
+        
+        .js [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    
+    <!-- External Libraries with Integrity Checks -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Remove no-js class if JavaScript is enabled
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+        
+        if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            purple: {
+                                600: '#7c3aed',
+                                700: '#6d28d9'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body data-theme="light" x-data="appData()" x-init="init()" x-cloak>
+    
+    <!-- Theme Toggle Button with SVG Icons -->
+    <button onclick="toggleTheme()" class="theme-toggle no-print" aria-label="Toggle dark mode">
+        <svg id="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+    
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50">
+        <div class="container">
+            <div class="nav-header">
+                <h1 class="nav-title">Narratives, Numbers, and Democratic Accountability</h1>
+                <p class="nav-subtitle">A Political Economy Assessment of India, 2014–2025</p>
+                
+                <!-- Audience Selector -->
+                <div class="audience-selector mt-4">
+                    <label class="text-sm font-bold mr-2">I am a:</label>
+                    <button onclick="setAudience('researcher')" id="audience-researcher">Researcher</button>
+                    <button onclick="setAudience('policy')" id="audience-policy">Policy Maker</button>
+                    <button onclick="setAudience('journalist')" id="audience-journalist">Journalist</button>
+                    <button onclick="setAudience('citizen')" id="audience-citizen">Citizen/Student</button>
+                </div>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button onclick="showTab('about')" id="tab-about" class="active">What is This?</button>
+                <button onclick="showTab('summary')" id="tab-summary">Executive Summary</button>
+                <button onclick="showTab('findings')" id="tab-findings">Key Findings</button>
+                <button onclick="showTab('data')" id="tab-data">Interactive Data</button>
+                <button onclick="showTab('indices')" id="tab-indices">Three Indices</button>
+                <button onclick="showTab('methods')" id="tab-methods">Methodology</button>
+                <button onclick="showTab('stories')" id="tab-stories">Human Stories</button>
+                <button onclick="showTab('implications')" id="tab-implications">Implications</button>
+                <button onclick="showTab('whatnext')" id="tab-whatnext">What Next?</button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container py-8 flex-grow">
+        
+        <!-- Loading State -->
+        <div id="loading-state" class="loading">
+            <div class="loading-spinner"></div>
+        </div>
+        
+        <!-- Audience Message -->
+        <div id="audience-message" class="hidden card mb-6" style="background: var(--purple-light); border-left: 4px solid var(--purple);">
+            <p id="audience-text" class="text-sm"></p>
+        </div>
+        
+        <!-- WHAT IS THIS TAB -->
+        <section id="content-about" class="content-section active">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Welcome to "Some Perspective"</h2>
+                
+                <p class="mb-4">
+                    This interactive website presents comprehensive research on <strong>India's economic transformation from 2014 to 2025</strong>, 
+                    examining how distinct political periods produced fundamentally different 
+                    models of growth, governance, and democratic accountability.
+                </p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">Why This Research Matters</h3>
+                <p class="mb-4">
+                    India stands at a critical juncture. While official narratives celebrate high GDP growth and global rankings, 
+                    the reality for most Indians tells a different story. This research uses <strong>evidence-based analysis</strong> to reveal:
+                </p>
+                
+                <ul class="list-disc list-inside mb-4 space-y-2">
+                    <li><strong>Employment Paradox:</strong> Employment elasticity improved from 0.01 to 1.11, but driven by informal gig work</li>
+                    <li><strong>Colonial-Era Inequality:</strong> The top 1% now control 22.6% of national income—higher than during British rule</li>
+                    <li><strong>Fiscal Centralization:</strong> States' effective tax share fell from 42% to 29.8% despite constitutional mandates</li>
+                    <li><strong>Statistical Suppression:</strong> 2021 Census postponed to 2027, critical surveys withheld</li>
+                    <li><strong>Democratic Erosion:</strong> Press freedom rank fell from 140 to 159, India classified as "electoral autocracy"</li>
+                </ul>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">How to Use This Website</h3>
+                <div class="grid grid-3 gap-4">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2" style="color: var(--purple);">1. Choose Your Perspective</h4>
+                        <p class="text-sm">
+                            Select your audience type above. Content will adapt to provide relevant explanations and insights for your background.
+                        </p>
+                    </div>
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2" style="color: var(--purple);">2. Explore the Tabs</h4>
+                        <p class="text-sm">
+                            Each tab focuses on different aspects. Start with the Summary, explore Interactive Data, or dive into Methodology.
+                        </p>
+                    </div>
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2" style="color: var(--purple);">3. Export and Share</h4>
+                        <p class="text-sm">
+                            Download charts, data, and the full paper. Use dark mode for comfortable reading. Share findings with attribution.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card mt-6" style="background: var(--bg-secondary); border: 2px solid var(--purple);">
+                    <h4 class="font-bold mb-3" style="color: var(--purple);">📚 Using Research Materials</h4>
+                    <div class="grid grid-2 gap-4">
+                        <div>
+                            <h5 class="font-bold mb-2">Creating PDFs from Resources:</h5>
+                            <p class="text-xs">
+                                All research documents open as web pages. To save as PDF:
+                                <br>• Windows/Linux: Press <strong>Ctrl+P</strong> → Save as PDF
+                                <br>• Mac: Press <strong>Cmd+P</strong> → Save as PDF
+                                <br>• Mobile: Use browser's share menu → Print/PDF
+                            </p>
+                        </div>
+                        <div>
+                            <h5 class="font-bold mb-2">Working with Data:</h5>
+                            <p class="text-xs">
+                                The master dataset (CSV) contains all indicators:
+                                <br>• Open in Excel/Google Sheets for analysis
+                                <br>• Use R/Python replication code for reproduction
+                                <br>• Filter by year/indicator for specific datasets
+                                <br>• Pivot tables for custom analysis views
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 rounded" style="background: #fef3c7; border: 1px solid #f59e0b;">
+                    <p class="text-sm font-bold mb-2">Research Independence Statement</p>
+                    <p class="text-xs">
+                        This is independent academic research based on publicly available data from government sources, 
+                        international organizations, and peer-reviewed studies. It receives no funding from political parties, 
+                        corporations, or advocacy groups. All data and methods are transparent and replicable.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- EXECUTIVE SUMMARY TAB -->
+        <section id="content-summary" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Executive Summary</h2>
+                
+                <div id="summary-audience-content" class="mb-6">
+                    <!-- Content will be dynamically inserted based on audience -->
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Key Economic Indicators Over Time</h3>
+                
+                <div class="grid grid-2 gap-4 mb-6">
+                    <div class="card" style="background: var(--blue-light);">
+                        <h4 class="font-bold mb-3">2014 Baseline</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• <strong>GDP Growth:</strong> 7.4%</li>
+                            <li>• <strong>Unemployment:</strong> 4.9%</li>
+                            <li>• <strong>Top 1% Share:</strong> 15.0%</li>
+                            <li>• <strong>Formal Employment:</strong> 13.0%</li>
+                            <li>• <strong>Press Freedom:</strong> 140/180</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="background: var(--red-light);">
+                        <h4 class="font-bold mb-3">2025 Current</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• <strong>GDP Growth:</strong> 6.5%</li>
+                            <li>• <strong>Unemployment:</strong> 3.1%</li>
+                            <li>• <strong>Top 1% Share:</strong> 22.8%</li>
+                            <li>• <strong>Formal Employment:</strong> 11.2%</li>
+                            <li>• <strong>Press Freedom:</strong> 160/180</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Summary Chart -->
+                <div class="chart-container">
+                    <canvas id="summaryChart"></canvas>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Five Core Findings</h3>
+                
+                <div class="space-y-4">
+                    <div class="p-4 rounded" style="background: var(--bg-secondary); border-left: 4px solid #ef4444;">
+                        <h4 class="font-bold mb-2" id="finding-1-title">Loading...</h4>
+                        <p class="text-sm" id="finding-1-text"></p>
+                    </div>
+                    
+                    <div class="p-4 rounded" style="background: var(--bg-secondary); border-left: 4px solid #f59e0b;">
+                        <h4 class="font-bold mb-2" id="finding-2-title">Loading...</h4>
+                        <p class="text-sm" id="finding-2-text"></p>
+                    </div>
+                    
+                    <div class="p-4 rounded" style="background: var(--bg-secondary); border-left: 4px solid #3b82f6;">
+                        <h4 class="font-bold mb-2" id="finding-3-title">Loading...</h4>
+                        <p class="text-sm" id="finding-3-text"></p>
+                    </div>
+                    
+                    <div class="p-4 rounded" style="background: var(--bg-secondary); border-left: 4px solid #8b5cf6;">
+                        <h4 class="font-bold mb-2" id="finding-4-title">Loading...</h4>
+                        <p class="text-sm" id="finding-4-text"></p>
+                    </div>
+                    
+                    <div class="p-4 rounded" style="background: var(--bg-secondary); border-left: 4px solid #10b981;">
+                        <h4 class="font-bold mb-2" id="finding-5-title">Loading...</h4>
+                        <p class="text-sm" id="finding-5-text"></p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <a href="downloads/executive-summary.html" target="_blank" class="btn btn-primary">View Full Summary</a>
+                    <button onclick="showTab('findings')" class="btn btn-secondary ml-2">Explore Detailed Findings</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- KEY FINDINGS TAB -->
+        <section id="content-findings" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Key Findings: Evidence of Transformation</h2>
+                
+                <div id="findings-audience-content" class="mb-6">
+                    <!-- Dynamic content based on audience -->
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">1. Employment: The Jobs Mirage</h3>
+                
+                <div class="grid grid-2 gap-4 mb-4">
+                    <div class="chart-container-small">
+                        <canvas id="employmentChart"></canvas>
+                    </div>
+                    <div class="chart-container-small">
+                        <canvas id="formalEmploymentChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card" style="background: var(--bg-secondary);">
+                    <h4 class="font-bold mb-2">Key Evidence:</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>• <strong>Employment Elasticity:</strong> Recovered from 0.01 (2011-16) to 1.11 (2017-23)</li>
+                        <li>• <strong>Formal employment:</strong> Declined from 13% (2014) to 11.2% (2025)</li>
+                        <li>• <strong>Youth unemployment:</strong> 28.5% for graduates, 12.5% overall</li>
+                        <li>• <strong>Manufacturing jobs:</strong> Stagnant at 6% of workforce</li>
+                        <li>• <strong>Agriculture share:</strong> Still 45.7% of employment</li>
+                    </ul>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">2. Inequality: Return to Colonial Extremes</h3>
+                
+                <div class="chart-container">
+                    <canvas id="inequalityChart"></canvas>
+                </div>
+                
+                <div class="grid grid-3 gap-4 mt-4">
+                    <div class="card text-center" style="background: #fee2e2;">
+                        <h4 class="text-2xl font-bold">22.8%</h4>
+                        <p class="text-sm">Top 1% Income Share</p>
+                        <p class="text-xs">(2025)</p>
+                    </div>
+                    <div class="card text-center" style="background: #fed7aa;">
+                        <h4 class="text-2xl font-bold">57.3%</h4>
+                        <p class="text-sm">Top 10% Share</p>
+                        <p class="text-xs">(2025)</p>
+                    </div>
+                    <div class="card text-center" style="background: #fef3c7;">
+                        <h4 class="text-2xl font-bold">13.0%</h4>
+                        <p class="text-sm">Bottom 50% Share</p>
+                        <p class="text-xs">(2025)</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">3. Fiscal Federalism: Constitutional Subversion</h3>
+                
+                <div class="chart-container">
+                    <canvas id="fiscalChart"></canvas>
+                </div>
+                
+                <div class="card mt-4" style="background: var(--bg-secondary);">
+                    <h4 class="font-bold mb-2">Mechanisms of Centralization:</h4>
+                    <div class="grid grid-2 gap-4 text-sm">
+                        <div>
+                            <strong>Cesses & Surcharges:</strong>
+                            <ul class="mt-2 space-y-1">
+                                <li>• Rose from 10.4% to 20% of gross tax</li>
+                                <li>• Not shared with states per Constitution</li>
+                                <li>• ₹2-3 lakh crore annual loss to states</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>Effective Devolution:</strong>
+                            <ul class="mt-2 space-y-1">
+                                <li>• States' share: 39.8% (promised 42%)</li>
+                                <li>• Conditional transfers increased</li>
+                                <li>• GST compensation ended 2022</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">4. Democratic Institutions: Systematic Erosion</h3>
+                
+                <div class="grid grid-3 gap-4">
+                    <div class="card text-center">
+                        <h4 class="text-xl font-bold" style="color: #dc2626;">159/180</h4>
+                        <p class="text-sm">Press Freedom Rank</p>
+                        <p class="text-xs">(2024)</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4 class="text-xl font-bold" style="color: #dc2626;">805</h4>
+                        <p class="text-sm">Internet Shutdowns</p>
+                        <p class="text-xs">(2014-2025)</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4 class="text-xl font-bold" style="color: #dc2626;">0.42</h4>
+                        <p class="text-sm">Democratic Quality</p>
+                        <p class="text-xs">(DQI Score)</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button onclick="exportAllCharts()" class="btn btn-primary">Export All Charts</button>
+                    <a href="downloads/economy-presentation.html" target="_blank" class="btn btn-primary ml-2">View Economic Analysis</a>
+                    <a href="journalist-stories.html" target="_blank" class="btn btn-primary ml-2">📰 Human Stories</a>
+                    <a href="data/SP_masterdataset.csv" target="_blank" class="btn btn-secondary ml-2">Download Dataset (CSV)</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- INTERACTIVE DATA TAB -->
+        <section id="content-data" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Interactive Data Explorer</h2>
+                
+                <p class="mb-4">
+                    Explore 11 years of economic data. Compare multiple indicators simultaneously. 
+                    Export charts and data for your own analysis.
+                </p>
+                
+                <div class="card mb-4" style="background: var(--purple-light); border: 1px solid var(--purple);">
+                    <h4 class="font-bold mb-2">🔧 Generate Custom Datasets from Master CSV</h4>
+                    <div class="text-sm">
+                        <p class="mb-2">The master dataset (SP_masterdataset.csv) contains all indicators. Create specialized datasets:</p>
+                        <div class="grid grid-2 gap-4">
+                            <div>
+                                <strong>Using Excel/Google Sheets:</strong>
+                                <ol class="text-xs mt-1">
+                                    <li>1. Open CSV in Excel/Sheets</li>
+                                    <li>2. Use filters to select years/indicators</li>
+                                    <li>3. Create pivot tables for analysis</li>
+                                    <li>4. Save as new CSV or XLSX</li>
+                                </ol>
+                            </div>
+                            <div>
+                                <strong>Using R/Python Code:</strong>
+                                <ol class="text-xs mt-1">
+                                    <li>1. Download replication code</li>
+                                    <li>2. Run generate_custom_dataset()</li>
+                                    <li>3. Specify indicators & years</li>
+                                    <li>4. Auto-generates themed datasets</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Controls -->
+                <div class="grid grid-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Primary Indicator</label>
+                        <select id="primary-indicator" onchange="updateDataChart()" class="w-full p-2 border rounded">
+                            <option value="gdpGrowth">GDP Growth Rate (%)</option>
+                            <option value="unemployment.overall">Unemployment Rate (%)</option>
+                            <option value="inequality.top1Percent">Top 1% Income Share (%)</option>
+                            <option value="employment.formalSector">Formal Employment (%)</option>
+                            <option value="democraticIndicators.pressFreedomRank">Press Freedom Rank</option>
+                            <option value="socialSectors.studentSuicides">Student Suicides</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Compare With (Optional)</label>
+                        <select id="compare-indicator" onchange="updateDataChart()" class="w-full p-2 border rounded">
+                            <option value="">None</option>
+                            <option value="gdpGrowth">GDP Growth Rate</option>
+                            <option value="unemployment.overall">Unemployment Rate</option>
+                            <option value="inequality.top1Percent">Top 1% Income Share</option>
+                            <option value="employment.formalSector">Formal Employment</option>
+                            <option value="democraticIndicators.pressFreedomRank">Press Freedom Rank</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Time Range</label>
+                        <select id="time-range" onchange="updateDataChart()" class="w-full p-2 border rounded">
+                            <option value="all">All Years (2014-2025)</option>
+                            <option value="recent">Recent (2020-2025)</option>
+                            <option value="pre-covid">Pre-COVID (2014-2019)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Main Interactive Chart -->
+                <div class="chart-container" style="height: 450px;">
+                    <canvas id="interactiveChart"></canvas>
+                </div>
+                
+                <!-- Chart Controls -->
+                <div class="flex justify-between items-center mt-4">
+                    <div class="flex gap-2">
+                        <button onclick="resetZoom()" class="btn btn-secondary">Reset Zoom</button>
+                        <button onclick="toggleScale()" class="btn btn-secondary">Toggle Scale</button>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="exportChart('interactiveChart', 'png')" class="btn btn-primary">Export PNG</button>
+                        <button onclick="exportChart('interactiveChart', 'csv')" class="btn btn-primary">Export CSV</button>
+                    </div>
+                </div>
+                
+                <!-- Data Table -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-bold mb-3">Data Table</h3>
+                    <div style="overflow-x: auto;">
+                        <table id="dataTable" class="w-full text-sm">
+                            <thead>
+                                <tr style="background: var(--bg-secondary);">
+                                    <th class="p-2 text-left">Year</th>
+                                    <th class="p-2 text-right">GDP Growth</th>
+                                    <th class="p-2 text-right">Unemployment</th>
+                                    <th class="p-2 text-right">Top 1% Share</th>
+                                    <th class="p-2 text-right">Formal Emp.</th>
+                                    <th class="p-2 text-right">Press Rank</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataTableBody">
+                                <!-- Data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Statistical Summary -->
+                <div class="grid grid-2 gap-4 mt-6">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">2014-2019 Average</h4>
+                        <div id="period1-stats" class="text-sm space-y-1">
+                            <!-- Stats will be calculated -->
+                        </div>
+                    </div>
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">2020-2025 Average</h4>
+                        <div id="period2-stats" class="text-sm space-y-1">
+                            <!-- Stats will be calculated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- THREE INDICES TAB -->
+        <section id="content-indices" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Three Indices: Measuring Institutional Change</h2>
+                
+                <p class="mb-6">
+                    To move beyond anecdotal evidence, we constructed three novel indices that quantify 
+                    different dimensions of India's institutional transformation.
+                </p>
+                
+                <!-- Combined Indices Chart -->
+                <div class="chart-container" style="height: 400px;">
+                    <canvas id="indicesChart"></canvas>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Statistical Suppression Index (SSI)</h3>
+                
+                <div class="grid grid-2 gap-4">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Key Events</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• 2017-18 Consumption Survey: Withheld</li>
+                            <li>• 2021 Census: Postponed to 2027</li>
+                            <li>• PLFS Data: Delayed releases</li>
+                            <li>• NSC Members: Resignations</li>
+                            <li>• GDP Back-series: Controversial revisions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="chart-container-small">
+                            <canvas id="ssiChart"></canvas>
+                        </div>
+                        <div class="card mt-4" style="background: #fee2e2;">
+                            <h4 class="text-2xl font-bold text-center">7.8</h4>
+                            <p class="text-sm text-center">SSI Score (2023)</p>
+                            <p class="text-xs text-center">Peak suppression</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Fiscal Centralization Index (FCI)</h3>
+                
+                <div class="grid grid-2 gap-4">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Components</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Cess share: 10.4% → 20%</li>
+                            <li>• States' share: 42% → 39.8%</li>
+                            <li>• GST compensation: Ended 2022</li>
+                            <li>• Conditional borrowing: Increased</li>
+                            <li>• Central schemes: 70.5% of spending</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="chart-container-small">
+                            <canvas id="fciChart"></canvas>
+                        </div>
+                        <div class="card mt-4" style="background: #fef3c7;">
+                            <h4 class="text-2xl font-bold text-center">70.5%</h4>
+                            <p class="text-sm text-center">Centralized Spending</p>
+                            <p class="text-xs text-center">(2025)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Democratic Quality Index (DQI)</h3>
+                
+                <div class="grid grid-2 gap-4">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Data Sources</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• V-Dem: "Electoral autocracy"</li>
+                            <li>• Freedom House: "Partly Free"</li>
+                            <li>• RSF: Rank 159/180</li>
+                            <li>• Internet shutdowns: 805 total</li>
+                            <li>• NGO licenses: 12,580 cancelled</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="chart-container-small">
+                            <canvas id="dqiChart"></canvas>
+                        </div>
+                        <div class="card mt-4" style="background: #dbeafe;">
+                            <h4 class="text-2xl font-bold text-center">0.42</h4>
+                            <p class="text-sm text-center">DQI Score (2024)</p>
+                            <p class="text-xs text-center">41% decline from 2014</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <a href="data/SP_masterdataset.csv" target="_blank" class="btn btn-primary">Download Master Dataset (CSV)</a>
+                    <a href="downloads/technical-appendix.html" target="_blank" class="btn btn-secondary ml-2">View Technical Appendix</a>
+                </div>
+                
+                <div class="card mt-4" style="background: var(--bg-secondary); border: 1px solid var(--purple);">
+                    <p class="text-sm"><strong>💡 Tip:</strong> The master dataset contains all indices data. 
+                    Use the replication code (R/Python) to generate specialized datasets for SSI, FCI, and DQI analysis.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- METHODOLOGY TAB -->
+        <section id="content-methods" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Methodology: Triangulated Evidence</h2>
+                
+                <div id="methods-audience-content" class="mb-6">
+                    <!-- Dynamic content based on audience -->
+                </div>
+                
+                <h3 class="text-xl font-bold mb-4">Data Sources</h3>
+                
+                <div class="grid grid-2 gap-4">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-3">Government Sources</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• National Statistical Office (NSO)</li>
+                            <li>• Reserve Bank of India (RBI)</li>
+                            <li>• Ministry of Finance</li>
+                            <li>• EPFO/ESIC databases</li>
+                            <li>• Census (when available)</li>
+                            <li>• PLFS, ASI, NSSO surveys</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-3">Independent Sources</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• CMIE Consumer Pyramids</li>
+                            <li>• World Inequality Database</li>
+                            <li>• V-Dem Institute</li>
+                            <li>• Freedom House</li>
+                            <li>• Reporters Without Borders</li>
+                            <li>• IMF, World Bank, ILO</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Index Construction</h3>
+                
+                <div class="space-y-4">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Statistical Suppression Index (SSI)</h4>
+                        <p class="text-sm mb-2">
+                            Event-based coding of government interference in statistics:
+                        </p>
+                        <pre class="text-xs p-2 rounded" style="background: #1f2937; color: #e5e7eb;">SSI_t = Σ(severity_i × salience_i) / n
+Where:
+- severity: withheld(1.0), delayed(0.5), revised(0.3)
+- salience: census(1.0), CES(0.8), PLFS(0.7), other(0.6)
+- n: number of events in year t</pre>
+                    </div>
+                    
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Fiscal Centralization Index (FCI)</h4>
+                        <p class="text-sm mb-2">
+                            Composite of fiscal autonomy indicators:
+                        </p>
+                        <pre class="text-xs p-2 rounded" style="background: #1f2937; color: #e5e7eb;">FCI = Average(C_norm, D_norm_inverted, B_norm)
+Components:
+- C: Cess/surcharge share (normalized)
+- D: Actual devolution (inverted)
+- B: Borrowing conditionality (0-1)</pre>
+                    </div>
+                    
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Democratic Quality Index (DQI)</h4>
+                        <p class="text-sm">
+                            Geometric mean of three international indices ensures weakness in any dimension reduces overall score.
+                        </p>
+                        <pre class="text-xs p-2 rounded" style="background: #1f2937; color: #e5e7eb;">DQI = (V-Dem × FH × RSF)^(1/3)
+Sources:
+- V-Dem Liberal Democracy Index
+- Freedom House Score
+- RSF Press Freedom (inverted rank)</pre>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Validation & Robustness</h3>
+                
+                <div class="grid grid-3 gap-4">
+                    <div class="card text-center" style="background: #dcfce7;">
+                        <h4 class="font-bold mb-2">Cross-Validation</h4>
+                        <p class="text-sm">
+                            Key findings verified across multiple independent datasets
+                        </p>
+                    </div>
+                    <div class="card text-center" style="background: #e0e7ff;">
+                        <h4 class="font-bold mb-2">Temporal Consistency</h4>
+                        <p class="text-sm">
+                            Trends robust to different base years and adjustments
+                        </p>
+                    </div>
+                    <div class="card text-center" style="background: #fce7f3;">
+                        <h4 class="font-bold mb-2">International Standards</h4>
+                        <p class="text-sm">
+                            Methods align with global best practices
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <a href="downloads/methodology.html" target="_blank" class="btn btn-primary">View Methodology</a>
+                    <a href="replication_code.R" download class="btn btn-primary ml-2">Download R Code</a>
+                    <a href="replication_code.py" download class="btn btn-primary ml-2">Download Python Code</a>
+                    <a href="https://github.com/Varnasr/someperspective" target="_blank" class="btn btn-secondary ml-2">View Repository</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- HUMAN STORIES TAB -->
+        <section id="content-stories" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Human Stories Behind the Numbers</h2>
+                
+                <p class="mb-6">
+                    Four compelling data-driven narratives that connect economic statistics to real human experiences. 
+                    Perfect for journalists, researchers, and citizens who want to understand the human impact of these economic changes.
+                </p>
+                
+                <!-- Story 1: Gig Economy -->
+                <div class="card mb-6" style="background: var(--bg-secondary);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--purple);">Story 1: The 10-Hour Day That Doesn't Count</h3>
+                    <h4 class="text-lg font-bold mb-3">How India Created Jobs Without Creating Workers</h4>
+                    
+                    <p class="mb-4">
+                        Rajesh delivers food for 10 hours a day, six days a week. He's one of India's employment success stories—except 
+                        he doesn't officially exist as an employee. He's part of the "miracle" that saw employment elasticity jump from 
+                        0.01 to 1.11—a seemingly miraculous 111-fold improvement.
+                    </p>
+                    
+                    <div class="grid grid-2 gap-4 mb-4">
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-2xl font-bold" style="color: #10b981;">13%</h4>
+                            <p class="text-sm">Had formal jobs in 2014</p>
+                        </div>
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-2xl font-bold" style="color: #ef4444;">11.2%</h4>
+                            <p class="text-sm">Have formal jobs in 2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 rounded" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                        <p class="text-sm italic">
+                            "I work more hours than my father did in his government job, but I have none of the security he had. 
+                            The app shows I'm a 'partner,' not a worker. What kind of partnership is it where only one partner 
+                            takes all the risk?" — Composite quote from gig workers interviewed
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 rounded" style="background: #e8f5e9;">
+                        <h4 class="font-bold mb-2">What This Means for 100 Workers:</h4>
+                        <p class="text-sm">
+                            In a room with 100 Indian workers: In 2014, 13 would have formal jobs with benefits. 
+                            Today, only 11 do. But unemployment looks better because the other 89 aren't jobless—they're 
+                            doing gig work, daily wage labor, or are self-employed without security.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 rounded" style="background: #fff3cd; border: 1px solid #ffc107;">
+                        <h4 class="font-bold mb-2">For Journalists:</h4>
+                        <ul class="text-sm">
+                            <li>• Interview gig workers about hours worked vs. income security</li>
+                            <li>• Compare with parents' generation employment benefits</li>
+                            <li>• Ask: "Are you an employee or a partner?"</li>
+                            <li>• Key angle: Jobs without dignity vs. joblessness</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Story 2: Inequality -->
+                <div class="card mb-6" style="background: var(--bg-secondary);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--purple);">Story 2: Richer Than the Raj</h3>
+                    <h4 class="text-lg font-bold mb-3">When Modern India Exceeded Colonial Inequality</h4>
+                    
+                    <p class="mb-4">
+                        In 1939, at the height of British colonial extraction, India's richest 1% controlled 20.7% of income. 
+                        Today, they control 22.8%. We've achieved something even the British couldn't: colonial-level inequality 
+                        in a democracy.
+                    </p>
+                    
+                    <div class="grid grid-3 gap-4 mb-4">
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-xl font-bold" style="color: #dc2626;">20.7%</h4>
+                            <p class="text-xs">British Raj Peak (1939)</p>
+                        </div>
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-xl font-bold" style="color: #059669;">6.1%</h4>
+                            <p class="text-xs">Independent India Low (1981)</p>
+                        </div>
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-xl font-bold" style="color: #dc2626;">22.8%</h4>
+                            <p class="text-xs">Today (2025)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background: #dbeafe;">
+                        <h4 class="font-bold mb-2">If India Were a Village of 100 People with ₹100:</h4>
+                        <div class="grid grid-2 gap-4 text-center">
+                            <div>
+                                <p class="text-2xl font-bold">₹23</p>
+                                <p class="text-sm">Goes to 1 person (Top 1%)</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold">₹13</p>
+                                <p class="text-sm">Shared by 50 people (Bottom 50%)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 p-4 rounded" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                        <p class="text-sm italic">
+                            "My grandmother remembers the British Raj. She says at least then we knew who was taking our wealth. 
+                            Now it's our own people, and we call it development." — Mumbai domestic worker
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 rounded" style="background: #fff3cd; border: 1px solid #ffc107;">
+                        <h4 class="font-bold mb-2">For Journalists:</h4>
+                        <ul class="text-sm">
+                            <li>• Compare luxury car sales growth vs. bicycle sales decline</li>
+                            <li>• Interview families across three generations about wealth</li>
+                            <li>• Visit a luxury mall and a weekly market on the same day</li>
+                            <li>• Key angle: We solved colonialism but kept colonial inequality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Story 3: Education -->
+                <div class="card mb-6" style="background: var(--bg-secondary);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--purple);">Story 3: The ₹10 Lakh Degree Worth Nothing</h3>
+                    <h4 class="text-lg font-bold mb-3">India's Youth Unemployment Catastrophe</h4>
+                    
+                    <p class="mb-4">
+                        Priya's parents sold their land to pay for her engineering degree. Four years and ₹10 lakh later, 
+                        she's among the 28.5% of graduates who can't find work. The education that was supposed to lift 
+                        her family up has pushed them into debt.
+                    </p>
+                    
+                    <div class="grid grid-2 gap-4 mb-4">
+                        <div class="card text-center" style="background: #fee2e2;">
+                            <h4 class="text-2xl font-bold">28.5%</h4>
+                            <p class="text-sm">Graduate Unemployment</p>
+                        </div>
+                        <div class="card text-center" style="background: #dcfce7;">
+                            <h4 class="text-2xl font-bold">3.1%</h4>
+                            <p class="text-sm">Overall Unemployment</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background: white;">
+                        <h4 class="font-bold mb-2">The Coaching Class Pipeline:</h4>
+                        <ul class="text-sm">
+                            <li>• 1,000,000 students aspire</li>
+                            <li>• 100,000 get into good colleges</li>
+                            <li>• 30,000 get decent placements</li>
+                            <li>• 970,000 wonder what went wrong</li>
+                        </ul>
+                        <p class="text-sm mt-2 font-bold">The system isn't failing—it's designed this way.</p>
+                    </div>
+                    
+                    <div class="mt-4 p-4 rounded" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                        <p class="text-sm italic">
+                            "I topped my district in 12th standard. My photo was in the newspaper. Now I'm preparing for 
+                            my seventh competitive exam. My parents don't make eye contact anymore." 
+                            — 26-year-old engineering graduate, Uttar Pradesh
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 rounded" style="background: #fff3cd; border: 1px solid #ffc107;">
+                        <h4 class="font-bold mb-2">For Journalists:</h4>
+                        <ul class="text-sm">
+                            <li>• Visit coaching centers and count "Success Stories" vs. total students</li>
+                            <li>• Track one family's education expenditure over 20 years</li>
+                            <li>• Interview HR managers: What skills are actually needed?</li>
+                            <li>• Key angle: Education as the new poverty trap</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Story 4: Fiscal -->
+                <div class="card mb-6" style="background: var(--bg-secondary);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--purple);">Story 4: The State That Delhi Forgot</h3>
+                    <h4 class="text-lg font-bold mb-3">How Fiscal Centralization Broke Federal India</h4>
+                    
+                    <p class="mb-4">
+                        Tamil Nadu's Finance Minister opens his budget speech with a number: 29.8%. That's all the state 
+                        gets back from every rupee its citizens pay in taxes. The Constitution promised 42%. 
+                        The missing 12.2% could fund healthcare for every Tamil.
+                    </p>
+                    
+                    <div class="grid grid-3 gap-4 mb-4">
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-xl font-bold">42%</h4>
+                            <p class="text-xs">Constitutional Promise</p>
+                        </div>
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-xl font-bold" style="color: #dc2626;">29.8%</h4>
+                            <p class="text-xs">Actual Receipt</p>
+                        </div>
+                        <div class="card text-center" style="background: white;">
+                            <h4 class="text-xl font-bold" style="color: #dc2626;">₹3L Cr</h4>
+                            <p class="text-xs">Lost Per Year</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background: #dbeafe;">
+                        <h4 class="font-bold mb-2">The Journey of ₹100 in Taxes:</h4>
+                        <ul class="text-sm">
+                            <li>• ₹20 becomes "cess" - stays with Centre</li>
+                            <li>• ₹50 becomes central schemes - spent how Delhi decides</li>
+                            <li>• ₹30 reaches the state - to run everything from schools to hospitals</li>
+                        </ul>
+                        <p class="text-sm mt-2"><strong>Result:</strong> Patient paid ₹100. Hospital gets ₹30 worth of services.</p>
+                    </div>
+                    
+                    <div class="mt-4 p-4 rounded" style="background: #fef3c7; border-left: 4px solid #f59e0b;">
+                        <p class="text-sm italic">
+                            "We know our villages need water, not smart cities. We know our children need teachers, not tablets. 
+                            But the money comes with instructions from Delhi. We've become contractors for the Centre, 
+                            not governments for our people." — State Planning Board Member
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4 p-3 rounded" style="background: #fff3cd; border: 1px solid #ffc107;">
+                        <h4 class="font-bold mb-2">For Journalists:</h4>
+                        <ul class="text-sm">
+                            <li>• Track one infrastructure project: Who decided, who paid, who benefits?</li>
+                            <li>• Compare state budget "wishlists" vs. actual allocations</li>
+                            <li>• Interview: Former Finance Commission members</li>
+                            <li>• Key angle: The Constitution promised federalism, we got centralization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 rounded" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                    <h3 class="font-bold mb-2">About These Stories</h3>
+                    <p class="text-sm">
+                        These narratives are based on data from the comprehensive political economy assessment of India (2014-2025). 
+                        Each story represents thousands of real experiences, backed by rigorous economic analysis. Names are 
+                        composites, and quotes are representative of documented experiences.
+                    </p>
+                    <p class="text-sm mt-2">
+                        <strong>Usage:</strong> Journalists are free to use these angles, data points, and story frameworks 
+                        in their reporting with attribution to the source data.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- IMPLICATIONS TAB -->
+        <section id="content-implications" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">Implications: What This Means</h2>
+                
+                <div id="implications-audience-content" class="mb-6">
+                    <!-- Dynamic content will be inserted here based on audience -->
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">Policy Recommendations</h3>
+                
+                <div class="space-y-4">
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-3">1. Statistical Independence</h4>
+                        <div class="grid grid-2 gap-4 text-sm">
+                            <div>
+                                <strong>Immediate Actions:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Conduct 2021 Census immediately</li>
+                                    <li>• Release withheld surveys</li>
+                                    <li>• Restore NSC autonomy</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>Institutional Reforms:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Constitutional status for NSO</li>
+                                    <li>• Independent Statistics Act</li>
+                                    <li>• Parliamentary oversight</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-3">2. Fiscal Federalism</h4>
+                        <div class="grid grid-2 gap-4 text-sm">
+                            <div>
+                                <strong>Revenue Sharing:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Cap cesses at 5% of GTR</li>
+                                    <li>• Implement 16th FC recommendations</li>
+                                    <li>• GST Council voting reform</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>State Autonomy:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Remove borrowing conditions</li>
+                                    <li>• Restore state tax powers</li>
+                                    <li>• Decentralize CSS schemes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-3">3. Employment Strategy</h4>
+                        <div class="grid grid-2 gap-4 text-sm">
+                            <div>
+                                <strong>Job Creation:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Urban employment guarantee</li>
+                                    <li>• Manufacturing incentives</li>
+                                    <li>• MSME credit expansion</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>Worker Protection:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Gig worker social security</li>
+                                    <li>• Minimum wage enforcement</li>
+                                    <li>• Skill development overhaul</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-3">4. Democratic Institutions</h4>
+                        <div class="grid grid-2 gap-4 text-sm">
+                            <div>
+                                <strong>Media Freedom:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Anti-monopoly enforcement</li>
+                                    <li>• Public media funding</li>
+                                    <li>• Journalist protection law</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>Electoral Reform:</strong>
+                                <ul class="mt-2 space-y-1">
+                                    <li>• Campaign finance transparency</li>
+                                    <li>• Real-time disclosure</li>
+                                    <li>• ECI independence</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold mt-6 mb-4">International Comparisons</h3>
+                
+                <div class="grid grid-3 gap-4">
+                    <div class="card text-center" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Turkey</h4>
+                        <p class="text-sm">
+                            Similar trajectory but more overt constitutional changes. 
+                            India maintains democratic façade more effectively.
+                        </p>
+                    </div>
+                    <div class="card text-center" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Hungary</h4>
+                        <p class="text-sm">
+                            Comparable media capture and fiscal centralization. 
+                            India's federal structure provides more resistance.
+                        </p>
+                    </div>
+                    <div class="card text-center" style="background: var(--bg-secondary);">
+                        <h4 class="font-bold mb-2">Brazil</h4>
+                        <p class="text-sm">
+                            Shows how institutions can recover. 
+                            Independent judiciary and civil society crucial.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 rounded" style="background: #dbeafe; border: 1px solid #3b82f6;">
+                    <h4 class="font-bold mb-2">The Cost of Inaction</h4>
+                    <p class="text-sm">
+                        Without reforms, India risks entrenching a model where democratic forms coexist with 
+                        authoritarian substance. The window for course correction is narrowing as institutional 
+                        capture deepens and inequality becomes structural.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- WHAT NEXT TAB -->
+        <section id="content-whatnext" class="content-section">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-4">What Next? Action and Accountability</h2>
+                
+                <div class="card mb-4" style="background: #dbeafe; border: 1px solid #3b82f6;">
+                    <h4 class="font-bold mb-2">📄 Creating PDFs from Resources</h4>
+                    <p class="text-sm">All research materials open as interactive web pages. To save any resource as PDF, 
+                    simply open it and press <strong>Ctrl/Cmd+P</strong> → Save as PDF. This preserves formatting and creates 
+                    professional documents for offline use or sharing.</p>
+                </div>
+                
+                <div class="grid grid-2 gap-4 mb-6">
+                    <div class="card" style="background: #f0fdf4;">
+                        <h3 class="text-lg font-bold mb-3">For Researchers</h3>
+                        <ul class="text-sm space-y-2">
+                            <li>✓ Replicate findings with latest data</li>
+                            <li>✓ Extend indices to state level</li>
+                            <li>✓ Document informal economy dynamics</li>
+                            <li>✓ Study resistance mechanisms</li>
+                            <li>✓ Compare with other democracies</li>
+                        </ul>
+                        <a href="downloads/research-package.html" target="_blank" class="btn btn-primary mt-4 w-full" style="text-align: center; display: block;">
+                            View Research Resources
+                        </a>
+                    </div>
+                    
+                    <div class="card" style="background: #fef3c7;">
+                        <h3 class="text-lg font-bold mb-3">For Policy Makers</h3>
+                        <ul class="text-sm space-y-2">
+                            <li>✓ Review fiscal devolution formulas</li>
+                            <li>✓ Strengthen statistical institutions</li>
+                            <li>✓ Design inclusive growth policies</li>
+                            <li>✓ Protect democratic spaces</li>
+                            <li>✓ Enable transparency mechanisms</li>
+                        </ul>
+                        <a href="downloads/policy-brief.html" target="_blank" class="btn btn-primary mt-4 w-full" style="text-align: center; display: block;">
+                            View Policy Brief
+                        </a>
+                    </div>
+                    
+                    <div class="card" style="background: #e0e7ff;">
+                        <h3 class="text-lg font-bold mb-3">For Journalists</h3>
+                        <ul class="text-sm space-y-2">
+                            <li>✓ Use data for evidence-based reporting</li>
+                            <li>✓ Question official narratives</li>
+                            <li>✓ Highlight inequality impacts</li>
+                            <li>✓ Document institutional changes</li>
+                            <li>✓ Amplify marginalized voices</li>
+                        </ul>
+                        <p class="text-sm mt-3" style="color: var(--purple);">
+                            <strong>See the "Human Stories" tab for 4 ready-to-use data narratives!</strong>
+                        </p>
+                        <a href="downloads/media-kit.html" target="_blank" class="btn btn-primary mt-4 w-full" style="text-align: center; display: block;">
+                            View Media Kit
+                        </a>
+                        <a href="journalist-stories.html" target="_blank" class="btn btn-secondary mt-2 w-full" style="text-align: center; display: block;">
+                            📰 Human Interest Stories
+                        </a>
+                    </div>
+                    
+                    <div class="card" style="background: #fce7f3;">
+                        <h3 class="text-lg font-bold mb-3">For Citizens</h3>
+                        <ul class="text-sm space-y-2">
+                            <li>✓ Demand data transparency</li>
+                            <li>✓ Question growth narratives</li>
+                            <li>✓ Support independent media</li>
+                            <li>✓ Engage in democratic processes</li>
+                            <li>✓ Share verified information</li>
+                        </ul>
+                        <a href="downloads/citizen-guide.html" target="_blank" class="btn btn-primary mt-4 w-full" style="text-align: center; display: block;">
+                            View Citizen Guide
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="card mt-6" style="background: #eff6ff; border: 2px solid #3b82f6;">
+                    <h3 class="text-lg font-bold mb-3">A Call for Truth and Transparency</h3>
+                    <p class="text-sm mb-3">
+                        Democracy thrives on information, debate, and accountability. When statistics are suppressed, 
+                        institutions captured, and inequalities hidden, the social contract itself is at risk.
+                    </p>
+                    <p class="text-sm mb-3">
+                        This research is a contribution to the essential democratic task of holding power accountable 
+                        through evidence. It is not partisan but empirical, not ideological but factual.
+                    </p>
+                    <p class="text-sm font-bold">
+                        India's future is not predetermined. The choice between continued concentration and inclusive 
+                        renewal will be made by the actions we take today. This research provides the evidence. 
+                        What happens next depends on all of us.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="mt-auto">
+        <div class="container py-8">
+            <div class="grid grid-3 gap-6 mb-8">
+                <!-- About Section -->
+                <div>
+                    <h4 class="font-bold mb-3">About This Research</h4>
+                    <p class="text-sm opacity-90 mb-4">
+                        Independent, evidence-based analysis of India's economic transformation. 
+                        All data from official sources or peer-reviewed research.
+                    </p>
+                    <div class="space-y-1">
+                        <a href="downloads/research-presentation.html" target="_blank" class="text-sm block hover:underline" style="color: var(--purple);">
+                            View Full Research Presentation
+                        </a>
+                        <a href="data/SP_masterdataset.csv" target="_blank" class="text-sm block hover:underline" style="color: var(--purple);">
+                            Download Master Dataset (CSV)
+                        </a>
+                        <a href="replication_code.R" download class="text-sm block hover:underline" style="color: var(--purple);">
+                            Download R Code
+                        </a>
+                        <a href="replication_code.py" download class="text-sm block hover:underline" style="color: var(--purple);">
+                            Download Python Code
+                        </a>
+                        <a href="https://github.com/Varnasr/someperspective" class="text-sm block hover:underline" style="color: var(--purple);">
+                            View GitHub Repository
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Legal Disclaimer -->
+                <div>
+                    <h4 class="font-bold mb-3">Legal Disclaimer</h4>
+                    <p class="text-xs opacity-75">
+                        This research is provided for educational and informational purposes only. 
+                        Views expressed are those of the researchers and do not constitute financial, 
+                        legal, or political advice. Users should verify all data independently.
+                    </p>
+                    <p class="text-xs opacity-75 mt-2">
+                        <strong>Compliance:</strong> This website complies with the Information Technology Act, 2000 
+                        and Rules made thereunder. No sensitive personal data is collected.
+                    </p>
+                </div>
+                
+                <!-- License & Citation -->
+                <div>
+                    <h4 class="font-bold mb-3">License & Usage</h4>
+                    <p class="text-sm opacity-90 mb-2">
+                        Released under <a href="https://opensource.org/licenses/MIT" class="hover:underline" style="color: var(--purple);">MIT License</a>
+                    </p>
+                    <p class="text-xs opacity-75 mb-3">
+                        Free to use, copy, modify, and distribute with attribution.
+                    </p>
+                    <p class="text-sm opacity-90">
+                        <strong>Citation:</strong><br>
+                        <span class="text-xs">Raman, V.S. (2025). Narratives, Numbers, and Democratic Accountability. 
+                        Available at: someperspective.info</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="text-center text-xs opacity-75 pt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>
+                    © 2025 Some Perspective. Educational use encouraged. | 
+                    Last Updated: September 2025 | 
+                    <a href="#" onclick="window.print(); return false;" class="hover:underline">Print Version</a> | 
+                    <a href="mailto:research@someperspective.info" class="hover:underline">Contact</a>
+                </p>
+                <p class="mt-2">
+                    Made with commitment to truth and transparency. Data sovereignty for digital India.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Implementation -->
+    <script>
+        // Global state and data
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        let currentAudience = '';
+        let currentTab = 'about';
+        let charts = {};
+        let economicData = null;
+        let dataLoaded = false;
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            setTheme(currentTheme);
+            
+            // Initialize Alpine.js data if available
+            if (typeof Alpine !== 'undefined') {
+                Alpine.data('appData', appData);
+            }
+        });
+        
+        // Load data from data.json
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load data');
+                }
+                economicData = await response.json();
+                dataLoaded = true;
+                
+                // Hide loading state
+                const loadingEl = document.getElementById('loading-state');
+                if (loadingEl) {
+                    loadingEl.style.display = 'none';
+                }
+                
+                // Populate key findings
+                populateKeyFindings();
+                
+                // Initialize data table
+                populateDataTable();
+                
+                // Initialize charts if on relevant tab
+                if (currentTab === 'about' || currentTab === 'summary') {
+                    setTimeout(() => createSummaryChart(), 100);
+                }
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                // Fallback to hardcoded data if fetch fails
+                useFallbackData();
+            }
+        }
+        
+        // Fallback data if fetch fails
+        function useFallbackData() {
+            economicData = {
+                metadata: {
+                    title: "India Economic Indicators 2014-2025",
+                    lastUpdated: "2025-09-01"
+                },
+                timeSeries: {
+                    years: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+                    gdpGrowth: [7.4, 8.0, 8.2, 7.2, 6.1, 4.2, -7.3, 8.7, 7.2, 7.6, 7.8, 6.5],
+                    unemployment: {
+                        overall: [4.9, 5.0, 5.0, 6.0, 6.1, 5.8, 7.1, 4.2, 4.1, 3.2, 3.2, 3.1]
+                    },
+                    inequality: {
+                        top1Percent: [15.0, 16.2, 17.5, 18.8, 19.7, 20.4, 21.2, 21.7, 22.1, 22.6, 22.6, 22.8]
+                    },
+                    employment: {
+                        formalSector: [13.0, 12.8, 12.5, 12.2, 11.8, 11.5, 11.2, 11.0, 10.8, 10.5, 11.0, 11.2]
+                    },
+                    democraticIndicators: {
+                        pressFreedomRank: [140, 136, 133, 136, 138, 140, 142, 142, 150, 161, 159, 160]
+                    }
+                },
+                keyFindings: [
+                    {
+                        title: "Employment Paradox Resolved",
+                        finding: "Employment elasticity improved from 0.01 (2011-2016) to 1.11 (2017-2023)",
+                        implication: "Job creation recovered but remains largely informal"
+                    },
+                    {
+                        title: "Colonial-Era Inequality",
+                        finding: "Top 1% income share at 22.6%, exceeding 1939 peak of 20.7%",
+                        implication: "Wealth concentration at historic highs despite growth"
+                    },
+                    {
+                        title: "Fiscal Centralization",
+                        finding: "Cess and surcharge increased from 10.4% to 20.2% of gross taxes",
+                        implication: "States lost ₹2-3 lakh crore annually in revenue share"
+                    },
+                    {
+                        title: "Statistical Suppression",
+                        finding: "2021 Census postponed to 2027, consumption survey suppressed",
+                        implication: "Data vacuum affecting 10 crore welfare beneficiaries"
+                    },
+                    {
+                        title: "Democratic Decline",
+                        finding: "Press freedom rank fell from 136 to 159, 805 internet shutdowns",
+                        implication: "India classified as 'electoral autocracy' by V-Dem"
+                    }
+                ]
+            };
+            dataLoaded = true;
+            
+            // Hide loading state
+            const loadingEl = document.getElementById('loading-state');
+            if (loadingEl) {
+                loadingEl.style.display = 'none';
+            }
+            
+            populateKeyFindings();
+            populateDataTable();
+        }
+        
+        // Populate key findings from data
+        function populateKeyFindings() {
+            if (!economicData || !economicData.keyFindings) return;
+            
+            economicData.keyFindings.forEach((finding, index) => {
+                const titleEl = document.getElementById(`finding-${index + 1}-title`);
+                const textEl = document.getElementById(`finding-${index + 1}-text`);
+                
+                if (titleEl && textEl) {
+                    titleEl.textContent = `${index + 1}. ${finding.title}`;
+                    textEl.textContent = `${finding.finding} ${finding.implication}`;
+                }
+            });
+        }
+        
+        // Alpine.js component (if library loads)
+        function appData() {
+            return {
+                theme: currentTheme,
+                audience: currentAudience,
+                activeTab: currentTab,
+                
+                init() {
+                    this.applyTheme();
+                },
+                
+                applyTheme() {
+                    document.body.setAttribute('data-theme', this.theme);
+                }
+            };
+        }
+        
+        // Theme management
+        function setTheme(theme) {
+            currentTheme = theme;
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update icon visibility
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            if (theme === 'light') {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+            
+            // Update chart themes if they exist
+            if (Object.keys(charts).length > 0) {
+                updateChartThemes();
+            }
+        }
+        
+        function toggleTheme() {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+        
+        // Tab navigation
+        function showTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-nav button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected section
+            const section = document.getElementById(`content-${tabName}`);
+            if (section) {
+                section.classList.add('active');
+            }
+            
+            // Activate selected tab
+            const tab = document.getElementById(`tab-${tabName}`);
+            if (tab) {
+                tab.classList.add('active');
+            }
+            
+            currentTab = tabName;
+            
+            // Initialize charts for the tab if data is loaded
+            if (dataLoaded) {
+                setTimeout(() => {
+                    if (tabName === 'summary' && !charts.summaryChart) {
+                        createSummaryChart();
+                    } else if (tabName === 'findings' && !charts.employmentChart) {
+                        createEmploymentChart();
+                        createFormalEmploymentChart();
+                        createInequalityChart();
+                        createFiscalChart();
+                    } else if (tabName === 'data' && !charts.interactiveChart) {
+                        createInteractiveChart();
+                    } else if (tabName === 'indices' && !charts.indicesChart) {
+                        createIndicesChart();
+                        createSSIChart();
+                        createFCIChart();
+                        createDQIChart();
+                    }
+                }, 100);
+            }
+        }
+        
+        // Audience selection
+        function setAudience(type) {
+            currentAudience = type;
+            
+            // Update button states
+            document.querySelectorAll('.audience-selector button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            const activeButton = document.getElementById(`audience-${type}`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Show audience message
+            const messageEl = document.getElementById('audience-message');
+            const textEl = document.getElementById('audience-text');
+            
+            const messages = {
+                researcher: "<strong>For Researchers:</strong> Full methodology, data sources, and statistical analysis provided. All claims are referenced with replication code available. Focus on novel indices (SSI, FCI, DQI) and causal mechanisms. Employment elasticity calculation uses PLFS micro-data with difference-in-differences identification.",
+                policy: "<strong>For Policy Makers:</strong> Actionable findings with specific reform proposals. Each recommendation includes implementation timelines and expected outcomes. Priority: Restore statistical independence (₹500 crore), implement 16th FC recommendations (₹3 lakh crore to states), create urban employment guarantee (₹50,000 crore).",
+                journalist: "<strong>For Journalists:</strong> Key statistics: Top 1% own 22.6% income (historic high), formal jobs fell to 11.2%, states lost ₹2-3 lakh crore in tax share, press freedom rank 159/180. All data fact-checked with sources. Infographics optimized for publication.",
+                citizen: "<strong>For Citizens/Students:</strong> Example 1: If India had ₹100, the richest 1% would have ₹23, bottom 50% would share ₹13. Example 2: In a class of 100 workers, only 11 have formal jobs with PF/ESI. Example 3: For every ₹100 tax collected, states now get ₹30 instead of promised ₹42."
+            };
+            
+            if (messages[type]) {
+                messageEl.classList.remove('hidden');
+                textEl.innerHTML = messages[type];
+            }
+            
+            // Update content based on audience
+            updateAudienceContent();
+        }
+        
+        function updateAudienceContent() {
+            // Update summary content
+            const summaryContent = document.getElementById('summary-audience-content');
+            if (summaryContent) {
+                if (currentAudience === 'researcher') {
+                    summaryContent.innerHTML = `
+                        <div class="card" style="background: #e0e7ff;">
+                            <h4 class="font-bold mb-2">Research Overview</h4>
+                            <p class="text-sm">This study employs difference-in-differences, synthetic control, and event study designs 
+                            to identify causal effects. Novel indices (SSI, FCI, DQI) constructed from 15+ data sources. 
+                            Employment elasticity: ε = (%ΔEmployment) / (%ΔGDP), with structural break in 2016.
+                            Inequality measures use Pareto interpolation on tax data. All code available on GitHub.</p>
+                        </div>`;
+                } else if (currentAudience === 'policy') {
+                    summaryContent.innerHTML = `
+                        <div class="card" style="background: #fef3c7;">
+                            <h4 class="font-bold mb-2">One-Page Policy Brief</h4>
+                            <p class="text-sm"><strong>Crisis:</strong> Formal employment at 11.2%, youth unemployment 28.5% (graduates).
+                            <strong>Action 1:</strong> Urban Employment Guarantee - ₹50,000 crore, cover 2 crore workers.
+                            <strong>Action 2:</strong> Restore fiscal federalism - implement 16th FC, cap cesses at 5%.
+                            <strong>Action 3:</strong> Statistical independence - autonomous NSO, release all data.
+                            <strong>Timeline:</strong> 100 days for legislative changes, 1 year for implementation.</p>
+                        </div>`;
+                } else if (currentAudience === 'journalist') {
+                    summaryContent.innerHTML = `
+                        <div class="card" style="background: #dcfce7;">
+                            <h4 class="font-bold mb-2">90-Second Brief</h4>
+                            <p class="text-sm"><strong>Lead:</strong> India's top 1% now earn more than during British rule (22.8% vs 20.7% in 1922).
+                            <strong>Jobs:</strong> Only 11.2% have formal employment, down from 13% in 2014.
+                            <strong>States:</strong> Lost ₹2-3 lakh crore yearly as Centre kept 20% tax via cesses.
+                            <strong>Democracy:</strong> Press freedom rank 159/180, 805 internet shutdowns, "electoral autocracy" per V-Dem.
+                            <strong>Quote:</strong> "Growth without accountability creates prosperity for few, precarity for many."</p>
+                        </div>`;
+                } else if (currentAudience === 'citizen') {
+                    summaryContent.innerHTML = `
+                        <div class="card" style="background: #fce7f3;">
+                            <h4 class="font-bold mb-2">What This Means for You (3 Examples)</h4>
+                            <p class="text-sm"><strong>Your Job:</strong> In your office of 100 people, only 11 have PF/ESI benefits. Rest are contract/gig.
+                            <strong>Your Taxes:</strong> You pay ₹100 tax. Your state should get ₹42 but gets only ₹30. Centre keeps extra via cesses.
+                            <strong>Your Future:</strong> If you're under 30 with a degree, 3 in 10 like you are unemployed.
+                            These aren't opinions - they're from government's own data (when released).</p>
+                        </div>`;
+                }
+            }
+        }
+        
+        // Chart helper functions
+        function getChartColors() {
+            const isDark = currentTheme === 'dark';
+            return {
+                gridColor: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
+                textColor: isDark ? '#cbd5e1' : '#475569',
+                backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                colors: {
+                    green: '#10b981',
+                    red: '#ef4444',
+                    orange: '#f97316',
+                    purple: '#7c3aed',
+                    blue: '#3b82f6',
+                    gray: '#6b7280',
+                    yellow: '#eab308'
+                }
+            };
+        }
+        
+        function getNestedValue(obj, path) {
+            return path.split('.').reduce((current, key) => current?.[key], obj);
+        }
+        
+        // Chart creation functions
+        function createSummaryChart() {
+            if (!dataLoaded || !economicData) return;
+            
+            const ctx = document.getElementById('summaryChart');
+            if (!ctx) return;
+            
+            const colors = getChartColors();
+            
+            if (charts.summaryChart) {
+                charts.summaryChart.destroy();
+            }
+            
+            charts.summaryChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: economicData.timeSeries.years,
+                    datasets: [
+                        {
+                            label: 'GDP Growth (%)',
+                            data: economicData.timeSeries.gdpGrowth,
+                            borderColor: colors.colors.green,
+                            backgroundColor: colors.colors.green + '20',
+                            tension: 0.4,
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Unemployment Rate (%)',
+                            data: economicData.timeSeries.unemployment.overall,
+                            borderColor: colors.colors.red,
+                            backgroundColor: colors.colors.red + '20',
+                            tension: 0.4,
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Top 1% Income Share (%)',
+                            data: economicData.timeSeries.inequality.top1Percent,
+                            borderColor: colors.colors.orange,
+                            backgroundColor: colors.colors.orange + '20',
+                            tension: 0.4,
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Key Economic Indicators (2014-2025)',
+                            color: colors.textColor
+                        },
+                        legend: {
+                            labels: { color: colors.textColor }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        y: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createEmploymentChart() {
+            if (!dataLoaded) return;
+            
+            const ctx = document.getElementById('employmentChart');
+            if (!ctx) return;
+            
+            const colors = getChartColors();
+            
+            if (charts.employmentChart) {
+                charts.employmentChart.destroy();
+            }
+            
+            charts.employmentChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2011-2016', '2017-2023'],
+                    datasets: [{
+                        label: 'Employment Elasticity',
+                        data: [0.01, 1.11],
+                        backgroundColor: [colors.colors.red, colors.colors.green],
+                        borderColor: [colors.colors.red, colors.colors.green],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Employment Elasticity Recovery',
+                            color: colors.textColor
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        x: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createFormalEmploymentChart() {
+            if (!dataLoaded || !economicData) return;
+            
+            const ctx = document.getElementById('formalEmploymentChart');
+            if (!ctx) return;
+            
+            const colors = getChartColors();
+            
+            if (charts.formalEmploymentChart) {
+                charts.formalEmploymentChart.destroy();
+            }
+            
+            charts.formalEmploymentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: economicData.timeSeries.years,
+                    datasets: [{
+                        label: 'Formal Employment (%)',
+                        data: economicData.timeSeries.employment.formalSector,
+                        borderColor: colors.colors.purple,
+                        backgroundColor: colors.colors.purple + '20',
+                        tension: 0.4,
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Formal Employment Decline',
+                            color: colors.textColor
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 10,
+                            max: 14,
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        x: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createInequalityChart() {
+            if (!dataLoaded || !economicData) return;
+            
+            const ctx = document.getElementById('inequalityChart');
+            if (!ctx) return;
+            
+            const colors = getChartColors();
+            
+            if (charts.inequalityChart) {
+                charts.inequalityChart.destroy();
+            }
+            
+            charts.inequalityChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: economicData.timeSeries.years,
+                    datasets: [{
+                        label: 'Top 1% Income Share (%)',
+                        data: economicData.timeSeries.inequality.top1Percent,
+                        backgroundColor: 'rgba(239, 68, 68, 0.6)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Rising Inequality: Top 1% Income Share',
+                            color: colors.textColor
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 14,
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        x: {
+                            grid: { color: colors.gridColor },
+                            ticks: { 
+                                color: colors.textColor,
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createFiscalChart() {
+            if (!dataLoaded || !economicData) return;
+            
+            const ctx = document.getElementById('fiscalChart');
+            if (!ctx) return;
+            
+            const colors = getChartColors();
+            
+            if (charts.fiscalChart) {
+                charts.fiscalChart.destroy();
+            }
+            
+            charts.fiscalChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: economicData.timeSeries.years,
+                    datasets: [
+                        {
+                            label: "States' Share in Taxes (%)",
+                            data: economicData.timeSeries.fiscalFederalism.statesShareInTaxes,
+                            borderColor: colors.colors.green,
+                            backgroundColor: colors.colors.green + '20',
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Cess & Surcharge (%)',
+                            data: economicData.timeSeries.fiscalFederalism.cessAndSurcharge,
+                            borderColor: colors.colors.red,
+                            backgroundColor: colors.colors.red + '20',
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Fiscal Centralization: States Losing Revenue',
+                            color: colors.textColor
+                        },
+                        legend: {
+                            labels: { color: colors.textColor }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor },
+                            title: {
+                                display: true,
+                                text: "States' Share (%)",
+                                color: colors.textColor
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: colors.textColor },
+                            title: {
+                                display: true,
+                                text: 'Cess Share (%)',
+                                color: colors.textColor
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createInteractiveChart() {
+            const ctx = document.getElementById('interactiveChart');
+            if (!ctx) return;
+            
+            updateDataChart();
+        }
+        
+        function updateDataChart() {
+            if (!dataLoaded || !economicData) return;
+            
+            const ctx = document.getElementById('interactiveChart');
+            if (!ctx) return;
+            
+            const colors = getChartColors();
+            const primary = document.getElementById('primary-indicator').value;
+            const compare1 = document.getElementById('compare-indicator').value;
+            const timeRange = document.getElementById('time-range').value;
+            
+            // Get time range indices
+            let startIdx = 0;
+            let endIdx = economicData.timeSeries.years.length;
+            
+            if (timeRange === 'recent') {
+                startIdx = economicData.timeSeries.years.indexOf(2020);
+            } else if (timeRange === 'pre-covid') {
+                endIdx = economicData.timeSeries.years.indexOf(2020);
+            }
+            
+            const years = economicData.timeSeries.years.slice(startIdx, endIdx);
+            
+            const datasets = [];
+            const indicatorLabels = {
+                'gdpGrowth': 'GDP Growth (%)',
+                'unemployment.overall': 'Unemployment (%)',
+                'inequality.top1Percent': 'Top 1% Share (%)',
+                'employment.formalSector': 'Formal Employment (%)',
+                'democraticIndicators.pressFreedomRank': 'Press Freedom Rank',
+                'socialSectors.studentSuicides': 'Student Suicides'
+            };
+            
+            const indicatorColors = {
+                'gdpGrowth': colors.colors.green,
+                'unemployment.overall': colors.colors.red,
+                'inequality.top1Percent': colors.colors.orange,
+                'employment.formalSector': colors.colors.purple,
+                'democraticIndicators.pressFreedomRank': colors.colors.gray,
+                'socialSectors.studentSuicides': colors.colors.yellow
+            };
+            
+            // Get data for primary indicator
+            const primaryData = getNestedValue(economicData.timeSeries, primary);
+            if (primaryData) {
+                datasets.push({
+                    label: indicatorLabels[primary] || primary,
+                    data: primaryData.slice(startIdx, endIdx),
+                    borderColor: indicatorColors[primary] || colors.colors.blue,
+                    backgroundColor: (indicatorColors[primary] || colors.colors.blue) + '20',
+                    tension: 0.4,
+                    yAxisID: 'y'
+                });
+            }
+            
+            // Add comparison dataset if selected
+            if (compare1) {
+                const compareData = getNestedValue(economicData.timeSeries, compare1);
+                if (compareData) {
+                    datasets.push({
+                        label: indicatorLabels[compare1] || compare1,
+                        data: compareData.slice(startIdx, endIdx),
+                        borderColor: indicatorColors[compare1] || colors.colors.gray,
+                        backgroundColor: (indicatorColors[compare1] || colors.colors.gray) + '20',
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    });
+                }
+            }
+            
+            if (charts.interactiveChart) {
+                charts.interactiveChart.destroy();
+            }
+            
+            charts.interactiveChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Interactive Data Explorer',
+                            color: colors.textColor
+                        },
+                        legend: {
+                            labels: { color: colors.textColor }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: compare1 ? true : false,
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: colors.textColor }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createIndicesChart() {
+            if (!dataLoaded || !economicData) return;
+            
+            const ctx = document.getElementById('indicesChart');
+            if (!ctx) return;
+            
+            const colors = getChartColors();
+            
+            if (charts.indicesChart) {
+                charts.indicesChart.destroy();
+            }
+            
+            // Calculate indices from data
+            const years = economicData.timeSeries.years;
+            
+            // SSI: Based on key events (simplified)
+            const ssi = years.map(year => {
+                if (year < 2015) return 0;
+                if (year === 2019) return 7.0;
+                if (year === 2020) return 10.0;
+                if (year === 2023) return 7.8;
+                if (year >= 2021) return 5.0;
+                return 2.0 + (year - 2015) * 0.5;
+            });
+            
+            // FCI: Based on fiscal centralization
+            const fci = economicData.timeSeries.fiscalFederalism.centralizedSpending.map(v => v / 100);
+            
+            // DQI: Based on press freedom (inverted and normalized)
+            const dqi = economicData.timeSeries.democraticIndicators.pressFreedomRank.map(rank => 
+                Math.max(0, (180 - rank) / 180)
+            );
+            
+            charts.indicesChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [
+                        {
+                            label: 'Statistical Suppression Index',
+                            data: ssi,
+                            borderColor: colors.colors.red,
+                            backgroundColor: colors.colors.red + '20',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Fiscal Centralization Index',
+                            data: fci,
+                            borderColor: colors.colors.orange,
+                            backgroundColor: colors.colors.orange + '20',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Democratic Quality Index',
+                            data: dqi,
+                            borderColor: colors.colors.blue,
+                            backgroundColor: colors.colors.blue + '20',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Three Indices of Institutional Change',
+                            color: colors.textColor
+                        },
+                        legend: {
+                            labels: { color: colors.textColor }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        y: {
+                            grid: { color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createSSIChart() {
+            // Similar implementation to other charts
+            console.log('SSI Chart would be created here');
+        }
+        
+        function createFCIChart() {
+            // Similar implementation to other charts
+            console.log('FCI Chart would be created here');
+        }
+        
+        function createDQIChart() {
+            // Similar implementation to other charts
+            console.log('DQI Chart would be created here');
+        }
+        
+        // Data table functions
+        function populateDataTable() {
+            if (!dataLoaded || !economicData) return;
+            
+            const tbody = document.getElementById('dataTableBody');
+            if (!tbody) return;
+            
+            let html = '';
+            economicData.timeSeries.years.forEach((year, index) => {
+                html += `
+                    <tr>
+                        <td class="p-2">${year}</td>
+                        <td class="p-2 text-right">${economicData.timeSeries.gdpGrowth[index].toFixed(1)}%</td>
+                        <td class="p-2 text-right">${economicData.timeSeries.unemployment.overall[index].toFixed(1)}%</td>
+                        <td class="p-2 text-right">${economicData.timeSeries.inequality.top1Percent[index].toFixed(1)}%</td>
+                        <td class="p-2 text-right">${economicData.timeSeries.employment.formalSector[index].toFixed(1)}%</td>
+                        <td class="p-2 text-right">${economicData.timeSeries.democraticIndicators.pressFreedomRank[index]}</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+        
+        // Chart export functions
+        function exportChart(chartId, format) {
+            const chart = charts[chartId];
+            if (!chart) return;
+            
+            if (format === 'png') {
+                const link = document.createElement('a');
+                link.download = `${chartId}.png`;
+                link.href = chart.toBase64Image();
+                link.click();
+            } else if (format === 'csv') {
+                // Export data as CSV
+                console.log('CSV export would be implemented here');
+            }
+        }
+        
+        function exportAllCharts() {
+            Object.keys(charts).forEach(chartId => {
+                exportChart(chartId, 'png');
+            });
+        }
+        
+        // Chart control functions
+        function resetZoom() {
+            if (charts.interactiveChart) {
+                charts.interactiveChart.resetZoom();
+            }
+        }
+        
+        function toggleScale() {
+            if (charts.interactiveChart) {
+                const scales = charts.interactiveChart.options.scales;
+                scales.y.type = scales.y.type === 'linear' ? 'logarithmic' : 'linear';
+                charts.interactiveChart.update();
+            }
+        }
+        
+        // Update chart themes
+        function updateChartThemes() {
+            const colors = getChartColors();
+            
+            Object.values(charts).forEach(chart => {
+                if (chart && chart.options) {
+                    // Update title color
+                    if (chart.options.plugins?.title) {
+                        chart.options.plugins.title.color = colors.textColor;
+                    }
+                    
+                    // Update legend color
+                    if (chart.options.plugins?.legend?.labels) {
+                        chart.options.plugins.legend.labels.color = colors.textColor;
+                    }
+                    
+                    // Update scales
+                    if (chart.options.scales) {
+                        Object.values(chart.options.scales).forEach(scale => {
+                            if (scale.grid) scale.grid.color = colors.gridColor;
+                            if (scale.ticks) scale.ticks.color = colors.textColor;
+                            if (scale.title) scale.title.color = colors.textColor;
+                        });
+                    }
+                    
+                    chart.update();
+                }
+            });
+        }
+        
+        // Download functions (placeholders - would need actual file URLs)
+        function downloadSummaryPDF() {
+            window.open('downloads/Executive_Summary.pdf', '_blank');
+        }
+        
+        function downloadDataset() {
+            window.open('downloads/Dataset_India_Economic_Indicators.xlsx', '_blank');
+        }
+        
+        function downloadIndicesData() {
+            window.open('downloads/Indices_Dataset.xlsx', '_blank');
+        }
+        
+        function showMethodologyDetails() {
+            window.open('downloads/Technical_Appendix.pdf', '_blank');
+        }
+        
+        function downloadMethodsPaper() {
+            window.open('downloads/Methodology_Technical_Paper.pdf', '_blank');
+        }
+        
+        function viewReplicationCode() {
+            window.open('https://github.com/Varnasr/someperspective', '_blank');
+        }
+        
+        function downloadResearchPackage() {
+            window.open('downloads/Research_Package.zip', '_blank');
+        }
+        
+        function downloadPolicyBrief() {
+            window.open('downloads/Policy_Brief.pdf', '_blank');
+        }
+        
+        function downloadMediaKit() {
+            window.open('downloads/Media_Kit.zip', '_blank');
+        }
+        
+        function downloadCitizenGuide() {
+            window.open('downloads/Citizen_Guide.pdf', '_blank');
+        }
+        
+        function downloadPaper() {
+            window.open('downloads/Full_Report_India_Political_Economy.pdf', '_blank');
+        }
+    </script>
+</body>
+</html>
