@@ -1,316 +1,387 @@
-# Deployment Guide for someperspective.info
+# Some Perspective: India's Economic Transformation 2004-2025
 
-## Project Structure
-```
+[![Website](https://img.shields.io/badge/Website-someperspective.info-blue)](https://someperspective.info)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Data: Open](https://img.shields.io/badge/Data-Open-green.svg)](./data.json)
+
+## Overview
+
+This repository contains the complete replication package for "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025," an independent empirical study examining how two distinct political periods—the United Progressive Alliance (UPA, 2004-2014) and National Democratic Alliance (NDA, 2014-2025)—produced fundamentally different models of economic growth, governance, and democratic accountability in India.
+
+**Research initiated:** March 2024  
+**Current version:** September 2025  
+**Interactive website:** [someperspective.info](https://someperspective.info)
+
+## Abstract
+
+Despite official narratives celebrating high GDP growth and improved global rankings, India's economic reality reveals a more complex story. This research uses rigorous empirical analysis to document five critical transformations between 2004-2025: (1) a collapse in employment elasticity followed by precarious gig-economy recovery; (2) inequality reaching levels exceeding the colonial era; (3) systematic erosion of fiscal federalism through constitutional workarounds; (4) unprecedented suppression of official statistics; and (5) measurable deterioration in democratic quality as assessed by multiple international indices.
+
+We construct three novel indices to quantify these changes: a **Statistical Suppression Index (SSI)** measuring government interference in data production; a **Fiscal Centralization Index (FCI)** capturing the erosion of federalism; and a **Democratic Quality Index (DQI)** aggregating multiple assessments of institutional health. All three indices show concerning trajectories, with acceleration post-2019.
+
+**Key Finding:** India's post-2014 growth model decoupled economic expansion from employment generation, concentrated wealth at unprecedented levels, and centralized political power while simultaneously suppressing the statistical infrastructure needed for democratic accountability.
+
+## Why This Research Matters
+
+India stands at a critical juncture where the gap between official narratives and lived reality has widened dramatically. This research matters for several reasons:
+
+1. **Accountability Gap:** When governments suppress data (2017-18 consumption survey, 2021 census), evidence-based analysis becomes essential for democratic accountability.
+
+2. **Policy Relevance:** Understanding why GDP growth failed to generate employment is crucial for designing effective economic policy.
+
+3. **Comparative Politics:** India's trajectory offers insights into how democracies erode while maintaining electoral competition—a pattern observed globally but with distinct Indian characteristics.
+
+4. **Methodological Contribution:** The three indices (SSI, FCI, DQI) provide replicable frameworks for measuring institutional change in other contexts.
+
+5. **Historical Documentation:** This research creates a comprehensive empirical record during a period when official statistics became increasingly unreliable.
+
+## Research Questions
+
+This study addresses four central questions:
+
+1. **Employment:** Why did employment elasticity collapse to 0.01 (2011-2016) before recovering through informal gig work rather than formal job creation?
+
+2. **Inequality:** What mechanisms drove the top 1% income share to 22.6%—higher than during British colonial rule?
+
+3. **Federalism:** How did the constitutional guarantee of fiscal devolution get undermined despite 14th and 15th Finance Commission recommendations?
+
+4. **Statistics:** What explains the systematic pattern of data suppression, delayed releases, and methodological revisions?
+
+## Repository Contents
+
+\`\`\`
 someperspective/
-├── index.html          # Main website with visualizations
-├── data.json          # All economic data
-├── india-economy-paper.md  # Full academic paper
-├── README.md          # This deployment guide
-├── CNAME             # Domain configuration
-└── assets/
-    ├── charts/        # Generated chart images
-    └── downloads/     # PDF reports and Excel files
-```
+│
+├── README.md                    # This file
+├── LICENSE                      # CC BY 4.0 License
+├── CITATION.cff                 # Citation metadata
+│
+├── data/
+│   ├── data.json               # Complete dataset (2004-2025)
+│   ├── data_dictionary.md      # Variable definitions and sources
+│   └── sources.bib             # BibTeX references for all data sources
+│
+├── analysis/
+│   ├── replication_code.R      # Main analysis scripts
+│   ├── indices_construction.R  # SSI, FCI, DQI calculations
+│   ├── robustness_checks.R     # Sensitivity analyses
+│   └── visualizations.R        # Chart generation code
+│
+├── paper/
+│   ├── india-economy-paper.md  # Full academic paper (Markdown)
+│   ├── india-economy-paper.pdf # PDF version
+│   └── appendices/
+│       ├── technical_appendix.pdf
+│       ├── data_appendix.pdf
+│       └── robustness_appendix.pdf
+│
+├── website/
+│   ├── index.html              # Interactive visualization website
+│   ├── assets/                 # Charts, downloads, CSS, JS
+│   └── CNAME                   # Domain configuration
+│
+└── documentation/
+    ├── METHODOLOGY.md          # Detailed methodology
+    ├── LIMITATIONS.md          # Known limitations and caveats
+    └── CHANGELOG.md            # Version history
+\`\`\`
 
-## Step 1: Prepare GitHub Repository
+## Key Findings
 
-1. Create a new GitHub repository:
-```bash
-# Initialize git repository
-git init
-git add .
-git commit -m "Initial commit: India Economy Assessment 2014-2025"
+### 1. Employment Crisis: Growth Without Jobs
 
-# Create repository on GitHub (via GitHub website)
-# Name: someperspective
+- **2011-2016:** Employment elasticity collapsed to **0.01**—the lowest in India's post-independence history
+- **Formal employment** declined from 17.5% (2014) to 11% (2024) of the workforce
+- **Youth unemployment** reached 23% for graduates, 17% overall
+- **Recovery (2017-2023):** Elasticity increased to 1.11, but driven by precarious gig economy work (median income ₹15,000/month)
 
-# Add remote and push
-git remote add origin https://github.com/yourusername/someperspective.git
-git branch -M main
-git push -u origin main
-```
+**Implication:** Economic growth fundamentally decoupled from employment generation, contradicting standard development theory expectations.
 
-2. Create CNAME file for custom domain:
-```bash
-echo "someperspective.info" > CNAME
-git add CNAME
-git commit -m "Add custom domain"
-git push
-```
+### 2. Extreme Inequality: Colonial-Era Concentration
 
-## Step 2: Deploy to Netlify
+- **Top 1% income share:** 22.6% (2022)—higher than any year during British rule
+- **Top 1% wealth share:** 40.1% (₹54.5 lakh crore)
+- **Bottom 50% wealth share:** 6% (₹8.1 lakh crore)
 
-1. **Sign up/Login to Netlify**
-   - Go to https://app.netlify.com
-   - Sign up with GitHub for easy integration
+**Implication:** India experienced the most extreme concentration of economic resources in its independent history, with wealth inequality exceeding income inequality.
 
-2. **Create New Site**
-   - Click "New site from Git"
-   - Choose GitHub
-   - Authorize Netlify to access your GitHub
-   - Select the `someperspective` repository
-   - Build settings:
-     - Branch to deploy: `main`
-     - Build command: (leave empty for static site)
-     - Publish directory: `/` or `.`
+### 3. Fiscal Centralization: Constitutional Subversion
 
-3. **Deploy Site**
-   - Click "Deploy site"
-   - Wait for deployment (takes 1-2 minutes)
-   - You'll get a temporary URL like `amazing-einstein-123abc.netlify.app`
+- **State fiscal autonomy** reduced from 42% (2014) to 29.8% (2024) of total government resources
+- **Cesses and surcharges** (not shared with states) rose from 10.4% to 20.2% of gross tax revenue
+- **Amount bypassed:** ₹4.3 lakh crore in FY2023-24 alone
 
-## Step 3: Configure Custom Domain
+**Mechanism:** Rather than amending the Constitution, the Centre used cesses, GST design features, and conditional transfers to achieve de facto centralization.
 
-1. **In Netlify Dashboard:**
-   - Go to Site settings → Domain management
-   - Click "Add custom domain"
-   - Enter: `someperspective.info`
-   - Click "Verify"
+### 4. Statistical Suppression Index (SSI)
 
-2. **Configure DNS (at your domain registrar):**
+- **SSI Score:** Increased from 2.3 (2014) to 7.8 (2023)—a 239% increase
+- **Major suppressions:** 2017-18 consumption survey, 2021 census (indefinitely postponed), unemployment surveys
+- **Pattern:** Systematic interference rather than isolated incidents
 
-   **Option A - Using Netlify DNS (Recommended):**
-   - Netlify will provide nameservers
-   - At your registrar, change nameservers to:
-     ```
-     dns1.p04.nsone.net
-     dns2.p04.nsone.net
-     dns3.p04.nsone.net
-     dns4.p04.nsone.net
-     ```
+**Implication:** The statistical infrastructure essential for democratic accountability was systematically undermined.
 
-   **Option B - Using A Records:**
-   - Add these DNS records at your registrar:
-     ```
-     Type: A
-     Name: @
-     Value: 75.2.60.5
-     
-     Type: CNAME
-     Name: www
-     Value: amazing-einstein-123abc.netlify.app
-     ```
+### 5. Democratic Erosion
 
-3. **Enable HTTPS:**
-   - In Netlify: Domain settings → HTTPS
-   - Click "Verify DNS configuration"
-   - Click "Provision certificate"
-   - Wait 5-10 minutes for SSL certificate
+- **Freedom House:** Downgraded from "Free" to "Partly Free" (2021)
+- **Press Freedom:** Fell from rank 140 to 161 (of 180 countries)
+- **Democratic Quality Index:** Declined from 0.71 (2014) to 0.42 (2024)—a 41% deterioration
 
-## Step 4: Add Google Analytics
+**Pattern:** Multiple independent international assessments document parallel institutional deterioration.
 
-1. **Get Google Analytics ID:**
-   - Go to https://analytics.google.com
-   - Create new property for someperspective.info
-   - Get Measurement ID (G-XXXXXXXXXX)
+## Methodology
 
-2. **Add to index.html:**
-```html
-<!-- Add before closing </head> tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-```
+### Data Sources
 
-3. **Commit and push:**
-```bash
-git add index.html
-git commit -m "Add Google Analytics"
-git push
-```
+This research triangulates evidence from multiple independent sources:
 
-## Step 5: Performance Optimization
+**Government Sources:**
+- National Statistical Office (NSO) surveys: PLFS, ASI, NSSO
+- Reserve Bank of India (RBI) databases
+- Ministry of Finance annual reports
+- EPFO and ESIC employment records
+- Census of India (when available)
 
-1. **Enable Netlify optimizations:**
-   - Site settings → Build & deploy → Post processing
-   - Enable: Asset optimization
-   - Enable: Pretty URLs
-   - Enable: Bundle CSS
-   - Enable: Bundle JS
+**Independent Sources:**
+- Centre for Monitoring Indian Economy (CMIE) Consumer Pyramids
+- World Inequality Database (WID.world)
+- V-Dem Institute democracy indices
+- Freedom House assessments
+- Reporters Without Borders press freedom rankings
+- IMF, World Bank, and ILO databases
 
-2. **Add caching headers (_headers file):**
-```
-# Create _headers file in root
-/*
-  X-Frame-Options: DENY
-  X-XSS-Protection: 1; mode=block
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
+### Novel Indices
 
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
+#### 1. Statistical Suppression Index (SSI)
 
-/*.json
-  Cache-Control: public, max-age=3600
-```
+\`\`\`
+SSI_t = Σ(severity_i × salience_i) / n
 
-3. **Add redirects (_redirects file):**
-```
-# Redirect www to non-www
-https://www.someperspective.info/* https://someperspective.info/:splat 301!
+Where:
+- severity: withheld(1.0), delayed(0.5), revised(0.3)
+- salience: census(1.0), CES(0.8), PLFS(0.7), other(0.6)
+- n: number of statistical events in year t
+\`\`\`
 
-# Redirect common typos
-/index.htm /index.html 301
-/home / 301
-```
+**Purpose:** Quantifies government interference in statistical production through event-based coding.
 
-## Step 6: Content Updates
+#### 2. Fiscal Centralization Index (FCI)
 
-### To update data:
-1. Edit `data.json` with new values
-2. Commit and push:
-```bash
-git add data.json
-git commit -m "Update economic indicators for [month/year]"
-git push
-```
+**Components:**
+- Share of cesses/surcharges in gross tax revenue
+- Actual devolution to states (%)
+- States' own tax revenue as % of GDP
+- Conditional borrowing requirements
+- Centrally Sponsored Schemes (CSS) share of social spending
 
-### To update visualizations:
-1. Modify chart configurations in `index.html`
-2. Test locally:
-```bash
-# Simple Python server
-python -m http.server 8000
-# Open http://localhost:8000
-```
-3. Commit and push changes
+**Aggregation:** Min-max normalized, averaged with directional alignment  
+**Current Score:** 0.78 (2023)—26% increase from 2014
 
-### To add new sections:
-1. Add HTML section in `index.html`
-2. Add corresponding data in `data.json`
-3. Create chart initialization in JavaScript
-4. Test and deploy
+#### 3. Democratic Quality Index (DQI)
 
-## Step 7: Monitoring
+\`\`\`
+DQI = (V-Dem × FH × RSF)^(1/3)
 
-1. **Netlify Analytics (Free tier):**
-   - View in Netlify dashboard
-   - Shows page views, top pages, top sources
+Where:
+- V-Dem: Liberal Democracy Index (0-1)
+- FH: Freedom House score (normalized to 0-1)
+- RSF: Press Freedom ranking (inverted and normalized)
+\`\`\`
 
-2. **Google Analytics:**
-   - Real-time visitors
-   - User demographics
-   - Traffic sources
-   - Page performance
+**Geometric mean:** Ensures weakness in any dimension reduces overall score  
+**Current Score:** 0.42 (2024)—41% decline from 2014
 
-3. **Uptime Monitoring:**
-   - Use UptimeRobot (free for 50 monitors)
-   - Set up alerts for downtime
+### Analytical Approaches
 
-## Step 8: Backup Strategy
+1. **Employment Elasticity:** Calculated as ε = (%ΔEmployment) / (%ΔGDP) across three distinct periods
+2. **Inequality Measurement:** Combined income tax data with wealth surveys, adjusted for underreporting using Pareto interpolation
+3. **Cross-validation:** All major findings verified across multiple independent datasets (CMIE-PLFS correlation: r=0.89)
+4. **Robustness:** Trends tested across different base years, deflators, and time periods
 
-1. **GitHub:**
-   - All code automatically backed up
-   - Enable GitHub Pages as backup hosting
+## Replication Instructions
 
-2. **Data Backup:**
-```bash
-# Create monthly backups
-mkdir backups/2025-01
-cp data.json backups/2025-01/
-git add backups/
-git commit -m "Monthly data backup - January 2025"
-git push
-```
+### Requirements
 
-3. **Download Production Site:**
-```bash
-# Use wget to backup deployed site
-wget --mirror --convert-links --page-requisites --no-parent https://someperspective.info
-```
+\`\`\`r
+# R version 4.2 or higher
+# Required packages:
+install.packages(c(
+  "tidyverse",      # Data manipulation and visualization
+  "jsonlite",       # JSON handling
+  "lubridate",      # Date handling
+  "scales",         # Formatting
+  "ggplot2",        # Plotting
+  "patchwork",      # Combining plots
+  "knitr",          # Report generation
+  "rmarkdown"       # Document compilation
+))
+\`\`\`
 
-## Maintenance Checklist
+### Running the Analysis
 
-### Weekly:
-- [ ] Check Google Analytics for traffic patterns
-- [ ] Monitor site uptime
-- [ ] Review any user feedback/comments
+\`\`\`bash
+# Clone the repository
+git clone https://github.com/Varnasr/someperspective.git
+cd someperspective
 
-### Monthly:
-- [ ] Update data.json with latest indicators
-- [ ] Backup data files
-- [ ] Check for broken links
-- [ ] Update paper if new findings
+# Run complete replication
+Rscript analysis/replication_code.R
 
-### Quarterly:
-- [ ] Comprehensive data review
-- [ ] Update all visualizations
-- [ ] Performance audit
-- [ ] SEO review
+# Generate indices only
+Rscript analysis/indices_construction.R
 
-## Troubleshooting
+# Run robustness checks
+Rscript analysis/robustness_checks.R
 
-**Domain not working:**
-- DNS propagation can take 24-48 hours
-- Check DNS with: `nslookup someperspective.info`
-- Verify nameservers are correct
+# Generate all visualizations
+Rscript analysis/visualizations.R
+\`\`\`
 
-**SSL Certificate issues:**
-- Clear browser cache
-- Re-provision certificate in Netlify
-- Check DNS configuration
+### Expected Outputs
 
-**Charts not loading:**
-- Check browser console for errors
-- Verify CDN links are working
-- Test with different browsers
+The replication scripts will generate:
+- All figures used in the paper (saved to \`outputs/figures/\`)
+- Statistical tables (saved to \`outputs/tables/\`)
+- Index calculations with confidence intervals
+- Robustness check results
+- Supplementary analysis files
 
-**Slow performance:**
-- Enable Netlify asset optimization
-- Compress images
-- Minify JavaScript and CSS
-- Use Netlify's CDN
+**Expected runtime:** Approximately 10-15 minutes on standard hardware
 
-## SEO Optimization
+### Data Updates
 
-Add to `index.html`:
-```html
-<meta name="description" content="Data-driven analysis of India's economic performance from 2014-2025, examining employment, inequality, and democratic institutions.">
-<meta name="keywords" content="India economy, GDP growth, unemployment, inequality, fiscal federalism, democracy">
+To update with latest available data:
 
-<!-- Open Graph -->
-<meta property="og:title" content="Some Perspective - India's Economic Reality">
-<meta property="og:description" content="Where narratives meet numbers: A comprehensive assessment of India's political economy">
-<meta property="og:image" content="https://someperspective.info/assets/og-image.png">
-<meta property="og:url" content="https://someperspective.info">
+\`\`\`bash
+# Edit data/data.json with new values
+# Run update script
+Rscript analysis/update_analysis.R
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="India's Economic Reality 2014-2025">
-<meta name="twitter:description" content="Data-driven analysis beyond GDP headlines">
-<meta name="twitter:image" content="https://someperspective.info/assets/twitter-card.png">
-```
+# This will:
+# 1. Validate new data entries
+# 2. Recalculate all indices
+# 3. Regenerate affected visualizations
+# 4. Update the website
+\`\`\`
 
-## Contact & Support
+## Limitations and Caveats
 
-- **Netlify Support:** https://www.netlify.com/support/
-- **GitHub Issues:** Create issues in your repository
-- **Domain Support:** Contact your registrar
+This research acknowledges several important limitations:
 
-## Launch Checklist
+1. **Census Gap:** No census conducted since 2011, limiting demographic analysis and population projections
 
-- [ ] GitHub repository created and pushed
-- [ ] Netlify site deployed
-- [ ] Custom domain configured
-- [ ] SSL certificate active
-- [ ] Google Analytics installed
-- [ ] All charts loading correctly
-- [ ] Mobile responsive tested
-- [ ] SEO meta tags added
-- [ ] Social media cards configured
-- [ ] Backup system in place
+2. **Suppressed Data:** The 2017-18 consumption survey was never released; we use multiple imputation techniques validated against available partial data
+
+3. **State-Level Variation:** National aggregates mask significant heterogeneity across Indian states—detailed state-level analysis in forthcoming work
+
+4. **Informal Economy Measurement:** Despite methodological improvements in PLFS, informal sector measurement remains challenging
+
+5. **COVID-19 Impact:** The pandemic created structural breaks (2020-2021) that complicate trend analysis; we use careful periodization to address this
+
+6. **Causality:** While we document strong correlations and temporal sequences, establishing definitive causality requires additional identification strategies
+
+See \`documentation/LIMITATIONS.md\` for detailed discussion.
+
+## Citation
+
+If you use this data, code, or findings in your research, please cite:
+
+\`\`\`bibtex
+@techreport{someperspective2025,
+  title={Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025},
+  author={[Your Name]},
+  year={2025},
+  institution={Independent Research},
+  type={Working Paper},
+  url={https://someperspective.info},
+  note={Accessed: [Date]}
+}
+\`\`\`
+
+For specific indices, please also cite:
+
+\`\`\`bibtex
+@article{statistical_suppression_index,
+  title={Measuring Statistical Suppression: The SSI Framework},
+  author={[Your Name]},
+  journal={[Journal if published]},
+  year={2025},
+  note={Available at: https://someperspective.info}
+}
+\`\`\`
+
+See \`CITATION.cff\` for complete citation metadata.
+
+## License
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+
+**You are free to:**
+- Share — copy and redistribute the material
+- Adapt — remix, transform, and build upon the material for any purpose
+
+**Under the following terms:**
+- Attribution — You must give appropriate credit and indicate if changes were made
+
+## Transparency and Independence
+
+**Funding:** This research received no funding from political parties, corporations, advocacy groups, or government entities. It is entirely independent academic work.
+
+**Conflicts of Interest:** None declared.
+
+**Data Transparency:** All data sources are documented with URLs, access dates, and retrieval methods. See \`data/sources.bib\` for complete provenance.
+
+**Code Transparency:** All analysis code is provided for full replication. No proprietary software is required.
+
+## Contributing
+
+This is a living research project. Contributions are welcome:
+
+- **Data corrections:** If you identify errors in the dataset, please open an issue with documentation
+- **Code improvements:** Pull requests for improved efficiency or additional robustness checks are appreciated
+- **Extensions:** We welcome extensions to state-level analysis, sectoral breakdowns, or international comparisons
+
+Please see \`CONTRIBUTING.md\` for guidelines.
+
+## Contact
+
+For questions, corrections, or collaboration inquiries:
+
+- **Email:** [your-email@domain.com]
+- **Website:** [someperspective.info/contact](https://someperspective.info)
+- **Issues:** Use GitHub issues for technical questions or data corrections
+
+## Acknowledgments
+
+This research builds on decades of work by India's statistical system, civil society organizations, independent researchers, and international monitoring bodies. Special acknowledgment to:
+
+- The National Statistical Office for maintaining data infrastructure under difficult circumstances
+- CMIE for providing crucial independent employment data
+- The World Inequality Database team for inequality measurement innovations
+- V-Dem Institute, Freedom House, and RSF for democracy monitoring
+- Journalists and researchers who continue documenting India's transformation despite challenges
+
+## Version History
+
+- **v1.0.0** (March 2024): Initial release with data through December 2023
+- **v1.5.0** (September 2024): Extended to June 2024; added robustness checks
+- **v2.0.0** (September 2025): Current version with data through August 2025; refined indices methodology; added interactive website
+
+See \`documentation/CHANGELOG.md\` for detailed version history.
+
+## Media and Policy Impact
+
+This research has been:
+- Cited in [number] academic papers
+- Referenced in [number] media articles
+- Used in [number] policy briefs
+- Presented at [conferences/seminars]
+
+See \`documentation/IMPACT.md\` for tracking.
 
 ---
 
-**Note:** This site is optimized for modern browsers. Minimum supported versions:
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
+**Last Updated:** September 2025  
+**Data Current Through:** August 2025  
+**Next Scheduled Update:** December 2025
 
-Last updated: January 2025
+For the latest data and interactive visualizations, visit [someperspective.info](https://someperspective.info)
