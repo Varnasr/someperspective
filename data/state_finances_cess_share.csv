@@ -1,0 +1,23 @@
+year,raw_value,estimate,lo,hi,method,notes
+2004,8.0,8.0,7.76,8.24,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2005,,8.5,8.245,8.755,Piecewise linear interpolation between budget anchors; monotone.,
+2006,,9.0,8.73,9.27,Piecewise linear interpolation between budget anchors; monotone.,
+2007,,9.5,9.215,9.785,Piecewise linear interpolation between budget anchors; monotone.,
+2008,,10.0,9.7,10.3,Piecewise linear interpolation between budget anchors; monotone.,
+2009,10.5,10.5,10.185,10.815,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2010,,10.9,10.573,11.227,Piecewise linear interpolation between budget anchors; monotone.,
+2011,,11.3,10.961,11.639000000000001,Piecewise linear interpolation between budget anchors; monotone.,
+2012,,11.7,11.348999999999998,12.051,Piecewise linear interpolation between budget anchors; monotone.,
+2013,,12.1,11.737,12.463,Piecewise linear interpolation between budget anchors; monotone.,
+2014,12.5,12.5,12.125,12.875,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2015,,13.0,12.61,13.39,Piecewise linear interpolation between budget anchors; monotone.,
+2016,13.5,13.5,13.094999999999999,13.905000000000001,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2017,,14.25,13.8225,14.6775,Piecewise linear interpolation between budget anchors; monotone.,
+2018,15.0,15.0,14.549999999999999,15.450000000000001,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2019,,18.0,17.46,18.54,Piecewise linear interpolation between budget anchors; monotone.,
+2020,21.0,21.0,20.37,21.63,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2021,,23.5,22.794999999999998,24.205000000000002,Piecewise linear interpolation between budget anchors; monotone.,
+2022,26.0,26.0,25.22,26.78,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2023,28.0,28.0,27.16,28.84,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2024,29.0,29.0,28.13,29.87,Piecewise linear interpolation between budget anchors; monotone.,anchor
+2025,,29.0,28.13,29.87,Piecewise linear interpolation between budget anchors; monotone.,

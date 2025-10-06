@@ -1,0 +1,23 @@
+year,raw_value,estimate,lo,hi,method,notes
+2004,640.0,640.0,608.0,672.0,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,anchor
+2005,,666.6666666666666,633.3333333333333,700.0,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2006,,693.3333333333334,658.6666666666666,728.0000000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2007,720.0,720.0,684.0,756.0,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,anchor
+2008,,737.1666666666666,700.3083333333333,774.025,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2009,,754.3333333333334,716.6166666666667,792.0500000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2010,,771.5,732.925,810.075,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2011,,788.6666666666666,749.2333333333332,828.1,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2012,,805.8333333333334,765.5416666666666,846.1250000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2013,823.0,823.0,781.8499999999999,864.1500000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,anchor
+2014,764.0,764.0,725.8,802.2,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,anchor
+2015,751.0,751.0,713.4499999999999,788.5500000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,anchor
+2016,703.0,703.0,667.85,738.15,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,anchor
+2017,723.0,723.0,686.85,759.15,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,anchor
+2018,,748.0,710.6,785.4,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2019,,773.0,734.3499999999999,811.6500000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2020,,798.0,758.0999999999999,837.9000000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2021,,823.0,781.8499999999999,864.1500000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2022,,848.0,805.5999999999999,890.4000000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2023,,873.0,829.3499999999999,916.6500000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2024,,898.0,853.0999999999999,942.9000000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
+2025,,923.0,876.8499999999999,969.1500000000001,Linear interpolation to 2017 using MHA-style anchors; post-2017 +25/year trend estimate.,
