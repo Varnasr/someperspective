@@ -288,7 +288,7 @@ If you use this data, code, or findings in your research, please cite:
 \`\`\`bibtex
 @techreport{someperspective2025,
   title={Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025},
-  author={[Your Name]},
+  author={Varna Sri Raman},
   year={2025},
   institution={Independent Research},
   type={Working Paper},
@@ -302,7 +302,7 @@ For specific indices, please also cite:
 \`\`\`bibtex
 @article{statistical_suppression_index,
   title={Measuring Statistical Suppression: The SSI Framework},
-  author={[Your Name]},
+  author={Varna Sri Raman},
   journal={[Journal if published]},
   year={2025},
   note={Available at: https://someperspective.info}
@@ -346,7 +346,7 @@ Please see \`CONTRIBUTING.md\` for guidelines.
 
 For questions, corrections, or collaboration inquiries:
 
-- **Email:** [your-email@domain.com]
+- **Email:** [research@someperspective.info]
 - **Website:** [someperspective.info/contact](https://someperspective.info)
 - **Issues:** Use GitHub issues for technical questions or data corrections
 
