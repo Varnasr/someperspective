@@ -1548,7 +1548,10 @@ reduces overall score</pre>
                     // Gig Economy Chart
                     const gigCtx = document.getElementById('gigEconomyChart');
                     if (gigCtx) {
-                        new Chart(gigCtx.getContext('2d'), {
+                        if (this.charts.gigEconomy) {
+                            this.charts.gigEconomy.destroy();
+                        }
+                        this.charts.gigEconomy = new Chart(gigCtx.getContext('2d'), {
                             type: 'bar',
                             data: {
                                 labels: economicData.years.slice(-5),
@@ -1570,11 +1573,14 @@ reduces overall score</pre>
                             }
                         });
                     }
-                    
+
                     // Farmer Income Chart
                     const farmerCtx = document.getElementById('farmerIncomeChart');
                     if (farmerCtx) {
-                        new Chart(farmerCtx.getContext('2d'), {
+                        if (this.charts.farmerIncome) {
+                            this.charts.farmerIncome.destroy();
+                        }
+                        this.charts.farmerIncome = new Chart(farmerCtx.getContext('2d'), {
                             type: 'line',
                             data: {
                                 labels: economicData.years,
@@ -1597,11 +1603,14 @@ reduces overall score</pre>
                             }
                         });
                     }
-                    
+
                     // Women LFPR Chart
                     const womenCtx = document.getElementById('womenLFPRChart');
                     if (womenCtx) {
-                        new Chart(womenCtx.getContext('2d'), {
+                        if (this.charts.womenLFPR) {
+                            this.charts.womenLFPR.destroy();
+                        }
+                        this.charts.womenLFPR = new Chart(womenCtx.getContext('2d'), {
                             type: 'line',
                             data: {
                                 labels: economicData.years,
