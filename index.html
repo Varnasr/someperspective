@@ -172,14 +172,15 @@
     
     <!-- Alpine.js for interactivity -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <!-- ECharts for visualizations -->
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 
-    <!-- Google Fonts -->
+    <!-- ECharts for visualizations (deferred — not needed for initial paint) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+    <!-- Google Fonts (preconnect + swap for non-blocking load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amaranth:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amaranth:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amaranth:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <style>
         [x-cloak] { display: none !important; }
@@ -287,6 +288,34 @@
     
     <!-- Hidden Google Translate element -->
     <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Loading skeleton — shows instantly, removed when Alpine hydrates -->
+    <script>
+    // Apply dark class early to prevent flash
+    (function() {
+        var mode = localStorage.getItem('themeMode') || 'device';
+        if (mode === 'dark' || (mode === 'device' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    })();
+    </script>
+    <div id="loading-skeleton" class="fixed inset-0 z-[100] bg-gray-50 dark:bg-slate-950 flex flex-col items-center justify-center p-6">
+        <div class="w-full max-w-md space-y-4 animate-pulse">
+            <div class="h-8 bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-900 dark:to-purple-900 rounded-lg w-3/4 mx-auto"></div>
+            <div class="h-3 bg-gray-200 dark:bg-gray-800 rounded w-2/3 mx-auto"></div>
+            <div class="mt-8 space-y-3">
+                <div class="h-10 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                    <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                </div>
+                <div class="h-32 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-5/6"></div>
+                <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-4/6"></div>
+            </div>
+        </div>
+        <p class="mt-6 text-sm text-gray-400 dark:text-gray-600">Loading analysis...</p>
+    </div>
 
     <!-- Fallback for No JavaScript -->
     <noscript>
@@ -1683,6 +1712,10 @@ reduces overall score</pre>
                 });
                 document.documentElement.classList.add('js');
 
+                // Remove loading skeleton
+                const skeleton = document.getElementById('loading-skeleton');
+                if (skeleton) skeleton.remove();
+
                 // Load data from JSON
                 try {
                     const resp = await fetch('data.json');
@@ -1707,11 +1740,16 @@ reduces overall score</pre>
                     Object.values(this.charts).forEach(c => c && c.resize && c.resize());
                 });
 
-                // Init charts after Alpine settles
-                this.$nextTick(() => {
+                // Init charts after Alpine settles (ECharts may still be loading via defer)
+                const initCharts = () => {
+                    if (typeof echarts === 'undefined') {
+                        setTimeout(initCharts, 100);
+                        return;
+                    }
                     this.initializeCharts();
                     this.initSparklines();
-                });
+                };
+                this.$nextTick(initCharts);
 
                 // Tab changes: update hash + reinit charts
                 this.$watch('activeTab', (tab) => {
@@ -1809,6 +1847,7 @@ reduces overall score</pre>
 
             // Get or create an ECharts instance
             getChart(id, group) {
+                if (typeof echarts === 'undefined') return null;
                 const dom = document.getElementById(id);
                 if (!dom || dom.offsetWidth === 0) return null;
                 if (this.charts[id]) { this.charts[id].dispose(); }
@@ -1854,6 +1893,7 @@ reduces overall score</pre>
 
             // Sparklines for stat cards
             initSparklines() {
+                if (typeof echarts === 'undefined') return;
                 const d = this.economicData;
                 const mk = (id, data, color) => {
                     const dom = document.getElementById(id);
