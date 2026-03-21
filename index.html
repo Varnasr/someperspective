@@ -179,14 +179,15 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amaranth:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         [x-cloak] { display: none !important; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        body { font-family: 'Amaranth', 'Inter', system-ui, -apple-system, sans-serif; }
+        h1, h2, h3, h4, h5, h6, .gradient-text, .stat-card .text-2xl, .stat-card .text-3xl { font-family: 'Inter', system-ui, sans-serif; }
         pre, code { font-family: 'JetBrains Mono', monospace; }
 
         /* Chart responsive styles */
@@ -409,6 +410,37 @@
                     </div>
                 </div>
 
+                <!-- Animated Timeline Player -->
+                <div class="card p-5 sm:p-6 mb-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border border-indigo-100 dark:border-indigo-800/30">
+                    <h3 class="font-bold mb-3 text-lg text-indigo-700 dark:text-indigo-400">Animated Data Timeline</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Watch India's key indicators evolve from 2014 to 2026. Press play to animate through the years.</p>
+                    <div class="flex items-center gap-4 mb-4">
+                        <button @click="toggleTimeline()" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
+                            <span x-text="timelinePlaying ? 'Pause' : 'Play'"></span>
+                        </button>
+                        <input type="range" :min="0" :max="economicData.years.length - 1" x-model="timelineIndex" @input="updateTimelineDisplay()" class="flex-1 accent-indigo-600">
+                        <span class="text-2xl font-extrabold text-indigo-700 dark:text-indigo-300 tabular-nums min-w-[4ch]" x-text="economicData.years[timelineIndex]"></span>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
+                            <div class="text-xs text-gray-500 font-medium">GDP Growth</div>
+                            <div class="text-xl font-bold text-blue-600" x-text="economicData.gdpGrowth[timelineIndex] + '%'"></div>
+                        </div>
+                        <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
+                            <div class="text-xs text-gray-500 font-medium">Top 1% Share</div>
+                            <div class="text-xl font-bold text-red-600" x-text="economicData.top1Share[timelineIndex] + '%'"></div>
+                        </div>
+                        <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
+                            <div class="text-xs text-gray-500 font-medium">SSI Score</div>
+                            <div class="text-xl font-bold text-orange-600" x-text="economicData.ssi[timelineIndex]"></div>
+                        </div>
+                        <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
+                            <div class="text-xs text-gray-500 font-medium">DQI Score</div>
+                            <div class="text-xl font-bold text-purple-600" x-text="economicData.dqi[timelineIndex]"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl">
                     <h3 class="font-bold mb-3 text-lg">Three Novel Indices — Measuring What Others Only Describe</h3>
                     <p class="text-sm mb-4 text-gray-600 dark:text-gray-400">Original research contributions that quantify institutional deterioration empirically:</p>
@@ -519,10 +551,16 @@
                         <div id="gdpEmploymentChart" style="width:100%;height:420px;"></div>
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','GDP Growth (%)','Unemployment (%)'], economicData.years.map((y,i) => [y, economicData.gdpGrowth[i], economicData.unemployment[i]]))"></div>
-                    <button @click="exportChart('gdpEmploymentChart', 'gdp-employment')" 
-                            class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
-                        📥 Export Chart
-                    </button>
+                    <div class="flex gap-2">
+                        <button @click="exportChart('gdpEmploymentChart', 'gdp-employment')"
+                                class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
+                            Export Chart
+                        </button>
+                        <button @click="shareChart('gdpEmploymentChart')"
+                                class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm transition-all">
+                            Share
+                        </button>
+                    </div>
                     <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3">
                         While GDP grew at 6.8% average (2014-Mar 2026), unemployment initially rose before recent declines.
                     </p>
@@ -656,6 +694,88 @@
             </div>
         </div>
         
+        <!-- Correlation Explorer Tab -->
+        <div x-show="activeTab === 'Correlation Explorer'" x-transition class="space-y-6">
+            <div class="card p-5 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Correlation Explorer</h2>
+
+                <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl mb-6">
+                    <p class="text-sm">
+                        Discover hidden relationships between indicators. Select any two variables to plot against each other
+                        as a scatter plot. Each point represents one year (2014-2026). Hover for details.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">X-Axis (Horizontal)</label>
+                        <select x-model="scatterX" @change="updateScatterPlot()"
+                                class="w-full p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                            <option value="gdpGrowth">GDP Growth Rate (%)</option>
+                            <option value="unemployment">Unemployment Rate (%)</option>
+                            <option value="top1Share">Top 1% Income Share (%)</option>
+                            <option value="formalEmployment">Formal Employment (%)</option>
+                            <option value="pressFreedom">Press Freedom Rank</option>
+                            <option value="ssi">Statistical Suppression Index</option>
+                            <option value="fci">Fiscal Centralization Index</option>
+                            <option value="dqi">Democratic Quality Index</option>
+                            <option value="gigWorkers">Gig Workers (millions)</option>
+                            <option value="femaleLFPR">Female LFPR (%)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Y-Axis (Vertical)</label>
+                        <select x-model="scatterY" @change="updateScatterPlot()"
+                                class="w-full p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                            <option value="gdpGrowth">GDP Growth Rate (%)</option>
+                            <option value="unemployment" selected>Unemployment Rate (%)</option>
+                            <option value="top1Share">Top 1% Income Share (%)</option>
+                            <option value="formalEmployment">Formal Employment (%)</option>
+                            <option value="pressFreedom">Press Freedom Rank</option>
+                            <option value="ssi">Statistical Suppression Index</option>
+                            <option value="fci">Fiscal Centralization Index</option>
+                            <option value="dqi">Democratic Quality Index</option>
+                            <option value="gigWorkers">Gig Workers (millions)</option>
+                            <option value="femaleLFPR">Female LFPR (%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                    <div id="scatterChart" style="width:100%;height:450px;"></div>
+                </div>
+
+                <!-- Correlation coefficient display -->
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-white dark:bg-gray-800 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700">
+                        <span class="text-xs text-gray-500">Correlation (r):</span>
+                        <span class="text-lg font-bold ml-1" :class="Math.abs(correlationR) > 0.7 ? 'text-red-600' : Math.abs(correlationR) > 0.4 ? 'text-orange-600' : 'text-green-600'" x-text="correlationR.toFixed(3)"></span>
+                    </div>
+                    <div class="text-xs text-gray-500" x-text="Math.abs(correlationR) > 0.7 ? 'Strong correlation' : Math.abs(correlationR) > 0.4 ? 'Moderate correlation' : 'Weak correlation'"></div>
+                    <button @click="exportChart('scatterChart', 'correlation')"
+                            class="ml-auto px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
+                        Export Chart
+                    </button>
+                    <button @click="shareChart('scatterChart')"
+                            class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
+                        Share
+                    </button>
+                </div>
+
+                <!-- Preset correlations -->
+                <div class="mt-6">
+                    <h3 class="font-bold text-sm mb-3 text-gray-600 dark:text-gray-400 uppercase tracking-wider">Interesting Presets</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button @click="scatterX='gdpGrowth'; scatterY='formalEmployment'; updateScatterPlot()" class="px-3 py-1.5 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800/40 transition-colors">GDP vs Formal Jobs</button>
+                        <button @click="scatterX='ssi'; scatterY='dqi'; updateScatterPlot()" class="px-3 py-1.5 text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-800/40 transition-colors">SSI vs DQI</button>
+                        <button @click="scatterX='top1Share'; scatterY='formalEmployment'; updateScatterPlot()" class="px-3 py-1.5 text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-lg hover:bg-orange-200 dark:hover:bg-orange-800/40 transition-colors">Inequality vs Jobs</button>
+                        <button @click="scatterX='fci'; scatterY='dqi'; updateScatterPlot()" class="px-3 py-1.5 text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-800/40 transition-colors">FCI vs DQI</button>
+                        <button @click="scatterX='pressFreedom'; scatterY='ssi'; updateScatterPlot()" class="px-3 py-1.5 text-xs bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-400 rounded-lg hover:bg-pink-200 dark:hover:bg-pink-800/40 transition-colors">Press Freedom vs SSI</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Three Indices Tab -->
         <div x-show="activeTab === 'Three Indices'" x-transition class="space-y-6">
             <div class="card p-5 sm:p-8">
@@ -907,6 +1027,22 @@
                         </div>
                     </div>
                     
+                    <!-- Data Coverage Chart -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold mb-4">Data Coverage by Source Type</h3>
+                        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                            <div id="dataCoverageChart" style="width:100%;height:380px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- SSI Component Radar -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold mb-4">SSI Component Analysis</h3>
+                        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                            <div id="indexRadarChart" style="width:100%;height:400px;"></div>
+                        </div>
+                    </div>
+
                     <h3 class="text-lg font-bold mb-4">Index Construction</h3>
                     
                     <div class="space-y-4">
@@ -959,6 +1095,23 @@ reduces overall score</pre>
                     </button>
                 </div>
                 
+                <!-- Democratic Decline Timeline -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold mb-4">Democratic Quality Decline: Multi-Country Comparison</h3>
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                        <div id="democraticDeclineChart" style="width:100%;height:420px;"></div>
+                    </div>
+                </div>
+
+                <!-- State-Level Disparities -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold mb-4">State-Level Disparities: Per Capita GSDP (2025-26)</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">India's growth story varies dramatically by state. Southern and western states show 3-5x higher per-capita output than eastern states.</p>
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                        <div id="stateDisparitiesChart" style="width:100%;height:500px;"></div>
+                    </div>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl">
                         <h4 class="font-bold text-red-700 dark:text-red-400 mb-2">India vs Peers (Mar 2026)</h4>
@@ -1017,6 +1170,154 @@ reduces overall score</pre>
             </div>
         </div>
         
+        <!-- Era Comparison Tab -->
+        <div x-show="activeTab === 'Era Comparison'" x-transition class="space-y-6">
+            <div class="card p-5 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Era Comparison: UPA vs NDA</h2>
+
+                <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl mb-6">
+                    <p class="text-sm">
+                        Side-by-side comparison of key indicators across two political eras.
+                        UPA period (2004–2014) vs NDA period (2014–2026). Data speaks louder than slogans.
+                    </p>
+                </div>
+
+                <!-- Era comparison chart -->
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-6">
+                    <div id="eraComparisonChart" style="width:100%;height:450px;"></div>
+                </div>
+
+                <!-- Delta cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 font-medium mb-1">Avg GDP Growth</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold">7.4%</span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold">5.8%</span></div>
+                        <div class="text-xs mt-1 text-red-600 font-semibold">-1.6pp</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 font-medium mb-1">Formal Employment</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA end:</span> <span class="font-bold">13.0%</span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">10.9%</span></div>
+                        <div class="text-xs mt-1 text-red-600 font-semibold">-2.1pp</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 font-medium mb-1">Top 1% Share</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA end:</span> <span class="font-bold">21.3%</span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">23.0%</span></div>
+                        <div class="text-xs mt-1 text-red-600 font-semibold">+1.7pp</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 font-medium mb-1">Press Freedom</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA end:</span> <span class="font-bold">140th</span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">162nd</span></div>
+                        <div class="text-xs mt-1 text-red-600 font-semibold">-22 ranks</div>
+                    </div>
+                </div>
+
+                <!-- Detailed era comparison chart by indicator -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2">Compare specific indicator:</label>
+                    <select x-model="eraIndicator" @change="updateEraChart()"
+                            class="w-full md:w-1/3 p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+                        <option value="gdpGrowth">GDP Growth Rate</option>
+                        <option value="unemployment">Unemployment Rate</option>
+                        <option value="top1Share">Top 1% Income Share</option>
+                        <option value="formalEmployment">Formal Employment</option>
+                        <option value="pressFreedom">Press Freedom Rank</option>
+                        <option value="ssi">Statistical Suppression Index</option>
+                        <option value="dqi">Democratic Quality Index</option>
+                    </select>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                    <div id="eraDetailChart" style="width:100%;height:380px;"></div>
+                </div>
+                <div class="flex gap-2">
+                    <button @click="exportChart('eraComparisonChart', 'era-comparison')"
+                            class="px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
+                        Export Chart
+                    </button>
+                    <button @click="shareChart('eraComparisonChart')"
+                            class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario Lab Tab -->
+        <div x-show="activeTab === 'Scenario Lab'" x-transition class="space-y-6">
+            <div class="card p-5 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Scenario Lab: "What If?" Simulator</h2>
+
+                <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl mb-6">
+                    <p class="text-sm">
+                        Adjust the sliders to model hypothetical scenarios. See how changes in one variable
+                        could affect the three indices based on estimated elasticities from the data.
+                    </p>
+                </div>
+
+                <!-- Scenario sliders -->
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+                        <label class="block text-sm font-medium mb-2">Formal Employment Rate: <span class="text-blue-600 font-bold" x-text="scenarioInputs.formalEmp + '%'"></span></label>
+                        <input type="range" min="8" max="25" step="0.5" x-model="scenarioInputs.formalEmp" @input="updateScenario()" class="w-full accent-blue-600">
+                        <div class="flex justify-between text-xs text-gray-400"><span>8%</span><span>Current: 10.9%</span><span>25%</span></div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+                        <label class="block text-sm font-medium mb-2">Press Freedom Rank: <span class="text-purple-600 font-bold" x-text="scenarioInputs.pressFreedom + 'th'"></span></label>
+                        <input type="range" min="30" max="180" step="1" x-model="scenarioInputs.pressFreedom" @input="updateScenario()" class="w-full accent-purple-600">
+                        <div class="flex justify-between text-xs text-gray-400"><span>30 (free)</span><span>Current: 162</span><span>180 (worst)</span></div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+                        <label class="block text-sm font-medium mb-2">Cess/Surcharge Share: <span class="text-orange-600 font-bold" x-text="scenarioInputs.cessShare + '%'"></span></label>
+                        <input type="range" min="5" max="30" step="0.5" x-model="scenarioInputs.cessShare" @input="updateScenario()" class="w-full accent-orange-600">
+                        <div class="flex justify-between text-xs text-gray-400"><span>5%</span><span>Current: 20.5%</span><span>30%</span></div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+                        <label class="block text-sm font-medium mb-2">Statistical Reports Released: <span class="text-red-600 font-bold" x-text="scenarioInputs.statsReleased + '%'"></span></label>
+                        <input type="range" min="20" max="100" step="5" x-model="scenarioInputs.statsReleased" @input="updateScenario()" class="w-full accent-red-600">
+                        <div class="flex justify-between text-xs text-gray-400"><span>20%</span><span>Current: ~40%</span><span>100%</span></div>
+                    </div>
+                </div>
+
+                <!-- Scenario output -->
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.ssi < 5 ? 'border-green-400' : scenarioOutputs.ssi < 7 ? 'border-orange-400' : 'border-red-400'">
+                        <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected SSI</div>
+                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.ssi < 5 ? 'text-green-600' : scenarioOutputs.ssi < 7 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.ssi.toFixed(1)"></div>
+                        <div class="text-xs text-gray-500 mt-1">Current: 8.2</div>
+                    </div>
+                    <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.fci < 0.65 ? 'border-green-400' : scenarioOutputs.fci < 0.75 ? 'border-orange-400' : 'border-red-400'">
+                        <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected FCI</div>
+                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.fci < 0.65 ? 'text-green-600' : scenarioOutputs.fci < 0.75 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.fci.toFixed(2)"></div>
+                        <div class="text-xs text-gray-500 mt-1">Current: 0.80</div>
+                    </div>
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.dqi > 0.6 ? 'border-green-400' : scenarioOutputs.dqi > 0.45 ? 'border-orange-400' : 'border-red-400'">
+                        <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected DQI</div>
+                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.dqi > 0.6 ? 'text-green-600' : scenarioOutputs.dqi > 0.45 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.dqi.toFixed(2)"></div>
+                        <div class="text-xs text-gray-500 mt-1">Current: 0.40</div>
+                    </div>
+                </div>
+
+                <!-- Scenario visualization -->
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                    <div id="scenarioChart" style="width:100%;height:380px;"></div>
+                </div>
+
+                <!-- Preset scenarios -->
+                <div class="mt-4">
+                    <h3 class="font-bold text-sm mb-3 text-gray-600 dark:text-gray-400 uppercase tracking-wider">Quick Scenarios</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button @click="applyScenario('optimistic')" class="px-3 py-1.5 text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-200 transition-colors">Optimistic Reform</button>
+                        <button @click="applyScenario('status-quo')" class="px-3 py-1.5 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 rounded-lg hover:bg-gray-200 transition-colors">Status Quo</button>
+                        <button @click="applyScenario('pessimistic')" class="px-3 py-1.5 text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg hover:bg-red-200 transition-colors">Continued Decline</button>
+                        <button @click="applyScenario('nordic')" class="px-3 py-1.5 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-200 transition-colors">Nordic Model</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- What Next Tab -->
         <div x-show="activeTab === 'What Next?'" x-transition class="space-y-6">
             <div class="card p-5 sm:p-8">
@@ -1173,10 +1474,13 @@ reduces overall score</pre>
         'Executive Summary': 'executive-summary',
         'Key Findings': 'key-findings',
         'Interactive Data': 'interactive-data',
+        'Correlation Explorer': 'correlation-explorer',
         'Three Indices': 'three-indices',
         'Human Stories': 'human-stories',
         'Methodology': 'methodology',
         'Implications': 'implications',
+        'Era Comparison': 'era-comparison',
+        'Scenario Lab': 'scenario-lab',
         'What Next?': 'what-next'
     };
     const HASH_TAB = Object.fromEntries(Object.entries(TAB_HASH).map(([k,v]) => [v,k]));
@@ -1223,11 +1527,21 @@ reduces overall score</pre>
             viewModes: { gdpEmployment: 'chart', formalEmployment: 'chart', inequality: 'chart' },
             tableSortCol: null,
             tableSortAsc: true,
+            // New feature state
+            timelineIndex: 0,
+            timelinePlaying: false,
+            timelineTimer: null,
+            scatterX: 'gdpGrowth',
+            scatterY: 'formalEmployment',
+            correlationR: 0,
+            eraIndicator: 'gdpGrowth',
+            scenarioInputs: { formalEmp: 10.9, pressFreedom: 162, cessShare: 20.5, statsReleased: 40 },
+            scenarioOutputs: { ssi: 8.2, fci: 0.80, dqi: 0.40 },
 
             audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
 
             get tabs() {
-                return ['What is This?','Executive Summary','Key Findings','Interactive Data','Three Indices','Human Stories','Methodology','Implications','What Next?'];
+                return ['What is This?','Executive Summary','Key Findings','Interactive Data','Correlation Explorer','Three Indices','Human Stories','Methodology','Implications','Era Comparison','Scenario Lab','What Next?'];
             },
 
             audienceNotes: {
@@ -1350,13 +1664,25 @@ reduces overall score</pre>
                     echarts.connect('keyFindings');
                 } else if (tab === 'Interactive Data') {
                     this.updateInteractiveChart();
+                } else if (tab === 'Correlation Explorer') {
+                    this.updateScatterPlot();
                 } else if (tab === 'Three Indices') {
                     this.createIndicesChart();
                 } else if (tab === 'Human Stories') {
                     this.createHumanStoriesCharts();
                     echarts.connect('humanStories');
+                } else if (tab === 'Methodology') {
+                    this.createDataCoverageChart();
+                    this.createIndexRadarChart();
                 } else if (tab === 'Implications') {
                     this.createInternationalChart();
+                    this.createDemocraticDeclineChart();
+                    this.createStateDisparitiesChart();
+                } else if (tab === 'Era Comparison') {
+                    this.createEraComparisonChart();
+                    this.updateEraChart();
+                } else if (tab === 'Scenario Lab') {
+                    this.updateScenario();
                 }
             },
 
@@ -1602,6 +1928,334 @@ reduces overall score</pre>
                 link.download = `india-economic-data-mar2026-${Date.now()}.csv`;
                 link.href = URL.createObjectURL(blob);
                 link.click();
+            },
+
+            // ===== ANIMATED TIMELINE =====
+            toggleTimeline() {
+                if (this.timelinePlaying) {
+                    clearInterval(this.timelineTimer);
+                    this.timelinePlaying = false;
+                } else {
+                    if (parseInt(this.timelineIndex) >= this.economicData.years.length - 1) this.timelineIndex = 0;
+                    this.timelinePlaying = true;
+                    this.timelineTimer = setInterval(() => {
+                        this.timelineIndex = parseInt(this.timelineIndex) + 1;
+                        if (this.timelineIndex >= this.economicData.years.length - 1) {
+                            clearInterval(this.timelineTimer);
+                            this.timelinePlaying = false;
+                        }
+                    }, 800);
+                }
+            },
+            updateTimelineDisplay() { /* reactive via x-text bindings */ },
+
+            // ===== CORRELATION SCATTER PLOT =====
+            updateScatterPlot() {
+                const c = this.getChart('scatterChart');
+                if (!c) return;
+                const d = this.economicData;
+                const labels = {
+                    gdpGrowth: 'GDP Growth (%)', unemployment: 'Unemployment (%)',
+                    top1Share: 'Top 1% Share (%)', formalEmployment: 'Formal Employment (%)',
+                    pressFreedom: 'Press Freedom Rank', ssi: 'SSI', fci: 'FCI', dqi: 'DQI',
+                    gigWorkers: 'Gig Workers (M)', femaleLFPR: 'Female LFPR (%)'
+                };
+                const xData = d[this.scatterX];
+                const yData = d[this.scatterY];
+                if (!xData || !yData) return;
+
+                // Calculate correlation
+                const n = xData.length;
+                const mx = xData.reduce((a,b) => a+b, 0) / n;
+                const my = yData.reduce((a,b) => a+b, 0) / n;
+                let num = 0, dx = 0, dy = 0;
+                for (let i = 0; i < n; i++) {
+                    num += (xData[i] - mx) * (yData[i] - my);
+                    dx += (xData[i] - mx) ** 2;
+                    dy += (yData[i] - my) ** 2;
+                }
+                this.correlationR = dx && dy ? num / Math.sqrt(dx * dy) : 0;
+
+                // Build scatter data with year labels
+                const scatter = xData.map((x, i) => [x, yData[i], d.years[i]]);
+
+                // Linear regression for trend line
+                const slope = dx ? num / dx : 0;
+                const intercept = my - slope * mx;
+                const xMin = Math.min(...xData);
+                const xMax = Math.max(...xData);
+                const trendData = [[xMin, slope * xMin + intercept], [xMax, slope * xMax + intercept]];
+
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: `${labels[this.scatterX]} vs ${labels[this.scatterY]}`, left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    tooltip: {
+                        formatter: p => {
+                            if (p.seriesIndex === 1) return '';
+                            return `<strong>${p.data[2]}</strong><br>${labels[this.scatterX]}: ${p.data[0]}<br>${labels[this.scatterY]}: ${p.data[1]}`;
+                        }
+                    },
+                    xAxis: { type: 'value', name: labels[this.scatterX], nameLocation: 'center', nameGap: 30 },
+                    yAxis: { type: 'value', name: labels[this.scatterY] },
+                    series: [
+                        {
+                            type: 'scatter', data: scatter, symbolSize: 14,
+                            itemStyle: { color: '#8b5cf6', borderColor: '#fff', borderWidth: 2 },
+                            label: { show: true, formatter: p => p.data[2], position: 'top', fontSize: 10, color: this.darkMode ? '#94a3b8' : '#6b7280' }
+                        },
+                        {
+                            type: 'line', data: trendData, symbol: 'none',
+                            lineStyle: { type: 'dashed', color: '#ef4444', width: 2, opacity: 0.6 },
+                            silent: true
+                        }
+                    ]
+                }, true);
+            },
+
+            // ===== DATA COVERAGE CHART (Methodology) =====
+            createDataCoverageChart() {
+                const c = this.getChart('dataCoverageChart');
+                if (!c) return;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'Data Coverage by Source Type (%)', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['Government Sources', 'Independent Sources'], top: 25 },
+                    xAxis: { type: 'category', data: ['GDP', 'Employment', 'Inequality', 'Fiscal', 'Democratic'] },
+                    yAxis: { type: 'value', max: 100, axisLabel: { formatter: '{value}%' } },
+                    series: [
+                        { name: 'Government Sources', type: 'bar', data: [100, 85, 60, 95, 30], itemStyle: { color: '#3b82f6' }, barGap: '10%' },
+                        { name: 'Independent Sources', type: 'bar', data: [80, 70, 95, 60, 100], itemStyle: { color: '#22c55e' } }
+                    ]
+                });
+            },
+
+            // ===== SSI RADAR CHART (Methodology) =====
+            createIndexRadarChart() {
+                const c = this.getChart('indexRadarChart');
+                if (!c) return;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'SSI Component Analysis & Weights', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    legend: { data: ['Current Severity (2026)', 'Weight in Index'], top: 25 },
+                    radar: {
+                        indicator: [
+                            { name: 'Data\nSuppression', max: 100 },
+                            { name: 'Release\nDelays', max: 100 },
+                            { name: 'Institutional\nCapture', max: 100 },
+                            { name: 'Methodology\nChanges', max: 100 },
+                            { name: 'Access\nRestrictions', max: 100 }
+                        ],
+                        center: ['50%', '55%'], radius: '65%',
+                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280' }
+                    },
+                    series: [{
+                        type: 'radar',
+                        data: [
+                            { value: [100, 80, 90, 60, 70], name: 'Current Severity (2026)', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#ef4444' }, itemStyle: { color: '#ef4444' } },
+                            { value: [30, 20, 25, 15, 10], name: 'Weight in Index', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#8b5cf6' }, itemStyle: { color: '#8b5cf6' } }
+                        ]
+                    }]
+                });
+            },
+
+            // ===== DEMOCRATIC DECLINE CHART (Implications) =====
+            createDemocraticDeclineChart() {
+                const c = this.getChart('democraticDeclineChart');
+                if (!c) return;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'Democratic Quality Index: Multi-Country Decline (2014-2026)', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['India', 'Turkey', 'Hungary', 'Brazil'], top: 25 },
+                    xAxis: { type: 'category', data: [2014, 2016, 2018, 2020, 2022, 2024, 2026] },
+                    yAxis: { type: 'value', min: 0.15, max: 0.85, name: 'DQI Score', axisLabel: { formatter: v => v.toFixed(2) } },
+                    dataZoom: dataZoom(),
+                    series: [
+                        { name: 'India', type: 'line', data: [0.71, 0.68, 0.60, 0.48, 0.43, 0.42, 0.40], smooth: true, itemStyle: { color: '#f97316' }, lineStyle: { width: 3 }, areaStyle: { opacity: 0.08 } },
+                        { name: 'Turkey', type: 'line', data: [0.52, 0.45, 0.38, 0.30, 0.22, 0.19, 0.18], smooth: true, itemStyle: { color: '#ef4444' } },
+                        { name: 'Hungary', type: 'line', data: [0.63, 0.58, 0.52, 0.48, 0.44, 0.42, 0.41], smooth: true, itemStyle: { color: '#8b5cf6' } },
+                        { name: 'Brazil', type: 'line', data: [0.85, 0.82, 0.78, 0.72, 0.68, 0.69, 0.69], smooth: true, itemStyle: { color: '#22c55e' }, lineStyle: { type: 'dashed' } }
+                    ],
+                    markLine: { data: [{ yAxis: 0.5, label: { formatter: 'Hybrid Regime Threshold', position: 'start' }, lineStyle: { color: '#ef4444', type: 'dashed', opacity: 0.5 } }] }
+                });
+            },
+
+            // ===== STATE DISPARITIES CHART (Implications) =====
+            createStateDisparitiesChart() {
+                const c = this.getChart('stateDisparitiesChart');
+                if (!c) return;
+                const states = ['Goa','Delhi','Karnataka','Telangana','Tamil Nadu','Gujarat','Maharashtra','Kerala','Haryana','Punjab','Andhra Pradesh','Rajasthan','West Bengal','Odisha','Chhattisgarh','Jharkhand','Madhya Pradesh','Uttar Pradesh','Bihar'];
+                const gsdp = [575, 450, 320, 305, 290, 275, 270, 260, 255, 210, 195, 140, 130, 115, 105, 95, 90, 75, 55]; // in thousands INR
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'Per Capita GSDP by State (₹ thousands, 2025-26 est.)', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    tooltip: { trigger: 'axis', formatter: p => `${p[0].name}: ₹${p[0].value}k` },
+                    grid: { left: 120, right: 40, top: 40, bottom: 20 },
+                    xAxis: { type: 'value', name: '₹ thousands', axisLabel: { formatter: '₹{value}k' } },
+                    yAxis: { type: 'category', data: states.reverse(), inverse: false },
+                    series: [{
+                        type: 'bar',
+                        data: gsdp.reverse().map((v, i) => ({
+                            value: v,
+                            itemStyle: { color: v > 250 ? '#22c55e' : v > 150 ? '#f59e0b' : v > 100 ? '#f97316' : '#ef4444' }
+                        })),
+                        barWidth: '60%',
+                        label: { show: true, position: 'right', formatter: '₹{c}k', fontSize: 10 }
+                    }],
+                    toolbox: { show: false }
+                });
+            },
+
+            // ===== ERA COMPARISON CHARTS =====
+            createEraComparisonChart() {
+                const c = this.getChart('eraComparisonChart');
+                if (!c) return;
+                const indicators = ['GDP Growth\n(avg %)', 'Formal\nEmployment (%)', 'Top 1%\nShare (%)', 'Unemployment\n(%)', 'Press Freedom\n(rank/180)'];
+                // UPA averages/endpoints, NDA averages/endpoints
+                const upaValues = [7.4, 13.0, 21.3, 4.9, 140];
+                const ndaValues = [5.8, 10.9, 23.0, 3.0, 162];
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'UPA (2004-2014) vs NDA (2014-2026): Key Indicators', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['UPA Era', 'NDA Era'], top: 25 },
+                    xAxis: { type: 'category', data: indicators, axisLabel: { interval: 0, fontSize: 10 } },
+                    yAxis: { type: 'value' },
+                    series: [
+                        { name: 'UPA Era', type: 'bar', data: upaValues, itemStyle: { color: '#3b82f6' }, barGap: '10%' },
+                        { name: 'NDA Era', type: 'bar', data: ndaValues, itemStyle: { color: '#f97316' } }
+                    ]
+                });
+            },
+
+            updateEraChart() {
+                const c = this.getChart('eraDetailChart');
+                if (!c) return;
+                const d = this.economicData;
+                const labels = {
+                    gdpGrowth: 'GDP Growth (%)', unemployment: 'Unemployment (%)',
+                    top1Share: 'Top 1% Income Share (%)', formalEmployment: 'Formal Employment (%)',
+                    pressFreedom: 'Press Freedom Rank', ssi: 'SSI', dqi: 'DQI'
+                };
+                const indicator = this.eraIndicator;
+                const values = d[indicator];
+                if (!values) return;
+
+                // Split into pre-2014 pad + NDA era
+                // Since our data starts at 2014, we show the NDA era with a visual midpoint marker
+                const midIdx = 0; // 2014 = index 0
+
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: `${labels[indicator]}: Trend Over NDA Era (2014-2026)`, left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    tooltip: { trigger: 'axis' },
+                    xAxis: { type: 'category', data: d.years },
+                    yAxis: { type: 'value', name: labels[indicator] },
+                    dataZoom: dataZoom(),
+                    visualMap: {
+                        show: false, dimension: 0, pieces: [
+                            { lte: 4, color: '#3b82f6' },  // 2014-2018
+                            { gt: 4, color: '#f97316' }     // 2019-2026
+                        ]
+                    },
+                    series: [{
+                        type: 'line', data: values, smooth: true,
+                        areaStyle: { opacity: 0.12 },
+                        markLine: { data: [{ xAxis: '2019', label: { formatter: 'NDA-II', position: 'start' }, lineStyle: { type: 'dashed', color: '#ef4444' } }] }
+                    }]
+                }, true);
+            },
+
+            // ===== SCENARIO LAB =====
+            updateScenario() {
+                const inp = this.scenarioInputs;
+                // Estimated elasticities based on data patterns
+                this.scenarioOutputs.ssi = Math.max(0.5, Math.min(10, 10 - (inp.statsReleased / 100) * 9.5));
+                this.scenarioOutputs.fci = Math.max(0.3, Math.min(0.95, inp.cessShare / 100 * 3 + 0.19));
+                const pressFactor = 1 - (inp.pressFreedom - 30) / 150; // 1.0 at rank 30, 0 at rank 180
+                const empFactor = (inp.formalEmp - 8) / 17; // 0 at 8%, 1 at 25%
+                const statsFactor = inp.statsReleased / 100;
+                this.scenarioOutputs.dqi = Math.max(0.1, Math.min(0.95, (pressFactor * 0.4 + empFactor * 0.2 + statsFactor * 0.4)));
+
+                this.createScenarioChart();
+            },
+
+            createScenarioChart() {
+                const c = this.getChart('scenarioChart');
+                if (!c) return;
+                const out = this.scenarioOutputs;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'Scenario vs Current: Index Comparison', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['Current (2026)', 'Your Scenario'], top: 25 },
+                    radar: {
+                        indicator: [
+                            { name: 'SSI\n(lower=better)', max: 10 },
+                            { name: 'FCI\n(lower=better)', max: 1 },
+                            { name: 'DQI\n(higher=better)', max: 1 }
+                        ],
+                        center: ['50%', '55%'], radius: '60%',
+                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280' }
+                    },
+                    series: [{
+                        type: 'radar',
+                        data: [
+                            { value: [8.2, 0.80, 0.40], name: 'Current (2026)', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#ef4444' }, itemStyle: { color: '#ef4444' } },
+                            { value: [out.ssi, out.fci, out.dqi], name: 'Your Scenario', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#22c55e' }, itemStyle: { color: '#22c55e' } }
+                        ]
+                    }]
+                }, true);
+            },
+
+            applyScenario(preset) {
+                const presets = {
+                    'optimistic': { formalEmp: 18, pressFreedom: 100, cessShare: 12, statsReleased: 85 },
+                    'status-quo': { formalEmp: 10.9, pressFreedom: 162, cessShare: 20.5, statsReleased: 40 },
+                    'pessimistic': { formalEmp: 9, pressFreedom: 175, cessShare: 25, statsReleased: 25 },
+                    'nordic': { formalEmp: 22, pressFreedom: 40, cessShare: 8, statsReleased: 98 }
+                };
+                if (presets[preset]) {
+                    this.scenarioInputs = { ...presets[preset] };
+                    this.updateScenario();
+                }
+            },
+
+            // ===== SHAREABLE CHART SNAPSHOTS =====
+            shareChart(chartId) {
+                const chart = this.charts[chartId];
+                if (!chart) return;
+                const url = chart.getDataURL({ type: 'png', pixelRatio: 2, backgroundColor: this.darkMode ? '#1e293b' : '#ffffff' });
+                // Create a shareable blob and copy to clipboard
+                fetch(url).then(r => r.blob()).then(blob => {
+                    if (navigator.clipboard && window.ClipboardItem) {
+                        navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]).then(() => {
+                            this.showShareToast('Chart copied to clipboard! Paste anywhere to share.');
+                        }).catch(() => {
+                            this.fallbackShare(url);
+                        });
+                    } else {
+                        this.fallbackShare(url);
+                    }
+                });
+            },
+
+            fallbackShare(dataUrl) {
+                // Fallback: open in new tab
+                const w = window.open('');
+                if (w) {
+                    w.document.write(`<img src="${dataUrl}" style="max-width:100%"><p>Right-click to save or copy this chart.</p>`);
+                    w.document.title = 'Some Perspective - Chart Share';
+                }
+            },
+
+            showShareToast(msg) {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg z-[100] text-sm font-medium';
+                toast.textContent = msg;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
             }
         };
     }
