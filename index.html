@@ -264,6 +264,11 @@
             .chart-h-sm-380 { height: 380px !important; }
         }
 
+        /* Hide Google Translate banner and branding */
+        .goog-te-banner-frame, .goog-te-gadget, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        body { top: 0 !important; }
+        .skiptranslate { display: none !important; }
+
         /* Smooth transitions - only colors, not layout */
         * { transition: background-color 0.2s, border-color 0.2s, color 0.2s; }
     </style>
@@ -274,6 +279,9 @@
       :class="darkMode ? 'dark' : ''"
       class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
     
+    <!-- Hidden Google Translate element -->
+    <div id="google_translate_element" style="display:none;"></div>
+
     <!-- Fallback for No JavaScript -->
     <noscript>
         <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4">
@@ -295,18 +303,55 @@
                     </p>
                 </div>
 
-                <!-- Theme Toggle -->
-                <button
-                    @click="toggleTheme()"
-                    class="ml-4 p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors no-print"
-                    aria-label="Toggle dark mode">
-                    <svg x-show="!darkMode" class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                    <svg x-show="darkMode" class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                </button>
+                <div class="flex items-center gap-2 ml-4 no-print">
+                    <!-- Theme Switcher: Light / Dark / Device -->
+                    <div class="flex bg-gray-100 dark:bg-gray-800 rounded-xl p-0.5">
+                        <button @click="setTheme('light')" :class="themeMode === 'light' ? 'bg-white dark:bg-gray-700 shadow-sm' : ''" class="p-1.5 sm:p-2 rounded-lg transition-all" aria-label="Light mode" title="Light">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                        </button>
+                        <button @click="setTheme('device')" :class="themeMode === 'device' ? 'bg-white dark:bg-gray-700 shadow-sm' : ''" class="p-1.5 sm:p-2 rounded-lg transition-all" aria-label="System theme" title="Device">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </button>
+                        <button @click="setTheme('dark')" :class="themeMode === 'dark' ? 'bg-white dark:bg-gray-700 shadow-sm' : ''" class="p-1.5 sm:p-2 rounded-lg transition-all" aria-label="Dark mode" title="Dark">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Language Selector -->
+                    <div class="relative" x-data="{ langOpen: false }">
+                        <button @click="langOpen = !langOpen" class="p-1.5 sm:p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Translate" title="Translate">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                            </svg>
+                        </button>
+                        <div x-show="langOpen" @click.outside="langOpen = false" x-transition
+                             class="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-50 py-1 overflow-hidden">
+                            <div class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700">Translate to</div>
+                            <button @click="translatePage('hi'); langOpen=false" class="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                                <span class="text-base">🇮🇳</span> हिन्दी (Hindi)
+                            </button>
+                            <button @click="translatePage('ta'); langOpen=false" class="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                                <span class="text-base">🇮🇳</span> தமிழ் (Tamil)
+                            </button>
+                            <button @click="translatePage('bn'); langOpen=false" class="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                                <span class="text-base">🇮🇳</span> বাংলা (Bengali)
+                            </button>
+                            <button @click="translatePage('mr'); langOpen=false" class="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                                <span class="text-base">🇮🇳</span> मराठी (Marathi)
+                            </button>
+                            <div class="border-t border-gray-100 dark:border-gray-700"></div>
+                            <button @click="translatePage('en'); langOpen=false" class="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium">
+                                <span class="text-base">🌐</span> English (Original)
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Audience Selector -->
@@ -1527,6 +1572,7 @@ reduces overall score</pre>
         return {
             // State
             darkMode: false,
+            themeMode: 'device', // 'light', 'dark', 'device'
             activeTab: 'What is This?',
             selectedAudience: 'Citizen',
             chartOptions: { primary: 'gdpGrowth', comparison1: '', comparison2: '' },
@@ -1562,7 +1608,12 @@ reduces overall score</pre>
 
             // Initialize
             async init() {
-                this.darkMode = localStorage.getItem('darkMode') === 'true';
+                this.themeMode = localStorage.getItem('themeMode') || 'device';
+                this.applyTheme();
+                // Listen for device theme changes
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                    if (this.themeMode === 'device') this.applyTheme();
+                });
                 document.documentElement.classList.add('js');
 
                 // Load data from JSON
@@ -1609,15 +1660,54 @@ reduces overall score</pre>
                 });
             },
 
-            toggleTheme() {
-                this.darkMode = !this.darkMode;
-                localStorage.setItem('darkMode', this.darkMode);
+            setTheme(mode) {
+                this.themeMode = mode;
+                localStorage.setItem('themeMode', mode);
+                this.applyTheme();
                 // Recreate all charts with new theme
                 this.disposeAll();
                 this.$nextTick(() => {
                     this.initializeCharts();
                     this.initSparklines();
                 });
+            },
+
+            applyTheme() {
+                if (this.themeMode === 'dark') {
+                    this.darkMode = true;
+                } else if (this.themeMode === 'light') {
+                    this.darkMode = false;
+                } else {
+                    // device preference
+                    this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                }
+            },
+
+            // Google Translate integration
+            translatePage(lang) {
+                if (lang === 'en') {
+                    // Remove translation
+                    const frame = document.querySelector('.goog-te-banner-frame');
+                    if (frame) frame.remove();
+                    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + location.hostname;
+                    location.reload();
+                    return;
+                }
+                // Set cookie and trigger translate
+                document.cookie = `googtrans=/en/${lang}; path=/;`;
+                document.cookie = `googtrans=/en/${lang}; path=/; domain=.${location.hostname}`;
+                if (!window._googleTranslateLoaded) {
+                    window.googleTranslateElementInit = function() {
+                        new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'hi,ta,bn,mr', autoDisplay: false }, 'google_translate_element');
+                    };
+                    const s = document.createElement('script');
+                    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                    document.head.appendChild(s);
+                    window._googleTranslateLoaded = true;
+                } else {
+                    location.reload();
+                }
             },
 
             toggleView(key) {
