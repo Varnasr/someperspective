@@ -257,8 +257,14 @@
             body { font-size: 12pt; }
         }
 
-        /* Responsive chart heights */
+        /* Responsive chart heights — mobile-first */
+        .chart-responsive { height: 260px; }
+        .chart-responsive-sm { height: 220px; }
+        .chart-responsive-tall { height: 320px; }
         @media (min-width: 640px) {
+            .chart-responsive { height: 420px; }
+            .chart-responsive-sm { height: 280px; }
+            .chart-responsive-tall { height: 500px; }
             .chart-h-sm-450 { height: 450px !important; }
             .chart-h-sm-500 { height: 500px !important; }
             .chart-h-sm-380 { height: 380px !important; }
@@ -600,7 +606,7 @@
                         </button>
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div id="gdpEmploymentChart" style="width:100%;height:420px;"></div>
+                        <div id="gdpEmploymentChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','GDP Growth (%)','Unemployment (%)'], economicData.years.map((y,i) => [y, economicData.gdpGrowth[i], economicData.unemployment[i]]))"></div>
                     <div class="flex gap-2">
@@ -627,7 +633,7 @@
                         </button>
                     </div>
                     <div x-show="viewModes.formalEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div id="formalEmploymentChart" style="width:100%;height:420px;"></div>
+                        <div id="formalEmploymentChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
                     <div x-show="viewModes.formalEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Formal (%)','Informal (%)'], economicData.years.map((y,i) => [y, economicData.formalEmployment[i], economicData.informalEmployment[i]]))"></div>
                     <button @click="exportChart('formalEmploymentChart', 'formal-employment')" 
@@ -648,7 +654,7 @@
                         </button>
                     </div>
                     <div x-show="viewModes.inequality === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div id="inequalityChart" style="width:100%;height:420px;"></div>
+                        <div id="inequalityChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
                     <div x-show="viewModes.inequality === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Top 1% Share (%)','Bottom 50% Share (%)'], economicData.years.map((y,i) => [y, economicData.top1Share[i], economicData.bottom50Share[i]]))"></div>
                     <button @click="exportChart('inequalityChart', 'inequality')" 
@@ -729,7 +735,7 @@
                 
                 <!-- Interactive Chart -->
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                    <div id="interactiveChart" style="width:100%;height:450px;"></div>
+                    <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
                 </div>
                 
                 <!-- Export Controls -->
@@ -844,7 +850,7 @@
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">All Three Indices (Normalized 0-10)</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div id="indicesChart" style="width:100%;height:420px;"></div>
+                        <div id="indicesChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
                     <button @click="exportChart('indicesChart', 'three-indices')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -930,7 +936,7 @@
                             </p>
                         </div>
                         <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
-                            <div id="gigEconomyChart" style="width:100%;height:280px;"></div>
+                            <div id="gigEconomyChart" class="chart-responsive-sm" style="width:100%;"></div>
                         </div>
                     </div>
                 </div>
@@ -960,7 +966,7 @@
                             </p>
                         </div>
                         <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
-                            <div id="farmerIncomeChart" style="width:100%;height:280px;"></div>
+                            <div id="farmerIncomeChart" class="chart-responsive-sm" style="width:100%;"></div>
                         </div>
                     </div>
                 </div>
@@ -990,7 +996,7 @@
                             </p>
                         </div>
                         <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
-                            <div id="womenLFPRChart" style="width:100%;height:280px;"></div>
+                            <div id="womenLFPRChart" class="chart-responsive-sm" style="width:100%;"></div>
                         </div>
                     </div>
                 </div>
@@ -1085,7 +1091,7 @@
                     <div class="mb-8">
                         <h3 class="text-lg font-bold mb-4">Data Coverage by Source Type</h3>
                         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                            <div id="dataCoverageChart" style="width:100%;height:380px;"></div>
+                            <div id="dataCoverageChart" class="chart-responsive" style="width:100%;"></div>
                         </div>
                     </div>
 
@@ -1093,7 +1099,7 @@
                     <div class="mb-8">
                         <h3 class="text-lg font-bold mb-4">SSI Component Analysis</h3>
                         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                            <div id="indexRadarChart" style="width:100%;height:400px;"></div>
+                            <div id="indexRadarChart" class="chart-responsive" style="width:100%;"></div>
                         </div>
                     </div>
 
@@ -1141,7 +1147,7 @@ reduces overall score</pre>
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">Democratic Backsliding: International Context</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div id="internationalChart" style="width:100%;height:420px;"></div>
+                        <div id="internationalChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
                     <button @click="exportChart('internationalChart', 'international-comparison')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -1153,7 +1159,7 @@ reduces overall score</pre>
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">Democratic Quality Decline: Multi-Country Comparison</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div id="democraticDeclineChart" style="width:100%;height:420px;"></div>
+                        <div id="democraticDeclineChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
                 </div>
 
@@ -1161,8 +1167,8 @@ reduces overall score</pre>
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">State-Level Disparities: Per Capita GSDP (2025-26)</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">India's growth story varies dramatically by state. Southern and western states show 3-5x higher per-capita output than eastern states.</p>
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4 overflow-x-auto">
-                        <div id="stateDisparitiesChart" style="width:100%;min-width:400px;height:400px;" class="chart-h-sm-500"></div>
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                        <div id="stateDisparitiesChart" class="chart-responsive-tall" style="width:100%;"></div>
                     </div>
                 </div>
 
@@ -1284,7 +1290,7 @@ reduces overall score</pre>
                     </select>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                    <div id="eraDetailChart" style="width:100%;height:380px;"></div>
+                    <div id="eraDetailChart" class="chart-responsive" style="width:100%;"></div>
                 </div>
                 <div class="flex gap-2">
                     <button @click="exportChart('eraComparisonChart', 'era-comparison')"
@@ -1570,14 +1576,18 @@ reduces overall score</pre>
     // ECharts color palette
     const COLORS = ['#3b82f6','#ef4444','#22c55e','#f59e0b','#8b5cf6','#ec4899','#06b6d4','#f97316'];
 
-    // Common ECharts options
+    // Mobile detection helper
+    function isMobile() { return window.innerWidth < 640; }
+
+    // Common ECharts options — responsive
     function baseOpts(darkMode) {
+        const mobile = isMobile();
         return {
             backgroundColor: 'transparent',
-            textStyle: { fontFamily: "'Inter', system-ui, sans-serif", color: darkMode ? '#e2e8f0' : '#374151' },
+            textStyle: { fontFamily: "'Inter', system-ui, sans-serif", fontSize: mobile ? 11 : 12, color: darkMode ? '#e2e8f0' : '#374151' },
             animationDuration: 800,
             animationEasing: 'cubicOut',
-            toolbox: {
+            toolbox: mobile ? { show: false } : {
                 feature: {
                     saveAsImage: { title: 'Save', pixelRatio: 2 },
                     dataView: { title: 'Data', readOnly: true, lang: ['Data View','Close','Refresh'] },
@@ -1585,15 +1595,44 @@ reduces overall score</pre>
                 },
                 iconStyle: { borderColor: darkMode ? '#94a3b8' : '#6b7280' }
             },
-            grid: { left: 60, right: 60, bottom: 80, top: 60, containLabel: true }
+            grid: mobile
+                ? { left: 10, right: 10, bottom: 45, top: 50, containLabel: true }
+                : { left: 60, right: 60, bottom: 80, top: 60, containLabel: true }
+        };
+    }
+
+    // Responsive title helper
+    function chartTitle(text, darkMode) {
+        const mobile = isMobile();
+        return {
+            text: mobile && text.length > 40 ? text.substring(0, 38) + '...' : text,
+            left: 'center', top: 0,
+            textStyle: { fontSize: mobile ? 11 : 13, fontWeight: 500, color: darkMode ? '#e2e8f0' : '#374151' }
+        };
+    }
+
+    // Responsive legend
+    function chartLegend(data, extra) {
+        const mobile = isMobile();
+        return {
+            data,
+            top: mobile ? 20 : 25,
+            textStyle: { fontSize: mobile ? 10 : 12 },
+            itemWidth: mobile ? 14 : 25,
+            itemHeight: mobile ? 8 : 14,
+            itemGap: mobile ? 6 : 10,
+            ...extra
         };
     }
 
     function dataZoom() {
-        return [
-            { type: 'slider', bottom: 10, height: 22, borderColor: 'transparent', backgroundColor: 'rgba(0,0,0,0.05)', fillerColor: 'rgba(59,130,246,0.15)', handleStyle: { color: '#3b82f6' } },
-            { type: 'inside' }
-        ];
+        const mobile = isMobile();
+        return mobile
+            ? [{ type: 'inside' }]
+            : [
+                { type: 'slider', bottom: 10, height: 22, borderColor: 'transparent', backgroundColor: 'rgba(0,0,0,0.05)', fillerColor: 'rgba(59,130,246,0.15)', handleStyle: { color: '#3b82f6' } },
+                { type: 'inside' }
+            ];
     }
 
     function siteApp() {
@@ -1843,14 +1882,15 @@ reduces overall score</pre>
                 const c = this.getChart('gdpEmploymentChart', 'keyFindings');
                 if (!c) return;
                 const d = this.economicData;
+                const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
-                    legend: { data: ['GDP Growth (%)','Unemployment Rate (%)'], top: 5 },
-                    xAxis: { type: 'category', data: d.years, axisLabel: { color: this.darkMode ? '#94a3b8' : '#6b7280' } },
+                    tooltip: { trigger: 'axis', axisPointer: { type: mobile ? 'line' : 'cross' } },
+                    legend: chartLegend(['GDP Growth (%)','Unemployment Rate (%)'], { top: 5 }),
+                    xAxis: { type: 'category', data: d.years, axisLabel: { color: this.darkMode ? '#94a3b8' : '#6b7280', fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
                     yAxis: [
-                        { type: 'value', name: 'GDP Growth (%)', nameTextStyle: { color: '#3b82f6' }, axisLine: { lineStyle: { color: '#3b82f6' } } },
-                        { type: 'value', name: 'Unemployment (%)', nameTextStyle: { color: '#ef4444' }, axisLine: { lineStyle: { color: '#ef4444' } }, splitLine: { show: false } }
+                        { type: 'value', name: mobile ? 'GDP%' : 'GDP Growth (%)', nameTextStyle: { color: '#3b82f6', fontSize: mobile ? 10 : 12 }, axisLine: { lineStyle: { color: '#3b82f6' } }, axisLabel: { fontSize: mobile ? 10 : 12 } },
+                        { type: 'value', name: mobile ? 'Unemp%' : 'Unemployment (%)', nameTextStyle: { color: '#ef4444', fontSize: mobile ? 10 : 12 }, axisLine: { lineStyle: { color: '#ef4444' } }, splitLine: { show: false }, axisLabel: { fontSize: mobile ? 10 : 12 } }
                     ],
                     dataZoom: dataZoom(),
                     series: [
@@ -1884,9 +1924,9 @@ reduces overall score</pre>
                 const d = this.economicData;
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'Rising inequality matches colonial-era extremes', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                    title: chartTitle('Rising inequality matches colonial-era extremes', this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    legend: { data: ['Top 1% Income Share (%)','Bottom 50% Income Share (%)'], top: 25 },
+                    legend: chartLegend(isMobile() ? ['Top 1%','Bottom 50%'] : ['Top 1% Income Share (%)','Bottom 50% Income Share (%)']),
                     xAxis: { type: 'category', data: d.years },
                     yAxis: { type: 'value', max: 25 },
                     dataZoom: dataZoom(),
@@ -1953,9 +1993,9 @@ reduces overall score</pre>
                 const d = this.economicData;
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'Three Indices Show Concurrent Deterioration', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                    title: chartTitle('Three Indices Show Concurrent Deterioration', this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    legend: { data: ['SSI','FCI ×10','DQI ×10'], top: 25 },
+                    legend: chartLegend(['SSI','FCI ×10','DQI ×10']),
                     xAxis: { type: 'category', data: d.years },
                     yAxis: { type: 'value', max: 10 },
                     dataZoom: dataZoom(),
@@ -1974,8 +2014,8 @@ reduces overall score</pre>
                 if (gig) {
                     gig.setOption({
                         ...baseOpts(this.darkMode),
-                        grid: { left: 40, right: 20, bottom: 30, top: 50 },
-                        title: { text: 'Explosive Growth in Precarious Gig Work', left: 'center', top: 0, textStyle: { fontSize: 12, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                        grid: isMobile() ? { left: 5, right: 5, bottom: 20, top: 40, containLabel: true } : { left: 40, right: 20, bottom: 30, top: 50 },
+                        title: chartTitle('Gig Work Growth', this.darkMode),
                         tooltip: { trigger: 'axis' },
                         xAxis: { type: 'category', data: d.years.slice(-5) },
                         yAxis: { type: 'value' },
@@ -1988,8 +2028,8 @@ reduces overall score</pre>
                 if (farmer) {
                     farmer.setOption({
                         ...baseOpts(this.darkMode),
-                        grid: { left: 40, right: 20, bottom: 30, top: 50 },
-                        title: { text: 'Declining Real Rural Incomes', left: 'center', top: 0, textStyle: { fontSize: 12, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                        grid: isMobile() ? { left: 5, right: 5, bottom: 20, top: 40, containLabel: true } : { left: 40, right: 20, bottom: 30, top: 50 },
+                        title: chartTitle('Declining Real Rural Incomes', this.darkMode),
                         tooltip: { trigger: 'axis' },
                         xAxis: { type: 'category', data: d.years },
                         yAxis: { type: 'value' },
@@ -2002,8 +2042,8 @@ reduces overall score</pre>
                 if (women) {
                     women.setOption({
                         ...baseOpts(this.darkMode),
-                        grid: { left: 40, right: 20, bottom: 30, top: 50 },
-                        title: { text: 'Female Labor Force Participation', left: 'center', top: 0, textStyle: { fontSize: 12, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                        grid: isMobile() ? { left: 5, right: 5, bottom: 20, top: 40, containLabel: true } : { left: 40, right: 20, bottom: 30, top: 50 },
+                        title: chartTitle('Female Labor Force Participation', this.darkMode),
                         tooltip: { trigger: 'axis' },
                         xAxis: { type: 'category', data: d.years },
                         yAxis: { type: 'value', min: 19, max: 24 },
@@ -2019,9 +2059,9 @@ reduces overall score</pre>
                 const intl = this.internationalData;
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'Democratic Quality: India Shows Steepest Decline', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                    title: chartTitle('Democratic Quality: India Shows Steepest Decline', this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    legend: { data: ['V-Dem 2014','V-Dem 2026'], top: 25 },
+                    legend: chartLegend(['V-Dem 2014','V-Dem 2026']),
                     xAxis: { type: 'category', data: intl.countries },
                     yAxis: { type: 'value', max: 1 },
                     series: [
@@ -2113,22 +2153,23 @@ reduces overall score</pre>
                 const xMax = Math.max(...xData);
                 const trendData = [[xMin, slope * xMin + intercept], [xMax, slope * xMax + intercept]];
 
+                const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: `${labels[this.scatterX]} vs ${labels[this.scatterY]}`, left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    title: chartTitle(`${labels[this.scatterX]} vs ${labels[this.scatterY]}`, this.darkMode),
                     tooltip: {
                         formatter: p => {
                             if (p.seriesIndex === 1) return '';
                             return `<strong>${p.data[2]}</strong><br>${labels[this.scatterX]}: ${p.data[0]}<br>${labels[this.scatterY]}: ${p.data[1]}`;
                         }
                     },
-                    xAxis: { type: 'value', name: labels[this.scatterX], nameLocation: 'center', nameGap: 30 },
-                    yAxis: { type: 'value', name: labels[this.scatterY] },
+                    xAxis: { type: 'value', name: mobile ? '' : labels[this.scatterX], nameLocation: 'center', nameGap: 25, axisLabel: { fontSize: mobile ? 10 : 12 } },
+                    yAxis: { type: 'value', name: mobile ? '' : labels[this.scatterY], axisLabel: { fontSize: mobile ? 10 : 12 } },
                     series: [
                         {
-                            type: 'scatter', data: scatter, symbolSize: 14,
-                            itemStyle: { color: '#8b5cf6', borderColor: '#fff', borderWidth: 2 },
-                            label: { show: true, formatter: p => p.data[2], position: 'top', fontSize: 10, color: this.darkMode ? '#94a3b8' : '#6b7280' }
+                            type: 'scatter', data: scatter, symbolSize: mobile ? 10 : 14,
+                            itemStyle: { color: '#8b5cf6', borderColor: '#fff', borderWidth: mobile ? 1 : 2 },
+                            label: { show: !mobile, formatter: p => p.data[2], position: 'top', fontSize: 10, color: this.darkMode ? '#94a3b8' : '#6b7280' }
                         },
                         {
                             type: 'line', data: trendData, symbol: 'none',
@@ -2143,12 +2184,13 @@ reduces overall score</pre>
             createDataCoverageChart() {
                 const c = this.getChart('dataCoverageChart');
                 if (!c) return;
+                const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'Data Coverage by Source Type (%)', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    title: chartTitle('Data Coverage by Source Type (%)', this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    legend: { data: ['Government Sources', 'Independent Sources'], top: 25 },
-                    xAxis: { type: 'category', data: ['GDP', 'Employment', 'Inequality', 'Fiscal', 'Democratic'] },
+                    legend: chartLegend(mobile ? ['Govt', 'Independent'] : ['Government Sources', 'Independent Sources']),
+                    xAxis: { type: 'category', data: mobile ? ['GDP', 'Emp', 'Ineq', 'Fiscal', 'Dem'] : ['GDP', 'Employment', 'Inequality', 'Fiscal', 'Democratic'], axisLabel: { fontSize: mobile ? 10 : 12 } },
                     yAxis: { type: 'value', max: 100, axisLabel: { formatter: '{value}%' } },
                     series: [
                         { name: 'Government Sources', type: 'bar', data: [100, 85, 60, 95, 30], itemStyle: { color: '#3b82f6' }, barGap: '10%' },
@@ -2161,20 +2203,27 @@ reduces overall score</pre>
             createIndexRadarChart() {
                 const c = this.getChart('indexRadarChart');
                 if (!c) return;
+                const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'SSI Component Analysis & Weights', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
-                    legend: { data: ['Current Severity (2026)', 'Weight in Index'], top: 25 },
+                    title: chartTitle('SSI Component Analysis & Weights', this.darkMode),
+                    legend: chartLegend(mobile ? ['Severity', 'Weight'] : ['Current Severity (2026)', 'Weight in Index']),
                     radar: {
-                        indicator: [
+                        indicator: mobile ? [
+                            { name: 'Suppression', max: 100 },
+                            { name: 'Delays', max: 100 },
+                            { name: 'Capture', max: 100 },
+                            { name: 'Methods', max: 100 },
+                            { name: 'Access', max: 100 }
+                        ] : [
                             { name: 'Data\nSuppression', max: 100 },
                             { name: 'Release\nDelays', max: 100 },
                             { name: 'Institutional\nCapture', max: 100 },
                             { name: 'Methodology\nChanges', max: 100 },
                             { name: 'Access\nRestrictions', max: 100 }
                         ],
-                        center: ['50%', '55%'], radius: '65%',
-                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280' }
+                        center: ['50%', mobile ? '58%' : '55%'], radius: mobile ? '55%' : '65%',
+                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280', fontSize: mobile ? 10 : 12 }
                     },
                     series: [{
                         type: 'radar',
@@ -2190,13 +2239,14 @@ reduces overall score</pre>
             createDemocraticDeclineChart() {
                 const c = this.getChart('democraticDeclineChart');
                 if (!c) return;
+                const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'Democratic Quality Index: Multi-Country Decline (2014-2026)', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    title: chartTitle('DQI: Multi-Country Decline (2014-2026)', this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    legend: { data: ['India', 'Turkey', 'Hungary', 'Brazil'], top: 25 },
-                    xAxis: { type: 'category', data: [2014, 2016, 2018, 2020, 2022, 2024, 2026] },
-                    yAxis: { type: 'value', min: 0.15, max: 0.85, name: 'DQI Score', axisLabel: { formatter: v => v.toFixed(2) } },
+                    legend: chartLegend(['India', 'Turkey', 'Hungary', 'Brazil']),
+                    xAxis: { type: 'category', data: [2014, 2016, 2018, 2020, 2022, 2024, 2026], axisLabel: { fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
+                    yAxis: { type: 'value', min: 0.15, max: 0.85, name: mobile ? '' : 'DQI Score', axisLabel: { formatter: v => v.toFixed(2), fontSize: mobile ? 10 : 12 } },
                     dataZoom: dataZoom(),
                     series: [
                         { name: 'India', type: 'line', data: [0.71, 0.68, 0.60, 0.48, 0.43, 0.42, 0.40], smooth: true, itemStyle: { color: '#f97316' }, lineStyle: { width: 3 }, areaStyle: { opacity: 0.08 } },
@@ -2212,23 +2262,26 @@ reduces overall score</pre>
             createStateDisparitiesChart() {
                 const c = this.getChart('stateDisparitiesChart');
                 if (!c) return;
-                const states = ['Goa','Delhi','Karnataka','Telangana','Tamil Nadu','Gujarat','Maharashtra','Kerala','Haryana','Punjab','Andhra Pradesh','Rajasthan','West Bengal','Odisha','Chhattisgarh','Jharkhand','Madhya Pradesh','Uttar Pradesh','Bihar'];
-                const gsdp = [575, 450, 320, 305, 290, 275, 270, 260, 255, 210, 195, 140, 130, 115, 105, 95, 90, 75, 55]; // in thousands INR
+                const mobile = isMobile();
+                const states = mobile
+                    ? ['Goa','Delhi','KA','TG','TN','GJ','MH','KL','HR','PB','AP','RJ','WB','OD','CG','JH','MP','UP','Bihar']
+                    : ['Goa','Delhi','Karnataka','Telangana','Tamil Nadu','Gujarat','Maharashtra','Kerala','Haryana','Punjab','Andhra Pradesh','Rajasthan','West Bengal','Odisha','Chhattisgarh','Jharkhand','Madhya Pradesh','Uttar Pradesh','Bihar'];
+                const gsdp = [575, 450, 320, 305, 290, 275, 270, 260, 255, 210, 195, 140, 130, 115, 105, 95, 90, 75, 55];
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'Per Capita GSDP by State (₹ thousands, 2025-26 est.)', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    title: chartTitle('Per Capita GSDP by State (₹k, 2025-26)', this.darkMode),
                     tooltip: { trigger: 'axis', formatter: p => `${p[0].name}: ₹${p[0].value}k` },
-                    grid: { left: 120, right: 40, top: 40, bottom: 20 },
-                    xAxis: { type: 'value', name: '₹ thousands', axisLabel: { formatter: '₹{value}k' } },
-                    yAxis: { type: 'category', data: states.reverse(), inverse: false },
+                    grid: mobile ? { left: 5, right: 10, top: 35, bottom: 5, containLabel: true } : { left: 120, right: 40, top: 40, bottom: 20 },
+                    xAxis: { type: 'value', name: '', axisLabel: { formatter: '₹{value}k', fontSize: mobile ? 9 : 12 } },
+                    yAxis: { type: 'category', data: states.reverse(), inverse: false, axisLabel: { fontSize: mobile ? 9 : 12 } },
                     series: [{
                         type: 'bar',
                         data: gsdp.reverse().map((v, i) => ({
                             value: v,
                             itemStyle: { color: v > 250 ? '#22c55e' : v > 150 ? '#f59e0b' : v > 100 ? '#f97316' : '#ef4444' }
                         })),
-                        barWidth: '60%',
-                        label: { show: true, position: 'right', formatter: '₹{c}k', fontSize: 10 }
+                        barWidth: mobile ? '50%' : '60%',
+                        label: { show: !mobile, position: 'right', formatter: '₹{c}k', fontSize: 10 }
                     }],
                     toolbox: { show: false }
                 });
@@ -2238,16 +2291,18 @@ reduces overall score</pre>
             createEraComparisonChart() {
                 const c = this.getChart('eraComparisonChart');
                 if (!c) return;
-                const indicators = ['GDP Growth\n(avg %)', 'Formal\nEmployment (%)', 'Top 1%\nShare (%)', 'Unemployment\n(%)', 'Press Freedom\n(rank/180)'];
-                // UPA averages/endpoints, NDA averages/endpoints
+                const mobile = isMobile();
+                const indicators = mobile
+                    ? ['GDP%', 'Formal\nEmp%', 'Top 1%', 'Unemp%', 'Press\nFreedom']
+                    : ['GDP Growth\n(avg %)', 'Formal\nEmployment (%)', 'Top 1%\nShare (%)', 'Unemployment\n(%)', 'Press Freedom\n(rank/180)'];
                 const upaValues = [7.4, 13.0, 21.3, 4.9, 140];
                 const ndaValues = [5.8, 10.9, 23.0, 3.0, 162];
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'UPA (2004-2014) vs NDA (2014-2026): Key Indicators', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    title: chartTitle('UPA (2004-14) vs NDA (2014-26)', this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    legend: { data: ['UPA Era', 'NDA Era'], top: 25 },
-                    xAxis: { type: 'category', data: indicators, axisLabel: { interval: 0, fontSize: 10 } },
+                    legend: chartLegend(['UPA Era', 'NDA Era']),
+                    xAxis: { type: 'category', data: indicators, axisLabel: { interval: 0, fontSize: mobile ? 9 : 10, lineHeight: mobile ? 12 : 14 } },
                     yAxis: { type: 'value' },
                     series: [
                         { name: 'UPA Era', type: 'bar', data: upaValues, itemStyle: { color: '#3b82f6' }, barGap: '10%' },
@@ -2273,12 +2328,13 @@ reduces overall score</pre>
                 // Since our data starts at 2014, we show the NDA era with a visual midpoint marker
                 const midIdx = 0; // 2014 = index 0
 
+                const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: `${labels[indicator]}: Trend Over NDA Era (2014-2026)`, left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    title: chartTitle(`${labels[indicator]}: NDA Era (2014-2026)`, this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    xAxis: { type: 'category', data: d.years },
-                    yAxis: { type: 'value', name: labels[indicator] },
+                    xAxis: { type: 'category', data: d.years, axisLabel: { fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
+                    yAxis: { type: 'value', name: mobile ? '' : labels[indicator], axisLabel: { fontSize: mobile ? 10 : 12 } },
                     dataZoom: dataZoom(),
                     visualMap: {
                         show: false, dimension: 0, pieces: [
@@ -2312,19 +2368,24 @@ reduces overall score</pre>
                 const c = this.getChart('scenarioChart');
                 if (!c) return;
                 const out = this.scenarioOutputs;
+                const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: { text: 'Scenario vs Current: Index Comparison', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500 } },
+                    title: chartTitle('Scenario vs Current', this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    legend: { data: ['Current (2026)', 'Your Scenario'], top: 25 },
+                    legend: chartLegend(mobile ? ['Current', 'Scenario'] : ['Current (2026)', 'Your Scenario']),
                     radar: {
-                        indicator: [
+                        indicator: mobile ? [
+                            { name: 'SSI', max: 10 },
+                            { name: 'FCI', max: 1 },
+                            { name: 'DQI', max: 1 }
+                        ] : [
                             { name: 'SSI\n(lower=better)', max: 10 },
                             { name: 'FCI\n(lower=better)', max: 1 },
                             { name: 'DQI\n(higher=better)', max: 1 }
                         ],
-                        center: ['50%', '55%'], radius: '60%',
-                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280' }
+                        center: ['50%', mobile ? '58%' : '55%'], radius: mobile ? '50%' : '60%',
+                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280', fontSize: mobile ? 10 : 12 }
                     },
                     series: [{
                         type: 'radar',
