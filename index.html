@@ -173,10 +173,9 @@
     <!-- Alpine.js for interactivity -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
-    <!-- Chart.js for visualizations -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    
-    <!-- Add loading indicator style -->
+    <!-- ECharts for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,9 +255,6 @@
             .no-print { display: none !important; }
             body { font-size: 12pt; }
         }
-
-        /* Dark mode chart colors */
-        .dark canvas { filter: brightness(0.9); }
 
         /* Smooth transitions - only colors, not layout */
         * { transition: background-color 0.2s, border-color 0.2s, color 0.2s; }
@@ -369,18 +365,22 @@
                     <div class="stat-card bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30">
                         <div class="text-2xl sm:text-3xl font-extrabold text-red-600 dark:text-red-400">40.1%</div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Wealth held by top 1%</div>
+                        <div id="sparkWealth" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-900/30">
                         <div class="text-2xl sm:text-3xl font-extrabold text-orange-600 dark:text-orange-400">27%</div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Graduate unemployment</div>
+                        <div id="sparkGradUnemp" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-900/30">
                         <div class="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400">160th</div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Press freedom rank</div>
+                        <div id="sparkPress" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30">
                         <div class="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400">15 yrs</div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Since last Census</div>
+                        <div id="sparkCensus" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                 </div>
 
@@ -510,11 +510,15 @@
                 <!-- GDP vs Employment Chart -->
                 <div class="mb-8">
                     <h3 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">GDP Growth vs Employment</h3>
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div class="chart-container w-full">
-                            <canvas id="gdpEmploymentChart" class="w-full h-full"></canvas>
-                        </div>
+                    <div class="mb-2 flex justify-end">
+                        <button @click="toggleView('gdpEmployment')" class="px-3 py-1 text-xs rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                            <span x-text="viewModes.gdpEmployment === 'chart' ? 'Show Table' : 'Show Chart'"></span>
+                        </button>
                     </div>
+                    <div x-show="viewModes.gdpEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                        <div id="gdpEmploymentChart" style="width:100%;height:420px;"></div>
+                    </div>
+                    <div x-show="viewModes.gdpEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','GDP Growth (%)','Unemployment (%)'], economicData.years.map((y,i) => [y, economicData.gdpGrowth[i], economicData.unemployment[i]]))"></div>
                     <button @click="exportChart('gdpEmploymentChart', 'gdp-employment')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
                         📥 Export Chart
@@ -527,11 +531,15 @@
                 <!-- Formal Employment Chart -->
                 <div class="mb-8">
                     <h3 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Formal vs Informal Employment</h3>
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div class="chart-container w-full">
-                            <canvas id="formalEmploymentChart" class="w-full h-full"></canvas>
-                        </div>
+                    <div class="mb-2 flex justify-end">
+                        <button @click="toggleView('formalEmployment')" class="px-3 py-1 text-xs rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                            <span x-text="viewModes.formalEmployment === 'chart' ? 'Show Table' : 'Show Chart'"></span>
+                        </button>
                     </div>
+                    <div x-show="viewModes.formalEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                        <div id="formalEmploymentChart" style="width:100%;height:420px;"></div>
+                    </div>
+                    <div x-show="viewModes.formalEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Formal (%)','Informal (%)'], economicData.years.map((y,i) => [y, economicData.formalEmployment[i], economicData.informalEmployment[i]]))"></div>
                     <button @click="exportChart('formalEmploymentChart', 'formal-employment')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
                         📥 Export Chart
@@ -544,11 +552,15 @@
                 <!-- Inequality Chart -->
                 <div class="mb-8">
                     <h3 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Income Inequality Trends</h3>
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div class="chart-container w-full">
-                            <canvas id="inequalityChart" class="w-full h-full"></canvas>
-                        </div>
+                    <div class="mb-2 flex justify-end">
+                        <button @click="toggleView('inequality')" class="px-3 py-1 text-xs rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                            <span x-text="viewModes.inequality === 'chart' ? 'Show Table' : 'Show Chart'"></span>
+                        </button>
                     </div>
+                    <div x-show="viewModes.inequality === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                        <div id="inequalityChart" style="width:100%;height:420px;"></div>
+                    </div>
+                    <div x-show="viewModes.inequality === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Top 1% Share (%)','Bottom 50% Share (%)'], economicData.years.map((y,i) => [y, economicData.top1Share[i], economicData.bottom50Share[i]]))"></div>
                     <button @click="exportChart('inequalityChart', 'inequality')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
                         📥 Export Chart
@@ -627,9 +639,7 @@
                 
                 <!-- Interactive Chart -->
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                    <div class="chart-container" style="height: 400px;">
-                        <canvas id="interactiveChart"></canvas>
-                    </div>
+                    <div id="interactiveChart" style="width:100%;height:450px;"></div>
                 </div>
                 
                 <!-- Export Controls -->
@@ -660,9 +670,7 @@
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">All Three Indices (Normalized 0-10)</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div class="chart-container">
-                            <canvas id="indicesChart"></canvas>
-                        </div>
+                        <div id="indicesChart" style="width:100%;height:420px;"></div>
                     </div>
                     <button @click="exportChart('indicesChart', 'three-indices')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -747,8 +755,8 @@
                                 The "world's fastest-growing economy" runs on exploitation of its brightest minds.
                             </p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 p-4 rounded">
-                            <canvas id="gigEconomyChart"></canvas>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
+                            <div id="gigEconomyChart" style="width:100%;height:280px;"></div>
                         </div>
                     </div>
                 </div>
@@ -777,8 +785,8 @@
                                 Average debt: ₹1.3 lakh. Agriculture employs 45% but contributes only 15% to GDP.
                             </p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 p-4 rounded">
-                            <canvas id="farmerIncomeChart"></canvas>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
+                            <div id="farmerIncomeChart" style="width:100%;height:280px;"></div>
                         </div>
                     </div>
                 </div>
@@ -807,8 +815,8 @@
                                 No mandatory maternity benefits in informal sector (employs 95% women workers).
                             </p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 p-4 rounded">
-                            <canvas id="womenLFPRChart"></canvas>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
+                            <div id="womenLFPRChart" style="width:100%;height:280px;"></div>
                         </div>
                     </div>
                 </div>
@@ -943,9 +951,7 @@ reduces overall score</pre>
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">Democratic Backsliding: International Context</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div class="chart-container">
-                            <canvas id="internationalChart"></canvas>
-                        </div>
+                        <div id="internationalChart" style="width:100%;height:420px;"></div>
                     </div>
                     <button @click="exportChart('internationalChart', 'international-comparison')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -1132,617 +1138,473 @@ reduces overall score</pre>
     
     <!-- Alpine.js Application -->
     <script>
-        // Economic data (including projections through March 2026)
-        const economicData = {
-            years: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
-            gdpGrowth: [7.4, 8.0, 8.2, 7.2, 6.1, 4.2, -7.3, 8.7, 7.2, 7.6, 7.8, 6.5, 6.3],
-            unemployment: [4.9, 5.0, 5.0, 6.0, 6.1, 5.8, 7.1, 4.2, 4.1, 3.2, 3.2, 3.1, 3.0],
-            youthUnemployment: [13.5, 13.8, 14.2, 15.6, 16.1, 14.8, 17.8, 13.2, 12.9, 12.9, 12.8, 12.5, 12.3],
-            graduateUnemployment: [18.5, 19.2, 21.0, 23.5, 25.0, 23.0, 31.0, 25.0, 22.0, 29.1, 28.5, 27.0, 26.5],
-            top1Share: [21.3, 21.7, 21.5, 21.5, 21.7, 22.1, 22.3, 22.5, 22.6, 22.6, 22.6, 22.8, 23.0],
-            bottom50Share: [15.0, 14.7, 14.9, 14.9, 14.7, 13.5, 13.3, 13.1, 13.1, 13.1, 13.1, 13.0, 12.9],
-            formalEmployment: [13.0, 12.8, 12.5, 12.2, 11.9, 11.6, 11.4, 11.5, 11.3, 11.2, 11.2, 11.0, 10.9],
-            informalEmployment: [87.0, 87.2, 87.5, 87.8, 88.1, 88.4, 88.6, 88.5, 88.7, 88.8, 88.8, 89.0, 89.1],
-            pressFreedom: [140, 136, 133, 136, 138, 140, 142, 142, 150, 161, 159, 160, 162],
-            ssi: [2.3, 2.5, 2.4, 2.4, 2.6, 4.8, 7.2, 6.8, 7.0, 7.5, 7.8, 8.0, 8.2],
-            fci: [0.62, 0.64, 0.66, 0.68, 0.70, 0.72, 0.84, 0.78, 0.76, 0.77, 0.78, 0.79, 0.80],
-            dqi: [0.71, 0.70, 0.68, 0.65, 0.60, 0.55, 0.48, 0.45, 0.43, 0.42, 0.42, 0.41, 0.40],
-            gigWorkers: [0.8, 1.2, 1.8, 2.5, 3.2, 4.1, 5.2, 6.0, 6.8, 7.3, 7.7, 8.2, 8.8],
-            ruralIncome: [100, 99, 98, 97, 96, 95, 93, 94, 95, 96, 98, 97, 97],
-            femaleLFPR: [22.5, 22.0, 21.8, 21.5, 21.2, 21.0, 20.8, 20.5, 20.3, 20.5, 20.8, 20.9, 21.0]
-        };
-
-        // International comparison data
-        const internationalData = {
-            countries: ['India', 'Brazil', 'Turkey', 'Hungary', 'South Africa'],
-            vdem2014: [0.71, 0.85, 0.52, 0.63, 0.75],
-            vdem2026: [0.26, 0.69, 0.18, 0.41, 0.70],
-            press2014: [140, 99, 154, 64, 42],
-            press2026: [162, 80, 160, 68, 34]
-        };
-        
-        function siteApp() {
-            return {
-                // State
-                darkMode: false,
-                activeTab: 'What is This?',
-                selectedAudience: 'Citizen',
-                chartOptions: {
-                    primary: 'gdpGrowth',
-                    comparison1: '',
-                    comparison2: ''
-                },
-                charts: {},
-                
-                // Configuration
-                audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
-                
-                // Compute tabs based on audience
-                get tabs() {
-                    return [
-                        'What is This?',
-                        'Executive Summary',
-                        'Key Findings',
-                        'Interactive Data',
-                        'Three Indices',
-                        'Human Stories',
-                        'Methodology',
-                        'Implications',
-                        'What Next?'
-                    ];
-                },
-                
-                // Audience Notes
-                audienceNotes: {
-                    'Researcher': '<strong>For Researchers:</strong> This website presents a comprehensive political economy assessment through March 2026 with three novel indices (SSI, FCI, DQI) constructed from triangulated data sources. All methodologies are transparent and replicable. Raw data available for download in CSV format. Replication code in R and Python provided.',
-                    'Policy Maker': '<strong>For Policy Makers:</strong> Executive summary with actionable recommendations based on data through March 2026. Each finding linked to specific policy interventions. Priority reforms: Statistical independence (₹500 cr), fiscal federalism (₹3 lakh cr to states), urban employment guarantee (₹50,000 cr). Download full policy brief.',
-                    'Journalist': '<strong>For Journalists:</strong> Four ready-to-use data stories with human angles, sparkline charts, and verified quotes. All statistics fact-checked across multiple sources through March 2026. Visual assets exportable for publication. Special access to Human Stories tab with compelling narratives.',
-                    'Citizen': '<strong>For Citizens:</strong> Your tax money, your democracy, your future. Simple explanations of complex economic changes through March 2026. Interactive tools to explore data yourself. Share verified information to counter WhatsApp forwards. Knowledge is power - use it.'
-                },
-                
-                // Initialize
-                init() {
-                    this.darkMode = localStorage.getItem('darkMode') === 'true';
-                    document.documentElement.classList.add('js');
-
-                    // Initialize charts after Alpine renders + x-show transition completes
-                    this.$nextTick(() => this.scheduleChartInit());
-
-                    // Watch for tab changes
-                    this.$watch('activeTab', () => {
-                        this.$nextTick(() => this.scheduleChartInit());
-                    });
-
-                    // Watch for audience changes
-                    this.$watch('selectedAudience', () => {
-                        this.$nextTick(() => this.scheduleChartInit());
-                    });
-                },
-
-                // Schedule chart initialization with retry for x-show transition delay
-                scheduleChartInit() {
-                    // Clear any pending retry
-                    if (this._chartRetry) clearTimeout(this._chartRetry);
-                    // Try immediately, then retry after transition completes
-                    this.initializeCharts();
-                    this._chartRetry = setTimeout(() => this.initializeCharts(), 350);
-                },
-                
-                // Theme toggle
-                toggleTheme() {
-                    this.darkMode = !this.darkMode;
-                    localStorage.setItem('darkMode', this.darkMode);
-                },
-                
-                // Check if a canvas is visible and has layout dimensions
-                canvasReady(id) {
-                    const el = document.getElementById(id);
-                    return el && el.offsetWidth > 0 && el.offsetHeight > 0;
-                },
-
-                // Initialize all charts
-                initializeCharts() {
-                    // Destroy any existing charts first
-                    Object.keys(this.charts).forEach(key => {
-                        if (this.charts[key]) {
-                            this.charts[key].destroy();
-                            delete this.charts[key];
-                        }
-                    });
-
-                    // Create charts based on active tab (no setTimeout — caller ensures visibility)
-                    if (this.activeTab === 'Key Findings') {
-                        this.createGDPEmploymentChart();
-                        this.createFormalEmploymentChart();
-                        this.createInequalityChart();
-                    } else if (this.activeTab === 'Interactive Data') {
-                        this.createInteractiveChart();
-                    } else if (this.activeTab === 'Three Indices') {
-                        this.createIndicesChart();
-                    } else if (this.activeTab === 'Human Stories') {
-                        this.createHumanStoriesCharts();
-                    } else if (this.activeTab === 'Implications') {
-                        this.createInternationalChart();
-                    }
-                },
-                
-                // Create GDP vs Employment Chart
-                createGDPEmploymentChart() {
-                    const ctx = document.getElementById('gdpEmploymentChart');
-                    if (!ctx || !this.canvasReady('gdpEmploymentChart')) return;
-
-                    Chart.defaults.font.family = "'Inter', system-ui, -apple-system, sans-serif";
-                    Chart.defaults.font.size = 12;
-
-                    if (this.charts.gdpEmployment) {
-                        this.charts.gdpEmployment.destroy();
-                    }
-                    
-                    this.charts.gdpEmployment = new Chart(ctx.getContext('2d'), {
-                        type: 'line',
-                        data: {
-                            labels: economicData.years,
-                            datasets: [{
-                                label: 'GDP Growth (%)',
-                                data: economicData.gdpGrowth,
-                                borderColor: 'rgb(59, 130, 246)',
-                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                                yAxisID: 'y',
-                                tension: 0.1
-                            }, {
-                                label: 'Unemployment Rate (%)',
-                                data: economicData.unemployment,
-                                borderColor: 'rgb(239, 68, 68)',
-                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                yAxisID: 'y1',
-                                tension: 0.1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            interaction: {
-                                mode: 'index',
-                                intersect: false
-                            },
-                            scales: {
-                                y: {
-                                    type: 'linear',
-                                    display: true,
-                                    position: 'left',
-                                    title: {
-                                        display: true,
-                                        text: 'GDP Growth (%)'
-                                    }
-                                },
-                                y1: {
-                                    type: 'linear',
-                                    display: true,
-                                    position: 'right',
-                                    title: {
-                                        display: true,
-                                        text: 'Unemployment Rate (%)'
-                                    },
-                                    grid: {
-                                        drawOnChartArea: false
-                                    }
-                                }
-                            }
-                        }
-                    });
-                },
-                
-                // Create Formal Employment Chart
-                createFormalEmploymentChart() {
-                    const ctx = document.getElementById('formalEmploymentChart');
-                    if (!ctx || !this.canvasReady('formalEmploymentChart')) return;
-
-                    if (this.charts.formalEmployment) {
-                        this.charts.formalEmployment.destroy();
-                    }
-                    
-                    this.charts.formalEmployment = new Chart(ctx.getContext('2d'), {
-                        type: 'bar',
-                        data: {
-                            labels: economicData.years,
-                            datasets: [{
-                                label: 'Formal Employment (%)',
-                                data: economicData.formalEmployment,
-                                backgroundColor: 'rgba(34, 197, 94, 0.8)',
-                                borderColor: 'rgb(34, 197, 94)',
-                                borderWidth: 1
-                            }, {
-                                label: 'Informal Employment (%)',
-                                data: economicData.informalEmployment,
-                                backgroundColor: 'rgba(239, 68, 68, 0.8)',
-                                borderColor: 'rgb(239, 68, 68)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 100,
-                                    stacked: true
-                                },
-                                x: {
-                                    stacked: true
-                                }
-                            }
-                        }
-                    });
-                },
-                
-                // Create Inequality Chart
-                createInequalityChart() {
-                    const ctx = document.getElementById('inequalityChart');
-                    if (!ctx || !this.canvasReady('inequalityChart')) return;
-
-                    if (this.charts.inequality) {
-                        this.charts.inequality.destroy();
-                    }
-                    
-                    this.charts.inequality = new Chart(ctx.getContext('2d'), {
-                        type: 'line',
-                        data: {
-                            labels: economicData.years,
-                            datasets: [{
-                                label: 'Top 1% Income Share (%)',
-                                data: economicData.top1Share,
-                                borderColor: 'rgb(239, 68, 68)',
-                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                borderWidth: 2
-                            }, {
-                                label: 'Bottom 50% Income Share (%)',
-                                data: economicData.bottom50Share,
-                                borderColor: 'rgb(34, 197, 94)',
-                                backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                                borderWidth: 2
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    text: 'Rising inequality matches colonial-era extremes'
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 25
-                                }
-                            }
-                        }
-                    });
-                },
-                
-                // Create Interactive Chart
-                createInteractiveChart() {
-                    this.updateInteractiveChart();
-                },
-                
-                updateInteractiveChart() {
-                    const ctx = document.getElementById('interactiveChart');
-                    if (!ctx || !this.canvasReady('interactiveChart')) return;
-                    
-                    if (this.charts.interactive) {
-                        this.charts.interactive.destroy();
-                    }
-                    
-                    const datasets = [];
-                    const dataMap = {
-                        'gdpGrowth': { label: 'GDP Growth (%)', data: economicData.gdpGrowth, color: 'rgb(59, 130, 246)' },
-                        'unemployment': { label: 'Unemployment (%)', data: economicData.unemployment, color: 'rgb(239, 68, 68)' },
-                        'top1Share': { label: 'Top 1% Share (%)', data: economicData.top1Share, color: 'rgb(245, 158, 11)' },
-                        'formalEmployment': { label: 'Formal Employment (%)', data: economicData.formalEmployment, color: 'rgb(34, 197, 94)' },
-                        'pressFreedom': { label: 'Press Freedom Rank', data: economicData.pressFreedom, color: 'rgb(139, 92, 246)' },
-                        'ssi': { label: 'SSI', data: economicData.ssi, color: 'rgb(236, 72, 153)' },
-                        'fci': { label: 'FCI', data: economicData.fci.map(v => v * 10), color: 'rgb(14, 165, 233)' },
-                        'dqi': { label: 'DQI', data: economicData.dqi.map(v => v * 10), color: 'rgb(168, 85, 247)' }
-                    };
-                    
-                    // Add primary dataset
-                    if (dataMap[this.chartOptions.primary]) {
-                        datasets.push({
-                            ...dataMap[this.chartOptions.primary],
-                            borderWidth: 2,
-                            yAxisID: 'y'
-                        });
-                    }
-                    
-                    // Add comparison datasets
-                    if (this.chartOptions.comparison1 && dataMap[this.chartOptions.comparison1]) {
-                        datasets.push({
-                            ...dataMap[this.chartOptions.comparison1],
-                            borderWidth: 2,
-                            borderDash: [5, 5],
-                            yAxisID: 'y1'
-                        });
-                    }
-                    
-                    if (this.chartOptions.comparison2 && dataMap[this.chartOptions.comparison2]) {
-                        datasets.push({
-                            ...dataMap[this.chartOptions.comparison2],
-                            borderWidth: 2,
-                            borderDash: [10, 5],
-                            yAxisID: 'y2'
-                        });
-                    }
-                    
-                    this.charts.interactive = new Chart(ctx.getContext('2d'), {
-                        type: 'line',
-                        data: {
-                            labels: economicData.years,
-                            datasets: datasets
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            interaction: {
-                                mode: 'index',
-                                intersect: false
-                            },
-                            scales: {
-                                y: {
-                                    type: 'linear',
-                                    display: true,
-                                    position: 'left'
-                                },
-                                y1: {
-                                    type: 'linear',
-                                    display: datasets.length > 1,
-                                    position: 'right',
-                                    grid: {
-                                        drawOnChartArea: false
-                                    }
-                                },
-                                y2: {
-                                    type: 'linear',
-                                    display: datasets.length > 2,
-                                    position: 'right',
-                                    grid: {
-                                        drawOnChartArea: false
-                                    }
-                                }
-                            }
-                        }
-                    });
-                },
-                
-                // Create Indices Chart
-                createIndicesChart() {
-                    const ctx = document.getElementById('indicesChart');
-                    if (!ctx || !this.canvasReady('indicesChart')) return;
-
-                    if (this.charts.indices) {
-                        this.charts.indices.destroy();
-                    }
-                    
-                    this.charts.indices = new Chart(ctx.getContext('2d'), {
-                        type: 'line',
-                        data: {
-                            labels: economicData.years,
-                            datasets: [{
-                                label: 'Statistical Suppression Index (SSI)',
-                                data: economicData.ssi,
-                                borderColor: 'rgb(239, 68, 68)',
-                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                                borderWidth: 2
-                            }, {
-                                label: 'Fiscal Centralization Index (FCI × 10)',
-                                data: economicData.fci.map(v => v * 10),
-                                borderColor: 'rgb(245, 158, 11)',
-                                backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                                borderWidth: 2
-                            }, {
-                                label: 'Democratic Quality Index (DQI × 10)',
-                                data: economicData.dqi.map(v => v * 10),
-                                borderColor: 'rgb(139, 92, 246)',
-                                backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                                borderWidth: 2
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    text: 'Three Indices Show Concurrent Deterioration'
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 10
-                                }
-                            }
-                        }
-                    });
-                },
-                
-                // Create Human Stories Charts (for Journalists)
-                createHumanStoriesCharts() {
-                    // Gig Economy Chart
-                    const gigCtx = document.getElementById('gigEconomyChart');
-                    if (gigCtx && this.canvasReady('gigEconomyChart')) {
-                        if (this.charts.gigEconomy) {
-                            this.charts.gigEconomy.destroy();
-                        }
-                        this.charts.gigEconomy = new Chart(gigCtx.getContext('2d'), {
-                            type: 'bar',
-                            data: {
-                                labels: economicData.years.slice(-5),
-                                datasets: [{
-                                    label: 'Gig Workers (millions)',
-                                    data: economicData.gigWorkers.slice(-5),
-                                    backgroundColor: 'rgba(59, 130, 246, 0.8)'
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    title: {
-                                        display: true,
-                                        text: 'Explosive Growth in Precarious Gig Work'
-                                    }
-                                }
-                            }
-                        });
-                    }
-
-                    // Farmer Income Chart
-                    const farmerCtx = document.getElementById('farmerIncomeChart');
-                    if (farmerCtx && this.canvasReady('farmerIncomeChart')) {
-                        if (this.charts.farmerIncome) {
-                            this.charts.farmerIncome.destroy();
-                        }
-                        this.charts.farmerIncome = new Chart(farmerCtx.getContext('2d'), {
-                            type: 'line',
-                            data: {
-                                labels: economicData.years,
-                                datasets: [{
-                                    label: 'Real Rural Income (Index)',
-                                    data: economicData.ruralIncome,
-                                    borderColor: 'rgb(34, 197, 94)',
-                                    backgroundColor: 'rgba(34, 197, 94, 0.1)'
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    title: {
-                                        display: true,
-                                        text: 'Declining Real Rural Incomes Despite Transfers'
-                                    }
-                                }
-                            }
-                        });
-                    }
-
-                    // Women LFPR Chart
-                    const womenCtx = document.getElementById('womenLFPRChart');
-                    if (womenCtx && this.canvasReady('womenLFPRChart')) {
-                        if (this.charts.womenLFPR) {
-                            this.charts.womenLFPR.destroy();
-                        }
-                        this.charts.womenLFPR = new Chart(womenCtx.getContext('2d'), {
-                            type: 'line',
-                            data: {
-                                labels: economicData.years,
-                                datasets: [{
-                                    label: 'Female LFPR (%)',
-                                    data: economicData.femaleLFPR,
-                                    borderColor: 'rgb(236, 72, 153)',
-                                    backgroundColor: 'rgba(236, 72, 153, 0.1)'
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    title: {
-                                        display: true,
-                                        text: 'Declining Female Labor Force Participation'
-                                    }
-                                },
-                                scales: {
-                                    y: {
-                                        min: 19,
-                                        max: 24
-                                    }
-                                }
-                            }
-                        });
-                    }
-                },
-                
-                // Create International Comparison Chart
-                createInternationalChart() {
-                    const ctx = document.getElementById('internationalChart');
-                    if (!ctx || !this.canvasReady('internationalChart')) return;
-
-                    if (this.charts.international) {
-                        this.charts.international.destroy();
-                    }
-                    
-                    this.charts.international = new Chart(ctx.getContext('2d'), {
-                        type: 'bar',
-                        data: {
-                            labels: internationalData.countries,
-                            datasets: [{
-                                label: 'V-Dem 2014',
-                                data: internationalData.vdem2014,
-                                backgroundColor: 'rgba(59, 130, 246, 0.5)'
-                            }, {
-                                label: 'V-Dem 2026',
-                                data: internationalData.vdem2026,
-                                backgroundColor: 'rgba(239, 68, 68, 0.8)'
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    text: 'Democratic Quality: India Shows Steepest Decline'
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 1
-                                }
-                            }
-                        }
-                    });
-                },
-                
-                // Export Chart as Image
-                exportChart(chartId, filename) {
-                    const canvas = document.getElementById(chartId);
-                    const url = canvas.toDataURL('image/png');
-                    const link = document.createElement('a');
-                    link.download = `${filename}-${Date.now()}.png`;
-                    link.href = url;
-                    link.click();
-                },
-                
-                // Export Data as CSV
-                exportDataAsCSV() {
-                    let csv = 'India Economic Data through March 2026\n';
-                    csv += 'Year,GDP Growth,Unemployment,Top 1% Share,Bottom 50% Share,Formal Employment,SSI,FCI,DQI\n';
-                    
-                    for (let i = 0; i < economicData.years.length; i++) {
-                        csv += `${economicData.years[i]},`;
-                        csv += `${economicData.gdpGrowth[i]},`;
-                        csv += `${economicData.unemployment[i]},`;
-                        csv += `${economicData.top1Share[i]},`;
-                        csv += `${economicData.bottom50Share[i]},`;
-                        csv += `${economicData.formalEmployment[i]},`;
-                        csv += `${economicData.ssi[i]},`;
-                        csv += `${economicData.fci[i]},`;
-                        csv += `${economicData.dqi[i]}\n`;
-                    }
-                    
-                    const blob = new Blob([csv], { type: 'text/csv' });
-                    const url = URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.download = `india-economic-data-mar2026-${Date.now()}.csv`;
-                    link.href = url;
-                    link.click();
-                }
-            };
+    // Inline fallback data (loaded from data.json when available)
+    const FALLBACK_DATA = {
+        economic: {
+            years:[2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],
+            gdpGrowth:[7.4,8.0,8.2,7.2,6.1,4.2,-7.3,8.7,7.2,7.6,7.8,6.5,6.3],
+            unemployment:[4.9,5.0,5.0,6.0,6.1,5.8,7.1,4.2,4.1,3.2,3.2,3.1,3.0],
+            youthUnemployment:[13.5,13.8,14.2,15.6,16.1,14.8,17.8,13.2,12.9,12.9,12.8,12.5,12.3],
+            graduateUnemployment:[18.5,19.2,21.0,23.5,25.0,23.0,31.0,25.0,22.0,29.1,28.5,27.0,26.5],
+            top1Share:[21.3,21.7,21.5,21.5,21.7,22.1,22.3,22.5,22.6,22.6,22.6,22.8,23.0],
+            bottom50Share:[15.0,14.7,14.9,14.9,14.7,13.5,13.3,13.1,13.1,13.1,13.1,13.0,12.9],
+            formalEmployment:[13.0,12.8,12.5,12.2,11.9,11.6,11.4,11.5,11.3,11.2,11.2,11.0,10.9],
+            informalEmployment:[87.0,87.2,87.5,87.8,88.1,88.4,88.6,88.5,88.7,88.8,88.8,89.0,89.1],
+            pressFreedom:[140,136,133,136,138,140,142,142,150,161,159,160,162],
+            ssi:[2.3,2.5,2.4,2.4,2.6,4.8,7.2,6.8,7.0,7.5,7.8,8.0,8.2],
+            fci:[0.62,0.64,0.66,0.68,0.70,0.72,0.84,0.78,0.76,0.77,0.78,0.79,0.80],
+            dqi:[0.71,0.70,0.68,0.65,0.60,0.55,0.48,0.45,0.43,0.42,0.42,0.41,0.40],
+            gigWorkers:[0.8,1.2,1.8,2.5,3.2,4.1,5.2,6.0,6.8,7.3,7.7,8.2,8.8],
+            ruralIncome:[100,99,98,97,96,95,93,94,95,96,98,97,97],
+            femaleLFPR:[22.5,22.0,21.8,21.5,21.2,21.0,20.8,20.5,20.3,20.5,20.8,20.9,21.0]
+        },
+        international: {
+            countries:['India','Brazil','Turkey','Hungary','South Africa'],
+            vdem2014:[0.71,0.85,0.52,0.63,0.75],
+            vdem2026:[0.26,0.69,0.18,0.41,0.70],
+            press2014:[140,99,154,64,42],
+            press2026:[162,80,160,68,34]
         }
+    };
+
+    // Tab <-> URL hash mapping
+    const TAB_HASH = {
+        'What is This?': 'what-is-this',
+        'Executive Summary': 'executive-summary',
+        'Key Findings': 'key-findings',
+        'Interactive Data': 'interactive-data',
+        'Three Indices': 'three-indices',
+        'Human Stories': 'human-stories',
+        'Methodology': 'methodology',
+        'Implications': 'implications',
+        'What Next?': 'what-next'
+    };
+    const HASH_TAB = Object.fromEntries(Object.entries(TAB_HASH).map(([k,v]) => [v,k]));
+
+    // ECharts color palette
+    const COLORS = ['#3b82f6','#ef4444','#22c55e','#f59e0b','#8b5cf6','#ec4899','#06b6d4','#f97316'];
+
+    // Common ECharts options
+    function baseOpts(darkMode) {
+        return {
+            backgroundColor: 'transparent',
+            textStyle: { fontFamily: "'Inter', system-ui, sans-serif", color: darkMode ? '#e2e8f0' : '#374151' },
+            animationDuration: 800,
+            animationEasing: 'cubicOut',
+            toolbox: {
+                feature: {
+                    saveAsImage: { title: 'Save', pixelRatio: 2 },
+                    dataView: { title: 'Data', readOnly: true, lang: ['Data View','Close','Refresh'] },
+                    restore: { title: 'Reset' }
+                },
+                iconStyle: { borderColor: darkMode ? '#94a3b8' : '#6b7280' }
+            },
+            grid: { left: 60, right: 60, bottom: 80, top: 60, containLabel: true }
+        };
+    }
+
+    function dataZoom() {
+        return [
+            { type: 'slider', bottom: 10, height: 22, borderColor: 'transparent', backgroundColor: 'rgba(0,0,0,0.05)', fillerColor: 'rgba(59,130,246,0.15)', handleStyle: { color: '#3b82f6' } },
+            { type: 'inside' }
+        ];
+    }
+
+    function siteApp() {
+        return {
+            // State
+            darkMode: false,
+            activeTab: 'What is This?',
+            selectedAudience: 'Citizen',
+            chartOptions: { primary: 'gdpGrowth', comparison1: '', comparison2: '' },
+            charts: {},
+            economicData: FALLBACK_DATA.economic,
+            internationalData: FALLBACK_DATA.international,
+            viewModes: { gdpEmployment: 'chart', formalEmployment: 'chart', inequality: 'chart' },
+            tableSortCol: null,
+            tableSortAsc: true,
+
+            audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
+
+            get tabs() {
+                return ['What is This?','Executive Summary','Key Findings','Interactive Data','Three Indices','Human Stories','Methodology','Implications','What Next?'];
+            },
+
+            audienceNotes: {
+                'Researcher': '<strong>For Researchers:</strong> Comprehensive political economy assessment through March 2026 with three novel indices (SSI, FCI, DQI). All methodologies transparent and replicable. Raw data in CSV/JSON. Replication code in R and Python.',
+                'Policy Maker': '<strong>For Policy Makers:</strong> Executive summary with actionable recommendations. Priority reforms: Statistical independence (₹500 cr), fiscal federalism (₹3 lakh cr to states), urban employment guarantee (₹50,000 cr).',
+                'Journalist': '<strong>For Journalists:</strong> Four ready-to-use data stories with human angles and verified quotes. All statistics fact-checked through March 2026. Visual assets exportable for publication.',
+                'Citizen': '<strong>For Citizens:</strong> Your tax money, your democracy, your future. Simple explanations of complex economic changes. Interactive tools to explore data yourself. Knowledge is power.'
+            },
+
+            // Initialize
+            async init() {
+                this.darkMode = localStorage.getItem('darkMode') === 'true';
+                document.documentElement.classList.add('js');
+
+                // Load data from JSON
+                try {
+                    const resp = await fetch('data.json');
+                    if (resp.ok) {
+                        const d = await resp.json();
+                        if (d.economic) this.economicData = d.economic;
+                        if (d.international) this.internationalData = d.international;
+                    }
+                } catch(e) { /* use fallback */ }
+
+                // URL hash routing
+                const hash = window.location.hash.slice(1);
+                if (hash && HASH_TAB[hash]) this.activeTab = HASH_TAB[hash];
+
+                window.addEventListener('popstate', () => {
+                    const h = window.location.hash.slice(1);
+                    if (h && HASH_TAB[h]) this.activeTab = HASH_TAB[h];
+                });
+
+                // Global resize
+                window.addEventListener('resize', () => {
+                    Object.values(this.charts).forEach(c => c && c.resize && c.resize());
+                });
+
+                // Init charts after Alpine settles
+                this.$nextTick(() => {
+                    this.initializeCharts();
+                    this.initSparklines();
+                });
+
+                // Tab changes: update hash + reinit charts
+                this.$watch('activeTab', (tab) => {
+                    window.location.hash = TAB_HASH[tab] || '';
+                    this.$nextTick(() => {
+                        // ECharts needs a moment for x-show to flip display
+                        setTimeout(() => this.initializeCharts(), 50);
+                    });
+                });
+
+                this.$watch('selectedAudience', () => {
+                    this.$nextTick(() => setTimeout(() => this.initializeCharts(), 50));
+                });
+            },
+
+            toggleTheme() {
+                this.darkMode = !this.darkMode;
+                localStorage.setItem('darkMode', this.darkMode);
+                // Recreate all charts with new theme
+                this.disposeAll();
+                this.$nextTick(() => {
+                    this.initializeCharts();
+                    this.initSparklines();
+                });
+            },
+
+            toggleView(key) {
+                this.viewModes[key] = this.viewModes[key] === 'chart' ? 'table' : 'chart';
+                if (this.viewModes[key] === 'chart') {
+                    this.$nextTick(() => setTimeout(() => this.initializeCharts(), 50));
+                }
+            },
+
+            // Render a sortable HTML table
+            renderTable(headers, rows) {
+                let html = '<table class="w-full text-sm border-collapse"><thead><tr>';
+                headers.forEach((h, i) => {
+                    html += `<th class="text-left py-2 px-3 border-b border-gray-200 dark:border-gray-700 font-semibold cursor-pointer hover:text-blue-600" onclick="document.dispatchEvent(new CustomEvent('sort-table',{detail:${i}}))">${h} ↕</th>`;
+                });
+                html += '</tr></thead><tbody>';
+                rows.forEach(row => {
+                    html += '<tr class="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">';
+                    row.forEach(cell => { html += `<td class="py-1.5 px-3 tabular-nums">${cell}</td>`; });
+                    html += '</tr>';
+                });
+                html += '</tbody></table>';
+                return html;
+            },
+
+            // Dispose all ECharts instances
+            disposeAll() {
+                Object.keys(this.charts).forEach(key => {
+                    if (this.charts[key]) { this.charts[key].dispose(); delete this.charts[key]; }
+                });
+            },
+
+            // Get or create an ECharts instance
+            getChart(id, group) {
+                const dom = document.getElementById(id);
+                if (!dom || dom.offsetWidth === 0) return null;
+                if (this.charts[id]) { this.charts[id].dispose(); }
+                const theme = this.darkMode ? 'dark' : null;
+                const chart = echarts.init(dom, theme);
+                this.charts[id] = chart;
+                if (group) echarts.connect(group);
+                return chart;
+            },
+
+            initializeCharts() {
+                const tab = this.activeTab;
+                if (tab === 'What is This?') {
+                    this.initSparklines();
+                } else if (tab === 'Key Findings') {
+                    this.createGDPEmploymentChart();
+                    this.createFormalEmploymentChart();
+                    this.createInequalityChart();
+                    echarts.connect('keyFindings');
+                } else if (tab === 'Interactive Data') {
+                    this.updateInteractiveChart();
+                } else if (tab === 'Three Indices') {
+                    this.createIndicesChart();
+                } else if (tab === 'Human Stories') {
+                    this.createHumanStoriesCharts();
+                    echarts.connect('humanStories');
+                } else if (tab === 'Implications') {
+                    this.createInternationalChart();
+                }
+            },
+
+            // Sparklines for stat cards
+            initSparklines() {
+                const d = this.economicData;
+                const mk = (id, data, color) => {
+                    const dom = document.getElementById(id);
+                    if (!dom || dom.offsetWidth === 0) return;
+                    const existing = echarts.getInstanceByDom(dom);
+                    if (existing) existing.dispose();
+                    const c = echarts.init(dom, this.darkMode ? 'dark' : null);
+                    c.setOption({
+                        backgroundColor: 'transparent',
+                        grid: { left: 0, right: 0, top: 2, bottom: 2 },
+                        xAxis: { type: 'category', show: false, data: d.years },
+                        yAxis: { type: 'value', show: false },
+                        series: [{ type: 'line', data, smooth: true, symbol: 'none', lineStyle: { width: 1.5, color }, areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: color.replace(')', ',0.3)').replace('rgb', 'rgba') }, { offset: 1, color: 'transparent' }] } } }],
+                        animation: false
+                    });
+                };
+                mk('sparkWealth', d.top1Share, '#ef4444');
+                mk('sparkGradUnemp', d.graduateUnemployment, '#f59e0b');
+                mk('sparkPress', d.pressFreedom, '#8b5cf6');
+                mk('sparkCensus', d.years.map(() => 1), '#3b82f6');
+            },
+
+            // === Chart Creation Methods ===
+
+            createGDPEmploymentChart() {
+                const c = this.getChart('gdpEmploymentChart', 'keyFindings');
+                if (!c) return;
+                const d = this.economicData;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
+                    legend: { data: ['GDP Growth (%)','Unemployment Rate (%)'], top: 5 },
+                    xAxis: { type: 'category', data: d.years, axisLabel: { color: this.darkMode ? '#94a3b8' : '#6b7280' } },
+                    yAxis: [
+                        { type: 'value', name: 'GDP Growth (%)', nameTextStyle: { color: '#3b82f6' }, axisLine: { lineStyle: { color: '#3b82f6' } } },
+                        { type: 'value', name: 'Unemployment (%)', nameTextStyle: { color: '#ef4444' }, axisLine: { lineStyle: { color: '#ef4444' } }, splitLine: { show: false } }
+                    ],
+                    dataZoom: dataZoom(),
+                    series: [
+                        { name: 'GDP Growth (%)', type: 'line', data: d.gdpGrowth, smooth: true, itemStyle: { color: '#3b82f6' }, areaStyle: { color: { type: 'linear', x:0,y:0,x2:0,y2:1, colorStops: [{offset:0,color:'rgba(59,130,246,0.2)'},{offset:1,color:'rgba(59,130,246,0)'}] } }, yAxisIndex: 0 },
+                        { name: 'Unemployment Rate (%)', type: 'line', data: d.unemployment, smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { color: { type: 'linear', x:0,y:0,x2:0,y2:1, colorStops: [{offset:0,color:'rgba(239,68,68,0.15)'},{offset:1,color:'rgba(239,68,68,0)'}] } }, yAxisIndex: 1 }
+                    ]
+                });
+            },
+
+            createFormalEmploymentChart() {
+                const c = this.getChart('formalEmploymentChart', 'keyFindings');
+                if (!c) return;
+                const d = this.economicData;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['Formal (%)','Informal (%)'], top: 5 },
+                    xAxis: { type: 'category', data: d.years },
+                    yAxis: { type: 'value', max: 100 },
+                    dataZoom: dataZoom(),
+                    series: [
+                        { name: 'Formal (%)', type: 'bar', stack: 'emp', data: d.formalEmployment, itemStyle: { color: '#22c55e' }, barWidth: '60%' },
+                        { name: 'Informal (%)', type: 'bar', stack: 'emp', data: d.informalEmployment, itemStyle: { color: '#ef4444' } }
+                    ]
+                });
+            },
+
+            createInequalityChart() {
+                const c = this.getChart('inequalityChart', 'keyFindings');
+                if (!c) return;
+                const d = this.economicData;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'Rising inequality matches colonial-era extremes', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['Top 1% Income Share (%)','Bottom 50% Income Share (%)'], top: 25 },
+                    xAxis: { type: 'category', data: d.years },
+                    yAxis: { type: 'value', max: 25 },
+                    dataZoom: dataZoom(),
+                    series: [
+                        { name: 'Top 1% Income Share (%)', type: 'line', data: d.top1Share, smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { opacity: 0.12 } },
+                        { name: 'Bottom 50% Income Share (%)', type: 'line', data: d.bottom50Share, smooth: true, itemStyle: { color: '#22c55e' }, areaStyle: { opacity: 0.12 } }
+                    ]
+                });
+            },
+
+            createInteractiveChart() { this.updateInteractiveChart(); },
+
+            updateInteractiveChart() {
+                const c = this.getChart('interactiveChart');
+                if (!c) return;
+                const d = this.economicData;
+                const dataMap = {
+                    gdpGrowth: { label: 'GDP Growth (%)', data: d.gdpGrowth, color: '#3b82f6' },
+                    unemployment: { label: 'Unemployment (%)', data: d.unemployment, color: '#ef4444' },
+                    top1Share: { label: 'Top 1% Share (%)', data: d.top1Share, color: '#f59e0b' },
+                    formalEmployment: { label: 'Formal Employment (%)', data: d.formalEmployment, color: '#22c55e' },
+                    pressFreedom: { label: 'Press Freedom Rank', data: d.pressFreedom, color: '#8b5cf6' },
+                    ssi: { label: 'SSI', data: d.ssi, color: '#ec4899' },
+                    fci: { label: 'FCI ×10', data: d.fci.map(v => v*10), color: '#06b6d4' },
+                    dqi: { label: 'DQI ×10', data: d.dqi.map(v => v*10), color: '#f97316' }
+                };
+                const series = [];
+                const yAxes = [];
+                const legend = [];
+                const picks = [this.chartOptions.primary, this.chartOptions.comparison1, this.chartOptions.comparison2].filter(Boolean);
+
+                picks.forEach((key, i) => {
+                    const m = dataMap[key];
+                    if (!m) return;
+                    legend.push(m.label);
+                    yAxes.push({
+                        type: 'value', name: m.label, position: i === 0 ? 'left' : 'right',
+                        offset: i > 1 ? 60 : 0,
+                        axisLine: { show: true, lineStyle: { color: m.color } },
+                        splitLine: { show: i === 0 },
+                        nameTextStyle: { color: m.color }
+                    });
+                    series.push({
+                        name: m.label, type: 'line', data: m.data, smooth: true,
+                        yAxisIndex: i, itemStyle: { color: m.color },
+                        lineStyle: i > 0 ? { type: 'dashed' } : {}
+                    });
+                });
+
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
+                    legend: { data: legend, top: 5 },
+                    xAxis: { type: 'category', data: d.years },
+                    yAxis: yAxes.length ? yAxes : [{ type: 'value' }],
+                    dataZoom: dataZoom(),
+                    series
+                }, true);
+            },
+
+            createIndicesChart() {
+                const c = this.getChart('indicesChart');
+                if (!c) return;
+                const d = this.economicData;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'Three Indices Show Concurrent Deterioration', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['SSI','FCI ×10','DQI ×10'], top: 25 },
+                    xAxis: { type: 'category', data: d.years },
+                    yAxis: { type: 'value', max: 10 },
+                    dataZoom: dataZoom(),
+                    series: [
+                        { name: 'SSI', type: 'line', data: d.ssi, smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { opacity: 0.1 } },
+                        { name: 'FCI ×10', type: 'line', data: d.fci.map(v => v*10), smooth: true, itemStyle: { color: '#f59e0b' }, areaStyle: { opacity: 0.1 } },
+                        { name: 'DQI ×10', type: 'line', data: d.dqi.map(v => v*10), smooth: true, itemStyle: { color: '#8b5cf6' }, areaStyle: { opacity: 0.1 } }
+                    ]
+                });
+            },
+
+            createHumanStoriesCharts() {
+                const d = this.economicData;
+                // Gig Economy
+                const gig = this.getChart('gigEconomyChart', 'humanStories');
+                if (gig) {
+                    gig.setOption({
+                        ...baseOpts(this.darkMode),
+                        grid: { left: 40, right: 20, bottom: 30, top: 50 },
+                        title: { text: 'Explosive Growth in Precarious Gig Work', left: 'center', top: 0, textStyle: { fontSize: 12, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                        tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: d.years.slice(-5) },
+                        yAxis: { type: 'value' },
+                        series: [{ name: 'Gig Workers (M)', type: 'bar', data: d.gigWorkers.slice(-5), itemStyle: { color: '#3b82f6', borderRadius: [4,4,0,0] } }],
+                        toolbox: { show: false }
+                    });
+                }
+                // Farmer Income
+                const farmer = this.getChart('farmerIncomeChart', 'humanStories');
+                if (farmer) {
+                    farmer.setOption({
+                        ...baseOpts(this.darkMode),
+                        grid: { left: 40, right: 20, bottom: 30, top: 50 },
+                        title: { text: 'Declining Real Rural Incomes', left: 'center', top: 0, textStyle: { fontSize: 12, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                        tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: d.years },
+                        yAxis: { type: 'value' },
+                        series: [{ name: 'Real Rural Income', type: 'line', data: d.ruralIncome, smooth: true, itemStyle: { color: '#22c55e' }, areaStyle: { opacity: 0.15 } }],
+                        toolbox: { show: false }
+                    });
+                }
+                // Women LFPR
+                const women = this.getChart('womenLFPRChart', 'humanStories');
+                if (women) {
+                    women.setOption({
+                        ...baseOpts(this.darkMode),
+                        grid: { left: 40, right: 20, bottom: 30, top: 50 },
+                        title: { text: 'Female Labor Force Participation', left: 'center', top: 0, textStyle: { fontSize: 12, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                        tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: d.years },
+                        yAxis: { type: 'value', min: 19, max: 24 },
+                        series: [{ name: 'Female LFPR (%)', type: 'line', data: d.femaleLFPR, smooth: true, itemStyle: { color: '#ec4899' }, areaStyle: { opacity: 0.15 } }],
+                        toolbox: { show: false }
+                    });
+                }
+            },
+
+            createInternationalChart() {
+                const c = this.getChart('internationalChart');
+                if (!c) return;
+                const intl = this.internationalData;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: { text: 'Democratic Quality: India Shows Steepest Decline', left: 'center', top: 0, textStyle: { fontSize: 13, fontWeight: 500, color: this.darkMode ? '#e2e8f0' : '#374151' } },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['V-Dem 2014','V-Dem 2026'], top: 25 },
+                    xAxis: { type: 'category', data: intl.countries },
+                    yAxis: { type: 'value', max: 1 },
+                    series: [
+                        { name: 'V-Dem 2014', type: 'bar', data: intl.vdem2014, itemStyle: { color: 'rgba(59,130,246,0.6)' }, barGap: '10%' },
+                        { name: 'V-Dem 2026', type: 'bar', data: intl.vdem2026, itemStyle: { color: 'rgba(239,68,68,0.85)' } }
+                    ]
+                });
+            },
+
+            // Export chart as PNG
+            exportChart(chartId, filename) {
+                const chart = this.charts[chartId];
+                if (!chart) return;
+                const url = chart.getDataURL({ type: 'png', pixelRatio: 2, backgroundColor: this.darkMode ? '#1e293b' : '#ffffff' });
+                const link = document.createElement('a');
+                link.download = `${filename}-${Date.now()}.png`;
+                link.href = url;
+                link.click();
+            },
+
+            // Export CSV
+            exportDataAsCSV() {
+                const d = this.economicData;
+                let csv = 'India Economic Data through March 2026\n';
+                csv += 'Year,GDP Growth,Unemployment,Top 1% Share,Bottom 50% Share,Formal Employment,SSI,FCI,DQI\n';
+                for (let i = 0; i < d.years.length; i++) {
+                    csv += `${d.years[i]},${d.gdpGrowth[i]},${d.unemployment[i]},${d.top1Share[i]},${d.bottom50Share[i]},${d.formalEmployment[i]},${d.ssi[i]},${d.fci[i]},${d.dqi[i]}\n`;
+                }
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const link = document.createElement('a');
+                link.download = `india-economic-data-mar2026-${Date.now()}.csv`;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            }
+        };
+    }
     </script>
 </body>
 </html>
