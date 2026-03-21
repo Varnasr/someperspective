@@ -257,6 +257,13 @@
             body { font-size: 12pt; }
         }
 
+        /* Responsive chart heights */
+        @media (min-width: 640px) {
+            .chart-h-sm-450 { height: 450px !important; }
+            .chart-h-sm-500 { height: 500px !important; }
+            .chart-h-sm-380 { height: 380px !important; }
+        }
+
         /* Smooth transitions - only colors, not layout */
         * { transition: background-color 0.2s, border-color 0.2s, color 0.2s; }
     </style>
@@ -414,17 +421,17 @@
                 <div class="card p-5 sm:p-6 mb-8 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border border-indigo-100 dark:border-indigo-800/30">
                     <h3 class="font-bold mb-3 text-lg text-indigo-700 dark:text-indigo-400">Animated Data Timeline</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Watch India's key indicators evolve from 2014 to 2026. Press play to animate through the years.</p>
-                    <div class="flex items-center gap-4 mb-4">
-                        <button @click="toggleTimeline()" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
+                    <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 mb-4">
+                        <button @click="toggleTimeline()" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all flex-shrink-0">
                             <span x-text="timelinePlaying ? 'Pause' : 'Play'"></span>
                         </button>
-                        <input type="range" :min="0" :max="economicData.years.length - 1" x-model="timelineIndex" @input="updateTimelineDisplay()" class="flex-1 accent-indigo-600">
-                        <span class="text-2xl font-extrabold text-indigo-700 dark:text-indigo-300 tabular-nums min-w-[4ch]" x-text="economicData.years[timelineIndex]"></span>
+                        <input type="range" :min="0" :max="economicData.years.length - 1" x-model="timelineIndex" @input="updateTimelineDisplay()" class="flex-1 min-w-[120px] accent-indigo-600">
+                        <span class="text-xl sm:text-2xl font-extrabold text-indigo-700 dark:text-indigo-300 tabular-nums min-w-[4ch]" x-text="economicData.years[timelineIndex]"></span>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
+                        <div class="bg-white/80 dark:bg-gray-800/80 p-2 sm:p-3 rounded-xl text-center">
                             <div class="text-xs text-gray-500 font-medium">GDP Growth</div>
-                            <div class="text-xl font-bold text-blue-600" x-text="economicData.gdpGrowth[timelineIndex] + '%'"></div>
+                            <div class="text-lg sm:text-xl font-bold text-blue-600" x-text="economicData.gdpGrowth[timelineIndex] + '%'"></div>
                         </div>
                         <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
                             <div class="text-xs text-gray-500 font-medium">Top 1% Share</div>
@@ -741,25 +748,27 @@
                     </div>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                    <div id="scatterChart" style="width:100%;height:450px;"></div>
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                    <div id="scatterChart" style="width:100%;height:300px;max-height:450px;" class="chart-h-sm-450"></div>
                 </div>
 
                 <!-- Correlation coefficient display -->
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="bg-white dark:bg-gray-800 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-4">
+                    <div class="bg-white dark:bg-gray-800 px-3 sm:px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700">
                         <span class="text-xs text-gray-500">Correlation (r):</span>
                         <span class="text-lg font-bold ml-1" :class="Math.abs(correlationR) > 0.7 ? 'text-red-600' : Math.abs(correlationR) > 0.4 ? 'text-orange-600' : 'text-green-600'" x-text="correlationR.toFixed(3)"></span>
                     </div>
                     <div class="text-xs text-gray-500" x-text="Math.abs(correlationR) > 0.7 ? 'Strong correlation' : Math.abs(correlationR) > 0.4 ? 'Moderate correlation' : 'Weak correlation'"></div>
-                    <button @click="exportChart('scatterChart', 'correlation')"
-                            class="ml-auto px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
-                        Export Chart
-                    </button>
-                    <button @click="shareChart('scatterChart')"
-                            class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all">
-                        Share
-                    </button>
+                    <div class="flex gap-2 w-full sm:w-auto sm:ml-auto">
+                        <button @click="exportChart('scatterChart', 'correlation')"
+                                class="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm transition-all">
+                            Export
+                        </button>
+                        <button @click="shareChart('scatterChart')"
+                                class="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm transition-all">
+                            Share
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Preset correlations -->
@@ -1107,8 +1116,8 @@ reduces overall score</pre>
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">State-Level Disparities: Per Capita GSDP (2025-26)</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">India's growth story varies dramatically by state. Southern and western states show 3-5x higher per-capita output than eastern states.</p>
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                        <div id="stateDisparitiesChart" style="width:100%;height:500px;"></div>
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4 overflow-x-auto">
+                        <div id="stateDisparitiesChart" style="width:100%;min-width:400px;height:400px;" class="chart-h-sm-500"></div>
                     </div>
                 </div>
 
@@ -1183,13 +1192,13 @@ reduces overall score</pre>
                 </div>
 
                 <!-- Era comparison chart -->
-                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-6">
-                    <div id="eraComparisonChart" style="width:100%;height:450px;"></div>
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-6">
+                    <div id="eraComparisonChart" style="width:100%;height:300px;" class="chart-h-sm-450"></div>
                 </div>
 
                 <!-- Delta cards -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
+                    <div class="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
                         <div class="text-xs text-gray-500 font-medium mb-1">Avg GDP Growth</div>
                         <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold">7.4%</span></div>
                         <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold">5.8%</span></div>
@@ -1301,8 +1310,8 @@ reduces overall score</pre>
                 </div>
 
                 <!-- Scenario visualization -->
-                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                    <div id="scenarioChart" style="width:100%;height:380px;"></div>
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                    <div id="scenarioChart" style="width:100%;height:280px;" class="chart-h-sm-380"></div>
                 </div>
 
                 <!-- Preset scenarios -->
