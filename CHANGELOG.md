@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.1] - 2026-05-09
+
+### Fixed
+- **Dropdowns appeared empty.** Root cause: the outer nav container
+  used `overflow-x-auto`, which (per CSS spec) forces the perpendicular
+  axis to clip — so the dropdowns expanded below the nav and got
+  clipped to nothing visible. Replaced with `flex-wrap`; the four
+  group buttons + featured tab fit on one line on most viewports and
+  wrap cleanly on narrow ones.
+- **Language switcher icon looked like a Chinese/Japanese character.**
+  It was the Material Design "translate" glyph (literally a CJK
+  character + Latin "A"). Replaced with **अ / A** — Devanagari letter
+  *a* paired with Latin "A", explicitly conveying Indian-script ↔ Latin
+  translation. Devanagari rendered with Noto Sans Devanagari fallback.
+
 ## [2.4.0] - 2026-05-09
 
 ### Changed

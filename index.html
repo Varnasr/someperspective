@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.4.0">
+    <meta name="version" content="2.4.1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -365,10 +365,10 @@
 
                     <!-- Language Selector -->
                     <div class="relative" x-data="{ langOpen: false }">
-                        <button @click="langOpen = !langOpen" class="p-1.5 sm:p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Translate" title="Translate">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
-                            </svg>
+                        <button @click="langOpen = !langOpen" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors inline-flex items-center gap-1 text-gray-700 dark:text-gray-300" aria-label="Translate" title="Translate">
+                            <span class="text-base sm:text-lg leading-none font-semibold" lang="hi" style="font-family: 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;">अ</span>
+                            <span class="text-xs text-gray-400">/</span>
+                            <span class="text-sm sm:text-base leading-none font-semibold">A</span>
                         </button>
                         <div x-show="langOpen" @click.outside="langOpen = false" x-transition
                              class="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-50 py-1 overflow-hidden">
@@ -431,10 +431,11 @@
     </header>
     
     <!-- Navigation: 4 grouped dropdowns + 1 featured standalone tab -->
+    <!-- IMPORTANT: no overflow-x-auto on the inner container — it would clip the dropdowns vertically. -->
     <nav class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg sticky top-[72px] sm:top-[80px] z-40 border-b border-gray-200/50 dark:border-gray-700/50"
          @click.outside="openGroup = null">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex overflow-x-auto gap-1 py-0 scrollbar-hide items-stretch">
+            <div class="flex flex-wrap gap-1 py-0 items-stretch">
                 <!-- Grouped dropdowns -->
                 <template x-for="group in tabGroups" :key="group.label">
                     <div class="relative flex-shrink-0">
