@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
     <meta name="keywords" content="India economy analysis, India GDP growth employment, India income inequality, India unemployment data, India democratic backsliding, fiscal federalism India, Statistical Suppression Index, India wealth inequality 2026, India press freedom, informal employment India, gig economy India, India economic data, political economy India, V-Dem India score, India census postponed">
@@ -22,7 +23,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="India's Economy, Inequality & Democracy 2004-2026 | Some Perspective">
-    <meta name="twitter:description" content="GDP grew 6.8% but formal jobs fell. Top 1% owns 40% of wealth. Press freedom rank: 160. Interactive data analysis with three novel indices tracking India's institutional decline.">
+    <meta name="twitter:description" content="GDP grew 6.3% but formal jobs fell. Top 1% owns 40% of wealth. Press freedom rank: 162. Interactive data analysis with three novel indices tracking India's institutional decline.">
 
     <!-- Additional SEO -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -45,7 +46,7 @@
             "name": "Some Perspective"
         },
         "datePublished": "2025-10-15",
-        "dateModified": "2026-03-20",
+        "dateModified": "2026-05-09",
         "url": "https://someperspective.info",
         "mainEntityOfPage": "https://someperspective.info",
         "keywords": ["India economy", "GDP growth", "income inequality", "democratic backsliding", "employment crisis", "fiscal federalism", "statistical suppression"],
@@ -57,7 +58,7 @@
             {"@type": "Thing", "name": "Fiscal federalism"}
         ],
         "citation": "Raman, V.S. (2025). Narratives, Numbers, and Democratic Accountability: India 2004-2026. Available at: someperspective.info",
-        "license": "https://opensource.org/licenses/MIT"
+        "license": "https://creativecommons.org/licenses/by/4.0/"
     }
     </script>
 
@@ -66,16 +67,17 @@
     {
         "@context": "https://schema.org",
         "@type": "Dataset",
-        "name": "India Economic Indicators 2004-2026",
-        "description": "Comprehensive dataset of India's economic, employment, inequality, and democratic indicators from 2004 to 2025, including three novel indices: Statistical Suppression Index (SSI), Fiscal Centralization Index (FCI), and Democratic Quality Index (DQI).",
+        "name": "India Economic Indicators 2014-2026",
+        "description": "Dataset of India's economic, employment, inequality, and democratic indicators from 2014 to 2026, including three novel indices: Statistical Suppression Index (SSI), Fiscal Centralization Index (FCI), and Democratic Quality Index (DQI).",
         "url": "https://someperspective.info",
         "creator": {
             "@type": "Person",
             "name": "Dr. Varna Sri Raman"
         },
         "datePublished": "2025-10-15",
+        "dateModified": "2026-05-09",
         "license": "https://creativecommons.org/licenses/by/4.0/",
-        "temporalCoverage": "2004/2026",
+        "temporalCoverage": "2014/2026",
         "spatialCoverage": "India",
         "variableMeasured": [
             "GDP Growth Rate",
@@ -146,7 +148,7 @@
                 "name": "How has India's democracy score changed?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "India's Democratic Quality Index (DQI) declined from 0.71 in 2014 to 0.41 in March 2026. V-Dem score fell from 0.555 to 0.271, Freedom House score from 77 to 66, and press freedom rank dropped from 140 to 160. India shows the steepest democratic decline among major economies."
+                    "text": "India's Democratic Quality Index (DQI) declined from 0.71 in 2014 to 0.40 in 2026. V-Dem score fell from 0.555 to 0.271, Freedom House score from 77 to 66, and press freedom rank dropped from 140 to 162. India shows the steepest democratic decline among major economies."
                 }
             }
         ]
@@ -435,7 +437,13 @@
     
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow">
-        
+
+        <!-- Data load failure banner -->
+        <div x-show="dataLoadError" x-cloak role="alert"
+             class="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-700 p-3 text-sm text-amber-900 dark:text-amber-200">
+            <strong>Heads up:</strong> Live data could not be loaded. Charts are showing bundled fallback values that may be out of date.
+        </div>
+
         <!-- What is This? Tab -->
         <div x-show="activeTab === 'What is This?'" x-transition class="space-y-6">
             <div class="card p-5 sm:p-8">
@@ -461,7 +469,7 @@
                         <div id="sparkGradUnemp" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-900/30">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400">160th</div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400">162nd</div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Press freedom rank</div>
                         <div id="sparkPress" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
@@ -601,8 +609,8 @@
                         <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl">
                             <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-2">Democratic Erosion</h4>
                             <ul class="space-y-1 text-sm">
-                                <li>• Press freedom: 140th → 160th globally</li>
-                                <li>• V-Dem score: 0.71 → 0.41</li>
+                                <li>• Press freedom: 140th → 162nd globally</li>
+                                <li>• V-Dem score: 0.71 → 0.26</li>
                                 <li>• Statistical suppression rising</li>
                                 <li>• Census indefinitely postponed</li>
                             </ul>
@@ -1537,7 +1545,7 @@ reduces overall score</pre>
                 <div>
                     <h3 class="font-bold text-white mb-3 text-sm uppercase tracking-wider">License & Citation</h3>
                     <p class="text-xs sm:text-sm mb-2 text-gray-400">
-                        Code: MIT License. Data & Content: CC BY 4.0.
+                        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="underline hover:text-white">CC BY 4.0</a>.
                     </p>
                     <p class="text-xs text-gray-500">
                         <strong class="text-gray-400">Cite as:</strong><br>
@@ -1675,6 +1683,8 @@ reduces overall score</pre>
             charts: {},
             economicData: FALLBACK_DATA.economic,
             internationalData: FALLBACK_DATA.international,
+            dataLoadError: false,
+            dataUpdated: '',
             viewModes: { gdpEmployment: 'chart', formalEmployment: 'chart', inequality: 'chart' },
             tableSortCol: null,
             tableSortAsc: true,
@@ -1718,13 +1728,16 @@ reduces overall score</pre>
 
                 // Load data from JSON
                 try {
-                    const resp = await fetch('data.json');
-                    if (resp.ok) {
-                        const d = await resp.json();
-                        if (d.economic) this.economicData = d.economic;
-                        if (d.international) this.internationalData = d.international;
-                    }
-                } catch(e) { /* use fallback */ }
+                    const resp = await fetch('data.json', { cache: 'no-cache' });
+                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                    const d = await resp.json();
+                    if (d.economic) this.economicData = d.economic;
+                    if (d.international) this.internationalData = d.international;
+                    if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
+                } catch(e) {
+                    console.warn('data.json fetch failed; using bundled fallback values', e);
+                    this.dataLoadError = true;
+                }
 
                 // URL hash routing
                 const hash = window.location.hash.slice(1);
@@ -1853,6 +1866,12 @@ reduces overall score</pre>
                 if (this.charts[id]) { this.charts[id].dispose(); }
                 const theme = this.darkMode ? 'dark' : null;
                 const chart = echarts.init(dom, theme);
+                if (!dom.getAttribute('role')) dom.setAttribute('role', 'img');
+                const origSetOption = chart.setOption.bind(chart);
+                chart.setOption = (opt, ...rest) => {
+                    if (opt && typeof opt === 'object' && !opt.aria) opt.aria = { enabled: true };
+                    return origSetOption(opt, ...rest);
+                };
                 this.charts[id] = chart;
                 if (group) echarts.connect(group);
                 return chart;

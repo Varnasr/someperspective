@@ -9,7 +9,7 @@
 This repository contains the complete replication package for "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025," an independent empirical study examining how two distinct political periods—the United Progressive Alliance (UPA, 2004-2014) and National Democratic Alliance (NDA, 2014-2025)—produced fundamentally different models of economic growth, governance, and democratic accountability in India.
 
 **Research initiated:** March 2024  
-**Current version:** September 2025  
+**Current version:** May 2026  
 **Interactive website:** [someperspective.info](https://someperspective.info)
 
 ## Abstract
@@ -56,7 +56,7 @@ someperspective/
 ├── CITATION.cff                 # Citation metadata
 │
 ├── data/
-│   ├── data.json               # Complete dataset (2004-2025)
+│   ├── data.json               # Website dataset (2014-2026)
 │   ├── data_dictionary.md      # Variable definitions and sources
 │   └── sources.bib             # BibTeX references for all data sources
 │
@@ -123,7 +123,7 @@ someperspective/
 ### 5. Democratic Erosion
 
 - **Freedom House:** Downgraded from "Free" to "Partly Free" (2021)
-- **Press Freedom:** Fell from rank 140 to 161 (of 180 countries)
+- **Press Freedom:** Fell from rank 140 to 162 (of 180 countries)
 - **Democratic Quality Index:** Declined from 0.71 (2014) to 0.42 (2024)—a 41% deterioration
 
 **Pattern:** Multiple independent international assessments document parallel institutional deterioration.
@@ -380,8 +380,8 @@ See \`documentation/IMPACT.md\` for tracking.
 
 ---
 
-**Last Updated:** September 2025  
-**Data Current Through:** August 2025  
-**Next Scheduled Update:** December 2025
+**Last Updated:** May 2026  
+**Data Current Through:** March 2026  
+**Next Scheduled Update:** September 2026
 
 For the latest data and interactive visualizations, visit [someperspective.info](https://someperspective.info)

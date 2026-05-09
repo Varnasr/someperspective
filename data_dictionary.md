@@ -4,7 +4,10 @@ This document provides detailed definitions for all variables in `data.json`.
 
 ## Structure
 
-The data file contains observations for years 2004-2025, with the following structure:
+The website's `data.json` covers years **2014–2026** (annual). The variable definitions
+below describe the broader research dataset; per-variable coverage notes indicate the
+historical span available in source data, which may extend earlier than what is shipped
+in `data.json`.
 
 ```json
 {
@@ -197,7 +200,7 @@ The data file contains observations for years 2004-2025, with the following stru
 
 ### Data Revisions
 
-All data current as of September 2025. Government revisions to historical data are tracked in CHANGELOG.md.
+All data current as of May 2026. Government revisions to historical data are tracked in CHANGELOG.md.
 
 ## Update Schedule
 
@@ -217,4 +220,4 @@ For questions about specific variables or to report data issues:
 
 ---
 
-**Last Updated:** September 2025
+**Last Updated:** May 2026
