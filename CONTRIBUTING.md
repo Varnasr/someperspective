@@ -39,9 +39,14 @@ We welcome improvements to analysis code:
 **Pull request process:**
 1. Fork the repository
 2. Create a feature branch: `git checkout -b improve-analysis`
-3. Make your changes
-4. Test thoroughly
-5. Submit PR with clear description of changes
+3. Enable the project's git hooks (one-time, per clone):
+   ```bash
+   git config core.hooksPath .githooks
+   ```
+   This activates `pre-commit` (blocks committed secrets, console.log, merge markers) and `commit-msg` validation.
+4. Make your changes
+5. Test thoroughly
+6. Submit PR with clear description of changes
 
 ### 3. Extending the Analysis
 

@@ -1,7 +1,7 @@
 ################################################################################
-# REPLICATION CODE: India Political Economy Assessment 2014-2025
+# REPLICATION CODE: India Political Economy Assessment 2014-2026
 # Author: Dr. Varna Sri Raman
-# Date: October 2025
+# Date: May 2026
 # Description: Complete replication code for all analyses and indices
 ################################################################################
 
