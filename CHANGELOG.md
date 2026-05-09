@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-05-09
+
+### Added
+- `Content-Security-Policy` meta tag covering Tailwind, Alpine, ECharts, Google Fonts, Translate
+- ECharts `aria.enabled` and `role="img"` on chart containers (screen-reader support)
+- Visible banner when `data.json` fetch fails (replaces silent fallback)
+- `.nojekyll` so GitHub Pages skips Jekyll
+- `git config core.hooksPath .githooks` documented in `CONTRIBUTING.md`
+
+### Changed
+- Migrated charts from Chart.js to ECharts; deleted dead `additional_charts.js`
+- Schema/JSON-LD license corrected from MIT to CC BY 4.0 (matches `LICENSE`)
+- Dataset schema `temporalCoverage` and name corrected to 2014-2026
+- Press freedom rank corrected from 160 to 162 across UI (matches `data.json`)
+- Sitemap `lastmod` refreshed to 2026-05-09
+- README structure section rewritten to match the actual flat layout
+- `CITATION.cff`: real author and v2.1.0 metadata (was placeholders)
+- Replication code header dates synced to May 2026
+
+### Removed
+- `Backups/` directory (~236KB of committed full-page snapshots)
+- README references to non-existent files (`sources.bib`, `documentation/*.md`, `analysis/*.R`)
+- Footer "Code: MIT License" claim (only CC BY 4.0 is in `LICENSE`)
+- README `[number]` and `[email]` placeholders
+
 ## [2.0.0] - 2025-09-01
 
 ### Added

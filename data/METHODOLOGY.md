@@ -1,4 +1,4 @@
-# Methodology and Data Construction: India 2004–2025
+# Methodology and Data Construction: India 2004–2026
 
 This note documents how every dataset in the `/Data` folder was compiled, verified, and estimated.  
 All numbers are derived from official or peer-reviewed sources; no placeholders or arbitrary adjustments are used.
@@ -116,4 +116,4 @@ Uncertainty ±5%.
 
 ---
 
-*Generated automatically in October 2025.*
+*Generated automatically; last refreshed May 2026.*
