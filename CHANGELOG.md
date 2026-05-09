@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.1] - 2026-05-09
+
+### Changed
+- **Deep Analysis** moved to position 3 in the tab nav (right after
+  Executive Summary). Previously it was the 12th tab and only visible
+  by scrolling the nav horizontally on desktop.
+- Added a green **New** pip on the Deep Analysis tab for discovery.
+- Added a right-edge fade indicator on the tab nav so users notice it
+  scrolls horizontally on narrow viewports.
+- **Audience role** selector now does substantive work: each role
+  (Researcher / Policy Maker / Journalist / Citizen) gets a tailored
+  intro, a one-line CTA, and a row of "Jump to" buttons that navigate
+  directly to the four most relevant tabs for that role. Previously
+  only the intro paragraph changed.
+- `audienceNotes` retained as a backwards-compat getter that derives
+  from the new `roleConfig`, so any external code or markup that
+  depended on the old shape keeps working.
+
 ## [2.3.0] - 2026-05-09
 
 ### Changed
