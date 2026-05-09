@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.2.1">
+    <meta name="version" content="2.3.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1135,11 +1135,12 @@
                         </div>
                     </div>
 
-                    <!-- SSI Component Radar -->
+                    <!-- SSI Component Sankey -->
                     <div class="mb-8">
-                        <h3 class="text-lg font-bold mb-4">SSI Component Analysis</h3>
+                        <h3 class="text-lg font-bold mb-4">SSI: Component Contributions</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Each band's width is the component's <em>severity × weight</em>, i.e. how much it pushes the aggregate score up. Hover a band to see the contribution.</p>
                         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                            <div id="indexRadarChart" class="chart-responsive" style="width:100%;"></div>
+                            <div id="indexRadarChart" class="chart-responsive" style="width:100%;height:380px;"></div>
                         </div>
                     </div>
 
@@ -1400,9 +1401,10 @@ reduces overall score</pre>
                     </div>
                 </div>
 
-                <!-- Scenario visualization -->
+                <!-- Scenario visualization (Sankey: levers -> indices) -->
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Move the sliders above. The Sankey shows how each lever flows into the three indices — band width = scenario contribution.</p>
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
-                    <div id="scenarioChart" style="width:100%;height:280px;" class="chart-h-sm-380"></div>
+                    <div id="scenarioChart" style="width:100%;height:340px;" class="chart-h-sm-420"></div>
                 </div>
 
                 <!-- Preset scenarios -->
@@ -2337,38 +2339,46 @@ reduces overall score</pre>
                 });
             },
 
-            // ===== SSI RADAR CHART (Methodology) =====
+            // ===== SSI COMPONENT SANKEY (Methodology) =====
+            // Replaces the previous radar. Shows how each component's
+            // (severity * weight) contributes to the aggregate SSI score.
             createIndexRadarChart() {
                 const c = this.getChart('indexRadarChart');
                 if (!c) return;
-                const mobile = isMobile();
+                const components = [
+                    { name: 'Data Suppression',     severity: 100, weight: 30, color: '#ef4444' },
+                    { name: 'Release Delays',       severity:  80, weight: 20, color: '#f97316' },
+                    { name: 'Institutional Capture',severity:  90, weight: 25, color: '#a855f7' },
+                    { name: 'Methodology Changes',  severity:  60, weight: 15, color: '#06b6d4' },
+                    { name: 'Access Restrictions',  severity:  70, weight: 10, color: '#10b981' }
+                ];
+                const target = 'SSI Score';
+                const nodes = [...components.map(c => ({ name: c.name, itemStyle: { color: c.color } })),
+                               { name: target, itemStyle: { color: '#8b5cf6' } }];
+                const links = components.map(c => ({
+                    source: c.name,
+                    target,
+                    value: Math.round((c.severity * c.weight) / 10) / 10
+                }));
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: chartTitle('SSI Component Analysis & Weights', this.darkMode),
-                    legend: chartLegend(mobile ? ['Severity', 'Weight'] : ['Current Severity (2026)', 'Weight in Index']),
-                    radar: {
-                        indicator: mobile ? [
-                            { name: 'Suppression', max: 100 },
-                            { name: 'Delays', max: 100 },
-                            { name: 'Capture', max: 100 },
-                            { name: 'Methods', max: 100 },
-                            { name: 'Access', max: 100 }
-                        ] : [
-                            { name: 'Data\nSuppression', max: 100 },
-                            { name: 'Release\nDelays', max: 100 },
-                            { name: 'Institutional\nCapture', max: 100 },
-                            { name: 'Methodology\nChanges', max: 100 },
-                            { name: 'Access\nRestrictions', max: 100 }
-                        ],
-                        center: ['50%', mobile ? '58%' : '55%'], radius: mobile ? '55%' : '65%',
-                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280', fontSize: mobile ? 10 : 12 }
+                    title: chartTitle('SSI: How components flow into the score', this.darkMode),
+                    tooltip: {
+                        trigger: 'item',
+                        triggerOn: 'mousemove',
+                        formatter: p => p.dataType === 'edge'
+                            ? `${p.data.source} → ${p.data.target}<br/>Contribution: <b>${p.data.value}</b>`
+                            : `<b>${p.data.name}</b>`
                     },
                     series: [{
-                        type: 'radar',
-                        data: [
-                            { value: [100, 80, 90, 60, 70], name: 'Current Severity (2026)', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#ef4444' }, itemStyle: { color: '#ef4444' } },
-                            { value: [30, 20, 25, 15, 10], name: 'Weight in Index', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#8b5cf6' }, itemStyle: { color: '#8b5cf6' } }
-                        ]
+                        type: 'sankey',
+                        layout: 'none',
+                        nodeAlign: 'left',
+                        emphasis: { focus: 'adjacency' },
+                        data: nodes,
+                        links: links,
+                        lineStyle: { color: 'gradient', curveness: 0.5, opacity: 0.55 },
+                        label: { color: this.darkMode ? '#e2e8f0' : '#1f2937', fontSize: isMobile() ? 10 : 12 }
                     }]
                 });
             },
@@ -2514,32 +2524,55 @@ reduces overall score</pre>
             createScenarioChart() {
                 const c = this.getChart('scenarioChart');
                 if (!c) return;
+                const inp = this.scenarioInputs;
                 const out = this.scenarioOutputs;
-                const mobile = isMobile();
+                // Sankey: levers -> indices, link width = absolute scenario contribution.
+                // Mirrors updateScenario() weights so flows reflect the actual model.
+                const empFactor    = Math.max(0, Math.min(1, (inp.formalEmp - 8) / 17));
+                const pressFactor  = Math.max(0, Math.min(1, 1 - (inp.pressFreedom - 30) / 150));
+                const cessFactor   = Math.max(0, Math.min(1, inp.cessShare / 30));
+                const statsFactor  = Math.max(0, Math.min(1, inp.statsReleased / 100));
+                // Round to one decimal, clamp tiny values to 0.1 so the link is still visible.
+                const w = v => Math.max(0.1, Math.round(v * 100) / 100);
+                const nodes = [
+                    { name: 'Formal Employment',  itemStyle: { color: '#3b82f6' } },
+                    { name: 'Press Freedom',      itemStyle: { color: '#a855f7' } },
+                    { name: 'Cess Share',         itemStyle: { color: '#f97316' } },
+                    { name: 'Statistical Output', itemStyle: { color: '#06b6d4' } },
+                    { name: 'SSI (' + out.ssi.toFixed(1) + ')', itemStyle: { color: '#ef4444' } },
+                    { name: 'FCI (' + out.fci.toFixed(2) + ')', itemStyle: { color: '#f59e0b' } },
+                    { name: 'DQI (' + out.dqi.toFixed(2) + ')', itemStyle: { color: '#22c55e' } }
+                ];
+                const ssiNode = nodes[4].name, fciNode = nodes[5].name, dqiNode = nodes[6].name;
+                const links = [
+                    // SSI is driven by statistical output (inverse): the more reports released, the lower SSI.
+                    { source: 'Statistical Output', target: ssiNode, value: w(1 - statsFactor + 0.05) },
+                    // FCI is driven by cess share (positive).
+                    { source: 'Cess Share',         target: fciNode, value: w(cessFactor + 0.1) },
+                    // DQI weights from updateScenario(): press 0.4, formalEmp 0.2, statsReleased 0.4
+                    { source: 'Press Freedom',      target: dqiNode, value: w(pressFactor * 0.4 + 0.05) },
+                    { source: 'Formal Employment', target: dqiNode, value: w(empFactor * 0.2 + 0.05) },
+                    { source: 'Statistical Output', target: dqiNode, value: w(statsFactor * 0.4 + 0.05) }
+                ];
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: chartTitle('Scenario vs Current', this.darkMode),
-                    tooltip: { trigger: 'axis' },
-                    legend: chartLegend(mobile ? ['Current', 'Scenario'] : ['Current (2026)', 'Your Scenario']),
-                    radar: {
-                        indicator: mobile ? [
-                            { name: 'SSI', max: 10 },
-                            { name: 'FCI', max: 1 },
-                            { name: 'DQI', max: 1 }
-                        ] : [
-                            { name: 'SSI\n(lower=better)', max: 10 },
-                            { name: 'FCI\n(lower=better)', max: 1 },
-                            { name: 'DQI\n(higher=better)', max: 1 }
-                        ],
-                        center: ['50%', mobile ? '58%' : '55%'], radius: mobile ? '50%' : '60%',
-                        axisName: { color: this.darkMode ? '#94a3b8' : '#6b7280', fontSize: mobile ? 10 : 12 }
+                    title: chartTitle('How your levers flow into the indices', this.darkMode),
+                    tooltip: {
+                        trigger: 'item',
+                        triggerOn: 'mousemove',
+                        formatter: p => p.dataType === 'edge'
+                            ? `${p.data.source} → ${p.data.target}<br/>Influence: <b>${p.data.value}</b>`
+                            : `<b>${p.data.name}</b>`
                     },
                     series: [{
-                        type: 'radar',
-                        data: [
-                            { value: this.currentRadar(), name: 'Current (' + this.latestObservedYear() + ')', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#ef4444' }, itemStyle: { color: '#ef4444' } },
-                            { value: [out.ssi, out.fci, out.dqi], name: 'Your Scenario', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#22c55e' }, itemStyle: { color: '#22c55e' } }
-                        ]
+                        type: 'sankey',
+                        layout: 'none',
+                        nodeAlign: 'left',
+                        emphasis: { focus: 'adjacency' },
+                        data: nodes,
+                        links: links,
+                        lineStyle: { color: 'gradient', curveness: 0.5, opacity: 0.55 },
+                        label: { color: this.darkMode ? '#e2e8f0' : '#1f2937', fontSize: isMobile() ? 10 : 12 }
                     }]
                 }, true);
             },
