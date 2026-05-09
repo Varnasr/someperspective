@@ -8,11 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.1.0] - 2026-05-09
 
 ### Added
-- `Content-Security-Policy` meta tag covering Tailwind, Alpine, ECharts, Google Fonts, Translate
+- `Content-Security-Policy` meta tag covering Tailwind, Alpine, ECharts, Google Fonts, Translate, and jsDelivr (Sargam icons)
 - ECharts `aria.enabled` and `role="img"` on chart containers (screen-reader support)
 - Visible banner when `data.json` fetch fails (replaces silent fallback)
 - `.nojekyll` so GitHub Pages skips Jekyll
 - `git config core.hooksPath .githooks` documented in `CONTRIBUTING.md`
+- [Sargam Icons](https://sargamicons.com/) (MIT) replace all emojis across `index.html`
+  and `downloads/*.html` (126 instances total). Icons are loaded as inline SVG `<img>`
+  tags from `cdn.jsdelivr.net/npm/sargam-icons` and inherit text size; on dark mode
+  they invert via Tailwind's `dark:invert`.
 
 ### Changed
 - Migrated charts from Chart.js to ECharts; deleted dead `additional_charts.js`
