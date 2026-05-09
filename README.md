@@ -1,4 +1,4 @@
-# Some Perspective: India's Economic Transformation 2004-2025
+# Some Perspective: India's Economic Transformation 2014-2026
 
 [![Website](https://img.shields.io/badge/Website-someperspective.info-blue)](https://someperspective.info)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository contains the complete replication package for "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025," an independent empirical study examining how two distinct political periods—the United Progressive Alliance (UPA, 2004-2014) and National Democratic Alliance (NDA, 2014-2025)—produced fundamentally different models of economic growth, governance, and democratic accountability in India.
+This repository contains the complete replication package for "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2026," an independent empirical study examining how two distinct political periods—the United Progressive Alliance (UPA, 2004-2014) and National Democratic Alliance (NDA, 2014-2025)—produced fundamentally different models of economic growth, governance, and democratic accountability in India.
 
 **Research initiated:** March 2024  
 **Current version:** May 2026  
@@ -14,7 +14,7 @@ This repository contains the complete replication package for "Narratives, Numbe
 
 ## Abstract
 
-Despite official narratives celebrating high GDP growth and improved global rankings, India's economic reality reveals a more complex story. This research uses rigorous empirical analysis to document five critical transformations between 2004-2025: (1) a collapse in employment elasticity followed by precarious gig-economy recovery; (2) inequality reaching levels exceeding the colonial era; (3) systematic erosion of fiscal federalism through constitutional workarounds; (4) unprecedented suppression of official statistics; and (5) measurable deterioration in democratic quality as assessed by multiple international indices.
+Despite official narratives celebrating high GDP growth and improved global rankings, India's economic reality reveals a more complex story. This research uses rigorous empirical analysis to document five critical transformations between 2004-2026: (1) a collapse in employment elasticity followed by precarious gig-economy recovery; (2) inequality reaching levels exceeding the colonial era; (3) systematic erosion of fiscal federalism through constitutional workarounds; (4) unprecedented suppression of official statistics; and (5) measurable deterioration in democratic quality as assessed by multiple international indices.
 
 We construct three novel indices to quantify these changes: a **Statistical Suppression Index (SSI)** measuring government interference in data production; a **Fiscal Centralization Index (FCI)** capturing the erosion of federalism; and a **Democratic Quality Index (DQI)** aggregating multiple assessments of institutional health. All three indices show concerning trajectories, with acceleration post-2019.
 
@@ -48,42 +48,30 @@ This study addresses four central questions:
 
 ## Repository Contents
 
-\`\`\`
+```
 someperspective/
+├── README.md                  # This file
+├── LICENSE                    # CC BY 4.0
+├── CITATION.cff               # Citation metadata
+├── CHANGELOG.md               # Version history
+├── CONTRIBUTING.md            # Contribution guidelines
 │
-├── README.md                    # This file
-├── LICENSE                      # CC BY 4.0 License
-├── CITATION.cff                 # Citation metadata
+├── index.html                 # Interactive single-page site (ECharts + Alpine)
+├── data.json                  # Website dataset (annual, 2014-2026)
+├── data_dictionary.md         # Variable definitions
+├── replication_code.R         # R analysis script
+├── replication_code.py        # Python analysis script
 │
-├── data/
-│   ├── data.json               # Website dataset (2014-2026)
-│   ├── data_dictionary.md      # Variable definitions and sources
-│   └── sources.bib             # BibTeX references for all data sources
+├── data/                      # Source-anchored CSV estimates
+│   ├── METHODOLOGY.md
+│   ├── README_ESTIMATES.txt
+│   ├── SP_masterdataset.csv
+│   └── *.csv                  # Per-topic series (regime periods, finances, etc.)
 │
-├── analysis/
-│   ├── replication_code.R      # Main analysis scripts
-│   ├── indices_construction.R  # SSI, FCI, DQI calculations
-│   ├── robustness_checks.R     # Sensitivity analyses
-│   └── visualizations.R        # Chart generation code
-│
-├── paper/
-│   ├── india-economy-paper.md  # Full academic paper (Markdown)
-│   ├── india-economy-paper.pdf # PDF version
-│   └── appendices/
-│       ├── technical_appendix.pdf
-│       ├── data_appendix.pdf
-│       └── robustness_appendix.pdf
-│
-├── website/
-│   ├── index.html              # Interactive visualization website
-│   ├── assets/                 # Charts, downloads, CSS, JS
-│   └── CNAME                   # Domain configuration
-│
-└── documentation/
-    ├── METHODOLOGY.md          # Detailed methodology
-    ├── LIMITATIONS.md          # Known limitations and caveats
-    └── CHANGELOG.md            # Version history
-\`\`\`
+├── downloads/                 # Public-facing HTML artifacts (briefs, summaries)
+├── sitemap.xml, robots.txt    # Search/crawler metadata
+└── CNAME                      # GitHub Pages domain
+```
 
 ## Key Findings
 
@@ -218,50 +206,19 @@ install.packages(c(
 
 ### Running the Analysis
 
-\`\`\`bash
+```bash
 # Clone the repository
 git clone https://github.com/Varnasr/someperspective.git
 cd someperspective
 
-# Run complete replication
-Rscript analysis/replication_code.R
+# Run the analysis
+Rscript replication_code.R
+# or
+python3 replication_code.py
+```
 
-# Generate indices only
-Rscript analysis/indices_construction.R
-
-# Run robustness checks
-Rscript analysis/robustness_checks.R
-
-# Generate all visualizations
-Rscript analysis/visualizations.R
-\`\`\`
-
-### Expected Outputs
-
-The replication scripts will generate:
-- All figures used in the paper (saved to \`outputs/figures/\`)
-- Statistical tables (saved to \`outputs/tables/\`)
-- Index calculations with confidence intervals
-- Robustness check results
-- Supplementary analysis files
-
-**Expected runtime:** Approximately 10-15 minutes on standard hardware
-
-### Data Updates
-
-To update with latest available data:
-
-\`\`\`bash
-# Edit data/data.json with new values
-# Run update script
-Rscript analysis/update_analysis.R
-
-# This will:
-# 1. Validate new data entries
-# 2. Recalculate all indices
-# 3. Regenerate affected visualizations
-# 4. Update the website
-\`\`\`
+Both scripts read `data.json` (and optionally the CSVs under `data/`) and reproduce the
+indices and headline figures used on the website.
 
 ## Limitations and Caveats
 
@@ -279,37 +236,25 @@ This research acknowledges several important limitations:
 
 6. **Causality:** While we document strong correlations and temporal sequences, establishing definitive causality requires additional identification strategies
 
-See \`documentation/LIMITATIONS.md\` for detailed discussion.
+For detailed discussion of any of the above, see the methodology section of the website
+and `data/METHODOLOGY.md`.
 
 ## Citation
 
 If you use this data, code, or findings in your research, please cite:
 
-\`\`\`bibtex
-@techreport{someperspective2025,
-  title={Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025},
+```bibtex
+@techreport{someperspective2026,
+  title={Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2014-2026},
   author={Varna Sri Raman},
-  year={2025},
+  year={2026},
   institution={Independent Research},
   type={Working Paper},
-  url={https://someperspective.info},
-  note={Accessed: [Date]}
+  url={https://someperspective.info}
 }
-\`\`\`
+```
 
-For specific indices, please also cite:
-
-\`\`\`bibtex
-@article{statistical_suppression_index,
-  title={Measuring Statistical Suppression: The SSI Framework},
-  author={Varna Sri Raman},
-  journal={[Journal if published]},
-  year={2025},
-  note={Available at: https://someperspective.info}
-}
-\`\`\`
-
-See \`CITATION.cff\` for complete citation metadata.
+See `CITATION.cff` for machine-readable citation metadata.
 
 ## License
 
@@ -328,7 +273,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 
 **Conflicts of Interest:** None declared.
 
-**Data Transparency:** All data sources are documented with URLs, access dates, and retrieval methods. See \`data/sources.bib\` for complete provenance.
+**Data Transparency:** All data sources are documented in `data/METHODOLOGY.md` and `data/README_ESTIMATES.txt` with URLs, access dates, and retrieval methods.
 
 **Code Transparency:** All analysis code is provided for full replication. No proprietary software is required.
 
@@ -346,9 +291,8 @@ Please see \`CONTRIBUTING.md\` for guidelines.
 
 For questions, corrections, or collaboration inquiries:
 
-- **Email:** [research@someperspective.info]
-- **Website:** [someperspective.info/contact](https://someperspective.info)
-- **Issues:** Use GitHub issues for technical questions or data corrections
+- **Website:** [someperspective.info](https://someperspective.info)
+- **Issues:** Use [GitHub issues](https://github.com/Varnasr/someperspective/issues) for technical questions or data corrections
 
 ## Acknowledgments
 
@@ -364,24 +308,15 @@ This research builds on decades of work by India's statistical system, civil soc
 
 - **v1.0.0** (March 2024): Initial release with data through December 2023
 - **v1.5.0** (September 2024): Extended to June 2024; added robustness checks
-- **v2.0.0** (September 2025): Current version with data through August 2025; refined indices methodology; added interactive website
+- **v2.0.0** (September 2025): Refined indices methodology; added interactive website
+- **v2.1.0** (May 2026): Data refreshed through 2026; ECharts migration; SEO/a11y/CSP pass
 
-See \`documentation/CHANGELOG.md\` for detailed version history.
-
-## Media and Policy Impact
-
-This research has been:
-- Cited in [number] academic papers
-- Referenced in [number] media articles
-- Used in [number] policy briefs
-- Presented at [conferences/seminars]
-
-See \`documentation/IMPACT.md\` for tracking.
+See `CHANGELOG.md` for detailed version history.
 
 ---
 
-**Last Updated:** May 2026  
-**Data Current Through:** March 2026  
-**Next Scheduled Update:** September 2026
+**Site last updated:** 2026-05-09
+**Latest annual data point:** 2026 (snapshot stats current through Q1 2026)
+**Next scheduled refresh:** September 2026
 
 For the latest data and interactive visualizations, visit [someperspective.info](https://someperspective.info)

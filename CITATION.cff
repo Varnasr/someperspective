@@ -1,12 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this dataset or research, please cite it as below."
 authors:
-  - family-names: "[Your Last Name]"
-    given-names: "[Your First Name]"
-    orcid: "https://orcid.org/[your-orcid]"
-title: "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025"
-version: 2.0.0
-date-released: 2025-09-01
+  - family-names: "Sri Raman"
+    given-names: "Varna"
+title: "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2014-2026"
+version: 2.1.0
+date-released: 2026-05-09
 url: "https://github.com/Varnasr/someperspective"
 repository-code: "https://github.com/Varnasr/someperspective"
 type: dataset
@@ -23,10 +22,10 @@ license: CC-BY-4.0
 preferred-citation:
   type: report
   authors:
-    - family-names: "[Your Last Name]"
-      given-names: "[Your First Name]"
-  title: "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2025"
-  year: 2025
+    - family-names: "Sri Raman"
+      given-names: "Varna"
+  title: "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2014-2026"
+  year: 2026
   institution:
     name: "Independent Research"
   url: "https://someperspective.info"
