@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2026-05-09
+
+### Changed
+- **Tab navigation restructured into grouped dropdowns** plus a featured
+  standalone tab. The flat 13-tab strip overflowed on every viewport
+  and clipped labels like "Implications".
+  - **Overview** ▾ → What is This?, Executive Summary, Key Findings
+  - **Explore** ▾ → Interactive Data, Correlation Explorer, Three Indices, Era Comparison, Human Stories
+  - **Methods** ▾ → Methodology, Scenario Lab
+  - **Action** ▾ → Implications, What Next?
+  - **Deep Analysis** (featured, separator before, "New" pip) — pinned at the very end
+- A group's button highlights when its current tab is selected, so it's
+  always clear which group the active page lives in.
+- Click-outside collapses any open dropdown.
+- `tabs` is now a derived flat list (groups + featured), so URL-hash
+  routing and any other code expecting an array keeps working.
+- Removed the right-edge fade overlay (no longer needed; the new nav
+  fits in the viewport on all reasonable screen widths).
+
 ## [2.3.1] - 2026-05-09
 
 ### Changed

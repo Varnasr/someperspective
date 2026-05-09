@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.3.1">
+    <meta name="version" content="2.4.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -430,24 +430,53 @@
         </div>
     </header>
     
-    <!-- Navigation Tabs -->
-    <nav class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg sticky top-[72px] sm:top-[80px] z-40 border-b border-gray-200/50 dark:border-gray-700/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <!-- Fade hint: signals the nav scrolls horizontally -->
-            <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white/95 dark:from-gray-900/95 to-transparent z-10"></div>
-            <div class="flex overflow-x-auto gap-0 py-0 scrollbar-hide">
-                <template x-for="tab in tabs" :key="tab">
-                    <button
-                        @click="activeTab = tab"
-                        :class="activeTab === tab ?
-                            'tab-btn active text-blue-600 dark:text-blue-400 font-semibold' :
-                            'tab-btn text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'"
-                        class="px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 relative">
-                        <span x-text="tab"></span>
-                        <span x-show="newTabs.includes(tab)"
-                              class="ml-1 inline-block px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-500 text-white align-middle">New</span>
-                    </button>
+    <!-- Navigation: 4 grouped dropdowns + 1 featured standalone tab -->
+    <nav class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg sticky top-[72px] sm:top-[80px] z-40 border-b border-gray-200/50 dark:border-gray-700/50"
+         @click.outside="openGroup = null">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto gap-1 py-0 scrollbar-hide items-stretch">
+                <!-- Grouped dropdowns -->
+                <template x-for="group in tabGroups" :key="group.label">
+                    <div class="relative flex-shrink-0">
+                        <button
+                            @click="openGroup = (openGroup === group.label ? null : group.label)"
+                            :class="(openGroup === group.label || isGroupActive(group)) ?
+                                'tab-btn active text-blue-600 dark:text-blue-400 font-semibold' :
+                                'tab-btn text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'"
+                            class="px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap inline-flex items-center gap-1">
+                            <span x-text="group.label"></span>
+                            <svg class="w-3 h-3 transition-transform" :class="openGroup === group.label ? 'rotate-180' : ''" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div x-show="openGroup === group.label" x-transition.opacity x-cloak
+                             class="absolute top-full left-0 mt-1 min-w-[200px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl py-1 z-50">
+                            <template x-for="tab in group.tabs" :key="tab">
+                                <button
+                                    @click="activeTab = tab; openGroup = null"
+                                    :class="activeTab === tab ?
+                                        'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold' :
+                                        'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'"
+                                    class="block w-full text-left px-4 py-2 text-xs sm:text-sm transition-colors">
+                                    <span x-text="tab"></span>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
                 </template>
+
+                <!-- Subtle separator before the featured tab -->
+                <div class="w-px bg-gray-200 dark:bg-gray-700 my-3 mx-1 flex-shrink-0"></div>
+
+                <!-- Featured standalone tab (Deep Analysis) -->
+                <button
+                    @click="activeTab = featuredTab; openGroup = null"
+                    :class="activeTab === featuredTab ?
+                        'tab-btn active text-blue-600 dark:text-blue-400 font-semibold' :
+                        'tab-btn text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'"
+                    class="px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap inline-flex items-center gap-1.5 flex-shrink-0">
+                    <span x-text="featuredTab"></span>
+                    <span x-show="newTabs.includes(featuredTab)"
+                          class="px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-500 text-white">New</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -1795,8 +1824,24 @@ reduces overall score</pre>
             audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
 
             get tabs() {
-                return ['What is This?','Executive Summary','Deep Analysis','Key Findings','Interactive Data','Correlation Explorer','Three Indices','Human Stories','Methodology','Implications','Era Comparison','Scenario Lab','What Next?'];
+                // Flat list (used by URL hash mapping and any code expecting an array)
+                const flat = [];
+                for (const g of this.tabGroups) flat.push(...g.tabs);
+                if (this.featuredTab) flat.push(this.featuredTab);
+                return flat;
             },
+            // Featured standalone tab pinned to the end of the nav
+            featuredTab: 'Deep Analysis',
+            // Grouped nav structure
+            tabGroups: [
+                { label: 'Overview', tabs: ['What is This?', 'Executive Summary', 'Key Findings'] },
+                { label: 'Explore',  tabs: ['Interactive Data', 'Correlation Explorer', 'Three Indices', 'Era Comparison', 'Human Stories'] },
+                { label: 'Methods',  tabs: ['Methodology', 'Scenario Lab'] },
+                { label: 'Action',   tabs: ['Implications', 'What Next?'] }
+            ],
+            openGroup: null,
+            // True if the given group contains the currently active tab
+            isGroupActive(group) { return group.tabs.includes(this.activeTab); },
             // Tabs that should display a "New" pip in the nav
             newTabs: ['Deep Analysis'],
             // Per-role recommended jumping-off points
