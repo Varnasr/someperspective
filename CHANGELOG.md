@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-05-09
+
+### Added
+- New **Deep Analysis** tab containing four computed views:
+  - **UPA vs NDA scorecard** — averages over each regime period for nine indicators with directional colour-coding
+  - **Decoupling chart** — cumulative GDP since 2014 plotted against formal employment share, with observed and projected segments visually distinguished (solid vs dashed)
+  - **Peer trajectories table** — V-Dem and RSF deltas (2014→2026) for India alongside Brazil, Turkey, Hungary, South Africa
+  - **Year-over-year delta strip** — compact "what moved in the latest observed year" panel
+- `data.json` now carries a `sources` block attributing every indicator to its public source, and a `projection` block describing the 2027 series
+- Linear/constant 2027 projections appended to every series, clearly labelled `2027*` and rendered as dashed lines in the new decoupling chart
+- Scenario radar's "Current" preset and slider hint now read from `economicData` instead of being hard-coded — they will refresh whenever `data.json` is updated
+- `regimes` block in `data.json` (UPA / NDA period boundaries)
+
+### Changed
+- **Press freedom rank** updated to **157** (RSF 2026 Index, released 30 April 2026; was 162 placeholder); peer values for Turkey/Hungary/South Africa also refreshed
+- **GDP growth FY 2025-26** updated to **7.4%** (MOSPI First Advance Estimates, 2011-12 base)
+- **Unemployment** for the latest observed year updated to **5.1%** (PLFS Monthly Bulletin, March 2026)
+- UPA-vs-NDA radar's NDA values now computed live from `economicData` rather than hard-coded
+- Twitter card description refreshed to 7.4% GDP / RSF rank 157
+
 ## [2.1.0] - 2026-05-09
 
 ### Added

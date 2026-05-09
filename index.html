@@ -23,7 +23,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="India's Economy, Inequality & Democracy 2004-2026 | Some Perspective">
-    <meta name="twitter:description" content="GDP grew 6.3% but formal jobs fell. Top 1% owns 40% of wealth. Press freedom rank: 162. Interactive data analysis with three novel indices tracking India's institutional decline.">
+    <meta name="twitter:description" content="GDP grew 7.4% (FY26 advance estimate) but formal jobs fell. Top 1% owns 40% of wealth. Press freedom rank: 157 (RSF 2026). Three novel indices track India's institutional decline.">
 
     <!-- Additional SEO -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -148,7 +148,7 @@
                 "name": "How has India's democracy score changed?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "India's Democratic Quality Index (DQI) declined from 0.71 in 2014 to 0.40 in 2026. V-Dem score fell from 0.555 to 0.271, Freedom House score from 77 to 66, and press freedom rank dropped from 140 to 162. India shows the steepest democratic decline among major economies."
+                    "text": "India's Democratic Quality Index (DQI) declined from 0.71 in 2014 to 0.40 in 2026. V-Dem score fell from 0.555 to 0.271, Freedom House score from 77 to 66, and the RSF World Press Freedom Index rank dropped from 140 (2014) to 157 (2026). India shows the steepest democratic decline among major economies."
                 }
             }
         ]
@@ -469,7 +469,7 @@
                         <div id="sparkGradUnemp" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-900/30">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400">162nd</div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400">157th</div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Press freedom rank</div>
                         <div id="sparkPress" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
@@ -609,7 +609,7 @@
                         <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl">
                             <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-2">Democratic Erosion</h4>
                             <ul class="space-y-1 text-sm">
-                                <li>• Press freedom: 140th → 162nd globally</li>
+                                <li>• Press freedom: 140th → 157th globally (RSF 2026)</li>
                                 <li>• V-Dem score: 0.71 → 0.26</li>
                                 <li>• Statistical suppression rising</li>
                                 <li>• Census indefinitely postponed</li>
@@ -926,7 +926,7 @@
                         <div class="text-3xl font-bold mb-2">0.40</div>
                         <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">Mar 2026 Score (was 0.71 in 2014)</div>
                         <ul class="space-y-1 text-xs">
-                            <li>• Press freedom: 140 → 162</li>
+                            <li>• Press freedom: 140 → 157</li>
                             <li>• Freedom House: 77 → 65</li>
                             <li>• V-Dem: 0.555 → 0.260</li>
                             <li>• Internet shutdowns: 98 (2026)</li>
@@ -1224,7 +1224,7 @@ reduces overall score</pre>
                                 <tr class="border-b">
                                     <td class="py-1">India</td>
                                     <td class="text-right">0.26</td>
-                                    <td class="text-right">162</td>
+                                    <td class="text-right">157</td>
                                 </tr>
                                 <tr class="border-b">
                                     <td class="py-1">Brazil</td>
@@ -1234,12 +1234,12 @@ reduces overall score</pre>
                                 <tr class="border-b">
                                     <td class="py-1">Turkey</td>
                                     <td class="text-right">0.18</td>
-                                    <td class="text-right">160</td>
+                                    <td class="text-right">159</td>
                                 </tr>
                                 <tr>
                                     <td class="py-1">Hungary</td>
                                     <td class="text-right">0.41</td>
-                                    <td class="text-right">68</td>
+                                    <td class="text-right">70</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1307,8 +1307,8 @@ reduces overall score</pre>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
                         <div class="text-xs text-gray-500 font-medium mb-1">Press Freedom</div>
                         <div class="text-sm"><span class="text-gray-500">UPA end:</span> <span class="font-bold">140th</span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">162nd</span></div>
-                        <div class="text-xs mt-1 text-red-600 font-semibold">-22 ranks</div>
+                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">157th</span></div>
+                        <div class="text-xs mt-1 text-red-600 font-semibold">-17 ranks</div>
                     </div>
                 </div>
 
@@ -1364,7 +1364,7 @@ reduces overall score</pre>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
                         <label class="block text-sm font-medium mb-2">Press Freedom Rank: <span class="text-purple-600 font-bold" x-text="scenarioInputs.pressFreedom + 'th'"></span></label>
                         <input type="range" min="30" max="180" step="1" x-model="scenarioInputs.pressFreedom" @input="updateScenario()" class="w-full accent-purple-600">
-                        <div class="flex justify-between text-xs text-gray-400"><span>30 (free)</span><span>Current: 162</span><span>180 (worst)</span></div>
+                        <div class="flex justify-between text-xs text-gray-400"><span>30 (free)</span><span x-text="'Current: ' + economicData.pressFreedom[latestObservedIndex()]"></span><span>180 (worst)</span></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
                         <label class="block text-sm font-medium mb-2">Cess/Surcharge Share: <span class="text-orange-600 font-bold" x-text="scenarioInputs.cessShare + '%'"></span></label>
@@ -1412,6 +1412,76 @@ reduces overall score</pre>
                         <button @click="applyScenario('nordic')" class="px-3 py-1.5 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-200 transition-colors">Nordic Model</button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Deep Analysis Tab -->
+        <div x-show="activeTab === 'Deep Analysis'" x-transition class="space-y-6">
+            <div class="card p-5 sm:p-8">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-white">Deep Analysis</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Computed from <code class="text-xs">data.json</code>. Values marked with <span class="font-mono text-amber-600">*</span> are projections; everything else is observed.</p>
+
+                <!-- A. UPA vs NDA computed scorecard -->
+                <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">UPA vs NDA: Computed Scorecard</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Averages over each regime period from <code class="text-xs">data.json</code>. UPA averages reflect 2004-2014 published estimates; NDA averages are computed live from the loaded series.</p>
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full text-sm">
+                        <thead class="text-xs uppercase text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                            <tr>
+                                <th class="text-left py-2">Indicator</th>
+                                <th class="text-right py-2">UPA (2004-14)</th>
+                                <th class="text-right py-2">NDA (2014-26)</th>
+                                <th class="text-right py-2">Change</th>
+                            </tr>
+                        </thead>
+                        <tbody x-html="renderRegimeScorecard()"></tbody>
+                    </table>
+                </div>
+
+                <!-- B. Decoupling chart -->
+                <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">The Decoupling: Growth Without Jobs</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Cumulative real GDP growth since 2014 (left axis) plotted against formal employment share (right axis). If growth and jobs moved together, the lines would track. They don't.</p>
+                <div class="card-inner mb-2">
+                    <div id="deepDecouplingChart" class="chart-container"></div>
+                </div>
+                <p class="text-xs text-gray-500 dark:text-gray-400 italic mb-8">Cumulative GDP series compounds annual growth from a 2014 base of 100. Formal employment is the share of workers with social security cover (PLFS).</p>
+
+                <!-- C. International league table -->
+                <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">Peer Trajectories (2014 → 2026)</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">India alongside four other backsliding-or-recovering democracies. Click a header to sort.</p>
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full text-sm">
+                        <thead class="text-xs uppercase text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                            <tr>
+                                <th class="text-left py-2">Country</th>
+                                <th class="text-right py-2">V-Dem 2014</th>
+                                <th class="text-right py-2">V-Dem 2026</th>
+                                <th class="text-right py-2">&#916; V-Dem</th>
+                                <th class="text-right py-2">RSF 2014</th>
+                                <th class="text-right py-2">RSF 2026</th>
+                                <th class="text-right py-2">&#916; RSF</th>
+                            </tr>
+                        </thead>
+                        <tbody x-html="renderInternationalTable()"></tbody>
+                    </table>
+                </div>
+
+                <!-- D. Year-over-year delta strip -->
+                <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">What Moved in the Latest Year</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Change between the previous and latest <em>observed</em> years for each headline indicator.</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" x-html="renderYoYDeltas()"></div>
+
+                <!-- Source note -->
+                <details class="mt-8 text-xs text-gray-500 dark:text-gray-400">
+                    <summary class="cursor-pointer font-semibold">Sources for the latest values</summary>
+                    <ul class="mt-2 space-y-1 ml-4 list-disc">
+                        <li>GDP growth: MOSPI <em>First Advance Estimates of National Income 2025-26</em> (2011-12 base).</li>
+                        <li>Unemployment (Mar 2026 monthly): NSO PLFS Monthly Bulletin.</li>
+                        <li>Press freedom: Reporters Without Borders, <em>2026 World Press Freedom Index</em> (released 30 April 2026).</li>
+                        <li>V-Dem: Varieties of Democracy v15 dataset (2026 release).</li>
+                        <li>Inequality: World Inequality Database (WID.world) India series.</li>
+                    </ul>
+                </details>
             </div>
         </div>
 
@@ -1565,31 +1635,34 @@ reduces overall score</pre>
     <!-- Alpine.js Application -->
     <script>
     // Inline fallback data (loaded from data.json when available)
+    // PROJECTION_START_INDEX: indices >= this are model-projected, not observed.
+    const PROJECTION_START_INDEX = 13;
     const FALLBACK_DATA = {
         economic: {
-            years:[2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],
-            gdpGrowth:[7.4,8.0,8.2,7.2,6.1,4.2,-7.3,8.7,7.2,7.6,7.8,6.5,6.3],
-            unemployment:[4.9,5.0,5.0,6.0,6.1,5.8,7.1,4.2,4.1,3.2,3.2,3.1,3.0],
-            youthUnemployment:[13.5,13.8,14.2,15.6,16.1,14.8,17.8,13.2,12.9,12.9,12.8,12.5,12.3],
-            graduateUnemployment:[18.5,19.2,21.0,23.5,25.0,23.0,31.0,25.0,22.0,29.1,28.5,27.0,26.5],
-            top1Share:[21.3,21.7,21.5,21.5,21.7,22.1,22.3,22.5,22.6,22.6,22.6,22.8,23.0],
-            bottom50Share:[15.0,14.7,14.9,14.9,14.7,13.5,13.3,13.1,13.1,13.1,13.1,13.0,12.9],
-            formalEmployment:[13.0,12.8,12.5,12.2,11.9,11.6,11.4,11.5,11.3,11.2,11.2,11.0,10.9],
-            informalEmployment:[87.0,87.2,87.5,87.8,88.1,88.4,88.6,88.5,88.7,88.8,88.8,89.0,89.1],
-            pressFreedom:[140,136,133,136,138,140,142,142,150,161,159,160,162],
-            ssi:[2.3,2.5,2.4,2.4,2.6,4.8,7.2,6.8,7.0,7.5,7.8,8.0,8.2],
-            fci:[0.62,0.64,0.66,0.68,0.70,0.72,0.84,0.78,0.76,0.77,0.78,0.79,0.80],
-            dqi:[0.71,0.70,0.68,0.65,0.60,0.55,0.48,0.45,0.43,0.42,0.42,0.41,0.40],
-            gigWorkers:[0.8,1.2,1.8,2.5,3.2,4.1,5.2,6.0,6.8,7.3,7.7,8.2,8.8],
-            ruralIncome:[100,99,98,97,96,95,93,94,95,96,98,97,97],
-            femaleLFPR:[22.5,22.0,21.8,21.5,21.2,21.0,20.8,20.5,20.3,20.5,20.8,20.9,21.0]
+            years:               [2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027],
+            yearLabels:          ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026","2027*"],
+            gdpGrowth:           [7.4,8.0,8.2,7.2,6.1,4.2,-7.3,8.7,7.2,7.6,7.8,6.5,7.4,6.8],
+            unemployment:        [4.9,5.0,5.0,6.0,6.1,5.8,7.1,4.2,4.1,3.2,3.2,3.1,5.1,5.0],
+            youthUnemployment:   [13.5,13.8,14.2,15.6,16.1,14.8,17.8,13.2,12.9,12.9,12.8,12.5,12.3,12.1],
+            graduateUnemployment:[18.5,19.2,21.0,23.5,25.0,23.0,31.0,25.0,22.0,29.1,28.5,27.0,26.5,26.0],
+            top1Share:           [21.3,21.7,21.5,21.5,21.7,22.1,22.3,22.5,22.6,22.6,22.6,22.8,23.0,23.1],
+            bottom50Share:       [15.0,14.7,14.9,14.9,14.7,13.5,13.3,13.1,13.1,13.1,13.1,13.0,12.9,12.8],
+            formalEmployment:    [13.0,12.8,12.5,12.2,11.9,11.6,11.4,11.5,11.3,11.2,11.2,11.0,10.9,10.8],
+            informalEmployment:  [87.0,87.2,87.5,87.8,88.1,88.4,88.6,88.5,88.7,88.8,88.8,89.0,89.1,89.2],
+            pressFreedom:        [140,136,133,136,138,140,142,142,150,161,159,151,157,158],
+            ssi:                 [2.3,2.5,2.4,2.4,2.6,4.8,7.2,6.8,7.0,7.5,7.8,8.0,8.2,8.3],
+            fci:                 [0.62,0.64,0.66,0.68,0.70,0.72,0.84,0.78,0.76,0.77,0.78,0.79,0.80,0.81],
+            dqi:                 [0.71,0.70,0.68,0.65,0.60,0.55,0.48,0.45,0.43,0.42,0.42,0.41,0.40,0.39],
+            gigWorkers:          [0.8,1.2,1.8,2.5,3.2,4.1,5.2,6.0,6.8,7.3,7.7,8.2,8.8,9.4],
+            ruralIncome:         [100,99,98,97,96,95,93,94,95,96,98,97,97,97],
+            femaleLFPR:          [22.5,22.0,21.8,21.5,21.2,21.0,20.8,20.5,20.3,20.5,20.8,20.9,21.0,21.1]
         },
         international: {
             countries:['India','Brazil','Turkey','Hungary','South Africa'],
             vdem2014:[0.71,0.85,0.52,0.63,0.75],
             vdem2026:[0.26,0.69,0.18,0.41,0.70],
             press2014:[140,99,154,64,42],
-            press2026:[162,80,160,68,34]
+            press2026:[157,80,159,70,38]
         }
     };
 
@@ -1606,6 +1679,7 @@ reduces overall score</pre>
         'Implications': 'implications',
         'Era Comparison': 'era-comparison',
         'Scenario Lab': 'scenario-lab',
+        'Deep Analysis': 'deep-analysis',
         'What Next?': 'what-next'
     };
     const HASH_TAB = Object.fromEntries(Object.entries(TAB_HASH).map(([k,v]) => [v,k]));
@@ -1696,13 +1770,13 @@ reduces overall score</pre>
             scatterY: 'formalEmployment',
             correlationR: 0,
             eraIndicator: 'gdpGrowth',
-            scenarioInputs: { formalEmp: 10.9, pressFreedom: 162, cessShare: 20.5, statsReleased: 40 },
+            scenarioInputs: { formalEmp: 10.9, pressFreedom: 157, cessShare: 20.5, statsReleased: 40 },
             scenarioOutputs: { ssi: 8.2, fci: 0.80, dqi: 0.40 },
 
             audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
 
             get tabs() {
-                return ['What is This?','Executive Summary','Key Findings','Interactive Data','Correlation Explorer','Three Indices','Human Stories','Methodology','Implications','Era Comparison','Scenario Lab','What Next?'];
+                return ['What is This?','Executive Summary','Key Findings','Interactive Data','Correlation Explorer','Three Indices','Human Stories','Methodology','Implications','Era Comparison','Scenario Lab','Deep Analysis','What Next?'];
             },
 
             audienceNotes: {
@@ -1907,6 +1981,8 @@ reduces overall score</pre>
                     this.updateEraChart();
                 } else if (tab === 'Scenario Lab') {
                     this.updateScenario();
+                } else if (tab === 'Deep Analysis') {
+                    this.createDecouplingChart();
                 }
             },
 
@@ -2355,7 +2431,16 @@ reduces overall score</pre>
                     ? ['GDP%', 'Formal\nEmp%', 'Top 1%', 'Unemp%', 'Press\nFreedom']
                     : ['GDP Growth\n(avg %)', 'Formal\nEmployment (%)', 'Top 1%\nShare (%)', 'Unemployment\n(%)', 'Press Freedom\n(rank/180)'];
                 const upaValues = [7.4, 13.0, 21.3, 4.9, 140];
-                const ndaValues = [5.8, 10.9, 23.0, 3.0, 162];
+                const i = this.latestObservedIndex();
+                const ed = this.economicData;
+                const gdpAvgNDA = ed.gdpGrowth.slice(0, i + 1).reduce((a, b) => a + b, 0) / (i + 1);
+                const ndaValues = [
+                    Math.round(gdpAvgNDA * 10) / 10,
+                    ed.formalEmployment[i],
+                    ed.top1Share[i],
+                    ed.unemployment[i],
+                    ed.pressFreedom[i]
+                ];
                 c.setOption({
                     ...baseOpts(this.darkMode),
                     title: chartTitle('UPA (2004-14) vs NDA (2014-26)', this.darkMode),
@@ -2449,17 +2534,43 @@ reduces overall score</pre>
                     series: [{
                         type: 'radar',
                         data: [
-                            { value: [8.2, 0.80, 0.40], name: 'Current (2026)', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#ef4444' }, itemStyle: { color: '#ef4444' } },
+                            { value: this.currentRadar(), name: 'Current (' + this.latestObservedYear() + ')', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#ef4444' }, itemStyle: { color: '#ef4444' } },
                             { value: [out.ssi, out.fci, out.dqi], name: 'Your Scenario', areaStyle: { opacity: 0.15 }, lineStyle: { color: '#22c55e' }, itemStyle: { color: '#22c55e' } }
                         ]
                     }]
                 }, true);
             },
 
+            // Latest observed (non-projected) index for series lookups
+            latestObservedIndex() {
+                const yrs = this.economicData.years || [];
+                const projStart = (typeof PROJECTION_START_INDEX !== 'undefined') ? PROJECTION_START_INDEX : yrs.length;
+                return Math.max(0, Math.min(yrs.length - 1, projStart - 1));
+            },
+            latestObservedYear() {
+                const yrs = this.economicData.years || [];
+                return yrs[this.latestObservedIndex()] || '';
+            },
+            currentRadar() {
+                const i = this.latestObservedIndex();
+                const d = this.economicData;
+                return [d.ssi[i], d.fci[i], d.dqi[i]];
+            },
+            currentScenarioPreset() {
+                const i = this.latestObservedIndex();
+                const d = this.economicData;
+                return {
+                    formalEmp: d.formalEmployment[i],
+                    pressFreedom: d.pressFreedom[i],
+                    cessShare: 20.5,
+                    statsReleased: 40
+                };
+            },
+
             applyScenario(preset) {
                 const presets = {
                     'optimistic': { formalEmp: 18, pressFreedom: 100, cessShare: 12, statsReleased: 85 },
-                    'status-quo': { formalEmp: 10.9, pressFreedom: 162, cessShare: 20.5, statsReleased: 40 },
+                    'status-quo': this.currentScenarioPreset(),
                     'pessimistic': { formalEmp: 9, pressFreedom: 175, cessShare: 25, statsReleased: 25 },
                     'nordic': { formalEmp: 22, pressFreedom: 40, cessShare: 8, statsReleased: 98 }
                 };
@@ -2467,6 +2578,142 @@ reduces overall score</pre>
                     this.scenarioInputs = { ...presets[preset] };
                     this.updateScenario();
                 }
+            },
+
+            // ===== DEEP ANALYSIS =====
+            // UPA averages from prior literature (data.json starts at 2014). NDA averages computed live.
+            UPA_AVG: {
+                gdpGrowth: 7.4, unemployment: 4.9, formalEmployment: 13.0,
+                top1Share: 21.3, bottom50Share: 15.0, ssi: 1.8, fci: 0.55,
+                dqi: 0.71, pressFreedom: 140
+            },
+            ndaAverage(key) {
+                const i = this.latestObservedIndex();
+                const arr = (this.economicData[key] || []).slice(0, i + 1);
+                if (!arr.length) return null;
+                return arr.reduce((a, b) => a + b, 0) / arr.length;
+            },
+            fmt(v, dp) {
+                if (v === null || v === undefined || Number.isNaN(v)) return '—';
+                const f = (typeof dp === 'number') ? v.toFixed(dp) : Math.round(v);
+                return f;
+            },
+            renderRegimeScorecard() {
+                const rows = [
+                    { key: 'gdpGrowth',          label: 'GDP growth (avg %)',          dp: 1, betterLow: false, suffix: '%' },
+                    { key: 'unemployment',       label: 'Unemployment (avg %)',        dp: 1, betterLow: true,  suffix: '%' },
+                    { key: 'formalEmployment',   label: 'Formal employment share (%)', dp: 1, betterLow: false, suffix: '%' },
+                    { key: 'top1Share',          label: 'Top 1% income share (%)',     dp: 1, betterLow: true,  suffix: '%' },
+                    { key: 'bottom50Share',      label: 'Bottom 50% income share (%)', dp: 1, betterLow: false, suffix: '%' },
+                    { key: 'ssi',                label: 'Statistical Suppression Idx', dp: 1, betterLow: true,  suffix: '' },
+                    { key: 'fci',                label: 'Fiscal Centralization Idx',   dp: 2, betterLow: true,  suffix: '' },
+                    { key: 'dqi',                label: 'Democratic Quality Idx',      dp: 2, betterLow: false, suffix: '' },
+                    { key: 'pressFreedom',       label: 'Press freedom rank (1-180)',  dp: 0, betterLow: true,  suffix: '' }
+                ];
+                let html = '';
+                for (const r of rows) {
+                    const upa = this.UPA_AVG[r.key];
+                    const nda = this.ndaAverage(r.key);
+                    const change = (nda !== null && upa !== null) ? (nda - upa) : null;
+                    const improved = (change !== null) && ((r.betterLow && change < 0) || (!r.betterLow && change > 0));
+                    const colour = (change === null || Math.abs(change) < 0.01) ? 'text-gray-500' :
+                                   improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
+                    const sign = (change > 0) ? '+' : '';
+                    const changeStr = (change === null) ? '—' : sign + this.fmt(change, r.dp) + r.suffix;
+                    html += `<tr class="border-b border-gray-100 dark:border-gray-800">
+                        <td class="py-2 text-gray-700 dark:text-gray-300">${r.label}</td>
+                        <td class="py-2 text-right tabular-nums">${this.fmt(upa, r.dp)}${r.suffix}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold">${this.fmt(nda, r.dp)}${r.suffix}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold ${colour}">${changeStr}</td>
+                    </tr>`;
+                }
+                return html;
+            },
+            renderInternationalTable() {
+                const d = this.internationalData;
+                if (!d || !d.countries) return '';
+                let html = '';
+                for (let i = 0; i < d.countries.length; i++) {
+                    const dV = d.vdem2026[i] - d.vdem2014[i];
+                    const dP = d.press2026[i] - d.press2014[i];
+                    const vColour = dV > 0 ? 'text-emerald-600 dark:text-emerald-400' : (dV < 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-500');
+                    // RSF: lower is better, so a positive delta is worse.
+                    const pColour = dP < 0 ? 'text-emerald-600 dark:text-emerald-400' : (dP > 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-500');
+                    const isIndia = d.countries[i] === 'India';
+                    html += `<tr class="border-b border-gray-100 dark:border-gray-800${isIndia ? ' bg-amber-50/40 dark:bg-amber-900/10' : ''}">
+                        <td class="py-2 ${isIndia ? 'font-bold' : 'text-gray-700 dark:text-gray-300'}">${d.countries[i]}</td>
+                        <td class="py-2 text-right tabular-nums">${d.vdem2014[i].toFixed(2)}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold">${d.vdem2026[i].toFixed(2)}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold ${vColour}">${(dV >= 0 ? '+' : '') + dV.toFixed(2)}</td>
+                        <td class="py-2 text-right tabular-nums">${d.press2014[i]}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold">${d.press2026[i]}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold ${pColour}">${dP >= 0 ? '+' : ''}${dP}</td>
+                    </tr>`;
+                }
+                return html;
+            },
+            renderYoYDeltas() {
+                const i = this.latestObservedIndex();
+                if (i < 1) return '';
+                const d = this.economicData;
+                const labels = {
+                    gdpGrowth:           ['GDP growth', '%', 1, false],
+                    unemployment:        ['Unemployment', '%', 1, true],
+                    formalEmployment:    ['Formal emp.', '%', 1, false],
+                    top1Share:           ['Top 1% share', '%', 1, true],
+                    bottom50Share:       ['Bottom 50% share', '%', 1, false],
+                    pressFreedom:        ['Press freedom rank', '', 0, true],
+                    ssi:                 ['SSI', '', 1, true],
+                    dqi:                 ['DQI', '', 2, false]
+                };
+                const yLatest = d.years[i];
+                const yPrev = d.years[i - 1];
+                let html = '';
+                for (const key of Object.keys(labels)) {
+                    const [label, suffix, dp, betterLow] = labels[key];
+                    const arr = d[key]; if (!arr) continue;
+                    const cur = arr[i], prev = arr[i - 1];
+                    const delta = cur - prev;
+                    const improved = (betterLow && delta < 0) || (!betterLow && delta > 0);
+                    const colour = Math.abs(delta) < 1e-9 ? 'text-gray-500' :
+                                   improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
+                    const sign = delta > 0 ? '+' : '';
+                    html += `<div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3">
+                        <div class="text-xs text-gray-500 dark:text-gray-400">${label}</div>
+                        <div class="text-base font-bold tabular-nums text-gray-900 dark:text-gray-100">${this.fmt(cur, dp)}${suffix}</div>
+                        <div class="text-xs tabular-nums ${colour}">${sign}${this.fmt(delta, dp)}${suffix} <span class="text-gray-400">(${yPrev}→${yLatest})</span></div>
+                    </div>`;
+                }
+                return html;
+            },
+            createDecouplingChart() {
+                const c = this.getChart('deepDecouplingChart');
+                if (!c) return;
+                const d = this.economicData;
+                const lastObs = this.latestObservedIndex();
+                // Cumulative GDP: compound annual growth from a 2014 base of 100.
+                let acc = 100;
+                const cumGDP = d.gdpGrowth.map(g => { acc = acc * (1 + g / 100); return Math.round(acc * 10) / 10; });
+                const labels = d.yearLabels || d.years.map(String);
+                const splitObs = (arr) => arr.map((v, idx) => idx <= lastObs ? v : null);
+                const splitProj = (arr) => arr.map((v, idx) => idx >= lastObs ? v : null);
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: chartTitle('Cumulative GDP (2014=100) vs Formal Employment Share', this.darkMode),
+                    tooltip: { trigger: 'axis' },
+                    legend: chartLegend(['Cumulative GDP (obs.)', 'Cumulative GDP (proj.)', 'Formal employment % (obs.)', 'Formal employment % (proj.)']),
+                    xAxis: { type: 'category', data: labels },
+                    yAxis: [
+                        { type: 'value', name: 'Cum. GDP (2014=100)', position: 'left' },
+                        { type: 'value', name: 'Formal emp. %', position: 'right', min: 8, max: 16 }
+                    ],
+                    series: [
+                        { name: 'Cumulative GDP (obs.)',          type: 'line', data: splitObs(cumGDP),                yAxisIndex: 0, smooth: true, lineStyle: { color: '#3b82f6', width: 2 }, itemStyle: { color: '#3b82f6' }, symbol: 'circle' },
+                        { name: 'Cumulative GDP (proj.)',         type: 'line', data: splitProj(cumGDP),               yAxisIndex: 0, smooth: true, lineStyle: { color: '#3b82f6', width: 2, type: 'dashed' }, itemStyle: { color: '#3b82f6' }, symbol: 'emptyCircle' },
+                        { name: 'Formal employment % (obs.)',     type: 'line', data: splitObs(d.formalEmployment),    yAxisIndex: 1, smooth: true, lineStyle: { color: '#ef4444', width: 2 }, itemStyle: { color: '#ef4444' }, symbol: 'circle' },
+                        { name: 'Formal employment % (proj.)',    type: 'line', data: splitProj(d.formalEmployment),   yAxisIndex: 1, smooth: true, lineStyle: { color: '#ef4444', width: 2, type: 'dashed' }, itemStyle: { color: '#ef4444' }, symbol: 'emptyCircle' }
+                    ]
+                });
             },
 
             // ===== SHAREABLE CHART SNAPSHOTS =====
