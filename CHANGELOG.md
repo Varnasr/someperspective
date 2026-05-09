@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2026-05-09
+
+### Changed
+- Replaced both radar charts with **Sankey diagrams**:
+  - **SSI Component Sankey** (Methodology) — bands flow from each
+    component (Suppression, Delays, Capture, Methods, Access) into the
+    aggregate SSI score, band width = severity × weight
+  - **Scenario Sankey** (Scenario Lab) — bands flow from the four
+    levers (Formal Employment, Press Freedom, Cess Share, Statistical
+    Output) into the three indices (SSI, FCI, DQI). Band widths track
+    the actual contribution model in `updateScenario()`, so the chart
+    reflects the real influence of each slider.
+- `version` meta bumped to `2.3.0` so previously cached HTML revalidates
+  on next visit and the new Deep Analysis tab + Sankey diagrams become
+  visible without a manual hard refresh.
+
 ## [2.2.0] - 2026-05-09
 
 ### Added
