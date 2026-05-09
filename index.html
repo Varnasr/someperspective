@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="version" content="2.2.1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1802,7 +1805,7 @@ reduces overall score</pre>
 
                 // Load data from JSON
                 try {
-                    const resp = await fetch('data.json', { cache: 'no-cache' });
+                    const resp = await fetch('data.json?v=' + (document.querySelector('meta[name="version"]')?.content || Date.now()), { cache: 'no-cache' });
                     if (!resp.ok) throw new Error('HTTP ' + resp.status);
                     const d = await resp.json();
                     if (d.economic) this.economicData = d.economic;
