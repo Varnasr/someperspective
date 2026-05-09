@@ -111,7 +111,7 @@ someperspective/
 ### 5. Democratic Erosion
 
 - **Freedom House:** Downgraded from "Free" to "Partly Free" (2021)
-- **Press Freedom:** Fell from rank 140 to 162 (of 180 countries)
+- **Press Freedom:** Fell from rank 140 (2014) to 157 (2026, RSF World Press Freedom Index)
 - **Democratic Quality Index:** Declined from 0.71 (2014) to 0.42 (2024)—a 41% deterioration
 
 **Pattern:** Multiple independent international assessments document parallel institutional deterioration.
