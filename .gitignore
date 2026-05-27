@@ -18,10 +18,11 @@ venv/
 .venv/
 env/
 
-# Build output
+# Build output (styles.css is committed — it's the compiled Tailwind output)
 build/
 dist/
 out/
+src/input.css
 coverage/
 *.lcov
 .nyc_output/
@@ -65,3 +66,4 @@ yarn-error.log*
 .nuxt/
 .serverless/
 .firebase/
+node_modules/

@@ -1,0 +1,19 @@
+{
+  "name": "someperspective",
+  "version": "1.0.0",
+  "description": "[![Website](https://img.shields.io/badge/Website-someperspective.info-blue)](https://someperspective.info) [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Data: Open](https://img.shields.io/badge/Data-Open-green.svg)](./data.json)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:41325/git/Varnasr/someperspective"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
