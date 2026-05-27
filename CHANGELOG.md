@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2026-05-27
+
+### Changed (BREAKING)
+- **Tailwind CSS pre-compiled.** The `cdn.tailwindcss.com` script is
+  removed entirely. Tailwind 3.x is now compiled at build time into a
+  static `styles.css` (~42KB minified). Removes the render-blocking
+  CDN script and allows `'unsafe-eval'` to be dropped from CSP.
+- **Monolith split.** `index.html` reduced from 205KB to 126KB:
+  - `app.js` (~75KB) — Alpine app, chart logic, helpers, fallback data
+  - `styles.css` (~42KB) — compiled Tailwind + inline styles
+  - Each is independently cacheable.
+- CSP tightened: `'unsafe-eval'` and `cdn.tailwindcss.com` removed from
+  `script-src`. Only `'unsafe-inline'` remains (needed for Alpine and
+  the inline Tailwind config shim, which can be eliminated in a future
+  pass with CSP nonces).
+
+### Added
+- **PWA manifest** (`manifest.json`) — installable as a home-screen
+  app on mobile; specifies theme color, display mode, and SVG icon.
+- **Service worker** (`sw.js`) — network-first with cache fallback,
+  caches the app shell (HTML, JS, CSS, data.json). Old caches purged
+  on version bump. Enables offline access to previously viewed data.
+- **CI workflow** (`.github/workflows/validate.yml`) — runs on push/PR
+  to main; validates JSON, checks internal links, detects stale date
+  references, validates sitemap XML, and verifies JS brace balance.
+- Build tooling: `tailwind.config.js`, `src/input.css`, `package.json`
+  with Tailwind 3 as a dev dependency. Run `npx tailwindcss -i
+  src/input.css -o styles.css --minify` to rebuild.
+
 ## [2.6.0] - 2026-05-27
 
 ### Added
