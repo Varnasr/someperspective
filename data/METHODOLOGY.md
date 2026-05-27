@@ -11,7 +11,7 @@ Each CSV in this dataset includes the following columns:
 
 | Column | Description |
 |---------|-------------|
-| `year` | Calendar year (2004–2025) |
+| `year` | Calendar year (2004–2026) |
 | `raw_value` | Official anchor or directly sourced number |
 | `estimate` | Value produced through transparent mechanical estimation |
 | `lo`, `hi` | ±5% bounds (or exact for integer counts) |
@@ -112,7 +112,7 @@ Uncertainty ±5%.
 
 ## 6. Citation
 
-> Data compiled by the author (2025) from Government of India sources — NFHS, NHA, ISFR, IQAir, RBI, PRS, JJM, MHA, CEA, and others — using transparent interpolation and estimation rules (see *Methodology and Data Construction: India 2004–2025*).
+> Data compiled by the author (2026) from Government of India sources — NFHS, NHA, ISFR, IQAir, RBI, PRS, JJM, MHA, CEA, and others — using transparent interpolation and estimation rules (see *Methodology and Data Construction: India 2004–2026*).
 
 ---
 

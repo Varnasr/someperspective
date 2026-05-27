@@ -34,7 +34,7 @@ We welcome improvements to analysis code:
 - Ensure code runs without errors
 - Add comments explaining complex operations
 - Update documentation if changing functionality
-- Run existing tests: `Rscript tests/run_tests.R`
+- Verify the CI workflow passes: JSON validity, link checks, stale-date detection (see `.github/workflows/validate.yml`)
 
 **Pull request process:**
 1. Fork the repository
