@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sp-v2.6.0';
+const CACHE_NAME = 'sp-v3.0.1';
 const SHELL = [
   '/',
   '/index.html',
