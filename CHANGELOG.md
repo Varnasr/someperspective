@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0] - 2026-05-27
+
+### Added
+- **5 supplementary CSV data series** surfaced as interactive charts
+  in the Deep Analysis tab:
+  - Communal incidents (2004-2025) — line chart with confidence band
+  - Opposition incarceration cases — bar chart
+  - Education exam disruption events — bar chart
+  - ODF (sanitation) adoption curve — area chart with logistic curve
+  - State cess/surcharge share of gross tax revenue — line chart
+- **Per-chart "Export CSV" buttons** on each supplementary chart —
+  one-click download of the raw CSV data for that indicator
+- CSV parsing engine: loads `data/*.csv` on demand when the Deep
+  Analysis tab is opened (lazy, not at page load)
+- Each chart shows estimate + lo/hi confidence interval as a shaded
+  band; tooltip shows the exact range on hover
+
 ## [2.5.0] - 2026-05-27
 
 ### Added
