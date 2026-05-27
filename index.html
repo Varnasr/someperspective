@@ -2037,9 +2037,10 @@ reduces overall score</pre>
                 } else if (this.themeMode === 'light') {
                     this.darkMode = false;
                 } else {
-                    // device preference
                     this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 }
+                // Sync <html> class (the early-load script sets it; Alpine :class only controls <body>)
+                document.documentElement.classList.toggle('dark', this.darkMode);
             },
 
             // Google Translate integration
