@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.5.0">
+    <meta name="version" content="2.6.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1532,15 +1532,65 @@ reduces overall score</pre>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Change between the previous and latest <em>observed</em> years for each headline indicator.</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" x-html="renderYoYDeltas()"></div>
 
+                <!-- E. Supplementary Data Series (from data/*.csv) -->
+                <h3 class="text-lg sm:text-xl font-bold mt-10 mb-1 text-gray-900 dark:text-white">Supplementary Data Series</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Five additional indicator series from <code>data/*.csv</code> (2004-2025). Shaded bands show the estimation confidence interval (lo/hi). Click <strong>Export CSV</strong> on any chart to download its raw data.</p>
+
+                <!-- Communal Incidents -->
+                <div class="card-inner mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">Communal Incidents (2004-2025)</h4>
+                        <button @click="exportCSV('communal')" class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">Export CSV</button>
+                    </div>
+                    <div id="csvCommunalChart" class="chart-container"></div>
+                </div>
+
+                <!-- Opposition Incarceration -->
+                <div class="card-inner mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">Opposition Incarceration Cases (2004-2025)</h4>
+                        <button @click="exportCSV('incarceration')" class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">Export CSV</button>
+                    </div>
+                    <div id="csvIncarcerationChart" class="chart-container"></div>
+                </div>
+
+                <!-- Education Exam Events -->
+                <div class="card-inner mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">Education Exam Disruption Events (2004-2025)</h4>
+                        <button @click="exportCSV('education')" class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">Export CSV</button>
+                    </div>
+                    <div id="csvEducationChart" class="chart-container"></div>
+                </div>
+
+                <!-- Sanitation ODF -->
+                <div class="card-inner mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">Open Defecation Free Adoption (2004-2025)</h4>
+                        <button @click="exportCSV('sanitation')" class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">Export CSV</button>
+                    </div>
+                    <div id="csvSanitationChart" class="chart-container"></div>
+                </div>
+
+                <!-- State Cess Share -->
+                <div class="card-inner mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">State Cess/Surcharge Share of Revenue (2004-2025)</h4>
+                        <button @click="exportCSV('cess')" class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">Export CSV</button>
+                    </div>
+                    <div id="csvCessChart" class="chart-container"></div>
+                </div>
+
                 <!-- Source note -->
                 <details class="mt-8 text-xs text-gray-500 dark:text-gray-400">
-                    <summary class="cursor-pointer font-semibold">Sources for the latest values</summary>
+                    <summary class="cursor-pointer font-semibold">Sources for all values</summary>
                     <ul class="mt-2 space-y-1 ml-4 list-disc">
                         <li>GDP growth: MOSPI <em>First Advance Estimates of National Income 2025-26</em> (2011-12 base).</li>
                         <li>Unemployment (Mar 2026 monthly): NSO PLFS Monthly Bulletin.</li>
                         <li>Press freedom: Reporters Without Borders, <em>2026 World Press Freedom Index</em> (released 30 April 2026).</li>
                         <li>V-Dem: Varieties of Democracy v15 dataset (2026 release).</li>
                         <li>Inequality: World Inequality Database (WID.world) India series.</li>
+                        <li>Supplementary CSVs: Compiled from Government of India sources (NFHS, NHA, ISFR, MHA, CEA, and others) with transparent interpolation rules. See <code>data/METHODOLOGY.md</code> for details.</li>
                     </ul>
                 </details>
             </div>
@@ -2086,6 +2136,11 @@ reduces overall score</pre>
                     this.updateScenario();
                 } else if (tab === 'Deep Analysis') {
                     this.createDecouplingChart();
+                    if (Object.keys(this.csvData).length === 0) {
+                        this.loadCSVData().then(() => this.createCSVCharts());
+                    } else {
+                        this.createCSVCharts();
+                    }
                 }
             },
 
@@ -2848,6 +2903,113 @@ reduces overall score</pre>
                         { name: 'Formal employment % (proj.)',    type: 'line', data: splitProj(d.formalEmployment),   yAxisIndex: 1, smooth: true, lineStyle: { color: '#ef4444', width: 2, type: 'dashed' }, itemStyle: { color: '#ef4444' }, symbol: 'emptyCircle' }
                     ]
                 });
+            },
+
+            // ===== SUPPLEMENTARY CSV DATA =====
+            csvData: {},
+            async loadCSVData() {
+                const files = {
+                    communal:      'data/society_communal_incidents.csv',
+                    incarceration: 'data/politics_opposition_incarceration.csv',
+                    education:     'data/education_exam_events.csv',
+                    sanitation:    'data/sanitation_odf_verified.csv',
+                    cess:          'data/state_finances_cess_share.csv'
+                };
+                for (const [key, path] of Object.entries(files)) {
+                    try {
+                        const resp = await fetch(path);
+                        if (!resp.ok) continue;
+                        const text = await resp.text();
+                        const rows = text.trim().split('\n').slice(1).map(line => {
+                            const cols = line.split(',');
+                            return {
+                                year: parseInt(cols[0]),
+                                raw: cols[1] ? parseFloat(cols[1]) : null,
+                                estimate: parseFloat(cols[2]),
+                                lo: parseFloat(cols[3]),
+                                hi: parseFloat(cols[4]),
+                                method: cols[5] || '',
+                                notes: cols.slice(6).join(',') || ''
+                            };
+                        }).filter(r => !isNaN(r.year));
+                        this.csvData[key] = rows;
+                    } catch(e) { /* skip silently */ }
+                }
+            },
+            createCSVCharts() {
+                const configs = {
+                    communal:      { id: 'csvCommunalChart',      title: 'Communal Incidents (reported)',      color: '#ef4444', type: 'line', unit: 'incidents' },
+                    incarceration: { id: 'csvIncarcerationChart',  title: 'Opposition Incarceration Cases',    color: '#a855f7', type: 'bar',  unit: 'cases' },
+                    education:     { id: 'csvEducationChart',      title: 'Education Exam Disruption Events',  color: '#f97316', type: 'bar',  unit: 'events' },
+                    sanitation:    { id: 'csvSanitationChart',     title: 'ODF Verified Coverage (%)',          color: '#22c55e', type: 'line', unit: '%', areaFill: true },
+                    cess:          { id: 'csvCessChart',           title: 'Cess/Surcharge Share of Gross Tax Revenue (%)', color: '#3b82f6', type: 'line', unit: '%' }
+                };
+                for (const [key, cfg] of Object.entries(configs)) {
+                    const rows = this.csvData[key];
+                    if (!rows || !rows.length) continue;
+                    const c = this.getChart(cfg.id);
+                    if (!c) continue;
+                    const years = rows.map(r => r.year);
+                    const est = rows.map(r => r.estimate);
+                    const lo = rows.map(r => r.lo);
+                    const hi = rows.map(r => r.hi);
+                    const series = [];
+                    // Confidence band (hi)
+                    series.push({
+                        name: 'Upper bound',
+                        type: 'line', data: hi, stack: 'band',
+                        lineStyle: { opacity: 0 }, itemStyle: { opacity: 0 },
+                        areaStyle: { color: cfg.color, opacity: 0.08 },
+                        symbol: 'none', tooltip: { show: false }
+                    });
+                    // Confidence band (lo, stacked negative to create gap)
+                    series.push({
+                        name: 'Lower bound',
+                        type: 'line', data: lo, stack: 'band',
+                        lineStyle: { opacity: 0 }, itemStyle: { opacity: 0 },
+                        areaStyle: { color: '#ffffff', opacity: 1 },
+                        symbol: 'none', tooltip: { show: false }
+                    });
+                    // Main series
+                    series.push({
+                        name: cfg.title,
+                        type: cfg.type === 'bar' ? 'bar' : 'line',
+                        data: est, smooth: cfg.type !== 'bar',
+                        itemStyle: { color: cfg.color },
+                        lineStyle: cfg.type !== 'bar' ? { width: 2.5, color: cfg.color } : undefined,
+                        areaStyle: cfg.areaFill ? { color: cfg.color, opacity: 0.12 } : undefined,
+                        barWidth: '50%'
+                    });
+                    c.setOption({
+                        ...baseOpts(this.darkMode),
+                        title: chartTitle(cfg.title, this.darkMode),
+                        tooltip: {
+                            trigger: 'axis',
+                            formatter: params => {
+                                const p = params.find(x => x.seriesName === cfg.title);
+                                if (!p) return '';
+                                const r = rows[p.dataIndex];
+                                return `<b>${r.year}</b><br/>${cfg.title}: <b>${r.estimate}</b> ${cfg.unit}<br/>Range: ${r.lo} – ${r.hi}`;
+                            }
+                        },
+                        xAxis: { type: 'category', data: years, axisLabel: { fontSize: isMobile() ? 10 : 12 } },
+                        yAxis: { type: 'value', name: cfg.unit, axisLabel: { fontSize: isMobile() ? 10 : 12 } },
+                        series: series
+                    });
+                }
+            },
+            exportCSV(key) {
+                const rows = this.csvData[key];
+                if (!rows || !rows.length) { alert('Data not loaded yet.'); return; }
+                let csv = 'year,raw_value,estimate,lo,hi,method,notes\n';
+                for (const r of rows) {
+                    csv += `${r.year},${r.raw ?? ''},${r.estimate},${r.lo},${r.hi},"${r.method}","${r.notes}"\n`;
+                }
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = key + '_data.csv'; a.click();
+                URL.revokeObjectURL(url);
             },
 
             // ===== SHAREABLE CHART SNAPSHOTS =====
