@@ -132,7 +132,7 @@ Before submitting any contribution:
 ## Questions?
 
 - **Technical questions:** Open a GitHub issue
-- **General inquiries:** Email [your-email@domain.com]
+- **General inquiries:** Email research@someperspective.info
 - **Collaboration proposals:** Contact via website
 
 ## Code of Conduct
