@@ -1,6 +1,4 @@
-// Self-destruct: clear all caches and unregister.
-// The aggressive shell-caching SW from v3.0.0 cached broken HTML;
-// this replacement wipes the slate clean on next visit.
+// Nuke all caches and unregister on activate.
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => {
   e.waitUntil(
