@@ -46,12 +46,13 @@ jobs:
       - name: Validate sitemap
         run: python3 -c "import xml.etree.ElementTree as ET; ET.parse('sitemap.xml'); print('sitemap.xml OK')"
 
-      - name: Check JS brace balance
+      - name: Check JS brace balance in index.html
         run: |
           python3 -c "
           import re
-          js = open('app.js').read()
-          o, c = js.count('{'), js.count('}')
-          print(f'app.js braces: {o} open, {c} close')
+          html = open('index.html').read()
+          s = ''.join(re.findall(r'<script[^>]*>(.*?)</script>', html, re.DOTALL))
+          o, c = s.count('{'), s.count('}')
+          print(f'inline JS braces: {o} open, {c} close')
           assert o == c, f'Brace mismatch: {o} != {c}'
           "
