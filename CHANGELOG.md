@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2026-05-27
+
+### Added
+- **og:image and twitter:image** social preview card (1200x630 PNG with
+  headline stats), served from `/og-preview.png`
+- **Favicon** — inline SVG data URI in `<link rel="icon">`
+- **Skip-to-content** link for keyboard/screen-reader users
+- `loading="lazy"` on all 32 Sargam icon `<img>` tags
+- **ROADMAP.md** with Current / Next / Future milestones
+- **og-preview.svg** source file alongside the rasterised PNG
+
+### Changed
+- All 8 download pages: "September 2025" updated to "May 2026" (14 replacements)
+- `research-package.html`: 10 `onclick="alert(...)"` stubs replaced with
+  disabled "Coming soon" buttons (no fake JS alerts)
+- `CONTRIBUTING.md`: `[your-email@domain.com]` placeholder replaced with
+  `research@someperspective.info`
+- `<main>` element now has `id="main-content"` for the skip link target
+
+## [2.4.1] - 2026-05-09
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## [2.4.1] - 2026-05-09
 
 ### Fixed
