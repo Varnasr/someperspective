@@ -34,6 +34,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   with Tailwind 3 as a dev dependency. Run `npx tailwindcss -i
   src/input.css -o styles.css --minify` to rebuild.
 
+## [2.8.1] - 2026-05-29
+
+### Changed
+- **Today's Highlight rewritten as substantive daily analysis.** Each of
+  the 36 entries now consists of:
+  - An analytical headline (the finding itself, not a CTA)
+  - A 2-3 sentence explanation with specific numbers and context
+  - A chart visualising the underlying data
+  - A **Key takeaway** callout — one bold sentence crystallising what
+    to remember
+  - A small "Source data in [Tab] →" link, demoted from a CTA button
+- Removed the promotional framing ("Export CSV", "Try this!",
+  "Browse charts!"). The card now reads like a daily research note,
+  not a tour of site features.
+- Card visual updated to match: neutral slate gradient, "Today's
+  analysis" pill, indigo accent on the takeaway block.
+
 ## [2.8.0] - 2026-05-29
 
 ### Changed
