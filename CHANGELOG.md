@@ -34,6 +34,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   with Tailwind 3 as a dev dependency. Run `npx tailwindcss -i
   src/input.css -o styles.css --minify` to rebuild.
 
+## [2.8.0] - 2026-05-29
+
+### Changed
+- **Today's Highlight** now shows an **interactive ECharts chart**
+  alongside the text, drawn from the relevant data series.
+- Expanded daily feature set from **14 → 36 entries** (over a month
+  of distinct daily highlights before any repeat).
+- Each chart adapts to the highlight's content — single line, paired
+  series, multi-series (with optional normalisation), inverted bar
+  for rank metrics (lower = better), CSV-sourced lines, and
+  international bar comparisons (2014 vs 2026).
+- Coverage now spans: every economic indicator, all five hidden CSV
+  series (communal incidents, opposition incarceration, education
+  events, sanitation, cess share), international peers (V-Dem, RSF),
+  and all three constructed indices (SSI, FCI, DQI).
+
 ## [2.7.0] - 2026-05-27
 
 ### Added

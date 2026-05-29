@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.7.0">
+    <meta name="version" content="2.8.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -531,6 +531,8 @@
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2" x-text="todaysFeature.title"></h3>
                 <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3" x-html="todaysFeature.body"></p>
+                <!-- Mini chart for this highlight -->
+                <div id="todaysHighlightChart" class="w-full h-[160px] sm:h-[200px] mb-3 bg-white/40 dark:bg-black/15 rounded-lg"></div>
                 <div class="flex items-center gap-3 flex-wrap">
                     <button @click="activeTab = todaysFeature.tab"
                             class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-colors inline-flex items-center gap-1.5">
@@ -1946,20 +1948,42 @@ reduces overall score</pre>
             // Daily-rotating highlight panel on the home tab.
             // Each entry surfaces an interesting finding and points at the relevant tab.
             dailyFeatures: [
-                { category: 'Headline number', title: 'Top 1% now holds 23% of national income', body: 'This is the highest concentration since 1922 — exceeding even the colonial era peak. The bottom 50% holds just 12.9%.', cta: 'See inequality data', tab: 'Key Findings' },
-                { category: 'Decoupling', title: 'GDP grew 7.4%, but formal jobs fell to 10.9% of workers', body: 'FY26 advance estimates show strong headline growth — yet formal employment continues its 13-year decline. The decoupling chart visualises both trends side by side.', cta: 'View decoupling chart', tab: 'Deep Analysis' },
-                { category: 'Compare regimes', title: 'UPA vs NDA: nine indicators, side by side', body: 'Press freedom, formal employment, top 1% share, fiscal centralisation, and more — computed live as averages over each regime period. Direction-aware colour coding shows where things improved or worsened.', cta: 'Open scorecard', tab: 'Deep Analysis' },
-                { category: 'Latest release', title: 'India ranked 157th of 180 on press freedom (RSF 2026)', body: 'The Reporters Without Borders 2026 World Press Freedom Index (released 30 April) marks a six-place drop from 2025. India now sits below Pakistan (153), Bangladesh (152), and Nepal (87).', cta: 'See peer trajectories', tab: 'Deep Analysis' },
-                { category: 'Try this', title: 'Scenario Lab: drag four sliders, watch indices respond', body: 'A Sankey diagram shows how four policy levers (formal employment, press freedom, cess share, statistical output) flow into the three composite indices. Move a slider, the band widths update instantly.', cta: 'Try the Scenario Lab', tab: 'Scenario Lab' },
-                { category: 'Under the hood', title: 'Three novel indices, fully replicable', body: 'SSI (Statistical Suppression), FCI (Fiscal Centralisation), and DQI (Democratic Quality) are all transparent constructions — formulas, components, and rationale are all documented.', cta: 'Read the methodology', tab: 'Methodology' },
-                { category: 'Hidden series', title: 'Communal incidents rose 40% (640 → 923 since 2004)', body: 'One of five supplementary datasets surfaced in v2.6.0. Each chart shows the estimate with a confidence interval band, and an Export CSV button.', cta: 'Browse supplementary charts', tab: 'Deep Analysis' },
-                { category: 'Hidden series', title: 'Cess and surcharge share of central tax revenue tripled', body: 'From ~8% (2004) to ~29% (2024). Cesses are not shared with states, so this is direct fiscal centralisation by another name.', cta: 'View the cess chart', tab: 'Deep Analysis' },
-                { category: 'Compare countries', title: 'India shows the steepest V-Dem decline of major democracies', body: 'V-Dem score: 0.71 (2014) → 0.26 (2026). Brazil 0.85 → 0.69. Turkey 0.52 → 0.18. Hungary 0.63 → 0.41. South Africa 0.75 → 0.70.', cta: 'Peer trajectories table', tab: 'Deep Analysis' },
-                { category: 'Story behind the number', title: 'Graduate unemployment is 26.5%, not the headline 3-5%', body: 'PLFS reports headline unemployment of 5.1% (March 2026). But for graduates specifically, more than 1 in 4 cannot find work — a crisis hidden in the average.', cta: 'See human stories', tab: 'Human Stories' },
-                { category: 'Open data', title: 'Every chart has an Export CSV button', body: 'All datasets are downloadable as CSV. Raw data, estimates, confidence bands — everything you need to reproduce the analysis yourself.', cta: 'Explore the data', tab: 'Interactive Data' },
-                { category: 'Find correlations', title: 'Press freedom and statistical suppression move together', body: 'Try plotting any two indicators against each other. The relationship between SSI and pressFreedom is particularly stark — both deteriorate in lockstep post-2017.', cta: 'Open correlation explorer', tab: 'Correlation Explorer' },
-                { category: 'Did you know?', title: 'India\'s formal employment share has fallen every year since 2014', body: '13.0% (2014) → 10.9% (2026). Twelve consecutive years of decline. The gig economy expanded over the same period from 0.8M to ~9M workers.', cta: 'See employment chart', tab: 'Key Findings' },
-                { category: 'Next step', title: 'What now? Five recommendations for policy makers', body: 'Restore statistical independence. Rebalance fiscal federalism. Strengthen press protections. Address graduate unemployment. Publish the long-delayed census.', cta: 'Read What Next?', tab: 'What Next?' }
+                { category: 'Headline number', title: 'Top 1% now holds 23% of national income', body: 'Highest concentration since 1922 — exceeding the colonial era peak. The bottom 50% holds just 12.9%.', cta: 'See inequality data', tab: 'Key Findings', chart: { type: 'pair', series: ['top1Share', 'bottom50Share'], labels: ['Top 1%', 'Bottom 50%'], colors: ['#ef4444', '#3b82f6'], unit: '%' } },
+                { category: 'Decoupling', title: 'GDP grew 7.4%, but formal jobs fell to 10.9% of workers', body: 'FY26 advance estimates show strong headline growth — yet formal employment continues its 13-year decline.', cta: 'View decoupling chart', tab: 'Deep Analysis', chart: { type: 'dual', series: ['gdpGrowth', 'formalEmployment'], labels: ['GDP growth %', 'Formal emp. %'], colors: ['#3b82f6', '#ef4444'], unit: '%' } },
+                { category: 'Compare regimes', title: 'UPA vs NDA: nine indicators side by side', body: 'Press freedom, formal employment, inequality, fiscal centralisation, and more — computed as averages over each regime period.', cta: 'Open scorecard', tab: 'Deep Analysis', chart: { type: 'line', series: ['dqi'], labels: ['Democratic Quality Index'], colors: ['#a855f7'], unit: '' } },
+                { category: 'Latest release', title: 'India ranked 157th of 180 on press freedom (RSF 2026)', body: 'The Reporters Without Borders 2026 World Press Freedom Index marks a six-place drop from 2025. Pakistan (153), Bangladesh (152), and Nepal (87) all rank higher.', cta: 'See peer trajectories', tab: 'Deep Analysis', chart: { type: 'bar-inv', series: ['pressFreedom'], labels: ['World rank (lower = better)'], colors: ['#a855f7'], unit: '' } },
+                { category: 'Try this', title: 'Scenario Lab: drag sliders, watch indices respond', body: 'A Sankey diagram shows how four policy levers flow into the three composite indices. Move a slider, band widths update instantly.', cta: 'Try the Scenario Lab', tab: 'Scenario Lab', chart: { type: 'line', series: ['ssi'], labels: ['Statistical Suppression Index'], colors: ['#ef4444'], unit: '' } },
+                { category: 'Under the hood', title: 'Three novel indices, fully replicable', body: 'SSI (Statistical Suppression), FCI (Fiscal Centralisation), and DQI (Democratic Quality). All formulas, components, and rationale documented.', cta: 'Read the methodology', tab: 'Methodology', chart: { type: 'multi', series: ['ssi', 'fci', 'dqi'], labels: ['SSI ÷10', 'FCI', 'DQI'], colors: ['#ef4444', '#f59e0b', '#22c55e'], normalize: { ssi: 0.1 }, unit: '' } },
+                { category: 'Hidden series', title: 'Communal incidents rose 40% (640 → 923 since 2004)', body: 'One of five supplementary datasets surfaced in v2.6.0. Each chart shows the estimate with a confidence interval band.', cta: 'Browse supplementary charts', tab: 'Deep Analysis', chart: { type: 'csv-line', csv: 'communal', color: '#ef4444', unit: 'incidents' } },
+                { category: 'Hidden series', title: 'Cess and surcharge share of central tax revenue tripled', body: '~8% (2004) to ~29% (2024). Cesses are not shared with states, so this is direct fiscal centralisation by another name.', cta: 'View the cess chart', tab: 'Deep Analysis', chart: { type: 'csv-line', csv: 'cess', color: '#3b82f6', unit: '%' } },
+                { category: 'Compare countries', title: 'India shows the steepest V-Dem decline of major democracies', body: 'V-Dem: 0.71 (2014) → 0.26 (2026). Brazil 0.85 → 0.69. Turkey 0.52 → 0.18. Hungary 0.63 → 0.41. South Africa 0.75 → 0.70.', cta: 'Peer trajectories', tab: 'Deep Analysis', chart: { type: 'intl', metric: 'vdem', unit: 'V-Dem score' } },
+                { category: 'Story behind the number', title: 'Graduate unemployment is 26.5%, not the headline 5.1%', body: 'PLFS reports headline unemployment of 5.1% (March 2026). But for graduates, more than 1 in 4 cannot find work — a crisis hidden in the average.', cta: 'See human stories', tab: 'Human Stories', chart: { type: 'pair', series: ['graduateUnemployment', 'unemployment'], labels: ['Graduate', 'Overall'], colors: ['#ef4444', '#3b82f6'], unit: '%' } },
+                { category: 'Open data', title: 'Every chart has an Export CSV button', body: 'All datasets downloadable as CSV — raw data, estimates, confidence bands. Everything you need to reproduce the analysis.', cta: 'Explore interactive data', tab: 'Interactive Data', chart: { type: 'line', series: ['gdpGrowth'], labels: ['GDP growth %'], colors: ['#3b82f6'], unit: '%' } },
+                { category: 'Find correlations', title: 'Press freedom and statistical suppression move in lockstep', body: 'Try plotting any two indicators against each other. The relationship between SSI and press freedom is particularly stark post-2017.', cta: 'Open correlation explorer', tab: 'Correlation Explorer', chart: { type: 'multi', series: ['ssi', 'pressFreedom'], labels: ['SSI', 'Press rank ÷25'], colors: ['#ef4444', '#a855f7'], normalize: { pressFreedom: 0.04 }, unit: '' } },
+                { category: 'Did you know?', title: 'India\'s formal employment has fallen every year since 2014', body: '13.0% → 10.9% over twelve consecutive years. The gig economy expanded from 0.8M to ~9M workers in the same period.', cta: 'See employment chart', tab: 'Key Findings', chart: { type: 'line', series: ['formalEmployment'], labels: ['Formal employment share %'], colors: ['#ef4444'], unit: '%' } },
+                { category: 'Next step', title: 'Five recommendations for policy makers', body: 'Restore statistical independence. Rebalance fiscal federalism. Strengthen press protections. Address graduate unemployment. Publish the long-delayed census.', cta: 'Read What Next?', tab: 'What Next?', chart: { type: 'line', series: ['fci'], labels: ['Fiscal Centralisation Index'], colors: ['#f59e0b'], unit: '' } },
+                { category: 'Hidden series', title: 'Opposition incarcerations have risen sharply since 2019', body: 'Recorded cases of formal incarceration of opposition figures: near-zero through the 2000s and early 2010s; sharp acceleration post-2019.', cta: 'View the chart', tab: 'Deep Analysis', chart: { type: 'csv-line', csv: 'incarceration', color: '#a855f7', unit: 'cases' } },
+                { category: 'Hidden series', title: 'Education exam disruption events have multiplied', body: 'Tracked exam leaks, cancellations, and disruptions — from near-zero in 2004 to a dozen-plus events per year by 2025.', cta: 'View the chart', tab: 'Deep Analysis', chart: { type: 'csv-line', csv: 'education', color: '#f97316', unit: 'events' } },
+                { category: 'Hidden series', title: 'ODF coverage: a textbook logistic adoption curve', body: 'Open Defecation Free verification grew from < 0.2% (2004) to 98.5% (2024) — the cleanest example of an S-curve in the dataset.', cta: 'View the curve', tab: 'Deep Analysis', chart: { type: 'csv-line', csv: 'sanitation', color: '#22c55e', unit: '%' } },
+                { category: 'Try this', title: 'Era Comparison: see UPA-decade vs NDA-decade side by side', body: 'Pick any indicator and compare the two regimes\' trajectories on the same axis. Useful for breaking out of one-period thinking.', cta: 'Open Era Comparison', tab: 'Era Comparison', chart: { type: 'line', series: ['gdpGrowth'], labels: ['GDP growth %'], colors: ['#3b82f6'], unit: '%' } },
+                { category: 'Surprise stat', title: 'Female labour-force participation: 22.5% → 21.0%', body: 'Even after a slight bounce post-COVID, female LFPR remains below where it was in 2014. Among the lowest in G20.', cta: 'See the data', tab: 'Interactive Data', chart: { type: 'line', series: ['femaleLFPR'], labels: ['Female LFPR %'], colors: ['#ec4899'], unit: '%' } },
+                { category: 'Surprise stat', title: 'Gig workers grew 11x (0.8M → 8.8M)', body: 'From 0.8M (2014) to 8.8M (2026). India\'s "jobless growth" is partly a story about a parallel platform economy — without benefits or social security.', cta: 'View gig data', tab: 'Interactive Data', chart: { type: 'line', series: ['gigWorkers'], labels: ['Gig workers (M)'], colors: ['#06b6d4'], unit: 'M' } },
+                { category: 'Compare countries', title: 'India\'s 2026 press rank: 157 — peers at 80, 159, 70, 38', body: 'Brazil 80, Turkey 159, Hungary 70, South Africa 38. India sits with the worst of these on press freedom, despite being the largest democracy.', cta: 'See peer table', tab: 'Deep Analysis', chart: { type: 'intl', metric: 'press', unit: 'World rank' } },
+                { category: 'Try this', title: 'The Correlation Explorer is the most under-used tool', body: 'Plot any two indicators against each other and the site computes Pearson r live. Especially powerful for testing claims like "growth lifts jobs."', cta: 'Open it', tab: 'Correlation Explorer', chart: { type: 'pair', series: ['gdpGrowth', 'formalEmployment'], labels: ['GDP %', 'Formal emp. %'], colors: ['#3b82f6', '#ef4444'], unit: '' } },
+                { category: 'Methodology', title: 'How SSI is constructed', body: 'SSI = Σ(severity × salience) / n. Components: suppression, delays, capture, methodology changes, access. Each weighted by salience of the event.', cta: 'Read the methodology', tab: 'Methodology', chart: { type: 'line', series: ['ssi'], labels: ['SSI'], colors: ['#ef4444'], unit: '' } },
+                { category: 'Methodology', title: 'How DQI is constructed', body: 'DQI = (V-Dem × Freedom House × RSF)^(1/3). Geometric mean penalises weakness in any one dimension. Currently 0.40, down from 0.71 in 2014.', cta: 'Read the methodology', tab: 'Methodology', chart: { type: 'line', series: ['dqi'], labels: ['DQI'], colors: ['#22c55e'], unit: '' } },
+                { category: 'Methodology', title: 'How FCI is constructed', body: '5 components: cess share, devolution gap, conditional transfers, state revenue ratio, dependency. FCI rose from 0.62 (2014) to 0.80 (2026).', cta: 'Read the methodology', tab: 'Methodology', chart: { type: 'line', series: ['fci'], labels: ['FCI'], colors: ['#f59e0b'], unit: '' } },
+                { category: 'Story behind the number', title: 'Youth unemployment ran 17-18% during COVID', body: 'Headline unemployment masks the cohort distribution. Youth (15-29) unemployment peaked at 17.8% in 2020 and remains above the all-age rate.', cta: 'See the data', tab: 'Interactive Data', chart: { type: 'pair', series: ['youthUnemployment', 'unemployment'], labels: ['Youth', 'All-age'], colors: ['#f97316', '#3b82f6'], unit: '%' } },
+                { category: 'Did you know?', title: 'India\'s 2020 GDP contraction was -7.3%', body: 'Steepest annual contraction since independence. Recovery was V-shaped on headline GDP, but formal employment never fully recovered.', cta: 'View GDP series', tab: 'Interactive Data', chart: { type: 'line', series: ['gdpGrowth'], labels: ['GDP growth %'], colors: ['#3b82f6'], unit: '%' } },
+                { category: 'Surprise stat', title: 'Rural income index is flat at 97 (vs 2014 = 100)', body: 'Adjusted for inflation, rural household income today is roughly equal to 2014 levels. Twelve years of stagnation through a growth boom.', cta: 'View the chart', tab: 'Interactive Data', chart: { type: 'line', series: ['ruralIncome'], labels: ['Rural income (2014=100)'], colors: ['#84cc16'], unit: '' } },
+                { category: 'Compare countries', title: 'India vs Hungary: parallel paths on V-Dem', body: 'Both started above 0.6, both ended below 0.45. But India\'s decline began later and was steeper. The Hungary 2010-2024 playbook is now a frequent comparison.', cta: 'See peer table', tab: 'Deep Analysis', chart: { type: 'intl', metric: 'vdem', unit: 'V-Dem score' } },
+                { category: 'Headline number', title: 'FCI hit 0.80 — fiscal centralisation at its highest', body: 'States retain less of the divisible pool than at any point since the 2014 transition. Conditional transfers and cesses both up sharply.', cta: 'See FCI chart', tab: 'Three Indices', chart: { type: 'line', series: ['fci'], labels: ['FCI'], colors: ['#f59e0b'], unit: '' } },
+                { category: 'Did you know?', title: 'The census is now 15 years overdue (and counting)', body: 'India\'s most recent decennial census was 2011. The 2021 census has been postponed indefinitely. Every demographic estimate since 2021 is an interpolation.', cta: 'Read about statistical gaps', tab: 'Three Indices', chart: { type: 'line', series: ['ssi'], labels: ['SSI'], colors: ['#ef4444'], unit: '' } },
+                { category: 'Try this', title: 'Visit Human Stories for the qualitative angle', body: 'Four short narratives behind the numbers — the gig worker, the small farmer, the woman seeking work, the journalist. Quoted, verified, dated.', cta: 'Read Human Stories', tab: 'Human Stories', chart: { type: 'line', series: ['gigWorkers'], labels: ['Gig workers (M)'], colors: ['#06b6d4'], unit: 'M' } },
+                { category: 'Open data', title: 'Replication code is shipped with the site', body: 'Both R (replication_code.R) and Python (replication_code.py) are in the repo. Reproduce every chart and index from data.json with one command.', cta: 'See What Next?', tab: 'What Next?', chart: { type: 'line', series: ['dqi'], labels: ['DQI'], colors: ['#22c55e'], unit: '' } },
+                { category: 'Compare countries', title: 'South Africa is the only peer that recovered on press freedom', body: 'Rank improved 42 (2014) → 38 (2026). India 140 → 157. Turkey 154 → 159. Brazil and Hungary improved slightly but remain volatile.', cta: 'See peer table', tab: 'Deep Analysis', chart: { type: 'intl', metric: 'press', unit: 'World rank' } },
+                { category: 'Surprise stat', title: 'Informal employment now exceeds 89%', body: 'Informal (no social security cover) share crossed 89% in 2025 — the highest since modern PLFS records began. The "rising middle class" narrative is hard to reconcile.', cta: 'See employment chart', tab: 'Key Findings', chart: { type: 'line', series: ['informalEmployment'], labels: ['Informal employment %'], colors: ['#f97316'], unit: '%' } },
+                { category: 'Next step', title: 'The site is open: contribute', body: 'CC BY 4.0 data, MIT-style spirit on the code. Issues, corrections, and additional indicators welcome — the CSV pipeline accepts new series with just a config entry.', cta: 'Read CONTRIBUTING', tab: 'What Next?', chart: { type: 'line', series: ['gdpGrowth'], labels: ['GDP growth %'], colors: ['#3b82f6'], unit: '%' } }
             ],
             get todaysFeature() {
                 // Deterministic daily rotation: same day -> same feature globally.
@@ -2168,6 +2192,7 @@ reduces overall score</pre>
                 const tab = this.activeTab;
                 if (tab === 'What is This?') {
                     this.initSparklines();
+                    this.renderTodaysHighlightChart();
                 } else if (tab === 'Key Findings') {
                     this.createGDPEmploymentChart();
                     this.createFormalEmploymentChart();
@@ -2227,6 +2252,80 @@ reduces overall score</pre>
                 mk('sparkGradUnemp', d.graduateUnemployment, '#f59e0b');
                 mk('sparkPress', d.pressFreedom, '#8b5cf6');
                 mk('sparkCensus', d.years.map(() => 1), '#3b82f6');
+            },
+
+            renderTodaysHighlightChart() {
+                if (typeof echarts === 'undefined') return;
+                const dom = document.getElementById('todaysHighlightChart');
+                if (!dom || dom.offsetWidth === 0) return;
+                const existing = echarts.getInstanceByDom(dom);
+                if (existing) existing.dispose();
+                const c = echarts.init(dom, this.darkMode ? 'dark' : null);
+                const f = this.todaysFeature.chart;
+                if (!f) { dom.style.display = 'none'; return; }
+                dom.style.display = '';
+                const d = this.economicData;
+                const yrs = d.years;
+                const baseGrid = { left: 40, right: 16, top: 24, bottom: 28 };
+                const baseAxis = { axisLine: { lineStyle: { color: this.darkMode ? '#475569' : '#cbd5e1' } }, axisLabel: { color: this.darkMode ? '#94a3b8' : '#64748b', fontSize: 10 }, splitLine: { lineStyle: { color: this.darkMode ? '#1e293b' : '#f1f5f9' } } };
+                let opt;
+                const norm = (key, arr) => (f.normalize && f.normalize[key]) ? arr.map(v => v * f.normalize[key]) : arr;
+                if (f.type === 'line' || f.type === 'bar-inv') {
+                    const arr = d[f.series[0]];
+                    opt = {
+                        backgroundColor: 'transparent', grid: baseGrid, tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: yrs, ...baseAxis },
+                        yAxis: { type: 'value', inverse: f.type === 'bar-inv', ...baseAxis },
+                        series: [{ name: f.labels[0], type: 'line', data: arr, smooth: true, symbol: 'circle', symbolSize: 4, lineStyle: { width: 2.5, color: f.colors[0] }, itemStyle: { color: f.colors[0] }, areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: f.colors[0] + '40' }, { offset: 1, color: 'transparent' }] } } }],
+                        animation: true
+                    };
+                } else if (f.type === 'pair' || f.type === 'dual' || f.type === 'multi') {
+                    const series = f.series.map((s, i) => ({
+                        name: f.labels[i], type: 'line', data: norm(s, d[s]), smooth: true, symbol: 'circle', symbolSize: 3,
+                        lineStyle: { width: 2, color: f.colors[i] }, itemStyle: { color: f.colors[i] }
+                    }));
+                    opt = {
+                        backgroundColor: 'transparent', grid: baseGrid, tooltip: { trigger: 'axis' },
+                        legend: { data: f.labels, textStyle: { fontSize: 10, color: this.darkMode ? '#cbd5e1' : '#475569' }, top: 0 },
+                        xAxis: { type: 'category', data: yrs, ...baseAxis },
+                        yAxis: { type: 'value', ...baseAxis },
+                        series
+                    };
+                } else if (f.type === 'csv-line') {
+                    const rows = (this.csvData && this.csvData[f.csv]) || null;
+                    if (!rows) {
+                        if (!this._csvLoadStarted) {
+                            this._csvLoadStarted = true;
+                            this.loadCSVData().then(() => { this.renderTodaysHighlightChart(); });
+                        }
+                        c.setOption({ backgroundColor: 'transparent', title: { text: 'Loading…', left: 'center', top: 'middle', textStyle: { fontSize: 12, color: this.darkMode ? '#94a3b8' : '#64748b', fontWeight: 'normal' } } });
+                        return;
+                    }
+                    opt = {
+                        backgroundColor: 'transparent', grid: baseGrid, tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: rows.map(r => r.year), ...baseAxis },
+                        yAxis: { type: 'value', ...baseAxis },
+                        series: [{ name: f.csv, type: 'line', data: rows.map(r => r.estimate), smooth: true, symbol: 'none', lineStyle: { width: 2.5, color: f.color }, areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: f.color + '40' }, { offset: 1, color: 'transparent' }] } } }],
+                        animation: true
+                    };
+                } else if (f.type === 'intl') {
+                    const i = this.internationalData;
+                    if (!i || !i.countries) return;
+                    const key2014 = f.metric === 'vdem' ? 'vdem2014' : 'press2014';
+                    const key2026 = f.metric === 'vdem' ? 'vdem2026' : 'press2026';
+                    opt = {
+                        backgroundColor: 'transparent', grid: baseGrid, tooltip: { trigger: 'axis' },
+                        legend: { data: ['2014', '2026'], textStyle: { fontSize: 10, color: this.darkMode ? '#cbd5e1' : '#475569' }, top: 0 },
+                        xAxis: { type: 'category', data: i.countries, ...baseAxis },
+                        yAxis: { type: 'value', inverse: f.metric === 'press', ...baseAxis },
+                        series: [
+                            { name: '2014', type: 'bar', data: i[key2014], itemStyle: { color: '#94a3b8' } },
+                            { name: '2026', type: 'bar', data: i[key2026], itemStyle: { color: '#3b82f6' } }
+                        ],
+                        animation: true
+                    };
+                }
+                if (opt) c.setOption(opt);
             },
 
             // === Chart Creation Methods ===
