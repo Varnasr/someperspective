@@ -34,6 +34,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   with Tailwind 3 as a dev dependency. Run `npx tailwindcss -i
   src/input.css -o styles.css --minify` to rebuild.
 
+## [2.7.0] - 2026-05-27
+
+### Added
+- **Today's Highlight** panel at the top of the "What is This?" tab.
+  A deterministic daily-rotating card surfaces one of 14 curated
+  insights pulled from the existing dataset and analyses.
+- Same day = same highlight for every visitor globally (rotation is
+  driven by `Math.floor(Date.now() / 86400000) % features.length`).
+- Each highlight has a category badge, headline, narrative, and a
+  "Jump to" CTA that navigates to the relevant tab (Deep Analysis,
+  Scenario Lab, Human Stories, etc.).
+- Categories cover: headline numbers, regime comparison, latest
+  releases, decoupling, methodology, hidden series, peer trajectories,
+  and policy next steps.
+
 ## [2.6.0] - 2026-05-27
 
 ### Added
