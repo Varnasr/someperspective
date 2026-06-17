@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.13.1">
+    <meta name="version" content="2.14.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -415,6 +415,9 @@
             box-shadow: 0 12px 32px rgba(0,0,0,.18); font-size: 13px; line-height: 1.5;
         }
         .gloss-tip .gloss-term { font-weight: 700; color: var(--accent); display: block; margin-bottom: 3px; }
+
+        /* Reweightable index sliders */
+        input[type=range].traj-weight { accent-color: var(--accent); cursor: pointer; height: 4px; }
         @media (max-width: 640px) {
             .card-inner .font-display,
             .card-inner .text-2xl { font-size: 1.2rem !important; line-height: 1.15; }
@@ -2039,6 +2042,23 @@ reduces overall score</pre>
                             </button>
                         </template>
                     </div>
+
+                    <div class="mt-5 pt-4" style="border-top:1px solid var(--line);">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-bold text-lg" style="color:var(--ink);">Weight the indicators</h3>
+                            <button @click="resetTrajWeights()" x-show="trajWeightsAreCustom" class="text-xs font-semibold px-3 py-1 rounded-lg border no-print" style="border-color:var(--line);color:var(--ink-soft);">Reset</button>
+                        </div>
+                        <p class="text-xs mb-3" style="color:var(--muted);">The index is your call. Drag a slider to weight what you think matters — the gauge and verdict update live. A weight of 0 drops an indicator entirely. <span x-show="trajWeightsAreCustom" style="color:var(--accent-2);font-weight:600;">Custom weighting active.</span></p>
+                        <div class="grid sm:grid-cols-2 gap-x-5 gap-y-2">
+                            <template x-for="ind in forecastSpec.indicators" :key="ind.key">
+                                <label class="flex items-center gap-3">
+                                    <span class="text-xs flex-1 min-w-0 truncate" style="color:var(--ink-soft);" x-text="ind.label"></span>
+                                    <input type="range" min="0" max="3" step="0.25" x-model.number="trajWeights[ind.key]" @input="updateTrajectory()" class="traj-weight" style="width:120px;flex:none;">
+                                    <span class="text-xs tabular-nums w-9 text-right" style="color:var(--muted);" x-text="(trajWeights[ind.key] ?? 1) + '×'"></span>
+                                </label>
+                            </template>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -2881,6 +2901,7 @@ reduces overall score</pre>
             trajScenario: 'baseline',          // 'reform' | 'baseline' | 'stress'
             trajIndicator: 'gdpGrowth',         // currently-focused indicator for the fan chart
             trajLevers: { statsIndependence: false, garmentsPush: false, fiscalRebalance: false, formalisation: false },
+            trajWeights: {},                    // user-adjustable weights per indicator (default 1)
             trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-500' },
             primer: PRIMER_FALLBACK,
             sourcesData: {},
@@ -3097,6 +3118,7 @@ reduces overall score</pre>
                     if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
                     if (d.meta) this.dataMeta = d.meta;
                     if (d.sources) this.sourcesData = d.sources;
+                    this.initTrajWeights();
                     // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
                     const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement'];
                     const merged = { ...PRIMER_FALLBACK };
@@ -3106,6 +3128,7 @@ reduces overall score</pre>
                     console.warn('data.json fetch failed; using bundled fallback values', e);
                     this.dataLoadError = true;
                 }
+                this.initTrajWeights();
 
                 // URL hash routing
                 const hash = window.location.hash.slice(1);
@@ -4352,12 +4375,31 @@ reduces overall score</pre>
                 return Math.max(0, Math.min(1, t)) * 100;
             },
             compositeIndex(valuesByKey) {
-                let sum = 0, n = 0;
+                let sum = 0, wsum = 0;
                 for (const k of Object.keys(this.TRAJ_SCORE_REF)) {
                     const s = this._score(k, valuesByKey[k]);
-                    if (s != null) { sum += s; n++; }
+                    if (s != null) {
+                        const w = (this.trajWeights[k] != null) ? Number(this.trajWeights[k]) : 1;
+                        sum += s * w; wsum += w;
+                    }
                 }
-                return n ? Math.round(sum / n) : 50;
+                return wsum ? Math.round(sum / wsum) : 50;
+            },
+            initTrajWeights() {
+                const w = {};
+                for (const s of (this.forecastSpec.indicators || [])) {
+                    w[s.key] = (this.trajWeights[s.key] != null) ? this.trajWeights[s.key] : 1;
+                }
+                this.trajWeights = w;
+            },
+            resetTrajWeights() {
+                const w = {};
+                for (const s of (this.forecastSpec.indicators || [])) w[s.key] = 1;
+                this.trajWeights = w;
+                this.updateTrajectory();
+            },
+            get trajWeightsAreCustom() {
+                return Object.values(this.trajWeights).some(v => Number(v) !== 1);
             },
             currentValues() {
                 const li = this.latestObservedIndex();
