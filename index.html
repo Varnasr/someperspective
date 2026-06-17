@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.22.0">
+    <meta name="version" content="2.22.1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1058,7 +1058,7 @@
                         Overlay policy events on the chart
                     </label>
                     <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
-                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. Every series now spans 2004→2026; UPA-era jobs data uses World Bank/ILO &amp; NSSO, and SSI/FCI/DQI are back-cast estimates (see Methodology). UPA-era GDP is sensitive to the 2015 base-year revision.</p>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. Every series now spans 2004→2026. Note: several series have <strong>definitional breaks</strong> across 2011–2014 (GDP &amp; CPI rebased to 2011-12, RSF method change in 2013, NSSO→PLFS for jobs) and are <strong>spliced, not rebased</strong> — compare levels across the divide with care. Only the WID income shares are harmonised end-to-end. SSI/FCI/DQI before 2014 are back-cast estimates. See Methodology.</p>
                 </div>
 
                 <!-- Export Controls -->
@@ -2979,7 +2979,7 @@ reduces overall score</pre>
             trajWeights: {},                    // user-adjustable weights per indicator (default 1)
             // ===== UPA-decade history (2004-2013) for era differentiation =====
             eraHistory: {
-                note: 'UPA decade (2004-2013): World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%), RSF (press freedom).',
+                note: 'UPA decade (2004-2013): World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%), RSF (press freedom), World Bank/ILO (unemployment), NSSO (employment). Spliced at 2014, NOT rebased — GDP/CPI rebased to 2011-12, RSF method changed 2013, NSSO→PLFS at 2014; only WID income shares are harmonised across the full period.',
                 years: [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013],
                 gdpGrowth: [7.9,9.3,9.3,7.7,3.1,7.9,8.5,5.2,5.5,6.4],
                 cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.3,10.9],
