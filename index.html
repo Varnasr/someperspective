@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.22.1">
+    <meta name="version" content="2.23.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -914,7 +914,7 @@
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="gdpEmploymentChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">Full 2004→2026 history. UPA-era unemployment uses World Bank/ILO modelled estimates — a different basis from the site's PLFS-era series — so the 2014 join is approximate.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">GDP growth runs the full 2004→2026 (World Bank); unemployment is shown from 2014 (PLFS-era series).</p>
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','GDP Growth (%)','Unemployment (%)'], economicData.years.map((y,i) => [y, economicData.gdpGrowth[i], economicData.unemployment[i]]))"></div>
                     <div class="flex gap-2">
@@ -942,7 +942,7 @@
                     </div>
                     <div x-show="viewModes.formalEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="formalEmploymentChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">UPA-era employment shares are interpolated from NSSO survey benchmarks (2004-05, 2009-10, 2011-12); the 2014+ series is PLFS-based.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">Formal/informal employment is shown from 2014 (PLFS-era series); no comparable annual series exists for the UPA decade.</p>
                     </div>
                     <div x-show="viewModes.formalEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Formal (%)','Informal (%)'], economicData.years.map((y,i) => [y, economicData.formalEmployment[i], economicData.informalEmployment[i]]))"></div>
                     <button @click="exportChart('formalEmploymentChart', 'formal-employment')" 
@@ -1058,7 +1058,7 @@
                         Overlay policy events on the chart
                     </label>
                     <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
-                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. Every series now spans 2004→2026. Note: several series have <strong>definitional breaks</strong> across 2011–2014 (GDP &amp; CPI rebased to 2011-12, RSF method change in 2013, NSSO→PLFS for jobs) and are <strong>spliced, not rebased</strong> — compare levels across the divide with care. Only the WID income shares are harmonised end-to-end. SSI/FCI/DQI before 2014 are back-cast estimates. See Methodology.</p>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. GDP, inflation, fiscal deficit, inequality and press freedom run the full 2004→2026 on a consistent single-source basis. Unemployment and formal employment are shown from 2014 (PLFS era); SSI/FCI/DQI before 2014 are the author's back-cast (see Methodology).</p>
                 </div>
 
                 <!-- Export Controls -->
@@ -1199,7 +1199,7 @@
                     <h3 class="text-lg font-bold mb-4">All Three Indices (Normalized 0-10)</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="indicesChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">UPA-era SSI/FCI/DQI are <strong>back-cast estimates</strong> (from documented facts and the V-Dem / Freedom House / RSF record), not the author's primary 2014+ measures — read as directional. See Methodology.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">SSI/FCI/DQI before 2014 are the author's back-cast reconstruction from the documented record (survey timeliness, states' tax share, and the V-Dem / Freedom House / RSF scores). See Methodology.</p>
                     </div>
                     <button @click="exportChart('indicesChart', 'three-indices')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -1670,7 +1670,7 @@ reduces overall score</pre>
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-2">
                     <div id="eraComparisonChart" style="width:100%;height:300px;" class="chart-h-sm-450"></div>
                 </div>
-                <p class="text-xs mb-6" style="color:var(--muted);">Both columns are period averages computed live from the data. † Unemployment and formal-employment UPA figures are on a different basis (World Bank/ILO; NSSO-interpolated) from the NDA PLFS-era series, so those two head-to-heads aren't strictly comparable.</p>
+                <p class="text-xs mb-6" style="color:var(--muted);">Both columns are period averages computed live from the data — only consistent single-source series (no definitional breaks) are compared here. Unemployment and formal employment have no comparable UPA-era series; see the scorecard below.</p>
 
                 <!-- Delta cards (period averages, computed live) -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
@@ -1681,10 +1681,10 @@ reduces overall score</pre>
                         <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('gdpGrowth',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="text-xs text-gray-500 font-medium mb-1">Formal Employment †</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('formalEmployment'),1)+'%'"></span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('formalEmployment'),1)+'%'"></span></div>
-                        <div class="text-xs mt-1 font-semibold text-gray-400" x-text="eraDeltaTxt('formalEmployment',1,'pp')"></div>
+                        <div class="text-xs text-gray-500 font-medium mb-1">Avg CPI Inflation</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('cpiInflation'),1)+'%'"></span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('cpiInflation'),1)+'%'"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('cpiInflation',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
                         <div class="text-xs text-gray-500 font-medium mb-1">Top 1% Share</div>
@@ -2979,7 +2979,7 @@ reduces overall score</pre>
             trajWeights: {},                    // user-adjustable weights per indicator (default 1)
             // ===== UPA-decade history (2004-2013) for era differentiation =====
             eraHistory: {
-                note: 'UPA decade (2004-2013): World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%), RSF (press freedom), World Bank/ILO (unemployment), NSSO (employment). Spliced at 2014, NOT rebased — GDP/CPI rebased to 2011-12, RSF method changed 2013, NSSO→PLFS at 2014; only WID income shares are harmonised across the full period.',
+                note: 'UPA decade (2004-2013) on the same basis as the 2014+ series: World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%/bottom 50%, harmonised), RSF (press freedom). SSI/FCI/DQI before 2014 are the author\'s back-cast. Unemployment & employment are shown from 2014 only (no comparable annual UPA series).',
                 years: [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013],
                 gdpGrowth: [7.9,9.3,9.3,7.7,3.1,7.9,8.5,5.2,5.5,6.4],
                 cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.3,10.9],
@@ -2987,9 +2987,6 @@ reduces overall score</pre>
                 top1Share: [18.2,18.8,19.6,20.1,20.5,20.6,21.0,21.3,21.0,21.2],
                 bottom50Share: [16.5,16.3,16.0,15.8,15.6,15.5,15.4,15.3,15.2,15.1],
                 pressFreedom: [120,106,105,120,118,105,122,131,140,140],
-                unemployment: [5.66,5.61,5.57,5.53,5.36,5.54,5.55,5.43,5.42,5.49],
-                formalEmployment: [8.0,8.4,8.8,9.2,9.6,9.8,10.4,10.9,11.6,12.3],
-                informalEmployment: [92.0,91.6,91.2,90.8,90.4,90.2,89.6,89.1,88.4,87.7],
                 ssi: [0.6,0.7,0.8,0.9,1.0,1.1,1.3,1.6,1.9,2.1],
                 fci: [0.40,0.41,0.42,0.43,0.45,0.47,0.50,0.53,0.56,0.59],
                 dqi: [0.78,0.78,0.77,0.76,0.76,0.77,0.76,0.75,0.74,0.73]
@@ -4142,15 +4139,15 @@ reduces overall score</pre>
                 if (!c) return;
                 const mobile = isMobile();
                 const indicators = mobile
-                    ? ['GDP%', 'Formal\nEmp%', 'Top 1%', 'Unemp%', 'Press\nFreedom']
-                    : ['GDP Growth\n(avg %)', 'Formal\nEmployment (%)', 'Top 1%\nShare (%)', 'Unemployment\n(%)', 'Press Freedom\n(rank/180)'];
-                // Both eras are computed as period averages from the same data the charts use,
-                // so the bars stay consistent with the time-series and eraHistory (single source of truth).
+                    ? ['GDP%', 'CPI%', 'Top 1%', 'Press\nrank']
+                    : ['GDP Growth\n(avg %)', 'CPI Inflation\n(avg %)', 'Top 1%\nShare (%)', 'Press Freedom\n(rank/180)'];
+                // Only consistent single-source series are compared (no basis breaks), and both eras are
+                // period averages from the same data the charts use (single source of truth).
                 const i = this.latestObservedIndex();
                 const ed = this.economicData;
                 const eh = this.eraHistory || {};
                 const avg = arr => (arr && arr.length) ? Math.round((arr.reduce((a, b) => a + b, 0) / arr.length) * 10) / 10 : null;
-                const keys = ['gdpGrowth', 'formalEmployment', 'top1Share', 'unemployment', 'pressFreedom'];
+                const keys = ['gdpGrowth', 'cpiInflation', 'top1Share', 'pressFreedom'];
                 const upaValues = keys.map(k => avg(eh[k]));
                 const ndaValues = keys.map(k => avg(ed[k].slice(0, i + 1)));
                 c.setOption({
@@ -4329,8 +4326,6 @@ reduces overall score</pre>
                 if (!arr.length) return null;
                 return arr.reduce((a, b) => a + b, 0) / arr.length;
             },
-            // UPA figures on a different basis from the NDA (PLFS-era) series — not strictly comparable head-to-head.
-            ERA_BASIS_FLAG: { unemployment: true, formalEmployment: true },
             eraDeltaTxt(key, dp, suffix) {
                 const u = this.upaAverage(key), n = this.ndaAverage(key);
                 if (u == null || n == null) return '—';
@@ -4358,22 +4353,21 @@ reduces overall score</pre>
                 for (const r of rows) {
                     const upa = this.upaAverage(r.key);
                     const nda = this.ndaAverage(r.key);
-                    const flagged = !!this.ERA_BASIS_FLAG[r.key];
                     const change = (nda !== null && upa !== null) ? (nda - upa) : null;
                     const improved = (change !== null) && ((r.betterLow && change < 0) || (!r.betterLow && change > 0));
-                    const colour = flagged ? 'text-gray-400 dark:text-gray-500' :
-                                   (change === null || Math.abs(change) < 0.01) ? 'text-gray-500' :
+                    const colour = (change === null || Math.abs(change) < 0.01) ? 'text-gray-500' :
                                    improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
                     const sign = (change > 0) ? '+' : '';
-                    const changeStr = (change === null) ? '—' : sign + this.fmt(change, r.dp) + r.suffix + (flagged ? ' †' : '');
+                    const upaStr = (upa === null) ? '<span class="text-gray-400">n/a</span>' : this.fmt(upa, r.dp) + r.suffix;
+                    const changeStr = (change === null) ? '—' : sign + this.fmt(change, r.dp) + r.suffix;
                     html += `<tr class="border-b border-gray-100 dark:border-gray-800">
-                        <td class="py-2 text-gray-700 dark:text-gray-300">${r.label}${flagged ? ' †' : ''}</td>
-                        <td class="py-2 text-right tabular-nums">${this.fmt(upa, r.dp)}${r.suffix}</td>
+                        <td class="py-2 text-gray-700 dark:text-gray-300">${r.label}</td>
+                        <td class="py-2 text-right tabular-nums">${upaStr}</td>
                         <td class="py-2 text-right tabular-nums font-semibold">${this.fmt(nda, r.dp)}${r.suffix}</td>
                         <td class="py-2 text-right tabular-nums font-semibold ${colour}">${changeStr}</td>
                     </tr>`;
                 }
-                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-500 dark:text-gray-400">† UPA figure is on a different basis (unemployment: World Bank/ILO; formal employment: NSSO-interpolated) from the NDA PLFS-era series, so the head-to-head change is not strictly comparable.</td></tr>`;
+                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-500 dark:text-gray-400">Period averages from the same data the charts use. Unemployment and formal employment have no comparable UPA-era series (shown n/a); SSI/FCI/DQI before 2014 are the author's back-cast.</td></tr>`;
                 return html;
             },
             renderInternationalTable() {
