@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.14.0">
+    <meta name="version" content="2.15.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1046,9 +1046,13 @@
                 
                 <!-- Interactive Chart -->
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
+                    <label class="flex items-center gap-2 mb-2 text-xs font-medium cursor-pointer select-none" style="color:var(--ink-soft);">
+                        <input type="checkbox" x-model="showEvents" @change="updateInteractiveChart()" style="accent-color:var(--accent);">
+                        Overlay policy events on the chart
+                    </label>
                     <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
                 </div>
-                
+
                 <!-- Export Controls -->
                 <div class="flex gap-2">
                     <button @click="exportChart('interactiveChart', 'interactive-data')" 
@@ -1060,9 +1064,28 @@
                         <img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Export as CSV
                     </button>
                 </div>
+
+                <!-- Annotated policy-event timeline -->
+                <div class="mt-6 pt-5" style="border-top:1px solid var(--line);">
+                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Policy timeline, 2016–2024</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);">The moments that bend the lines above. Toggle the overlay to line them up against any indicator.</p>
+                    <div class="flex gap-3 overflow-x-auto pb-2">
+                        <template x-for="e in policyEvents" :key="e.year">
+                            <div class="flex-none" style="width:200px;">
+                                <div class="card-inner h-full" style="border-top:3px solid var(--accent);">
+                                    <div class="flex items-baseline gap-2 mb-1">
+                                        <span class="font-bold font-display text-lg" style="color:var(--accent);" x-text="e.year"></span>
+                                        <span class="text-sm font-semibold" style="color:var(--ink);" x-text="e.label"></span>
+                                    </div>
+                                    <p class="text-xs leading-relaxed" style="color:var(--ink-soft);" x-text="e.desc"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </div>
         </div>
-        
+
         <!-- Correlation Explorer Tab -->
         <div x-show="activeTab === 'Correlation Explorer'" x-transition class="space-y-6">
             <div class="card p-5 sm:p-8">
@@ -2902,6 +2925,16 @@ reduces overall score</pre>
             trajIndicator: 'gdpGrowth',         // currently-focused indicator for the fan chart
             trajLevers: { statsIndependence: false, garmentsPush: false, fiscalRebalance: false, formalisation: false },
             trajWeights: {},                    // user-adjustable weights per indicator (default 1)
+            // ===== POLICY EVENT TIMELINE =====
+            showEvents: true,
+            policyEvents: [
+                { year: 2016, short: 'Demon.', label: 'Demonetisation', desc: '86% of cash voided overnight; informal economy and small business hit hardest.' },
+                { year: 2017, short: 'GST', label: 'GST rollout', desc: 'A single nationwide indirect tax — and a structural shift of revenue power toward the centre.' },
+                { year: 2019, short: 'Tax cut', label: 'Corporate tax cut', desc: '₹1.45 lakh crore corporate tax cut; the effective rate fell, widening the inequality gap.' },
+                { year: 2020, short: 'COVID', label: 'COVID lockdown', desc: 'Steepest GDP contraction since independence (−7.3%); formal jobs never regained trend.' },
+                { year: 2021, short: 'Census', label: 'Census postponed', desc: 'The decennial Census was indefinitely postponed; every population figure since is an interpolation.' },
+                { year: 2024, short: 'Election', label: '2024 general election', desc: 'NDA returned to power with a reduced majority, now reliant on coalition partners.' }
+            ],
             trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-500' },
             primer: PRIMER_FALLBACK,
             sourcesData: {},
@@ -3632,6 +3665,14 @@ reduces overall score</pre>
                 const legend = [];
                 const picks = [this.chartOptions.primary, this.chartOptions.comparison1, this.chartOptions.comparison2].filter(Boolean);
 
+                const numericYears = typeof (d.years || [])[0] === 'number';
+                const eventMarkLine = (this.showEvents && this.policyEvents.length) ? {
+                    symbol: 'none', silent: true,
+                    label: { show: true, formatter: p => p.name, color: this.darkMode ? '#94a3b8' : '#64748b', fontSize: 9, rotate: 90, position: 'insideEndTop' },
+                    lineStyle: { type: 'dashed', color: this.darkMode ? '#475569' : '#cbd5e1', width: 1 },
+                    data: this.policyEvents.map(e => ({ name: e.short, xAxis: numericYears ? e.year : String(e.year) }))
+                } : null;
+
                 picks.forEach((key, i) => {
                     const m = dataMap[key];
                     if (!m) return;
@@ -3643,11 +3684,13 @@ reduces overall score</pre>
                         splitLine: { show: i === 0 },
                         nameTextStyle: { color: m.color }
                     });
-                    series.push({
+                    const s = {
                         name: m.label, type: 'line', data: m.data, smooth: true,
                         yAxisIndex: i, itemStyle: { color: m.color },
                         lineStyle: i > 0 ? { type: 'dashed' } : {}
-                    });
+                    };
+                    if (i === 0 && eventMarkLine) s.markLine = eventMarkLine;
+                    series.push(s);
                 });
 
                 c.setOption({
