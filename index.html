@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.20.1">
+    <meta name="version" content="2.21.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -914,7 +914,7 @@
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="gdpEmploymentChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">GDP growth carries the full UPA→NDA history; the unemployment data we have starts in 2014, so its UPA band is intentionally blank.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">Full 2004→2026 history. UPA-era unemployment uses World Bank/ILO modelled estimates — a different basis from the site's PLFS-era series — so the 2014 join is approximate.</p>
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','GDP Growth (%)','Unemployment (%)'], economicData.years.map((y,i) => [y, economicData.gdpGrowth[i], economicData.unemployment[i]]))"></div>
                     <div class="flex gap-2">
@@ -942,7 +942,7 @@
                     </div>
                     <div x-show="viewModes.formalEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="formalEmploymentChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">A comparable formal/informal employment series only begins in 2014 (PLFS), so the UPA band is intentionally blank.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">UPA-era employment shares are interpolated from NSSO survey benchmarks (2004-05, 2009-10, 2011-12); the 2014+ series is PLFS-based.</p>
                     </div>
                     <div x-show="viewModes.formalEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Formal (%)','Informal (%)'], economicData.years.map((y,i) => [y, economicData.formalEmployment[i], economicData.informalEmployment[i]]))"></div>
                     <button @click="exportChart('formalEmploymentChart', 'formal-employment')" 
@@ -1058,7 +1058,7 @@
                         Overlay policy events on the chart
                     </label>
                     <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
-                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. GDP, inflation, fiscal deficit, top-1% share and press freedom carry the full 2004→2026 history; other series begin in 2014. UPA-era GDP is sensitive to the 2015 base-year revision.</p>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. Every series now spans 2004→2026; UPA-era jobs data uses World Bank/ILO &amp; NSSO, and SSI/FCI/DQI are back-cast estimates (see Methodology). UPA-era GDP is sensitive to the 2015 base-year revision.</p>
                 </div>
 
                 <!-- Export Controls -->
@@ -1199,7 +1199,7 @@
                     <h3 class="text-lg font-bold mb-4">All Three Indices (Normalized 0-10)</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="indicesChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">SSI, FCI and DQI are constructed for the 2014→ period; the data these indices have starts in 2014, so the UPA band before then is intentionally blank.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">UPA-era SSI/FCI/DQI are <strong>back-cast estimates</strong> (from documented facts and the V-Dem / Freedom House / RSF record), not the author's primary 2014+ measures — read as directional. See Methodology.</p>
                     </div>
                     <button @click="exportChart('indicesChart', 'three-indices')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -2985,7 +2985,13 @@ reduces overall score</pre>
                 fiscalDeficit: [4.0,4.0,3.3,2.5,6.0,6.5,4.8,5.9,4.9,4.5],
                 top1Share: [18.2,18.8,19.6,20.1,20.5,20.6,21.0,21.3,21.0,21.2],
                 bottom50Share: [16.5,16.3,16.0,15.8,15.6,15.5,15.4,15.3,15.2,15.1],
-                pressFreedom: [120,106,105,120,118,105,122,131,140,140]
+                pressFreedom: [120,106,105,120,118,105,122,131,140,140],
+                unemployment: [5.66,5.61,5.57,5.53,5.36,5.54,5.55,5.43,5.42,5.49],
+                formalEmployment: [8.0,8.4,8.8,9.2,9.6,9.8,10.4,10.9,11.6,12.3],
+                informalEmployment: [92.0,91.6,91.2,90.8,90.4,90.2,89.6,89.1,88.4,87.7],
+                ssi: [0.6,0.7,0.8,0.9,1.0,1.1,1.3,1.6,1.9,2.1],
+                fci: [0.40,0.41,0.42,0.43,0.45,0.47,0.50,0.53,0.56,0.59],
+                dqi: [0.78,0.78,0.77,0.76,0.76,0.77,0.76,0.75,0.74,0.73]
             },
             // ===== STATE EXPLORER =====
             statesMetric: 'perCapita',
@@ -3710,13 +3716,14 @@ reduces overall score</pre>
                 const nda = (this.economicData.years || []).filter(y => y <= 2026);
                 return this.eraOn() ? eh.years.concat(nda) : nda;
             },
-            eraStitch(key, econArr) {
+            eraStitch(key, econArr, scale) {
                 const eh = this.eraHistory || {};
                 if (!this.eraOn()) return econArr;
                 const ey = eh.years;
+                const s = scale || 1;
                 const nda = (this.economicData.years || []).filter(y => y <= 2026)
                     .map(y => { const i = this.economicData.years.indexOf(y); return i >= 0 ? (econArr[i] ?? null) : null; });
-                const upa = eh[key] ? eh[key].slice(0, ey.length) : ey.map(() => null);
+                const upa = eh[key] ? eh[key].slice(0, ey.length).map(v => v == null ? null : +(v * s).toFixed(3)) : ey.map(() => null);
                 return upa.concat(nda);
             },
             eraMarkArea() {
@@ -3763,8 +3770,9 @@ reduces overall score</pre>
                 const ndaYears = (d.years || []).filter(y => y <= 2026);
                 const fullYears = ehYears.concat(ndaYears);
                 const hasEra = ehYears.length > 0;
-                const seriesData = (key, econArr) => {
-                    const upa = eh[key] ? eh[key].slice(0, ehYears.length) : ehYears.map(() => null);
+                const seriesData = (key, econArr, scale) => {
+                    const s = scale || 1;
+                    const upa = eh[key] ? eh[key].slice(0, ehYears.length).map(v => v == null ? null : +(v * s).toFixed(3)) : ehYears.map(() => null);
                     const nda = ndaYears.map(y => { const idx = d.years.indexOf(y); return idx >= 0 ? (econArr[idx] ?? null) : null; });
                     return upa.concat(nda);
                 };
@@ -3799,7 +3807,7 @@ reduces overall score</pre>
                         nameTextStyle: { color: m.color }
                     });
                     const s = {
-                        name: m.label, type: 'line', data: seriesData(key, m.data), smooth: true, connectNulls: false,
+                        name: m.label, type: 'line', data: seriesData(key, m.data, (key === 'fci' || key === 'dqi') ? 10 : 1), smooth: true, connectNulls: false,
                         yAxisIndex: i, itemStyle: { color: m.color },
                         lineStyle: i > 0 ? { type: 'dashed' } : {}
                     };
@@ -3832,8 +3840,8 @@ reduces overall score</pre>
                     dataZoom: dataZoom(),
                     series: [
                         { name: 'SSI', type: 'line', data: this.eraStitch('ssi', d.ssi), smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { opacity: 0.1 }, markArea: this.eraMarkArea(), markLine: this.eraDividerLine() },
-                        { name: 'FCI ×10', type: 'line', data: this.eraStitch('fci', d.fci.map(v => v*10)), smooth: true, itemStyle: { color: '#f59e0b' }, areaStyle: { opacity: 0.1 } },
-                        { name: 'DQI ×10', type: 'line', data: this.eraStitch('dqi', d.dqi.map(v => v*10)), smooth: true, itemStyle: { color: '#8b5cf6' }, areaStyle: { opacity: 0.1 } }
+                        { name: 'FCI ×10', type: 'line', data: this.eraStitch('fci', d.fci.map(v => v*10), 10), smooth: true, itemStyle: { color: '#f59e0b' }, areaStyle: { opacity: 0.1 } },
+                        { name: 'DQI ×10', type: 'line', data: this.eraStitch('dqi', d.dqi.map(v => v*10), 10), smooth: true, itemStyle: { color: '#8b5cf6' }, areaStyle: { opacity: 0.1 } }
                     ]
                 });
             },
