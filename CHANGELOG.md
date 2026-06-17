@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > rolled back (the live site continued on the single-file `index.html`, and a
 > service-worker cleanup ships in-page). The current shipping line is `2.x`.
 
+## [2.10.0] - 2026-06-17
+
+### Added
+- **Download every chart with citation.** Each chart now carries a ⤓ button
+  (desktop and mobile) that exports a PNG with the chart title, its data
+  source, and the full citation (author, URL, CC BY 4.0, retrieval date)
+  baked into a footer.
+- **Cite & download panel** on the Methodology tab: one-click CSV of all
+  indicators (with a citation header), plus `data.json`, the R/Python
+  replication code, and a copy-to-clipboard BibTeX citation.
+
+### Fixed
+- Mobile polish (v2.9.2–2.9.3): horizontal-overflow guard, stat numbers no
+  longer spilling out of tight grids, pump-price bar labels, the trajectory
+  gauge value moved below the dial, shorter verdict words, and the
+  "Index (0-100)" axis label no longer colliding with the chart legend.
+
 ## [2.9.1] - 2026-06-17
 
 ### Changed

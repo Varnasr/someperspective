@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.9.3">
+    <meta name="version" content="2.10.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -331,6 +331,19 @@
            overflow-x:clip (not hidden) keeps position:sticky working. */
         html { overflow-x: clip; }
         .card-inner { min-width: 0; overflow-wrap: break-word; }
+
+        /* Per-chart "download with citation" button */
+        .chart-dl-btn {
+            position: absolute; top: 6px; right: 6px; z-index: 5;
+            width: 28px; height: 28px; line-height: 1;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; border-radius: 8px; cursor: pointer;
+            color: var(--muted);
+            background: color-mix(in srgb, var(--surface) 80%, transparent);
+            border: 1px solid var(--line);
+            transition: color .15s, background .15s, transform .15s;
+        }
+        .chart-dl-btn:hover { color: #fff; background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
         @media (max-width: 640px) {
             .card-inner .font-display,
             .card-inner .text-2xl { font-size: 1.2rem !important; line-height: 1.15; }
@@ -1260,9 +1273,27 @@
         
         <!-- Methodology Tab -->
         <div x-show="activeTab === 'Methodology'" x-transition class="space-y-6">
+            <!-- Citation & downloads -->
+            <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                <div class="kicker mb-1">Open data · CC BY 4.0</div>
+                <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Cite &amp; download</h3>
+                <p class="text-sm mb-4" style="color:var(--ink-soft);">Every chart on this site has a <span style="color:var(--accent);">⤓</span> button that exports it as a PNG with the source and citation baked in. The full dataset and code are open.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button @click="downloadAllDataCSV()" class="btn-accent px-4 py-2 text-sm">⤓ All indicators (CSV)</button>
+                    <a href="data.json" download class="px-4 py-2 text-sm rounded-xl border font-semibold" style="border-color:var(--line);color:var(--ink-soft);">⤓ data.json</a>
+                    <a href="replication_code.py" download class="px-4 py-2 text-sm rounded-xl border font-semibold" style="border-color:var(--line);color:var(--ink-soft);">⤓ Python code</a>
+                    <a href="replication_code.R" download class="px-4 py-2 text-sm rounded-xl border font-semibold" style="border-color:var(--line);color:var(--ink-soft);">⤓ R code</a>
+                    <button @click="copyCitation()" class="px-4 py-2 text-sm rounded-xl border font-semibold" style="border-color:var(--line);color:var(--ink-soft);">Copy citation (BibTeX)</button>
+                </div>
+                <div class="card-inner">
+                    <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--muted);">Cite as</div>
+                    <p class="text-sm" style="color:var(--ink-soft);">Raman, V.S. (2026). <em>Some Perspective: India’s Economic Transformation.</em> someperspective.info. Licensed CC BY 4.0. Per-series sources are listed in <code class="text-xs">data.json</code> and below.</p>
+                </div>
+            </div>
+
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Methodology</h2>
-                
+
                 <div class="prose prose-sm dark:prose-invert max-w-none">
                     <h3 class="text-lg font-bold mb-4">Data Sources & Triangulation</h3>
                     
@@ -3019,7 +3050,135 @@ reduces overall score</pre>
                 };
                 this.charts[id] = chart;
                 if (group) echarts.connect(group);
+                this.addCiteButton(id, dom);
                 return chart;
+            },
+
+            // Per-chart source labels for cited downloads (fallback is generic).
+            chartSources: {
+                gdpEmploymentChart: 'MoSPI/NSO national accounts; PLFS 2024-25',
+                formalEmploymentChart: 'PLFS (workers with social-security cover)',
+                inequalityChart: 'World Inequality Database (WID.world); WIR 2026',
+                interactiveChart: 'Some Perspective dataset (data.json)',
+                scatterChart: 'Some Perspective dataset (data.json)',
+                indicesChart: 'Constructed SSI/FCI/DQI — see Methodology',
+                gigEconomyChart: 'NITI Aayog gig & platform economy estimates',
+                farmerIncomeChart: 'NABARD All-India Rural Financial Inclusion Survey',
+                dataCoverageChart: 'Some Perspective — Methodology',
+                indexRadarChart: 'Constructed SSI/FCI/DQI — see Methodology',
+                internationalChart: 'V-Dem v15 (2026); RSF 2026',
+                democraticDeclineChart: 'V-Dem; Freedom House; RSF',
+                stateDisparitiesChart: 'Finance Commission; AIPC',
+                eraComparisonChart: 'MoSPI/NSO national accounts',
+                eraChart: 'MoSPI/NSO national accounts',
+                scenarioChart: 'Illustrative scenario model — see Scenario Lab',
+                deepDecouplingChart: 'MoSPI/NSO; PLFS',
+                csvCommunalChart: 'MHA-reported + independently verified incidents',
+                csvIncarcerationChart: 'Documented opposition-incarceration cases',
+                csvEducationChart: 'Documented exam-disruption events',
+                csvSanitationChart: 'ODF verified coverage (logistic estimate)',
+                csvCessChart: 'Union Budget; PRS (cess share of gross tax)',
+                trajGaugeChart: 'Some Perspective forecast model (data.json → forecast)',
+                trajFanChart: 'Some Perspective forecast model (data.json → forecast)',
+                trajScenarioChart: 'Some Perspective forecast model (data.json → forecast)',
+                primerChinaChart: 'World Bank national accounts; IMF WEO',
+                primerStructureChart: 'MoSPI/NSO GVA (FY25); PLFS employment shares',
+                primerWagesChart: 'NABARD rural income, indexed (2014=100)',
+                primerInflationChart: 'MoSPI CPI (Combined), 2012 base'
+            },
+            chartTitleFallback: {
+                gdpEmploymentChart: 'GDP growth vs unemployment',
+                formalEmploymentChart: 'Formal vs informal employment',
+                inequalityChart: 'Top 1% vs bottom 50% income share',
+                interactiveChart: 'India economic indicators',
+                scatterChart: 'Indicator correlation',
+                indicesChart: 'Three indices (SSI, FCI, DQI)',
+                trajGaugeChart: 'India Trajectory Index 2030'
+            },
+
+            // Inject a small "download (cited)" button onto a chart host.
+            addCiteButton(id, dom) {
+                if (!dom || dom.querySelector('[data-cite-btn]')) return;
+                try { if (getComputedStyle(dom).position === 'static') dom.style.position = 'relative'; } catch(e) {}
+                const btn = document.createElement('button');
+                btn.setAttribute('data-cite-btn', '');
+                btn.type = 'button';
+                btn.className = 'chart-dl-btn no-print';
+                btn.title = 'Download this chart (PNG, with citation)';
+                btn.setAttribute('aria-label', 'Download this chart with citation');
+                btn.textContent = '⤓';
+                btn.addEventListener('click', (e) => { e.stopPropagation(); this.downloadChartCited(id); });
+                dom.appendChild(btn);
+            },
+
+            citationText() {
+                return 'Raman, V.S. (2026). Some Perspective: India’s Economic Transformation. someperspective.info · CC BY 4.0 · retrieved ' + new Date().toISOString().slice(0, 10);
+            },
+
+            // Export a chart as PNG with a baked-in citation + source footer.
+            downloadChartCited(id) {
+                const chart = this.charts[id];
+                if (!chart) return;
+                let title = (this.chartTitleFallback && this.chartTitleFallback[id]) || '';
+                try { const o = chart.getOption(); if (o.title && o.title[0] && o.title[0].text) title = o.title[0].text; } catch(e) {}
+                const source = (this.chartSources && this.chartSources[id]) || 'Some Perspective dataset (data.json)';
+                const bg = this.darkMode ? '#15171f' : '#ffffff';
+                const ink = this.darkMode ? '#e2e8f0' : '#1f2937';
+                const muted = this.darkMode ? '#94a3b8' : '#475569';
+                const url = chart.getDataURL({ type: 'png', pixelRatio: 2, backgroundColor: bg });
+                const img = new Image();
+                img.onload = () => {
+                    const pad = 150;
+                    const cv = document.createElement('canvas');
+                    cv.width = img.width;
+                    cv.height = img.height + pad;
+                    const ctx = cv.getContext('2d');
+                    ctx.fillStyle = bg; ctx.fillRect(0, 0, cv.width, cv.height);
+                    ctx.drawImage(img, 0, 0);
+                    let y = img.height + 38;
+                    ctx.textBaseline = 'alphabetic';
+                    if (title) { ctx.fillStyle = ink; ctx.font = '700 26px Georgia, serif'; ctx.fillText(title, 28, y); y += 34; }
+                    ctx.fillStyle = muted; ctx.font = '400 21px Inter, system-ui, sans-serif';
+                    ctx.fillText('Source: ' + source, 28, y); y += 30;
+                    ctx.fillStyle = '#b4530e'; ctx.font = '600 20px Inter, system-ui, sans-serif';
+                    ctx.fillText(this.citationText(), 28, y);
+                    const a = document.createElement('a');
+                    a.href = cv.toDataURL('image/png');
+                    a.download = id.replace(/Chart$/, '') + '_someperspective.png';
+                    a.click();
+                    this.showShareToast('Chart downloaded with citation');
+                };
+                img.onerror = () => { const a = document.createElement('a'); a.href = url; a.download = id + '.png'; a.click(); };
+                img.src = url;
+            },
+
+            // Download the full indicator dataset as CSV with a citation header.
+            downloadAllDataCSV() {
+                const d = this.economicData;
+                if (!d || !d.years) return;
+                const keys = Object.keys(d).filter(k => k !== 'years' && k !== 'yearLabels' && Array.isArray(d[k]));
+                const lines = [];
+                lines.push('# Some Perspective — India economic indicators');
+                lines.push('# Citation: ' + this.citationText());
+                lines.push('# License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)');
+                lines.push('# Source detail per series: someperspective.info/data.json (sources block) and the Methodology tab');
+                lines.push('# Values from 2027 onward are projections, not observed data');
+                lines.push(['year', ...keys].join(','));
+                d.years.forEach((yr, i) => {
+                    lines.push([yr, ...keys.map(k => (d[k][i] !== undefined ? d[k][i] : ''))].join(','));
+                });
+                const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = 'someperspective_india_indicators.csv'; a.click();
+                URL.revokeObjectURL(url);
+            },
+
+            copyCitation() {
+                const bib = '@techreport{someperspective2026,\n  title={Some Perspective: India’s Economic Transformation},\n  author={Raman, Varna Sri},\n  year={2026},\n  institution={Independent Research},\n  url={https://someperspective.info}\n}';
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(bib).then(() => this.showShareToast('Citation (BibTeX) copied'));
+                }
             },
 
             initializeCharts() {
