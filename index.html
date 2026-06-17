@@ -420,8 +420,8 @@
         </div>
     </noscript>
     
-    <!-- Header -->
-    <header class="backdrop-blur-lg sticky top-0 z-50 border-b" style="background:color-mix(in srgb, var(--surface) 84%, transparent); border-color:var(--line);">
+    <!-- Header (not sticky: on mobile its full height would hide the nav below it) -->
+    <header class="relative z-30 border-b" style="background:color-mix(in srgb, var(--surface) 84%, transparent); border-color:var(--line);">
         <div class="brand-strip"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
             <div class="flex justify-between items-center">
@@ -523,8 +523,8 @@
     
     <!-- Navigation: 4 grouped dropdowns + 1 featured standalone tab -->
     <!-- IMPORTANT: no overflow-x-auto on the inner container — it would clip the dropdowns vertically. -->
-    <nav class="backdrop-blur-lg sticky top-[80px] sm:top-[92px] z-40 border-b"
-         style="background:color-mix(in srgb, var(--surface) 80%, transparent); border-color:var(--line);"
+    <nav class="backdrop-blur-lg sticky top-0 z-40 border-b"
+         style="background:color-mix(in srgb, var(--surface) 92%, transparent); border-color:var(--line);"
          @click.outside="openGroup = null">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap gap-1 py-0 items-stretch">
