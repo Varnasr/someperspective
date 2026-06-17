@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > rolled back (the live site continued on the single-file `index.html`, and a
 > service-worker cleanup ships in-page). The current shipping line is `2.x`.
 
+## [2.9.1] - 2026-06-17
+
+### Changed
+- **Reading the Economy rebuilt as the deck's full 11 sections (A–K)** with
+  section navigation, instead of one flat tab. Adds the substance that was
+  missing: A — what an index is, GDP's three doors, the MCA21 dispute;
+  C — jobs-per-rupee, the stagnant-wages chart, the "four unemployment
+  numbers"; E — the CPI basket and the monsoon transmission chain; F — the
+  corporate/individual tax reversal, the abolished wealth tax, how GST works;
+  G — BE/RE/Actuals shrinkage, unmet health/education targets, KMUT cash
+  transfers; H — deficit financing, delimitation's seat shifts; I — the petrol
+  pump-price build-up and the May 2026 "seven asks"; J — the three contested
+  poverty lines, bodies-and-classrooms outcomes; K — the back-series, missing
+  surveys, late census, and a "how to read any official number" checklist.
+- New structured datasets in `data.json` backing the above; two new charts
+  (rural-income index, CPI-vs-RBI-band).
+
 ## [2.9.0] - 2026-06-17
 
 ### Added

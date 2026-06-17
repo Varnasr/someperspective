@@ -194,5 +194,130 @@
     "govJobApplicationsCrore": 22,
     "govJobsGivenLakh": 7.22,
     "govJobSuccessRate": "1 in 305"
+  },
+  "indexExample": {
+    "note": "A worked example: an index is one number summarising many prices, via a chosen basket and weights. Change the basket or the base year and the headline moves (MoSPI methodology).",
+    "items": [
+      { "item": "Onions",      "weight": 15, "then": 30,  "now": 50 },
+      { "item": "Petrol",      "weight": 12, "then": 90,  "now": 94 },
+      { "item": "School fees",  "weight": 8,  "then": 800, "now": 1200 }
+    ]
+  },
+  "gdpRevision": {
+    "note": "The 2015 GDP revision is still disputed (NSO/MoSPI; A. Subramanian, Harvard CID 2019; EAC-PM rebuttal June 2019).",
+    "changes": [
+      "Base year shifted from 2004-05 to 2011-12.",
+      "Manufacturing measured via the MCA21 corporate-filings database, not the production survey.",
+      "Output valued at market prices instead of factor cost."
+    ],
+    "officialGrowth": 7.0,
+    "subramanianGrowth": 4.5,
+    "overstatePoints": 2.5
+  },
+  "taxReversal": {
+    "note": "The tax reversal (Union Budget documents; Finance Ministry; PRS).",
+    "corpRateBefore": 30, "corpRateAfter": 22, "yearCut": 2019, "revenueLostLakhCr": 1.45,
+    "wealthTaxAbolished": 2015, "wealthTaxRevenueCr": 1000,
+    "pikettyRate": 2, "pikettyThresholdCr": 50,
+    "taxToGDP": 11.2, "oecdAvg": 34
+  },
+  "budgetArithmetic": {
+    "note": "Welfare budget shrinks twice: BE → RE → Actuals (PRS; Union Budget documents).",
+    "mgnregaBE": 100, "mgnregaActualsLo": 78, "mgnregaActualsHi": 82,
+    "healthTarget": 2.5, "educationTarget": 6
+  },
+  "kmut": {
+    "note": "Tamil Nadu's KMUT cash transfer (TN Dept of Civil Supplies; KMUT data 2026).",
+    "perMonth": 1000, "womenCoveredCrore": 1.30, "annualOutlayCr": 13000, "priorOutlayCr": 7000
+  },
+  "deficitFinancing": {
+    "note": "How the deficit is financed (Union Budget 2026-27; RBI Annual Report 2025-26; PRS).",
+    "deficitPctGDP": 4.3, "marketBorrowingLakhCr": 17.2, "rbiDividendLakhCr": 2.87, "interestPer100": 20
+  },
+  "delimitation": {
+    "note": "Counting people allocates power. Projected Lok Sabha seat change after the first census post-2026 (Carnegie Endowment; ISAS; India Forum). Estimates vary.",
+    "items": [
+      { "state": "Uttar Pradesh", "change": 11 },
+      { "state": "Bihar",         "change": 10 },
+      { "state": "Tamil Nadu",    "change": -8 },
+      { "state": "Kerala",        "change": -8 }
+    ],
+    "frozenSince": 1971, "perMP1951Millions": 0.7, "perMPNowMillions": 2.5
+  },
+  "monsoonChain": {
+    "note": "Why half of India's inflation starts in the sky (IMD; RBI; NSSO; IPCC). ~50% of cultivated area is unirrigated.",
+    "rainfedSharePct": 50,
+    "steps": ["Deficient monsoon", "Farm output falls", "Food prices spike", "CPI breaches 6%", "RBI raises rates", "Rural incomes squeezed"]
+  },
+  "cpiBasket": {
+    "note": "How the CPI number is built (MoSPI CPI Combined, 2012 base).",
+    "goodsTracked": 80000, "urbanMarkets": 1114, "villages": 1181, "baseYear": 2012, "rbiTarget": 4, "foodSharePct": 46
+  },
+  "pumpPrice": {
+    "note": "Where every rupee of the petrol price goes — about half is tax (Petroleum Planning & Analysis Cell; PRS; illustrative for Delhi 2026).",
+    "parts": [
+      { "label": "Crude + refining + OMC margin", "value": 55.3 },
+      { "label": "Central excise",                "value": 19.9 },
+      { "label": "State VAT",                      "value": 15.0 },
+      { "label": "Dealer margin",                  "value": 3.8 }
+    ],
+    "total": 94.0,
+    "crudeImportDependence": 86
+  },
+  "modiAsks": {
+    "note": "When a PM asks citizens not to buy gold, the balance of payments is speaking (PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S).",
+    "asks": [
+      "Avoid buying gold for one year",
+      "Postpone non-essential foreign travel",
+      "Work from home where possible",
+      "Use public transport and carpooling",
+      "Reduce edible-oil consumption",
+      "Reduce chemical fertiliser use (farmers)",
+      "Buy Swadeshi, prefer Indian-made goods"
+    ],
+    "numbers": [
+      { "label": "Gold imports FY26",   "value": "$72 bn",  "sub": "2nd-largest import after crude" },
+      { "label": "Tourist spend abroad","value": "$31.7 bn","sub": "~30 mn Indians travelled out" },
+      { "label": "Crude oil imports",   "value": "$123 bn", "sub": "85%+ of crude imported" },
+      { "label": "Rupee (crisis week)", "value": "95.2/$",  "sub": "record low, May 2026" }
+    ]
+  },
+  "gold": {
+    "note": "Indians buy gold because the formal system left them no better option (World Gold Council 2024; AMFI; RBI; IRDAI; SEBI).",
+    "privateTonnes": 25000, "stockValueTn": 1.8, "insurancePenetration": 3.2, "insuranceGlobal": 7,
+    "excludedAdultsMn": 190, "equityParticipationPct": 3.5
+  },
+  "poverty": {
+    "note": "Poverty is a contested number: three official lines, three answers. India has had no officially accepted poverty line since 2014.",
+    "lines": [
+      { "name": "Tendulkar (2011-12)", "detail": "₹27/day rural, ₹33/day urban", "headcount": "21.9%", "status": "never updated" },
+      { "name": "Rangarajan (2014)",   "detail": "₹30/day rural, ₹47/day urban", "headcount": "29.5%", "status": "shelved, not adopted" },
+      { "name": "NITI MPI (2022-23)",  "detail": "multidimensional, not income", "headcount": "11.3%", "status": "current official" }
+    ]
+  },
+  "bodies": {
+    "note": "The economy shows up in bodies and classrooms (NFHS-5 2019-21; National Health Accounts; Economic Survey).",
+    "stuntedPct": 35, "outOfPocketPct": 40, "publicHealthPctGDP": 1.9
+  },
+  "readChecklist": {
+    "note": "How to read any official number.",
+    "questions": [
+      "Which definition is being used, and who set it?",
+      "What does the number leave out?",
+      "When was the underlying data collected?",
+      "Who gains if the number looks good?",
+      "Has the method changed?",
+      "Did the inconvenient survey get published?",
+      "How does it compare with independent estimates?"
+    ]
+  },
+  "measurement": {
+    "note": "How do we know? Five places where the choice, not the economy, moved the number (NSO; HCES 2022-23; Census of India; Carnegie Endowment).",
+    "items": [
+      { "title": "The GDP back-series", "body": "2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed." },
+      { "title": "The surveys that went missing", "body": "The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable." },
+      { "title": "A census a decade late", "body": "Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers." },
+      { "title": "Counting = allocating power", "body": "Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose." }
+    ]
   }
 }
