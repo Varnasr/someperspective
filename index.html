@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.18.0">
+    <meta name="version" content="2.19.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1056,6 +1056,7 @@
                         Overlay policy events on the chart
                     </label>
                     <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. GDP, inflation, fiscal deficit, top-1% share and press freedom carry the full 2004→2026 history; other series begin in 2014. UPA-era GDP is sensitive to the 2015 base-year revision.</p>
                 </div>
 
                 <!-- Export Controls -->
@@ -2972,6 +2973,16 @@ reduces overall score</pre>
             trajIndicator: 'gdpGrowth',         // currently-focused indicator for the fan chart
             trajLevers: { statsIndependence: false, garmentsPush: false, fiscalRebalance: false, formalisation: false },
             trajWeights: {},                    // user-adjustable weights per indicator (default 1)
+            // ===== UPA-decade history (2004-2013) for era differentiation =====
+            eraHistory: {
+                note: 'UPA decade (2004-2013): World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%), RSF (press freedom).',
+                years: [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013],
+                gdpGrowth: [7.9,9.3,9.3,7.7,3.1,7.9,8.5,5.2,5.5,6.4],
+                cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.3,10.9],
+                fiscalDeficit: [4.0,4.0,3.3,2.5,6.0,6.5,4.8,5.9,4.9,4.5],
+                top1Share: [18.2,18.8,19.6,20.1,20.5,20.6,21.0,21.3,21.0,21.2],
+                pressFreedom: [120,106,105,120,118,105,122,131,140,140]
+            },
             // ===== STATE EXPLORER =====
             statesMetric: 'perCapita',
             // ===== POLICY EVENT TIMELINE =====
@@ -3200,6 +3211,7 @@ reduces overall score</pre>
                     if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
                     if (d.meta) this.dataMeta = d.meta;
                     if (d.sources) this.sourcesData = d.sources;
+                    if (d.eraHistory) this.eraHistory = d.eraHistory;
                     this.initTrajWeights();
                     // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
                     const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement','states'];
@@ -3711,12 +3723,34 @@ reduces overall score</pre>
                 const legend = [];
                 const picks = [this.chartOptions.primary, this.chartOptions.comparison1, this.chartOptions.comparison2].filter(Boolean);
 
-                const numericYears = typeof (d.years || [])[0] === 'number';
-                const eventMarkLine = (this.showEvents && this.policyEvents.length) ? {
+                // Stitch the UPA decade (eraHistory, 2004-2013) onto the NDA series (2014-2026)
+                const eh = this.eraHistory || {};
+                const ehYears = eh.years || [];
+                const ndaYears = (d.years || []).filter(y => y <= 2026);
+                const fullYears = ehYears.concat(ndaYears);
+                const hasEra = ehYears.length > 0;
+                const seriesData = (key, econArr) => {
+                    const upa = eh[key] ? eh[key].slice(0, ehYears.length) : ehYears.map(() => null);
+                    const nda = ndaYears.map(y => { const idx = d.years.indexOf(y); return idx >= 0 ? (econArr[idx] ?? null) : null; });
+                    return upa.concat(nda);
+                };
+
+                const dividerColor = this.darkMode ? '#94a3b8' : '#64748b';
+                const markLineData = [];
+                if (hasEra) markLineData.push({ xAxis: 2014, name: '', lineStyle: { type: 'solid', color: dividerColor, width: 1.5 }, label: { show: true, rotate: 0, formatter: 'UPA | NDA', position: 'insideEndTop', color: dividerColor, fontSize: 9, fontWeight: 'bold' } });
+                if (this.showEvents && this.policyEvents.length) this.policyEvents.forEach(e => markLineData.push({ name: e.short, xAxis: e.year }));
+                const markLine = markLineData.length ? {
                     symbol: 'none', silent: true,
-                    label: { show: true, formatter: p => p.name, color: this.darkMode ? '#94a3b8' : '#64748b', fontSize: 9, rotate: 90, position: 'insideEndTop' },
+                    label: { show: true, formatter: p => p.name, color: dividerColor, fontSize: 9, rotate: 90, position: 'insideEndTop' },
                     lineStyle: { type: 'dashed', color: this.darkMode ? '#475569' : '#cbd5e1', width: 1 },
-                    data: this.policyEvents.map(e => ({ name: e.short, xAxis: numericYears ? e.year : String(e.year) }))
+                    data: markLineData
+                } : null;
+                const markArea = hasEra ? {
+                    silent: true,
+                    data: [
+                        [{ xAxis: 2004, itemStyle: { color: this.darkMode ? 'rgba(59,130,246,0.10)' : 'rgba(59,130,246,0.07)' }, label: { show: true, position: 'insideTopLeft', color: dividerColor, fontSize: 10, fontWeight: 'bold', formatter: 'UPA era' } }, { xAxis: 2014 }],
+                        [{ xAxis: 2014, itemStyle: { color: this.darkMode ? 'rgba(239,68,68,0.08)' : 'rgba(180,83,14,0.05)' }, label: { show: true, position: 'insideTopRight', color: dividerColor, fontSize: 10, fontWeight: 'bold', formatter: 'NDA era' } }, { xAxis: 2026 }]
+                    ]
                 } : null;
 
                 picks.forEach((key, i) => {
@@ -3731,11 +3765,11 @@ reduces overall score</pre>
                         nameTextStyle: { color: m.color }
                     });
                     const s = {
-                        name: m.label, type: 'line', data: m.data, smooth: true,
+                        name: m.label, type: 'line', data: seriesData(key, m.data), smooth: true, connectNulls: false,
                         yAxisIndex: i, itemStyle: { color: m.color },
                         lineStyle: i > 0 ? { type: 'dashed' } : {}
                     };
-                    if (i === 0 && eventMarkLine) s.markLine = eventMarkLine;
+                    if (i === 0) { if (markLine) s.markLine = markLine; if (markArea) s.markArea = markArea; }
                     series.push(s);
                 });
 
@@ -3743,7 +3777,7 @@ reduces overall score</pre>
                     ...baseOpts(this.darkMode),
                     tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
                     legend: { data: legend, top: 5 },
-                    xAxis: { type: 'category', data: d.years },
+                    xAxis: { type: 'category', data: fullYears },
                     yAxis: yAxes.length ? yAxes : [{ type: 'value' }],
                     dataZoom: dataZoom(),
                     series
