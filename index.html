@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.19.0">
+    <meta name="version" content="2.20.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -2981,6 +2981,7 @@ reduces overall score</pre>
                 cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.3,10.9],
                 fiscalDeficit: [4.0,4.0,3.3,2.5,6.0,6.5,4.8,5.9,4.9,4.5],
                 top1Share: [18.2,18.8,19.6,20.1,20.5,20.6,21.0,21.3,21.0,21.2],
+                bottom50Share: [16.5,16.3,16.0,15.8,15.6,15.5,15.4,15.3,15.2,15.1],
                 pressFreedom: [120,106,105,120,118,105,122,131,140,140]
             },
             // ===== STATE EXPLORER =====
@@ -3649,15 +3650,15 @@ reduces overall score</pre>
                     ...baseOpts(this.darkMode),
                     tooltip: { trigger: 'axis', axisPointer: { type: mobile ? 'line' : 'cross' } },
                     legend: chartLegend(['GDP Growth (%)','Unemployment Rate (%)'], { top: 5 }),
-                    xAxis: { type: 'category', data: d.years, axisLabel: { color: this.darkMode ? '#94a3b8' : '#6b7280', fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
+                    xAxis: { type: 'category', data: this.eraFullYears(), axisLabel: { color: this.darkMode ? '#94a3b8' : '#6b7280', fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
                     yAxis: [
                         { type: 'value', name: mobile ? 'GDP%' : 'GDP Growth (%)', nameTextStyle: { color: '#3b82f6', fontSize: mobile ? 10 : 12 }, axisLine: { lineStyle: { color: '#3b82f6' } }, axisLabel: { fontSize: mobile ? 10 : 12 } },
                         { type: 'value', name: mobile ? 'Unemp%' : 'Unemployment (%)', nameTextStyle: { color: '#ef4444', fontSize: mobile ? 10 : 12 }, axisLine: { lineStyle: { color: '#ef4444' } }, splitLine: { show: false }, axisLabel: { fontSize: mobile ? 10 : 12 } }
                     ],
                     dataZoom: dataZoom(),
                     series: [
-                        { name: 'GDP Growth (%)', type: 'line', data: d.gdpGrowth, smooth: true, itemStyle: { color: '#3b82f6' }, areaStyle: { color: { type: 'linear', x:0,y:0,x2:0,y2:1, colorStops: [{offset:0,color:'rgba(59,130,246,0.2)'},{offset:1,color:'rgba(59,130,246,0)'}] } }, yAxisIndex: 0 },
-                        { name: 'Unemployment Rate (%)', type: 'line', data: d.unemployment, smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { color: { type: 'linear', x:0,y:0,x2:0,y2:1, colorStops: [{offset:0,color:'rgba(239,68,68,0.15)'},{offset:1,color:'rgba(239,68,68,0)'}] } }, yAxisIndex: 1 }
+                        { name: 'GDP Growth (%)', type: 'line', data: this.eraStitch('gdpGrowth', d.gdpGrowth), smooth: true, itemStyle: { color: '#3b82f6' }, areaStyle: { color: { type: 'linear', x:0,y:0,x2:0,y2:1, colorStops: [{offset:0,color:'rgba(59,130,246,0.2)'},{offset:1,color:'rgba(59,130,246,0)'}] } }, yAxisIndex: 0, markArea: this.eraMarkArea(), markLine: this.eraDividerLine() },
+                        { name: 'Unemployment Rate (%)', type: 'line', data: this.eraStitch('unemployment', d.unemployment), smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { color: { type: 'linear', x:0,y:0,x2:0,y2:1, colorStops: [{offset:0,color:'rgba(239,68,68,0.15)'},{offset:1,color:'rgba(239,68,68,0)'}] } }, yAxisIndex: 1 }
                     ]
                 });
             },
@@ -3670,12 +3671,12 @@ reduces overall score</pre>
                     ...baseOpts(this.darkMode),
                     tooltip: { trigger: 'axis' },
                     legend: { data: ['Formal (%)','Informal (%)'], top: 5 },
-                    xAxis: { type: 'category', data: d.years },
+                    xAxis: { type: 'category', data: this.eraFullYears() },
                     yAxis: { type: 'value', max: 100 },
                     dataZoom: dataZoom(),
                     series: [
-                        { name: 'Formal (%)', type: 'bar', stack: 'emp', data: d.formalEmployment, itemStyle: { color: '#22c55e' }, barWidth: '60%' },
-                        { name: 'Informal (%)', type: 'bar', stack: 'emp', data: d.informalEmployment, itemStyle: { color: '#ef4444' } }
+                        { name: 'Formal (%)', type: 'bar', stack: 'emp', data: this.eraStitch('formalEmployment', d.formalEmployment), itemStyle: { color: '#22c55e' }, barWidth: '60%', markArea: this.eraMarkArea(), markLine: this.eraDividerLine() },
+                        { name: 'Informal (%)', type: 'bar', stack: 'emp', data: this.eraStitch('informalEmployment', d.informalEmployment), itemStyle: { color: '#ef4444' } }
                     ]
                 });
             },
@@ -3689,14 +3690,44 @@ reduces overall score</pre>
                     title: chartTitle('Rising inequality matches colonial-era extremes', this.darkMode),
                     tooltip: { trigger: 'axis' },
                     legend: chartLegend(isMobile() ? ['Top 1%','Bottom 50%'] : ['Top 1% Income Share (%)','Bottom 50% Income Share (%)']),
-                    xAxis: { type: 'category', data: d.years },
+                    xAxis: { type: 'category', data: this.eraFullYears() },
                     yAxis: { type: 'value', max: 25 },
                     dataZoom: dataZoom(),
                     series: [
-                        { name: 'Top 1% Income Share (%)', type: 'line', data: d.top1Share, smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { opacity: 0.12 } },
-                        { name: 'Bottom 50% Income Share (%)', type: 'line', data: d.bottom50Share, smooth: true, itemStyle: { color: '#22c55e' }, areaStyle: { opacity: 0.12 } }
+                        { name: 'Top 1% Income Share (%)', type: 'line', data: this.eraStitch('top1Share', d.top1Share), smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { opacity: 0.12 }, markArea: this.eraMarkArea(), markLine: this.eraDividerLine() },
+                        { name: 'Bottom 50% Income Share (%)', type: 'line', data: this.eraStitch('bottom50Share', d.bottom50Share), smooth: true, itemStyle: { color: '#22c55e' }, areaStyle: { opacity: 0.12 } }
                     ]
                 });
+            },
+
+            // ----- Reusable UPA/NDA era helpers (full 2004→2026 axis, stitching, shading) -----
+            eraOn() { const eh = this.eraHistory || {}; return !!(eh.years && eh.years.length); },
+            eraFullYears() {
+                const eh = this.eraHistory || {};
+                const nda = (this.economicData.years || []).filter(y => y <= 2026);
+                return this.eraOn() ? eh.years.concat(nda) : nda;
+            },
+            eraStitch(key, econArr) {
+                const eh = this.eraHistory || {};
+                if (!this.eraOn()) return econArr;
+                const ey = eh.years;
+                const nda = (this.economicData.years || []).filter(y => y <= 2026)
+                    .map(y => { const i = this.economicData.years.indexOf(y); return i >= 0 ? (econArr[i] ?? null) : null; });
+                const upa = eh[key] ? eh[key].slice(0, ey.length) : ey.map(() => null);
+                return upa.concat(nda);
+            },
+            eraMarkArea() {
+                if (!this.eraOn()) return undefined;
+                const dc = this.darkMode ? '#94a3b8' : '#64748b';
+                return { silent: true, data: [
+                    [{ xAxis: 2004, itemStyle: { color: this.darkMode ? 'rgba(59,130,246,0.10)' : 'rgba(59,130,246,0.07)' }, label: { show: true, position: 'insideTopLeft', color: dc, fontSize: 10, fontWeight: 'bold', formatter: 'UPA' } }, { xAxis: 2014 }],
+                    [{ xAxis: 2014, itemStyle: { color: this.darkMode ? 'rgba(239,68,68,0.08)' : 'rgba(180,83,14,0.05)' }, label: { show: true, position: 'insideTopRight', color: dc, fontSize: 10, fontWeight: 'bold', formatter: 'NDA' } }, { xAxis: 2026 }]
+                ] };
+            },
+            eraDividerLine() {
+                if (!this.eraOn()) return undefined;
+                const dc = this.darkMode ? '#94a3b8' : '#64748b';
+                return { symbol: 'none', silent: true, lineStyle: { type: 'solid', color: dc, width: 1.5 }, label: { show: true, formatter: '2014', position: 'insideEndTop', color: dc, fontSize: 9, fontWeight: 'bold' }, data: [{ xAxis: 2014 }] };
             },
 
             createInteractiveChart() { this.updateInteractiveChart(); },
@@ -3793,13 +3824,13 @@ reduces overall score</pre>
                     title: chartTitle('Three Indices Show Concurrent Deterioration', this.darkMode),
                     tooltip: { trigger: 'axis' },
                     legend: chartLegend(['SSI','FCI ×10','DQI ×10']),
-                    xAxis: { type: 'category', data: d.years },
+                    xAxis: { type: 'category', data: this.eraFullYears() },
                     yAxis: { type: 'value', max: 10 },
                     dataZoom: dataZoom(),
                     series: [
-                        { name: 'SSI', type: 'line', data: d.ssi, smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { opacity: 0.1 } },
-                        { name: 'FCI ×10', type: 'line', data: d.fci.map(v => v*10), smooth: true, itemStyle: { color: '#f59e0b' }, areaStyle: { opacity: 0.1 } },
-                        { name: 'DQI ×10', type: 'line', data: d.dqi.map(v => v*10), smooth: true, itemStyle: { color: '#8b5cf6' }, areaStyle: { opacity: 0.1 } }
+                        { name: 'SSI', type: 'line', data: this.eraStitch('ssi', d.ssi), smooth: true, itemStyle: { color: '#ef4444' }, areaStyle: { opacity: 0.1 }, markArea: this.eraMarkArea(), markLine: this.eraDividerLine() },
+                        { name: 'FCI ×10', type: 'line', data: this.eraStitch('fci', d.fci.map(v => v*10)), smooth: true, itemStyle: { color: '#f59e0b' }, areaStyle: { opacity: 0.1 } },
+                        { name: 'DQI ×10', type: 'line', data: this.eraStitch('dqi', d.dqi.map(v => v*10)), smooth: true, itemStyle: { color: '#8b5cf6' }, areaStyle: { opacity: 0.1 } }
                     ]
                 });
             },
