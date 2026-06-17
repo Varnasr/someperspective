@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.16.0">
+    <meta name="version" content="2.17.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -706,7 +706,12 @@
                        class="text-indigo-600 dark:text-indigo-400 hover:underline">
                         Source data in <span x-text="todaysFeature.tab"></span> →
                     </a>
-                    <span class="italic">Rotates daily · <span x-text="dailyFeatures.length"></span> in rotation</span>
+                    <div class="flex items-center gap-2">
+                        <button @click="shareFinding(todaysFeature.title + ' — ' + todaysFeature.takeaway, todaysFeature.tab)"
+                            class="px-3 py-1 rounded-lg font-semibold text-white" style="background:#25D366;">Share</button>
+                        <button @click="copyLink(todaysFeature.tab)"
+                            class="px-3 py-1 rounded-lg font-semibold border" style="border-color:var(--line);color:var(--ink-soft);">Copy link</button>
+                    </div>
                 </footer>
             </article>
 
@@ -4869,11 +4874,28 @@ reduces overall score</pre>
                 setTimeout(() => toast.remove(), 3000);
             },
 
-            // Share the site (or a custom message) to WhatsApp.
-            shareWhatsApp(customText) {
-                const url = 'https://someperspective.info';
+            // Deep link to a given tab (defaults to the current view).
+            deepLink(tab) {
+                const slug = TAB_HASH[tab || this.activeTab] || '';
+                return 'https://someperspective.info/' + (slug ? '#' + slug : '');
+            },
+            // Share the current view (or a custom message) to WhatsApp.
+            shareWhatsApp(customText, tab) {
+                const url = this.deepLink(tab);
                 const text = customText || 'Some Perspective — a data-driven look at India’s economic transformation, 2014–2026.';
                 window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+            },
+            // Per-finding share: native share sheet on mobile (incl. WhatsApp), else WhatsApp intent.
+            shareFinding(text, tab) {
+                const url = this.deepLink(tab);
+                if (navigator.share) { navigator.share({ title: 'Some Perspective', text, url }).catch(() => {}); return; }
+                window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+            },
+            // Copy a deep link to the current (or given) view.
+            copyLink(tab) {
+                const url = this.deepLink(tab);
+                if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => this.showShareToast('Link copied: ' + url));
+                else this.showShareToast(url);
             }
         };
     }
