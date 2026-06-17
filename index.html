@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b4530e" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.8.1">
+    <meta name="version" content="2.9.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -134,7 +136,7 @@
                 "name": "What is India's income inequality in 2025?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "As of May 2026, India's top 1% holds 23.0% of national income (the highest since 1922) and 40.1% of national wealth, while the bottom 50% holds 12.9% of income. This wealth concentration exceeds colonial-era levels and surpasses Brazil's inequality."
+                    "text": "As of June 2026, India's top 1% holds 23.0% of national income (the highest since 1922) and 40.1% of national wealth, while the bottom 50% holds 12.9% of income. This wealth concentration exceeds colonial-era levels and surpasses Brazil's inequality."
                 }
             },
             {
@@ -191,83 +193,144 @@
     <!-- Google Fonts (preconnect + swap for non-blocking load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amaranth:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amaranth:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <style>
+        /* ============================================================
+           DESIGN SYSTEM v2.9 — "Reading the Numbers" editorial redesign
+           Warm paper canvas · serif display type · burnt-amber + teal accent
+           ============================================================ */
+        :root {
+            --paper:    #f4f1ea;
+            --paper-2:  #ece7dc;
+            --surface:  #ffffff;
+            --surface-2:#faf7f1;
+            --ink:      #1b1b22;
+            --ink-soft: #34343f;
+            --muted:    #6b6b78;
+            --line:     rgba(27,27,34,0.10);
+            --line-2:   rgba(27,27,34,0.06);
+            --accent:   #b4530e;   /* burnt amber */
+            --accent-2: #0e7490;   /* deep teal */
+            --gold:     #c79a3a;
+            --brand-grad: linear-gradient(115deg, #b4530e 0%, #d97706 48%, #0e7490 100%);
+            --shadow-sm: 0 1px 2px rgba(20,20,30,0.05);
+            --shadow:    0 1px 2px rgba(20,20,30,0.05), 0 14px 32px -18px rgba(20,20,30,0.28);
+            --shadow-lg: 0 24px 60px -28px rgba(20,20,30,0.40);
+        }
+        .dark {
+            --paper:    #0b0c11;
+            --paper-2:  #11131a;
+            --surface:  #161922;
+            --surface-2:#1c2029;
+            --ink:      #edeff5;
+            --ink-soft: #d3d7e0;
+            --muted:    #99a0b1;
+            --line:     rgba(255,255,255,0.09);
+            --line-2:   rgba(255,255,255,0.05);
+            --accent:   #fb923c;
+            --accent-2: #22d3ee;
+            --gold:     #e3c068;
+            --brand-grad: linear-gradient(115deg, #fb923c 0%, #fbbf24 48%, #22d3ee 100%);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+            --shadow:    0 1px 2px rgba(0,0,0,0.4), 0 16px 36px -18px rgba(0,0,0,0.7);
+            --shadow-lg: 0 28px 70px -28px rgba(0,0,0,0.8);
+        }
+
         [x-cloak] { display: none !important; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        body { font-family: 'Amaranth', 'Inter', system-ui, -apple-system, sans-serif; }
-        h1, h2, h3, h4, h5, h6, .gradient-text, .stat-card .text-2xl, .stat-card .text-3xl { font-family: 'Inter', system-ui, sans-serif; }
-        pre, code { font-family: 'JetBrains Mono', monospace; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Subtle paper texture: faint dotted grid */
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: -1; pointer-events: none;
+            background-image: radial-gradient(var(--line-2) 1px, transparent 1px);
+            background-size: 26px 26px;
+            opacity: 0.5;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+            letter-spacing: -0.01em;
+        }
+        .font-display { font-family: 'Fraunces', Georgia, serif; }
+        .stat-card .text-2xl, .stat-card .text-3xl { font-family: 'Fraunces', Georgia, serif; }
+        pre, code, .tabular-nums { font-family: 'JetBrains Mono', monospace; }
+
+        /* Editorial kicker / section label */
+        .kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.18em;
+            color: var(--accent);
+        }
 
         /* Chart responsive styles */
-        .chart-container {
-            position: relative;
-            min-height: 280px;
-            height: 350px;
-            width: 100%;
-            margin: 0 auto;
-        }
-        @media (min-width: 640px) {
-            .chart-container { height: 420px; }
-        }
-        @media (max-width: 640px) {
-            .chart-container { height: 260px !important; }
-        }
+        .chart-container { position: relative; min-height: 280px; height: 350px; width: 100%; margin: 0 auto; }
+        @media (min-width: 640px) { .chart-container { height: 420px; } }
+        @media (max-width: 640px) { .chart-container { height: 260px !important; } }
 
         /* Tab navigation */
         .tab-btn { position: relative; }
         .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            border-radius: 3px 3px 0 0;
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%); width: 64%; height: 3px;
+            background: var(--brand-grad); border-radius: 3px 3px 0 0;
         }
 
         /* Cards */
         .card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.05);
+            background: var(--surface);
+            border-radius: 1.25rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
         }
-        .dark .card {
-            background: #1e293b;
-            border-color: rgba(255,255,255,0.06);
+        .dark .card { background: var(--surface); border-color: var(--line); }
+        .card-inner {
+            background: var(--surface-2);
+            border: 1px solid var(--line-2);
+            border-radius: 1rem;
+            padding: 0.75rem;
         }
 
         /* Stat cards */
         .stat-card {
-            border-radius: 1rem;
-            padding: 1.25rem;
-            text-align: center;
-            transition: transform 0.15s, box-shadow 0.15s;
+            border-radius: 1.1rem; padding: 1.25rem; text-align: center;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
         }
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
+        .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 
         /* Gradient text */
         .gradient-text {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            background: var(--brand-grad);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
+
+        /* Top brand accent strip */
+        .brand-strip { height: 4px; background: var(--brand-grad); }
+
+        /* Pill button */
+        .btn-accent {
+            background: var(--accent); color: #fff; border-radius: 0.8rem;
+            font-weight: 600; transition: filter 0.15s, transform 0.15s;
+        }
+        .btn-accent:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+        /* Trajectory verdict chip */
+        .verdict { font-family: 'Fraunces', Georgia, serif; }
 
         /* Print styles */
         @media print {
             .no-print { display: none !important; }
-            body { font-size: 12pt; }
+            body { font-size: 12pt; background: #fff; }
+            body::before { display: none; }
         }
 
         /* Responsive chart heights — mobile-first */
@@ -280,6 +343,7 @@
             .chart-responsive-tall { height: 500px; }
             .chart-h-sm-450 { height: 450px !important; }
             .chart-h-sm-500 { height: 500px !important; }
+            .chart-h-sm-420 { height: 420px !important; }
             .chart-h-sm-380 { height: 380px !important; }
         }
 
@@ -301,7 +365,7 @@
 <body x-data="siteApp()"
       x-init="init()"
       :class="darkMode ? 'dark' : ''"
-      class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+      class="min-h-screen flex flex-col">
     <script>
     // Kill any service worker left over from v3.0.0-3.0.2.
     // Runs immediately, even from cached HTML, because 'unsafe-inline' is allowed.
@@ -357,15 +421,16 @@
     </noscript>
     
     <!-- Header -->
-    <header class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200/50 dark:border-gray-700/50">
+    <header class="backdrop-blur-lg sticky top-0 z-50 border-b" style="background:color-mix(in srgb, var(--surface) 84%, transparent); border-color:var(--line);">
+        <div class="brand-strip"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
             <div class="flex justify-between items-center">
                 <div class="flex-1">
-                    <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-none">
                         <span class="gradient-text">Some Perspective</span>
                     </h1>
-                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 font-medium tracking-wide">
-                        India's Economic Transformation 2004–2026 &mdash; Where Narratives Meet Numbers
+                    <p class="text-xs sm:text-sm mt-1 font-medium tracking-wide" style="color:var(--muted);">
+                        Reading the Indian Economy &mdash; <span class="italic">how the numbers are made, and who decides what counts</span>
                     </p>
                 </div>
 
@@ -458,7 +523,8 @@
     
     <!-- Navigation: 4 grouped dropdowns + 1 featured standalone tab -->
     <!-- IMPORTANT: no overflow-x-auto on the inner container — it would clip the dropdowns vertically. -->
-    <nav class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg sticky top-[72px] sm:top-[80px] z-40 border-b border-gray-200/50 dark:border-gray-700/50"
+    <nav class="backdrop-blur-lg sticky top-[80px] sm:top-[92px] z-40 border-b"
+         style="background:color-mix(in srgb, var(--surface) 80%, transparent); border-color:var(--line);"
          @click.outside="openGroup = null">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap gap-1 py-0 items-stretch">
@@ -546,12 +612,13 @@
             </article>
 
             <div class="card p-5 sm:p-8">
-                <h2 class="text-2xl sm:text-3xl font-extrabold mb-2 text-gray-900 dark:text-white leading-tight">India's Growth Paradox</h2>
-                <p class="text-lg sm:text-xl text-gray-500 dark:text-gray-400 font-medium mb-6">GDP Up, Jobs Down, Inequality Soaring</p>
+                <div class="kicker mb-2">Independent · data-driven · unfunded</div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mb-2 leading-[1.05]" style="color:var(--ink);">India's Growth Paradox</h2>
+                <p class="text-lg sm:text-xl font-medium mb-6 italic font-display" style="color:var(--muted);">GDP up, jobs down, inequality soaring</p>
 
                 <div class="bg-amber-50 dark:bg-amber-900/15 border border-amber-200/60 dark:border-amber-700/30 p-5 rounded-xl mb-8">
                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                        India's GDP grew at 6.8% annually since 2014, yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This independent, data-driven research examines <strong>what the headline numbers hide</strong> — with interactive charts, downloadable datasets, and three novel indices you won't find anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through May 2026.</span>
+                        India's GDP grew at 6.8% annually since 2014, yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This independent, data-driven research examines <strong>what the headline numbers hide</strong> — with interactive charts, downloadable datasets, and three novel indices you won't find anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through June 2026.</span>
                     </p>
                 </div>
 
@@ -721,7 +788,7 @@
                         <p class="text-sm">
                             India achieved "populist growth without accountability"—high aggregate growth that enriched elites 
                             while employment stagnated, inequality soared, and institutional checks weakened. The three indices 
-                            (SSI, FCI, DQI) quantify this democratic backsliding empirically through May 2026.
+                            (SSI, FCI, DQI) quantify this democratic backsliding empirically through June 2026.
                         </p>
                     </div>
                 </div>
@@ -831,6 +898,9 @@
                             <option value="ssi">Statistical Suppression Index</option>
                             <option value="fci">Fiscal Centralization Index</option>
                             <option value="dqi">Democratic Quality Index</option>
+                            <option value="fiscalDeficit">Fiscal Deficit (% GDP)</option>
+                            <option value="cpiInflation">CPI Inflation (%)</option>
+                            <option value="rupeeUSD">Rupee (INR per USD)</option>
                         </select>
                     </div>
                     
@@ -848,6 +918,9 @@
                             <option value="ssi">Statistical Suppression Index</option>
                             <option value="fci">Fiscal Centralization Index</option>
                             <option value="dqi">Democratic Quality Index</option>
+                            <option value="fiscalDeficit">Fiscal Deficit (% GDP)</option>
+                            <option value="cpiInflation">CPI Inflation (%)</option>
+                            <option value="rupeeUSD">Rupee (INR per USD)</option>
                         </select>
                     </div>
                     
@@ -865,6 +938,9 @@
                             <option value="ssi">Statistical Suppression Index</option>
                             <option value="fci">Fiscal Centralization Index</option>
                             <option value="dqi">Democratic Quality Index</option>
+                            <option value="fiscalDeficit">Fiscal Deficit (% GDP)</option>
+                            <option value="cpiInflation">CPI Inflation (%)</option>
+                            <option value="rupeeUSD">Rupee (INR per USD)</option>
                         </select>
                     </div>
                 </div>
@@ -915,6 +991,9 @@
                             <option value="dqi">Democratic Quality Index</option>
                             <option value="gigWorkers">Gig Workers (millions)</option>
                             <option value="femaleLFPR">Female LFPR (%)</option>
+                            <option value="fiscalDeficit">Fiscal Deficit (% GDP)</option>
+                            <option value="cpiInflation">CPI Inflation (%)</option>
+                            <option value="rupeeUSD">Rupee (INR per USD)</option>
                         </select>
                     </div>
                     <div>
@@ -931,6 +1010,9 @@
                             <option value="dqi">Democratic Quality Index</option>
                             <option value="gigWorkers">Gig Workers (millions)</option>
                             <option value="femaleLFPR">Female LFPR (%)</option>
+                            <option value="fiscalDeficit">Fiscal Deficit (% GDP)</option>
+                            <option value="cpiInflation">CPI Inflation (%)</option>
+                            <option value="rupeeUSD">Rupee (INR per USD)</option>
                         </select>
                     </div>
                 </div>
@@ -979,7 +1061,7 @@
                 
                 <p class="text-sm mb-6">
                     These indices quantify institutional changes that are typically described only qualitatively. 
-                    All three show concerning trends from 2014 through May 2026.
+                    All three show concerning trends from 2014 through June 2026.
                 </p>
                 
                 <!-- Combined Indices Chart -->
@@ -1725,9 +1807,281 @@ reduces overall score</pre>
                 </div>
             </div>
         </div>
-        
+
+        <!-- Economic Trajectory Tab (NEW · forecast) -->
+        <div x-show="activeTab === 'Economic Trajectory'" x-transition class="space-y-6">
+            <div class="card p-5 sm:p-8">
+                <div class="kicker mb-2">Forecast · scenario projections, not predictions</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-3" style="color:var(--ink);">Where is India's economy heading?</h2>
+                <p class="text-sm sm:text-base leading-relaxed" style="color:var(--ink-soft);">
+                    Not just where the numbers <em>have</em> been, but where they are <em>going</em>. Each indicator below is projected from 2026 to
+                    <strong>2030</strong> by extending its recent trend, then applying one of three explicit scenarios. The further out the line, the wider the
+                    band — because beyond the near term, the <em>assumption</em>, not the economy, decides the number.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="card p-5 sm:p-6 flex flex-col">
+                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">India Trajectory Index, 2030</h3>
+                    <p class="text-xs mb-2" style="color:var(--muted);">Composite of 8 indicators, scored 0–100 (higher = healthier). Reflects the selected scenario and any active levers.</p>
+                    <div id="trajGaugeChart" style="width:100%;height:200px;"></div>
+                    <div class="grid grid-cols-3 gap-2 mt-2 text-center">
+                        <div class="card-inner">
+                            <div class="text-xs" style="color:var(--muted);">Now (2026)</div>
+                            <div class="text-2xl font-bold tabular-nums" style="color:var(--ink);" x-text="trajOut.index2026"></div>
+                        </div>
+                        <div class="card-inner">
+                            <div class="text-xs" style="color:var(--muted);">2030</div>
+                            <div class="text-2xl font-bold tabular-nums" style="color:var(--ink);" x-text="trajOut.index2030"></div>
+                        </div>
+                        <div class="card-inner flex flex-col justify-center">
+                            <div class="text-xs" style="color:var(--muted);">Verdict</div>
+                            <div class="text-sm font-bold verdict" :class="trajOut.verdictClass" x-text="trajOut.verdict"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-5 sm:p-6 lg:col-span-2">
+                    <h3 class="font-bold text-lg mb-3" style="color:var(--ink);">Choose a scenario</h3>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <template x-for="sc in scenarioList" :key="sc.key">
+                            <button @click="setTrajScenario(sc.key)"
+                                :style="trajScenario === sc.key ? 'background:var(--accent);color:#fff;border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
+                                class="px-4 py-2 rounded-xl text-sm font-semibold border transition-all" x-text="sc.label"></button>
+                        </template>
+                    </div>
+                    <p class="text-xs mb-4" style="color:var(--muted);" x-text="(forecastSpec.scenarios[trajScenario]||{}).desc"></p>
+
+                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">What would change this?</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);">Toggle policy levers to see their (illustrative) effect on the 2030 index.</p>
+                    <div class="grid sm:grid-cols-2 gap-2">
+                        <template x-for="lv in trajLeverMeta" :key="lv.id">
+                            <button @click="toggleLever(lv.id)"
+                                :style="trajLevers[lv.id] ? 'background:color-mix(in srgb, var(--accent-2) 13%, transparent);border-color:var(--accent-2);' : 'border-color:var(--line);'"
+                                class="text-left p-3 rounded-xl border transition-all">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-4 h-4 rounded-md flex-shrink-0 border flex items-center justify-center text-[10px] text-white"
+                                          :style="trajLevers[lv.id] ? 'background:var(--accent-2);border-color:var(--accent-2);' : 'border-color:var(--line);'"
+                                          x-text="trajLevers[lv.id] ? '✓' : ''"></span>
+                                    <span class="text-sm font-semibold" style="color:var(--ink);" x-text="lv.label"></span>
+                                </div>
+                                <div class="text-xs mt-1 pl-6" style="color:var(--muted);" x-text="lv.desc"></div>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-5 sm:p-6">
+                <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">Indicator forecast to 2030</h3>
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                    <template x-for="sp in forecastSpec.indicators" :key="sp.key">
+                        <button @click="setTrajIndicator(sp.key)"
+                            :style="trajIndicator === sp.key ? 'background:var(--accent);color:#fff;' : 'background:var(--surface-2);color:var(--ink-soft);'"
+                            class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all" x-text="sp.label"></button>
+                    </template>
+                </div>
+                <div class="card-inner mb-2"><div id="trajFanChart" class="chart-container"></div></div>
+                <p class="text-xs italic" style="color:var(--muted);">Black line = observed (2014–2026). Dashed amber = central projection. Shaded band = ±1 scaled standard error, widening with the horizon. Method: OLS trend over recent years + scenario annual adjustment.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">All three scenarios</h3>
+                    <div class="card-inner"><div id="trajScenarioChart" class="chart-container"></div></div>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">2026 → 2030, current scenario</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);">Central projection under <span class="font-semibold" x-text="(forecastSpec.scenarios[trajScenario]||{}).label"></span> (levers applied). Green = improvement, red = deterioration.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="text-xs uppercase border-b" style="color:var(--muted);border-color:var(--line);">
+                                <tr><th class="text-left py-2">Indicator</th><th class="text-right py-2">2026</th><th class="text-right py-2">2030</th><th class="text-right py-2">Change</th></tr>
+                            </thead>
+                            <tbody x-html="renderTrajTable()"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">How to read a forecast (and why we resist calling it a prediction)</h3>
+                <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="forecastSpec.disclaimer"></p>
+                <ul class="text-sm mt-3 space-y-1.5" style="color:var(--ink-soft);">
+                    <li>• <strong>Trend, not destiny.</strong> Each central path extends the recent OLS trend of an observed series. Trends break.</li>
+                    <li>• <strong>Scenarios are assumptions.</strong> The reform/stress adjustments are deliberate, documented choices — change them in <code class="text-xs">data.json</code> and the future changes with them.</li>
+                    <li>• <strong>The band is the honesty.</strong> It widens with the square root of the horizon: 2030 is far less certain than 2027.</li>
+                    <li>• <strong>The index is a lens, not a verdict.</strong> It averages eight indicators with transparent good/bad anchors; weight them differently and the headline moves.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Reading the Economy Tab (NEW · citizen primer) -->
+        <div x-show="activeTab === 'Reading the Economy'" x-transition class="space-y-6">
+            <div class="card p-5 sm:p-8">
+                <div class="kicker mb-2">A citizen's primer · 16 June 2026</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-3" style="color:var(--ink);">Reading the Indian Economy</h2>
+                <p class="text-sm sm:text-base leading-relaxed" style="color:var(--ink-soft);">
+                    How the economy is measured, what the numbers say, and who decides what counts. A plain-language tour of the size of the economy,
+                    where output and jobs sit, what the state takes and spends, who is really middle class, and why half of India's inflation starts in the sky.
+                </p>
+            </div>
+
+            <div class="card p-5 sm:p-6">
+                <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">The big picture, in five numbers</h3>
+                <p class="text-xs mb-4" style="color:var(--muted);" x-text="primer.bigPicture.note"></p>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <template x-for="it in primer.bigPicture.items" :key="it.label">
+                        <div class="card-inner text-center">
+                            <div class="text-2xl font-bold font-display" style="color:var(--accent);" x-text="it.value"></div>
+                            <div class="text-xs font-semibold mt-1" style="color:var(--ink);" x-text="it.label"></div>
+                            <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="it.sub"></div>
+                        </div>
+                    </template>
+                </div>
+                <p class="text-sm mt-4 italic" style="color:var(--ink-soft);">A big economy and a poor country at the same time. Most arguments about India start by stressing one and forgetting the other.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">India vs China since 1991</h3>
+                    <div class="card-inner"><div id="primerChinaChart" class="chart-container"></div></div>
+                    <p class="text-xs mt-2" style="color:var(--muted);" x-text="primer.chinaDivergence.note"></p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">Output here, jobs there</h3>
+                    <div class="card-inner"><div id="primerStructureChart" class="chart-container"></div></div>
+                    <p class="text-xs mt-2" style="color:var(--muted);" x-text="primer.structure.note"></p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">For every ₹100 the state <span style="color:var(--accent);">takes</span></h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.taxTake.note"></p>
+                    <div class="space-y-2">
+                        <template x-for="it in primer.taxTake.items" :key="it.label">
+                            <div>
+                                <div class="flex justify-between text-sm mb-0.5">
+                                    <span style="color:var(--ink);" x-text="it.label"></span>
+                                    <span class="tabular-nums font-semibold" style="color:var(--ink);">₹<span x-text="it.value"></span></span>
+                                </div>
+                                <div class="h-2.5 rounded-full" style="background:var(--surface-2);">
+                                    <div class="h-2.5 rounded-full" :style="'width:' + (it.value/24*100) + '%;background:' + (it.shared ? 'var(--accent-2)' : 'var(--accent)')"></div>
+                                </div>
+                                <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="it.sub"></div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);"><span style="color:var(--accent-2);">■</span> shared with states · <span style="color:var(--accent);">■</span> not shared. GST hits everyone at the same rate; the poor pay more as a share of income.</p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">For every ₹100 the state <span style="color:var(--accent-2);">spends</span></h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.spendSplit.note"></p>
+                    <div class="space-y-2">
+                        <template x-for="it in primer.spendSplit.items" :key="it.label">
+                            <div>
+                                <div class="flex justify-between text-sm mb-0.5">
+                                    <span style="color:var(--ink);" x-text="it.label"></span>
+                                    <span class="tabular-nums font-semibold" style="color:var(--ink);">₹<span x-text="it.value"></span></span>
+                                </div>
+                                <div class="h-2.5 rounded-full" style="background:var(--surface-2);">
+                                    <div class="h-2.5 rounded-full" :style="'width:' + (it.value/22*100) + '%;background:var(--accent-2)'"></div>
+                                </div>
+                                <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="it.sub"></div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);">Interest + states' share take 42 paise before a single scheme is funded. More goes to buildings (₹22) than to people (₹11).</p>
+                </div>
+            </div>
+
+            <div class="card p-5 sm:p-6">
+                <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Rich states finance poor states</h3>
+                <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.stateReturns.note"></p>
+                <div class="space-y-1.5">
+                    <template x-for="s in primer.stateReturns.items" :key="s.state">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs w-28 flex-shrink-0" style="color:var(--ink);" x-text="s.state"></span>
+                            <div class="flex-1 h-5 rounded" style="background:var(--surface-2);">
+                                <div class="h-5 rounded flex items-center justify-end pr-1.5" :style="'width:' + Math.max(8, s.ret/510*100) + '%;background:' + (s.ret < 100 ? 'var(--accent)' : 'var(--accent-2)')">
+                                    <span class="text-[10px] font-semibold text-white tabular-nums">₹<span x-text="s.ret"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <p class="text-xs mt-3" style="color:var(--muted);">Return per ₹100 paid to the Union. The states that run services well and grew slowly get less back — and stand to lose Lok Sabha seats in delimitation. Penalised twice.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Your real inflation index</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);">The headline says <span class="font-semibold" x-text="primer.realInflation.headlineCPI + '%'"></span>. The thali disagrees.</p>
+                    <div class="space-y-3">
+                        <template x-for="it in primer.realInflation.items" :key="it.item">
+                            <div class="flex items-center justify-between gap-3">
+                                <div class="text-sm" style="color:var(--ink);" x-text="it.item"></div>
+                                <div class="text-sm tabular-nums" style="color:var(--ink-soft);">
+                                    <span x-text="it.unit + it.then"></span>
+                                    <span style="color:var(--muted);"> → </span>
+                                    <span class="font-bold" style="color:var(--accent);" x-text="it.unit + it.now"></span>
+                                    <span class="ml-1 text-xs font-semibold" style="color:var(--accent);">+<span x-text="Math.round((it.now/it.then-1)*100)"></span>%</span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);" x-text="primer.realInflation.note"></p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Who is really middle class?</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);">Monthly income, and where it places you.</p>
+                    <div class="space-y-2">
+                        <template x-for="t in primer.distribution.thresholds" :key="t.income">
+                            <div class="card-inner py-2">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-bold tabular-nums" style="color:var(--ink);">₹<span x-text="t.income.toLocaleString('en-IN')"></span>/mo</span>
+                                    <span class="text-xs font-semibold" style="color:var(--accent);" x-text="t.label"></span>
+                                </div>
+                                <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="t.sub"></div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);">If you earn ₹50,000/month, you are in the top 3–5% of India. The salaried, tax-paying middle is ~80–120 million — about one-seventh of the "300–400 million" market-research figure.</p>
+                </div>
+            </div>
+
+            <div class="card p-5 sm:p-6">
+                <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">The outside world</h3>
+                <p class="text-xs mb-4" style="color:var(--muted);" x-text="primer.external.note"></p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="card-inner text-center">
+                        <div class="text-2xl font-bold font-display" style="color:var(--accent);">−$<span x-text="Math.abs(primer.external.goodsDeficitBn)"></span>bn</div>
+                        <div class="text-xs mt-1" style="color:var(--muted);">Goods trade deficit (FY26)</div>
+                    </div>
+                    <div class="card-inner text-center">
+                        <div class="text-2xl font-bold font-display" style="color:var(--accent-2);">+$<span x-text="primer.external.servicesSurplusBn"></span>bn</div>
+                        <div class="text-xs mt-1" style="color:var(--muted);">Services surplus</div>
+                    </div>
+                    <div class="card-inner text-center">
+                        <div class="text-2xl font-bold font-display" style="color:var(--ink);">$<span x-text="primer.external.reservesBn"></span>bn</div>
+                        <div class="text-xs mt-1" style="color:var(--muted);">Forex reserves (~<span x-text="primer.external.importCoverMonths"></span> mo)</div>
+                    </div>
+                    <div class="card-inner text-center">
+                        <div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.external.rupeeRecordLow"></span></div>
+                        <div class="text-xs mt-1" style="color:var(--muted);">Rupee record low / $ (May 2026)</div>
+                    </div>
+                </div>
+                <p class="text-sm mt-4 italic" style="color:var(--ink-soft);">Goods in deficit, services to the rescue. Gold imports ($<span x-text="primer.external.goldImportsBn"></span>bn) are India's second-largest import after crude — people buy gold because the financial system left them no better option.</p>
+            </div>
+
+            <div class="card p-4 text-center" style="border-left:4px solid var(--accent);">
+                <p class="text-sm" style="color:var(--ink-soft);">Every number on this page rests on a choice — a base year, a basket, a survey date, a poverty line. To read any official number honestly is to ask who chose it, and what it leaves out. See <a @click.prevent="activeTab='Methodology'" href="#" style="color:var(--accent);" class="font-semibold underline">Methodology</a> and <a @click.prevent="activeTab='Economic Trajectory'" href="#" style="color:var(--accent);" class="font-semibold underline">Economic Trajectory</a>.</p>
+            </div>
+        </div>
+
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-slate-900 text-gray-300 py-10 mt-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1758,7 +2112,7 @@ reduces overall score</pre>
                 <div>
                     <h3 class="font-bold text-white mb-3 text-sm uppercase tracking-wider">Disclaimer</h3>
                     <p class="text-xs sm:text-sm leading-relaxed text-gray-400">
-                        Analysis based on publicly available data through May 2026.
+                        Analysis based on publicly available data through June 2026.
                         Views are personal. Errors are mine alone.
                         Users should verify all data independently.
                     </p>
@@ -1777,7 +2131,7 @@ reduces overall score</pre>
             </div>
 
             <div class="text-center text-xs mt-8 pt-6 border-t border-slate-800">
-                <p class="text-gray-500">&copy; 2025–2026 Some Perspective | Dr. Varna Sri Raman | Data through May 2026</p>
+                <p class="text-gray-500">&copy; 2025–2026 Some Perspective | Dr. Varna Sri Raman | Data through June 2026</p>
                 <p class="mt-1.5 text-gray-600">Independent research for democratic accountability. All data openly available for verification and reuse.</p>
             </div>
         </div>
@@ -1801,6 +2155,9 @@ reduces overall score</pre>
             formalEmployment:    [13.0,12.8,12.5,12.2,11.9,11.6,11.4,11.5,11.3,11.2,11.2,11.0,10.9,10.8],
             informalEmployment:  [87.0,87.2,87.5,87.8,88.1,88.4,88.6,88.5,88.7,88.8,88.8,89.0,89.1,89.2],
             pressFreedom:        [140,136,133,136,138,140,142,142,150,161,159,151,157,158],
+            fiscalDeficit:       [4.1,3.9,3.5,3.5,3.4,4.6,9.2,6.7,6.4,5.6,4.8,4.4,4.4,4.3],
+            cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,3.9,4.2],
+            rupeeUSD:            [61,64,67,65,68,70,74,74,79,82,84,87,95,96],
             ssi:                 [2.3,2.5,2.4,2.4,2.6,4.8,7.2,6.8,7.0,7.5,7.8,8.0,8.2,8.3],
             fci:                 [0.62,0.64,0.66,0.68,0.70,0.72,0.84,0.78,0.76,0.77,0.78,0.79,0.80,0.81],
             dqi:                 [0.71,0.70,0.68,0.65,0.60,0.55,0.48,0.45,0.43,0.42,0.42,0.41,0.40,0.39],
@@ -1817,6 +2174,81 @@ reduces overall score</pre>
         }
     };
 
+    // Forecast spec fallback (mirrors data.json "forecast"; used if fetch fails)
+    const FORECAST_FALLBACK = {
+        horizonYear: 2030,
+        baseYear: 2026,
+        disclaimer: "These are scenario projections, not predictions. Each path extends the recent trend of an observed series, then applies an explicit annual adjustment for one of three scenarios. Bands widen with the horizon because the further out you look, the more the assumption — not the economy — decides the number.",
+        scenarios: {
+            reform:   { label: 'Reform push',          desc: 'Statistical independence restored, labour-intensive manufacturing prioritised, fiscal federalism rebalanced, formalisation incentives.' },
+            baseline: { label: 'Current trajectory',   desc: 'Recent-trend continuation: the policy mix and institutional direction of 2019–2026 persist.' },
+            stress:   { label: 'Stress',               desc: 'External shock (oil/rupee), weak monsoon, continued informalisation and statistical opacity.' }
+        },
+        indicators: [
+            { key:'gdpGrowth',        label:'GDP growth',              unit:'%',     goodHigh:true,  trendYears:5, reform:0.55, stress:-1.6,  uncertainty:1.1,  min:-10, max:12,  decimals:1 },
+            { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1 },
+            { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1 },
+            { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1 },
+            { key:'cpiInflation',     label:'CPI inflation',           unit:'%',     goodHigh:false, trendYears:5, reform:-0.3, stress:2.2,   uncertainty:1.0,  min:0,   max:14,  decimals:1 },
+            { key:'fiscalDeficit',    label:'Fiscal deficit',          unit:'% GDP', goodHigh:false, trendYears:5, reform:-0.3, stress:1.3,   uncertainty:0.7,  min:0,   max:12,  decimals:1 },
+            { key:'rupeeUSD',         label:'Rupee (INR per USD)',     unit:'₹/$',   goodHigh:false, trendYears:6, reform:-2,   stress:9,     uncertainty:4.5,  min:50,  max:130, decimals:0 },
+            { key:'dqi',              label:'Democratic Quality Index',unit:'',      goodHigh:true,  trendYears:6, reform:0.04, stress:-0.03, uncertainty:0.04, min:0,   max:1,   decimals:2 }
+        ]
+    };
+
+    // Citizen-primer datasets fallback (mirrors data.json primer blocks)
+    const PRIMER_FALLBACK = {
+        bigPicture: { note: 'India in five numbers (Economic Survey 2025-26; IMF WEO; NSO).', items: [
+            { value:'~$4.0 tn', label:'Size of economy', sub:'4th largest nominal GDP' },
+            { value:'~$2,900',  label:'Per person',      sub:'~109th in the world' },
+            { value:'1.46 bn',  label:'People',          sub:'most populous nation' },
+            { value:'7.4%',     label:'Real growth FY26',sub:'Economic Survey estimate' },
+            { value:'11.2%',    label:'Tax-to-GDP',      sub:'OECD average ~34%' }
+        ]},
+        chinaDivergence: { note:'Nominal USD per capita. Both near $330 in 1991. Approximate.', years:[1991,2000,2010,2020,2026], india:[330,460,1350,1910,2900], china:[330,960,4550,10500,13000] },
+        taxTake: { note:'For every ₹100 the Union collects (Union Budget 2026-27).', items:[
+            { label:'Borrowings', value:24, sub:'not earned — borrowed', shared:false },
+            { label:'Individual income tax', value:19, sub:'salaried & professional', shared:true },
+            { label:'GST (indirect)', value:18, sub:'falls on everyone equally', shared:true },
+            { label:'Corporation tax', value:17, sub:'cut 30%→22% in 2019', shared:true },
+            { label:'Excise + customs', value:9, sub:'fuel, imports; much via cess', shared:false },
+            { label:'Non-tax revenue', value:9, sub:'RBI dividend, fees, tolls', shared:false },
+            { label:'Other receipts', value:4, sub:'capital, disinvestment', shared:false }
+        ]},
+        spendSplit: { note:'For every ₹100 the Union spends (Union Budget 2026-27).', items:[
+            { label:'Capital expenditure', value:22, sub:'roads, railways, ports' },
+            { label:"States' share of taxes", value:22, sub:'devolution to states' },
+            { label:'Interest payments', value:20, sub:'cost of past borrowing' },
+            { label:'Other', value:14, sub:'salaries, other grants' },
+            { label:'Welfare', value:11, sub:'MGNREGA, PDS, schemes' },
+            { label:'Defence', value:11, sub:'armed forces' }
+        ]},
+        stateReturns: { note:'Approximate return per ₹100 paid to the Union, by state (AIPC; Finance Commission). Direction is the point.', items:[
+            { state:'Maharashtra', ret:30 }, { state:'Gujarat', ret:50 }, { state:'Karnataka', ret:60 },
+            { state:'Tamil Nadu', ret:60 }, { state:'West Bengal', ret:120 }, { state:'Uttar Pradesh', ret:200 },
+            { state:'Madhya Pradesh', ret:244 }, { state:'Bihar', ret:510 }
+        ]},
+        realInflation: { note:'Everyday prices over ~a decade vs the ~3.9% headline CPI. Thali: AIPC; others illustrative.', headlineCPI:3.9, items:[
+            { item:'Basic thali', then:19, now:28.5, unit:'₹' },
+            { item:'Auto-rickshaw min. fare', then:25, now:50, unit:'₹' },
+            { item:'Daily family meals', then:200, now:300, unit:'₹/day' },
+            { item:'School fees (mid-market)', then:30000, now:70000, unit:'₹/yr' }
+        ]},
+        external: { note:'External sector FY26 (RBI; DGCI&S; IMF WEO 2026).', goodsDeficitBn:-333, servicesSurplusBn:190, cadPctGDP:1.0, reservesBn:691, importCoverMonths:11, rupeeRecordLow:95.2, goldImportsBn:72, crudeImportsBn:123, crudeImportDependence:86, fpiOutflowBn:-16.5 },
+        distribution: { note:'Monthly income and where it places you (WIR; HCES; PLFS; NCAER). Approximate.', thresholds:[
+            { income:5000, label:'Bottom 20-25%', sub:'below rural minimum wage in most states' },
+            { income:10000, label:'~40th percentile', sub:'below urban poverty-adjacent thresholds' },
+            { income:25000, label:'~80-85th percentile', sub:"most who consider themselves 'middle class'" },
+            { income:50000, label:'Top 3-5%', sub:'aspirational middle class' },
+            { income:100000, label:'Top 1-2%', sub:"what politics calls 'affluent'" }
+        ], bottom50AvgAnnual:71000, ruralMPCE:3773, urbanMPCE:6459, top10IncomeShare:58, top1WealthShare:40, bottom50WealthShare:4 },
+        structure: { note:'Output here, jobs there (MoSPI/NSO GVA FY25; PLFS).', sectors:[
+            { sector:'Agriculture', gva:18, emp:42 }, { sector:'Manufacturing', gva:17, emp:11 },
+            { sector:'Services', gva:53, emp:33 }, { sector:'Other', gva:12, emp:14 }
+        ]},
+        jobsLesson: { note:'Same investment, different jobs (AIPC; Planning Commission).', electronicsCrPerJob:1.5, electronicsJobsLakh:1, garmentsJobsCrore:3, garmentsWomenSharePct:70, govJobApplicationsCrore:22, govJobsGivenLakh:7.22, govJobSuccessRate:'1 in 305' }
+    };
+
     // Tab <-> URL hash mapping
     const TAB_HASH = {
         'What is This?': 'what-is-this',
@@ -1825,12 +2257,14 @@ reduces overall score</pre>
         'Interactive Data': 'interactive-data',
         'Correlation Explorer': 'correlation-explorer',
         'Three Indices': 'three-indices',
+        'Reading the Economy': 'reading-the-economy',
         'Human Stories': 'human-stories',
         'Methodology': 'methodology',
         'Implications': 'implications',
         'Era Comparison': 'era-comparison',
         'Scenario Lab': 'scenario-lab',
         'Deep Analysis': 'deep-analysis',
+        'Economic Trajectory': 'economic-trajectory',
         'What Next?': 'what-next'
     };
     const HASH_TAB = Object.fromEntries(Object.entries(TAB_HASH).map(([k,v]) => [v,k]));
@@ -1924,6 +2358,19 @@ reduces overall score</pre>
             scenarioInputs: { formalEmp: 10.9, pressFreedom: 157, cessShare: 20.5, statsReleased: 40 },
             scenarioOutputs: { ssi: 8.2, fci: 0.80, dqi: 0.40 },
 
+            // ===== ECONOMIC TRAJECTORY (forecast) state =====
+            forecastSpec: FORECAST_FALLBACK,
+            trajScenario: 'baseline',          // 'reform' | 'baseline' | 'stress'
+            trajIndicator: 'gdpGrowth',         // currently-focused indicator for the fan chart
+            trajLevers: { statsIndependence: false, garmentsPush: false, fiscalRebalance: false, formalisation: false },
+            trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-500' },
+            primer: PRIMER_FALLBACK,
+            // Array view of forecast scenarios (Alpine x-for needs an array, not an object)
+            get scenarioList() {
+                const s = (this.forecastSpec && this.forecastSpec.scenarios) || {};
+                return Object.keys(s).map(k => ({ key: k, label: s[k].label, desc: s[k].desc }));
+            },
+
             audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
 
             get tabs() {
@@ -1934,19 +2381,19 @@ reduces overall score</pre>
                 return flat;
             },
             // Featured standalone tab pinned to the end of the nav
-            featuredTab: 'Deep Analysis',
+            featuredTab: 'Economic Trajectory',
             // Grouped nav structure
             tabGroups: [
                 { label: 'Overview', tabs: ['What is This?', 'Executive Summary', 'Key Findings'] },
-                { label: 'Explore',  tabs: ['Interactive Data', 'Correlation Explorer', 'Three Indices', 'Era Comparison', 'Human Stories'] },
-                { label: 'Methods',  tabs: ['Methodology', 'Scenario Lab'] },
+                { label: 'Explore',  tabs: ['Interactive Data', 'Correlation Explorer', 'Three Indices', 'Reading the Economy', 'Era Comparison', 'Human Stories'] },
+                { label: 'Methods',  tabs: ['Methodology', 'Scenario Lab', 'Deep Analysis'] },
                 { label: 'Action',   tabs: ['Implications', 'What Next?'] }
             ],
             openGroup: null,
             // True if the given group contains the currently active tab
             isGroupActive(group) { return group.tabs.includes(this.activeTab); },
             // Tabs that should display a "New" pip in the nav
-            newTabs: ['Deep Analysis'],
+            newTabs: ['Economic Trajectory'],
             // Daily-rotating highlight panel on the home tab.
             // Each entry surfaces an interesting finding and points at the relevant tab.
             dailyFeatures: [
@@ -1995,7 +2442,7 @@ reduces overall score</pre>
             // Per-role recommended jumping-off points
             roleConfig: {
                 'Researcher': {
-                    intro: '<strong>For Researchers:</strong> Comprehensive political-economy assessment through May 2026 with three novel indices (SSI, FCI, DQI). All methodologies transparent and replicable. Raw data in CSV/JSON, replication code in R and Python.',
+                    intro: '<strong>For Researchers:</strong> Comprehensive political-economy assessment through June 2026 with three novel indices (SSI, FCI, DQI). All methodologies transparent and replicable. Raw data in CSV/JSON, replication code in R and Python.',
                     cta: 'Start with Methodology, then Deep Analysis for the regime-comparison tables.',
                     suggested: ['Methodology', 'Three Indices', 'Deep Analysis', 'Era Comparison']
                 },
@@ -2005,7 +2452,7 @@ reduces overall score</pre>
                     suggested: ['Executive Summary', 'Key Findings', 'Implications', 'What Next?']
                 },
                 'Journalist': {
-                    intro: '<strong>For Journalists:</strong> Four ready-to-use data stories with human angles and verified quotes. All statistics fact-checked against public sources through May 2026. Visual assets exportable as PNG.',
+                    intro: '<strong>For Journalists:</strong> Four ready-to-use data stories with human angles and verified quotes. All statistics fact-checked against public sources through June 2026. Visual assets exportable as PNG.',
                     cta: 'Start with Human Stories for the angle, then Three Indices for the supporting numbers.',
                     suggested: ['Human Stories', 'Key Findings', 'Three Indices', 'Interactive Data']
                 },
@@ -2045,7 +2492,13 @@ reduces overall score</pre>
                     const d = await resp.json();
                     if (d.economic) this.economicData = d.economic;
                     if (d.international) this.internationalData = d.international;
+                    if (d.forecast) this.forecastSpec = d.forecast;
                     if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
+                    // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
+                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson'];
+                    const merged = { ...PRIMER_FALLBACK };
+                    for (const k of primerKeys) { if (d[k]) merged[k] = d[k]; }
+                    this.primer = merged;
                 } catch(e) {
                     console.warn('data.json fetch failed; using bundled fallback values', e);
                     this.dataLoadError = true;
@@ -2206,6 +2659,8 @@ reduces overall score</pre>
                     this.updateScatterPlot();
                 } else if (tab === 'Three Indices') {
                     this.createIndicesChart();
+                } else if (tab === 'Reading the Economy') {
+                    this.createPrimerCharts();
                 } else if (tab === 'Human Stories') {
                     this.createHumanStoriesCharts();
                     echarts.connect('humanStories');
@@ -2228,6 +2683,8 @@ reduces overall score</pre>
                     } else {
                         this.createCSVCharts();
                     }
+                } else if (tab === 'Economic Trajectory') {
+                    this.updateTrajectory();
                 }
             },
 
@@ -2405,7 +2862,10 @@ reduces overall score</pre>
                     pressFreedom: { label: 'Press Freedom Rank', data: d.pressFreedom, color: '#8b5cf6' },
                     ssi: { label: 'SSI', data: d.ssi, color: '#ec4899' },
                     fci: { label: 'FCI ×10', data: d.fci.map(v => v*10), color: '#06b6d4' },
-                    dqi: { label: 'DQI ×10', data: d.dqi.map(v => v*10), color: '#f97316' }
+                    dqi: { label: 'DQI ×10', data: d.dqi.map(v => v*10), color: '#f97316' },
+                    fiscalDeficit: { label: 'Fiscal Deficit (% GDP)', data: d.fiscalDeficit, color: '#0e7490' },
+                    cpiInflation: { label: 'CPI Inflation (%)', data: d.cpiInflation, color: '#d97706' },
+                    rupeeUSD: { label: 'Rupee (INR/USD)', data: d.rupeeUSD, color: '#9333ea' }
                 };
                 const series = [];
                 const yAxes = [];
@@ -2539,7 +2999,7 @@ reduces overall score</pre>
             // Export CSV
             exportDataAsCSV() {
                 const d = this.economicData;
-                let csv = 'India Economic Data through May 2026\n';
+                let csv = 'India Economic Data through June 2026\n';
                 csv += 'Year,GDP Growth,Unemployment,Top 1% Share,Bottom 50% Share,Formal Employment,SSI,FCI,DQI\n';
                 for (let i = 0; i < d.years.length; i++) {
                     csv += `${d.years[i]},${d.gdpGrowth[i]},${d.unemployment[i]},${d.top1Share[i]},${d.bottom50Share[i]},${d.formalEmployment[i]},${d.ssi[i]},${d.fci[i]},${d.dqi[i]}\n`;
@@ -2579,7 +3039,8 @@ reduces overall score</pre>
                     gdpGrowth: 'GDP Growth (%)', unemployment: 'Unemployment (%)',
                     top1Share: 'Top 1% Share (%)', formalEmployment: 'Formal Employment (%)',
                     pressFreedom: 'Press Freedom Rank', ssi: 'SSI', fci: 'FCI', dqi: 'DQI',
-                    gigWorkers: 'Gig Workers (M)', femaleLFPR: 'Female LFPR (%)'
+                    gigWorkers: 'Gig Workers (M)', femaleLFPR: 'Female LFPR (%)',
+                    fiscalDeficit: 'Fiscal Deficit (% GDP)', cpiInflation: 'CPI Inflation (%)', rupeeUSD: 'Rupee (INR/USD)'
                 };
                 const xData = d[this.scatterX];
                 const yData = d[this.scatterY];
@@ -3064,6 +3525,283 @@ reduces overall score</pre>
                         { name: 'Formal employment % (proj.)',    type: 'line', data: splitProj(d.formalEmployment),   yAxisIndex: 1, smooth: true, lineStyle: { color: '#ef4444', width: 2, type: 'dashed' }, itemStyle: { color: '#ef4444' }, symbol: 'emptyCircle' }
                     ]
                 });
+            },
+
+            // ===== ECONOMIC TRAJECTORY (forecast engine) =====
+            // Per-indicator scoring references for the composite Trajectory Index (0-100).
+            // good = value scoring 100, bad = value scoring 0; direction baked into the pair.
+            TRAJ_SCORE_REF: {
+                gdpGrowth:        { bad: 2,    good: 9 },
+                formalEmployment: { bad: 9,    good: 20 },
+                unemployment:     { bad: 10,   good: 3 },
+                top1Share:        { bad: 26,   good: 16 },
+                cpiInflation:     { bad: 9,    good: 3 },
+                fiscalDeficit:    { bad: 9,    good: 3 },
+                rupeeUSD:         { bad: 120,  good: 70 },
+                dqi:              { bad: 0.30, good: 0.78 }
+            },
+            // Lever effects on the projected-2030 value (illustrative; additive to the central path).
+            TRAJ_LEVER_FX: {
+                statsIndependence: { dqi: 0.06 },
+                garmentsPush:      { formalEmployment: 1.2, unemployment: -0.8 },
+                fiscalRebalance:   { fiscalDeficit: -0.8, top1Share: -0.2 },
+                formalisation:     { formalEmployment: 1.0, top1Share: -0.4 }
+            },
+            trajLeverMeta: [
+                { id: 'statsIndependence', label: 'Restore statistical independence', desc: 'Independent NSO, census on schedule, surveys released on time.' },
+                { id: 'garmentsPush',      label: 'Labour-intensive manufacturing',  desc: 'Garments/textiles over capital-intensive PLI: ~20 lakh jobs per $1bn exports.' },
+                { id: 'fiscalRebalance',   label: 'Rebalance fiscal federalism',      desc: 'Shrink cesses, widen the divisible pool, restore state autonomy.' },
+                { id: 'formalisation',     label: 'Formalisation incentives',         desc: 'EPF/ESI expansion, written contracts, social-security floor for gig work.' }
+            ],
+
+            trajIndSpec(key) { return (this.forecastSpec.indicators || []).find(s => s.key === key) || null; },
+
+            // OLS slope (per year) over the last n observed points.
+            _trendSlope(arr, n) {
+                const obs = arr.slice(0, this.latestObservedIndex() + 1);
+                const pts = obs.slice(Math.max(0, obs.length - n));
+                const m = pts.length;
+                if (m < 2) return 0;
+                const xs = pts.map((_, i) => i);
+                const mx = xs.reduce((a,b)=>a+b,0)/m;
+                const my = pts.reduce((a,b)=>a+b,0)/m;
+                let num = 0, den = 0;
+                for (let i=0;i<m;i++){ num += (xs[i]-mx)*(pts[i]-my); den += (xs[i]-mx)**2; }
+                return den === 0 ? 0 : num/den;
+            },
+
+            // Project one indicator under one scenario. Returns paths from baseYear+1 to horizon.
+            buildForecast(key, scenario) {
+                const spec = this.trajIndSpec(key);
+                const d = this.economicData;
+                const arr = d[key];
+                if (!spec || !arr) return null;
+                const li = this.latestObservedIndex();
+                const baseYear = d.years[li];
+                const horizon = this.forecastSpec.horizonYear || 2030;
+                const nYears = horizon - baseYear;
+                const slope = this._trendSlope(arr, spec.trendYears);
+                const adj = scenario === 'reform' ? spec.reform : scenario === 'stress' ? spec.stress : 0;
+                const clamp = v => Math.max(spec.min, Math.min(spec.max, v));
+                let val = arr[li];
+                const fyears = [], central = [], lo = [], hi = [];
+                for (let h = 1; h <= nYears; h++) {
+                    val = clamp(val + slope + adj);
+                    const band = spec.uncertainty * Math.sqrt(h);
+                    fyears.push(baseYear + h);
+                    central.push(Math.round(val * 100) / 100);
+                    lo.push(Math.round(clamp(val - band) * 100) / 100);
+                    hi.push(Math.round(clamp(val + band) * 100) / 100);
+                }
+                return { spec, baseYear, anchorVal: arr[li], fyears, central, lo, hi };
+            },
+
+            // 2030 central projection for an indicator, after applying any active levers.
+            projected2030(key, scenario) {
+                const f = this.buildForecast(key, scenario);
+                if (!f) return null;
+                let v = f.central[f.central.length - 1];
+                for (const lever of Object.keys(this.trajLevers)) {
+                    const fx = this.TRAJ_LEVER_FX[lever];
+                    if (this.trajLevers[lever] && fx && fx[key] != null) v += fx[key];
+                }
+                return Math.max(f.spec.min, Math.min(f.spec.max, v));
+            },
+
+            _score(key, val) {
+                const ref = this.TRAJ_SCORE_REF[key];
+                if (!ref || val == null) return null;
+                const t = (val - ref.bad) / (ref.good - ref.bad);
+                return Math.max(0, Math.min(1, t)) * 100;
+            },
+            compositeIndex(valuesByKey) {
+                let sum = 0, n = 0;
+                for (const k of Object.keys(this.TRAJ_SCORE_REF)) {
+                    const s = this._score(k, valuesByKey[k]);
+                    if (s != null) { sum += s; n++; }
+                }
+                return n ? Math.round(sum / n) : 50;
+            },
+            currentValues() {
+                const li = this.latestObservedIndex();
+                const d = this.economicData;
+                const out = {};
+                for (const k of Object.keys(this.TRAJ_SCORE_REF)) out[k] = (d[k] || [])[li];
+                return out;
+            },
+            projectedValues(scenario) {
+                const out = {};
+                for (const k of Object.keys(this.TRAJ_SCORE_REF)) out[k] = this.projected2030(k, scenario);
+                return out;
+            },
+
+            setTrajScenario(s) { this.trajScenario = s; this.updateTrajectory(); },
+            setTrajIndicator(k) { this.trajIndicator = k; this.createTrajFanChart(); },
+            toggleLever(l) { this.trajLevers[l] = !this.trajLevers[l]; this.updateTrajectory(); },
+
+            updateTrajectory() {
+                const i26 = this.compositeIndex(this.currentValues());
+                const i30 = this.compositeIndex(this.projectedValues(this.trajScenario));
+                this.trajOut.index2026 = i26;
+                this.trajOut.index2030 = i30;
+                const diff = i30 - i26;
+                if (diff >= 4) { this.trajOut.verdict = 'Improving'; this.trajOut.verdictClass = 'text-emerald-600 dark:text-emerald-400'; }
+                else if (diff <= -4) { this.trajOut.verdict = 'Deteriorating'; this.trajOut.verdictClass = 'text-red-600 dark:text-red-400'; }
+                else { this.trajOut.verdict = 'Broadly flat'; this.trajOut.verdictClass = 'text-amber-600 dark:text-amber-400'; }
+                this.createTrajGauge();
+                this.createTrajFanChart();
+                this.createTrajScenarioChart();
+            },
+
+            renderTrajTable() {
+                const scen = this.trajScenario;
+                let html = '';
+                for (const spec of (this.forecastSpec.indicators || [])) {
+                    const cur = this.economicData[spec.key] ? this.economicData[spec.key][this.latestObservedIndex()] : null;
+                    const p = this.projected2030(spec.key, scen);
+                    if (cur == null || p == null) continue;
+                    const dp = spec.decimals;
+                    const delta = p - cur;
+                    const improved = (spec.goodHigh && delta > 0) || (!spec.goodHigh && delta < 0);
+                    const flat = Math.abs(delta) < Math.pow(10, -dp) / 2;
+                    const colour = flat ? 'text-gray-500' : improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
+                    const arrow = flat ? '→' : (delta > 0 ? '▲' : '▼');
+                    html += `<tr class="border-b border-gray-100 dark:border-gray-800">
+                        <td class="py-2 text-gray-700 dark:text-gray-300">${spec.label}${spec.unit ? ' <span class="text-gray-400">('+spec.unit+')</span>' : ''}</td>
+                        <td class="py-2 text-right tabular-nums">${cur.toFixed(dp)}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold">${p.toFixed(dp)}</td>
+                        <td class="py-2 text-right tabular-nums font-semibold ${colour}">${arrow} ${(delta>0?'+':'')}${delta.toFixed(dp)}</td>
+                    </tr>`;
+                }
+                return html;
+            },
+
+            createTrajGauge() {
+                const c = this.getChart('trajGaugeChart');
+                if (!c) return;
+                c.setOption({
+                    backgroundColor: 'transparent',
+                    series: [{
+                        type: 'gauge', startAngle: 210, endAngle: -30, min: 0, max: 100,
+                        radius: '94%', center: ['50%', '60%'],
+                        progress: { show: true, width: 13, roundCap: true },
+                        axisLine: { lineStyle: { width: 13, color: [[0.4,'#ef4444'],[0.6,'#f59e0b'],[1,'#22c55e']] } },
+                        pointer: { width: 5, length: '60%', itemStyle: { color: 'auto' } },
+                        axisTick: { show: false }, splitLine: { length: 9, lineStyle: { color: 'auto', width: 2 } },
+                        axisLabel: { distance: 16, fontSize: 9, color: this.darkMode ? '#94a3b8' : '#64748b' },
+                        anchor: { show: false },
+                        title: { offsetCenter: [0, '30%'], fontSize: 10, color: this.darkMode ? '#94a3b8' : '#64748b' },
+                        detail: { valueAnimation: true, fontSize: 30, fontWeight: 'bold', offsetCenter: [0, '0%'], formatter: '{value}', color: this.darkMode ? '#e2e8f0' : '#1f2937' },
+                        data: [{ value: this.trajOut.index2030, name: 'Index 2030' }]
+                    }]
+                }, true);
+            },
+
+            createTrajFanChart() {
+                const c = this.getChart('trajFanChart');
+                if (!c) return;
+                const key = this.trajIndicator;
+                const spec = this.trajIndSpec(key);
+                const d = this.economicData;
+                const f = this.buildForecast(key, this.trajScenario);
+                if (!spec || !f) return;
+                const li = this.latestObservedIndex();
+                const obsYears = d.years.slice(0, li + 1);
+                const obsVals = d[key].slice(0, li + 1);
+                const allYears = obsYears.concat(f.fyears);
+                const pad = n => new Array(n).fill(null);
+                const centralLine = pad(li).concat([obsVals[li]], f.central);
+                const loBand = pad(li).concat([obsVals[li]], f.lo);
+                const hiDelta = pad(li).concat([0], f.hi.map((v, i) => v - f.lo[i]));
+                const obsLine = obsVals.concat(pad(f.fyears.length));
+                const scenLabel = (this.forecastSpec.scenarios[this.trajScenario] || {}).label || this.trajScenario;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: chartTitle(spec.label + ' to 2030 · ' + scenLabel, this.darkMode),
+                    tooltip: { trigger: 'axis', valueFormatter: v => v == null ? '' : (+v).toFixed(spec.decimals) + (spec.unit ? ' ' + spec.unit : '') },
+                    legend: chartLegend(['Observed', 'Projected (central)', 'Uncertainty band']),
+                    xAxis: { type: 'category', data: allYears, axisLabel: { fontSize: isMobile() ? 10 : 12 } },
+                    yAxis: { type: 'value', name: spec.unit, scale: true, axisLabel: { fontSize: isMobile() ? 10 : 12 } },
+                    series: [
+                        { name: 'lo', type: 'line', data: loBand, stack: 'band', lineStyle: { opacity: 0 }, symbol: 'none', tooltip: { show: false }, silent: true },
+                        { name: 'Uncertainty band', type: 'line', data: hiDelta, stack: 'band', lineStyle: { opacity: 0 }, symbol: 'none', areaStyle: { color: '#0e7490', opacity: 0.15 }, tooltip: { show: false }, silent: true },
+                        { name: 'Observed', type: 'line', data: obsLine, smooth: true, symbol: 'circle', symbolSize: 5, lineStyle: { width: 2.5, color: this.darkMode ? '#e2e8f0' : '#1f2937' }, itemStyle: { color: this.darkMode ? '#e2e8f0' : '#1f2937' } },
+                        { name: 'Projected (central)', type: 'line', data: centralLine, smooth: true, symbol: 'emptyCircle', symbolSize: 5, lineStyle: { width: 2.5, type: 'dashed', color: '#b4530e' }, itemStyle: { color: '#b4530e' } }
+                    ]
+                }, true);
+            },
+
+            createTrajScenarioChart() {
+                const c = this.getChart('trajScenarioChart');
+                if (!c) return;
+                const d = this.economicData;
+                const li = this.latestObservedIndex();
+                const baseYear = d.years[li];
+                const horizon = this.forecastSpec.horizonYear || 2030;
+                const fyears = []; for (let y = baseYear; y <= horizon; y++) fyears.push(y);
+                const colors = { reform: '#22c55e', baseline: '#0e7490', stress: '#ef4444' };
+                const series = [];
+                for (const scen of ['reform','baseline','stress']) {
+                    // Precompute each indicator's path once for this scenario.
+                    const paths = {};
+                    for (const k of Object.keys(this.TRAJ_SCORE_REF)) paths[k] = this.buildForecast(k, scen);
+                    const vals = fyears.map(y => {
+                        const byKey = {};
+                        for (const k of Object.keys(this.TRAJ_SCORE_REF)) {
+                            byKey[k] = (y === baseYear) ? (d[k]||[])[li] : (paths[k] ? paths[k].central[y - baseYear - 1] : null);
+                        }
+                        return this.compositeIndex(byKey);
+                    });
+                    series.push({ name: (this.forecastSpec.scenarios[scen]||{}).label || scen, type: 'line', data: vals, smooth: true, symbol: 'circle', symbolSize: 5, lineStyle: { width: 3, color: colors[scen], type: scen==='baseline'?'solid':'dashed' }, itemStyle: { color: colors[scen] } });
+                }
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    title: chartTitle('Composite Trajectory Index 2026 → 2030, by scenario', this.darkMode),
+                    tooltip: { trigger: 'axis' },
+                    legend: chartLegend(series.map(s => s.name)),
+                    xAxis: { type: 'category', data: fyears },
+                    yAxis: { type: 'value', min: 0, max: 100, name: 'Index (0-100)' },
+                    series
+                }, true);
+            },
+
+            // ===== READING THE ECONOMY (citizen primer) =====
+            createPrimerCharts() {
+                const p = this.primer || {};
+                // China divergence
+                const cc = this.getChart('primerChinaChart');
+                if (cc && p.chinaDivergence) {
+                    const cd = p.chinaDivergence;
+                    cc.setOption({
+                        ...baseOpts(this.darkMode),
+                        title: chartTitle('Same start in 1991. Very different destinations.', this.darkMode),
+                        tooltip: { trigger: 'axis', valueFormatter: v => '$' + (+v).toLocaleString() },
+                        legend: chartLegend(['India', 'China']),
+                        xAxis: { type: 'category', data: cd.years },
+                        yAxis: { type: 'value', name: 'GDP per capita (USD)' },
+                        series: [
+                            { name: 'India', type: 'line', data: cd.india, smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { width: 3, color: '#b4530e' }, itemStyle: { color: '#b4530e' }, areaStyle: { color: '#b4530e', opacity: 0.08 } },
+                            { name: 'China', type: 'line', data: cd.china, smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { width: 3, color: '#0e7490' }, itemStyle: { color: '#0e7490' }, areaStyle: { color: '#0e7490', opacity: 0.08 } }
+                        ]
+                    }, true);
+                }
+                // Structure: output vs jobs
+                const sc = this.getChart('primerStructureChart');
+                if (sc && p.structure) {
+                    const sectors = p.structure.sectors;
+                    sc.setOption({
+                        ...baseOpts(this.darkMode),
+                        title: chartTitle('Output here, jobs there', this.darkMode),
+                        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: v => v + '%' },
+                        legend: chartLegend(['Share of output (GVA)', 'Share of jobs']),
+                        xAxis: { type: 'category', data: sectors.map(s => s.sector) },
+                        yAxis: { type: 'value', name: '%', max: 60 },
+                        series: [
+                            { name: 'Share of output (GVA)', type: 'bar', data: sectors.map(s => s.gva), itemStyle: { color: '#0e7490', borderRadius: [4,4,0,0] }, barGap: '10%' },
+                            { name: 'Share of jobs', type: 'bar', data: sectors.map(s => s.emp), itemStyle: { color: '#b4530e', borderRadius: [4,4,0,0] } }
+                        ]
+                    }, true);
+                }
             },
 
             // ===== SUPPLEMENTARY CSV DATA =====
