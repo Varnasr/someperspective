@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.21.0">
+    <meta name="version" content="2.22.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1667,35 +1667,36 @@ reduces overall score</pre>
                 </div>
 
                 <!-- Era comparison chart -->
-                <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-6">
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-2">
                     <div id="eraComparisonChart" style="width:100%;height:300px;" class="chart-h-sm-450"></div>
                 </div>
+                <p class="text-xs mb-6" style="color:var(--muted);">Both columns are period averages computed live from the data. † Unemployment and formal-employment UPA figures are on a different basis (World Bank/ILO; NSSO-interpolated) from the NDA PLFS-era series, so those two head-to-heads aren't strictly comparable.</p>
 
-                <!-- Delta cards -->
+                <!-- Delta cards (period averages, computed live) -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
                     <div class="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
                         <div class="text-xs text-gray-500 font-medium mb-1">Avg GDP Growth</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold">7.4%</span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold">5.8%</span></div>
-                        <div class="text-xs mt-1 text-red-600 font-semibold">-1.6pp</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('gdpGrowth'),1)+'%'"></span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('gdpGrowth'),1)+'%'"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('gdpGrowth',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="text-xs text-gray-500 font-medium mb-1">Formal Employment</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA end:</span> <span class="font-bold">13.0%</span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">10.9%</span></div>
-                        <div class="text-xs mt-1 text-red-600 font-semibold">-2.1pp</div>
+                        <div class="text-xs text-gray-500 font-medium mb-1">Formal Employment †</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('formalEmployment'),1)+'%'"></span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('formalEmployment'),1)+'%'"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-400" x-text="eraDeltaTxt('formalEmployment',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
                         <div class="text-xs text-gray-500 font-medium mb-1">Top 1% Share</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA end:</span> <span class="font-bold">21.3%</span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">23.0%</span></div>
-                        <div class="text-xs mt-1 text-red-600 font-semibold">+1.7pp</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('top1Share'),1)+'%'"></span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('top1Share'),1)+'%'"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('top1Share',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="text-xs text-gray-500 font-medium mb-1">Press Freedom</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA end:</span> <span class="font-bold">140th</span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA end:</span> <span class="font-bold">157th</span></div>
-                        <div class="text-xs mt-1 text-red-600 font-semibold">-17 ranks</div>
+                        <div class="text-xs text-gray-500 font-medium mb-1">Press Freedom rank</div>
+                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('pressFreedom'),0)"></span></div>
+                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('pressFreedom'),0)"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('pressFreedom',0,' ranks')"></div>
                     </div>
                 </div>
 
@@ -2279,7 +2280,7 @@ reduces overall score</pre>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.jobsLesson.govJobsGivenLakh"></span> lakh</div><div class="text-xs mt-1" style="color:var(--muted);">jobs actually given</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);" x-text="primer.jobsLesson.govJobSuccessRate"></div><div class="text-xs mt-1" style="color:var(--muted);">success rate</div></div>
                     </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);">A massive young population and a tiny formal job market. The two eras compared: UPA averaged ~7.4% growth, NDA ~6.1% — see <a @click.prevent="activeTab='Era Comparison'" href="#" style="color:var(--accent);" class="underline font-semibold">Era Comparison</a>.</p>
+                    <p class="text-xs mt-3" style="color:var(--muted);">A massive young population and a tiny formal job market. The two eras compared: UPA averaged ~7.1% growth, NDA ~6.1% — see <a @click.prevent="activeTab='Era Comparison'" href="#" style="color:var(--accent);" class="underline font-semibold">Era Comparison</a>.</p>
                 </div>
             </div>
 
@@ -3145,7 +3146,7 @@ reduces overall score</pre>
                 { category: "Indices", title: "All three constructed indices point the same direction", body: "SSI (statistical suppression) and FCI (fiscal centralisation) have risen sharply since 2014. DQI (democratic quality) has fallen by an equivalent amount. The three are constructed from independent data sources but co-move because they measure related institutional erosion.", takeaway: "The three indices are correlated because the underlying processes are correlated \u2014 not by construction.", tab: "Three Indices", chart: { type: "multi", series: ["ssi", "fci", "dqi"], labels: ["SSI \u00f710", "FCI", "DQI"], colors: ["#ef4444", "#f59e0b", "#22c55e"], normalize: {"ssi": 0.1}, unit: "" } },
                 { category: "Statistics", title: "The Census is 15 years overdue and counting", body: "The last Indian Census was 2011. The 2021 Census has been postponed indefinitely. Every population estimate published since 2021 \u2014 for ration cards, electoral rolls, sample frames, all of it \u2014 is now an interpolation. The compounding error grows every year.", takeaway: "India is the world's most populous country and has not formally counted itself in 15 years.", tab: "Three Indices", chart: { type: "line", series: ["ssi"], labels: ["SSI"], colors: ["#ef4444"], unit: "" } },
                 { category: "Inequality", title: "The top 1% holds 40% of the country's wealth", body: "Income concentration is the top 1%'s 23% share. Wealth concentration is starker still \u2014 at ~40% (WID estimates), exceeding the income concentration by a factor of nearly two. The bottom 50%'s wealth share is below 7%.", takeaway: "Within India's already-high inequality, wealth inequality is meaningfully higher than income inequality.", tab: "Key Findings", chart: { type: "line", series: ["top1Share"], labels: ["Top 1% income %"], colors: ["#ef4444"], unit: "%" } },
-                { category: "Comparative", title: "A regime comparison, computed live from the data", body: "Averaging the data over each regime period: UPA averaged 7.4% GDP growth, 4.9% unemployment, 13.0% formal employment, 21.3% top 1% share, and 140 press rank. NDA's same averages are computed from the loaded series every page load. The methodology is identical.", takeaway: "The regime comparison is mechanical \u2014 averaging, not interpretation. It does not flatter either side.", tab: "Deep Analysis", chart: { type: "line", series: ["gdpGrowth"], labels: ["GDP growth %"], colors: ["#3b82f6"], unit: "%" } },
+                { category: "Comparative", title: "A regime comparison, computed live from the data", body: "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, ~20.2% top 1% share, and a press-freedom rank around 121; NDA's same averages are computed live from the loaded series. (UPA-era unemployment and formal-employment figures use a different statistical basis \u2014 World Bank/ILO and NSSO \u2014 so those two are flagged as not strictly comparable.)", takeaway: "The regime comparison is mechanical \u2014 averaging, not interpretation. It does not flatter either side.", tab: "Deep Analysis", chart: { type: "line", series: ["gdpGrowth"], labels: ["GDP growth %"], colors: ["#3b82f6"], unit: "%" } },
                 { category: "Correlation", title: "Press freedom and statistical suppression move in lockstep", body: "The Pearson correlation between India's annual SSI and inverse press freedom rank is ~0.92 over 2014-2026. Both worsen together. The mechanism is plausible \u2014 pressure on independent statistics and pressure on independent press serve a similar function.", takeaway: "The decline in two ostensibly separate institutions is empirically a single phenomenon.", tab: "Correlation Explorer", chart: { type: "multi", series: ["ssi", "pressFreedom"], labels: ["SSI", "Press rank \u00f725"], colors: ["#ef4444", "#a855f7"], normalize: {"pressFreedom": 0.04}, unit: "" } },
                 { category: "Methodology", title: "What goes into the Statistical Suppression Index", body: "SSI = \u03a3(severity \u00d7 salience) / n. Severity scales: withheld (1.0), delayed (0.5), revised (0.3). Salience scales: census (1.0), Consumption Expenditure Survey (0.8), PLFS (0.7), other (0.6). The index is event-based, so a single year's score is the weighted average of that year's statistical incidents.", takeaway: "The index is transparent enough that anyone can replicate it from the public record of statistical events.", tab: "Methodology", chart: { type: "line", series: ["ssi"], labels: ["SSI"], colors: ["#ef4444"], unit: "" } },
                 { category: "Methodology", title: "Why the Democratic Quality Index uses a geometric mean", body: "DQI = (V-Dem \u00d7 Freedom House \u00d7 RSF)^(1/3). A geometric mean is used so that a collapse in any single dimension drags the whole index down \u2014 a country with strong elections but no press freedom is correctly penalised. Arithmetic means would obscure this.", takeaway: "Democratic quality is multiplicative, not additive \u2014 one weak pillar undermines the rest.", tab: "Methodology", chart: { type: "line", series: ["dqi"], labels: ["DQI"], colors: ["#22c55e"], unit: "" } },
@@ -4143,17 +4144,15 @@ reduces overall score</pre>
                 const indicators = mobile
                     ? ['GDP%', 'Formal\nEmp%', 'Top 1%', 'Unemp%', 'Press\nFreedom']
                     : ['GDP Growth\n(avg %)', 'Formal\nEmployment (%)', 'Top 1%\nShare (%)', 'Unemployment\n(%)', 'Press Freedom\n(rank/180)'];
-                const upaValues = [7.4, 13.0, 21.3, 4.9, 140];
+                // Both eras are computed as period averages from the same data the charts use,
+                // so the bars stay consistent with the time-series and eraHistory (single source of truth).
                 const i = this.latestObservedIndex();
                 const ed = this.economicData;
-                const gdpAvgNDA = ed.gdpGrowth.slice(0, i + 1).reduce((a, b) => a + b, 0) / (i + 1);
-                const ndaValues = [
-                    Math.round(gdpAvgNDA * 10) / 10,
-                    ed.formalEmployment[i],
-                    ed.top1Share[i],
-                    ed.unemployment[i],
-                    ed.pressFreedom[i]
-                ];
+                const eh = this.eraHistory || {};
+                const avg = arr => (arr && arr.length) ? Math.round((arr.reduce((a, b) => a + b, 0) / arr.length) * 10) / 10 : null;
+                const keys = ['gdpGrowth', 'formalEmployment', 'top1Share', 'unemployment', 'pressFreedom'];
+                const upaValues = keys.map(k => avg(eh[k]));
+                const ndaValues = keys.map(k => avg(ed[k].slice(0, i + 1)));
                 c.setOption({
                     ...baseOpts(this.darkMode),
                     title: chartTitle('UPA (2004-14) vs NDA (2014-26)', this.darkMode),
@@ -4318,16 +4317,25 @@ reduces overall score</pre>
 
             // ===== DEEP ANALYSIS =====
             // UPA averages from prior literature (data.json starts at 2014). NDA averages computed live.
-            UPA_AVG: {
-                gdpGrowth: 7.4, unemployment: 4.9, formalEmployment: 13.0,
-                top1Share: 21.3, bottom50Share: 15.0, ssi: 1.8, fci: 0.55,
-                dqi: 0.71, pressFreedom: 140
+            // Single source of truth: UPA-era averages are computed from eraHistory,
+            // so the scorecard, the era chart and the delta cards all match the time-series charts.
+            upaAverage(key) {
+                const a = (this.eraHistory || {})[key];
+                return (a && a.length) ? a.reduce((x, y) => x + y, 0) / a.length : null;
             },
             ndaAverage(key) {
                 const i = this.latestObservedIndex();
                 const arr = (this.economicData[key] || []).slice(0, i + 1);
                 if (!arr.length) return null;
                 return arr.reduce((a, b) => a + b, 0) / arr.length;
+            },
+            // UPA figures on a different basis from the NDA (PLFS-era) series — not strictly comparable head-to-head.
+            ERA_BASIS_FLAG: { unemployment: true, formalEmployment: true },
+            eraDeltaTxt(key, dp, suffix) {
+                const u = this.upaAverage(key), n = this.ndaAverage(key);
+                if (u == null || n == null) return '—';
+                const d = n - u;
+                return (d >= 0 ? '+' : '') + this.fmt(d, dp) + (suffix || '');
             },
             fmt(v, dp) {
                 if (v === null || v === undefined || Number.isNaN(v)) return '—';
@@ -4348,21 +4356,24 @@ reduces overall score</pre>
                 ];
                 let html = '';
                 for (const r of rows) {
-                    const upa = this.UPA_AVG[r.key];
+                    const upa = this.upaAverage(r.key);
                     const nda = this.ndaAverage(r.key);
+                    const flagged = !!this.ERA_BASIS_FLAG[r.key];
                     const change = (nda !== null && upa !== null) ? (nda - upa) : null;
                     const improved = (change !== null) && ((r.betterLow && change < 0) || (!r.betterLow && change > 0));
-                    const colour = (change === null || Math.abs(change) < 0.01) ? 'text-gray-500' :
+                    const colour = flagged ? 'text-gray-400 dark:text-gray-500' :
+                                   (change === null || Math.abs(change) < 0.01) ? 'text-gray-500' :
                                    improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
                     const sign = (change > 0) ? '+' : '';
-                    const changeStr = (change === null) ? '—' : sign + this.fmt(change, r.dp) + r.suffix;
+                    const changeStr = (change === null) ? '—' : sign + this.fmt(change, r.dp) + r.suffix + (flagged ? ' †' : '');
                     html += `<tr class="border-b border-gray-100 dark:border-gray-800">
-                        <td class="py-2 text-gray-700 dark:text-gray-300">${r.label}</td>
+                        <td class="py-2 text-gray-700 dark:text-gray-300">${r.label}${flagged ? ' †' : ''}</td>
                         <td class="py-2 text-right tabular-nums">${this.fmt(upa, r.dp)}${r.suffix}</td>
                         <td class="py-2 text-right tabular-nums font-semibold">${this.fmt(nda, r.dp)}${r.suffix}</td>
                         <td class="py-2 text-right tabular-nums font-semibold ${colour}">${changeStr}</td>
                     </tr>`;
                 }
+                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-500 dark:text-gray-400">† UPA figure is on a different basis (unemployment: World Bank/ILO; formal employment: NSSO-interpolated) from the NDA PLFS-era series, so the head-to-head change is not strictly comparable.</td></tr>`;
                 return html;
             },
             renderInternationalTable() {
