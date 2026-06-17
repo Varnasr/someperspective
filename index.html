@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.9.2">
+    <meta name="version" content="2.9.3">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -330,7 +330,7 @@
            out of tight grid cells, and stop any element forcing a horizontal scroll.
            overflow-x:clip (not hidden) keeps position:sticky working. */
         html { overflow-x: clip; }
-        .card-inner { min-width: 0; overflow-wrap: anywhere; }
+        .card-inner { min-width: 0; overflow-wrap: break-word; }
         @media (max-width: 640px) {
             .card-inner .font-display,
             .card-inner .text-2xl { font-size: 1.2rem !important; line-height: 1.15; }
@@ -2652,7 +2652,7 @@ reduces overall score</pre>
                 iconStyle: { borderColor: darkMode ? '#94a3b8' : '#6b7280' }
             },
             grid: mobile
-                ? { left: 10, right: 10, bottom: 45, top: 50, containLabel: true }
+                ? { left: 10, right: 10, bottom: 45, top: 66, containLabel: true }
                 : { left: 60, right: 60, bottom: 80, top: 60, containLabel: true }
         };
     }
@@ -4025,8 +4025,8 @@ reduces overall score</pre>
                 this.trajOut.index2030 = i30;
                 const diff = i30 - i26;
                 if (diff >= 4) { this.trajOut.verdict = 'Improving'; this.trajOut.verdictClass = 'text-emerald-600 dark:text-emerald-400'; }
-                else if (diff <= -4) { this.trajOut.verdict = 'Deteriorating'; this.trajOut.verdictClass = 'text-red-600 dark:text-red-400'; }
-                else { this.trajOut.verdict = 'Broadly flat'; this.trajOut.verdictClass = 'text-amber-600 dark:text-amber-400'; }
+                else if (diff <= -4) { this.trajOut.verdict = 'Declining'; this.trajOut.verdictClass = 'text-red-600 dark:text-red-400'; }
+                else { this.trajOut.verdict = 'Flat'; this.trajOut.verdictClass = 'text-amber-600 dark:text-amber-400'; }
                 this.createTrajGauge();
                 this.createTrajFanChart();
                 this.createTrajScenarioChart();
@@ -4069,9 +4069,9 @@ reduces overall score</pre>
                         axisTick: { show: false }, splitLine: { length: 9, lineStyle: { color: 'auto', width: 2 } },
                         axisLabel: { distance: 16, fontSize: 9, color: this.darkMode ? '#94a3b8' : '#64748b' },
                         anchor: { show: false },
-                        title: { offsetCenter: [0, '30%'], fontSize: 10, color: this.darkMode ? '#94a3b8' : '#64748b' },
-                        detail: { valueAnimation: true, fontSize: 30, fontWeight: 'bold', offsetCenter: [0, '0%'], formatter: '{value}', color: this.darkMode ? '#e2e8f0' : '#1f2937' },
-                        data: [{ value: this.trajOut.index2030, name: 'Index 2030' }]
+                        title: { show: false },
+                        detail: { valueAnimation: true, fontSize: 30, fontWeight: 'bold', offsetCenter: [0, '60%'], formatter: '{value}', color: this.darkMode ? '#e2e8f0' : '#1f2937' },
+                        data: [{ value: this.trajOut.index2030, name: '' }]
                     }]
                 }, true);
             },
@@ -4139,7 +4139,7 @@ reduces overall score</pre>
                     tooltip: { trigger: 'axis' },
                     legend: chartLegend(series.map(s => s.name)),
                     xAxis: { type: 'category', data: fyears },
-                    yAxis: { type: 'value', min: 0, max: 100, name: 'Index (0-100)' },
+                    yAxis: { type: 'value', min: 0, max: 100 },
                     series
                 }, true);
             },
