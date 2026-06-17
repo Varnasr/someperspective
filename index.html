@@ -1883,6 +1883,18 @@ reduces overall score</pre>
                 </div>
                 <div class="card-inner mb-2"><div id="trajFanChart" class="chart-container"></div></div>
                 <p class="text-xs italic" style="color:var(--muted);">Black line = observed (2014–2026). Dashed amber = central projection. Shaded band = ±1 scaled standard error, widening with the horizon. Method: OLS trend over recent years + scenario annual adjustment.</p>
+
+                <!-- Per-indicator drivers / what would break the trend -->
+                <div class="grid sm:grid-cols-2 gap-3 mt-4">
+                    <div class="card-inner" style="border-left:3px solid var(--accent-2);">
+                        <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent-2);">What drives this</div>
+                        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="trajCurrentSpec.drivers || '—'"></p>
+                    </div>
+                    <div class="card-inner" style="border-left:3px solid var(--accent);">
+                        <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">What would break the trend</div>
+                        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="trajCurrentSpec.breaks || '—'"></p>
+                    </div>
+                </div>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-6">
@@ -2505,14 +2517,14 @@ reduces overall score</pre>
             stress:   { label: 'Stress',               desc: 'External shock (oil/rupee), weak monsoon, continued informalisation and statistical opacity.' }
         },
         indicators: [
-            { key:'gdpGrowth',        label:'GDP growth',              unit:'%',     goodHigh:true,  trendYears:5, reform:0.55, stress:-1.6,  uncertainty:1.1,  min:-10, max:12,  decimals:1 },
-            { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1 },
-            { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1 },
-            { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1 },
-            { key:'cpiInflation',     label:'CPI inflation',           unit:'%',     goodHigh:false, trendYears:5, reform:-0.3, stress:2.2,   uncertainty:1.0,  min:0,   max:14,  decimals:1 },
-            { key:'fiscalDeficit',    label:'Fiscal deficit',          unit:'% GDP', goodHigh:false, trendYears:5, reform:-0.3, stress:1.3,   uncertainty:0.7,  min:0,   max:12,  decimals:1 },
-            { key:'rupeeUSD',         label:'Rupee (INR per USD)',     unit:'₹/$',   goodHigh:false, trendYears:6, reform:-2,   stress:9,     uncertainty:4.5,  min:50,  max:130, decimals:0 },
-            { key:'dqi',              label:'Democratic Quality Index',unit:'',      goodHigh:true,  trendYears:6, reform:0.04, stress:-0.03, uncertainty:0.04, min:0,   max:1,   decimals:2 }
+            { key:'gdpGrowth',        label:'GDP growth',              unit:'%',     goodHigh:true,  trendYears:5, reform:0.55, stress:-1.6,  uncertainty:1.1,  min:-10, max:12,  decimals:1, drivers:'Post-COVID base-effect rebounds are fading; the level itself is contested after the 2015 MCA21 revision.', breaks:'An external oil/rupee shock, a weak monsoon, or investment that keeps growing output without jobs or consumption.' },
+            { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1, drivers:'Twelve straight years of informalisation; capital-intensive PLI adds output, not payroll.', breaks:'A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it.' },
+            { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1, drivers:'The headline is held low by self-employment and discouraged workers; graduate joblessness runs ~26%.', breaks:'A genuine youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up.' },
+            { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1, drivers:'Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.', breaks:'A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing.' },
+            { key:'cpiInflation',     label:'CPI inflation',           unit:'%',     goodHigh:false, trendYears:5, reform:-0.3, stress:2.2,   uncertainty:1.0,  min:0,   max:14,  decimals:1, drivers:'Food is ~half the CPI basket and ~50% of farmland is rainfed, so inflation tracks the monsoon.', breaks:'A deficient monsoon or an oil spike pushes CPI above the RBI\'s 6% ceiling.' },
+            { key:'fiscalDeficit',    label:'Fiscal deficit',          unit:'% GDP', goodHigh:false, trendYears:5, reform:-0.3, stress:1.3,   uncertainty:0.7,  min:0,   max:12,  decimals:1, drivers:'Consolidation leans on a record RBI dividend and off-budget borrowing.', breaks:'A growth slowdown, a smaller RBI surplus, or new cash-transfer commitments widen it.' },
+            { key:'rupeeUSD',         label:'Rupee (INR per USD)',     unit:'₹/$',   goodHigh:false, trendYears:6, reform:-2,   stress:9,     uncertainty:4.5,  min:50,  max:130, decimals:0, drivers:'A $333bn goods deficit is offset by services; FPI outflows and a $123bn oil bill pressure the rupee.', breaks:'An oil shock or sustained FPI exit accelerates depreciation; reserves can only slow it.' },
+            { key:'dqi',              label:'Democratic Quality Index',unit:'',      goodHigh:true,  trendYears:6, reform:0.04, stress:-0.03, uncertainty:0.04, min:0,   max:1,   decimals:2, drivers:'Geometric mean of V-Dem, Freedom House and RSF — all trending down since 2014.', breaks:'Restored statistical and press independence would lift it; continued pressure pushes it lower.' }
         ]
     };
 
@@ -2720,6 +2732,10 @@ reduces overall score</pre>
             get scenarioList() {
                 const s = (this.forecastSpec && this.forecastSpec.scenarios) || {};
                 return Object.keys(s).map(k => ({ key: k, label: s[k].label, desc: s[k].desc }));
+            },
+            // Spec (incl. drivers/breaks notes) for the currently-focused trajectory indicator
+            get trajCurrentSpec() {
+                return (this.forecastSpec.indicators || []).find(s => s.key === this.trajIndicator) || {};
             },
 
             audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
