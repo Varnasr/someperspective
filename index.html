@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.23.0">
+    <meta name="version" content="2.24.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1659,10 +1659,10 @@ reduces overall score</pre>
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Era Comparison: UPA vs NDA</h2>
 
-                <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl mb-6">
-                    <p class="text-sm">
-                        Side-by-side comparison of key indicators across two political eras.
-                        UPA period (2004–2014) vs NDA period (2014–2026). Data speaks louder than slogans.
+                <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl mb-6" style="border-left:4px solid var(--accent);">
+                    <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The verdict — computed live from the data</div>
+                    <p class="text-sm" style="color:var(--ink-soft);">
+                        On <span class="font-bold" x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></span> comparable measures, India is <strong>worse under NDA (2014–26) than under UPA (2004–14)</strong> — including <strong>every measure of democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality</strong>. The honest exception is <strong x-text="eraVerdict().better || 'none'"></strong>: inflation was markedly <em>higher</em> under UPA-2 (double digits, 2009–13), so NDA looks better there. The site's claim is precise — the decline is concentrated in the <strong>institutions of accountability and the distribution of income</strong>, not in every macro headline. Data speaks louder than slogans.
                     </p>
                 </div>
 
@@ -4337,6 +4337,20 @@ reduces overall score</pre>
                 const f = (typeof dp === 'number') ? v.toFixed(dp) : Math.round(v);
                 return f;
             },
+            // Honest, computed verdict: on how many comparable measures is NDA worse than UPA?
+            eraVerdict() {
+                const dirs = { gdpGrowth: false, cpiInflation: true, fiscalDeficit: true, top1Share: true, bottom50Share: false, pressFreedom: true, ssi: true, fci: true, dqi: false };
+                const names = { gdpGrowth: 'growth', cpiInflation: 'inflation', fiscalDeficit: 'fiscal deficit', top1Share: 'top-1% share', bottom50Share: 'bottom-50% share', pressFreedom: 'press freedom', ssi: 'statistical integrity', fci: 'fiscal centralisation', dqi: 'democratic quality' };
+                let worse = 0, total = 0; const better = [];
+                for (const k in dirs) {
+                    const u = this.upaAverage(k), n = this.ndaAverage(k);
+                    if (u == null || n == null) continue;
+                    total++;
+                    const isWorse = dirs[k] ? (n > u) : (n < u);
+                    if (isWorse) worse++; else better.push(names[k]);
+                }
+                return { worse, total, better: better.join(', ') };
+            },
             renderRegimeScorecard() {
                 const rows = [
                     { key: 'gdpGrowth',          label: 'GDP growth (avg %)',          dp: 1, betterLow: false, suffix: '%' },
@@ -4367,7 +4381,7 @@ reduces overall score</pre>
                         <td class="py-2 text-right tabular-nums font-semibold ${colour}">${changeStr}</td>
                     </tr>`;
                 }
-                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-500 dark:text-gray-400">Period averages from the same data the charts use. Unemployment and formal employment have no comparable UPA-era series (shown n/a); SSI/FCI/DQI before 2014 are the author's back-cast.</td></tr>`;
+                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-500 dark:text-gray-400">Period averages from the same data the charts use. CPI inflation is the one measure that was <em>worse</em> under UPA (UPA-2 ran double digits) — shown honestly, not hidden. Unemployment and formal employment have no comparable UPA-era series (n/a); SSI/FCI/DQI before 2014 are the author's back-cast.</td></tr>`;
                 return html;
             },
             renderInternationalTable() {
