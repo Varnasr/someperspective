@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.20.0">
+    <meta name="version" content="2.20.1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -914,6 +914,7 @@
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="gdpEmploymentChart" class="chart-responsive" style="width:100%;"></div>
+                        <p class="text-xs mt-2" style="color:var(--muted);">GDP growth carries the full UPA→NDA history; the unemployment data we have starts in 2014, so its UPA band is intentionally blank.</p>
                     </div>
                     <div x-show="viewModes.gdpEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','GDP Growth (%)','Unemployment (%)'], economicData.years.map((y,i) => [y, economicData.gdpGrowth[i], economicData.unemployment[i]]))"></div>
                     <div class="flex gap-2">
@@ -941,6 +942,7 @@
                     </div>
                     <div x-show="viewModes.formalEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="formalEmploymentChart" class="chart-responsive" style="width:100%;"></div>
+                        <p class="text-xs mt-2" style="color:var(--muted);">A comparable formal/informal employment series only begins in 2014 (PLFS), so the UPA band is intentionally blank.</p>
                     </div>
                     <div x-show="viewModes.formalEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Formal (%)','Informal (%)'], economicData.years.map((y,i) => [y, economicData.formalEmployment[i], economicData.informalEmployment[i]]))"></div>
                     <button @click="exportChart('formalEmploymentChart', 'formal-employment')" 
@@ -1197,6 +1199,7 @@
                     <h3 class="text-lg font-bold mb-4">All Three Indices (Normalized 0-10)</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="indicesChart" class="chart-responsive" style="width:100%;"></div>
+                        <p class="text-xs mt-2" style="color:var(--muted);">SSI, FCI and DQI are constructed for the 2014→ period; the data these indices have starts in 2014, so the UPA band before then is intentionally blank.</p>
                     </div>
                     <button @click="exportChart('indicesChart', 'three-indices')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
