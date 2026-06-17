@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.24.0">
+    <meta name="version" content="2.24.1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -685,6 +685,12 @@
         <!-- What is This? Tab -->
         <div x-show="activeTab === 'What is This?'" x-transition class="space-y-6">
 
+            <!-- The thesis, in one line (live-computed, consistent across the site) -->
+            <div class="card p-4 sm:p-5" style="border-left:4px solid var(--accent);">
+                <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The thesis, in one line</div>
+                <p class="text-sm" style="color:var(--ink-soft);">High headline growth has masked a measurable decline in the <strong>institutions of accountability</strong> and the <strong>income share of ordinary Indians</strong>. On <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14) — democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated; the one honest exception is inflation. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
+            </div>
+
             <!-- Today's Analysis: substantive daily finding -->
             <article class="bg-gradient-to-br from-slate-50 via-white to-indigo-50/40 dark:from-slate-900/40 dark:via-slate-900/20 dark:to-indigo-900/20 border border-slate-200 dark:border-slate-700 p-5 sm:p-6 rounded-2xl shadow-sm">
                 <header class="flex items-center justify-between gap-4 mb-3 flex-wrap">
@@ -835,6 +841,10 @@
         
         <!-- Executive Summary Tab -->
         <div x-show="activeTab === 'Executive Summary'" x-transition class="space-y-6">
+            <div class="card p-4 sm:p-5" style="border-left:4px solid var(--accent);">
+                <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The thesis, in one line</div>
+                <p class="text-sm" style="color:var(--ink-soft);">High headline growth has masked a measurable decline in the <strong>institutions of accountability</strong> and the <strong>income share of ordinary Indians</strong>. On <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14) — democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated; the one honest exception is inflation. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
+            </div>
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-white">Executive Summary: India's Growth Paradox (2004-2026)</h2>
 
@@ -901,6 +911,10 @@
         
         <!-- Key Findings Tab with Charts -->
         <div x-show="activeTab === 'Key Findings'" x-transition class="space-y-6">
+            <div class="card p-4 sm:p-5" style="border-left:4px solid var(--accent);">
+                <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The thesis, in one line</div>
+                <p class="text-sm" style="color:var(--ink-soft);">These findings build one case: on <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14) — democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated; the one honest exception is inflation. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
+            </div>
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Key Findings</h2>
                 
