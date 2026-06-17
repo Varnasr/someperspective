@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.11.0">
+    <meta name="version" content="2.12.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -358,6 +358,13 @@
         .wa-fab:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37,211,102,.55); }
         .wa-fab svg { width: 22px; height: 22px; flex: none; }
         @media (max-width: 480px) { .wa-fab { padding: 12px; } .wa-fab .wa-fab-label { display: none; } }
+
+        /* Source quality flags */
+        .src-key { display: inline-block; padding: 2px 8px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+        .q-official    { background: color-mix(in srgb, #2563eb 16%, transparent); color: #2563eb; }
+        .q-constructed { background: color-mix(in srgb, #b4530e 18%, transparent); color: #b4530e; }
+        .q-derived     { background: color-mix(in srgb, #7c3aed 16%, transparent); color: #7c3aed; }
+        .q-compiled    { background: color-mix(in srgb, #0d9488 18%, transparent); color: #0d9488; }
         @media (max-width: 640px) {
             .card-inner .font-display,
             .card-inner .text-2xl { font-size: 1.2rem !important; line-height: 1.15; }
@@ -1303,6 +1310,44 @@
                     <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--muted);">Cite as</div>
                     <p class="text-sm" style="color:var(--ink-soft);">Raman, V.S. (2026). <em>Some Perspective: India’s Economic Transformation.</em> someperspective.info. Licensed CC BY 4.0. Per-series sources are listed in <code class="text-xs">data.json</code> and below.</p>
                 </div>
+            </div>
+
+            <!-- Sources & freshness -->
+            <div class="card p-5 sm:p-6">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <h3 class="font-bold text-xl" style="color:var(--ink);">Sources &amp; freshness</h3>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full" style="background:color-mix(in srgb, var(--accent-2) 18%, transparent); color:var(--accent-2);">
+                        Data current as of <span x-text="dataMeta.updated || dataUpdated || '2026'"></span>
+                    </span>
+                </div>
+                <p class="text-sm mb-4" style="color:var(--ink-soft);">Every series, its source, and how it was produced. Observed values run through 2026; 2027+ in the indicator block are simple continuations (flagged <code class="text-xs">*</code>), and the Economic Trajectory tab holds the scenario projections.</p>
+                <div class="flex flex-wrap gap-3 mb-3 text-[11px]">
+                    <span class="src-key q-official">Official / survey</span>
+                    <span class="src-key q-constructed">Constructed index</span>
+                    <span class="src-key q-derived">Derived</span>
+                    <span class="src-key q-compiled">Compiled</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm" style="border-collapse:collapse;">
+                        <thead>
+                            <tr style="border-bottom:1px solid var(--line); color:var(--muted);" class="text-left text-xs uppercase tracking-wider">
+                                <th class="py-2 pr-3 font-semibold">Indicator</th>
+                                <th class="py-2 pr-3 font-semibold">Type</th>
+                                <th class="py-2 font-semibold">Source</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="row in sourceRows" :key="row.key">
+                                <tr style="border-bottom:1px solid var(--line);" class="align-top">
+                                    <td class="py-2 pr-3 font-semibold" style="color:var(--ink);" x-text="row.label"></td>
+                                    <td class="py-2 pr-3 whitespace-nowrap"><span class="src-key" :class="row.qClass" x-text="row.quality"></span></td>
+                                    <td class="py-2" style="color:var(--ink-soft);" x-text="row.source"></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs mt-3" style="color:var(--muted);" x-text="dataMeta.notes || ''"></p>
             </div>
 
             <div class="card p-5 sm:p-8">
@@ -2770,6 +2815,8 @@ reduces overall score</pre>
             trajLevers: { statsIndependence: false, garmentsPush: false, fiscalRebalance: false, formalisation: false },
             trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-500' },
             primer: PRIMER_FALLBACK,
+            sourcesData: {},
+            dataMeta: {},
             // Reading the Economy: active section (A..K), mirrors the deck's 11 sections
             primerSection: 'A',
             primerSections: [
@@ -2793,6 +2840,26 @@ reduces overall score</pre>
             // Spec (incl. drivers/breaks notes) for the currently-focused trajectory indicator
             get trajCurrentSpec() {
                 return (this.forecastSpec.indicators || []).find(s => s.key === this.trajIndicator) || {};
+            },
+            // Rows for the Sources & freshness panel, built from data.json `sources`.
+            get sourceRows() {
+                const labels = {
+                    gdpGrowth: 'GDP growth', unemployment: 'Unemployment', youthUnemployment: 'Youth unemployment',
+                    graduateUnemployment: 'Graduate unemployment', top1Share: 'Top 1% income share', bottom50Share: 'Bottom 50% income share',
+                    formalEmployment: 'Formal employment', informalEmployment: 'Informal employment', pressFreedom: 'Press freedom',
+                    fiscalDeficit: 'Fiscal deficit', cpiInflation: 'CPI inflation', rupeeUSD: 'Rupee / USD', ssi: 'Statistical Suppression Index',
+                    fci: 'Fiscal Centralisation Index', dqi: 'Democratic Quality Index', gigWorkers: 'Gig workers',
+                    ruralIncome: 'Rural income (indexed)', femaleLFPR: 'Female LFPR', international: 'V-Dem / RSF (international)',
+                    primer: 'Citizen-primer datasets'
+                };
+                const quality = (k) => ['ssi', 'fci', 'dqi'].includes(k) ? 'Constructed index'
+                    : k === 'informalEmployment' ? 'Derived'
+                    : k === 'primer' ? 'Compiled' : 'Official / survey';
+                const qClass = (q) => q === 'Constructed index' ? 'q-constructed' : q === 'Derived' ? 'q-derived' : q === 'Compiled' ? 'q-compiled' : 'q-official';
+                const src = this.sourcesData || {};
+                return Object.keys(labels).filter(k => src[k]).map(k => ({
+                    key: k, label: labels[k], source: src[k], quality: quality(k), qClass: qClass(quality(k))
+                }));
             },
 
             audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
@@ -2918,6 +2985,8 @@ reduces overall score</pre>
                     if (d.international) this.internationalData = d.international;
                     if (d.forecast) this.forecastSpec = d.forecast;
                     if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
+                    if (d.meta) this.dataMeta = d.meta;
+                    if (d.sources) this.sourcesData = d.sources;
                     // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
                     const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement'];
                     const merged = { ...PRIMER_FALLBACK };
