@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.17.0">
+    <meta name="version" content="2.18.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1071,7 +1071,7 @@
                 </div>
 
                 <!-- Annotated policy-event timeline -->
-                <div class="mt-6 pt-5" style="border-top:1px solid var(--line);">
+                <div id="policy-timeline" class="mt-6 pt-5" style="border-top:1px solid var(--line);scroll-margin-top:90px;">
                     <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Policy timeline, 2016–2024</h3>
                     <p class="text-xs mb-3" style="color:var(--muted);">The moments that bend the lines above. Toggle the overlay to line them up against any indicator.</p>
                     <div class="flex gap-3 overflow-x-auto pb-2">
@@ -1376,7 +1376,7 @@
         <!-- Methodology Tab -->
         <div x-show="activeTab === 'Methodology'" x-transition class="space-y-6">
             <!-- Citation & downloads -->
-            <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+            <div id="cite-download" class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);scroll-margin-top:90px;">
                 <div class="kicker mb-1">Open data · CC BY 4.0</div>
                 <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Cite &amp; download</h3>
                 <p class="text-sm mb-4" style="color:var(--ink-soft);">Every chart on this site has a <span style="color:var(--accent);">⤓</span> button that exports it as a PNG with the source and citation baked in. The full dataset and code are open.</p>
@@ -1394,7 +1394,7 @@
             </div>
 
             <!-- Sources & freshness -->
-            <div class="card p-5 sm:p-6">
+            <div id="sources-freshness" class="card p-5 sm:p-6" style="scroll-margin-top:90px;">
                 <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <h3 class="font-bold text-xl" style="color:var(--ink);">Sources &amp; freshness</h3>
                     <span class="text-xs font-semibold px-3 py-1 rounded-full" style="background:color-mix(in srgb, var(--accent-2) 18%, transparent); color:var(--accent-2);">
@@ -1432,7 +1432,7 @@
             </div>
 
             <!-- Glossary -->
-            <div class="card p-5 sm:p-6">
+            <div id="glossary" class="card p-5 sm:p-6" style="scroll-margin-top:90px;">
                 <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Glossary</h3>
                 <p class="text-sm mb-3" style="color:var(--ink-soft);">Plain-language definitions for the terms used across the site. Dotted-underlined words elsewhere are tappable for the same pop-up.</p>
                 <input type="search" x-model="glossQuery" placeholder="Search terms…"
@@ -1802,7 +1802,7 @@ reduces overall score</pre>
         <!-- Deep Analysis Tab -->
         <div x-show="activeTab === 'Deep Analysis'" x-transition class="space-y-6">
             <!-- State Explorer (federalism + delimitation) -->
-            <div class="card p-5 sm:p-6">
+            <div id="state-explorer" class="card p-5 sm:p-6" style="scroll-margin-top:90px;">
                 <div class="kicker mb-1">Federalism &amp; delimitation</div>
                 <h2 class="text-2xl sm:text-3xl font-bold mb-1" style="color:var(--ink);">State Explorer</h2>
                 <p class="text-sm mb-3" style="color:var(--ink-soft);">India's states are diverging — in income, in representation, and in demographics. Pick a metric; states are ranked and coloured by region.</p>
@@ -2094,7 +2094,7 @@ reduces overall score</pre>
                         </template>
                     </div>
 
-                    <div class="mt-5 pt-4" style="border-top:1px solid var(--line);">
+                    <div id="reweight-index" class="mt-5 pt-4" style="border-top:1px solid var(--line);scroll-margin-top:90px;">
                         <div class="flex items-center justify-between mb-1">
                             <h3 class="font-bold text-lg" style="color:var(--ink);">Weight the indicators</h3>
                             <button @click="resetTrajWeights()" x-show="trajWeightsAreCustom" class="text-xs font-semibold px-3 py-1 rounded-lg border no-print" style="border-color:var(--line);color:var(--ink-soft);">Reset</button>
@@ -2867,6 +2867,16 @@ reduces overall score</pre>
     };
     const HASH_TAB = Object.fromEntries(Object.entries(TAB_HASH).map(([k,v]) => [v,k]));
 
+    // Anchor slugs -> the tab they live in (for deep links to a feature within a tab)
+    const ANCHOR_TAB = {
+        'state-explorer': 'Deep Analysis',
+        'cite-download': 'Methodology',
+        'sources-freshness': 'Methodology',
+        'glossary': 'Methodology',
+        'policy-timeline': 'Interactive Data',
+        'reweight-index': 'Economic Trajectory'
+    };
+
     // ECharts color palette
     const COLORS = ['#3b82f6','#ef4444','#22c55e','#f59e0b','#8b5cf6','#ec4899','#06b6d4','#f97316'];
 
@@ -3202,14 +3212,10 @@ reduces overall score</pre>
                 }
                 this.initTrajWeights();
 
-                // URL hash routing
-                const hash = window.location.hash.slice(1);
-                if (hash && HASH_TAB[hash]) this.activeTab = HASH_TAB[hash];
-
-                window.addEventListener('popstate', () => {
-                    const h = window.location.hash.slice(1);
-                    if (h && HASH_TAB[h]) this.activeTab = HASH_TAB[h];
-                });
+                // URL hash routing (tab slugs + feature anchors)
+                this.routeHash(window.location.hash.slice(1));
+                window.addEventListener('popstate', () => this.routeHash(window.location.hash.slice(1)));
+                window.addEventListener('hashchange', () => this.routeHash(window.location.hash.slice(1)));
 
                 // Global resize
                 window.addEventListener('resize', () => {
@@ -4874,6 +4880,18 @@ reduces overall score</pre>
                 setTimeout(() => toast.remove(), 3000);
             },
 
+            // Route an incoming hash: tab slug, or a feature anchor (switch tab + scroll to it).
+            routeHash(h) {
+                if (!h) return;
+                if (HASH_TAB[h]) { this.activeTab = HASH_TAB[h]; return; }
+                if (ANCHOR_TAB[h]) {
+                    this.activeTab = ANCHOR_TAB[h];
+                    this.$nextTick(() => setTimeout(() => {
+                        const el = document.getElementById(h);
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 120));
+                }
+            },
             // Deep link to a given tab (defaults to the current view).
             deepLink(tab) {
                 const slug = TAB_HASH[tab || this.activeTab] || '';
