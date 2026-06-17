@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.12.0">
+    <meta name="version" content="2.13.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -365,6 +365,21 @@
         .q-constructed { background: color-mix(in srgb, #b4530e 18%, transparent); color: #b4530e; }
         .q-derived     { background: color-mix(in srgb, #7c3aed 16%, transparent); color: #7c3aed; }
         .q-compiled    { background: color-mix(in srgb, #0d9488 18%, transparent); color: #0d9488; }
+
+        /* Glossary: inline tap-to-explain terms + popover */
+        .term {
+            border: 0; padding: 0; font: inherit; color: inherit; cursor: help;
+            background: linear-gradient(var(--accent), var(--accent)) bottom left / 100% 1.5px no-repeat;
+            background-position: 0 1.05em; text-decoration: none;
+        }
+        .term:hover { color: var(--accent); }
+        .gloss-tip {
+            position: fixed; width: 280px; z-index: 95;
+            background: var(--surface); color: var(--ink-soft);
+            border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px;
+            box-shadow: 0 12px 32px rgba(0,0,0,.18); font-size: 13px; line-height: 1.5;
+        }
+        .gloss-tip .gloss-term { font-weight: 700; color: var(--accent); display: block; margin-bottom: 3px; }
         @media (max-width: 640px) {
             .card-inner .font-display,
             .card-inner .text-2xl { font-size: 1.2rem !important; line-height: 1.15; }
@@ -1350,6 +1365,24 @@
                 <p class="text-xs mt-3" style="color:var(--muted);" x-text="dataMeta.notes || ''"></p>
             </div>
 
+            <!-- Glossary -->
+            <div class="card p-5 sm:p-6">
+                <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Glossary</h3>
+                <p class="text-sm mb-3" style="color:var(--ink-soft);">Plain-language definitions for the terms used across the site. Dotted-underlined words elsewhere are tappable for the same pop-up.</p>
+                <input type="search" x-model="glossQuery" placeholder="Search terms…"
+                       class="w-full sm:w-72 mb-4 px-3 py-2 text-sm rounded-xl border"
+                       style="border-color:var(--line); background:var(--surface-2); color:var(--ink);">
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <template x-for="g in glossList" :key="g.term">
+                        <div class="card-inner">
+                            <div class="font-semibold text-sm" style="color:var(--accent);" x-text="g.term"></div>
+                            <div class="text-xs mt-1" style="color:var(--ink-soft);" x-text="g.def"></div>
+                        </div>
+                    </template>
+                </div>
+                <p class="text-xs mt-3" style="color:var(--muted);" x-show="glossList.length === 0">No terms match “<span x-text="glossQuery"></span>”.</p>
+            </div>
+
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Methodology</h2>
 
@@ -2101,7 +2134,7 @@ reduces overall score</pre>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);" x-text="primer.gdpRevision.subramanianGrowth + '%'"></div><div class="text-xs mt-1" style="color:var(--muted);">Subramanian's estimate</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">~<span x-text="primer.gdpRevision.overstatePoints"></span>pts</div><div class="text-xs mt-1" style="color:var(--muted);">claimed overstatement</div></div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">MCA21 includes dormant companies with stale filings. The EAC-PM called the critique "cherry-picked." No independent review was ever commissioned.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);"><button type="button" class="term" @click="showGloss($event,'mca21')">MCA21</button> includes dormant companies with stale filings. The EAC-PM called the critique "cherry-picked." No independent review was ever commissioned.</p>
                 </div>
             </div>
 
@@ -2817,6 +2850,30 @@ reduces overall score</pre>
             primer: PRIMER_FALLBACK,
             sourcesData: {},
             dataMeta: {},
+            // ===== GLOSSARY (tap-to-explain) =====
+            glossTip: { show: false, x: 0, y: 0, term: '', def: '' },
+            glossQuery: '',
+            glossary: {
+                mca21: { term: 'MCA21', def: 'The corporate-filings database MoSPI began using in 2015 to estimate company output. Critics argue it counted dormant/shell firms as active, raising the measured GDP level.' },
+                mpce: { term: 'MPCE', def: 'Monthly Per Capita Consumption Expenditure — the household-spending measure used to gauge living standards and poverty.' },
+                cess: { term: 'Cess', def: 'A tax surcharge earmarked for a purpose (health, education, roads). Unlike normal taxes it is NOT shared with states, so a rising cess share centralises revenue.' },
+                elasticity: { term: 'Employment elasticity', def: 'How much employment grows for each 1% of GDP growth. A value near zero means "jobless growth".' },
+                informalisation: { term: 'Informalisation', def: 'A rising share of workers without a written contract, social security, or job protection.' },
+                fiscalDeficit: { term: 'Fiscal deficit', def: 'The gap between government spending and revenue in a year, financed by borrowing; shown as % of GDP.' },
+                formalEmployment: { term: 'Formal employment', def: 'Jobs with a written contract and access to social security (EPF/ESI).' },
+                plfs: { term: 'PLFS', def: "India's official Periodic Labour Force Survey of employment and unemployment, run since 2017-18." },
+                pli: { term: 'PLI', def: 'Production-Linked Incentive — subsidies tied to output in chosen sectors. Capital-intensive, so it lifts output more than payroll.' },
+                top1: { term: 'Top 1% share', def: 'The slice of national income going to the richest 1% of adults (World Inequality Database).' },
+                gva: { term: 'GVA', def: 'Gross Value Added — output measured at the sector level before taxes/subsidies; the building block of GDP.' },
+                devolution: { term: 'Devolution', def: 'The share of central tax revenue transferred to states under the Finance Commission formula.' },
+                delimitation: { term: 'Delimitation', def: 'Redrawing Lok Sabha seats by population. Frozen since 1976; if redone, slower-growing southern states lose seats relative to the north.' },
+                vdem: { term: 'V-Dem', def: 'Varieties of Democracy — a Gothenburg-based project scoring democratic quality from expert surveys.' },
+                rsf: { term: 'RSF', def: 'Reporters Without Borders, which publishes the annual World Press Freedom Index.' },
+                ssi: { term: 'SSI', def: 'Statistical Suppression Index (constructed) — tracks delayed, withheld, or discontinued official statistics.' },
+                fci: { term: 'FCI', def: 'Fiscal Centralisation Index (constructed) — a 5-component measure of how much fiscal power has shifted to the centre.' },
+                dqi: { term: 'DQI', def: 'Democratic Quality Index (constructed) — geometric mean of normalised V-Dem, Freedom House and RSF scores.' },
+                rainfed: { term: 'Rainfed agriculture', def: 'Cropland watered only by rain (~50% of India’s farmland), so a weak monsoon raises food prices and rural distress.' }
+            },
             // Reading the Economy: active section (A..K), mirrors the deck's 11 sections
             primerSection: 'A',
             primerSections: [
@@ -2860,6 +2917,24 @@ reduces overall score</pre>
                 return Object.keys(labels).filter(k => src[k]).map(k => ({
                     key: k, label: labels[k], source: src[k], quality: quality(k), qClass: qClass(quality(k))
                 }));
+            },
+            // Glossary list, alphabetised and filtered by the search box.
+            get glossList() {
+                const q = this.glossQuery.trim().toLowerCase();
+                return Object.values(this.glossary)
+                    .filter(g => !q || g.term.toLowerCase().includes(q) || g.def.toLowerCase().includes(q))
+                    .sort((a, b) => a.term.localeCompare(b.term));
+            },
+            // Show the tap-to-explain popover near the clicked term.
+            showGloss(e, key) {
+                const g = this.glossary[key];
+                if (!g) return;
+                if (this.glossTip.show && this.glossTip.term === g.term) { this.glossTip.show = false; return; }
+                const r = e.currentTarget.getBoundingClientRect();
+                const w = 280, margin = 12;
+                let x = r.left + r.width / 2 - w / 2;
+                x = Math.max(margin, Math.min(x, window.innerWidth - w - margin));
+                this.glossTip = { show: true, x, y: r.bottom + 8, term: g.term, def: g.def };
             },
 
             audiences: ['Researcher', 'Policy Maker', 'Journalist', 'Citizen'],
@@ -3010,6 +3085,12 @@ reduces overall score</pre>
                 window.addEventListener('resize', () => {
                     Object.values(this.charts).forEach(c => c && c.resize && c.resize());
                 });
+
+                // Glossary popover: dismiss on outside-click or scroll
+                document.addEventListener('click', (e) => {
+                    if (this.glossTip.show && !e.target.closest('.term') && !e.target.closest('.gloss-tip')) this.glossTip.show = false;
+                });
+                window.addEventListener('scroll', () => { if (this.glossTip.show) this.glossTip.show = false; }, { passive: true });
 
                 // Init charts after Alpine settles (ECharts may still be loading via defer)
                 const initCharts = () => {
@@ -4616,5 +4697,13 @@ reduces overall score</pre>
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
         <span class="wa-fab-label">Share</span>
     </button>
+
+    <!-- Glossary tap-to-explain popover -->
+    <div class="gloss-tip" x-show="glossTip.show" x-cloak
+         :style="'left:' + glossTip.x + 'px; top:' + glossTip.y + 'px;'"
+         @click.stop x-transition.opacity>
+        <span class="gloss-term" x-text="glossTip.term"></span>
+        <span x-text="glossTip.def"></span>
+    </div>
 </body>
 </html>
