@@ -319,5 +319,26 @@
       { "title": "A census a decade late", "body": "Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers." },
       { "title": "Counting = allocating power", "body": "Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose." }
     ]
+  },
+  "states": {
+    "note": "Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); 2011 Census population (crore); total fertility rate (NFHS-5, 2019-21). Compiled from public sources; per-capita estimates vary slightly by release.",
+    "items": [
+      { "state": "Telangana",      "region": "South", "perCapita": 356564, "seats": 17, "pop": 3.52,  "tfr": 1.8 },
+      { "state": "Karnataka",      "region": "South", "perCapita": 332926, "seats": 28, "pop": 6.11,  "tfr": 1.7 },
+      { "state": "Haryana",        "region": "North", "perCapita": 325759, "seats": 10, "pop": 2.54,  "tfr": 1.9 },
+      { "state": "Tamil Nadu",     "region": "South", "perCapita": 315220, "seats": 39, "pop": 7.21,  "tfr": 1.8 },
+      { "state": "Gujarat",        "region": "West",  "perCapita": 297722, "seats": 26, "pop": 6.04,  "tfr": 1.9 },
+      { "state": "Kerala",         "region": "South", "perCapita": 281001, "seats": 20, "pop": 3.34,  "tfr": 1.8 },
+      { "state": "Maharashtra",    "region": "West",  "perCapita": 263974, "seats": 48, "pop": 11.24, "tfr": 1.7 },
+      { "state": "Andhra Pradesh", "region": "South", "perCapita": 231553, "seats": 25, "pop": 4.94,  "tfr": 1.7 },
+      { "state": "Punjab",         "region": "North", "perCapita": 213008, "seats": 13, "pop": 2.77,  "tfr": 1.6 },
+      { "state": "West Bengal",    "region": "East",  "perCapita": 160182, "seats": 42, "pop": 9.13,  "tfr": 1.6 },
+      { "state": "Rajasthan",      "region": "North", "perCapita": 141651, "seats": 25, "pop": 6.85,  "tfr": 2.0 },
+      { "state": "Odisha",         "region": "East",  "perCapita": 132197, "seats": 21, "pop": 4.20,  "tfr": 1.8 },
+      { "state": "Madhya Pradesh", "region": "North", "perCapita": 126249, "seats": 29, "pop": 7.27,  "tfr": 2.0 },
+      { "state": "Jharkhand",      "region": "North", "perCapita": 105274, "seats": 14, "pop": 3.30,  "tfr": 2.3 },
+      { "state": "Uttar Pradesh",  "region": "North", "perCapita": 93514,  "seats": 80, "pop": 19.98, "tfr": 2.4 },
+      { "state": "Bihar",          "region": "North", "perCapita": 60337,  "seats": 40, "pop": 10.41, "tfr": 3.0 }
+    ]
   }
 }
