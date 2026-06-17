@@ -9,7 +9,7 @@
 This repository contains the complete replication package for "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2026," an independent empirical study examining how two distinct political periods—the United Progressive Alliance (UPA, 2004-2014) and National Democratic Alliance (NDA, 2014-2025)—produced fundamentally different models of economic growth, governance, and democratic accountability in India.
 
 **Research initiated:** March 2024  
-**Current version:** May 2026  
+**Current version:** June 2026 (v2.9.0)  
 **Interactive website:** [someperspective.info](https://someperspective.info)
 
 ## Abstract
@@ -310,13 +310,14 @@ This research builds on decades of work by India's statistical system, civil soc
 - **v1.5.0** (September 2024): Extended to June 2024; added robustness checks
 - **v2.0.0** (September 2025): Refined indices methodology; added interactive website
 - **v2.1.0** (May 2026): Data refreshed through 2026; ECharts migration; SEO/a11y/CSP pass
+- **v2.9.0** (June 2026): Economic Trajectory forecast tab (projections to 2030 with scenarios, uncertainty bands, and a composite trajectory index); Reading the Economy citizen-primer tab; new indicators (fiscal deficit, CPI inflation, rupee); bold editorial redesign
 
 See `CHANGELOG.md` for detailed version history.
 
 ---
 
-**Site last updated:** 2026-05-09
-**Latest annual data point:** 2026 (snapshot stats current through Q1 2026)
+**Site last updated:** 2026-06-17
+**Latest annual data point:** 2026 (forecasts extend to 2030, clearly flagged as scenario projections)
 **Next scheduled refresh:** September 2026
 
 For the latest data and interactive visualizations, visit [someperspective.info](https://someperspective.info)

@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+> Note: the `[3.0.0]` entry below describes the monolith→split build that was
+> rolled back (the live site continued on the single-file `index.html`, and a
+> service-worker cleanup ships in-page). The current shipping line is `2.x`.
+
+## [2.9.0] - 2026-06-17
+
+### Added
+- **Economic Trajectory tab (forecast).** New featured section that projects
+  eight indicators (GDP growth, formal employment, unemployment, top-1% share,
+  CPI inflation, fiscal deficit, the rupee, and the DQI) from 2026 to **2030**.
+  - Per-indicator **fan charts**: observed history + central projection +
+    uncertainty band that widens with the square root of the horizon.
+  - A composite **India Trajectory Index (0–100)** with a gauge and an
+    Improving / Flat / Deteriorating verdict.
+  - **Three scenarios** (Reform push / Current trajectory / Stress) and four
+    "what would change this" **policy levers**, all computed client-side.
+  - Method (OLS recent-trend + explicit scenario adjustment) and scenario
+    parameters are documented in `data.json` → `forecast` and editable.
+- **Reading the Economy tab (citizen primer).** Folds in the "Reading the
+  Indian Economy" lecture (16 June 2026): the big-picture five numbers, the
+  India–China divergence since 1991, the output-vs-jobs mismatch, the ₹100
+  tax-take and spend-split breakdowns, rich-states-finance-poor devolution
+  returns, the "your real inflation" thali index, the middle-class income
+  ladder, and the external sector.
+- **Three new indicator series** in `data.json` and the Interactive Data /
+  Correlation explorers: fiscal deficit (% GDP), CPI inflation, and the rupee.
+
+### Changed
+- **Bold visual redesign.** New editorial identity: warm "paper" canvas with a
+  faint dotted texture, **Fraunces** serif display type paired with Inter, a
+  burnt-amber + deep-teal accent system driven by CSS custom properties
+  (full light/dark token sets), a brand accent strip, refined cards, nav, and
+  hero. `theme-color` and the PWA manifest updated to match.
+- Data refreshed through **June 2026**; date references updated site-wide.
+
 ## [3.0.0] - 2026-05-27
 
 ### Changed (BREAKING)

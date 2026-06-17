@@ -1,28 +1,32 @@
 {
   "meta": {
-    "title": "India Economic Indicators 2014-2027",
+    "title": "India Economic Indicators 2014-2030",
     "author": "Dr. Varna Sri Raman",
-    "updated": "2026-05-09",
+    "updated": "2026-06-17",
     "license": "CC BY 4.0",
-    "notes": "Series are annual unless stated. 2026 values reflect the latest official release available as of May 2026; 2027 values are projections (linear or constant continuation, NOT observed data) and are flagged in the UI."
+    "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of June 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin Mar 2026, Union Budget 2026-27, RBI Annual Report 2025-26, WIR 2026). Values for 2027 onward in the 'economic' block are simple continuations and flagged with '*'. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, NOT predictions — every assumption is a choice and is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
   },
   "sources": {
-    "gdpGrowth": "MOSPI First Advance Estimates of National Income 2025-26 (released Jan 2026, 2011-12 base)",
-    "unemployment": "PLFS Annual Report 2024-25 + PLFS Monthly Bulletin (Mar 2026)",
+    "gdpGrowth": "MOSPI First Advance Estimates of National Income 2025-26 + Economic Survey 2025-26 (2011-12 base)",
+    "unemployment": "PLFS Annual Report 2024-25 + PLFS Monthly Bulletin (Mar 2026), Usual Status",
     "youthUnemployment": "PLFS Annual + ILOSTAT youth (15-29) series",
     "graduateUnemployment": "PLFS unit-level tabulation (graduate degree holders)",
-    "top1Share": "World Inequality Database (WID.world) India series",
-    "bottom50Share": "World Inequality Database (WID.world) India series",
+    "top1Share": "World Inequality Database (WID.world) India series; WIR 2026",
+    "bottom50Share": "World Inequality Database (WID.world) India series; WIR 2026",
     "formalEmployment": "PLFS workers with social security cover; EPFO net additions cross-check",
     "informalEmployment": "100 - formalEmployment by construction",
     "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual)",
+    "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP (FY ending)",
+    "cpiInflation": "MoSPI CPI (Combined) annual average; RBI target band 2-6%",
+    "rupeeUSD": "RBI reference rates, annual average INR per USD",
     "ssi": "Constructed: SSI = sum(severity * salience) / n; see data/METHODOLOGY.md",
     "fci": "Constructed: 5-component centralization index; see data/METHODOLOGY.md",
     "dqi": "Constructed: geometric mean of V-Dem * Freedom House * RSF (normalised); see data/METHODOLOGY.md",
     "gigWorkers": "NITI Aayog 'India's Booming Gig and Platform Economy' + Code on Social Security 2020 estimates",
     "ruralIncome": "NABARD All India Rural Financial Inclusion Survey, indexed (2014=100)",
     "femaleLFPR": "PLFS, Usual Status (ps+ss), women 15+",
-    "international": "V-Dem v15 (2026 release) + RSF 2026"
+    "international": "V-Dem v15 (2026 release) + RSF 2026",
+    "primer": "Reading the Indian Economy: A Citizen's Primer (Varna Sri Raman, 16 June 2026). Figures latest available as of June 2026; several provisional, estimated, or illustrative as noted."
   },
   "economic": {
     "years":               [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
@@ -36,6 +40,9 @@
     "formalEmployment":    [13.0, 12.8, 12.5, 12.2, 11.9, 11.6, 11.4, 11.5, 11.3, 11.2, 11.2, 11.0, 10.9, 10.8],
     "informalEmployment":  [87.0, 87.2, 87.5, 87.8, 88.1, 88.4, 88.6, 88.5, 88.7, 88.8, 88.8, 89.0, 89.1, 89.2],
     "pressFreedom":        [140,  136,  133,  136,  138,  140,  142,  142,  150,  161,  159,  151,  157,  158],
+    "fiscalDeficit":       [4.1,  3.9,  3.5,  3.5,  3.4,  4.6,  9.2,  6.7,  6.4,  5.6,  4.8,  4.4,  4.4,  4.3],
+    "cpiInflation":        [6.7,  4.9,  4.5,  3.6,  3.4,  4.8,  6.2,  5.5,  6.7,  5.4,  4.6,  4.0,  3.9,  4.2],
+    "rupeeUSD":            [61,   64,   67,   65,   68,   70,   74,   74,   79,   82,   84,   87,   95,   96],
     "ssi":                 [2.3,  2.5,  2.4,  2.4,  2.6,  4.8,  7.2,  6.8,  7.0,  7.5,  7.8,  8.0,  8.2,  8.3],
     "fci":                 [0.62, 0.64, 0.66, 0.68, 0.70, 0.72, 0.84, 0.78, 0.76, 0.77, 0.78, 0.79, 0.80, 0.81],
     "dqi":                 [0.71, 0.70, 0.68, 0.65, 0.60, 0.55, 0.48, 0.45, 0.43, 0.42, 0.42, 0.41, 0.40, 0.39],
@@ -57,5 +64,135 @@
   "projection": {
     "startYear": 2027,
     "method": "Held constant or extended via simple linear trend of last 3 years; clearly flagged with '*' in labels and dashed lines in charts. NOT observed data."
+  },
+  "forecast": {
+    "horizonYear": 2030,
+    "baseYear": 2026,
+    "disclaimer": "These are scenario projections, not predictions. Each path extends the recent trend of an observed series and then applies an explicit annual adjustment for one of three scenarios. Uncertainty bands widen with the horizon because the further out you look, the more the assumption — not the economy — decides the number. Read every projection by asking: whose assumption is this, and what would break it?",
+    "scenarios": {
+      "reform": { "label": "Reform push", "desc": "Statistical independence restored, garment/labour-intensive manufacturing prioritised, fiscal federalism rebalanced, formalisation incentives." },
+      "baseline": { "label": "Current trajectory", "desc": "Recent-trend continuation: policy mix and institutional direction of 2019-2026 persist." },
+      "stress": { "label": "Stress", "desc": "External shock (oil/rupee), weak monsoon, continued informalisation and statistical opacity." }
+    },
+    "indicators": [
+      { "key": "gdpGrowth",        "label": "GDP growth",                "unit": "%",    "goodHigh": true,  "trendYears": 5, "reform": 0.55, "stress": -1.6, "uncertainty": 1.1,  "min": -10, "max": 12,  "decimals": 1 },
+      { "key": "formalEmployment", "label": "Formal employment share",   "unit": "%",    "goodHigh": true,  "trendYears": 6, "reform": 0.65, "stress": -0.35, "uncertainty": 0.6, "min": 6,   "max": 25,  "decimals": 1 },
+      { "key": "unemployment",     "label": "Unemployment rate",          "unit": "%",    "goodHigh": false, "trendYears": 4, "reform": -0.5, "stress": 1.2,  "uncertainty": 0.9,  "min": 0,   "max": 15,  "decimals": 1 },
+      { "key": "top1Share",        "label": "Top 1% income share",        "unit": "%",    "goodHigh": false, "trendYears": 6, "reform": -0.5, "stress": 0.4,  "uncertainty": 0.7,  "min": 10,  "max": 30,  "decimals": 1 },
+      { "key": "cpiInflation",     "label": "CPI inflation",              "unit": "%",    "goodHigh": false, "trendYears": 5, "reform": -0.3, "stress": 2.2,  "uncertainty": 1.0,  "min": 0,   "max": 14,  "decimals": 1 },
+      { "key": "fiscalDeficit",    "label": "Fiscal deficit",             "unit": "% GDP","goodHigh": false, "trendYears": 5, "reform": -0.3, "stress": 1.3,  "uncertainty": 0.7,  "min": 0,   "max": 12,  "decimals": 1 },
+      { "key": "rupeeUSD",         "label": "Rupee (INR per USD)",        "unit": "₹/$",  "goodHigh": false, "trendYears": 6, "reform": -2,   "stress": 9,    "uncertainty": 4.5,  "min": 50,  "max": 130, "decimals": 0 },
+      { "key": "dqi",              "label": "Democratic Quality Index",   "unit": "",     "goodHigh": true,  "trendYears": 6, "reform": 0.04, "stress": -0.03, "uncertainty": 0.04, "min": 0, "max": 1, "decimals": 2 }
+    ]
+  },
+  "bigPicture": {
+    "note": "India in five numbers (Economic Survey 2025-26; IMF WEO; NSO). Large in total, modest per person.",
+    "items": [
+      { "value": "~$4.0 tn",  "label": "Size of economy",   "sub": "4th largest nominal GDP" },
+      { "value": "~$2,900",   "label": "Per person",        "sub": "~109th in the world" },
+      { "value": "1.46 bn",   "label": "People",            "sub": "most populous nation" },
+      { "value": "7.4%",      "label": "Real growth FY26",  "sub": "Economic Survey estimate" },
+      { "value": "11.2%",     "label": "Tax-to-GDP",        "sub": "OECD average ~34%" }
+    ]
+  },
+  "chinaDivergence": {
+    "note": "Nominal USD per capita. In 1991 both countries were near $330. Approximate. World Bank national accounts; IMF WEO.",
+    "years":  [1991, 2000, 2010, 2020, 2026],
+    "india":  [330,  460,  1350, 1910, 2900],
+    "china":  [330,  960,  4550, 10500, 13000]
+  },
+  "taxTake": {
+    "note": "For every ₹100 the Union government collects (Union Budget 2026-27, Budget at a Glance; approximate, rounded). 'shared' flags revenue shared with states via the Finance Commission formula.",
+    "items": [
+      { "label": "Borrowings",              "value": 24, "sub": "not earned — borrowed", "shared": false },
+      { "label": "Individual income tax",   "value": 19, "sub": "salaried & professional",  "shared": true },
+      { "label": "GST (indirect)",          "value": 18, "sub": "falls on everyone equally", "shared": true },
+      { "label": "Corporation tax",         "value": 17, "sub": "cut 30%→22% in 2019",     "shared": true },
+      { "label": "Excise + customs",        "value": 9,  "sub": "fuel, imports; much via cess", "shared": false },
+      { "label": "Non-tax revenue",         "value": 9,  "sub": "RBI dividend, fees, tolls", "shared": false },
+      { "label": "Other receipts",          "value": 4,  "sub": "capital, disinvestment",   "shared": false }
+    ]
+  },
+  "spendSplit": {
+    "note": "For every ₹100 the Union government spends (Union Budget 2026-27, Budget at a Glance; approximate). Interest + states' share take 42 paise before a single scheme is funded.",
+    "items": [
+      { "label": "Capital expenditure",     "value": 22, "sub": "roads, railways, ports" },
+      { "label": "States' share of taxes",  "value": 22, "sub": "devolution to states" },
+      { "label": "Interest payments",       "value": 20, "sub": "cost of past borrowing" },
+      { "label": "Other",                   "value": 14, "sub": "salaries, other grants" },
+      { "label": "Welfare",                 "value": 11, "sub": "MGNREGA, PDS, schemes" },
+      { "label": "Defence",                 "value": 11, "sub": "armed forces" }
+    ]
+  },
+  "stateReturns": {
+    "note": "Approximate return per ₹100 of taxes paid to the Union, by state (Finance Commission devolution; Praveen Chakravarty / AIPC). Direction is the point; exact ratios vary by year. Rich states finance poorer states — that is the design.",
+    "items": [
+      { "state": "Maharashtra",    "ret": 30 },
+      { "state": "Gujarat",        "ret": 50 },
+      { "state": "Karnataka",      "ret": 60 },
+      { "state": "Tamil Nadu",     "ret": 60 },
+      { "state": "West Bengal",    "ret": 120 },
+      { "state": "Uttar Pradesh",  "ret": 200 },
+      { "state": "Madhya Pradesh", "ret": 244 },
+      { "state": "Bihar",          "ret": 510 }
+    ]
+  },
+  "realInflation": {
+    "note": "Your real inflation index: everyday prices over roughly a decade vs the ~3.9% headline CPI. Thali prices: Praveen Chakravarty / AIPC; others illustrative for a mid-market urban household.",
+    "headlineCPI": 3.9,
+    "items": [
+      { "item": "Basic thali",            "then": 19,    "now": 28.5,  "unit": "₹" },
+      { "item": "Auto-rickshaw min. fare","then": 25,    "now": 50,    "unit": "₹" },
+      { "item": "Daily family meals",     "then": 200,   "now": 300,   "unit": "₹/day" },
+      { "item": "School fees (mid-market)","then": 30000, "now": 70000, "unit": "₹/yr" }
+    ]
+  },
+  "external": {
+    "note": "External sector FY26 (RBI Balance of Payments & Annual Report 2025-26; DGCI&S; IMF WEO 2026). Goods in deficit, services to the rescue.",
+    "goodsDeficitBn": -333,
+    "servicesSurplusBn": 190,
+    "cadPctGDP": 1.0,
+    "reservesBn": 691,
+    "importCoverMonths": 11,
+    "rupeeRecordLow": 95.2,
+    "goldImportsBn": 72,
+    "crudeImportsBn": 123,
+    "crudeImportDependence": 86,
+    "fpiOutflowBn": -16.5
+  },
+  "distribution": {
+    "note": "Monthly income and where it places you (WIR 2022/2026; HCES 2022-23; PLFS; NCAER). Thresholds approximate. The salaried, tax-paying middle is ~80-120 million, not the 300-400 million quoted by market research.",
+    "thresholds": [
+      { "income": 5000,   "label": "Bottom 20-25%", "sub": "below rural minimum wage in most states" },
+      { "income": 10000,  "label": "~40th percentile", "sub": "below urban poverty-adjacent thresholds" },
+      { "income": 25000,  "label": "~80-85th percentile", "sub": "most who consider themselves 'middle class'" },
+      { "income": 50000,  "label": "Top 3-5%", "sub": "what marketing calls aspirational middle class" },
+      { "income": 100000, "label": "Top 1-2%", "sub": "what politics calls 'affluent'" }
+    ],
+    "bottom50AvgAnnual": 71000,
+    "ruralMPCE": 3773,
+    "urbanMPCE": 6459,
+    "top10IncomeShare": 58,
+    "top1WealthShare": 40,
+    "bottom50WealthShare": 4
+  },
+  "structure": {
+    "note": "The central mismatch: output here, jobs there (MoSPI/NSO GVA shares FY25; PLFS employment shares). Agriculture makes under a fifth of output but holds over two-fifths of jobs.",
+    "sectors": [
+      { "sector": "Agriculture",  "gva": 18, "emp": 42 },
+      { "sector": "Manufacturing","gva": 17, "emp": 11 },
+      { "sector": "Services",     "gva": 53, "emp": 33 },
+      { "sector": "Other",        "gva": 12, "emp": 14 }
+    ]
+  },
+  "jobsLesson": {
+    "note": "Same investment, vastly different jobs (Praveen Chakravarty / AIPC; Planning Commission 2011-12; garment export-to-jobs ratio industry standard).",
+    "electronicsCrPerJob": 1.5,
+    "electronicsJobsLakh": 1,
+    "garmentsJobsCrore": 3,
+    "garmentsWomenSharePct": 70,
+    "govJobApplicationsCrore": 22,
+    "govJobsGivenLakh": 7.22,
+    "govJobSuccessRate": "1 in 305"
   }
 }
