@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.15.0">
+    <meta name="version" content="2.16.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1796,6 +1796,29 @@ reduces overall score</pre>
 
         <!-- Deep Analysis Tab -->
         <div x-show="activeTab === 'Deep Analysis'" x-transition class="space-y-6">
+            <!-- State Explorer (federalism + delimitation) -->
+            <div class="card p-5 sm:p-6">
+                <div class="kicker mb-1">Federalism &amp; delimitation</div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-1" style="color:var(--ink);">State Explorer</h2>
+                <p class="text-sm mb-3" style="color:var(--ink-soft);">India's states are diverging — in income, in representation, and in demographics. Pick a metric; states are ranked and coloured by region.</p>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <template x-for="m in [{k:'perCapita',l:'Per-capita income'},{k:'perMP',l:'People per MP'},{k:'tfr',l:'Fertility rate'},{k:'seats',l:'Lok Sabha seats'}]" :key="m.k">
+                        <button @click="setStatesMetric(m.k)"
+                            :style="statesMetric===m.k ? 'background:var(--accent);color:#fff;border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
+                            class="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" x-text="m.l"></button>
+                    </template>
+                </div>
+                <div class="flex flex-wrap gap-3 mb-2 text-[11px]" style="color:var(--muted);">
+                    <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#22c55e;"></span> South</span>
+                    <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#3b82f6;"></span> West</span>
+                    <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#ef4444;"></span> North</span>
+                    <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#f59e0b;"></span> East</span>
+                </div>
+                <div id="statesExplorerChart" style="width:100%;height:420px;"></div>
+                <p class="text-sm mt-2" style="color:var(--ink-soft);"><strong>Takeaway:</strong> <span x-text="statesMetricMeta.takeaway"></span></p>
+                <p class="text-xs mt-2" style="color:var(--muted);" x-text="(primer.states && primer.states.note) || ''"></p>
+            </div>
+
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-white">Deep Analysis</h2>
                 <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Computed from <code class="text-xs">data.json</code>. Values marked with <span class="font-mono text-amber-600">*</span> are projections; everything else is observed.</p>
@@ -2807,7 +2830,16 @@ reduces overall score</pre>
         poverty: { note:'Three official lines, three answers. No accepted poverty line since 2014.', lines:[{name:'Tendulkar (2011-12)',detail:'₹27/day rural, ₹33/day urban',headcount:'21.9%',status:'never updated'},{name:'Rangarajan (2014)',detail:'₹30/day rural, ₹47/day urban',headcount:'29.5%',status:'shelved, not adopted'},{name:'NITI MPI (2022-23)',detail:'multidimensional, not income',headcount:'11.3%',status:'current official'}] },
         bodies: { note:'The economy in bodies and classrooms (NFHS-5; National Health Accounts).', stuntedPct:35, outOfPocketPct:40, publicHealthPctGDP:1.9 },
         readChecklist: { note:'How to read any official number.', questions:['Which definition is being used, and who set it?','What does the number leave out?','When was the underlying data collected?','Who gains if the number looks good?','Has the method changed?','Did the inconvenient survey get published?','How does it compare with independent estimates?'] },
-        measurement: { note:'Five places where the choice, not the economy, moved the number.', items:[{title:'The GDP back-series',body:'2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed.'},{title:'The surveys that went missing',body:'The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable.'},{title:'A census a decade late',body:'Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers.'},{title:'Counting = allocating power',body:'Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose.'}] }
+        measurement: { note:'Five places where the choice, not the economy, moved the number.', items:[{title:'The GDP back-series',body:'2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed.'},{title:'The surveys that went missing',body:'The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable.'},{title:'A census a decade late',body:'Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers.'},{title:'Counting = allocating power',body:'Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose.'}] },
+        states: { note:'Per-capita NSDP 2023-24 (MoSPI/RBI); current Lok Sabha seats; 2011 Census population; TFR (NFHS-5). Compiled from public sources.', items:[
+            { state:'Telangana', region:'South', perCapita:356564, seats:17, pop:3.52, tfr:1.8 },
+            { state:'Karnataka', region:'South', perCapita:332926, seats:28, pop:6.11, tfr:1.7 },
+            { state:'Tamil Nadu', region:'South', perCapita:315220, seats:39, pop:7.21, tfr:1.8 },
+            { state:'Kerala', region:'South', perCapita:281001, seats:20, pop:3.34, tfr:1.8 },
+            { state:'Maharashtra', region:'West', perCapita:263974, seats:48, pop:11.24, tfr:1.7 },
+            { state:'Uttar Pradesh', region:'North', perCapita:93514, seats:80, pop:19.98, tfr:2.4 },
+            { state:'Bihar', region:'North', perCapita:60337, seats:40, pop:10.41, tfr:3.0 }
+        ] }
     };
 
     // Tab <-> URL hash mapping
@@ -2925,6 +2957,8 @@ reduces overall score</pre>
             trajIndicator: 'gdpGrowth',         // currently-focused indicator for the fan chart
             trajLevers: { statsIndependence: false, garmentsPush: false, fiscalRebalance: false, formalisation: false },
             trajWeights: {},                    // user-adjustable weights per indicator (default 1)
+            // ===== STATE EXPLORER =====
+            statesMetric: 'perCapita',
             // ===== POLICY EVENT TIMELINE =====
             showEvents: true,
             policyEvents: [
@@ -3153,7 +3187,7 @@ reduces overall score</pre>
                     if (d.sources) this.sourcesData = d.sources;
                     this.initTrajWeights();
                     // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
-                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement'];
+                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement','states'];
                     const merged = { ...PRIMER_FALLBACK };
                     for (const k of primerKeys) { if (d[k]) merged[k] = d[k]; }
                     this.primer = merged;
@@ -3471,6 +3505,7 @@ reduces overall score</pre>
                     this.updateScenario();
                 } else if (tab === 'Deep Analysis') {
                     this.createDecouplingChart();
+                    this.createStatesExplorerChart();
                     if (Object.keys(this.csvData).length === 0) {
                         this.loadCSVData().then(() => this.createCSVCharts());
                     } else {
@@ -4455,6 +4490,38 @@ reduces overall score</pre>
                 const out = {};
                 for (const k of Object.keys(this.TRAJ_SCORE_REF)) out[k] = this.projected2030(k, scenario);
                 return out;
+            },
+
+            // ----- State Explorer -----
+            setStatesMetric(m) { this.statesMetric = m; this.createStatesExplorerChart(); },
+            get statesMetricMeta() {
+                return ({
+                    perCapita: { label: 'Per-capita income', goodHigh: true, fmt: v => '₹' + Math.round(v / 1000) + 'k', takeaway: 'Southern and western states lead; Bihar’s per-capita income is roughly a sixth of Telangana’s.' },
+                    seats: { label: 'Lok Sabha seats', goodHigh: null, fmt: v => String(v), takeaway: 'Seat counts are frozen on the 1971 census — they reflect 1971 population, not today’s.' },
+                    perMP: { label: 'People per MP (millions)', goodHigh: false, fmt: v => v.toFixed(2) + 'M', takeaway: 'Northern states pack more people per seat, so a population-based delimitation would shift seats north — away from the south.' },
+                    tfr: { label: 'Fertility rate (NFHS-5)', goodHigh: null, fmt: v => v.toFixed(1), takeaway: 'The south is below replacement (~2.1); the north is higher. The states set to lose seats are exactly those that slowed population growth fastest.' }
+                })[this.statesMetric];
+            },
+            createStatesExplorerChart() {
+                const c = this.getChart('statesExplorerChart');
+                if (!c) return;
+                const items = (((this.primer || {}).states || {}).items || []).map(s => ({ ...s, perMP: s.pop * 10 / s.seats }));
+                const meta = this.statesMetricMeta;
+                const key = this.statesMetric;
+                const sorted = [...items].sort((a, b) => (a[key] || 0) - (b[key] || 0));
+                const regionColor = { South: '#22c55e', West: '#3b82f6', North: '#ef4444', East: '#f59e0b' };
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    grid: isMobile() ? { left: 8, right: 52, top: 16, bottom: 16, containLabel: true } : { left: 8, right: 72, top: 16, bottom: 16, containLabel: true },
+                    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: p => { const it = sorted[p[0].dataIndex]; return '<b>' + it.state + '</b> (' + it.region + ')<br/>' + meta.label + ': ' + meta.fmt(it[key]); } },
+                    xAxis: { type: 'value' },
+                    yAxis: { type: 'category', data: sorted.map(s => s.state), axisLabel: { fontSize: 11 } },
+                    series: [{
+                        type: 'bar', barWidth: '62%',
+                        data: sorted.map(s => ({ value: s[key], itemStyle: { color: regionColor[s.region] || '#888' } })),
+                        label: { show: true, position: 'right', fontSize: 10, formatter: p => meta.fmt(p.value), color: this.darkMode ? '#cbd5e1' : '#475569' }
+                    }]
+                }, true);
             },
 
             setTrajScenario(s) { this.trajScenario = s; this.updateTrajectory(); },
