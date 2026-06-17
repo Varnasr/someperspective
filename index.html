@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.9.1">
+    <meta name="version" content="2.9.2">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -325,6 +325,18 @@
 
         /* Trajectory verdict chip */
         .verdict { font-family: 'Fraunces', Georgia, serif; }
+
+        /* Mobile overflow hardening — prevent stat numbers / long tokens spilling
+           out of tight grid cells, and stop any element forcing a horizontal scroll.
+           overflow-x:clip (not hidden) keeps position:sticky working. */
+        html { overflow-x: clip; }
+        .card-inner { min-width: 0; overflow-wrap: anywhere; }
+        @media (max-width: 640px) {
+            .card-inner .font-display,
+            .card-inner .text-2xl { font-size: 1.2rem !important; line-height: 1.15; }
+            .card-inner .text-xl { font-size: 1.05rem !important; }
+            .chart-container { min-height: 240px; }
+        }
 
         /* Print styles */
         @media print {
@@ -1836,7 +1848,7 @@ reduces overall score</pre>
                         </div>
                         <div class="card-inner flex flex-col justify-center">
                             <div class="text-xs" style="color:var(--muted);">Verdict</div>
-                            <div class="text-sm font-bold verdict" :class="trajOut.verdictClass" x-text="trajOut.verdict"></div>
+                            <div class="text-xs sm:text-sm font-bold verdict leading-tight break-words" :class="trajOut.verdictClass" x-text="trajOut.verdict"></div>
                         </div>
                     </div>
                 </div>
@@ -2306,9 +2318,9 @@ reduces overall score</pre>
                     <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.pumpPrice.note"></p>
                     <div class="flex h-8 rounded-lg overflow-hidden mb-2">
                         <template x-for="(pt, i) in primer.pumpPrice.parts" :key="pt.label">
-                            <div class="h-8 flex items-center justify-center text-[10px] text-white font-semibold"
+                            <div class="h-8 flex items-center justify-center text-[10px] text-white font-semibold overflow-hidden whitespace-nowrap"
                                  :style="'width:' + (pt.value/primer.pumpPrice.total*100) + '%;background:' + (i===1||i===2 ? 'var(--accent)' : 'var(--accent-2)')"
-                                 :title="pt.label + ': ₹' + pt.value">₹<span x-text="pt.value"></span></div>
+                                 :title="pt.label + ': ₹' + pt.value"><span x-show="pt.value/primer.pumpPrice.total*100 > 11">₹<span x-text="pt.value"></span></span></div>
                         </template>
                     </div>
                     <div class="grid grid-cols-2 gap-1.5 mt-3">
