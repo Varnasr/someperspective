@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.9.0">
+    <meta name="version" content="2.9.1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026): GDP growth vs jobless recovery, top 1% owning 40% of wealth, democratic backsliding, and three novel indices (SSI, FCI, DQI). Interactive charts, downloadable data, and policy recommendations.">
@@ -1917,47 +1917,235 @@ reduces overall score</pre>
         </div>
 
         <!-- Reading the Economy Tab (NEW · citizen primer) -->
+        <!-- Reading the Economy Tab (citizen primer · 11 sections A–K) -->
         <div x-show="activeTab === 'Reading the Economy'" x-transition class="space-y-6">
             <div class="card p-5 sm:p-8">
-                <div class="kicker mb-2">A citizen's primer · 16 June 2026</div>
+                <div class="kicker mb-2">A citizen's primer · 16 June 2026 · 11 sections</div>
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-3" style="color:var(--ink);">Reading the Indian Economy</h2>
                 <p class="text-sm sm:text-base leading-relaxed" style="color:var(--ink-soft);">
-                    How the economy is measured, what the numbers say, and who decides what counts. A plain-language tour of the size of the economy,
-                    where output and jobs sit, what the state takes and spends, who is really middle class, and why half of India's inflation starts in the sky.
+                    How the economy is measured, what the numbers say, and who decides what counts. Eleven sections, following the lecture from
+                    A (<em>what an index even is</em>) to K (<em>how we know any of it</em>). Pick a section below.
                 </p>
-            </div>
-
-            <div class="card p-5 sm:p-6">
-                <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">The big picture, in five numbers</h3>
-                <p class="text-xs mb-4" style="color:var(--muted);" x-text="primer.bigPicture.note"></p>
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-                    <template x-for="it in primer.bigPicture.items" :key="it.label">
-                        <div class="card-inner text-center">
-                            <div class="text-2xl font-bold font-display" style="color:var(--accent);" x-text="it.value"></div>
-                            <div class="text-xs font-semibold mt-1" style="color:var(--ink);" x-text="it.label"></div>
-                            <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="it.sub"></div>
-                        </div>
+                <div class="flex flex-wrap gap-1.5 mt-5">
+                    <template x-for="s in primerSections" :key="s.id">
+                        <button @click="selectPrimerSection(s.id)"
+                            :style="primerSection===s.id ? 'background:var(--accent);color:#fff;' : 'background:var(--surface-2);color:var(--ink-soft);'"
+                            class="px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all">
+                            <span class="font-mono font-bold" x-text="s.id"></span> · <span x-text="s.label"></span>
+                        </button>
                     </template>
                 </div>
-                <p class="text-sm mt-4 italic" style="color:var(--ink-soft);">A big economy and a poor country at the same time. Most arguments about India start by stressing one and forgetting the other.</p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-6">
+            <!-- ============ A · What are we measuring? ============ -->
+            <div x-show="primerSection==='A'" x-transition class="space-y-6">
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">India vs China since 1991</h3>
-                    <div class="card-inner"><div id="primerChinaChart" class="chart-container"></div></div>
-                    <p class="text-xs mt-2" style="color:var(--muted);" x-text="primer.chinaDivergence.note"></p>
+                    <div class="kicker mb-1">Section A · Foundations</div>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">What is an index, and why does the definition matter?</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">An index is one number summarising many prices. It picks a <strong>basket</strong>, assigns <strong>weights</strong>, and tracks the weighted total against a <strong>base year</strong>. Two choices make it political: what goes in the basket (urban professional spending looks nothing like a landless labourer's), and where you set the base year (reset it and the whole series shifts).</p>
+                    <p class="text-xs mb-2" style="color:var(--muted);" x-text="primer.indexExample.note"></p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="text-xs uppercase border-b" style="color:var(--muted);border-color:var(--line);">
+                                <tr><th class="text-left py-2">Item</th><th class="text-right py-2">Weight</th><th class="text-right py-2">Then</th><th class="text-right py-2">Now</th><th class="text-right py-2">Change</th></tr>
+                            </thead>
+                            <tbody>
+                                <template x-for="it in primer.indexExample.items" :key="it.item">
+                                    <tr class="border-b" style="border-color:var(--line);">
+                                        <td class="py-2" style="color:var(--ink);" x-text="it.item"></td>
+                                        <td class="py-2 text-right tabular-nums" x-text="it.weight + '%'"></td>
+                                        <td class="py-2 text-right tabular-nums">₹<span x-text="it.then"></span></td>
+                                        <td class="py-2 text-right tabular-nums">₹<span x-text="it.now"></span></td>
+                                        <td class="py-2 text-right tabular-nums font-semibold" style="color:var(--accent);">+<span x-text="Math.round((it.now/it.then-1)*100)"></span>%</td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">If onions are 15% of the basket, a 67% spike adds ~10 points to inflation on its own.</p>
+                </div>
+
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">What GDP counts — and what it silently ignores</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">GDP is the money value of all final goods and services produced in a year. Three routes to the same room — they should match:</p>
+                    <div class="grid sm:grid-cols-3 gap-3 mb-4">
+                        <div class="card-inner"><div class="font-semibold text-sm" style="color:var(--accent);">Production</div><div class="text-xs mt-1" style="color:var(--muted);">value added at each stage</div></div>
+                        <div class="card-inner"><div class="font-semibold text-sm" style="color:var(--accent);">Income</div><div class="text-xs mt-1" style="color:var(--muted);">wages + profits + rents + taxes</div></div>
+                        <div class="card-inner"><div class="font-semibold text-sm" style="color:var(--accent);">Expenditure</div><div class="text-xs mt-1" style="color:var(--muted);">C + I + G + (X − M)</div></div>
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">GDP counts a hospital treating a pollution victim, not the clean river that would have prevented the illness. It counts a soldier's salary, not the unpaid care work of 200 million women. <strong>Nominal</strong> GDP uses today's prices; <strong>real</strong> GDP strips out inflation — and the difference is who gets to claim the growth.</p>
+                </div>
+
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <div class="kicker mb-1">When the ruler changed</div>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Why the 2015 GDP revision is still disputed</h3>
+                    <ul class="text-sm space-y-1.5 mb-4" style="color:var(--ink-soft);">
+                        <template x-for="c in primer.gdpRevision.changes" :key="c"><li>• <span x-text="c"></span></li></template>
+                    </ul>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);" x-text="primer.gdpRevision.officialGrowth + '%'"></div><div class="text-xs mt-1" style="color:var(--muted);">Official growth, 2011–17</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);" x-text="primer.gdpRevision.subramanianGrowth + '%'"></div><div class="text-xs mt-1" style="color:var(--muted);">Subramanian's estimate</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">~<span x-text="primer.gdpRevision.overstatePoints"></span>pts</div><div class="text-xs mt-1" style="color:var(--muted);">claimed overstatement</div></div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">MCA21 includes dormant companies with stale filings. The EAC-PM called the critique "cherry-picked." No independent review was ever commissioned.</p>
+                </div>
+            </div>
+
+            <!-- ============ B · The big picture ============ -->
+            <div x-show="primerSection==='B'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section B</div>
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">The big picture, in five numbers</h3>
+                    <p class="text-xs mb-4" style="color:var(--muted);" x-text="primer.bigPicture.note"></p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        <template x-for="it in primer.bigPicture.items" :key="it.label">
+                            <div class="card-inner text-center">
+                                <div class="text-2xl font-bold font-display" style="color:var(--accent);" x-text="it.value"></div>
+                                <div class="text-xs font-semibold mt-1" style="color:var(--ink);" x-text="it.label"></div>
+                                <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="it.sub"></div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-sm mt-4 italic" style="color:var(--ink-soft);">A big economy and a poor country at the same time. Most arguments about India start by stressing one and forgetting the other.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">Output here, jobs there</h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Same start in 1991. Very different destinations.</h3>
+                    <div class="card-inner"><div id="primerChinaChart" class="chart-container"></div></div>
+                    <p class="text-xs mt-2" style="color:var(--muted);" x-text="primer.chinaDivergence.note"></p>
+                    <p class="text-sm mt-2 italic" style="color:var(--ink-soft);">China ran labour-intensive manufacturing and built a consuming middle class. India ran services — which export dollars but don't employ at scale.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Jobless growth: GDP grows, formal jobs per rupee collapse</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">In the 1980s, 1% of GDP growth created ~2 lakh formal jobs. By the 2010s, the same 1% created fewer than 20,000.</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.jobsLesson.govJobApplicationsCrore"></span> cr</div><div class="text-xs mt-1" style="color:var(--muted);">applications for central-govt jobs, 2014–22</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.jobsLesson.govJobsGivenLakh"></span> lakh</div><div class="text-xs mt-1" style="color:var(--muted);">jobs actually given</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);" x-text="primer.jobsLesson.govJobSuccessRate"></div><div class="text-xs mt-1" style="color:var(--muted);">success rate</div></div>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);">A massive young population and a tiny formal job market. The two eras compared: UPA averaged ~7.4% growth, NDA ~6.1% — see <a @click.prevent="activeTab='Era Comparison'" href="#" style="color:var(--accent);" class="underline font-semibold">Era Comparison</a>.</p>
+                </div>
+            </div>
+
+            <!-- ============ C · Structure, jobs & wages ============ -->
+            <div x-show="primerSection==='C'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section C</div>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Output here, jobs there</h3>
                     <div class="card-inner"><div id="primerStructureChart" class="chart-container"></div></div>
                     <p class="text-xs mt-2" style="color:var(--muted);" x-text="primer.structure.note"></p>
                 </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Same investment. Vastly different jobs.</h3>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <div class="card-inner">
+                            <div class="font-semibold text-sm mb-1" style="color:var(--ink);">₹1.5 lakh cr into electronics PLI</div>
+                            <div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.jobsLesson.electronicsJobsLakh"></span> lakh jobs</div>
+                            <div class="text-xs mt-1" style="color:var(--muted);">≈ ₹<span x-text="primer.jobsLesson.electronicsCrPerJob"></span> crore per job</div>
+                        </div>
+                        <div class="card-inner">
+                            <div class="font-semibold text-sm mb-1" style="color:var(--ink);">₹1.5 lakh cr into garments instead</div>
+                            <div class="text-2xl font-bold font-display" style="color:var(--accent-2);"><span x-text="primer.jobsLesson.garmentsJobsCrore"></span> crore jobs</div>
+                            <div class="text-xs mt-1" style="color:var(--muted);">~<span x-text="primer.jobsLesson.garmentsWomenSharePct"></span>% would be women</div>
+                        </div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Choosing electronics over garments favours output-per-worker over employment scale. The statistics look better; the person who needed the job loses.</p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">GDP climbs. Most wages stand still.</h3>
+                    <div class="card-inner"><div id="primerWagesChart" class="chart-container"></div></div>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Under UPA, real rural wages grew 3–6% a year. Under NDA, growth collapsed toward zero (negative in FY17, FY22, FY23) even as GDP expanded 7–8%. Jean Dreze (2023): wages, more than unemployment, are the thing to watch.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Unemployment: the ruler decides the number</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">3.2%</div><div class="text-xs mt-1" style="color:var(--muted);">headline (any work in the year)</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">~2×</div><div class="text-xs mt-1" style="color:var(--muted);">in a lean month</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">&gt;10%</div><div class="text-xs mt-1" style="color:var(--muted);">young urban</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">90%</div><div class="text-xs mt-1" style="color:var(--muted);">workers with no written contract</div></div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Female labour-force participation has risen on paper — but much of it is distress work; the salaried urban number has barely moved and is among Asia's lowest.</p>
+                </div>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-6">
+            <!-- ============ D · Who is middle class? ============ -->
+            <div x-show="primerSection==='D'" x-transition class="space-y-6">
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">For every ₹100 the state <span style="color:var(--accent);">takes</span></h3>
+                    <div class="kicker mb-1">Section D</div>
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">If you earn ₹50,000 a month, you are in the top 3–5% of India</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);">Monthly income, and where it places you.</p>
+                    <div class="space-y-2">
+                        <template x-for="t in primer.distribution.thresholds" :key="t.income">
+                            <div class="card-inner py-2">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="font-bold tabular-nums" style="color:var(--ink);">₹<span x-text="t.income.toLocaleString('en-IN')"></span>/mo</span>
+                                    <span class="text-xs font-semibold" style="color:var(--accent);" x-text="t.label"></span>
+                                </div>
+                                <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="t.sub"></div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);">The "300–400 million middle class" of market research includes everyone above subsistence. By any serious income threshold, the consuming, salaried, tax-paying middle is 80–120 million — about one-seventh of what gets quoted.</p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">What the bottom half actually earns</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">₹<span x-text="primer.distribution.bottom50AvgAnnual.toLocaleString('en-IN')"></span></div><div class="text-xs mt-1" style="color:var(--muted);">avg annual income, bottom 50%</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.distribution.ruralMPCE.toLocaleString('en-IN')"></span></div><div class="text-xs mt-1" style="color:var(--muted);">rural spend/person/month</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.distribution.urbanMPCE.toLocaleString('en-IN')"></span></div><div class="text-xs mt-1" style="color:var(--muted);">urban spend/person/month</div></div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">A rural family of four spends ~₹15,000 a month on everything. That is the median Indian's world — not the newspaper lifestyle section.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The long view: India was most equal in 1981</h3>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">Banerjee &amp; Piketty: the top 1% income share fell from 12% (1951) to a historic low of <strong>4.4% in 1981</strong> — driven down by high marginal taxes and nationalisation. The 1981 IMF loan came with conditions; Indira Gandhi began the pro-business reversal. Inequality has risen in every decade since. Today the top 1% takes ~23%; the bottom 50% takes ~13%.</p>
+                </div>
+            </div>
+
+            <!-- ============ E · Prices & monsoon ============ -->
+            <div x-show="primerSection==='E'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section E</div>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">How the inflation number is built</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">The government tracks ~<strong x-text="primer.cpiBasket.goodsTracked.toLocaleString('en-IN')"></strong> goods and services from <strong x-text="primer.cpiBasket.urbanMarkets"></strong> urban markets and <strong x-text="primer.cpiBasket.villages"></strong> villages every month, against a <strong x-text="primer.cpiBasket.baseYear"></strong> base. Food is nearly half the basket (~<span x-text="primer.cpiBasket.foodSharePct"></span>%), so a bad monsoon pushing onion and tomato prices up adds points before anything else moves. The RBI targets CPI at <span x-text="primer.cpiBasket.rbiTarget"></span>%.</p>
+                    <div class="card-inner"><div id="primerInflationChart" class="chart-container"></div></div>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Inflation fell and mostly stayed inside the RBI band under NDA — partly because farm-gate food prices fell. Relief for the consumer; distress for the farmer.</p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Your real inflation index</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);">The headline says <span class="font-semibold" x-text="primer.realInflation.headlineCPI + '%'"></span>. The thali disagrees.</p>
+                    <div class="space-y-3">
+                        <template x-for="it in primer.realInflation.items" :key="it.item">
+                            <div class="flex items-center justify-between gap-3">
+                                <div class="text-sm" style="color:var(--ink);" x-text="it.item"></div>
+                                <div class="text-sm tabular-nums" style="color:var(--ink-soft);">
+                                    <span x-text="it.unit + it.then"></span><span style="color:var(--muted);"> → </span><span class="font-bold" style="color:var(--accent);" x-text="it.unit + it.now"></span>
+                                    <span class="ml-1 text-xs font-semibold" style="color:var(--accent);">+<span x-text="Math.round((it.now/it.then-1)*100)"></span>%</span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);">The index tells you about <em>the</em> basket; it doesn't tell you about <em>your</em> basket.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The monsoon machine</h3>
+                    <p class="text-sm mb-4" style="color:var(--ink-soft);">~<span x-text="primer.monsoonChain.rainfedSharePct"></span>% of cultivated area is unirrigated and depends entirely on the southwest monsoon. The transmission chain:</p>
+                    <div class="flex flex-wrap items-center gap-1.5">
+                        <template x-for="(st, i) in primer.monsoonChain.steps" :key="st">
+                            <div class="flex items-center gap-1.5">
+                                <span class="px-2.5 py-1.5 rounded-lg text-xs font-medium" style="background:var(--surface-2);color:var(--ink);" x-text="st"></span>
+                                <span x-show="i < primer.monsoonChain.steps.length - 1" style="color:var(--accent);">→</span>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Climate change is making the monsoon more erratic. The economic vulnerability is rising, not falling.</p>
+                </div>
+            </div>
+
+            <!-- ============ F · What the state takes ============ -->
+            <div x-show="primerSection==='F'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section F</div>
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">For every ₹100 the state takes</h3>
                     <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.taxTake.note"></p>
                     <div class="space-y-2">
                         <template x-for="it in primer.taxTake.items" :key="it.label">
@@ -1976,7 +2164,27 @@ reduces overall score</pre>
                     <p class="text-xs mt-3" style="color:var(--muted);"><span style="color:var(--accent-2);">■</span> shared with states · <span style="color:var(--accent);">■</span> not shared. GST hits everyone at the same rate; the poor pay more as a share of income.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">For every ₹100 the state <span style="color:var(--accent-2);">spends</span></h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The tax reversal: corporates pay less, individuals pay more</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.taxReversal.corpRateBefore"></span>→<span x-text="primer.taxReversal.corpRateAfter"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">corporate rate, cut in <span x-text="primer.taxReversal.yearCut"></span></div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">₹<span x-text="primer.taxReversal.revenueLostLakhCr"></span>L cr</div><div class="text-xs mt-1" style="color:var(--muted);">annual revenue forgone</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.taxReversal.taxToGDP"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">India tax-to-GDP</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.taxReversal.oecdAvg"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">OECD average</div></div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">The shortfall was covered by GST, fuel excise, and new cesses — paid by ordinary people. The individual now contributes more direct tax than the corporation.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The tax we abolished, and how GST works</h3>
+                    <p class="text-sm leading-relaxed mb-3" style="color:var(--ink-soft);">India abolished its <strong>wealth tax in <span x-text="primer.taxReversal.wealthTaxAbolished"></span></strong> (it raised only ~₹<span x-text="primer.taxReversal.wealthTaxRevenueCr"></span> cr — poorly designed). Piketty's proposal: a <span x-text="primer.taxReversal.pikettyRate"></span>% annual tax on net wealth above ₹<span x-text="primer.taxReversal.pikettyThresholdCr"></span> crore (~150,000 people) could raise 0.5–1% of GDP without touching ordinary savings.</p>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">GST (2017) merged central and state taxes into one. <strong>41%</strong> of the divisible pool is devolved to states by formula — but <strong>cesses and surcharges sit outside the pool</strong> and have grown sharply, so states get nothing from them. Petrol, diesel and alcohol stay outside GST: a political choice, not a technical one.</p>
+                </div>
+            </div>
+
+            <!-- ============ G · What the state spends ============ -->
+            <div x-show="primerSection==='G'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section G</div>
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">For every ₹100 the state spends</h3>
                     <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.spendSplit.note"></p>
                     <div class="space-y-2">
                         <template x-for="it in primer.spendSplit.items" :key="it.label">
@@ -1994,89 +2202,201 @@ reduces overall score</pre>
                     </div>
                     <p class="text-xs mt-3" style="color:var(--muted);">Interest + states' share take 42 paise before a single scheme is funded. More goes to buildings (₹22) than to people (₹11).</p>
                 </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">BE, RE, and why the welfare budget shrinks twice</h3>
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium" style="background:var(--surface-2);color:var(--ink);">Budget Estimate (Feb)</span>
+                        <span style="color:var(--accent);">→</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium" style="background:var(--surface-2);color:var(--ink);">Revised Estimate (Oct)</span>
+                        <span style="color:var(--accent);">→</span>
+                        <span class="px-3 py-1.5 rounded-lg text-xs font-medium" style="background:var(--surface-2);color:var(--ink);">Actuals (next year)</span>
+                    </div>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">Social-sector spending is routinely cut at the RE stage because capex and interest are stickier. ₹<span x-text="primer.budgetArithmetic.mgnregaBE"></span> announced for MGNREGA at BE often reaches only ₹<span x-text="primer.budgetArithmetic.mgnregaActualsLo"></span>–<span x-text="primer.budgetArithmetic.mgnregaActualsHi"></span> by actuals. The family that needed the work was not consulted on the revision.</p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Below our own targets, for decades</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.budgetArithmetic.healthTarget"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">health spending target (NHP 2017) — never met</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.budgetArithmetic.educationTarget"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">education target (since Kothari, 1968) — never met</div></div>
+                    </div>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Cash in hand: Tamil Nadu's KMUT</h3>
+                    <div class="grid grid-cols-3 gap-3 mb-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.kmut.perMonth.toLocaleString('en-IN')"></span></div><div class="text-xs mt-1" style="color:var(--muted);">per month, to each woman</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.kmut.womenCoveredCrore"></span> cr</div><div class="text-xs mt-1" style="color:var(--muted);">women covered</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.kmut.annualOutlayCr.toLocaleString('en-IN')"></span> cr</div><div class="text-xs mt-1" style="color:var(--muted);">annual outlay</div></div>
+                    </div>
+                    <p class="text-xs italic" style="color:var(--muted);">The case: recognises unpaid labour, boosts bottom-end consumption (largest multipliers), no significant inflation spike post-launch. The concern: fiscal space — if all states match, national arithmetic breaks; cash is supply-neutral.</p>
+                </div>
             </div>
 
-            <div class="card p-5 sm:p-6">
-                <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Rich states finance poor states</h3>
-                <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.stateReturns.note"></p>
-                <div class="space-y-1.5">
-                    <template x-for="s in primer.stateReturns.items" :key="s.state">
-                        <div class="flex items-center gap-2">
-                            <span class="text-xs w-28 flex-shrink-0" style="color:var(--ink);" x-text="s.state"></span>
-                            <div class="flex-1 h-5 rounded" style="background:var(--surface-2);">
-                                <div class="h-5 rounded flex items-center justify-end pr-1.5" :style="'width:' + Math.max(8, s.ret/510*100) + '%;background:' + (s.ret < 100 ? 'var(--accent)' : 'var(--accent-2)')">
-                                    <span class="text-[10px] font-semibold text-white tabular-nums">₹<span x-text="s.ret"></span></span>
+            <!-- ============ H · Deficit & federalism ============ -->
+            <div x-show="primerSection==='H'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section H</div>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The deficit fell — with borrowed help</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.deficitFinancing.deficitPctGDP"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">fiscal deficit (FY27 BE), down from 9.2%</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.deficitFinancing.marketBorrowingLakhCr"></span>L cr</div><div class="text-xs mt-1" style="color:var(--muted);">gross market borrowing</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.deficitFinancing.rbiDividendLakhCr"></span>L cr</div><div class="text-xs mt-1" style="color:var(--muted);">record RBI dividend</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">₹<span x-text="primer.deficitFinancing.interestPer100"></span></div><div class="text-xs mt-1" style="color:var(--muted);">of every ₹100 spent goes to interest</div></div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">The direction is right — but a record RBI dividend and off-budget borrowing (FCI, NHAI) prop up the arithmetic. Add those in and the true deficit is higher.</p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Rich states finance poor states</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.stateReturns.note"></p>
+                    <div class="space-y-1.5">
+                        <template x-for="s in primer.stateReturns.items" :key="s.state">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs w-28 flex-shrink-0" style="color:var(--ink);" x-text="s.state"></span>
+                                <div class="flex-1 h-5 rounded" style="background:var(--surface-2);">
+                                    <div class="h-5 rounded flex items-center justify-end pr-1.5" :style="'width:' + Math.max(8, s.ret/510*100) + '%;background:' + (s.ret < 100 ? 'var(--accent)' : 'var(--accent-2)')">
+                                        <span class="text-[10px] font-semibold text-white tabular-nums">₹<span x-text="s.ret"></span></span>
+                                    </div>
                                 </div>
                             </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);">Return per ₹100 paid to the Union. Redistribution is the design — but it creates a tension: the states that run services well and grew slowly get less back.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The double punishment: delimitation</h3>
+                    <p class="text-sm mb-3" style="color:var(--ink-soft);">Seats were frozen on <span x-text="primer.delimitation.frozenSince"></span> data; the freeze ends with the first census after 2026. Reapportioning on today's population: northern states gain, demographically stable southern states lose.</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <template x-for="it in primer.delimitation.items" :key="it.state">
+                            <div class="card-inner text-center">
+                                <div class="text-2xl font-bold font-display" :style="it.change > 0 ? 'color:var(--accent-2);' : 'color:var(--accent);'" x-text="(it.change>0?'+':'') + it.change"></div>
+                                <div class="text-xs mt-1" style="color:var(--muted);" x-text="it.state"></div>
+                            </div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Less money back from the Centre AND fewer MPs to fight for more. Each MP already represents ~<span x-text="primer.delimitation.perMPNowMillions"></span> million people, up from <span x-text="primer.delimitation.perMP1951Millions"></span> million in 1951.</p>
+                </div>
+            </div>
+
+            <!-- ============ I · The outside world ============ -->
+            <div x-show="primerSection==='I'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section I</div>
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Goods in deficit, services to the rescue</h3>
+                    <p class="text-xs mb-4" style="color:var(--muted);" x-text="primer.external.note"></p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">−$<span x-text="Math.abs(primer.external.goodsDeficitBn)"></span>bn</div><div class="text-xs mt-1" style="color:var(--muted);">Goods trade deficit (FY26)</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent-2);">+$<span x-text="primer.external.servicesSurplusBn"></span>bn</div><div class="text-xs mt-1" style="color:var(--muted);">Services surplus</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">$<span x-text="primer.external.reservesBn"></span>bn</div><div class="text-xs mt-1" style="color:var(--muted);">Forex reserves (~<span x-text="primer.external.importCoverMonths"></span> mo)</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.external.rupeeRecordLow"></span></div><div class="text-xs mt-1" style="color:var(--muted);">Rupee record low / $ (May 2026)</div></div>
+                    </div>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Why petrol doesn't fall when crude does</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.pumpPrice.note"></p>
+                    <div class="flex h-8 rounded-lg overflow-hidden mb-2">
+                        <template x-for="(pt, i) in primer.pumpPrice.parts" :key="pt.label">
+                            <div class="h-8 flex items-center justify-center text-[10px] text-white font-semibold"
+                                 :style="'width:' + (pt.value/primer.pumpPrice.total*100) + '%;background:' + (i===1||i===2 ? 'var(--accent)' : 'var(--accent-2)')"
+                                 :title="pt.label + ': ₹' + pt.value">₹<span x-text="pt.value"></span></div>
+                        </template>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1.5 mt-3">
+                        <template x-for="pt in primer.pumpPrice.parts" :key="pt.label">
+                            <div class="text-xs flex justify-between" style="color:var(--muted);"><span x-text="pt.label"></span><span class="tabular-nums">₹<span x-text="pt.value"></span></span></div>
+                        </template>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">More than a third of the ₹<span x-text="primer.pumpPrice.total"></span> pump price is tax — excise + VAT (<span style="color:var(--accent);">■</span>). Most tax is fixed per litre, so the pump price doesn't fall one-for-one when global crude falls. India imports <span x-text="primer.pumpPrice.crudeImportDependence"></span>% of its crude.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">When a PM asks citizens not to buy gold, the balance of payments is speaking</h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:var(--muted);">The seven asks (12 May 2026)</div>
+                            <ul class="text-sm space-y-1" style="color:var(--ink-soft);">
+                                <template x-for="a in primer.modiAsks.asks" :key="a"><li>• <span x-text="a"></span></li></template>
+                            </ul>
                         </div>
-                    </template>
+                        <div class="space-y-2">
+                            <template x-for="n in primer.modiAsks.numbers" :key="n.label">
+                                <div class="card-inner py-2">
+                                    <div class="flex justify-between items-baseline"><span class="text-xs" style="color:var(--muted);" x-text="n.label"></span><span class="font-bold tabular-nums" style="color:var(--accent);" x-text="n.value"></span></div>
+                                    <div class="text-[11px]" style="color:var(--muted);" x-text="n.sub"></div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Indians hold 25,000+ tonnes of gold (~$<span x-text="primer.gold.stockValueTn"></span> tn — larger than GDP). They buy it because the formal system left them no better option: ~<span x-text="primer.gold.excludedAdultsMn"></span> mn adults excluded from banking, insurance penetration just <span x-text="primer.gold.insurancePenetration"></span>% vs <span x-text="primer.gold.insuranceGlobal"></span>% globally.</p>
                 </div>
-                <p class="text-xs mt-3" style="color:var(--muted);">Return per ₹100 paid to the Union. The states that run services well and grew slowly get less back — and stand to lose Lok Sabha seats in delimitation. Penalised twice.</p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-6">
+            <!-- ============ J · People ============ -->
+            <div x-show="primerSection==='J'" x-transition class="space-y-6">
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Your real inflation index</h3>
-                    <p class="text-xs mb-3" style="color:var(--muted);">The headline says <span class="font-semibold" x-text="primer.realInflation.headlineCPI + '%'"></span>. The thali disagrees.</p>
-                    <div class="space-y-3">
-                        <template x-for="it in primer.realInflation.items" :key="it.item">
-                            <div class="flex items-center justify-between gap-3">
-                                <div class="text-sm" style="color:var(--ink);" x-text="it.item"></div>
-                                <div class="text-sm tabular-nums" style="color:var(--ink-soft);">
-                                    <span x-text="it.unit + it.then"></span>
-                                    <span style="color:var(--muted);"> → </span>
-                                    <span class="font-bold" style="color:var(--accent);" x-text="it.unit + it.now"></span>
-                                    <span class="ml-1 text-xs font-semibold" style="color:var(--accent);">+<span x-text="Math.round((it.now/it.then-1)*100)"></span>%</span>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);" x-text="primer.realInflation.note"></p>
-                </div>
-                <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Who is really middle class?</h3>
-                    <p class="text-xs mb-3" style="color:var(--muted);">Monthly income, and where it places you.</p>
+                    <div class="kicker mb-1">Section J</div>
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Poverty: the contested number</h3>
+                    <p class="text-xs mb-3" style="color:var(--muted);" x-text="primer.poverty.note"></p>
                     <div class="space-y-2">
-                        <template x-for="t in primer.distribution.thresholds" :key="t.income">
-                            <div class="card-inner py-2">
-                                <div class="flex justify-between items-baseline">
-                                    <span class="font-bold tabular-nums" style="color:var(--ink);">₹<span x-text="t.income.toLocaleString('en-IN')"></span>/mo</span>
-                                    <span class="text-xs font-semibold" style="color:var(--accent);" x-text="t.label"></span>
+                        <template x-for="l in primer.poverty.lines" :key="l.name">
+                            <div class="card-inner">
+                                <div class="flex justify-between items-baseline flex-wrap gap-1">
+                                    <span class="font-semibold text-sm" style="color:var(--ink);" x-text="l.name"></span>
+                                    <span class="font-bold tabular-nums" style="color:var(--accent);" x-text="l.headcount"></span>
                                 </div>
-                                <div class="text-[11px] mt-0.5" style="color:var(--muted);" x-text="t.sub"></div>
+                                <div class="text-xs mt-0.5" style="color:var(--muted);"><span x-text="l.detail"></span> · <span class="italic" x-text="l.status"></span></div>
                             </div>
                         </template>
                     </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);">If you earn ₹50,000/month, you are in the top 3–5% of India. The salaried, tax-paying middle is ~80–120 million — about one-seventh of the "300–400 million" market-research figure.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Declining consumption data (2017-18) withheld; rising data (2022-23) released. A government that chooses which surveys to release has taken over the role of the statistician.</p>
+                </div>
+                <div class="card p-5 sm:p-6">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Among the most unequal countries in the world</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.distribution.top10IncomeShare"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">income taken by the richest 10%</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.distribution.top1WealthShare"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">wealth held by the top 1%</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.distribution.bottom50WealthShare"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">wealth held by the bottom 50%</div></div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">More unequal than Brazil on income; among the most concentrated on wealth of any comparable economy.</p>
+                </div>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The economy shows up in bodies and classrooms</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">~<span x-text="primer.bodies.stuntedPct"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">children stunted (NFHS-5)</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">~<span x-text="primer.bodies.outOfPocketPct"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">health bills paid out of pocket</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.bodies.publicHealthPctGDP"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">public health spending / GDP</div></div>
+                    </div>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">A single hospitalisation can push a household below the poverty line — the medical poverty trap, not measured in GDP.</p>
                 </div>
             </div>
 
-            <div class="card p-5 sm:p-6">
-                <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">The outside world</h3>
-                <p class="text-xs mb-4" style="color:var(--muted);" x-text="primer.external.note"></p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    <div class="card-inner text-center">
-                        <div class="text-2xl font-bold font-display" style="color:var(--accent);">−$<span x-text="Math.abs(primer.external.goodsDeficitBn)"></span>bn</div>
-                        <div class="text-xs mt-1" style="color:var(--muted);">Goods trade deficit (FY26)</div>
-                    </div>
-                    <div class="card-inner text-center">
-                        <div class="text-2xl font-bold font-display" style="color:var(--accent-2);">+$<span x-text="primer.external.servicesSurplusBn"></span>bn</div>
-                        <div class="text-xs mt-1" style="color:var(--muted);">Services surplus</div>
-                    </div>
-                    <div class="card-inner text-center">
-                        <div class="text-2xl font-bold font-display" style="color:var(--ink);">$<span x-text="primer.external.reservesBn"></span>bn</div>
-                        <div class="text-xs mt-1" style="color:var(--muted);">Forex reserves (~<span x-text="primer.external.importCoverMonths"></span> mo)</div>
-                    </div>
-                    <div class="card-inner text-center">
-                        <div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.external.rupeeRecordLow"></span></div>
-                        <div class="text-xs mt-1" style="color:var(--muted);">Rupee record low / $ (May 2026)</div>
+            <!-- ============ K · How do we know? ============ -->
+            <div x-show="primerSection==='K'" x-transition class="space-y-6">
+                <div class="card p-5 sm:p-6">
+                    <div class="kicker mb-1">Section K</div>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Every number rests on a choice</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">Which base year, which basket, which survey methodology, which poverty line, when to hold the census. Those decisions are technical — and political, because each has winners and losers. Five places where the choice, not the economy, moved the number:</p>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <template x-for="m in primer.measurement.items" :key="m.title">
+                            <div class="card-inner">
+                                <div class="font-semibold text-sm mb-1" style="color:var(--accent);" x-text="m.title"></div>
+                                <div class="text-xs leading-relaxed" style="color:var(--ink-soft);" x-text="m.body"></div>
+                            </div>
+                        </template>
                     </div>
                 </div>
-                <p class="text-sm mt-4 italic" style="color:var(--ink-soft);">Goods in deficit, services to the rescue. Gold imports ($<span x-text="primer.external.goldImportsBn"></span>bn) are India's second-largest import after crude — people buy gold because the financial system left them no better option.</p>
-            </div>
-
-            <div class="card p-4 text-center" style="border-left:4px solid var(--accent);">
-                <p class="text-sm" style="color:var(--ink-soft);">Every number on this page rests on a choice — a base year, a basket, a survey date, a poverty line. To read any official number honestly is to ask who chose it, and what it leaves out. See <a @click.prevent="activeTab='Methodology'" href="#" style="color:var(--accent);" class="font-semibold underline">Methodology</a> and <a @click.prevent="activeTab='Economic Trajectory'" href="#" style="color:var(--accent);" class="font-semibold underline">Economic Trajectory</a>.</p>
+                <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                    <h3 class="font-bold text-xl mb-3" style="color:var(--ink);">How to read any official number</h3>
+                    <ol class="space-y-2">
+                        <template x-for="(q, i) in primer.readChecklist.questions" :key="q">
+                            <li class="flex gap-3 items-start">
+                                <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:var(--accent);" x-text="i+1"></span>
+                                <span class="text-sm" style="color:var(--ink-soft);" x-text="q"></span>
+                            </li>
+                        </template>
+                    </ol>
+                </div>
+                <div class="card p-5 text-center">
+                    <p class="text-base font-display italic" style="color:var(--ink);">"A base year, a poverty line, a survey date, a census: each is a choice. Every choice has winners and losers. To read any number honestly is to ask who chose it, and what it leaves out."</p>
+                    <p class="text-xs mt-3" style="color:var(--muted);">Now see where the numbers are heading → <a @click.prevent="activeTab='Economic Trajectory'" href="#" style="color:var(--accent);" class="font-semibold underline">Economic Trajectory</a> · the methods → <a @click.prevent="activeTab='Methodology'" href="#" style="color:var(--accent);" class="font-semibold underline">Methodology</a></p>
+                </div>
             </div>
         </div>
 
@@ -2246,7 +2566,23 @@ reduces overall score</pre>
             { sector:'Agriculture', gva:18, emp:42 }, { sector:'Manufacturing', gva:17, emp:11 },
             { sector:'Services', gva:53, emp:33 }, { sector:'Other', gva:12, emp:14 }
         ]},
-        jobsLesson: { note:'Same investment, different jobs (AIPC; Planning Commission).', electronicsCrPerJob:1.5, electronicsJobsLakh:1, garmentsJobsCrore:3, garmentsWomenSharePct:70, govJobApplicationsCrore:22, govJobsGivenLakh:7.22, govJobSuccessRate:'1 in 305' }
+        jobsLesson: { note:'Same investment, different jobs (AIPC; Planning Commission).', electronicsCrPerJob:1.5, electronicsJobsLakh:1, garmentsJobsCrore:3, garmentsWomenSharePct:70, govJobApplicationsCrore:22, govJobsGivenLakh:7.22, govJobSuccessRate:'1 in 305' },
+        indexExample: { note:'A worked example (MoSPI methodology).', items:[{item:'Onions',weight:15,then:30,now:50},{item:'Petrol',weight:12,then:90,now:94},{item:'School fees',weight:8,then:800,now:1200}] },
+        gdpRevision: { note:'The 2015 GDP revision (Subramanian, Harvard CID 2019; EAC-PM).', changes:['Base year shifted 2004-05 → 2011-12.','Manufacturing measured via the MCA21 corporate database, not the production survey.','Output valued at market prices instead of factor cost.'], officialGrowth:7.0, subramanianGrowth:4.5, overstatePoints:2.5 },
+        taxReversal: { note:'The tax reversal (Budget documents; PRS).', corpRateBefore:30, corpRateAfter:22, yearCut:2019, revenueLostLakhCr:1.45, wealthTaxAbolished:2015, wealthTaxRevenueCr:1000, pikettyRate:2, pikettyThresholdCr:50, taxToGDP:11.2, oecdAvg:34 },
+        budgetArithmetic: { note:'BE → RE → Actuals (PRS).', mgnregaBE:100, mgnregaActualsLo:78, mgnregaActualsHi:82, healthTarget:2.5, educationTarget:6 },
+        kmut: { note:"Tamil Nadu's KMUT (TN Civil Supplies; 2026).", perMonth:1000, womenCoveredCrore:1.30, annualOutlayCr:13000, priorOutlayCr:7000 },
+        deficitFinancing: { note:'How the deficit is financed (Budget 2026-27; RBI).', deficitPctGDP:4.3, marketBorrowingLakhCr:17.2, rbiDividendLakhCr:2.87, interestPer100:20 },
+        delimitation: { note:'Projected Lok Sabha seat change after the first census post-2026 (Carnegie; ISAS; India Forum).', items:[{state:'Uttar Pradesh',change:11},{state:'Bihar',change:10},{state:'Tamil Nadu',change:-8},{state:'Kerala',change:-8}], frozenSince:1971, perMP1951Millions:0.7, perMPNowMillions:2.5 },
+        monsoonChain: { note:'Why half of India’s inflation starts in the sky (IMD; RBI; IPCC).', rainfedSharePct:50, steps:['Deficient monsoon','Farm output falls','Food prices spike','CPI breaches 6%','RBI raises rates','Rural incomes squeezed'] },
+        cpiBasket: { note:'How CPI is built (MoSPI, 2012 base).', goodsTracked:80000, urbanMarkets:1114, villages:1181, baseYear:2012, rbiTarget:4, foodSharePct:46 },
+        pumpPrice: { note:'Where every rupee of the petrol price goes (PPAC; PRS; Delhi 2026 illustrative).', parts:[{label:'Crude + refining + OMC margin',value:55.3},{label:'Central excise',value:19.9},{label:'State VAT',value:15.0},{label:'Dealer margin',value:3.8}], total:94.0, crudeImportDependence:86 },
+        modiAsks: { note:'PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S.', asks:['Avoid buying gold for one year','Postpone non-essential foreign travel','Work from home where possible','Use public transport and carpooling','Reduce edible-oil consumption','Reduce chemical fertiliser use (farmers)','Buy Swadeshi, prefer Indian-made goods'], numbers:[{label:'Gold imports FY26',value:'$72 bn',sub:'2nd-largest import after crude'},{label:'Tourist spend abroad',value:'$31.7 bn',sub:'~30 mn Indians travelled out'},{label:'Crude oil imports',value:'$123 bn',sub:'85%+ of crude imported'},{label:'Rupee (crisis week)',value:'95.2/$',sub:'record low, May 2026'}] },
+        gold: { note:'Indians buy gold because the formal system left no better option (WGC 2024; AMFI; RBI; IRDAI; SEBI).', privateTonnes:25000, stockValueTn:1.8, insurancePenetration:3.2, insuranceGlobal:7, excludedAdultsMn:190, equityParticipationPct:3.5 },
+        poverty: { note:'Three official lines, three answers. No accepted poverty line since 2014.', lines:[{name:'Tendulkar (2011-12)',detail:'₹27/day rural, ₹33/day urban',headcount:'21.9%',status:'never updated'},{name:'Rangarajan (2014)',detail:'₹30/day rural, ₹47/day urban',headcount:'29.5%',status:'shelved, not adopted'},{name:'NITI MPI (2022-23)',detail:'multidimensional, not income',headcount:'11.3%',status:'current official'}] },
+        bodies: { note:'The economy in bodies and classrooms (NFHS-5; National Health Accounts).', stuntedPct:35, outOfPocketPct:40, publicHealthPctGDP:1.9 },
+        readChecklist: { note:'How to read any official number.', questions:['Which definition is being used, and who set it?','What does the number leave out?','When was the underlying data collected?','Who gains if the number looks good?','Has the method changed?','Did the inconvenient survey get published?','How does it compare with independent estimates?'] },
+        measurement: { note:'Five places where the choice, not the economy, moved the number.', items:[{title:'The GDP back-series',body:'2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed.'},{title:'The surveys that went missing',body:'The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable.'},{title:'A census a decade late',body:'Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers.'},{title:'Counting = allocating power',body:'Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose.'}] }
     };
 
     // Tab <-> URL hash mapping
@@ -2365,6 +2701,21 @@ reduces overall score</pre>
             trajLevers: { statsIndependence: false, garmentsPush: false, fiscalRebalance: false, formalisation: false },
             trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-500' },
             primer: PRIMER_FALLBACK,
+            // Reading the Economy: active section (A..K), mirrors the deck's 11 sections
+            primerSection: 'A',
+            primerSections: [
+                { id:'A', label:'What are we measuring?' },
+                { id:'B', label:'The big picture' },
+                { id:'C', label:'Structure, jobs & wages' },
+                { id:'D', label:'Who is middle class?' },
+                { id:'E', label:'Prices & monsoon' },
+                { id:'F', label:'What the state takes' },
+                { id:'G', label:'What the state spends' },
+                { id:'H', label:'Deficit & federalism' },
+                { id:'I', label:'The outside world' },
+                { id:'J', label:'People' },
+                { id:'K', label:'How do we know?' }
+            ],
             // Array view of forecast scenarios (Alpine x-for needs an array, not an object)
             get scenarioList() {
                 const s = (this.forecastSpec && this.forecastSpec.scenarios) || {};
@@ -2495,7 +2846,7 @@ reduces overall score</pre>
                     if (d.forecast) this.forecastSpec = d.forecast;
                     if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
                     // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
-                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson'];
+                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement'];
                     const merged = { ...PRIMER_FALLBACK };
                     for (const k of primerKeys) { if (d[k]) merged[k] = d[k]; }
                     this.primer = merged;
@@ -3766,8 +4117,41 @@ reduces overall score</pre>
             },
 
             // ===== READING THE ECONOMY (citizen primer) =====
+            selectPrimerSection(id) {
+                this.primerSection = id;
+                this.$nextTick(() => setTimeout(() => this.createPrimerCharts(), 60));
+            },
             createPrimerCharts() {
                 const p = this.primer || {};
+                const d = this.economicData;
+                // Rural household income index (section C) — proxy for the stagnant-wages story
+                const wc = this.getChart('primerWagesChart');
+                if (wc && d.ruralIncome) {
+                    wc.setOption({
+                        ...baseOpts(this.darkMode),
+                        title: chartTitle('Rural household income (2014 = 100, real)', this.darkMode),
+                        tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: d.years },
+                        yAxis: { type: 'value', scale: true, name: 'index' },
+                        series: [{ name: 'Rural income index', type: 'line', data: d.ruralIncome, smooth: true, symbol: 'circle', symbolSize: 5, lineStyle: { width: 3, color: '#b4530e' }, itemStyle: { color: '#b4530e' }, markLine: { silent: true, symbol: 'none', data: [{ yAxis: 100, lineStyle: { color: this.darkMode ? '#64748b' : '#94a3b8', type: 'dashed' }, label: { formatter: '2014 baseline', fontSize: 10 } }] } }]
+                    }, true);
+                }
+                // CPI inflation with RBI 2-6% band (section E)
+                const ic = this.getChart('primerInflationChart');
+                if (ic && d.cpiInflation) {
+                    ic.setOption({
+                        ...baseOpts(this.darkMode),
+                        title: chartTitle('CPI inflation vs the RBI 2–6% band', this.darkMode),
+                        tooltip: { trigger: 'axis', valueFormatter: v => v == null ? '' : (+v).toFixed(1) + '%' },
+                        xAxis: { type: 'category', data: d.years },
+                        yAxis: { type: 'value', name: '%', min: 0,
+                            axisLine: { show: false },
+                            splitLine: { lineStyle: { color: this.darkMode ? '#1e293b' : '#f1f5f9' } } },
+                        visualMap: { show: false, dimension: 1, pieces: [{ gt: 6, color: '#ef4444' }, { gt: 2, lte: 6, color: '#22c55e' }, { lte: 2, color: '#f59e0b' }], outOfRange: { color: '#0e7490' } },
+                        series: [{ name: 'CPI inflation', type: 'line', data: d.cpiInflation, smooth: true, symbol: 'circle', symbolSize: 5, lineStyle: { width: 3 },
+                            markArea: { silent: true, itemStyle: { color: 'rgba(34,197,94,0.08)' }, data: [[{ yAxis: 2 }, { yAxis: 6 }]] } }]
+                    }, true);
+                }
                 // China divergence
                 const cc = this.getChart('primerChinaChart');
                 if (cc && p.chinaDivergence) {
