@@ -36,7 +36,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          # Upload entire repository
+          # Upload entire repository, including the committed compiled styles.css.
+          # styles.css is built/committed locally (npm run build:css) and kept
+          # fresh by the staleness guard in validate.yml — so the deploy path
+          # itself stays a pure static upload with no build dependencies.
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment

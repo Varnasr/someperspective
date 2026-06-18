@@ -1,0 +1,7 @@
+/* Tailwind entrypoint — compiled to /styles.css by `npm run build:css`.
+   The site's bespoke design-system CSS (paper canvas, serif type, custom
+   classes such as .src-key / .q-constructed / .chart-dl-btn) lives in the
+   inline <style> block in index.html and layers on top of these utilities. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

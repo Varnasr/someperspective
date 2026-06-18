@@ -19,10 +19,10 @@ venv/
 env/
 
 # Build output (styles.css is committed — it's the compiled Tailwind output)
+# src/input.css IS tracked: it's the Tailwind entrypoint the CI build needs.
 build/
 dist/
 out/
-src/input.css
 coverage/
 *.lcov
 .nyc_output/
