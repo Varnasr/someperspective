@@ -220,7 +220,7 @@
     </script>
     
     <!-- Alpine.js for interactivity -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 
     <!-- ECharts for visualizations (deferred — not needed for initial paint) -->
     <script defer src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
@@ -232,6 +232,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <style>
+        /* Respect users who ask for less motion: disable smooth scroll,
+           transitions and animations (chart animations are gated in JS too). */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto !important; }
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
         /* ============================================================
            DESIGN SYSTEM v2.9 — "Reading the Numbers" editorial redesign
            Warm paper canvas · serif display type · burnt-amber + teal accent
@@ -2908,12 +2919,15 @@ reduces overall score</pre>
     function isMobile() { return window.innerWidth < 640; }
 
     // Common ECharts options — responsive
+    const REDUCED_MOTION = typeof window !== 'undefined' && window.matchMedia
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function baseOpts(darkMode) {
         const mobile = isMobile();
         return {
             backgroundColor: 'transparent',
             textStyle: { fontFamily: "'Inter', system-ui, sans-serif", fontSize: mobile ? 11 : 12, color: darkMode ? '#e2e8f0' : '#374151' },
-            animationDuration: 800,
+            animation: !REDUCED_MOTION,
+            animationDuration: REDUCED_MOTION ? 0 : 800,
             animationEasing: 'cubicOut',
             toolbox: mobile ? { show: false } : {
                 feature: {
