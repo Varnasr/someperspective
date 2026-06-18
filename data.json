@@ -4,7 +4,7 @@
     "author": "Dr. Varna Sri Raman",
     "updated": "2026-06-17",
     "license": "CC BY 4.0",
-    "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of June 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin Mar 2026, Union Budget 2026-27, RBI Annual Report 2025-26, WIR 2026). Values for 2027 onward in the 'economic' block are simple continuations and flagged with '*'. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, NOT predictions — every assumption is a choice and is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
+    "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of June 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin Mar 2026, Union Budget 2026-27, RBI Annual Report 2025-26, WIR 2026). All values in the 'economic' block are observed (2014-2026); there is no projected year in this block. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, NOT predictions — every assumption is a choice and is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
   },
   "sources": {
     "gdpGrowth": "MOSPI First Advance Estimates of National Income 2025-26 + Economic Survey 2025-26 (2011-12 base)",
@@ -29,26 +29,26 @@
     "primer": "Reading the Indian Economy: A Citizen's Primer (Varna Sri Raman, 16 June 2026). Figures latest available as of June 2026; several provisional, estimated, or illustrative as noted."
   },
   "economic": {
-    "years":               [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
-    "yearLabels":          ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026","2027*"],
-    "gdpGrowth":           [7.4,  8.0,  8.2,  7.2,  6.1,  4.2,  -7.3, 8.7,  7.2,  7.6,  7.8,  6.5,  7.4,  6.8],
-    "unemployment":        [4.9,  5.0,  5.0,  6.0,  6.1,  5.8,  7.1,  4.2,  4.1,  3.2,  3.2,  3.1,  5.1,  5.0],
-    "youthUnemployment":   [13.5, 13.8, 14.2, 15.6, 16.1, 14.8, 17.8, 13.2, 12.9, 12.9, 12.8, 12.5, 12.3, 12.1],
-    "graduateUnemployment":[18.5, 19.2, 21.0, 23.5, 25.0, 23.0, 31.0, 25.0, 22.0, 29.1, 28.5, 27.0, 26.5, 26.0],
-    "top1Share":           [21.3, 21.7, 21.5, 21.5, 21.7, 22.1, 22.3, 22.5, 22.6, 22.6, 22.6, 22.8, 23.0, 23.1],
-    "bottom50Share":       [15.0, 14.7, 14.9, 14.9, 14.7, 13.5, 13.3, 13.1, 13.1, 13.1, 13.1, 13.0, 12.9, 12.8],
-    "formalEmployment":    [13.0, 12.8, 12.5, 12.2, 11.9, 11.6, 11.4, 11.5, 11.3, 11.2, 11.2, 11.0, 10.9, 10.8],
-    "informalEmployment":  [87.0, 87.2, 87.5, 87.8, 88.1, 88.4, 88.6, 88.5, 88.7, 88.8, 88.8, 89.0, 89.1, 89.2],
-    "pressFreedom":        [140,  136,  133,  136,  138,  140,  142,  142,  150,  161,  159,  151,  157,  158],
-    "fiscalDeficit":       [4.1,  3.9,  3.5,  3.5,  3.4,  4.6,  9.2,  6.7,  6.4,  5.6,  4.8,  4.4,  4.4,  4.3],
-    "cpiInflation":        [6.7,  4.9,  4.5,  3.6,  3.4,  4.8,  6.2,  5.5,  6.7,  5.4,  4.6,  4.0,  3.9,  4.2],
-    "rupeeUSD":            [61,   64,   67,   65,   68,   70,   74,   74,   79,   82,   84,   87,   95,   96],
-    "ssi":                 [0.0,  1.5,  1.5,  3.5,  6.0,  5.0,  7.0,  4.5,  4.5,  4.5,  4.5,  4.5,  4.5,  4.5],
-    "fci":                 [0.23, 0.25, 0.30, 0.37, 0.50, 0.62, 0.94, 0.80, 0.64, 0.61, 0.61, 0.61, 0.62, 0.62],
-    "dqi":                 [0.46, 0.46, 0.47, 0.44, 0.42, 0.39, 0.37, 0.37, 0.32, 0.27, 0.28, 0.31, 0.28, 0.28],
-    "gigWorkers":          [0.8,  1.2,  1.8,  2.5,  3.2,  4.1,  5.2,  6.0,  6.8,  7.3,  7.7,  8.2,  8.8,  9.4],
-    "ruralIncome":         [100,  99,   98,   97,   96,   95,   93,   94,   95,   96,   98,   97,   97,   97],
-    "femaleLFPR":          [22.5, 22.0, 21.8, 21.5, 21.2, 21.0, 20.8, 20.5, 20.3, 20.5, 20.8, 20.9, 21.0, 21.1]
+    "years":               [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+    "yearLabels":          ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+    "gdpGrowth":           [7.4,  8.0,  8.2,  7.2,  6.1,  4.2,  -7.3, 8.7,  7.2,  7.6,  7.8,  6.5,  7.4],
+    "unemployment":        [4.9,  5.0,  5.0,  6.0,  6.1,  5.8,  7.1,  4.2,  4.1,  3.2,  3.2,  3.1,  5.1],
+    "youthUnemployment":   [13.5, 13.8, 14.2, 15.6, 16.1, 14.8, 17.8, 13.2, 12.9, 12.9, 12.8, 12.5, 12.3],
+    "graduateUnemployment":[18.5, 19.2, 21.0, 23.5, 25.0, 23.0, 31.0, 25.0, 22.0, 29.1, 28.5, 27.0, 26.5],
+    "top1Share":           [21.3, 21.7, 21.5, 21.5, 21.7, 22.1, 22.3, 22.5, 22.6, 22.6, 22.6, 22.8, 23.0],
+    "bottom50Share":       [15.0, 14.7, 14.9, 14.9, 14.7, 13.5, 13.3, 13.1, 13.1, 13.1, 13.1, 13.0, 12.9],
+    "formalEmployment":    [13.0, 12.8, 12.5, 12.2, 11.9, 11.6, 11.4, 11.5, 11.3, 11.2, 11.2, 11.0, 10.9],
+    "informalEmployment":  [87.0, 87.2, 87.5, 87.8, 88.1, 88.4, 88.6, 88.5, 88.7, 88.8, 88.8, 89.0, 89.1],
+    "pressFreedom":        [140,  136,  133,  136,  138,  140,  142,  142,  150,  161,  159,  151,  157],
+    "fiscalDeficit":       [4.1,  3.9,  3.5,  3.5,  3.4,  4.6,  9.2,  6.7,  6.4,  5.6,  4.8,  4.4,  4.4],
+    "cpiInflation":        [6.7,  4.9,  4.5,  3.6,  3.4,  4.8,  6.2,  5.5,  6.7,  5.4,  4.6,  4.0,  3.9],
+    "rupeeUSD":            [61,   64,   67,   65,   68,   70,   74,   74,   79,   82,   84,   87,   95],
+    "ssi":                 [0.0,  1.5,  1.5,  3.5,  6.0,  5.0,  7.0,  4.5,  4.5,  4.5,  4.5,  4.5,  4.5],
+    "fci":                 [0.23, 0.25, 0.30, 0.37, 0.50, 0.62, 0.94, 0.80, 0.64, 0.61, 0.61, 0.61, 0.62],
+    "dqi":                 [0.46, 0.46, 0.47, 0.44, 0.42, 0.39, 0.37, 0.37, 0.32, 0.27, 0.28, 0.31, 0.28],
+    "gigWorkers":          [0.8,  1.2,  1.8,  2.5,  3.2,  4.1,  5.2,  6.0,  6.8,  7.3,  7.7,  8.2,  8.8],
+    "ruralIncome":         [100,  99,   98,   97,   96,   95,   93,   94,   95,   96,   98,   97,   97],
+    "femaleLFPR":          [22.5, 22.0, 21.8, 21.5, 21.2, 21.0, 20.8, 20.5, 20.3, 20.5, 20.8, 20.9, 21.0]
   },
   "international": {
     "countries":  ["India", "Brazil", "Turkey", "Hungary", "South Africa"],
@@ -60,10 +60,6 @@
   "regimes": {
     "upa": { "label": "UPA", "fullName": "United Progressive Alliance", "start": 2004, "end": 2014 },
     "nda": { "label": "NDA", "fullName": "National Democratic Alliance", "start": 2014, "end": 2026 }
-  },
-  "projection": {
-    "startYear": 2027,
-    "method": "Held constant or extended via simple linear trend of last 3 years; clearly flagged with '*' in labels and dashed lines in charts. NOT observed data."
   },
   "forecast": {
     "horizonYear": 2030,
