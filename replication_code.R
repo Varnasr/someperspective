@@ -58,57 +58,59 @@ elasticity_2017_2023 <- employment_elasticity(data, 2017, 2023)  # Result: 1.11
 # Component inputs (2004-2026) ------------------------------------------------
 idx_years <- 2004:2026
 
-# SSI: weighted binary triggers; UPA years have none -> 0
-ssi_weights <- c(census = 3.0, consumption = 2.5, employment = 2.0,
-                 gdp = 1.5, committee = 1.0)
-ssi_triggers <- list(
-  "2015" = c("gdp"), "2016" = c("gdp"),
-  "2017" = c("employment", "gdp"),
-  "2018" = c("consumption", "employment", "gdp"),
-  "2019" = c("consumption", "gdp", "committee"),
-  "2020" = c("census", "consumption", "gdp"),
-  "2021" = c("census", "gdp"), "2022" = c("census", "gdp"),
-  "2023" = c("census", "gdp"), "2024" = c("census", "gdp"),
-  "2025" = c("census", "gdp"), "2026" = c("census", "gdp")
-)
+# SSI: weighted sum of GRADED severities (0..1) with persistence; 6 streams.
+# UPA years have none -> 0. Weights sum to 10.
+ssi_weights <- c(census = 2.5, consumption = 1.5, employment = 1.0,
+                 gdp = 1.5, institutional = 1.5, mortality = 2.0)
+# severity matrix rows = streams (order of ssi_weights), cols = 2004..2026
+ssi_sev <- matrix(0, nrow = 6, ncol = length(idx_years),
+                  dimnames = list(names(ssi_weights), idx_years))
+yr <- function(y) which(idx_years == y)
+ssi_sev["census", as.character(2020:2026)] <- 1.0
+ssi_sev["consumption", as.character(2018:2023)] <- 1.0
+ssi_sev["consumption", c("2024","2025","2026")] <- c(0.5, 0.3, 0.2)   # scar
+ssi_sev["employment", c("2017","2018","2019")] <- c(1.0, 1.0, 0.3)
+ssi_sev["gdp", c("2015","2016","2017")] <- 0.7
+ssi_sev["gdp", as.character(2018:2026)] <- 1.0
+ssi_sev["institutional", as.character(2019:2026)] <- 1.0
+ssi_sev["mortality", c("2021","2022","2023","2024","2025","2026")] <- c(1.0,1.0,0.6,0.4,0.3,0.3)
 calculate_ssi <- function(year) {
-  trig <- ssi_triggers[[as.character(year)]]
-  if (is.null(trig)) return(0)
-  round(sum(ssi_weights[trig]), 2)
+  round(sum(ssi_weights * ssi_sev[, as.character(year)]), 2)
 }
 
-# FCI: mean of 5 min-max-normalised centralisation components over 2004-2026
-# columns: cess, devolution, states_own_rev, css_share, borrowing
+# FCI: mean of 6 min-max-normalised centralisation components over 2004-2026
+# columns: cess, devolution, states_own_rev, css_share, borrowing, gst
 fci_comp <- matrix(c(
-  6.5,36.5,45.0,22.0,0.0, 7.0,36.3,44.8,22.8,0.0, 7.5,36.1,44.5,23.5,0.0,
-  8.0,35.9,44.2,24.2,0.0, 8.5,35.8,44.0,24.8,0.0, 9.0,35.7,43.7,25.4,0.0,
-  9.3,35.6,43.4,26.0,0.0, 9.6,35.5,43.1,26.6,0.0, 9.9,35.4,42.9,27.2,0.0,
-  10.1,35.3,42.7,27.7,0.0, 10.4,35.0,42.5,28.3,0.0, 11.5,35.6,41.8,29.5,0.0,
-  13.5,36.2,40.2,31.2,0.0, 15.3,36.6,38.5,33.8,0.0, 17.8,35.5,37.2,36.5,0.0,
-  19.0,34.0,36.1,38.9,0.0, 20.2,33.0,34.5,42.3,1.0, 18.3,32.7,35.2,41.5,0.5,
-  16.3,32.4,36.8,40.2,0.0, 14.8,32.1,37.5,39.8,0.0, 14.8,31.8,37.9,39.5,0.0,
-  14.6,31.6,38.0,39.2,0.0, 14.5,31.4,38.1,39.0,0.0),
-  ncol = 5, byrow = TRUE)
+  6.5,36.5,45.0,22.0,0.0,0.0, 7.0,36.3,44.8,22.8,0.0,0.0, 7.5,36.1,44.5,23.5,0.0,0.0,
+  8.0,35.9,44.2,24.2,0.0,0.0, 8.5,35.8,44.0,24.8,0.0,0.0, 9.0,35.7,43.7,25.4,0.0,0.0,
+  9.3,35.6,43.4,26.0,0.0,0.0, 9.6,35.5,43.1,26.6,0.0,0.0, 9.9,35.4,42.9,27.2,0.0,0.0,
+  10.1,35.3,42.7,27.7,0.0,0.0, 10.4,35.0,42.5,28.3,0.0,0.0, 11.5,35.6,41.8,29.5,0.0,0.0,
+  13.5,36.2,40.2,31.2,0.0,0.0, 15.3,36.6,38.5,33.8,0.0,0.60, 17.8,35.5,37.2,36.5,0.0,0.70,
+  19.0,34.0,36.1,38.9,0.0,0.80, 20.2,33.0,34.5,42.3,1.0,0.85, 18.3,32.7,35.2,41.5,0.5,0.90,
+  16.3,32.4,36.8,40.2,0.0,1.00, 14.8,32.1,37.5,39.8,0.0,1.00, 14.8,31.8,37.9,39.5,0.0,1.00,
+  14.6,31.6,38.0,39.2,0.0,1.00, 14.5,31.4,38.1,39.0,0.0,1.00),
+  ncol = 6, byrow = TRUE)
 mm <- function(x) { r <- max(x) - min(x); if (r == 0) rep(0, length(x)) else (x - min(x)) / r }
 fci_series <- {
   c1 <- mm(fci_comp[,1]); c2 <- 1 - mm(fci_comp[,2]); c3 <- 1 - mm(fci_comp[,3])
-  c4 <- mm(fci_comp[,4]); c5 <- fci_comp[,5]
-  round((c1 + c2 + c3 + c4 + c5) / 5, 2)
+  c4 <- mm(fci_comp[,4]); c5 <- fci_comp[,5]; c6 <- mm(fci_comp[,6])
+  round((c1 + c2 + c3 + c4 + c5 + c6) / 6, 2)
 }
 names(fci_series) <- idx_years
 
-# DQI: geometric mean of V-Dem, FreedomHouse/100, (180-RSF)/180
+# DQI: geometric mean of V-Dem LDI, FreedomHouse/100, (180-RSF)/180, V-Dem Civil Society
+# columns: vdem_ldi, freedom_house, rsf_rank, civil_society
 dqi_comp <- matrix(c(
-  0.553,78,120, 0.560,78,106, 0.562,78,105, 0.567,78,120, 0.566,78,118,
-  0.567,79,105, 0.566,79,122, 0.560,79,131, 0.557,79,140, 0.554,78,140,
-  0.555,78,140, 0.529,77,136, 0.501,77,133, 0.462,77,136, 0.422,75,138,
-  0.389,71,140, 0.365,67,142, 0.357,66,142, 0.290,66,150, 0.275,66,161,
-  0.271,66,159, 0.270,66,151, 0.270,66,157),
-  ncol = 3, byrow = TRUE)
+  0.553,78,120,0.86, 0.560,78,106,0.86, 0.562,78,105,0.86, 0.567,78,120,0.87, 0.566,78,118,0.87,
+  0.567,79,105,0.88, 0.566,79,122,0.88, 0.560,79,131,0.87, 0.557,79,140,0.87, 0.554,78,140,0.87,
+  0.555,78,140,0.87, 0.529,77,136,0.83, 0.501,77,133,0.78, 0.462,77,136,0.70, 0.422,75,138,0.62,
+  0.389,71,140,0.55, 0.365,67,142,0.48, 0.357,66,142,0.42, 0.290,66,150,0.36, 0.275,66,161,0.33,
+  0.271,66,159,0.32, 0.270,66,151,0.32, 0.270,66,157,0.31),
+  ncol = 4, byrow = TRUE)
 calculate_dqi <- function(year) {
   i <- which(idx_years == year)
-  v <- dqi_comp[i,1]; f <- dqi_comp[i,2] / 100; r <- (180 - dqi_comp[i,3]) / 180
-  round((v * f * r)^(1/3), 2)
+  v <- dqi_comp[i,1]; f <- dqi_comp[i,2] / 100; r <- (180 - dqi_comp[i,3]) / 180; csi <- dqi_comp[i,4]
+  round((v * f * r * csi)^(1/4), 2)
 }
 
 # Calculate all indices for each year

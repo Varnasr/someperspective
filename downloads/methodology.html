@@ -337,81 +337,66 @@
         <h2>3. Novel Indices Construction</h2>
         
         <h3>3.1 Statistical Suppression Index (SSI)</h3>
-        
-        <p>The SSI is a weighted count of datable suppression events, on a 0–10 scale (computed identically for both eras in <code>data/compute_indices.py</code>):</p>
+
+        <p>The SSI is a weighted sum of <em>graded</em> suppression severities (0–10 scale), with a persistence/scar term so a resolved suppression decays rather than dropping to zero. Computed identically for both eras in <code>data/compute_indices.py</code>; the UPA decade records nothing, so SSI = 0.</p>
 
         <div class="equation-box">
-            SSI_t = Σ(w_i × S_it)
+            SSI_t = Σ(w_i × s_it)
 
             where:
-            S_it = Suppression event i active in year t (binary, 0/1)
-            w_i = Weight of component i (see table; max total = 10)
-            UPA years (2004–2013): no event fired, so SSI = 0
+            s_it = severity of stream i in year t ∈ [0,1]
+                   (1.0 full suppression/discontinuation; ~0.7 methodology dispute;
+                    ~0.3 delay or post-resolution scar)
+            w_i  = weight of stream i (see table; max total = 10)
         </div>
-        
+
         <table>
             <thead>
                 <tr>
                     <th>Component</th>
                     <th>Weight</th>
-                    <th>Trigger Event</th>
+                    <th>Trigger / event</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Census Delay</td>
-                    <td>3.0</td>
-                    <td>Postponement beyond constitutional mandate</td>
-                </tr>
-                <tr>
-                    <td>Consumption Survey</td>
-                    <td>2.5</td>
-                    <td>Suppression or non-release</td>
-                </tr>
-                <tr>
-                    <td>Employment Data</td>
-                    <td>2.0</td>
-                    <td>Delayed release >6 months</td>
-                </tr>
-                <tr>
-                    <td>GDP Methodology</td>
-                    <td>1.5</td>
-                    <td>Unexplained revisions</td>
-                </tr>
-                <tr>
-                    <td>Committee Resignations</td>
-                    <td>1.0</td>
-                    <td>NSC/Expert resignations</td>
-                </tr>
+                <tr><td>Census delay</td><td>2.5</td><td>2021 census postponed beyond constitutional mandate</td></tr>
+                <tr><td>Consumption survey</td><td>1.5</td><td>2017-18 survey withheld; 11-year data gap</td></tr>
+                <tr><td>Employment data</td><td>1.0</td><td>PLFS 2017-18 withheld until after 2019 election</td></tr>
+                <tr><td>GDP back-series</td><td>1.5</td><td>2011-12 base + shelved 2018 back-series, unreviewed</td></tr>
+                <tr><td>Institutional independence</td><td>1.5</td><td>NSC resignations (2019) + permanent NSSO→NSO merger</td></tr>
+                <tr><td>Mortality undercount</td><td>2.0</td><td>COVID deaths: official ~0.5M vs 3–5M excess-mortality estimates</td></tr>
             </tbody>
         </table>
-        
+
         <h3>3.2 Fiscal Centralisation Index (FCI)</h3>
-        
-        <p>The FCI measures erosion of fiscal federalism:</p>
-        
+
+        <p>The FCI measures erosion of fiscal federalism — six components, each min-max normalised over the full 2004–2026 sample, then averaged:</p>
+
         <div class="equation-box">
-            FCI_t = (1/5) × Σ[C_jt]
-            
+            FCI_t = (1/6) × Σ[C_jt]
+
             Components:
             C1: Cess/Surcharge share (normalized)
             C2: Effective devolution (inverted)
-            C3: States' own revenue capacity
+            C3: States' own revenue capacity (inverted)
             C4: CSS conditionality
             C5: Borrowing restrictions
+            C6: GST structural centralisation (0 pre-2017; full once GST
+                compensation ended mid-2022)
         </div>
-        
+
         <h3>3.3 Democratic Quality Index (DQI)</h3>
-        
-        <p>The DQI uses geometric mean to penalize weakness in any dimension:</p>
-        
+
+        <p>The DQI uses a geometric mean of four published third-party measures to penalize weakness in any dimension:</p>
+
         <div class="equation-box">
-            DQI_t = (V_t × F_t × R_t)^(1/3)
-            
+            DQI_t = (V_t × F_t × R_t × C_t)^(1/4)
+
             where:
             V_t = V-Dem Liberal Democracy Index
             F_t = Freedom House Score (normalized)
             R_t = RSF Press Freedom (inverted rank)
+            C_t = V-Dem Core Civil Society Index
         </div>
     </div>
     
