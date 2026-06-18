@@ -203,8 +203,8 @@
     </script>
     
     <!-- Tailwind CSS — precompiled & purged from index.html into /styles.css
-         (npm run build:css). Config lives in tailwind.config.js; the CI deploy
-         recompiles before publishing and validate.yml guards against staleness. -->
+         via `npm run build:css` (config in tailwind.config.js). validate.yml
+         rebuilds and fails CI if this committed file is stale. -->
     <link rel="stylesheet" href="/styles.css">
     
     <!-- Alpine.js for interactivity -->

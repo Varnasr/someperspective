@@ -31,23 +31,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - name: Build Tailwind CSS
-        # Recompile styles.css from index.html so the published site always
-        # reflects the current markup, regardless of the committed copy.
-        run: |
-          npm ci
-          npm run build:css
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          # Upload entire repository (now including the freshly built styles.css)
+          # Upload entire repository, including the committed compiled styles.css.
+          # styles.css is built/committed locally (npm run build:css) and kept
+          # fresh by the staleness guard in validate.yml — so the deploy path
+          # itself stays a pure static upload with no build dependencies.
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
