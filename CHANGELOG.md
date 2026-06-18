@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > rolled back (the live site continued on the single-file `index.html`, and a
 > service-worker cleanup ships in-page). The current shipping line is `2.x`.
 
+## [2.27.0] - 2026-06-18
+
+### Changed
+- **Removed the 2027 placeholder column from every economic series.** The
+  dataset previously ran to 2027 as a flat, `*`-flagged "continuation" across
+  all ~20 economic arrays. Those are now truncated to end at the last observed
+  year, **2026**: `data.json` and the inline fallback both go from length 14 to
+  13, the `projection` block (`startYear: 2027`) is deleted, and the data
+  `notes` updated. Scenario projections (2027–2030) are unaffected — the
+  forecast engine builds its own path forward from `baseYear: 2026` and never
+  read the 2027 column.
+- Updated the now-obsolete `*`-flag prose (data explorer intro, table note, CSV
+  export header) to state that all indicator values are observed (2014–2026)
+  and projections live in the Economic Trajectory tab. `PROJECTION_START_INDEX`
+  comment clarified (kept ≥ array length so `latestObservedIndex()` still
+  resolves to 2026).
+
 ## [2.26.0] - 2026-06-18
 
 ### Changed
