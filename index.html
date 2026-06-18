@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.25.0">
+    <meta name="version" content="2.26.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -187,7 +187,7 @@
                 "name": "What is the Statistical Suppression Index (SSI)?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The Statistical Suppression Index (SSI) is a novel index measuring government interference in data production. It tracks suppressed surveys, delayed reports, and institutional undermining. India's SSI rose from 2.3 in 2014 to 8.2 in 2026, reflecting events like the suppressed 2017-18 consumption survey and the indefinitely postponed census."
+                    "text": "The Statistical Suppression Index (SSI) is a novel 0-10 index measuring government interference in data production. It is a weighted count of datable suppression events — suppressed surveys, delayed reports, methodology disputes, and statistical-body resignations. India's SSI rose from 0.0 in 2014 to a peak of 7.0 in 2020 (simultaneous census delay, the suppressed 2017-18 consumption survey, and GDP back-series disputes), then eased to a sustained 4.5 as the HCES 2022-23 and regular PLFS releases resumed while the 2021 census remained incomplete."
                 }
             },
             {
@@ -195,7 +195,7 @@
                 "name": "How has India's democracy score changed?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "India's Democratic Quality Index (DQI) declined from 0.71 in 2014 to 0.40 in 2026. V-Dem score fell from 0.555 to 0.271, Freedom House score from 77 to 66, and the RSF World Press Freedom Index rank dropped from 140 (2014) to 157 (2026). India shows the steepest democratic decline among major economies."
+                    "text": "India's Democratic Quality Index (DQI), the geometric mean of V-Dem, Freedom House and RSF scores, fell from a UPA-era average of ~0.52 to 0.28 by 2026 (0.46 in 2014 to 0.28 within the NDA period). V-Dem score fell from 0.555 to 0.270, Freedom House score from 78 to 66, and the RSF World Press Freedom Index rank dropped from 140 (2014) to 157 (2026). India shows one of the steepest democratic declines among major economies."
                 }
             }
         ]
@@ -882,7 +882,7 @@
                                 <li>• States' tax share declined to 32%</li>
                                 <li>• Cess/surcharge bypass: 20% of taxes</li>
                                 <li>• Conditional borrowing imposed</li>
-                                <li>• FCI rose from 0.62 to 0.79</li>
+                                <li>• FCI rose from 0.23 (2014) to 0.62</li>
                             </ul>
                         </div>
                         
@@ -1213,7 +1213,7 @@
                     <h3 class="text-lg font-bold mb-4">All Three Indices (Normalized 0-10)</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="indicesChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">SSI/FCI/DQI before 2014 are the author's back-cast reconstruction from the documented record (survey timeliness, states' tax share, and the V-Dem / Freedom House / RSF scores). See Methodology.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">All three indices are computed for both eras (2004-2026) from one documented methodology — see <code class="text-xs">data/compute_indices.py</code>. SSI is a 0-10 weighted count of datable suppression events; FCI is the mean of five min-max-normalised centralisation components; DQI is the geometric mean of V-Dem, Freedom House and RSF scores. See Methodology.</p>
                     </div>
                     <button @click="exportChart('indicesChart', 'three-indices')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -1225,36 +1225,36 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl">
                         <h4 class="font-bold text-red-700 dark:text-red-400 mb-2">SSI: Statistical Suppression</h4>
-                        <div class="text-3xl font-bold mb-2">8.2</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">Mar 2026 Score (was 2.3 in 2014)</div>
+                        <div class="text-3xl font-bold mb-2">4.5</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">2026 score (0.0 in 2014; peaked 7.0 in 2020)</div>
                         <ul class="space-y-1 text-xs">
-                            <li>• Census postponed indefinitely</li>
-                            <li>• CES 2017-18 suppressed</li>
-                            <li>• PLFS delayed by 2 years</li>
-                            <li>• NSC resignations</li>
+                            <li>• Census (2021) still not completed</li>
+                            <li>• GDP back-series methodology unresolved</li>
+                            <li>• Peak 2020: census + survey + GDP</li>
+                            <li>• Eased as HCES 2022-23 & PLFS resumed</li>
                         </ul>
                     </div>
-                    
+
                     <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl">
                         <h4 class="font-bold text-orange-700 dark:text-orange-400 mb-2">FCI: Fiscal Centralization</h4>
-                        <div class="text-3xl font-bold mb-2">0.80</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">Mar 2026 Score (was 0.62 in 2014)</div>
+                        <div class="text-3xl font-bold mb-2">0.62</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">2026 score (0.23 in 2014; peaked 0.94 in 2020)</div>
                         <ul class="space-y-1 text-xs">
-                            <li>• Cess share: 10.4% → 20.5%</li>
-                            <li>• States' share: 42% → 32%</li>
+                            <li>• Cess share: 10.4% → 14.5%</li>
+                            <li>• States' share: 42% → 38%</li>
                             <li>• GST compensation delays</li>
-                            <li>• Conditional borrowing</li>
+                            <li>• Conditional borrowing (2020-21)</li>
                         </ul>
                     </div>
-                    
+
                     <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl">
                         <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-2">DQI: Democratic Quality</h4>
-                        <div class="text-3xl font-bold mb-2">0.40</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">Mar 2026 Score (was 0.71 in 2014)</div>
+                        <div class="text-3xl font-bold mb-2">0.28</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">2026 score (0.46 in 2014; 0.57 UPA peak)</div>
                         <ul class="space-y-1 text-xs">
                             <li>• Press freedom: 140 → 157</li>
-                            <li>• Freedom House: 77 → 65</li>
-                            <li>• V-Dem: 0.555 → 0.260</li>
+                            <li>• Freedom House: 78 → 66</li>
+                            <li>• V-Dem: 0.555 → 0.270</li>
                             <li>• Internet shutdowns: 98 (2026)</li>
                         </ul>
                     </div>
@@ -2754,9 +2754,9 @@ reduces overall score</pre>
             fiscalDeficit:       [4.1,3.9,3.5,3.5,3.4,4.6,9.2,6.7,6.4,5.6,4.8,4.4,4.4,4.3],
             cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,3.9,4.2],
             rupeeUSD:            [61,64,67,65,68,70,74,74,79,82,84,87,95,96],
-            ssi:                 [2.3,2.5,2.4,2.4,2.6,4.8,7.2,6.8,7.0,7.5,7.8,8.0,8.2,8.3],
-            fci:                 [0.62,0.64,0.66,0.68,0.70,0.72,0.84,0.78,0.76,0.77,0.78,0.79,0.80,0.81],
-            dqi:                 [0.71,0.70,0.68,0.65,0.60,0.55,0.48,0.45,0.43,0.42,0.42,0.41,0.40,0.39],
+            ssi:                 [0.0,1.5,1.5,3.5,6.0,5.0,7.0,4.5,4.5,4.5,4.5,4.5,4.5,4.5],
+            fci:                 [0.23,0.25,0.30,0.37,0.50,0.62,0.94,0.80,0.64,0.61,0.61,0.61,0.62,0.62],
+            dqi:                 [0.46,0.46,0.47,0.44,0.42,0.39,0.37,0.37,0.32,0.27,0.28,0.31,0.28,0.28],
             gigWorkers:          [0.8,1.2,1.8,2.5,3.2,4.1,5.2,6.0,6.8,7.3,7.7,8.2,8.8,9.4],
             ruralIncome:         [100,99,98,97,96,95,93,94,95,96,98,97,97,97],
             femaleLFPR:          [22.5,22.0,21.8,21.5,21.2,21.0,20.8,20.5,20.3,20.5,20.8,20.9,21.0,21.1]
@@ -2987,7 +2987,7 @@ reduces overall score</pre>
             correlationR: 0,
             eraIndicator: 'gdpGrowth',
             scenarioInputs: { formalEmp: 10.9, pressFreedom: 157, cessShare: 20.5, statsReleased: 40 },
-            scenarioOutputs: { ssi: 8.2, fci: 0.80, dqi: 0.40 },
+            scenarioOutputs: { ssi: 4.5, fci: 0.62, dqi: 0.28 },
 
             // ===== ECONOMIC TRAJECTORY (forecast) state =====
             forecastSpec: FORECAST_FALLBACK,
@@ -3005,9 +3005,9 @@ reduces overall score</pre>
                 top1Share: [18.2,18.8,19.6,20.1,20.5,20.6,21.0,21.3,21.0,21.2],
                 bottom50Share: [16.5,16.3,16.0,15.8,15.6,15.5,15.4,15.3,15.2,15.1],
                 pressFreedom: [120,106,105,120,118,105,122,131,140,140],
-                ssi: [0.6,0.7,0.8,0.9,1.0,1.1,1.3,1.6,1.9,2.1],
-                fci: [0.40,0.41,0.42,0.43,0.45,0.47,0.50,0.53,0.56,0.59],
-                dqi: [0.78,0.78,0.77,0.76,0.76,0.77,0.76,0.75,0.74,0.73]
+                ssi: [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+                fci: [0.00,0.03,0.06,0.09,0.11,0.13,0.15,0.17,0.19,0.20],
+                dqi: [0.52,0.56,0.57,0.53,0.53,0.57,0.52,0.49,0.46,0.46]
             },
             // ===== STATE EXPLORER =====
             statesMetric: 'perCapita',
@@ -3144,8 +3144,8 @@ reduces overall score</pre>
                 { category: "Democracy", title: "India ranks 157th of 180 on press freedom", body: "The RSF 2026 World Press Freedom Index, released 30 April, dropped India six places from 151 in 2025. India now sits below Pakistan (153), Bangladesh (152), and Nepal (87). RSF cites concentrated ownership, violence against journalists, and overt political alignment of outlets.", takeaway: "India's press environment is now judged worse than that of every immediate neighbour except Afghanistan.", tab: "Deep Analysis", chart: { type: "bar-inv", series: ["pressFreedom"], labels: ["World rank (lower = better)"], colors: ["#a855f7"], unit: "" } },
                 { category: "Democracy", title: "India's V-Dem score has fallen further than any major democracy's", body: "V-Dem Liberal Democracy: India 0.71 (2014) \u2192 0.26 (2026), a 63% decline. Brazil 0.85 \u2192 0.69 (-19%). Turkey 0.52 \u2192 0.18 (-65%). Hungary 0.63 \u2192 0.41 (-35%). South Africa 0.75 \u2192 0.70 (-7%). India's slide ranks with Turkey's as the steepest in the cohort.", takeaway: "On the most-cited cross-country democracy index, India has erased four decades of liberalisation in one.", tab: "Deep Analysis", chart: { type: "intl", metric: "vdem", unit: "V-Dem score" } },
                 { category: "Democracy", title: "The Democratic Quality Index is the lowest it has been", body: "DQI combines V-Dem, Freedom House, and RSF rankings via geometric mean \u2014 so weakness in any single dimension pulls the composite down. It has fallen from 0.71 (2014) to 0.40 (2026). The 2014-2020 slide alone wiped out half the index's headroom.", takeaway: "No single index tells the whole story, but every credible index points the same direction.", tab: "Three Indices", chart: { type: "line", series: ["dqi"], labels: ["DQI"], colors: ["#22c55e"], unit: "" } },
-                { category: "Statistics", title: "The Statistical Suppression Index has nearly quadrupled", body: "SSI scores government interference in official statistics \u2014 suppressed surveys, delayed releases, methodological revisions, and access restrictions. India's SSI rose from 2.3 (2014) to 8.2 (2026), driven by events like the never-released 2017-18 consumption survey and the indefinitely postponed 2021 Census.", takeaway: "A democratic state is being audited with less and less independent data \u2014 by design.", tab: "Three Indices", chart: { type: "line", series: ["ssi"], labels: ["SSI"], colors: ["#ef4444"], unit: "" } },
-                { category: "Federalism", title: "Fiscal centralisation is at its highest in the modern era", body: "The Fiscal Centralisation Index (FCI) aggregates five components: cess share of central tax, devolution shortfall, conditional transfers, states' own-tax revenue, and dependency. FCI rose from 0.62 (2014) to 0.80 (2026). The shift has been steady, not punctuated.", takeaway: "States now retain less of the divisible pool than at any point since the 14th Finance Commission framework.", tab: "Three Indices", chart: { type: "line", series: ["fci"], labels: ["FCI"], colors: ["#f59e0b"], unit: "" } },
+                { category: "Statistics", title: "Statistical suppression spiked, then settled at a high plateau", body: "SSI is a 0-10 weighted count of datable interference events \u2014 suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years, rose to a peak of 7.0 in 2020 (census delay + the never-released 2017-18 consumption survey + GDP back-series disputes), then eased to a sustained 4.5 once the HCES 2022-23 and regular PLFS releases resumed \u2014 even as the 2021 Census stayed incomplete.", takeaway: "A democratic state is being audited with less independent data than before \u2014 the worst events eased, but the baseline never returned to zero.", tab: "Three Indices", chart: { type: "line", series: ["ssi"], labels: ["SSI"], colors: ["#ef4444"], unit: "" } },
+                { category: "Federalism", title: "Fiscal centralisation is at its highest in the modern era", body: "The Fiscal Centralisation Index (FCI) is the mean of five normalised components: cess share of central tax, devolution shortfall, conditional transfers, states' own-tax revenue, and conditional borrowing. On a scale where 0 is the least-centralised year in 2004-2026 and 1 the most, FCI rose from 0.23 (2014) to 0.62 (2026), peaking at 0.94 in the COVID year 2020. UPA-era values averaged ~0.11.", takeaway: "States now retain less of the divisible pool than at any point since the 14th Finance Commission framework.", tab: "Three Indices", chart: { type: "line", series: ["fci"], labels: ["FCI"], colors: ["#f59e0b"], unit: "" } },
                 { category: "Federalism", title: "Central cess and surcharge share of tax revenue tripled", body: "Cesses and surcharges aren't shared with states under the Finance Commission formula. Their share of gross central tax revenue rose from roughly 8% in 2004 to ~29% by 2024. This is a direct mechanism of fiscal centralisation, separate from changes in nominal devolution rates.", takeaway: "A nominally federal tax structure has been redirected by changing the labels on the revenue itself.", tab: "Deep Analysis", chart: { type: "csv-line", csv: "cess", color: "#3b82f6", unit: "%" } },
                 { category: "Society", title: "Reported communal incidents are 40% above their 2004 baseline", body: "MHA-reported and independently verified communal incidents rose from 640 (2004) to ~923 (2025). The trend isn't monotonic \u2014 there's a peak in 2013, a dip in 2016, and steady acceleration since 2017. The series carries a wide confidence band given documented underreporting.", takeaway: "Even with conservative counting, the floor of communal violence has risen substantially.", tab: "Deep Analysis", chart: { type: "csv-line", csv: "communal", color: "#ef4444", unit: "incidents" } },
                 { category: "Democracy", title: "Opposition incarceration cases were near-zero \u2014 until they weren't", body: "Documented cases of high-profile opposition political figures being formally incarcerated (charged or held in pre-trial detention) were essentially zero from 2004 through 2014. They rose moderately in 2015-2018 and accelerated sharply from 2019, with 9-11 cases per year in 2023-2025.", takeaway: "A specific tool of political pressure shifted from rare to routine within a single decade.", tab: "Deep Analysis", chart: { type: "csv-line", csv: "incarceration", color: "#a855f7", unit: "cases" } },
@@ -4116,7 +4116,7 @@ reduces overall score</pre>
                     yAxis: { type: 'value', min: 0.15, max: 0.85, name: mobile ? '' : 'DQI Score', axisLabel: { formatter: v => v.toFixed(2), fontSize: mobile ? 10 : 12 } },
                     dataZoom: dataZoom(),
                     series: [
-                        { name: 'India', type: 'line', data: [0.71, 0.68, 0.60, 0.48, 0.43, 0.42, 0.40], smooth: true, itemStyle: { color: '#f97316' }, lineStyle: { width: 3 }, areaStyle: { opacity: 0.08 } },
+                        { name: 'India', type: 'line', data: [0.46, 0.47, 0.42, 0.37, 0.32, 0.28, 0.28], smooth: true, itemStyle: { color: '#f97316' }, lineStyle: { width: 3 }, areaStyle: { opacity: 0.08 } },
                         { name: 'Turkey', type: 'line', data: [0.52, 0.45, 0.38, 0.30, 0.22, 0.19, 0.18], smooth: true, itemStyle: { color: '#ef4444' } },
                         { name: 'Hungary', type: 'line', data: [0.63, 0.58, 0.52, 0.48, 0.44, 0.42, 0.41], smooth: true, itemStyle: { color: '#8b5cf6' } },
                         { name: 'Brazil', type: 'line', data: [0.85, 0.82, 0.78, 0.72, 0.68, 0.69, 0.69], smooth: true, itemStyle: { color: '#22c55e' }, lineStyle: { type: 'dashed' } }
@@ -4503,7 +4503,7 @@ reduces overall score</pre>
                 cpiInflation:     { bad: 9,    good: 3 },
                 fiscalDeficit:    { bad: 9,    good: 3 },
                 rupeeUSD:         { bad: 120,  good: 70 },
-                dqi:              { bad: 0.30, good: 0.78 }
+                dqi:              { bad: 0.27, good: 0.57 }
             },
             // Lever effects on the projected-2030 value (illustrative; additive to the central path).
             TRAJ_LEVER_FX: {

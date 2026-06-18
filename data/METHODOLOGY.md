@@ -69,6 +69,43 @@ Uncertainty ±5%.
 
 ---
 
+## 2.6 The three constructed indices (SSI, FCI, DQI)
+
+All three novel indices are computed by a single, deterministic script —
+**`data/compute_indices.py`** — applied identically to both eras (2004–2026), so the
+UPA-vs-NDA comparison is on one consistent footing. Run `python3 data/compute_indices.py`
+to regenerate the series; the same numbers populate `data.json`, the site, and the
+technical appendix.
+
+### Statistical Suppression Index (SSI) — scale 0–10
+A weighted count of *datable* interference events:
+\[ SSI_t = \sum_i w_i \cdot \text{trigger}_{it}, \quad \text{trigger}\in\{0,1\} \]
+Weights: census delay 3.0, consumption-survey suppression 2.5, employment-data delay 2.0,
+GDP-methodology dispute 1.5, statistical-body resignation 1.0. No event fired during the
+UPA decade, so SSI = 0 for 2004–2013. SSI rises to a peak of **7.0 in 2020** (census delay +
+suppressed 2017-18 consumption survey + GDP back-series dispute) and eases to a sustained
+**4.5** once the HCES 2022-23 and regular PLFS releases resumed, while the 2021 Census
+remained incomplete.
+
+### Fiscal Centralisation Index (FCI) — scale 0–1 (relative)
+Mean of five components, each min–max normalised over the **full 2004–2026 sample**:
+C1 = cess share; C2 = 1 − devolution share; C3 = 1 − states' own-revenue share;
+C4 = conditional-transfer (CSS) share; C5 = borrowing restriction ∈ {0, 0.5, 1}.
+Because normalisation spans both eras, FCI is relative: 0.00 marks the least-centralised
+year (2004), ~0.94 the most (2020). UPA average ≈ 0.11; NDA average ≈ 0.55. NDA component
+values are budget / Finance-Commission anchors; UPA values interpolate official anchors
+(12th–15th FC devolution shares; Receipt-Budget cess and CSS shares).
+
+### Democratic Quality Index (DQI) — scale 0–1
+Geometric mean of three published third-party measures:
+\[ DQI_t = \left(V_t \cdot \tfrac{F_t}{100} \cdot \tfrac{180 - R_t}{180}\right)^{1/3} \]
+where V = V-Dem Liberal Democracy Index, F = Freedom House aggregate score, R = RSF press-freedom
+rank. The geometric mean penalises weakness in any single dimension. DQI falls from a UPA-era
+average of ~0.52 (peak 0.57) to 0.28 by 2026 (0.46 → 0.28 within the NDA period); the press-freedom
+component is the heaviest drag.
+
+---
+
 ## 3. Estimation principles
 
 1. **Anchors supersede models.** No extrapolation or fitting beyond verified anchor range.  
