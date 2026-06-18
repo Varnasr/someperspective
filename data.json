@@ -19,9 +19,9 @@
     "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP (FY ending)",
     "cpiInflation": "MoSPI CPI (Combined) annual average; RBI target band 2-6%",
     "rupeeUSD": "RBI reference rates, annual average INR per USD",
-    "ssi": "Constructed: SSI = sum(weight × trigger) on a 0-10 scale; recomputed for both eras in data/compute_indices.py",
-    "fci": "Constructed: mean of 5 min-max-normalised centralisation components (2004-2026 sample); recomputed in data/compute_indices.py",
-    "dqi": "Constructed: geometric mean of V-Dem × (Freedom House/100) × ((180-RSF)/180); recomputed in data/compute_indices.py",
+    "ssi": "Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py",
+    "fci": "Constructed: mean of 6 min-max-normalised centralisation components incl. GST structural centralisation (2004-2026 sample); see data/compute_indices.py",
+    "dqi": "Constructed: geometric mean of V-Dem LDI × (Freedom House/100) × ((180-RSF)/180) × V-Dem Civil Society Index; see data/compute_indices.py",
     "gigWorkers": "NITI Aayog 'India's Booming Gig and Platform Economy' + Code on Social Security 2020 estimates",
     "ruralIncome": "NABARD All India Rural Financial Inclusion Survey, indexed (2014=100)",
     "femaleLFPR": "PLFS, Usual Status (ps+ss), women 15+",
@@ -43,9 +43,9 @@
     "fiscalDeficit":       [4.1,  3.9,  3.5,  3.5,  3.4,  4.6,  9.2,  6.7,  6.4,  5.6,  4.8,  4.4,  4.4],
     "cpiInflation":        [6.7,  4.9,  4.5,  3.6,  3.4,  4.8,  6.2,  5.5,  6.7,  5.4,  4.6,  4.0,  3.9],
     "rupeeUSD":            [61,   64,   67,   65,   68,   70,   74,   74,   79,   82,   84,   87,   95],
-    "ssi":                 [0.0,  1.5,  1.5,  3.5,  6.0,  5.0,  7.0,  4.5,  4.5,  4.5,  4.5,  4.5,  4.5],
-    "fci":                 [0.23, 0.25, 0.30, 0.37, 0.50, 0.62, 0.94, 0.80, 0.64, 0.61, 0.61, 0.61, 0.62],
-    "dqi":                 [0.46, 0.46, 0.47, 0.44, 0.42, 0.39, 0.37, 0.37, 0.32, 0.27, 0.28, 0.31, 0.28],
+    "ssi":                 [0.0, 1.05, 1.05, 2.05, 4.0, 4.8, 7.0, 9.0, 9.0, 8.2, 7.05, 6.55, 6.4],
+    "fci":                 [0.19, 0.21, 0.25, 0.41, 0.53, 0.65, 0.92, 0.82, 0.7, 0.68, 0.68, 0.68, 0.68],
+    "dqi":                 [0.54, 0.54, 0.53, 0.5, 0.46, 0.43, 0.4, 0.38, 0.33, 0.28, 0.29, 0.31, 0.29],
     "gigWorkers":          [0.8,  1.2,  1.8,  2.5,  3.2,  4.1,  5.2,  6.0,  6.8,  7.3,  7.7,  8.2,  8.8],
     "ruralIncome":         [100,  99,   98,   97,   96,   95,   93,   94,   95,   96,   98,   97,   97],
     "femaleLFPR":          [22.5, 22.0, 21.8, 21.5, 21.2, 21.0, 20.8, 20.5, 20.3, 20.5, 20.8, 20.9, 21.0]
@@ -346,8 +346,8 @@
     "top1Share":         [18.2, 18.8, 19.6, 20.1, 20.5, 20.6, 21.0, 21.3, 21.0, 21.2],
     "bottom50Share":     [16.5, 16.3, 16.0, 15.8, 15.6, 15.5, 15.4, 15.3, 15.2, 15.1],
     "pressFreedom":      [120,  106,  105,  120,  118,  105,  122,  131,  140,  140],
-    "ssi":               [0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0],
-    "fci":               [0.00, 0.03, 0.06, 0.09, 0.11, 0.13, 0.15, 0.17, 0.19, 0.20],
-    "dqi":               [0.52, 0.56, 0.57, 0.53, 0.53, 0.57, 0.52, 0.49, 0.46, 0.46]
+    "ssi":               [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "fci":               [0.0, 0.03, 0.05, 0.07, 0.09, 0.11, 0.12, 0.14, 0.16, 0.17],
+    "dqi":               [0.59, 0.63, 0.63, 0.6, 0.6, 0.64, 0.6, 0.57, 0.54, 0.54]
   }
 }

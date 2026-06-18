@@ -102,8 +102,8 @@ someperspective/
 
 ### 4. Statistical Suppression Index (SSI)
 
-- **SSI Score:** 0 across the UPA decade; rose to a peak of 7.0 (2020), then eased to a sustained 4.5 (0–10 scale)
-- **Major suppressions:** 2017-18 consumption survey, 2021 census (indefinitely postponed), unemployment surveys
+- **SSI Score:** 0 across the UPA decade; peaked at 9.0 (2021–22, driven by the COVID-mortality undercount), now a sustained 6.4 (0–10 scale)
+- **Major suppressions:** COVID-mortality undercount (~0.5M official vs 3–5M excess), 2021 census (postponed), 2017-18 consumption survey, NSSO→NSO merger, shelved GDP back-series
 - **Pattern:** Systematic interference rather than isolated incidents
 
 **Implication:** The statistical infrastructure essential for democratic accountability was systematically undermined.
@@ -112,7 +112,7 @@ someperspective/
 
 - **Freedom House:** Downgraded from "Free" to "Partly Free" (2021)
 - **Press Freedom:** Fell from rank 140 (2014) to 157 (2026, RSF World Press Freedom Index)
-- **Democratic Quality Index:** Fell from a UPA-era average of ~0.52 to 0.28 by 2026 (0.46 → 0.28 within the NDA period)
+- **Democratic Quality Index:** Fell from a UPA-era average of ~0.59 to 0.29 by 2026 (0.54 → 0.29 within the NDA period); civil-society space collapsed 0.87 → 0.31
 
 **Pattern:** Multiple independent international assessments document parallel institutional deterioration.
 
@@ -163,23 +163,25 @@ UPA years (2004–2013): no trigger fired -> SSI = 0
 - States' own tax revenue as % of GDP
 - Conditional borrowing requirements
 - Centrally Sponsored Schemes (CSS) share of social spending
+- GST structural centralisation (states' loss of independent indirect taxation, 2017)
 
-**Aggregation:** Five components min-max normalized over the full 2004–2026 sample, then averaged (directional alignment). Relative scale: 0 = least-centralised year, 1 = most  
-**Current Score:** 0.62 (2026), up from 0.23 (2014); peak 0.94 (2020); UPA average ~0.11
+**Aggregation:** Six components min-max normalized over the full 2004–2026 sample, then averaged (directional alignment). Relative scale: 0 = least-centralised year, 1 = most  
+**Current Score:** 0.68 (2026), up from 0.19 (2014); peak 0.92 (2020); UPA average ~0.09
 
 #### 3. Democratic Quality Index (DQI)
 
 \`\`\`
-DQI = (V-Dem × FH × RSF)^(1/3)
+DQI = (V-Dem × FH × RSF × CSI)^(1/4)
 
 Where:
 - V-Dem: Liberal Democracy Index (0-1)
 - FH: Freedom House score (normalized to 0-1)
 - RSF: Press Freedom ranking (inverted and normalized)
+- CSI: V-Dem Core Civil Society Index (0-1)
 \`\`\`
 
 **Geometric mean:** Ensures weakness in any dimension reduces overall score  
-**Current Score:** 0.42 (2024)—41% decline from 2014
+**Current Score:** 0.29 (2026), down from 0.54 (2014); UPA average ~0.59
 
 ### Analytical Approaches
 

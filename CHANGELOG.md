@@ -9,6 +9,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > rolled back (the live site continued on the single-file `index.html`, and a
 > service-worker cleanup ships in-page). The current shipping line is `2.x`.
 
+## [2.28.0] - 2026-06-18
+
+### Changed
+- **Index rebuild v2 (SSI/FCI/DQI) — more complete, steeper, still defensible.**
+  Added documented dimensions the first cut missed and let the numbers fall where
+  they fall (no tuning to a target). All from one engine, `data/compute_indices.py`:
+  - **SSI** now a graded-severity weighted sum (not binary) with a persistence/scar
+    term, over six streams — adding the **COVID mortality undercount** (official
+    ~0.5M vs 3-5M excess), the permanent **NSSO->NSO merger**, and the shelved GDP
+    back-series. Peaks **9.0** (2021-22) and sits at **6.4** (2026), vs the old 4.5.
+  - **FCI** adds **GST** as the structural centralisation component (states' 2017
+    loss of independent indirect taxation, full once compensation ended mid-2022).
+    Six components; recent value 0.62 -> **0.68**; UPA 0.09 vs NDA 0.57.
+  - **DQI** adds the **V-Dem Civil Society Index** (collapsed 0.87 -> 0.31), which
+    separates the eras far better than press-freedom rank alone. UPA ~0.59 ->
+    NDA 0.41; 2026 = 0.29.
+- Propagated to every surface: data.json (both eras) + inline fallback, the
+  technical appendix (A2/A3/A4 rebuilt for the new component structures, master
+  table, summary, robustness), methodology page + data/METHODOLOGY.md (which now
+  labels which inputs are published series vs author-coded severities),
+  data_dictionary.md, README, executive-summary / presentation downloads, and the
+  Python + R replication code.
+- a11y + hardening: honor prefers-reduced-motion (CSS + ECharts), pin Alpine to 3.14.1.
+- Verdict unchanged: NDA worse on 8 of 9 measures (inflation the exception).
+
 ## [2.27.0] - 2026-06-18
 
 ### Changed

@@ -168,21 +168,21 @@ All three indices are computed identically for both eras by `data/compute_indice
 - **Definition:** Weighted count of datable government-interference events in official statistics
 - **Unit:** Index score 0–10 (higher = more suppression)
 - **Source:** Constructed for this research (`data/compute_indices.py`)
-- **Methodology:** SSI = Σ(weight × binary trigger); weights 3.0/2.5/2.0/1.5/1.0. UPA = 0; peak 7.0 (2020); plateau 4.5
+- **Methodology:** SSI = Σ(weight × graded severity) with persistence; six streams (census, consumption, employment, GDP back-series, institutional, COVID-mortality undercount), weights 2.5/1.5/1.0/1.5/1.5/2.0. UPA = 0; peak 9.0 (2021-22); 6.4 (2026)
 - **Coverage:** 2004-2026
 
 #### `fiscal_centralization_index`
 - **Definition:** Composite index of fiscal centralization
 - **Unit:** Index 0–1, relative (0 = least-centralised year in sample, 1 = most)
 - **Source:** Constructed for this research (`data/compute_indices.py`)
-- **Methodology:** Mean of 5 min-max-normalised components (cess, devolution, own-revenue, CSS, borrowing) over 2004-2026
+- **Methodology:** Mean of 6 min-max-normalised components (cess, devolution, own-revenue, CSS, borrowing, GST centralisation) over 2004-2026
 - **Coverage:** 2004-2026
 
 #### `democratic_quality_index`
 - **Definition:** Composite index of democratic quality
 - **Unit:** Index from 0 (autocracy) to 1 (democracy)
 - **Source:** Constructed for this research (`data/compute_indices.py`)
-- **Methodology:** DQI = (V-Dem × FH/100 × (180−RSF)/180)^(1/3)
+- **Methodology:** DQI = (V-Dem × FH/100 × (180−RSF)/180 × Civil-Society-Index)^(1/4)
 - **Coverage:** 2004-2026
 
 ## Data Quality Flags
