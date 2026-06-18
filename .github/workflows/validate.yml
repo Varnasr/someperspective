@@ -12,6 +12,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Check committed styles.css is up to date
+        # Rebuild Tailwind and fail if the committed styles.css is stale —
+        # the same drift guard the data-parity check applies to data.json.
+        run: |
+          npm ci
+          npm run build:css
+          if ! git diff --quiet -- styles.css; then
+            echo "ERROR: styles.css is out of date. Run 'npm run build:css' and commit the result."
+            git diff --stat -- styles.css
+            exit 1
+          fi
+          echo "styles.css is up to date"
+
       - name: Check JSON validity
         run: |
           python3 -c "import json; json.load(open('data.json')); print('data.json OK')"

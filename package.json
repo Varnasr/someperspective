@@ -1,0 +1,13 @@
+{
+  "name": "someperspective",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Build tooling for the someperspective static site (Tailwind CSS compile).",
+  "scripts": {
+    "build:css": "tailwindcss -i src/input.css -o styles.css --minify",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

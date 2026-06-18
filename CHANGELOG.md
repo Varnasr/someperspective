@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > rolled back (the live site continued on the single-file `index.html`, and a
 > service-worker cleanup ships in-page). The current shipping line is `2.x`.
 
+## [2.30.0] - 2026-06-18
+
+### Changed
+- **Tailwind CSS is now precompiled** instead of loaded at runtime from
+  `cdn.tailwindcss.com`. A purged, minified `styles.css` (~43 KB) is built from
+  `index.html` and linked directly. This removes the production CDN-Tailwind
+  console warning, eliminates the runtime CSS compile (and its flash of
+  unstyled content), and drops the CDN `<script>` plus its `script-src` CSP
+  allowance for `cdn.tailwindcss.com`. The rendered page is unchanged — every
+  class in use (including Alpine `:class` ternaries and JS-assigned strings) is
+  a literal token the purge scanner detects.
+
+### Added
+- **Build pipeline** for the single-file site: `package.json` (Tailwind
+  devDependency + `npm run build:css`), `tailwind.config.js` (content scoped to
+  `index.html`, `darkMode: 'class'`, custom colours, JS-only classes safelisted),
+  and `src/input.css`. The Pages deploy (`static.yml`) recompiles `styles.css`
+  before publishing so the live site always matches the markup; `validate.yml`
+  rebuilds and fails if the committed `styles.css` is stale — the same drift
+  guard the data-parity check applies to `data.json`. Edit `index.html` as
+  before; run `npm run build:css` and commit `styles.css` when classes change.
+
 ## [2.29.0] - 2026-06-18
 
 ### Added
