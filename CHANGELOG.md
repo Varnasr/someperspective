@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > rolled back (the live site continued on the single-file `index.html`, and a
 > service-worker cleanup ships in-page). The current shipping line is `2.x`.
 
+## [2.29.0] - 2026-06-18
+
+### Added
+- **Data-parity guard** (`tools/check_data_parity.py`): fails loudly if the inline
+  `FALLBACK_DATA` in index.html ever drifts from `data.json`, or if either drifts
+  from the canonical index engine (`data/compute_indices.py`). Wired into CI
+  (`validate.yml`) and a `SessionStart` hook so the two data copies can never
+  silently diverge — the safe alternative to a build-step de-duplication on a
+  no-build single-file site.
+
+### Changed
+- **Nav: split the 6-item "Explore" dropdown into "Data" (Interactive Data,
+  Correlation Explorer, Three Indices) and "Read" (Reading the Economy, Era
+  Comparison, Human Stories)** for a shorter menu. Now 5 grouped dropdowns +
+  the featured Economic Trajectory tab.
+
 ## [2.28.0] - 2026-06-18
 
 ### Changed
