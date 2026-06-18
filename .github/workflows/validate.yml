@@ -29,7 +29,8 @@ jobs:
           html = open('index.html').read()
           hrefs = set(re.findall(r'href=\"([^\"#][^\"]*?)\"', html))
           local = [h for h in hrefs if not h.startswith('http') and not h.startswith('data:') and not h.startswith('mailto:')]
-          missing = [h for h in local if not os.path.exists(h)]
+          # Root-relative URLs (e.g. /manifest.json) are served from the repo root, so check them relative to the repo.
+          missing = [h for h in local if not os.path.exists(h.lstrip('/'))]
           if missing:
               print('Broken local links:', missing)
               sys.exit(1)
