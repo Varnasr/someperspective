@@ -102,7 +102,7 @@ someperspective/
 
 ### 4. Statistical Suppression Index (SSI)
 
-- **SSI Score:** Increased from 2.3 (2014) to 7.8 (2023)—a 239% increase
+- **SSI Score:** 0 across the UPA decade; rose to a peak of 7.0 (2020), then eased to a sustained 4.5 (0–10 scale)
 - **Major suppressions:** 2017-18 consumption survey, 2021 census (indefinitely postponed), unemployment surveys
 - **Pattern:** Systematic interference rather than isolated incidents
 
@@ -112,7 +112,7 @@ someperspective/
 
 - **Freedom House:** Downgraded from "Free" to "Partly Free" (2021)
 - **Press Freedom:** Fell from rank 140 (2014) to 157 (2026, RSF World Press Freedom Index)
-- **Democratic Quality Index:** Declined from 0.71 (2014) to 0.42 (2024)—a 41% deterioration
+- **Democratic Quality Index:** Fell from a UPA-era average of ~0.52 to 0.28 by 2026 (0.46 → 0.28 within the NDA period)
 
 **Pattern:** Multiple independent international assessments document parallel institutional deterioration.
 
@@ -142,12 +142,15 @@ This research triangulates evidence from multiple independent sources:
 #### 1. Statistical Suppression Index (SSI)
 
 \`\`\`
-SSI_t = Σ(severity_i × salience_i) / n
+SSI_t = Σ(weight_i × trigger_it)     [0–10 scale]
 
-Where:
-- severity: withheld(1.0), delayed(0.5), revised(0.3)
-- salience: census(1.0), CES(0.8), PLFS(0.7), other(0.6)
-- n: number of statistical events in year t
+Where trigger is binary (1 = active that year) and weights are:
+- Census delay: 3.0
+- Consumption-survey suppression: 2.5
+- Employment-data delay: 2.0
+- GDP-methodology dispute: 1.5
+- Statistical-body resignation: 1.0
+UPA years (2004–2013): no trigger fired -> SSI = 0
 \`\`\`
 
 **Purpose:** Quantifies government interference in statistical production through event-based coding.
@@ -161,8 +164,8 @@ Where:
 - Conditional borrowing requirements
 - Centrally Sponsored Schemes (CSS) share of social spending
 
-**Aggregation:** Min-max normalized, averaged with directional alignment  
-**Current Score:** 0.78 (2023)—26% increase from 2014
+**Aggregation:** Five components min-max normalized over the full 2004–2026 sample, then averaged (directional alignment). Relative scale: 0 = least-centralised year, 1 = most  
+**Current Score:** 0.62 (2026), up from 0.23 (2014); peak 0.94 (2020); UPA average ~0.11
 
 #### 3. Democratic Quality Index (DQI)
 

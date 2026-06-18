@@ -9,6 +9,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > rolled back (the live site continued on the single-file `index.html`, and a
 > service-worker cleanup ships in-page). The current shipping line is `2.x`.
 
+## [2.26.0] - 2026-06-18
+
+### Changed
+- **Recomputed the three novel indices (SSI, FCI, DQI) from scratch, one
+  methodology, both eras.** Previously the indices existed in three
+  inconsistent forms (data.json, the inline fallback, and the technical
+  appendix disagreed; the UPA-era series was a hand-entered back-cast). They
+  are now produced by a single deterministic script, `data/compute_indices.py`,
+  applied identically to 2004–2026:
+  - **SSI** (0–10 weighted count of datable suppression events): 0 across the
+    UPA decade, peak **7.0** in 2020, sustained **4.5** thereafter — replacing
+    the old monotonic "2.3 → 8.2" series, which overstated recent suppression.
+  - **FCI** (mean of 5 min-max-normalised components, relative 0–1): UPA avg
+    **0.11** vs NDA avg **0.55**; rose 0.23 (2014) → 0.62 (2026), peak 0.94 (2020).
+  - **DQI** (geometric mean of V-Dem × FH/100 × (180−RSF)/180): corrected the
+    appendix arithmetic; falls from a UPA-era ~0.52 to **0.28** by 2026.
+- Propagated the recomputed values to every surface: `data.json` (both eras),
+  the inline fallback data, the technical appendix tables (A2/A3/A4 + master
+  results + summary + robustness), the methodology page, `data_dictionary.md`,
+  `README.md`, and the executive-summary / presentation downloads.
+- Ported the canonical logic into `replication_code.py` (now delegates to
+  `data/compute_indices.py`) and `replication_code.R`.
+- The live-computed "8 of 9" verdict is unchanged: NDA is still worse on every
+  measure except inflation, now from rigorously reproducible indices.
+
 ## [2.10.0] - 2026-06-17
 
 ### Added

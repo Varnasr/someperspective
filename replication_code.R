@@ -51,63 +51,70 @@ elasticity_2017_2023 <- employment_elasticity(data, 2017, 2023)  # Result: 1.11
 # SECTION 3: THREE NOVEL INDICES
 ################################################################################
 
-# 1. STATISTICAL SUPPRESSION INDEX (SSI)
+# The three indices are defined canonically (for both eras, 2004-2026) in
+# data/compute_indices.py. This R port reproduces that exact logic. Keep the two
+# in sync; the Python file is the single source of truth.
+
+# Component inputs (2004-2026) ------------------------------------------------
+idx_years <- 2004:2026
+
+# SSI: weighted binary triggers; UPA years have none -> 0
+ssi_weights <- c(census = 3.0, consumption = 2.5, employment = 2.0,
+                 gdp = 1.5, committee = 1.0)
+ssi_triggers <- list(
+  "2015" = c("gdp"), "2016" = c("gdp"),
+  "2017" = c("employment", "gdp"),
+  "2018" = c("consumption", "employment", "gdp"),
+  "2019" = c("consumption", "gdp", "committee"),
+  "2020" = c("census", "consumption", "gdp"),
+  "2021" = c("census", "gdp"), "2022" = c("census", "gdp"),
+  "2023" = c("census", "gdp"), "2024" = c("census", "gdp"),
+  "2025" = c("census", "gdp"), "2026" = c("census", "gdp")
+)
 calculate_ssi <- function(year) {
-  events <- data.frame(
-    year = c(2017, 2019, 2020, 2021, 2023),
-    event = c("Consumption Survey Withheld", "PLFS Delayed", 
-              "GDP Revision", "Census Postponed", "Multiple Suppressions"),
-    severity = c(1.0, 0.5, 0.3, 1.0, 0.8),
-    salience = c(0.8, 0.7, 0.6, 1.0, 0.9)
-  )
-  
-  year_events <- events[events$year == year, ]
-  if(nrow(year_events) == 0) return(0)
-  
-  ssi <- sum(year_events$severity * year_events$salience) / nrow(year_events)
-  return(ssi)
+  trig <- ssi_triggers[[as.character(year)]]
+  if (is.null(trig)) return(0)
+  round(sum(ssi_weights[trig]), 2)
 }
 
-# Calculate SSI for all years
+# FCI: mean of 5 min-max-normalised centralisation components over 2004-2026
+# columns: cess, devolution, states_own_rev, css_share, borrowing
+fci_comp <- matrix(c(
+  6.5,36.5,45.0,22.0,0.0, 7.0,36.3,44.8,22.8,0.0, 7.5,36.1,44.5,23.5,0.0,
+  8.0,35.9,44.2,24.2,0.0, 8.5,35.8,44.0,24.8,0.0, 9.0,35.7,43.7,25.4,0.0,
+  9.3,35.6,43.4,26.0,0.0, 9.6,35.5,43.1,26.6,0.0, 9.9,35.4,42.9,27.2,0.0,
+  10.1,35.3,42.7,27.7,0.0, 10.4,35.0,42.5,28.3,0.0, 11.5,35.6,41.8,29.5,0.0,
+  13.5,36.2,40.2,31.2,0.0, 15.3,36.6,38.5,33.8,0.0, 17.8,35.5,37.2,36.5,0.0,
+  19.0,34.0,36.1,38.9,0.0, 20.2,33.0,34.5,42.3,1.0, 18.3,32.7,35.2,41.5,0.5,
+  16.3,32.4,36.8,40.2,0.0, 14.8,32.1,37.5,39.8,0.0, 14.8,31.8,37.9,39.5,0.0,
+  14.6,31.6,38.0,39.2,0.0, 14.5,31.4,38.1,39.0,0.0),
+  ncol = 5, byrow = TRUE)
+mm <- function(x) { r <- max(x) - min(x); if (r == 0) rep(0, length(x)) else (x - min(x)) / r }
+fci_series <- {
+  c1 <- mm(fci_comp[,1]); c2 <- 1 - mm(fci_comp[,2]); c3 <- 1 - mm(fci_comp[,3])
+  c4 <- mm(fci_comp[,4]); c5 <- fci_comp[,5]
+  round((c1 + c2 + c3 + c4 + c5) / 5, 2)
+}
+names(fci_series) <- idx_years
+
+# DQI: geometric mean of V-Dem, FreedomHouse/100, (180-RSF)/180
+dqi_comp <- matrix(c(
+  0.553,78,120, 0.560,78,106, 0.562,78,105, 0.567,78,120, 0.566,78,118,
+  0.567,79,105, 0.566,79,122, 0.560,79,131, 0.557,79,140, 0.554,78,140,
+  0.555,78,140, 0.529,77,136, 0.501,77,133, 0.462,77,136, 0.422,75,138,
+  0.389,71,140, 0.365,67,142, 0.357,66,142, 0.290,66,150, 0.275,66,161,
+  0.271,66,159, 0.270,66,151, 0.270,66,157),
+  ncol = 3, byrow = TRUE)
+calculate_dqi <- function(year) {
+  i <- which(idx_years == year)
+  v <- dqi_comp[i,1]; f <- dqi_comp[i,2] / 100; r <- (180 - dqi_comp[i,3]) / 180
+  round((v * f * r)^(1/3), 2)
+}
+
+# Calculate all indices for each year
 data$ssi <- sapply(data$year, calculate_ssi)
-
-# 2. FISCAL CENTRALIZATION INDEX (FCI)
-calculate_fci <- function(data, year) {
-  row <- data[data$year == year, ]
-  
-  # Components (normalized 0-1)
-  cess_component <- row$cess_percentage / 25  # Normalize by max possible 25%
-  devolution_component <- 1 - (row$actual_devolution / row$promised_devolution)
-  borrowing_conditions <- row$conditional_borrowing / row$total_borrowing
-  
-  # Average of three components
-  fci <- mean(c(cess_component, devolution_component, borrowing_conditions), na.rm = TRUE)
-  return(fci)
-}
-
-# Calculate FCI
-data$fci <- sapply(data$year, function(y) calculate_fci(data, y))
-
-# 3. DEMOCRATIC QUALITY INDEX (DQI)
-calculate_dqi <- function(data, year) {
-  row <- data[data$year == year, ]
-  
-  # Normalize press freedom rank (180 = worst)
-  press_freedom_norm <- (180 - row$press_freedom_rank) / 180
-  
-  # V-Dem score (already 0-1)
-  vdem_score <- row$vdem_liberal_democracy
-  
-  # Freedom House score (normalize from 100 point scale)
-  fh_score <- row$freedom_house_score / 100
-  
-  # Geometric mean ensures weakness in any dimension reduces overall score
-  dqi <- (press_freedom_norm * vdem_score * fh_score)^(1/3)
-  return(dqi)
-}
-
-# Calculate DQI
-data$dqi <- sapply(data$year, function(y) calculate_dqi(data, y))
+data$fci <- sapply(data$year, function(y) ifelse(as.character(y) %in% names(fci_series), fci_series[[as.character(y)]], NA))
+data$dqi <- sapply(data$year, function(y) ifelse(y %in% idx_years, calculate_dqi(y), NA))
 
 ################################################################################
 # SECTION 4: INEQUALITY ANALYSIS

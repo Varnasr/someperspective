@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
 import json
+import sys
 from datetime import datetime
 
 # Set style for all plots
@@ -71,54 +72,39 @@ print(f"2017-2023: {elasticity_2017_2023}")
 # SECTION 3: THREE NOVEL INDICES
 ################################################################################
 
+# The three indices are defined ONCE, canonically, in data/compute_indices.py and
+# computed identically for both eras (2004-2026). This script delegates to it so
+# there is a single source of truth. See that file for component inputs and formulas:
+#   SSI = sum(weight * binary trigger)                         [0-10 scale]
+#   FCI = mean of 5 min-max-normalised centralisation comps    [0-1, relative]
+#   DQI = (V-Dem * FreedomHouse/100 * (180-RSF)/180)^(1/3)      [0-1]
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data'))
+import compute_indices as ci
+
+
 def calculate_ssi(year):
-    """Calculate Statistical Suppression Index"""
-    events = {
-        2017: [("Consumption Survey Withheld", 1.0, 0.8)],
-        2019: [("PLFS Delayed", 0.5, 0.7), ("NSC Resignations", 0.8, 0.6)],
-        2020: [("GDP Revision", 0.3, 0.6)],
-        2021: [("Census Postponed", 1.0, 1.0)],
-        2023: [("Multiple Suppressions", 0.8, 0.9)]
-    }
-    
-    if year not in events:
-        return 0
-    
-    year_events = events[year]
-    total_score = sum(severity * salience for _, severity, salience in year_events)
-    return total_score / len(year_events)
+    """Statistical Suppression Index (canonical: data/compute_indices.py)."""
+    return ci.compute_ssi(year)
 
-def calculate_fci(row):
-    """Calculate Fiscal Centralization Index"""
-    # Normalize components to 0-1 scale
-    cess_component = row['cess_percentage'] / 25  # Max 25%
-    devolution_component = 1 - (row['actual_devolution'] / row['promised_devolution'])
-    borrowing_component = row['conditional_borrowing'] / row['total_borrowing']
-    
-    # Average of three components
-    components = [cess_component, devolution_component, borrowing_component]
-    return np.nanmean(components)
 
-def calculate_dqi(row):
-    """Calculate Democratic Quality Index"""
-    # Normalize press freedom (180 = worst)
-    press_freedom_norm = (180 - row['press_freedom_rank']) / 180
-    
-    # V-Dem score (already 0-1)
-    vdem_score = row['vdem_liberal_democracy']
-    
-    # Freedom House score (normalize from 100)
-    fh_score = row['freedom_house_score'] / 100
-    
-    # Geometric mean
-    return (press_freedom_norm * vdem_score * fh_score) ** (1/3)
+def calculate_dqi(year):
+    """Democratic Quality Index (canonical: data/compute_indices.py)."""
+    return ci.compute_dqi(year)
 
-# Calculate all indices
-data['ssi'] = data['year'].apply(calculate_ssi)
-data['fci'] = data.apply(calculate_fci, axis=1)
-data['dqi'] = data.apply(calculate_dqi, axis=1)
 
-print("\nIndices calculated successfully")
+# Canonical series for the full 2004-2026 sample
+_idx = ci.build()
+_ssi = dict(zip(_idx['years'], _idx['ssi']))
+_fci = dict(zip(_idx['years'], _idx['fci']))
+_dqi = dict(zip(_idx['years'], _idx['dqi']))
+
+if 'year' in data.columns:
+    data['ssi'] = data['year'].map(_ssi)
+    data['fci'] = data['year'].map(_fci)
+    data['dqi'] = data['year'].map(_dqi)
+
+print("\nIndices calculated successfully (canonical: data/compute_indices.py)")
 print(data[['year', 'ssi', 'fci', 'dqi']].head())
 
 ################################################################################
