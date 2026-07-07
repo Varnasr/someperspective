@@ -57,11 +57,16 @@ jobs:
           "
 
       - name: Check for stale date references
+        # Reject any "<Month> 2025" string in index.html or downloads/.
+        # 2025 is the last calendar year before the current data cutoff;
+        # any 2025-month string is a leftover from an earlier release.
         run: |
-          ! grep -r 'September 2025\|October 2025\|August 2025' index.html downloads/ --include='*.html' || {
-            echo "ERROR: Stale date references found"
+          ! grep -rE '\b(January|February|March|April|May|June|July|August|September|October|November|December) 2025\b' \
+              index.html downloads/ --include='*.html' || {
+            echo "ERROR: Stale <Month> 2025 references found (see hits above)"
             exit 1
           }
+          echo "No stale 2025-month references"
 
       - name: Validate sitemap
         run: python3 -c "import xml.etree.ElementTree as ET; ET.parse('sitemap.xml'); print('sitemap.xml OK')"
