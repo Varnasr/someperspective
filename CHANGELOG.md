@@ -5,9 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-> Note: the `[3.0.0]` entry below describes the monolith→split build that was
-> rolled back (the live site continued on the single-file `index.html`, and a
-> service-worker cleanup ships in-page). The current shipping line is `2.x`.
+> Note: the entry marked `[3.0.0 — ROLLED BACK]` further down describes the
+> monolith→split build that never shipped to live traffic. The service-worker
+> cache trapped browsers on the broken build; a cleanup rides in-page and the
+> shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
+
+## [2.30.1] - 2026-07-07
+
+### Changed
+- **Data refreshed** with public releases since the previous cut:
+  - `unemployment[2026]`: 5.1 → **5.5** (PLFS Monthly Bulletin May 2026; rural 5.1, urban 6.4).
+  - `cpiInflation[2026]`: 3.9 → **3.93** (MoSPI CPI May 2026; fifth straight monthly rise).
+  - `meta.updated` set to `2026-07-07`; `sources.unemployment` and
+    `sources.cpiInflation` updated to cite the new prints.
+  - Inline `FALLBACK_DATA` in `index.html` mirrored; data-parity guard passes.
+- **Version meta.** `index.html`'s `<meta name="version">` was still at `2.29.0`
+  after v2.30.0 shipped; bumped to `2.30.1` so the `data.json?v=…` cache-buster
+  reflects the current shipping build.
+- **CI stale-date regex widened.** `validate.yml` now rejects any
+  `\b<Month> 2025\b` string (was hard-coded to August/September/October
+  only), and `actions/checkout` is pinned to `@v4` across both `static.yml`
+  and `validate.yml` (was `@v6` on the deploy workflow).
+- **`article:modified_time`** OG tag added; `article:published_time` preserved
+  as the original launch date.
+- **CHANGELOG.** The `[3.0.0]` block is relabelled `[3.0.0 — ROLLED BACK]`
+  with an inline caution so first-time readers don't mistake it for the
+  shipping line.
+- **ROADMAP.md** rewritten to reflect the actual v2.30.x state (was headed
+  "Current Release v2.4.x", 26 versions behind).
 
 ## [2.30.0] - 2026-06-18
 
@@ -180,7 +205,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   hero. `theme-color` and the PWA manifest updated to match.
 - Data refreshed through **June 2026**; date references updated site-wide.
 
-## [3.0.0] - 2026-05-27
+## [3.0.0 — ROLLED BACK] - 2026-05-27
+
+> **This release was rolled back.** The service-worker cache trapped browsers on
+> the broken monolith→split build; live traffic never landed on `3.0.0`. The
+> shipping line continued at `2.x` (see `[2.8.1]` and later for the fixes). The
+> entry is kept below for the historical record — do not treat any of the
+> "BREAKING" items as active.
 
 ### Changed (BREAKING)
 - **Tailwind CSS pre-compiled.** The `cdn.tailwindcss.com` script is
