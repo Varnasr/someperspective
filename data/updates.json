@@ -2,10 +2,10 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Each entry corresponds to a published version of the site; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
-      "version": "2.41.0",
+      "version": "2.42.0",
       "date": "2026-08-15",
-      "title": "A state-level view: pick your state",
-      "summary": "The national picture hides most of what matters. There is now a section that answers 'what about my state?' for sixteen states covering about 90% of the country.",
+      "title": "A state-level view, on 2026 population rather than the 2011 census",
+      "summary": "The national picture hides most of what matters. There is now a section that answers 'what about my state?' for sixteen states, and representation is measured on the government's own 2026 projection instead of a fifteen-year-old census.",
       "changes": [
         {
           "kind": "Added",
@@ -22,6 +22,14 @@
         {
           "kind": "Note",
           "text": "Two honest limits are stated in the section itself. Every population figure is from the 2011 census, because that is the most recent one India has — so representation is being measured with a fifteen-year-old ruler, which is this project's own argument arriving somewhere it cannot be avoided. And the tax-return figures come from an analyst affiliated with the same party body the author holds a fellowship in; the direction is well established, the exact ratios are contestable, and the section says so."
+        },
+        {
+          "kind": "Data",
+          "text": "Representation is now computed on projected 2026 population rather than the 2011 census. The figures come from the National Commission on Population's 'Population Projections for India and States 2011-2036' (Report of the Technical Group, Registrar General of India), Table 21, which gives the projected population of every state as on 1 March 2026. This matters: on 2011 numbers the gap between the best- and worst-represented state here was 1.64 times, and on 2026 numbers it is 1.85 times — 1.81 million people behind each seat in Kerala against 3.34 million in Rajasthan. A frozen seat allocation keeps compounding, so using a stale population understated the problem. The 2011 figure is kept alongside each state so the change is visible."
+        },
+        {
+          "kind": "Note",
+          "text": "There is an irony worth naming. The best population figure available for 2026 is a projection, and it is a projection precisely because the 2021 census was never held. Measuring whether a vote is worth the same across India now depends on an estimate rather than a count. That is this project's central argument turning up in the one place it cannot be argued around."
         }
       ]
     },

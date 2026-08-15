@@ -1059,14 +1059,15 @@
     ]
   },
   "states": {
-    "note": "Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); 2011 Census population (crore) — the most recent census India has, because the 2021 census has not happened; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of the 2011 population and 477 of 543 Lok Sabha seats. Compiled from public sources; per-capita estimates vary slightly by release.",
+    "note": "Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); population as on 1 March 2026 from the National Commission on Population, 'Population Projections for India and States 2011-2036' (Report of the Technical Group on Population Projections, Registrar General of India), Table 21, converted from thousands to crore; 2011 Census population shown alongside for the comparison; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of India's projected 2026 population and 477 of 543 Lok Sabha seats.",
     "items": [
       {
         "state": "Telangana",
         "region": "South",
         "perCapita": 356564,
         "seats": 17,
-        "pop": 3.52,
+        "pop2011": 3.52,
+        "pop2026": 3.86,
         "tfr": 1.8
       },
       {
@@ -1074,7 +1075,8 @@
         "region": "South",
         "perCapita": 332926,
         "seats": 28,
-        "pop": 6.11,
+        "pop2011": 6.11,
+        "pop2026": 6.9,
         "tfr": 1.7,
         "ret": 60
       },
@@ -1083,7 +1085,8 @@
         "region": "North",
         "perCapita": 325759,
         "seats": 10,
-        "pop": 2.54,
+        "pop2011": 2.54,
+        "pop2026": 3.13,
         "tfr": 1.9
       },
       {
@@ -1091,7 +1094,8 @@
         "region": "South",
         "perCapita": 315220,
         "seats": 39,
-        "pop": 7.21,
+        "pop2011": 7.21,
+        "pop2026": 7.75,
         "tfr": 1.8,
         "ret": 60,
         "delim": -8
@@ -1101,7 +1105,8 @@
         "region": "West",
         "perCapita": 297722,
         "seats": 26,
-        "pop": 6.04,
+        "pop2011": 6.04,
+        "pop2026": 7.41,
         "tfr": 1.9,
         "ret": 50
       },
@@ -1110,7 +1115,8 @@
         "region": "South",
         "perCapita": 281001,
         "seats": 20,
-        "pop": 3.34,
+        "pop2011": 3.34,
+        "pop2026": 3.62,
         "tfr": 1.8,
         "delim": -8
       },
@@ -1119,7 +1125,8 @@
         "region": "West",
         "perCapita": 263974,
         "seats": 48,
-        "pop": 11.24,
+        "pop2011": 11.24,
+        "pop2026": 12.93,
         "tfr": 1.7,
         "ret": 30
       },
@@ -1128,7 +1135,8 @@
         "region": "South",
         "perCapita": 231553,
         "seats": 25,
-        "pop": 4.94,
+        "pop2011": 4.94,
+        "pop2026": 5.37,
         "tfr": 1.7
       },
       {
@@ -1136,7 +1144,8 @@
         "region": "North",
         "perCapita": 213008,
         "seats": 13,
-        "pop": 2.77,
+        "pop2011": 2.77,
+        "pop2026": 3.13,
         "tfr": 1.6
       },
       {
@@ -1144,7 +1153,8 @@
         "region": "East",
         "perCapita": 160182,
         "seats": 42,
-        "pop": 9.13,
+        "pop2011": 9.13,
+        "pop2026": 10.05,
         "tfr": 1.6,
         "ret": 120
       },
@@ -1153,7 +1163,8 @@
         "region": "North",
         "perCapita": 141651,
         "seats": 25,
-        "pop": 6.85,
+        "pop2011": 6.85,
+        "pop2026": 8.36,
         "tfr": 2.0
       },
       {
@@ -1161,7 +1172,8 @@
         "region": "East",
         "perCapita": 132197,
         "seats": 21,
-        "pop": 4.2,
+        "pop2011": 4.2,
+        "pop2026": 4.47,
         "tfr": 1.8
       },
       {
@@ -1169,7 +1181,8 @@
         "region": "North",
         "perCapita": 126249,
         "seats": 29,
-        "pop": 7.27,
+        "pop2011": 7.27,
+        "pop2026": 8.97,
         "tfr": 2.0,
         "ret": 244
       },
@@ -1178,7 +1191,8 @@
         "region": "North",
         "perCapita": 105274,
         "seats": 14,
-        "pop": 3.3,
+        "pop2011": 3.3,
+        "pop2026": 4.1,
         "tfr": 2.3
       },
       {
@@ -1186,7 +1200,8 @@
         "region": "North",
         "perCapita": 93514,
         "seats": 80,
-        "pop": 19.98,
+        "pop2011": 19.98,
+        "pop2026": 24.29,
         "tfr": 2.4,
         "ret": 200,
         "delim": 11
@@ -1196,14 +1211,17 @@
         "region": "North",
         "perCapita": 60337,
         "seats": 40,
-        "pop": 10.41,
+        "pop2011": 10.41,
+        "pop2026": 13.23,
         "tfr": 3.0,
         "ret": 510,
         "delim": 10
       }
     ],
     "retNote": "Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is the design of the system, not a malfunction.",
-    "delimNote": "Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them."
+    "delimNote": "Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them.",
+    "popNote": "Representation here is computed on the official 2026 projection, not the 2011 census, because 2011 is fifteen years stale and would understate how unequal representation has become. The projection is the government's own and is the best available number — but it is a projection precisely because the 2021 census was never held. A census would replace it with a count. That is this project's argument arriving in the one place it cannot be avoided: even measuring the fairness of a vote now depends on an estimate.",
+    "indiaPop2026": 142.34
   },
   "syntheticControl": {
     "note": "Independent corroboration from outside this project. Grier & Grier (2026) build a 'Synthetic India' — a weighted blend of comparator countries fitted to India's pre-2014 path — and measure the gap that opens after 2014. Different method, different data vintage, different authors; convergent conclusion. All values below are transcribed from the authors' published summary, not recomputed here.",

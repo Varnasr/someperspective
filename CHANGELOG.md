@@ -10,6 +10,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.42.0] - 2026-08-15
+
+### Data — representation now measured on 2026 population, not the 2011 census
+Seats are frozen on the 1971 census; using a 2011 population to compute people-per-seat
+compounded one stale denominator with another and **understated the inequality**.
+- Source: **National Commission on Population, "Population Projections for India and
+  States 2011-2036"** (Report of the Technical Group on Population Projections, Registrar
+  General of India, Ministry of Health & Family Welfare), **Table 21 — Projected Total
+  Population as on 1st March, 2011–2036**, p.260. Transcribed verbatim from the published
+  PDF and converted from '000 to crore.
+- `states.items[].pop` → **`pop2011`** (census) + **`pop2026`** (projection). `perMP` now
+  derives from `pop2026`; `perMP2011` retained so the change is visible per state.
+- Effect on the headline: the best-to-worst representation gap widens from **1.64× to
+  1.85×** — Kerala **1.81M** people per seat against Rajasthan **3.34M** (was 1.67M vs
+  2.74M). Bihar moves 2.60M → **3.31M**, Uttar Pradesh 2.50M → **3.04M**.
+- India total for context: **142.34 crore** projected for 2026; the 16 states here cover
+  **90%** of it and 477 of 543 seats.
+
+### Note — the irony is stated in the UI, not smoothed over
+The best 2026 population figure available is a *projection*, and it is a projection
+precisely because the 2021 census was never held. Whether a vote is worth the same across
+India can now only be answered with an estimate. `states.popNote` says so on the page.
+
 ## [2.41.0] - 2026-08-15
 
 ### Added — `Your State`, a state-level view

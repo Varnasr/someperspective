@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.41.0">
+    <meta name="version" content="2.42.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.41.0">
+    <link rel="stylesheet" href="/styles.css?v=2.42.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -1239,9 +1239,11 @@
                 <p class="text-sm mb-4" style="color:var(--ink-soft);">
                     The national picture hides most of what is interesting. India&rsquo;s richest large state has
                     <strong x-text="stateSpread.ratio + '&times;'"></strong> the per-capita income of its poorest, and a
-                    vote is not worth the same everywhere: seats were frozen on the 1971 census, so the number of people
-                    behind each MP now varies by <strong x-text="stateRepSpread.ratio + '&times;'"></strong> between the
-                    best- and worst-represented states here. Pick a state.
+                    vote is not worth the same everywhere: seats were frozen on the 1971 census, so on the
+                    government&rsquo;s own 2026 population projection the number of people behind each MP varies by
+                    <strong x-text="stateRepSpread.ratio + '&times;'"></strong> between the best- and worst-represented
+                    states here &mdash; wider than the <strong x-text="stateRepSpread2011 + '&times;'"></strong> gap the
+                    2011 census showed, because a frozen allocation keeps compounding. Pick a state.
                 </p>
 
                 <label for="stateSelect" class="sr-only">Choose a state</label>
@@ -1274,7 +1276,7 @@
                             <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
                                 <div class="text-xs font-semibold mb-1" style="color:var(--muted);">People per MP</div>
                                 <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.perMP.toFixed(2) + 'M'"></div>
-                                <div class="text-xs mt-1" style="color:var(--muted);" x-text="currentState.seats + ' seats · 2011 population'"></div>
+                                <div class="text-xs mt-1" style="color:var(--muted);" x-text="currentState.seats + ' seats · was ' + currentState.perMP2011.toFixed(2) + 'M on the 2011 census'"></div>
                             </div>
                             <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
                                 <div class="text-xs font-semibold mb-1" style="color:var(--muted);">Back per ₹100 of tax</div>
@@ -1296,7 +1298,7 @@
                             </div>
                             <div>
                                 <h3 class="text-sm font-bold mb-1" style="color:var(--ink);">Where it sits on representation</h3>
-                                <p class="text-xs mb-2" style="color:var(--muted);">Millions of people per Lok Sabha seat. Higher means each vote carries less weight.</p>
+                                <p class="text-xs mb-2" style="color:var(--muted);">Millions of people per Lok Sabha seat, on the official 2026 population projection. Higher means each vote carries less weight.</p>
                                 <div id="stateRepChart" style="width:100%;height:380px;"></div>
                             </div>
                         </div>
@@ -1310,10 +1312,7 @@
                         <div class="mt-5 p-4 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
                             <div class="kicker mb-1">What this section can and cannot tell you</div>
                             <p class="text-xs leading-relaxed" style="color:var(--ink-soft);">
-                                Every population figure here is from the <strong>2011 census</strong>, because that is the
-                                most recent one India has. Representation is therefore being measured with a ruler fifteen
-                                years old &mdash; which is the argument this whole project makes, arriving in a place where
-                                it is impossible to avoid.
+                                <span x-text="(primer.states && primer.states.popNote) || ''"></span>
                                 <span x-text="(primer.states && primer.states.note) || ''"></span>
                             </p>
                             <p class="text-xs leading-relaxed mt-2" style="color:var(--ink-soft);">
@@ -3383,26 +3382,30 @@ reduces overall score</pre>
         measurement: { note:'Five places where the choice, not the economy, moved the number.', items:[{title:'The GDP back-series',body:'2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed.'},{title:'The surveys that went missing',body:'The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable.'},{title:'A census a decade late',body:'Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers.'},{title:'Counting = allocating power',body:'Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose.'}] },
         // Full 16-state table, mirrored from data.json: the state view is a headline
         // feature, so it must still work when the live dataset cannot be reached.
-        states: { note:"Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); 2011 Census population (crore) — the most recent census India has, because the 2021 census has not happened; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of the 2011 population and 477 of 543 Lok Sabha seats. Compiled from public sources; per-capita estimates vary slightly by release.",
+        // Full 16-state table, mirrored from data.json: the state view is a headline
+        // feature, so it must still work when the live dataset cannot be reached.
+        states: { note:"Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); population as on 1 March 2026 from the National Commission on Population, 'Population Projections for India and States 2011-2036' (Report of the Technical Group on Population Projections, Registrar General of India), Table 21, converted from thousands to crore; 2011 Census population shown alongside for the comparison; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of India's projected 2026 population and 477 of 543 Lok Sabha seats.",
+            popNote:"Representation here is computed on the official 2026 projection, not the 2011 census, because 2011 is fifteen years stale and would understate how unequal representation has become. The projection is the government's own and is the best available number — but it is a projection precisely because the 2021 census was never held. A census would replace it with a count. That is this project's argument arriving in the one place it cannot be avoided: even measuring the fairness of a vote now depends on an estimate.",
             retNote:"Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is the design of the system, not a malfunction.",
             delimNote:"Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them.",
+            indiaPop2026:142.34,
             items:[
-            { state:"Telangana", region:"South", perCapita:356564, seats:17, pop:3.52, tfr:1.8 },
-            { state:"Karnataka", region:"South", perCapita:332926, seats:28, pop:6.11, tfr:1.7, ret:60 },
-            { state:"Haryana", region:"North", perCapita:325759, seats:10, pop:2.54, tfr:1.9 },
-            { state:"Tamil Nadu", region:"South", perCapita:315220, seats:39, pop:7.21, tfr:1.8, ret:60, delim:-8 },
-            { state:"Gujarat", region:"West", perCapita:297722, seats:26, pop:6.04, tfr:1.9, ret:50 },
-            { state:"Kerala", region:"South", perCapita:281001, seats:20, pop:3.34, tfr:1.8, delim:-8 },
-            { state:"Maharashtra", region:"West", perCapita:263974, seats:48, pop:11.24, tfr:1.7, ret:30 },
-            { state:"Andhra Pradesh", region:"South", perCapita:231553, seats:25, pop:4.94, tfr:1.7 },
-            { state:"Punjab", region:"North", perCapita:213008, seats:13, pop:2.77, tfr:1.6 },
-            { state:"West Bengal", region:"East", perCapita:160182, seats:42, pop:9.13, tfr:1.6, ret:120 },
-            { state:"Rajasthan", region:"North", perCapita:141651, seats:25, pop:6.85, tfr:2.0 },
-            { state:"Odisha", region:"East", perCapita:132197, seats:21, pop:4.2, tfr:1.8 },
-            { state:"Madhya Pradesh", region:"North", perCapita:126249, seats:29, pop:7.27, tfr:2.0, ret:244 },
-            { state:"Jharkhand", region:"North", perCapita:105274, seats:14, pop:3.3, tfr:2.3 },
-            { state:"Uttar Pradesh", region:"North", perCapita:93514, seats:80, pop:19.98, tfr:2.4, ret:200, delim:11 },
-            { state:"Bihar", region:"North", perCapita:60337, seats:40, pop:10.41, tfr:3.0, ret:510, delim:10 }
+            { state:"Telangana", region:"South", perCapita:356564, seats:17, pop2011:3.52, pop2026:3.86, tfr:1.8 },
+            { state:"Karnataka", region:"South", perCapita:332926, seats:28, pop2011:6.11, pop2026:6.9, tfr:1.7, ret:60 },
+            { state:"Haryana", region:"North", perCapita:325759, seats:10, pop2011:2.54, pop2026:3.13, tfr:1.9 },
+            { state:"Tamil Nadu", region:"South", perCapita:315220, seats:39, pop2011:7.21, pop2026:7.75, tfr:1.8, ret:60, delim:-8 },
+            { state:"Gujarat", region:"West", perCapita:297722, seats:26, pop2011:6.04, pop2026:7.41, tfr:1.9, ret:50 },
+            { state:"Kerala", region:"South", perCapita:281001, seats:20, pop2011:3.34, pop2026:3.62, tfr:1.8, delim:-8 },
+            { state:"Maharashtra", region:"West", perCapita:263974, seats:48, pop2011:11.24, pop2026:12.93, tfr:1.7, ret:30 },
+            { state:"Andhra Pradesh", region:"South", perCapita:231553, seats:25, pop2011:4.94, pop2026:5.37, tfr:1.7 },
+            { state:"Punjab", region:"North", perCapita:213008, seats:13, pop2011:2.77, pop2026:3.13, tfr:1.6 },
+            { state:"West Bengal", region:"East", perCapita:160182, seats:42, pop2011:9.13, pop2026:10.05, tfr:1.6, ret:120 },
+            { state:"Rajasthan", region:"North", perCapita:141651, seats:25, pop2011:6.85, pop2026:8.36, tfr:2.0 },
+            { state:"Odisha", region:"East", perCapita:132197, seats:21, pop2011:4.2, pop2026:4.47, tfr:1.8 },
+            { state:"Madhya Pradesh", region:"North", perCapita:126249, seats:29, pop2011:7.27, pop2026:8.97, tfr:2.0, ret:244 },
+            { state:"Jharkhand", region:"North", perCapita:105274, seats:14, pop2011:3.3, pop2026:4.1, tfr:2.3 },
+            { state:"Uttar Pradesh", region:"North", perCapita:93514, seats:80, pop2011:19.98, pop2026:24.29, tfr:2.4, ret:200, delim:11 },
+            { state:"Bihar", region:"North", perCapita:60337, seats:40, pop2011:10.41, pop2026:13.23, tfr:3.0, ret:510, delim:10 }
         ] }
     };
 
@@ -5244,8 +5247,13 @@ reduces overall score</pre>
             // One derived table for the whole section. perMP converts population in crore
             // to millions per Lok Sabha seat: pop(cr) * 10 / seats.
             get statesAll() {
+                // perMP is computed on the 2026 projection, not the 2011 census: seats are
+                // frozen on 1971, and using a fifteen-year-old population understates how
+                // unequal representation has become. perMP2011 is kept for the comparison.
                 return (((this.primer || {}).states || {}).items || [])
-                    .map(st => ({ ...st, perMP: (st.pop * 10) / st.seats }));
+                    .map(st => ({ ...st,
+                        perMP: (st.pop2026 * 10) / st.seats,
+                        perMP2011: (st.pop2011 * 10) / st.seats }));
             },
             get statesSorted() {
                 return [...this.statesAll].sort((a, b) => b.perCapita - a.perCapita);
@@ -5262,6 +5270,11 @@ reduces overall score</pre>
                 const v = this.statesAll.map(st => st.perMP).filter(Number.isFinite);
                 if (v.length < 2) return { ratio: '—' };
                 return { ratio: (Math.max(...v) / Math.min(...v)).toFixed(2) };
+            },
+            get stateRepSpread2011() {
+                const v = this.statesAll.map(st => st.perMP2011).filter(Number.isFinite);
+                if (v.length < 2) return '—';
+                return (Math.max(...v) / Math.min(...v)).toFixed(2);
             },
             stateRank(key) {
                 const sorted = [...this.statesAll].sort((a, b) => b[key] - a[key]);
@@ -5295,7 +5308,7 @@ reduces overall score</pre>
                     : `the <strong>${this.ordinal(repRank)}</strong> best represented`;
                 let out = `<strong>${st.state}</strong> is ${incPhrase} of the ${n} states here on per-capita income ` +
                           `(₹${Math.round(st.perCapita / 1000)}k), and ${repPhrase}: ` +
-                          `<strong>${st.perMP.toFixed(2)} million</strong> people behind each of its ${st.seats} Lok Sabha seats, ` +
+                          `<strong>${st.perMP.toFixed(2)} million</strong> projected 2026 residents behind each of its ${st.seats} Lok Sabha seats, ` +
                           `against ${best.perMP.toFixed(2)}M in ${best.state} and ${worst.perMP.toFixed(2)}M in ${worst.state}.`;
                 if (st.ret != null) {
                     out += st.ret < 100
@@ -5389,7 +5402,7 @@ reduces overall score</pre>
             createStatesExplorerChart() {
                 const c = this.getChart('statesExplorerChart');
                 if (!c) return;
-                const items = (((this.primer || {}).states || {}).items || []).map(s => ({ ...s, perMP: s.pop * 10 / s.seats }));
+                const items = (((this.primer || {}).states || {}).items || []).map(s => ({ ...s, perMP: s.pop2026 * 10 / s.seats }));
                 const meta = this.statesMetricMeta;
                 const key = this.statesMetric;
                 const sorted = [...items].sort((a, b) => (a[key] || 0) - (b[key] || 0));
