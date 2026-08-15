@@ -10,6 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.36.1] - 2026-08-15
+
+### Fixed
+- **Duplicate footer resources.** The Resources list had been appended to across three
+  releases without ever being restructured, and had grown to 15 entries containing two
+  genuine collisions: "Research package (ZIP)" against "Research Package" (the ZIP file
+  versus its own landing page, under nearly the same name), and the paper listed twice
+  as separate rows for HTML and PDF. Now 13 entries in four labelled groups — Start
+  here / The research / Summaries / Data & changes — with the paper and the feed as
+  secondary links on their parent rows. Verified: no duplicate hrefs, no duplicate
+  labels.
+- **Stale data-vintage claims.** Seven statements still said "through June 2026",
+  including the footer copyright line, the FAQ structured data, the CSV export header
+  and the journalist role description. All now say August 2026. The citizen primer's
+  publication date (16 June 2026) is a real date and is unchanged.
+
 ## [2.36.0] - 2026-08-15
 
 ### Fixed — accessibility
