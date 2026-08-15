@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>The research paper, and a correction to a headline inequality figure</title>
+    <link>https://someperspective.info/updates.html#v2.33.0</link>
+    <guid isPermaLink="false">someperspective-v2.33.0</guid>
+    <pubDate>Sat, 15 Aug 2026 12:00:00 +0000</pubDate>
+    <description>The full working paper is published, and an error in our own summary documents — one that ran in this project's favour — is corrected in the open. Added: 'Growth Without Accountability: Measuring India's Institutional and Distributional Transformation, 2004-2026' — a 15,000-word working paper, available to read online or as a 43-page PDF. It documents the measurement problem, specifies how the three indices are built, reports the results, tests them against an independent study, and states the limitations at length. Correction: Four of this project's summary documents stated the 2014 top 1% income share as 15%, which made inequality appear to rise by 7.6 percentage points to 2023. That figure is wrong: 15.0% is the 2014 bottom 50% share, and the two series had been crossed. The World Inequality Database series this project follows has 21.3%, making the rise 1.3 points. The documents are corrected and the framing rewritten around the two facts that are both true and stronger — the top 1% share is at its highest level since 1922, and the bottom half of the population lost roughly an eighth of its share of national income in twelve years. Changed: An automated check now compares every year-labelled figure in the published documents against the source dataset on each change, so a contradiction of this kind cannot pass silently again. Added: The research package now delivers what it advertised: a complete ZIP with every document, the paper, the dataset and the replication code, plus CSV and Excel exports.</description>
+  </item>
+  <item>
     <title>An independent check, August data, and three rendering fixes</title>
     <link>https://someperspective.info/updates.html#v2.31.0</link>
     <guid isPermaLink="false">someperspective-v2.31.0</guid>

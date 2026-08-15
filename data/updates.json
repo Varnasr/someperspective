@@ -2,18 +2,63 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.33.0",
+      "date": "2026-08-15",
+      "title": "The research paper, and a correction to a headline inequality figure",
+      "summary": "The full working paper is published, and an error in our own summary documents — one that ran in this project's favour — is corrected in the open.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "'Growth Without Accountability: Measuring India's Institutional and Distributional Transformation, 2004-2026' — a 15,000-word working paper, available to read online or as a 43-page PDF. It documents the measurement problem, specifies how the three indices are built, reports the results, tests them against an independent study, and states the limitations at length."
+        },
+        {
+          "kind": "Correction",
+          "text": "Four of this project's summary documents stated the 2014 top 1% income share as 15%, which made inequality appear to rise by 7.6 percentage points to 2023. That figure is wrong: 15.0% is the 2014 bottom 50% share, and the two series had been crossed. The World Inequality Database series this project follows has 21.3%, making the rise 1.3 points. The documents are corrected and the framing rewritten around the two facts that are both true and stronger — the top 1% share is at its highest level since 1922, and the bottom half of the population lost roughly an eighth of its share of national income in twelve years."
+        },
+        {
+          "kind": "Changed",
+          "text": "An automated check now compares every year-labelled figure in the published documents against the source dataset on each change, so a contradiction of this kind cannot pass silently again."
+        },
+        {
+          "kind": "Added",
+          "text": "The research package now delivers what it advertised: a complete ZIP with every document, the paper, the dataset and the replication code, plus CSV and Excel exports."
+        }
+      ]
+    },
+    {
       "version": "2.31.0",
       "date": "2026-08-15",
       "title": "An independent check, August data, and three rendering fixes",
       "summary": "Added an external study that reaches this project's governance conclusion by a different method, refreshed the data to August 2026, and fixed three display bugs — one of which had been hiding a chart's data entirely.",
       "changes": [
-        { "kind": "Added", "text": "An independent-corroboration section in Methodology covering Grier & Grier (2026), 'Promises, Promises'. They build a synthetic-control counterfactual over 1984-2013; this project builds composite indices from observed series. Different method, convergent conclusion — with the points of disagreement stated openly rather than smoothed over." },
-        { "kind": "Data", "text": "CPI 2026 updated to 4.45% (MoSPI July 2026). Unemployment re-cited to the June 2026 PLFS bulletin — the headline 5.5% was unchanged." },
-        { "kind": "Correction", "text": "MoSPI replaced the CPI 2012=100 index with 2024=100 from the January 2026 print, reweighting on HCES 2023-24. Food's weight fell from 45.86% to 36.75%, so headline CPI now responds less to a food-price shock than it used to. The 2026 figure is not on the same basis as 2014-2025 and is now labelled as such rather than silently spliced onto the older series." },
-        { "kind": "Fixed", "text": "The Era Comparison detail chart had been rendering with no data line at all — a colour rule matched none of its points and made the whole series transparent. It now draws correctly, split into NDA-I and NDA-II." },
-        { "kind": "Fixed", "text": "On phones the whole site was zooming out because one wide element stretched the page to roughly three times the viewport width. All fourteen tabs now fit a phone screen properly." },
-        { "kind": "Fixed", "text": "Era shading and policy-event markers on the Interactive Data chart were never drawing." },
-        { "kind": "Security", "text": "The two third-party scripts the site loads are now pinned with integrity hashes, so a substituted file on the CDN cannot execute." }
+        {
+          "kind": "Added",
+          "text": "An independent-corroboration section in Methodology covering Grier & Grier (2026), 'Promises, Promises'. They build a synthetic-control counterfactual over 1984-2013; this project builds composite indices from observed series. Different method, convergent conclusion — with the points of disagreement stated openly rather than smoothed over."
+        },
+        {
+          "kind": "Data",
+          "text": "CPI 2026 updated to 4.45% (MoSPI July 2026). Unemployment re-cited to the June 2026 PLFS bulletin — the headline 5.5% was unchanged."
+        },
+        {
+          "kind": "Correction",
+          "text": "MoSPI replaced the CPI 2012=100 index with 2024=100 from the January 2026 print, reweighting on HCES 2023-24. Food's weight fell from 45.86% to 36.75%, so headline CPI now responds less to a food-price shock than it used to. The 2026 figure is not on the same basis as 2014-2025 and is now labelled as such rather than silently spliced onto the older series."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The Era Comparison detail chart had been rendering with no data line at all — a colour rule matched none of its points and made the whole series transparent. It now draws correctly, split into NDA-I and NDA-II."
+        },
+        {
+          "kind": "Fixed",
+          "text": "On phones the whole site was zooming out because one wide element stretched the page to roughly three times the viewport width. All fourteen tabs now fit a phone screen properly."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Era shading and policy-event markers on the Interactive Data chart were never drawing."
+        },
+        {
+          "kind": "Security",
+          "text": "The two third-party scripts the site loads are now pinned with integrity hashes, so a substituted file on the CDN cannot execute."
+        }
       ]
     },
     {
@@ -22,8 +67,14 @@
       "title": "July data refresh",
       "summary": "Routine refresh against the public releases available in early July 2026.",
       "changes": [
-        { "kind": "Data", "text": "Unemployment 2026 revised 5.1% to 5.5% (PLFS Monthly Bulletin, May 2026). CPI 2026 set to 3.93%." },
-        { "kind": "Changed", "text": "Stale-date detection in CI widened, and the build's checkout action pinned to a single version across both workflows." }
+        {
+          "kind": "Data",
+          "text": "Unemployment 2026 revised 5.1% to 5.5% (PLFS Monthly Bulletin, May 2026). CPI 2026 set to 3.93%."
+        },
+        {
+          "kind": "Changed",
+          "text": "Stale-date detection in CI widened, and the build's checkout action pinned to a single version across both workflows."
+        }
       ]
     },
     {
@@ -32,7 +83,10 @@
       "title": "Stylesheet precompiled; runtime CDN retired",
       "summary": "The site stopped compiling its stylesheet in the browser on every visit and now ships a prebuilt one, with a guard so it cannot silently fall out of date.",
       "changes": [
-        { "kind": "Changed", "text": "Tailwind is compiled ahead of time into a committed stylesheet instead of being generated at page load. Faster first paint and one fewer third-party script." }
+        {
+          "kind": "Changed",
+          "text": "Tailwind is compiled ahead of time into a committed stylesheet instead of being generated at page load. Faster first paint and one fewer third-party script."
+        }
       ]
     },
     {
@@ -41,8 +95,14 @@
       "title": "Indices rebuilt: COVID undercount, NSO merger, GST",
       "summary": "The three constructed indices were rebuilt from a single canonical script so both political eras are computed identically.",
       "changes": [
-        { "kind": "Changed", "text": "The Statistical Suppression Index now includes the COVID mortality undercount and the NSO merger; the Fiscal Centralisation Index now treats GST as a structural shift in state taxing power rather than only counting cesses." },
-        { "kind": "Method", "text": "Both the UPA and NDA decades are now generated by the same script, so no difference between the eras can come from how they were computed." }
+        {
+          "kind": "Changed",
+          "text": "The Statistical Suppression Index now includes the COVID mortality undercount and the NSO merger; the Fiscal Centralisation Index now treats GST as a structural shift in state taxing power rather than only counting cesses."
+        },
+        {
+          "kind": "Method",
+          "text": "Both the UPA and NDA decades are now generated by the same script, so no difference between the eras can come from how they were computed."
+        }
       ]
     }
   ]

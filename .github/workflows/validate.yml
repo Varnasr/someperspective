@@ -91,7 +91,13 @@ jobs:
         # analysis/, updates.html, feed.xml, sitemap.xml and the downloads/ dataset
         # exports are all built from data/. The Pages deploy is a pure static upload,
         # so the committed copies are what ship — same contract as styles.css.
-        run: python3 tools/build_site.py --check
+        #
+        # Order matters: build_site.py packages the paper's HTML and PDF into the
+        # research-package ZIP, so the paper has to be built first or the ZIP is stale.
+        run: |
+          python3 tools/build_paper.py --check
+          python3 tools/build_site.py --check
 
       - name: Check downloads/ docs agree with data.json
         run: python3 tools/check_docs_consistency.py
+

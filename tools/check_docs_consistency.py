@@ -46,15 +46,12 @@ CLAIMS = [
 # is recorded in the open rather than silently corrected or silently ignored.
 #
 # ("file", "indicator", year): "why it is still here"
-ACKNOWLEDGED = {
-    ("executive-summary.html", "top1Share", 2014):
-        "Three documents (executive-summary, media-kit, technical-appendix) state the "
-        "2014 top 1% income share as 15%, giving a +7.6pp rise to 2023. data.json has "
-        "21.3% for 2014, which would make the rise +1.3pp. 15.0% is exactly the 2014 "
-        "BOTTOM 50% share in the same dataset, so this looks like the two series were "
-        "crossed. Resolving it changes a headline inequality claim in public-facing "
-        "documents, so it is left for the author rather than auto-corrected.",
-}
+#
+# Empty, and worth keeping empty. The one entry this held — three documents stating
+# the 2014 top 1% income share as 15% when the WID series in data.json has 21.3% —
+# was resolved in v2.33.0 rather than carried. 15.0% is the 2014 bottom 50% share, so
+# the two series had been crossed.
+ACKNOWLEDGED = {}
 
 
 def check():

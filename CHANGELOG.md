@@ -10,6 +10,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.33.0] - 2026-08-15
+
+### Added
+- **The research paper now exists.** *Growth Without Accountability: Measuring
+  India's Institutional and Distributional Transformation, 2004–2026* — a 15,000-word
+  working paper in `paper/paper.md`, rendered to `downloads/paper.html` and a 43-page
+  `downloads/paper.pdf`. It sets out the measurement problem, documents all six SSI
+  streams individually, specifies the three index constructions, reports results
+  including structural composition and the external position, validates the governance
+  finding against Grier & Grier's synthetic control, and states limitations at length —
+  including the pandemic confound and the non-independence of the three indices.
+  Every figure was verified programmatically against `data.json`.
+- **`tools/build_paper.py`** — Markdown → HTML → PDF. The Markdown parser handles the
+  document's subset directly rather than pulling a dependency; the PDF is printed via
+  the headless Chromium already present, and is skipped gracefully where unavailable.
+  The paper's source and PDF are now included in the research-package ZIP.
+
+### Fixed
+- **The 2014 top 1% income share error is resolved**, not merely acknowledged. Five
+  places across four documents stated it as 15% — which is the 2014 *bottom 50%* figure —
+  making inequality read as +7.6pp instead of +1.3pp. WID's published series, which
+  `data.json` follows, has 21.3%. Corrected in `executive-summary`, `media-kit`,
+  `technical-appendix` and `research-presentation`, with the surrounding framing rewritten
+  onto the two claims that are actually true and stronger: the *level* is the highest
+  since 1922, and the bottom half lost roughly an eighth of its income share. The
+  acknowledged-discrepancy exemption in `check_docs_consistency.py` is removed, so CI
+  now enforces this.
+- Heading ids in the generated paper are prefixed so they remain valid CSS selectors;
+  `#6-9-…` is legal HTML but throws in `querySelector`.
+- The generated paper uses one `<h1>` (the title) with sections demoted accordingly,
+  rather than 18 competing `<h1>`s.
+
+### CI
+- `build_paper.py --check` runs before `build_site.py --check`, since the research
+  package ZIP contains the paper's build output and would otherwise be stale.
+
 ## [2.32.0] - 2026-08-15
 
 ### Added

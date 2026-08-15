@@ -377,7 +377,11 @@ def write_zip(rel, parts):
 
 
 def build_package(data):
-    """The 'Complete Package' the research-package page has been promising."""
+    """The 'Complete Package' the research-package page has been promising.
+
+    Depends on tools/build_paper.py having run first: the paper's generated HTML and
+    PDF are packaged here, so building this before the paper leaves a stale ZIP.
+    """
     parts = []
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):
         if rel.endswith(".html"):
@@ -391,11 +395,22 @@ def build_package(data):
                 parts.append((f"someperspective/{rel}", fh.read()))
     with open(os.path.join(ROOT, "downloads", "dataset.csv"), encoding="utf-8") as fh:
         parts.append(("someperspective/dataset.csv", fh.read()))
+    # The paper: Markdown source plus the generated PDF. The PDF is binary, which
+    # writestr handles fine as bytes — everything else here is text.
+    src = os.path.join(ROOT, "paper", "paper.md")
+    if os.path.exists(src):
+        with open(src, encoding="utf-8") as fh:
+            parts.append(("someperspective/paper/paper.md", fh.read()))
+    pdf = os.path.join(ROOT, "downloads", "paper.pdf")
+    if os.path.exists(pdf):
+        with open(pdf, "rb") as fh:
+            parts.append(("someperspective/paper/paper.pdf", fh.read()))
     parts.append(("someperspective/README-PACKAGE.txt",
                   "Some Perspective — research package\n"
                   f"Data vintage: {data['meta']['updated']}\n"
                   f"Site: {SITE}\nRepository: https://github.com/Varnasr/someperspective\n"
                   "Licence: CC BY 4.0 (see LICENSE)\n\n"
+                  "paper/       the full research paper: Markdown source and PDF\n"
                   "documents/   the full document set as standalone HTML\n"
                   "data.json    source of record for every figure on the site\n"
                   "dataset.csv  the same indicators as a flat table\n"
