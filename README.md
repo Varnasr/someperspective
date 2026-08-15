@@ -97,6 +97,11 @@ python3 tools/build_paper.py       # paper.md -> downloads/paper.html + paper.pd
 python3 tools/build_site.py        # analyses, updates, feed, sitemap, exports, ZIP
 ```
 
+**Run these last, immediately before committing.** `build_site.py` packages `CHANGELOG.md`
+and `README.md` into `downloads/someperspective-research-package.zip`, so editing either
+file *after* a build leaves the committed ZIP a revision behind and CI fails on
+"Check generated artifacts are up to date".
+
 Guards, all run in CI on every push:
 
 | Script | What it refuses to let through |
