@@ -50,8 +50,13 @@ jobs:
           # whose values are JS expressions rather than URLs and are not files on disk.
           hrefs = set(re.findall(r'(?<![:\w-])href=\"([^\"#][^\"]*?)\"', html))
           local = [h for h in hrefs if not h.startswith('http') and not h.startswith('data:') and not h.startswith('mailto:')]
+          # A URL is not a filename: strip the query string and fragment before testing
+          # existence. /styles.css?v=2.42.0 is a request for styles.css, and treating the
+          # cache-buster as part of the path made this step fail for eight consecutive runs.
           # Root-relative URLs (e.g. /manifest.json) are served from the repo root, so check them relative to the repo.
-          missing = [h for h in local if not os.path.exists(h.lstrip('/'))]
+          def as_path(h):
+              return h.split('#')[0].split('?')[0].lstrip('/')
+          missing = [h for h in local if as_path(h) and not os.path.exists(as_path(h))]
           if missing:
               print('Broken local links:', missing)
               sys.exit(1)
