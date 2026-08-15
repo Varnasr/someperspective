@@ -2,6 +2,26 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Each entry corresponds to a published version of the site; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.44.0",
+      "date": "2026-08-15",
+      "title": "Breathing room on phones, and a footer that dates itself",
+      "summary": "The header was crushing its own subtitle into six lines on a phone, text sat on the very edge of the screen, and three copyright lines disagreed with each other.",
+      "changes": [
+        {
+          "kind": "Fixed",
+          "text": "On a phone the header stayed a horizontal row, so the title and its subtitle were squeezed into about half the screen while the theme controls took the rest. The subtitle wrapped to six lines. The header now stacks below 640 pixels: the title gets the full width and the controls sit on their own row underneath. The subtitle is down to three lines."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Text was sitting 16 pixels from the edge of a phone screen, which reads as content jammed against the bezel. The page gutter is now 20 pixels below 640 pixels wide. It costs 8 pixels of line width and buys a visible margin. Tablets are unaffected and keep their wider gutter."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Three copyright lines said three different things: 2025-2026 on the main site, 2025 in the executive summary, and 'May 2026' plus a retired project title in the research package. All three now agree. The main site's line also writes its own end year and reads the data vintage from the dataset, so it cannot go stale on the first of January or drift after a data refresh."
+        }
+      ]
+    },
+    {
       "version": "2.43.0",
       "date": "2026-08-15",
       "title": "A dedicated page on why inflation looks better after 2014",

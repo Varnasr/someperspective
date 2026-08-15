@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.43.0">
+    <meta name="version" content="2.44.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.43.0">
+    <link rel="stylesheet" href="/styles.css?v=2.44.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -439,6 +439,17 @@
         }
 
         /* Print styles */
+        /* 16px of gutter (Tailwind px-4) leaves text sitting on the edge of a phone
+           screen. 20px reads as a margin and costs almost nothing: on a 390px viewport
+           body text goes from 326px wide to 318px. The selectors are compounded with
+           .mx-auto because .px-4 is a class and beats a bare element selector. */
+        @media (max-width: 640px) {
+            header > div.mx-auto,
+            nav > div.mx-auto,
+            main.mx-auto,
+            footer > div.mx-auto { padding-left: 20px; padding-right: 20px; }
+        }
+
         @media print {
             .no-print { display: none !important; }
             body { font-size: 12pt; background: #fff; }
@@ -521,10 +532,7 @@
             /* 320px is the narrowest phone still in use, and the header row
                (title + theme switcher + script toggle) was 24px too wide for it.
                Allow the row to wrap at that width only. */
-            @media (max-width: 340px) {
-                header .flex.items-start,
-                header .flex.items-center.justify-between { flex-wrap: wrap; row-gap: .5rem; }
-            }
+
 
             .text-\[9px\]  { font-size: 12px !important; }
             .text-\[10px\] { font-size: 12px !important; }
@@ -699,8 +707,8 @@
     <header class="relative z-30 border-b" style="background:color-mix(in srgb, var(--surface) 84%, transparent); border-color:var(--line);">
         <div class="brand-strip"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex-1">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0">
+                <div class="flex-1 min-w-0">
                     <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-none">
                         <span class="gradient-text">Some Perspective</span>
                     </h1>
@@ -709,7 +717,7 @@
                     </p>
                 </div>
 
-                <div class="flex items-center gap-1.5 sm:gap-2 ml-2 sm:ml-4 no-print flex-shrink-0">
+                <div class="flex items-center gap-1.5 sm:gap-2 ml-0 sm:ml-4 no-print flex-shrink-0 self-start sm:self-auto">
                     <!-- Theme Switcher: Light / Dark / Device -->
                     <div class="flex bg-gray-100 dark:bg-gray-800 rounded-xl p-0.5">
                         <button @click="setTheme('light')" :class="themeMode === 'light' ? 'bg-white dark:bg-gray-700 shadow-sm' : ''" class="p-1.5 sm:p-2 rounded-lg transition-all" aria-label="Light mode" title="Light">
@@ -3220,7 +3228,10 @@ reduces overall score</pre>
             </div>
 
             <div class="text-center text-xs mt-8 pt-6 border-t border-slate-800">
-                <p class="text-gray-500">&copy; 2025–2026 Some Perspective | Dr. Varna Sri Raman | Data through August 2026</p>
+                <!-- End year is written by Alpine so it cannot go stale on 1 January;
+                     the static 2026 is the fallback if Alpine never initialises. -->
+                <p class="text-gray-500">&copy; 2025&ndash;<span x-text="new Date().getFullYear()">2026</span>
+                    Some Perspective | Dr. Varna Sri Raman | Data through <span x-text="dataUpdatedLong">August 2026</span></p>
                 <p class="mt-1.5 text-gray-600">Self-funded research for democratic accountability. Interests declared. All data openly available for verification and reuse.</p>
             </div>
         </div>
@@ -4923,6 +4934,16 @@ reduces overall score</pre>
                 const rose = peak > a[0] + Number.EPSILON;
                 const tail = (rose && peak > a[i]) ? ` · peak ${peak.toFixed(dp)} in ${peakYear}` : '';
                 return `${a[0].toFixed(dp)} → ${a[i].toFixed(dp)} (${yrs[0]}-${yrs[i]})${tail}`;
+            },
+            // "2026-08-15" -> "August 2026", read from the dataset rather than typed
+            // into the footer, so a data refresh updates the line automatically.
+            get dataUpdatedLong() {
+                const v = this.dataUpdated || '';
+                const m = /^(\d{4})-(\d{2})/.exec(v);
+                if (!m) return v || '';
+                const months = ['January','February','March','April','May','June',
+                                'July','August','September','October','November','December'];
+                return months[parseInt(m[2], 10) - 1] + ' ' + m[1];
             },
             latestObservedYear() {
                 const yrs = this.economicData.years || [];

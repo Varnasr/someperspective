@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>Breathing room on phones, and a footer that dates itself</title>
+    <link>https://someperspective.info/updates.html#v2.44.0</link>
+    <guid isPermaLink="false">someperspective-v2.44.0</guid>
+    <pubDate>Sat, 15 Aug 2026 12:00:00 +0000</pubDate>
+    <description>The header was crushing its own subtitle into six lines on a phone, text sat on the very edge of the screen, and three copyright lines disagreed with each other. Fixed: On a phone the header stayed a horizontal row, so the title and its subtitle were squeezed into about half the screen while the theme controls took the rest. The subtitle wrapped to six lines. The header now stacks below 640 pixels: the title gets the full width and the controls sit on their own row underneath. The subtitle is down to three lines. Fixed: Text was sitting 16 pixels from the edge of a phone screen, which reads as content jammed against the bezel. The page gutter is now 20 pixels below 640 pixels wide. It costs 8 pixels of line width and buys a visible margin. Tablets are unaffected and keep their wider gutter. Fixed: Three copyright lines said three different things: 2025-2026 on the main site, 2025 in the executive summary, and 'May 2026' plus a retired project title in the research package. All three now agree. The main site's line also writes its own end year and reads the data vintage from the dataset, so it cannot go stale on the first of January or drift after a data refresh.</description>
+  </item>
+  <item>
     <title>A dedicated page on why inflation looks better after 2014</title>
     <link>https://someperspective.info/updates.html#v2.43.0</link>
     <guid isPermaLink="false">someperspective-v2.43.0</guid>

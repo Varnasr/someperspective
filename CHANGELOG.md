@@ -10,6 +10,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.44.0] - 2026-08-15
+
+### Fixed — the header crushed itself on a phone
+`<div class="flex justify-between items-center">` stayed a row at every width, so on a
+390px screen the title block held roughly half the width and the theme/script controls
+the rest. The subtitle wrapped to **six lines**. Now `flex-col sm:flex-row`: full width
+for the title, controls on their own row beneath. Subtitle down to **three lines**.
+
+### Fixed — 16px gutters read as text on the bezel
+Tailwind's `px-4` gave 16px either side on phones. Raised to **20px** under
+`@media (max-width: 640px)`, in its own width-only query so `pointer: coarse` tablets
+keep `sm:px-6`. Selectors compounded with `.mx-auto` because `.px-4` is a class and beats
+a bare element selector — the first attempt silently lost that specificity fight and
+measured no change. Body text width 326px → 318px.
+
+### Fixed — three copyright lines, three different answers
+- `index.html` — "© 2025–2026 … Data through August 2026"
+- `downloads/executive-summary.html` — "© 2025"
+- `downloads/research-package.html` — "© May 2026 | India Political Economy Assessment"
+  (a month-stamped copyright, and the retired project title)
+
+All three now agree on 2025–2026. The main site's line writes its own end year from
+`new Date().getFullYear()` with a static `2026` fallback if Alpine never initialises, and
+takes the vintage from `data.json` via a new `dataUpdatedLong` getter — so it cannot go
+stale on 1 January or drift after a data refresh.
+
+Overflow re-checked at 320/360/390/414/480/640/768/1024/1440px across all tabs: 0px.
+
 ## [2.43.0] - 2026-08-15
 
 ### Added — `/inflation/`, a dedicated page on the one measure that improved
