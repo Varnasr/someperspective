@@ -3,9 +3,9 @@ message: "If you use this dataset or research, please cite it as below."
 authors:
   - family-names: "Sri Raman"
     given-names: "Varna"
-title: "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2014-2026"
-version: 3.0.2
-date-released: 2026-05-09
+title: "Some Perspective: India's Political Economy, 2004-2026"
+version: 2.38.0
+date-released: 2026-08-15
 url: "https://github.com/Varnasr/someperspective"
 repository-code: "https://github.com/Varnasr/someperspective"
 type: dataset
@@ -24,7 +24,7 @@ preferred-citation:
   authors:
     - family-names: "Sri Raman"
       given-names: "Varna"
-  title: "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2014-2026"
+  title: "Some Perspective: India's Political Economy, 2004-2026"
   year: 2026
   institution:
     name: "Independent Research"

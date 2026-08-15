@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Appendix - Statistical Methods and Detailed Results</title>
+    <meta name="description" content="Index specifications, component tables, robustness tests and complete results for the Statistical Suppression, Fiscal Centralisation and Democratic Quality indices.">
+    <link rel="canonical" href="https://someperspective.info/downloads/technical-appendix.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Some Perspective">
+    <meta property="og:title" content="Technical Appendix | Some Perspective">
+    <meta property="og:description" content="Index specifications, component tables, robustness tests and complete results for the Statistical Suppression, Fiscal Centralisation and Democratic Quality indices.">
+    <meta property="og:url" content="https://someperspective.info/downloads/technical-appendix.html">
+    <meta property="og:image" content="https://someperspective.info/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Technical Appendix | Some Perspective">
+    <meta name="twitter:description" content="Index specifications, component tables, robustness tests and complete results for the Statistical Suppression, Fiscal Centralisation and Democratic Quality indices.">
+    <meta name="twitter:image" content="https://someperspective.info/og-preview.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -69,6 +83,17 @@
             text-decoration: none;
         }
         
+        @media (pointer: coarse) {
+            /* Contents entries are navigation, not links inside a sentence, so the
+               inline-text exception to the target-size guideline does not apply. */
+            .toc a {
+                display: block;
+                min-height: 44px;
+                line-height: 44px;
+            }
+            .toc li { margin-bottom: 0; }
+        }
+
         .toc a:hover {
             color: #1f2937;
             text-decoration: underline;
@@ -143,6 +168,7 @@
         }
         
         code {
+            overflow-wrap: anywhere;
             background: #f3f4f6;
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
@@ -199,7 +225,7 @@
     
     <div class="header">
         <h1>Technical Appendix</h1>
-        <p class="subtitle">Statistical Methods, Robustness Tests, and Detailed Results<br>India Political Economy Assessment 2014-2025</p>
+        <p class="subtitle">Statistical Methods, Robustness Tests, and Detailed Results<br>Some Perspective: India&rsquo;s Political Economy 2004&ndash;2026</p>
     </div>
     
     <div class="toc">
@@ -813,7 +839,7 @@
         <div class="result-highlight">
             <h3>Summary Statistics</h3>
             <ul>
-                <li>GDP Growth: Mean = 6.8%, SD = 3.8%</li>
+                <li>GDP Growth (2014&ndash;2026): Mean = 6.08%, SD = 4.01%</li>
                 <li>Unemployment: Mean = 5.4%, SD = 0.78%</li>
                 <li>Top 1% Share: 21.3% (2014) → 22.6% (2023), +1.3pp; the level is the highest recorded since 1922. Bottom 50% Share: 15.0% → 13.1%, −1.9pp (a 12.7% relative decline)</li>
                 <li>SSI: 0 across UPA; peaked 9.0 (2021-22, COVID undercount); sustained 6.4 (2026)</li>
@@ -827,7 +853,7 @@
     
     <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
         <p style="text-align: center; color: #6b7280; font-size: 0.9rem;">
-            Technical Appendix | India Political Economy Assessment 2014-2025<br>
+            Technical Appendix | Some Perspective: India&rsquo;s Political Economy 2004&ndash;2026<br>
             Complete data and code: <strong>github.com/Varnasr/someperspective</strong><br>
             May 2026
         </p>

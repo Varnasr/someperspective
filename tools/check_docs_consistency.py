@@ -36,8 +36,16 @@ def flatten(path):
 CLAIMS = [
     # "press freedom ... 2024: 161/180"  /  "2024 ... 161/180"
     (r"\b(20\d\d)\s*:?\s*(\d{2,3})/180", "pressFreedom"),
+    # The reverse order, which is how the metric cards are marked up:
+    # "161/180 Press Freedom Rank (2024)". This ordering was uncovered until
+    # August 2026, and it was hiding exactly one wrong label.
+    (r"(\d{2,3})/180\s*Press Freedom Rank\s*\(?(20\d\d)\)?", "pressFreedom", "value_first"),
     # "top 1% income share rose from X in YYYY"
     (r"top 1% income share rose from ([\d.]+)% in (20\d\d)", "top1Share", "value_first"),
+    # Metric cards: "23.0% Top 1% Income Share (2026)"
+    (r"([\d.]+)%\s*Top 1% Income Share\s*\(?(20\d\d)\)?", "top1Share", "value_first"),
+    (r"([\d.]+)%\s*Bottom 50% Income Share\s*\(?(20\d\d)\)?", "bottom50Share", "value_first"),
+    (r"([\d.]+)%\s*Graduate [Uu]nemployment\s*\(?(20\d\d)\)?", "graduateUnemployment", "value_first"),
 ]
 
 

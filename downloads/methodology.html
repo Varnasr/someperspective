@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Methodology - India Political Economy Assessment</title>
+    <meta name="description" content="How the three constructed indices are built, which sources feed them, how the two political eras are made comparable, and where the method is weakest.">
+    <link rel="canonical" href="https://someperspective.info/downloads/methodology.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Some Perspective">
+    <meta property="og:title" content="Methodology | Some Perspective">
+    <meta property="og:description" content="How the three constructed indices are built, which sources feed them, how the two political eras are made comparable, and where the method is weakest.">
+    <meta property="og:url" content="https://someperspective.info/downloads/methodology.html">
+    <meta property="og:image" content="https://someperspective.info/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Methodology | Some Perspective">
+    <meta name="twitter:description" content="How the three constructed indices are built, which sources feed them, how the two political eras are made comparable, and where the method is weakest.">
+    <meta name="twitter:image" content="https://someperspective.info/og-preview.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         * {
@@ -76,6 +90,17 @@
             text-decoration: none;
         }
         
+        @media (pointer: coarse) {
+            /* Contents entries are navigation, not links inside a sentence, so the
+               inline-text exception to the target-size guideline does not apply. */
+            .toc a {
+                display: block;
+                min-height: 44px;
+                line-height: 44px;
+            }
+            .toc li { margin-bottom: 0; }
+        }
+
         .toc a:hover {
             text-decoration: underline;
         }
@@ -167,6 +192,7 @@
         }
         
         code {
+            overflow-wrap: anywhere;
             background: #f3f4f6;
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
@@ -175,11 +201,13 @@
         }
         
         .formula {
+            display: block;
+            max-width: 100%;
+            overflow-x: auto;
             font-family: 'JetBrains Mono', monospace;
             background: #f0fdf4;
             padding: 0.5rem;
             border-radius: 4px;
-            display: inline-block;
         }
         
         ul, ol {
@@ -249,7 +277,7 @@
     <div class="header">
         <h1>Technical Methodology</h1>
         <p class="subtitle">Triangulated Evidence and Novel Indices:<br>A Comprehensive Methodological Framework</p>
-        <p class="meta">India Political Economy Assessment 2014–2025 | May 2026</p>
+        <p class="meta">Some Perspective: India&rsquo;s Political Economy 2004&ndash;2026 | Data through August 2026</p>
     </div>
     
     <div class="toc">
@@ -292,7 +320,7 @@
         <div class="data-source">
             <h4>National Statistical Office (NSO)</h4>
             <ul>
-                <li>GDP and National Accounts (2004-2025)</li>
+                <li>GDP and National Accounts (2004&ndash;2026)</li>
                 <li>Consumer Price Index series</li>
                 <li>Industrial Production Index</li>
                 <li>Annual Survey of Industries (ASI)</li>

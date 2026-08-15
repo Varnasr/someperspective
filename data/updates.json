@@ -2,14 +2,14 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
-      "version": "2.38.0",
+      "version": "2.39.0",
       "date": "2026-08-15",
-      "title": "A declared interest, two corrected V-Dem errors, and a loader that recovers",
-      "summary": "The author's political affiliation is now stated on the site rather than denied. Two errors in this project's own V-Dem inputs — both running in its favour — are corrected. And the page no longer fails silently when a download is cut short.",
+      "title": "A declared interest, corrected V-Dem inputs, a loader that recovers, and a sitewide audit",
+      "summary": "The author's political affiliation is now stated on the site rather than denied. Three errors in this project's own figures are corrected, including a headline growth rate that had been quoted eight ways. And a full audit of every page, on desktop and phone, fixed what it found.",
       "changes": [
         {
           "kind": "Correction",
-          "text": "The footer previously said 'No political affiliations.' That was false. The author is a national spokesperson of the All India Congress Committee, and this project compares a Congress-led government with its successor. The claim is replaced by a declaration of interests, stated on the site, in the media kit, in the guided walkthrough and in the paper's Declarations. The research remains unfunded and no party body commissioned, reviewed or approved it — but that is a separate fact from neutrality, and the site no longer conflates the two."
+          "text": "The footer previously said 'No political affiliations.' That was false. The author is a Manmohan Singh Fellow of the All India Professionals' Congress, a department of the Indian National Congress, and this project compares a Congress-led government with its successor. The claim is replaced by a declaration of interests, stated on the site, in the media kit, in the guided walkthrough and in the paper's Declarations. The research remains unfunded and no party body commissioned, reviewed or approved it — but that is a separate fact from neutrality, and the site no longer conflates the two."
         },
         {
           "kind": "Correction",
@@ -42,6 +42,30 @@
         {
           "kind": "Fixed",
           "text": "The animated timeline opened on 2014, where the SSI is 0.0 — so the first thing the panel showed was 'SSI Score: 0', which reads as a broken figure rather than a result. It now opens on the latest year, states which year it is showing, and explains what a zero SSI means: the index counts documented suppression episodes, and none had begun by 2014."
+        },
+        {
+          "kind": "Correction",
+          "text": "The headline growth figure was wrong. 'India's GDP grew at 6.8% annually since 2014' appeared in eight places across the site and the documents, and it is not what the published series says on any basis. The arithmetic mean for 2014-2026 is 6.1%, which is what the research paper has always reported — so the site's front page and its own paper disagreed. This error ran in the government's favour rather than this project's, but it is an error either way. Every instance now reads 6.1%, with the ex-pandemic figure of 7.2% given alongside it so the 2020 contraction is not quietly doing the work in either direction. The UPA comparison figure is corrected from 7.7% to 7.1% on the same basis."
+        },
+        {
+          "kind": "Correction",
+          "text": "The executive summary quoted India's press-freedom rank of 161 and labelled it 2024. 161 is the 2023 figure; 2024 was 159. The metric panel now carries the latest year throughout — 157 for 2026 — and the consistency check has been widened to catch value-before-year phrasing, which is the ordering that had been hiding this one."
+        },
+        {
+          "kind": "Changed",
+          "text": "The same work was being cited five different ways across the site, with two different titles, two different years and a period of 2014-2025 that stopped a year before the data does. Everything now cites one form: Raman, V.S. (2026), Some Perspective: India's Political Economy, 2004-2026. The research paper keeps its own distinct title, as it should."
+        },
+        {
+          "kind": "Fixed",
+          "text": "A sitewide audit ran every page at desktop and phone width, checking for script errors, failed requests, broken links, duplicate identifiers, sideways scrolling, skipped heading levels, images without alternative text and touch targets below the minimum size. It found the methodology page scrolling sideways on a phone (a long formula and an unbreakable URL), contents links and tags too small to tap reliably, and heading levels skipping from h2 to h4 in four documents. All are fixed. Ninety-eight of a hundred page-and-screen combinations now come back completely clean; the two remaining are elements that are empty or hidden by design."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Seven of the downloadable documents had no description, no canonical URL and no social-preview tags, so sharing a link to any of them produced a bare URL with no title or image. All seven now carry them."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The retired research presentation declared the walkthrough as its canonical address while actually redirecting readers to the paper. It now points both at the paper."
         }
       ]
     },

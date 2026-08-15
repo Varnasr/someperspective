@@ -10,13 +10,86 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.39.0] - 2026-08-15
+
+### Fixed — the author's role, stated correctly
+- The declaration named the wrong position. Corrected everywhere to **Manmohan Singh
+  Fellow of the All India Professionals' Congress (AIPC), a department of the Indian
+  National Congress**: `index.html` (declaration card + footer), `paper/paper.md`,
+  `downloads/media-kit.html`, `data/walkthrough.json`, `data/updates.json` and the
+  LinkedIn draft. The disclosure logic is unchanged — AIPC is a Congress body, so the
+  interest in a UPA-vs-NDA comparison stands exactly as declared.
+
+### Fixed — a headline figure that was wrong in eight places
+- **"India's GDP grew at 6.8% annually since 2014"** appeared in `index.html` (×3),
+  `executive-summary.html` (×3), `media-kit.html` (×2) and `technical-appendix.html`.
+  It is not the published series on any basis: the arithmetic mean for 2014–2026 is
+  **6.08%**, ex-pandemic **7.19%**, compound **6.0%**. The paper has reported 6.08 all
+  along, so **the front page and the paper contradicted each other**. This error ran in
+  the *government's* favour, unlike the others corrected today.
+  - All instances now read **6.1%**, with **7.2% ex-pandemic** given alongside so 2020
+    is not silently carrying the argument in either direction. The UPA comparator is
+    corrected 7.7% → **7.1%** (computed 7.08). Appendix SD corrected 3.8% → **4.01%**.
+- **Press freedom rank mislabelled by a year.** The executive summary quoted 161/180 as
+  2024; 161 is 2023 and 2024 is 159. The metric panel now carries the latest year
+  throughout (157/180 for 2026, top 1% 23.0% for 2026, +1.7pp cross-era).
+
+### Changed — one citation, not five
+- The same work was cited five ways: *"Some Perspective: India's Economic
+  Transformation"* (index ×4), *"Narratives, Numbers, and Democratic Accountability:
+  India 2004–2026"* (footer), *"…A Political Economy Assessment of India, 2014-2025"*
+  (research package, `@article{raman2025india}`, year 2025), *"…India's Economic
+  Transformation 2014-2026"* (`CITATION.cff`), and *"India Political Economy Dataset
+  2014-2025"*. Unified on **Raman, V.S. (2026). _Some Perspective: India's Political
+  Economy, 2004–2026._** The paper keeps its own distinct title.
+- `CITATION.cff` also still carried `version: 3.0.2` (a rolled-back line) and a May 2026
+  release date. Now `2.39.0` / `2026-08-15`.
+- Assessment-period labels reading `2014-2025` corrected to `2004–2026` across the
+  executive summary, media kit, policy brief, technical appendix and methodology.
+  (The `2004-2025` labels on the five `data/*.csv` series charts are correct and kept —
+  those series genuinely end in 2025.)
+
+### Fixed — sitewide audit, desktop + phone
+Every page rendered at 1280px and 390px and checked for script errors, failed requests,
+HTTP ≥400, broken internal links, duplicate ids, horizontal overflow, skipped heading
+levels, images without `alt`, links with no accessible name, and touch targets under
+44px. Result before fixes: 89/100 page-viewport combinations clean. After: **98/100**,
+the two remainders being false positives (bindings that are empty by design and the
+`sr-only` skip link, 1×1 until focused).
+- **`methodology.html` scrolled sideways on a phone** (417px in a 390px viewport).
+  Cause: `.formula` was `display:inline-block` monospace and could not wrap, plus an
+  unbreakable clone URL in `<code>`. Now `display:block; overflow-x:auto` and
+  `overflow-wrap:anywhere`. Same guard applied to `technical-appendix.html`.
+- **Contents links 19px tall** on `methodology.html` and `technical-appendix.html`, and
+  the analysis-library tag link **13px tall**. All now 44px under `@media (pointer:coarse)`.
+  These are navigation, so the WCAG 2.5.8 inline-text exception does not apply.
+- **Skipped heading levels**: h2 → h4 in `citizen-guide.html` (14), `policy-brief.html`
+  (7) and `media-kit.html` (6) — promoted to `h3.minor`, styled to the old h4 size so
+  nothing moves. h1 → h3 on the homepage's daily-analysis card — now `h2`, size set by
+  classes so the change is semantic only.
+
+### Fixed — sharing and metadata
+- Seven documents had **no description, no canonical and no Open Graph tags**, so a
+  shared link rendered as a bare URL. All seven now carry description, canonical,
+  og:*/twitter:* and the site preview image. `research-package.html` also had a
+  duplicate description; removed.
+- `research-presentation.html` declared `canonical` = the walkthrough while its meta
+  refresh sent readers to the paper. Both now point at the paper.
+
+### Added
+- `check_docs_consistency.py` gains three value-before-year patterns
+  (`161/180 Press Freedom Rank (2024)`, `23.0% Top 1% Income Share (2026)`,
+  bottom-50% and graduate-unemployment cards). That ordering was uncovered, and it was
+  hiding the mislabelled press-freedom year. Verified to fail on an injected wrong value.
+
 ## [2.38.0] - 2026-08-15
 
 ### Fixed — a false claim about the author
 - **The footer said "No political affiliations." That was false.** The author is a
-  national spokesperson of the All India Congress Committee, and this project compares
-  a Congress-led government (UPA) with its successor (NDA), concluding against the
-  successor on eight of nine measures. On a site whose whole argument is that comparison,
+  Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of
+  the Indian National Congress, and this project compares a Congress-led government
+  (UPA) with its successor (NDA), concluding against the successor on eight of nine
+  measures. On a site whose whole argument is that comparison,
   a denial of affiliation was the single most attackable sentence on it.
 - Replaced with an affirmative **Declaration of interests**, carried in four places:
   - `index.html` footer (About column), with a link into the full statement;

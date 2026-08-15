@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.38.0">
+    <meta name="version" content="2.39.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -105,7 +105,7 @@
             "name": "Some Perspective",
             "url": "https://someperspective.info"
         },
-        "citation": "Raman, V.S. (2026). Some Perspective: India's Economic Transformation. someperspective.info",
+        "citation": "Raman, V.S. (2026). Some Perspective: India's Political Economy, 2004-2026. someperspective.info",
         "variableMeasured": [
             "GDP Growth Rate",
             "Unemployment Rate",
@@ -843,7 +843,10 @@
                     </div>
                     <span class="text-xs text-gray-400 dark:text-gray-500 font-mono" x-text="new Date().toISOString().slice(0,10)"></span>
                 </header>
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-snug" x-text="todaysFeature.title"></h3>
+                <!-- h2, not h3: this article's title sits directly under the page h1, and
+                     skipping a level breaks the document outline. Size is set by classes,
+                     so the change is semantic only. -->
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-snug" x-text="todaysFeature.title"></h2>
                 <div id="todaysHighlightChart" class="w-full h-[180px] sm:h-[240px] mb-4 bg-white/60 dark:bg-black/20 rounded-lg"></div>
                 <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 leading-relaxed" x-html="todaysFeature.body"></p>
                 <div class="border-l-4 border-indigo-500 dark:border-indigo-400 bg-indigo-50/70 dark:bg-indigo-950/30 pl-4 py-3 pr-3 mb-3 rounded-r-lg">
@@ -875,7 +878,7 @@
 
                 <div class="bg-amber-50 dark:bg-amber-900/15 border border-amber-200/60 dark:border-amber-700/30 p-5 rounded-xl mb-8">
                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                        India's GDP grew at 6.8% annually since 2014, yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This unfunded, data-driven research examines <strong>what the headline numbers hide</strong> — with interactive charts, downloadable datasets, and three novel indices you won't find anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
+                        India's GDP averaged 6.1% a year since 2014 &mdash; 7.2% if you set the pandemic year aside, against 7.1% in the decade before &mdash; yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This unfunded, data-driven research examines <strong>what the headline numbers hide</strong> — with interactive charts, downloadable datasets, and three novel indices you won't find anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
                     </p>
                 </div>
 
@@ -999,7 +1002,7 @@
 
                 <div class="prose prose-sm dark:prose-invert max-w-none">
                     <p class="lead text-lg mb-4">
-                        India grew at 6.8% annually from 2014 to 2025 — yet formal employment <em>declined</em>, inequality reached levels unseen since 1922, and every major international index recorded democratic deterioration. This isn't a story of failure; it's a story of <strong>growth that bypassed the majority</strong>.
+                        India grew at 6.1% a year on average from 2014 to 2026 — 7.2% excluding the pandemic year, against 7.1% under UPA — yet formal employment <em>declined</em>, inequality reached levels unseen since 1922, and every major international index recorded democratic deterioration. This isn't a story of failure; it's a story of <strong>growth that bypassed the majority</strong>.
                     </p>
                     
                     <h3 class="text-xl font-bold mt-6 mb-3">Core Findings</h3>
@@ -1091,7 +1094,7 @@
                         </button>
                     </div>
                     <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3">
-                        While GDP grew at 6.8% average (2014-Mar 2026), unemployment initially rose before recent declines.
+                        While GDP averaged 6.1% (2014-2026; 7.2% excluding 2020), unemployment initially rose before recent declines.
                     </p>
                 </div>
                 
@@ -1548,8 +1551,9 @@
                 <div class="kicker mb-1">Read this first</div>
                 <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Declaration of interests</h3>
                 <p class="text-sm mb-3" style="color:var(--ink-soft);">
-                    <strong style="color:var(--ink);">The author is a national spokesperson of the All India Congress
-                    Committee.</strong> This site compares the record of a Congress-led government (UPA, 2004&ndash;14)
+                    <strong style="color:var(--ink);">The author is a Manmohan Singh Fellow of the All India
+                    Professionals&rsquo; Congress (AIPC), a department of the Indian National Congress.</strong>
+                    This site compares the record of a Congress-led government (UPA, 2004&ndash;14)
                     with the record of its successor (NDA, 2014&ndash;26) and concludes against the successor on eight
                     of nine measures. That is a party interest in the conclusion, and it is declared here rather than
                     left for someone else to discover.
@@ -1689,7 +1693,7 @@
                 </div>
                 <div class="card-inner">
                     <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--muted);">Cite as</div>
-                    <p class="text-sm" style="color:var(--ink-soft);">Raman, V.S. (2026). <em>Some Perspective: India’s Economic Transformation.</em> someperspective.info. Licensed CC BY 4.0. Per-series sources are listed in <code class="text-xs">data.json</code> and below.</p>
+                    <p class="text-sm" style="color:var(--ink-soft);">Raman, V.S. (2026). <em>Some Perspective: India’s Political Economy, 2004–2026.</em> someperspective.info. Licensed CC BY 4.0. Per-series sources are listed in <code class="text-xs">data.json</code> and below.</p>
                 </div>
             </div>
 
@@ -2976,10 +2980,10 @@ reduces overall score</pre>
                         Unfunded: no institutional, governmental, party or commercial money.
                     </p>
                     <p class="text-xs sm:text-sm leading-relaxed text-gray-400 mt-3">
-                        <strong class="text-gray-200">Declared interest:</strong> the author is a national
-                        spokesperson of the All India Congress Committee. This project compares a
-                        Congress-led government with its successor, so that is a live interest and not a
-                        footnote.
+                        <strong class="text-gray-200">Declared interest:</strong> the author is a Manmohan
+                        Singh Fellow of the All India Professionals&rsquo; Congress, a department of the Indian
+                        National Congress. This project compares a Congress-led government with its
+                        successor, so that is a live interest and not a footnote.
                         <a href="#" @click.prevent="activeTab='Methodology'; setTimeout(() =&gt; document.getElementById('declared-interests')?.scrollIntoView({behavior:'smooth', block:'start'}), 250)" class="text-blue-400 hover:text-blue-300 underline">Read the full declaration</a>.
                     </p>
                 </div>
@@ -3025,7 +3029,7 @@ reduces overall score</pre>
                     </p>
                     <p class="text-xs text-gray-500">
                         <strong class="text-gray-400">Cite as:</strong><br>
-                        Raman, V.S. (2026). <em>Narratives, Numbers, and Democratic Accountability: India 2004–2026.</em>
+                        Raman, V.S. (2026). <em>Some Perspective: India’s Political Economy, 2004–2026.</em>
                         someperspective.info
                     </p>
                 </div>
@@ -3815,7 +3819,7 @@ reduces overall score</pre>
             },
 
             citationText() {
-                return 'Raman, V.S. (2026). Some Perspective: India’s Economic Transformation. someperspective.info · CC BY 4.0 · retrieved ' + new Date().toISOString().slice(0, 10);
+                return 'Raman, V.S. (2026). Some Perspective: India’s Political Economy, 2004–2026. someperspective.info · CC BY 4.0 · retrieved ' + new Date().toISOString().slice(0, 10);
             },
 
             // Export a chart as PNG with a baked-in citation + source footer.
@@ -3881,7 +3885,7 @@ reduces overall score</pre>
             },
 
             copyCitation() {
-                const bib = '@techreport{someperspective2026,\n  title={Some Perspective: India’s Economic Transformation},\n  author={Raman, Varna Sri},\n  year={2026},\n  institution={Independent Research},\n  url={https://someperspective.info}\n}';
+                const bib = '@techreport{someperspective2026,\n  title={Some Perspective: India’s Political Economy, 2004--2026},\n  author={Raman, Varna Sri},\n  year={2026},\n  institution={Independent Research},\n  url={https://someperspective.info}\n}';
                 if (navigator.clipboard) {
                     navigator.clipboard.writeText(bib).then(() => this.showShareToast('Citation (BibTeX) copied'));
                 }
