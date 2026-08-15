@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Updates | Some Perspective</title>
+<meta name="description" content="Dated record of data refreshes, corrections and changes to Some Perspective.">
+<link rel="canonical" href="https://someperspective.info/updates.html">
+<meta property="og:title" content="Updates | Some Perspective">
+<meta property="og:description" content="Dated record of data refreshes, corrections and changes to Some Perspective.">
+<meta property="og:url" content="https://someperspective.info/updates.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://someperspective.info/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="https://someperspective.info/feed.xml">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f1ea;--surface:#fff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
+--muted:#6b6b78;--line:rgba(27,27,34,.10);--accent:#b4530e;--accent-2:#0e7490}
+@media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--surface:#161922;--surface-2:#1c2029;
+--ink:#edeff5;--ink-soft:#d3d7e0;--muted:#99a0b1;--line:rgba(255,255,255,.09);
+--accent:#fb923c;--accent-2:#22d3ee}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
+line-height:1.65;padding:2rem 1.25rem 4rem}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--accent)}
+.crumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem}
+.crumb a{text-decoration:none;font-weight:600}
+.kicker{font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:Fraunces,Georgia,serif;font-size:2rem;line-height:1.2;margin:.4rem 0 .9rem;color:var(--ink)}
+h2{font-family:Fraunces,Georgia,serif;font-size:1.25rem;margin:2rem 0 .6rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin:1.2rem 0}
+.lede{font-size:1.05rem;color:var(--ink-soft)}
+.takeaway{border-left:4px solid var(--accent);background:var(--surface-2);padding:1rem 1.2rem;
+border-radius:0 12px 12px 0;margin:1.4rem 0;font-weight:600;color:var(--ink)}
+.meta{font-size:.8rem;color:var(--muted);margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+background:var(--surface-2);border:1px solid var(--line);color:var(--muted);padding:.2rem .55rem;border-radius:999px}
+ul.list{list-style:none;margin:1rem 0}
+ul.list li{border-bottom:1px solid var(--line);padding:.9rem 0}
+ul.list li:last-child{border-bottom:0}
+ul.list a{font-weight:700;text-decoration:none;font-size:1.02rem}
+ul.list p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+padding:.6rem 1rem;border-radius:12px;font-size:.9rem}
+.rel{font-size:.85rem}
+</style>
+
+</head>
+<body><div class="wrap">
+<p class="crumb"><a href="./">Some Perspective</a> &rsaquo; Updates</p>
+<span class="kicker">What changed, and when</span>
+<h1>Updates</h1>
+<p class="lede">A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.</p>
+<p class="rel"><a class="btn" href="feed.xml">Subscribe by RSS</a>
+&nbsp; <a href="analysis/">Browse the analysis library &rarr;</a></p>
+<div class="card">
+<span class="kicker">2026-08-15 &nbsp;·&nbsp; v2.31.0</span>
+<h2 style="margin-top:.3rem">An independent check, August data, and three rendering fixes</h2>
+<p class="lede">Added an external study that reaches this project's governance conclusion by a different method, refreshed the data to August 2026, and fixed three display bugs — one of which had been hiding a chart's data entirely.</p>
+<ul class="list" style="margin-top:.6rem"><li><strong>Added</strong> — An independent-corroboration section in Methodology covering Grier &amp; Grier (2026), 'Promises, Promises'. They build a synthetic-control counterfactual over 1984-2013; this project builds composite indices from observed series. Different method, convergent conclusion — with the points of disagreement stated openly rather than smoothed over.</li><li><strong>Data</strong> — CPI 2026 updated to 4.45% (MoSPI July 2026). Unemployment re-cited to the June 2026 PLFS bulletin — the headline 5.5% was unchanged.</li><li><strong>Correction</strong> — MoSPI replaced the CPI 2012=100 index with 2024=100 from the January 2026 print, reweighting on HCES 2023-24. Food's weight fell from 45.86% to 36.75%, so headline CPI now responds less to a food-price shock than it used to. The 2026 figure is not on the same basis as 2014-2025 and is now labelled as such rather than silently spliced onto the older series.</li><li><strong>Fixed</strong> — The Era Comparison detail chart had been rendering with no data line at all — a colour rule matched none of its points and made the whole series transparent. It now draws correctly, split into NDA-I and NDA-II.</li><li><strong>Fixed</strong> — On phones the whole site was zooming out because one wide element stretched the page to roughly three times the viewport width. All fourteen tabs now fit a phone screen properly.</li><li><strong>Fixed</strong> — Era shading and policy-event markers on the Interactive Data chart were never drawing.</li><li><strong>Security</strong> — The two third-party scripts the site loads are now pinned with integrity hashes, so a substituted file on the CDN cannot execute.</li></ul>
+</div><div class="card">
+<span class="kicker">2026-07-07 &nbsp;·&nbsp; v2.30.1</span>
+<h2 style="margin-top:.3rem">July data refresh</h2>
+<p class="lede">Routine refresh against the public releases available in early July 2026.</p>
+<ul class="list" style="margin-top:.6rem"><li><strong>Data</strong> — Unemployment 2026 revised 5.1% to 5.5% (PLFS Monthly Bulletin, May 2026). CPI 2026 set to 3.93%.</li><li><strong>Changed</strong> — Stale-date detection in CI widened, and the build's checkout action pinned to a single version across both workflows.</li></ul>
+</div><div class="card">
+<span class="kicker">2026-06-18 &nbsp;·&nbsp; v2.30.0</span>
+<h2 style="margin-top:.3rem">Stylesheet precompiled; runtime CDN retired</h2>
+<p class="lede">The site stopped compiling its stylesheet in the browser on every visit and now ships a prebuilt one, with a guard so it cannot silently fall out of date.</p>
+<ul class="list" style="margin-top:.6rem"><li><strong>Changed</strong> — Tailwind is compiled ahead of time into a committed stylesheet instead of being generated at page load. Faster first paint and one fewer third-party script.</li></ul>
+</div><div class="card">
+<span class="kicker">2026-06-18 &nbsp;·&nbsp; v2.28.0</span>
+<h2 style="margin-top:.3rem">Indices rebuilt: COVID undercount, NSO merger, GST</h2>
+<p class="lede">The three constructed indices were rebuilt from a single canonical script so both political eras are computed identically.</p>
+<ul class="list" style="margin-top:.6rem"><li><strong>Changed</strong> — The Statistical Suppression Index now includes the COVID mortality undercount and the NSO merger; the Fiscal Centralisation Index now treats GST as a structural shift in state taxing power rather than only counting cesses.</li><li><strong>Method</strong> — Both the UPA and NDA decades are now generated by the same script, so no difference between the eras can come from how they were computed.</li></ul>
+</div>
+<p class="meta">Full technical detail for every release, including internal refactors not listed here,
+is in <a href="https://github.com/Varnasr/someperspective/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p></div></body></html>

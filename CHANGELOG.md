@@ -10,6 +10,68 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.32.0] - 2026-08-15
+
+### Added
+- **Analysis library at `/analysis/`.** The 36 rotating findings were previously
+  inline in `index.html` with no addressable URL — unlinkable, unshareable, and
+  invisible to search. They now live in `data/features.json` and are generated as
+  one permalinked page each, plus a categorised index, with `Article` structured
+  data and prev/next navigation. "Today's Analysis" gained a Permalink link.
+  Deliberately **not** presented as a dated blog: these carry no publication date
+  and none was invented for them. They are standing readings of the dataset,
+  stamped with the data vintage and rebuilt on every refresh.
+- **Updates page at `/updates.html`** with an **RSS feed at `/feed.xml`**, driven
+  by `data/updates.json`. This is where the real chronology lives — data
+  refreshes and corrections in plain language, dated, one entry per release.
+  Corrections are stated as corrections rather than quietly folded into a refresh.
+- **`tools/build_site.py`** generates all of the above plus `sitemap.xml` and the
+  dataset exports. Output is byte-deterministic (zip containers are written with a
+  fixed timestamp, which they otherwise would not be) so the CI drift guard works.
+- **The downloads that were promised now exist**: `downloads/dataset.csv`,
+  `downloads/dataset.xlsx` (minimal OOXML, written directly — no spreadsheet
+  dependency is available in this toolchain) and
+  `downloads/someperspective-research-package.zip` containing every document,
+  the dataset, the replication code and the licence.
+
+### Fixed
+- **Three dead GitHub links** across `research-package`, `methodology`,
+  `technical-appendix` and `economy-presentation` pointed at
+  `github.com/someperspective/{india-economy,workshop}`, which return 404. The
+  repository is `Varnasr/someperspective`. On the research-package page these were
+  the only routes to the code, so every exit from it was broken.
+- **Ten "Coming soon" buttons and two dead `href='#'` buttons** on the
+  research-package page. Six now resolve to files that exist (dataset, replication
+  code, presentation, media kit, package). The Research Paper does **not** exist:
+  rather than keep advertising it, that card now says it is in preparation, drops
+  the invented "95 pages / 45 figures / 12 tables" specification, and points at the
+  methodology and technical appendix instead.
+- `media-kit.html` labelled press-freedom rank 161 as 2024; 161 is the 2023 value
+  (2024 is 159).
+
+### Changed
+- `index.html` is ~21 KB smaller: the inline `dailyFeatures` array is replaced by a
+  two-entry fallback, with the full set fetched from `data/features.json` after
+  first paint. The generated pages and the on-site list now share one source and
+  cannot drift apart.
+
+### Known issue
+- **The 2014 top 1% income share is stated as 15% in three documents**
+  (`executive-summary`, `media-kit`, `technical-appendix`), which makes the rise to
+  2023 read as +7.6pp. `data.json` — the stated source of record — has **21.3%**
+  for 2014, which would make it +1.3pp. 15.0% is exactly the 2014 *bottom 50%*
+  share in the same dataset, so the two series appear to have been crossed.
+  Correcting it changes a headline inequality claim in public-facing documents, so
+  it is recorded in `tools/check_docs_consistency.py` as an acknowledged
+  discrepancy awaiting an author decision rather than silently rewritten.
+
+### CI
+- `build_site.py --check` fails the build if any generated artifact is stale.
+- `check_docs_consistency.py` compares year-labelled figures in `downloads/`
+  against `data.json` and fails on a contradiction. The documents are snapshots and
+  are *not* forced to the latest year — only to internal agreement with the dataset
+  for the year each one cites.
+
 ## [2.31.0] - 2026-08-15
 
 ### Added
