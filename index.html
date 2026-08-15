@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.33.0">
+    <meta name="version" content="2.34.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -2228,11 +2228,11 @@ reduces overall score</pre>
                             <button @click="resetTrajWeights()" x-show="trajWeightsAreCustom" class="text-xs font-semibold px-3 py-1 rounded-lg border no-print" style="border-color:var(--line);color:var(--ink-soft);">Reset</button>
                         </div>
                         <p class="text-xs mb-3" style="color:var(--muted);">The index is your call. Drag a slider to weight what you think matters — the gauge and verdict update live. A weight of 0 drops an indicator entirely. <span x-show="trajWeightsAreCustom" style="color:var(--accent-2);font-weight:600;">Custom weighting active.</span></p>
-                        <div class="grid sm:grid-cols-2 gap-x-5 gap-y-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 min-w-0">
                             <template x-for="ind in forecastSpec.indicators" :key="ind.key">
-                                <label class="flex items-center gap-3">
+                                <label class="flex items-center gap-2 min-w-0">
                                     <span class="text-xs flex-1 min-w-0 truncate" style="color:var(--ink-soft);" x-text="ind.label"></span>
-                                    <input type="range" min="0" max="3" step="0.25" x-model.number="trajWeights[ind.key]" @input="updateTrajectory()" class="traj-weight" style="width:120px;flex:none;">
+                                    <input type="range" min="0" max="3" step="0.25" x-model.number="trajWeights[ind.key]" @input="updateTrajectory()" class="traj-weight" style="flex:1 1 56px;min-width:48px;max-width:120px;">
                                     <span class="text-xs tabular-nums w-9 text-right" style="color:var(--muted);" x-text="(trajWeights[ind.key] ?? 1) + '×'"></span>
                                 </label>
                             </template>
@@ -2802,6 +2802,7 @@ reduces overall score</pre>
                     <h3 class="font-bold text-white mb-3 text-sm uppercase tracking-wider">Resources</h3>
                     <nav aria-label="Footer resources">
                         <ul class="text-xs sm:text-sm space-y-2">
+                            <li><a href="walkthrough/" class="text-blue-400 hover:text-blue-300 transition-colors">Guided walkthrough</a></li>
                             <li><a href="downloads/paper.html" class="text-blue-400 hover:text-blue-300 transition-colors">Research paper</a></li>
                             <li><a href="downloads/paper.pdf" class="text-blue-400 hover:text-blue-300 transition-colors">Research paper (PDF)</a></li>
                             <li><a href="analysis/" class="text-blue-400 hover:text-blue-300 transition-colors">Analysis library (36)</a></li>

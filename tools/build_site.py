@@ -421,8 +421,23 @@ def build_package(data):
 # --------------------------------------------------------------------------
 # Sitemap
 # --------------------------------------------------------------------------
+def build_walkthrough():
+    """Copy the walkthrough shell into place.
+
+    The shell is a static file: slide copy lives in data/walkthrough.json and the
+    figures inside it are {{token}}s resolved against data.json in the browser. So
+    the deck stays current when the data is refreshed without anything being rebuilt
+    — which is the failure mode of the two hand-maintained presentation documents,
+    both of which had drifted from the dataset.
+    """
+    src = os.path.join(ROOT, "tools", "walkthrough_shell.html")
+    with open(src, encoding="utf-8") as fh:
+        write("walkthrough/index.html", fh.read())
+
+
 def build_sitemap(features, vintage):
-    urls = [(f"{SITE}/", "1.0"), (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
+    urls = [(f"{SITE}/", "1.0"), (f"{SITE}/walkthrough/", "0.9"),
+            (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):
         if rel.endswith(".html"):
             urls.append((f"{SITE}/downloads/{rel}", "0.6"))
@@ -473,6 +488,7 @@ def main():
     vintage = data["meta"]["updated"]
 
     build_analysis(features, vintage)
+    build_walkthrough()
     build_updates(updates)
     build_dataset(data)
     build_package(data)

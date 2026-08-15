@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>A guided walkthrough, and a responsive audit</title>
+    <link>https://someperspective.info/updates.html#v2.34.0</link>
+    <guid isPermaLink="false">someperspective-v2.34.0</guid>
+    <pubDate>Sat, 15 Aug 2026 12:00:00 +0000</pubDate>
+    <description>A new ten-minute guided tour of the evidence, and fixes for layout problems that made several documents unusable on a phone. Added: A guided walkthrough at /walkthrough/ — seventeen slides taking you from the question through the evidence to what follows, with seven live charts. Keyboard, swipe and click navigation, and each slide has its own link. Every figure is read from the dataset when the page loads, so the deck cannot fall out of step with the data the way a slide deck normally does. Fixed: Tables in the downloadable documents had no way to scroll on a narrow screen, so on a phone they pushed the whole page sideways — by more than 400 pixels in the technical appendix. Tables now scroll inside their own container. Fixed: The Economic Trajectory sliders had a fixed width that overflowed the smallest phones. Changed: The site was audited at eight screen widths from 320 to 1920 pixels across every page type. Results and remaining gaps are recorded in the repository.</description>
+  </item>
+  <item>
     <title>The research paper, and a correction to a headline inequality figure</title>
     <link>https://someperspective.info/updates.html#v2.33.0</link>
     <guid isPermaLink="false">someperspective-v2.33.0</guid>

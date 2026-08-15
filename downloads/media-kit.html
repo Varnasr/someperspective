@@ -302,6 +302,30 @@
                 grid-template-columns: 1fr;
             }
         }
+    
+        /* Responsive tables: these documents were written for desktop and their
+           tables overflowed the viewport on phones by up to 424px, pushing the whole
+           page sideways. Wrapping each table in a scroll container keeps the table
+           intact and confines the scrolling to it. */
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; max-width: 100%; min-width: 0; }
+        .table-scroll table { margin-bottom: 0; }
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.85rem 2.5rem; }
+            .container { padding: 0 1rem; }
+        }
+    
+        /* Infographic layouts here were built as fixed horizontal rows and spilled
+           past a phone viewport by ~200px. Wrap or scroll them rather than letting
+           them push the page sideways. */
+        @media (max-width: 760px) {
+            .timeline-points { flex-wrap: wrap; gap: 1rem; justify-content: flex-start; }
+            .timeline-point { flex: 1 1 40%; min-width: 0; }
+            .bar-chart { overflow-x: auto; }
+            .fact-grid { grid-template-columns: 1fr; }
+            .social-cards, .card-row, .stat-row { flex-wrap: wrap !important; }
+            .social-card, .stat-card { flex: 1 1 100% !important; min-width: 0 !important; }
+            .chart-container, .section { min-width: 0; overflow-wrap: anywhere; }
+        }
     </style>
 </head>
 <body>
@@ -437,7 +461,7 @@
         <div class="chart-container">
             <h3>States' Shrinking Share</h3>
             
-            <table class="comparison-table">
+            <div class="table-scroll"><table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Fiscal Indicator</th>
@@ -466,7 +490,7 @@
                         <td style="color: #dc2626; font-weight: 700;">68%</td>
                     </tr>
                 </tbody>
-            </table>
+            </table></div>
         </div>
     </div>
     
@@ -572,7 +596,7 @@
     <div class="section">
         <h2><img src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" style="height:1em;width:1em;vertical-align:-0.15em;display:inline-block"> Data for Graphics</h2>
         
-        <table class="comparison-table">
+        <div class="table-scroll"><table class="comparison-table">
             <thead>
                 <tr>
                     <th>Indicator</th>
@@ -619,7 +643,7 @@
                     <td>Donut chart</td>
                 </tr>
             </tbody>
-        </table>
+        </table></div>
     </div>
     
     <div class="section">

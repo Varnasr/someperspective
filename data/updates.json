@@ -2,6 +2,30 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.34.0",
+      "date": "2026-08-15",
+      "title": "A guided walkthrough, and a responsive audit",
+      "summary": "A new ten-minute guided tour of the evidence, and fixes for layout problems that made several documents unusable on a phone.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "A guided walkthrough at /walkthrough/ — seventeen slides taking you from the question through the evidence to what follows, with seven live charts. Keyboard, swipe and click navigation, and each slide has its own link. Every figure is read from the dataset when the page loads, so the deck cannot fall out of step with the data the way a slide deck normally does."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Tables in the downloadable documents had no way to scroll on a narrow screen, so on a phone they pushed the whole page sideways — by more than 400 pixels in the technical appendix. Tables now scroll inside their own container."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The Economic Trajectory sliders had a fixed width that overflowed the smallest phones."
+        },
+        {
+          "kind": "Changed",
+          "text": "The site was audited at eight screen widths from 320 to 1920 pixels across every page type. Results and remaining gaps are recorded in the repository."
+        }
+      ]
+    },
+    {
       "version": "2.33.0",
       "date": "2026-08-15",
       "title": "The research paper, and a correction to a headline inequality figure",

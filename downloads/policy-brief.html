@@ -233,6 +233,17 @@
                 gap: 1rem;
             }
         }
+    
+        /* Responsive tables: these documents were written for desktop and their
+           tables overflowed the viewport on phones by up to 424px, pushing the whole
+           page sideways. Wrapping each table in a scroll container keeps the table
+           intact and confines the scrolling to it. */
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; max-width: 100%; min-width: 0; }
+        .table-scroll table { margin-bottom: 0; }
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.85rem 2.5rem; }
+            .container { padding: 0 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -280,7 +291,7 @@
             </ul>
         </div>
         
-        <table class="action-table">
+        <div class="table-scroll"><table class="action-table">
             <thead>
                 <tr>
                     <th>Policy</th>
@@ -309,7 +320,7 @@
                     <td>10M trained</td>
                 </tr>
             </tbody>
-        </table>
+        </table></div>
     </div>
     
     <div class="reform-section">
@@ -350,7 +361,7 @@
         
         <div class="reform-card">
             <h4>Progressive Taxation Reforms</h4>
-            <table class="action-table">
+            <div class="table-scroll"><table class="action-table">
                 <thead>
                     <tr>
                         <th>Measure</th>
@@ -385,7 +396,7 @@
                         <td>₹70,000 cr</td>
                     </tr>
                 </tbody>
-            </table>
+            </table></div>
         </div>
         
         <div class="reform-card">
@@ -435,7 +446,7 @@
     <div class="reform-section">
         <h2>Implementation Roadmap</h2>
         
-        <table class="action-table">
+        <div class="table-scroll"><table class="action-table">
             <thead>
                 <tr>
                     <th>Phase</th>
@@ -470,7 +481,7 @@
                     <td>50M jobs, Gini <0.35</td>
                 </tr>
             </tbody>
-        </table>
+        </table></div>
     </div>
     
     <div class="reform-section">

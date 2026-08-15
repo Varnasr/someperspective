@@ -272,7 +272,18 @@
       .visual-flow{ flex-direction:column; }
       .flow-arrow{ transform:rotate(90deg); }
     }
-  </style>
+  
+        /* Responsive tables: these documents were written for desktop and their
+           tables overflowed the viewport on phones by up to 424px, pushing the whole
+           page sideways. Wrapping each table in a scroll container keeps the table
+           intact and confines the scrolling to it. */
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; max-width: 100%; min-width: 0; }
+        .table-scroll table { margin-bottom: 0; }
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.85rem 2.5rem; }
+            .container { padding: 0 1rem; }
+        }
+    </style>
 </head>
 <body>
   <!-- Work in Progress Banner -->
@@ -455,7 +466,7 @@
         <div class="metric"><span class="metric-value">45.8%</span><div class="metric-label">Agriculture Share<br>(2025)</div></div>
       </div>
 
-      <table class="comparison-table">
+      <div class="table-scroll"><table class="comparison-table">
         <thead><tr><th>Indicator</th><th>2014</th><th>2025</th><th>Change</th></tr></thead>
         <tbody>
           <tr><td><strong>Formal Employment</strong></td><td>17.5%</td><td>10.8%</td><td class="trend-down">−6.7 pts</td></tr>
@@ -463,7 +474,7 @@
           <tr><td><strong>Service Sector</strong></td><td>31%</td><td>29%</td><td class="trend-down">−2.0 pts</td></tr>
           <tr><td><strong>Agriculture</strong></td><td>43%</td><td>45.8%</td><td class="trend-up">+2.8 pts</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="highlight">
         <p><strong>Structural regression:</strong> More Indians work in agriculture in 2025 than in 2014, despite GDP doubling.</p>
@@ -497,14 +508,14 @@
         </div>
       </div>
 
-      <table class="comparison-table">
+      <div class="table-scroll"><table class="comparison-table">
         <thead><tr><th>Income Group</th><th>2014 Share</th><th>2025 Share</th><th>Change</th></tr></thead>
         <tbody>
           <tr><td><strong>Top 1%</strong></td><td>15.6%</td><td>23.4%</td><td class="trend-up">+7.8 pts</td></tr>
           <tr><td><strong>Top 10%</strong></td><td>52.0%</td><td>58.2%</td><td class="trend-up">+6.2 pts</td></tr>
           <tr><td><strong>Bottom 50%</strong></td><td>18.5%</td><td>12.8%</td><td class="trend-down">−5.7 pts</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="two-column">
         <div>
@@ -543,7 +554,7 @@
         <div class="metric"><span class="metric-value">₹5.1L Cr</span><div class="metric-label">Revenue Not<br>Shared</div></div>
       </div>
 
-      <table class="comparison-table">
+      <div class="table-scroll"><table class="comparison-table">
         <thead><tr><th>Fiscal Indicator</th><th>2014</th><th>2025</th><th>Impact</th></tr></thead>
         <tbody>
           <tr><td>States' Tax Share</td><td>42.0%</td><td>38.5%</td><td>₹1.8L Cr loss</td></tr>
@@ -551,7 +562,7 @@
           <tr><td>GST Compensation</td><td>N/A</td><td>Ended</td><td>₹2.7L Cr gap</td></tr>
           <tr><td>Borrowing Freedom</td><td>High</td><td>Restricted</td><td>Development constrained</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="highlight">
         <h3>The Mechanism</h3>
@@ -620,7 +631,7 @@
         <div class="metric"><span class="metric-value">0.29</span><div class="metric-label">DQI Score<br>(0.54 in 2014)</div></div>
       </div>
 
-      <table class="comparison-table">
+      <div class="table-scroll"><table class="comparison-table">
         <thead><tr><th>Democratic Indicator</th><th>2014</th><th>2025</th><th>% Change</th></tr></thead>
         <tbody>
           <tr><td>Liberal Democracy Index</td><td>0.71</td><td>0.40</td><td class="trend-down">−44%</td></tr>
@@ -628,7 +639,7 @@
           <tr><td>Rule of Law</td><td>0.62</td><td>0.38</td><td class="trend-down">−39%</td></tr>
           <tr><td>Electoral Integrity</td><td>0.78</td><td>0.51</td><td class="trend-down">−35%</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="highlight">
         <p><strong>The pattern:</strong> Electoral competition continues, but the playing field is systematically tilted through institutional capture, media control, and financial asymmetry.</p>
@@ -695,7 +706,7 @@
         <p><strong>Question:</strong> Is India unique, or part of a global pattern?</p>
       </div>
 
-      <table class="comparison-table">
+      <div class="table-scroll"><table class="comparison-table">
         <thead><tr><th>Country</th><th>Growth Rate</th><th>Democratic Decline</th><th>Inequality Rise</th><th>Pattern</th></tr></thead>
         <tbody>
           <tr><td><strong>India</strong></td><td>6.2%</td><td>−44%</td><td>+50%</td><td>High growth, high erosion</td></tr>
@@ -704,7 +715,7 @@
           <tr><td><strong>Brazil</strong></td><td>1.8%</td><td>−15%</td><td>+18%</td><td>Resistance & recovery</td></tr>
           <tr><td><strong>Philippines</strong></td><td>5.8%</td><td>−32%</td><td>+31%</td><td>Parallel pattern</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="two-column">
         <div>

@@ -1,0 +1,180 @@
+{
+  "note": "Slide content for the guided walkthrough at /walkthrough/. Figures are NOT written in here as literals: {{path}} tokens are resolved against data.json in the browser at load time, so the deck cannot drift from the dataset the way the hand-maintained presentation documents did. Chart slides name a renderer implemented in the walkthrough shell.",
+  "title": "Some Perspective — the guided walkthrough",
+  "slides": [
+    {
+      "id": "open",
+      "kicker": "A guided tour · about 10 minutes",
+      "title": "India grew. Did that growth buy what it was supposed to?",
+      "body": "Between 2014 and 2026 India became the world's most populous country and its fourth-largest economy. Over the same years, every available measure of democratic quality fell. This walkthrough sets out what the data shows about whether those two facts were a trade — and concludes that they were not.",
+      "note": "Use the arrow keys, or swipe. Every figure here is read live from the site's dataset."
+    },
+    {
+      "id": "bargain",
+      "kicker": "The claim being tested",
+      "title": "The bargain: constraint traded for prosperity",
+      "body": "The strongest case for the period runs like this. A decisive executive, unencumbered by coalition bargaining, judicial review and federal veto points, can do things a constrained one cannot. Institutional constraint is the price; material progress is what it buys.",
+      "points": [
+        "That is a serious argument, and this project tests it rather than dismissing it.",
+        "A bargain requires both halves to be measured: what was given up, and what was received.",
+        "Most accounts measure only one half."
+      ]
+    },
+    {
+      "id": "problem",
+      "kicker": "The obstacle",
+      "title": "The instruments needed to check also degraded",
+      "body": "Assessing performance after 2014 runs into a specific difficulty: the statistical apparatus that would register the answer was itself weakened during the period.",
+      "points": [
+        "The 2021 census was postponed and still has not been conducted.",
+        "The 2017-18 consumption survey was completed, then withheld after it showed rural consumption falling.",
+        "The national accounts were rebased in 2015 in a way that lowered earlier growth and raised later growth — never independently reviewed.",
+        "Two statistical commissioners resigned; the NSSO was merged into the NSO.",
+        "Official COVID mortality was ~0.5 million against independent excess-mortality estimates of 3-5 million."
+      ],
+      "note": "Each is individually documented. What makes the pattern notable is that the withheld numbers were, with high consistency, the unfavourable ones."
+    },
+    {
+      "id": "indices-intro",
+      "kicker": "The method",
+      "title": "Three indices, one script, both eras",
+      "body": "To compare the UPA decade (2004-2013) with the NDA period (2014-2026) fairly, both are measured by the same instrument — a single deterministic script applied across the whole period. Any difference is a difference in inputs, not in method.",
+      "points": [
+        "SSI — Statistical Suppression Index, 0-10. Interference with official statistics.",
+        "FCI — Fiscal Centralisation Index, 0-1. Fiscal authority shifting from states to the union.",
+        "DQI — Democratic Quality Index, 0-1. Four published third-party democracy measures combined."
+      ]
+    },
+    {
+      "id": "indices-chart",
+      "kicker": "All three, 2004-2026",
+      "title": "Every index moves the same way after 2014",
+      "chart": "indices",
+      "body": "SSI is zero across the entire UPA decade, peaks at {{max:economic.ssi}} in 2021-22, and is still {{last:economic.ssi}} in 2026. FCI rises from {{first:eraHistory.fci}} to {{last:economic.fci}}. DQI falls from {{first:eraHistory.dqi}} to {{last:economic.dqi}}.",
+      "note": "The shaded band marks the NDA period. SSI is shown on its own 0-10 scale."
+    },
+    {
+      "id": "ssi",
+      "kicker": "Statistical suppression",
+      "title": "From zero to nine, and it has not returned to zero",
+      "body": "The SSI weights six documented streams by how much each damages the public's ability to evaluate the government: the census delay carries the most weight, then the mortality undercount, then the withheld consumption survey, the disputed GDP revision, the loss of institutional independence, and the employment-data delay.",
+      "points": [
+        "No qualifying event occurred in 2004-2013, so that decade scores zero.",
+        "The 2021-22 peak of {{max:economic.ssi}} is these streams stacking, not one event.",
+        "It settles at {{last:economic.ssi}} because the damage is structural: the census is still outstanding and the NSO merger was never reversed."
+      ]
+    },
+    {
+      "id": "growth",
+      "kicker": "The first half of the bargain",
+      "title": "Growth did not accelerate",
+      "body": "Real GDP growth averaged {{avg:eraHistory.gdpGrowth}}% across 2004-2013 and {{avg:economic.gdpGrowth}}% across 2014-2026.",
+      "points": [
+        "The later figure includes the 2020 pandemic contraction, which accounts for much of the gap.",
+        "But the two periods are not cleanly comparable at all: the 2015 rebasing moved measured growth in the government's favour, and was never independently reviewed.",
+        "Even taking the official numbers at face value, no acceleration is visible."
+      ]
+    },
+    {
+      "id": "jobs",
+      "kicker": "Growth and jobs",
+      "title": "Twelve straight years of falling formal employment",
+      "chart": "decoupling",
+      "body": "The share of workers with any social-security cover fell from {{first:economic.formalEmployment}}% in 2014 to {{last:economic.formalEmployment}}% in 2026 — down or flat in every single year, while GDP grew throughout.",
+      "note": "This is the most consistent multi-year pattern in the dataset, and it does not depend on the disputed national accounts."
+    },
+    {
+      "id": "structure",
+      "kicker": "Why jobs did not follow",
+      "title": "The growth happened where the jobs are not",
+      "chart": "structure",
+      "body": "Agriculture holds 42% of employment while producing 18% of output. Manufacturing — the sector that in the standard development sequence absorbs that labour — holds only 11% of jobs.",
+      "note": "Industrial policy weighted toward capital-intensive sectors raises output more than payroll. Electronics generates roughly one job per ₹1.5 crore invested; garments, at comparable investment, generate vastly more."
+    },
+    {
+      "id": "distribution",
+      "kicker": "Who received the growth",
+      "title": "The bottom half lost about an eighth of its share",
+      "chart": "distribution",
+      "body": "The top 1% share rose from {{first:economic.top1Share}}% to {{last:economic.top1Share}}%. The bottom 50% share fell from {{first:economic.bottom50Share}}% to {{last:economic.bottom50Share}}%.",
+      "note": "The top-end level matters more than its movement: at {{last:economic.top1Share}}%, it is the highest recorded since 1922. The sharper decade change is at the bottom."
+    },
+    {
+      "id": "inflation",
+      "kicker": "The honest exception",
+      "title": "One thing genuinely improved: inflation",
+      "body": "Consumer price inflation averaged {{avg:eraHistory.cpiInflation}}% in 2004-2013 against {{avg:economic.cpiInflation}}% in 2014-2026. That is a real improvement in a variable that hits poorer households hardest.",
+      "points": [
+        "It is the single most defensible economic achievement of the period.",
+        "Note where it came from: authority was delegated to a more independent institution — inflation targeting by the RBI — rather than concentrated.",
+        "A caveat: from January 2026 the CPI moved to a new 2024=100 basket, so the latest figure is not on the same basis as earlier years."
+      ]
+    },
+    {
+      "id": "scorecard",
+      "kicker": "The verdict",
+      "title": "Eight of nine measures worse; one better",
+      "chart": "scorecard",
+      "body": "Comparing period averages across every directly comparable measure, the later period performs worse on eight and better on one.",
+      "note": "If the later period's statistics are biased in the government's favour — as the SSI argues — then this comparison understates the deterioration rather than overstating it."
+    },
+    {
+      "id": "international",
+      "kicker": "Against comparable countries",
+      "title": "A decline comparable to Turkey's, from a higher base",
+      "chart": "international",
+      "body": "India's V-Dem liberal democracy score fell from 0.71 to 0.26 over the period. Turkey fell from 0.52 to 0.18; Hungary from 0.63 to 0.41.",
+      "note": "Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking everyone down."
+    },
+    {
+      "id": "grier",
+      "kicker": "An independent check",
+      "title": "A different method reaches the same conclusion",
+      "chart": "grier",
+      "body": "Kevin and Robin Grier (Texas Tech) build a synthetic counterfactual — a weighted blend of comparator countries fitted to India's path over 1984-2013 — and measure the gap that opens after 2014. All ten governance indicators they test deteriorate, every one at a joint p-value of 0.00.",
+      "note": "Different method, different data, different authors, no shared machinery with this project. Their electoral-democracy gap of -60.2% sits close to the -63.4% raw decline measured here — though the two are not the same quantity."
+    },
+    {
+      "id": "limits",
+      "kicker": "What this does not show",
+      "title": "The limits, stated plainly",
+      "body": "This project is descriptive. It establishes what happened on both dimensions; it does not identify a causal effect of governance on growth.",
+      "points": [
+        "The SSI's zero for the UPA decade is the most contestable number here — though the conclusion survives even a generous re-coding of that era.",
+        "The DQI inherits whatever biases exist in V-Dem, Freedom House and RSF.",
+        "The FCI is relative to its own sample and means nothing outside it.",
+        "The three indices are not independent evidence of one another — they plausibly measure one underlying process.",
+        "The window contains a pandemic, which supplies a legitimate reason for some of what the indices register."
+      ],
+      "note": "An error in this project's own documents — one that ran in its favour — was found and corrected in August 2026. It is reported in the paper rather than quietly fixed."
+    },
+    {
+      "id": "sowhat",
+      "kicker": "What follows",
+      "title": "Statistical independence is the first reform, not the fifth",
+      "body": "Every other question — whether growth accelerated, whether poverty fell, whether welfare reached anyone — can only be settled against evidence produced by institutions willing to publish unfavourable findings.",
+      "points": [
+        "Conduct the census. Publish consumption surveys on a fixed cycle regardless of what they show.",
+        "Restore the separation between the statistical office and the ministry it evaluates.",
+        "Refer the disputed GDP back-series to independent review.",
+        "Then: formalisation of employment, an industrial policy weighted toward labour absorption, and an explicit settlement on fiscal federalism."
+      ],
+      "note": "A government that did everything else on this list while leaving the statistical system alone would leave the public unable to tell whether any of it worked."
+    },
+    {
+      "id": "end",
+      "kicker": "Go deeper",
+      "title": "All of this is open, and checkable",
+      "body": "Every figure in this walkthrough is read live from the same dataset the site and the paper use. Nothing here is a screenshot.",
+      "links": [
+        { "label": "The full research paper (15,000 words)", "href": "../downloads/paper.html" },
+        { "label": "Download the paper as PDF", "href": "../downloads/paper.pdf" },
+        { "label": "36 standing analyses of the data", "href": "../analysis/" },
+        { "label": "Explore the interactive data yourself", "href": "../#interactive-data" },
+        { "label": "How the indices are built", "href": "../#methodology" },
+        { "label": "The dataset, CSV and Excel", "href": "../downloads/research-package.html" },
+        { "label": "What changed, and when", "href": "../updates.html" }
+      ]
+    }
+  ]
+}

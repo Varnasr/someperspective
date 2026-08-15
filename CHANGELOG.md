@@ -10,6 +10,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.34.0] - 2026-08-15
+
+### Added
+- **Guided walkthrough at `/walkthrough/`** — 17 slides with 7 live charts, taking a
+  reader from the question through the evidence to what follows. Keyboard, swipe and
+  click navigation, per-slide deep links, a progress bar, and reduced-motion support.
+  Copy lives in `data/walkthrough.json`; **figures are `{{token}}`s resolved against
+  `data.json` in the browser at load time**, so the deck cannot drift from the dataset
+  the way the two hand-maintained presentation documents did. Both of those remain in
+  place for now and are candidates for retirement.
+
+### Fixed — responsive
+  The site was audited at 320/360/390/414/768/1024/1280/1920 across every page type.
+  Four defects were found and fixed; **every page is now clean at every width tested.**
+- **Tables in the downloadable documents had no scroll affordance**, so on a phone they
+  pushed the whole page sideways — `technical-appendix` by 424px at 390, `media-kit` by
+  214px, `executive-summary` by 95px. Tables are now wrapped in constrained scroll
+  containers (`max-width:100%; min-width:0` — without the min-width the wrapper inherits
+  the same min-content trap that stretched `<main>` in v2.31.0).
+- **`media-kit` infographics** were fixed horizontal rows that spilled ~200px regardless
+  of the tables; the timeline and card rows now wrap, and the bar chart scrolls.
+- **The Economic Trajectory weight sliders** had a fixed 120px width that overflowed at
+  320 and 360px. The row's flex children can now shrink.
+- **The paper's long code tokens and table cells** overflowed by 7px at 320px; they wrap.
+
+### Known gaps (not fixed)
+- **Tap targets.** The main app has ~40 distinct interactive elements below 44x44 at
+  mobile widths — mostly icon buttons and inline controls. This is a WCAG 2.5.5 gap and
+  wants a considered design pass rather than a blanket size bump. The generated pages
+  and the walkthrough are clean.
+- **Small text.** 7-17 elements per tab render below 12px. Same reasoning.
+
 ## [2.33.0] - 2026-08-15
 
 ### Added

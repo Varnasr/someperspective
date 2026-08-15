@@ -395,7 +395,18 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-  </style>
+  
+        /* Responsive tables: these documents were written for desktop and their
+           tables overflowed the viewport on phones by up to 424px, pushing the whole
+           page sideways. Wrapping each table in a scroll container keeps the table
+           intact and confines the scrolling to it. */
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; max-width: 100%; min-width: 0; }
+        .table-scroll table { margin-bottom: 0; }
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.85rem 2.5rem; }
+            .container { padding: 0 1rem; }
+        }
+    </style>
 </head>
 <body>
   <!-- Progress Bar -->

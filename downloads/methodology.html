@@ -230,6 +230,17 @@
                 page-break-after: avoid;
             }
         }
+    
+        /* Responsive tables: these documents were written for desktop and their
+           tables overflowed the viewport on phones by up to 424px, pushing the whole
+           page sideways. Wrapping each table in a scroll container keeps the table
+           intact and confines the scrolling to it. */
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; max-width: 100%; min-width: 0; }
+        .table-scroll table { margin-bottom: 0; }
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.85rem 2.5rem; }
+            .container { padding: 0 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -350,7 +361,7 @@
             w_i  = weight of stream i (see table; max total = 10)
         </div>
 
-        <table>
+        <div class="table-scroll"><table>
             <thead>
                 <tr>
                     <th>Component</th>
@@ -366,7 +377,7 @@
                 <tr><td>Institutional independence</td><td>1.5</td><td>NSC resignations (2019) + permanent NSSO→NSO merger</td></tr>
                 <tr><td>Mortality undercount</td><td>2.0</td><td>COVID deaths: official ~0.5M vs 3–5M excess-mortality estimates</td></tr>
             </tbody>
-        </table>
+        </table></div>
 
         <h3>3.2 Fiscal Centralisation Index (FCI)</h3>
 
@@ -428,7 +439,7 @@
         
         <h3>4.3 Structural Break Tests</h3>
         
-        <table>
+        <div class="table-scroll"><table>
             <thead>
                 <tr>
                     <th>Test</th>
@@ -453,7 +464,7 @@
                     <td>2014 Q3</td>
                 </tr>
             </tbody>
-        </table>
+        </table></div>
     </div>
     
     <div class="section" id="triangulation">
@@ -512,7 +523,7 @@
         
         <h3>7.2 External Validation</h3>
         
-        <table>
+        <div class="table-scroll"><table>
             <thead>
                 <tr>
                     <th>Finding</th>
@@ -542,7 +553,7 @@
                     <td>0.94</td>
                 </tr>
             </tbody>
-        </table>
+        </table></div>
     </div>
     
     <div class="section" id="replication">

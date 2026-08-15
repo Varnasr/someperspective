@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
+<title>Guided walkthrough | Some Perspective</title>
+<meta name="description" content="A ten-minute guided tour of the evidence on India's economy, institutions and inequality, 2004-2026. Every figure read live from the open dataset.">
+<link rel="canonical" href="https://someperspective.info/walkthrough/">
+<meta property="og:title" content="Some Perspective — the guided walkthrough">
+<meta property="og:description" content="A ten-minute guided tour of the evidence on India's economy, institutions and inequality, 2004-2026.">
+<meta property="og:url" content="https://someperspective.info/walkthrough/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://someperspective.info/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f1ea;--surface:#fff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
+--muted:#6b6b78;--line:rgba(27,27,34,.12);--accent:#b4530e;--accent-2:#0e7490;--bad:#ef4444}
+@media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--surface:#161922;--surface-2:#1c2029;
+--ink:#edeff5;--ink-soft:#d3d7e0;--muted:#99a0b1;--line:rgba(255,255,255,.12);
+--accent:#fb923c;--accent-2:#22d3ee}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
+line-height:1.6;overflow:hidden;-webkit-text-size-adjust:100%}
+/* progress */
+.bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:60;transition:width .3s ease}
+/* top chrome */
+.top{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+gap:.75rem;padding:.85rem 1rem;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.home{font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;
+min-height:44px;display:inline-flex;align-items:center;padding:0 .4rem}
+.count{font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+/* deck */
+.deck{height:100%;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+.slide{min-height:100%;display:flex;align-items:center;justify-content:center;
+padding:5rem 1.15rem 6.5rem;scroll-snap-align:start}
+.deck{scroll-snap-type:y mandatory}
+.inner{width:100%;max-width:52rem}
+.kicker{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+display:block;margin-bottom:.6rem}
+h1{font-family:Fraunces,Georgia,serif;font-size:clamp(1.6rem,5.2vw,2.9rem);line-height:1.12;
+font-weight:800;margin-bottom:1rem;letter-spacing:-.01em}
+.body{font-size:clamp(.98rem,2.4vw,1.16rem);color:var(--ink-soft);margin-bottom:1.1rem;max-width:44rem}
+ul.pts{list-style:none;margin:1.1rem 0;display:grid;gap:.6rem;max-width:44rem}
+ul.pts li{position:relative;padding-left:1.5rem;font-size:clamp(.9rem,2.2vw,1.02rem);color:var(--ink-soft)}
+ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:.5rem;height:.5rem;
+border-radius:50%;background:var(--accent)}
+.note{margin-top:1.1rem;padding:.85rem 1rem;background:var(--surface-2);border-left:3px solid var(--accent-2);
+border-radius:0 10px 10px 0;font-size:.87rem;color:var(--muted);max-width:44rem}
+.chart{width:100%;height:min(52vh,420px);min-height:260px;margin:1.2rem 0;
+background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.links{display:grid;gap:.5rem;margin-top:1.2rem;max-width:36rem}
+.links a{display:flex;align-items:center;min-height:48px;padding:.7rem 1rem;background:var(--surface);
+border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;
+font-size:.93rem;transition:border-color .15s,transform .15s}
+.links a:hover{border-color:var(--accent);transform:translateX(3px)}
+.links a::after{content:"→";margin-left:auto;color:var(--accent)}
+/* bottom chrome */
+.nav{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+gap:.6rem;padding:.8rem 1rem calc(.8rem + env(safe-area-inset-bottom));z-index:50;
+background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);
+border-top:1px solid var(--line)}
+.btn{min-height:44px;min-width:44px;padding:.55rem 1rem;border-radius:12px;border:1px solid var(--line);
+background:var(--surface);color:var(--ink);font-weight:700;font-size:.88rem;cursor:pointer;
+display:inline-flex;align-items:center;gap:.35rem}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.dots{display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;flex:1 1 auto;max-width:60%}
+.dot{width:9px;height:9px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0}
+.dot[aria-current="true"]{background:var(--accent);transform:scale(1.35)}
+/* a dot alone is too small to tap; give it an invisible 44px hit area */
+.dotwrap{width:24px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+background:none;border:0;padding:0;cursor:pointer}
+/* 24px is the WCAG 2.5.8 (AA) minimum target size; the dots stay tappable even
+   when the row has to wrap on a narrow screen. */
+@media (max-width:520px){.dots{max-width:52%}}
+@media (prefers-reduced-motion:reduce){.deck{scroll-behavior:auto}.bar{transition:none}
+.links a{transition:none}}
+.err{max-width:34rem;margin:25vh auto;padding:1.2rem;background:var(--surface);border:1px solid var(--line);
+border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar" style="width:0"></div>
+<header class="top">
+  <a class="home" href="../">← Some Perspective</a>
+  <span class="count" id="count"></span>
+</header>
+
+<main class="deck" id="deck" tabindex="-1"></main>
+
+<nav class="nav" aria-label="Walkthrough navigation">
+  <button class="btn" id="prev" aria-label="Previous slide">← <span class="lbl">Back</span></button>
+  <div class="dots" id="dots" role="tablist" aria-label="Slides"></div>
+  <button class="btn pri" id="next" aria-label="Next slide"><span class="lbl">Next</span> →</button>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"
+        integrity="sha384-pPi0zxBAoDu6+JXW/C68UZLvBUUtU+7zonhif43rqj7pxsGyqyqzcian2Rj37Rss"
+        crossorigin="anonymous" defer></script>
+<script>
+(function () {
+  'use strict';
+  var DATA = null, SLIDES = [], charts = {}, idx = 0;
+  var deck = document.getElementById('deck');
+
+  var dark = function () { return matchMedia('(prefers-color-scheme: dark)').matches; };
+  var C = function () {
+    return dark()
+      ? { ink: '#edeff5', muted: '#99a0b1', line: 'rgba(255,255,255,.14)', bg: '#161922' }
+      : { ink: '#1b1b22', muted: '#6b6b78', line: 'rgba(27,27,34,.12)', bg: '#ffffff' };
+  };
+  var ACCENT = '#b4530e', TEAL = '#0e7490', RED = '#ef4444', BLUE = '#3b82f6', AMBER = '#a16207';
+
+  // ---- {{token}} resolution against data.json -----------------------------
+  // Figures are never written into walkthrough.json as literals; they are read
+  // from the dataset at load time so the deck cannot drift from the site.
+  function get(path) {
+    return path.split('.').reduce(function (o, k) { return o == null ? o : o[k]; }, DATA);
+  }
+  function resolve(text) {
+    if (!text) return '';
+    return String(text).replace(/\{\{(\w+):([\w.]+)\}\}/g, function (_, fn, path) {
+      var v = get(path);
+      if (!Array.isArray(v)) return '?';
+      var nums = v.filter(function (x) { return typeof x === 'number'; });
+      if (!nums.length) return '?';
+      var out;
+      if (fn === 'last') out = nums[nums.length - 1];
+      else if (fn === 'first') out = nums[0];
+      else if (fn === 'max') out = Math.max.apply(null, nums);
+      else if (fn === 'min') out = Math.min.apply(null, nums);
+      else if (fn === 'avg') out = nums.reduce(function (a, b) { return a + b; }, 0) / nums.length;
+      else return '?';
+      return (Math.round(out * 100) / 100).toString();
+    });
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  // ---- charts --------------------------------------------------------------
+  var base = function () {
+    var c = C();
+    return {
+      backgroundColor: 'transparent',
+      textStyle: { fontFamily: 'Inter, system-ui, sans-serif', color: c.ink, fontSize: 11 },
+      animationDuration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 700,
+      grid: { left: 8, right: 14, top: 46, bottom: 30, containLabel: true },
+      aria: { enabled: true }
+    };
+  };
+  var legend = function (d) {
+    return { data: d, top: 6, itemWidth: 14, itemHeight: 8, textStyle: { fontSize: 11, color: C().muted } };
+  };
+  var years = function () {
+    return (get('eraHistory.years') || []).concat(get('economic.years') || []).map(String);
+  };
+  var joined = function (key) {
+    return (get('eraHistory.' + key) || []).concat(get('economic.' + key) || []);
+  };
+  // The NDA period as a shaded band, drawn on the first series only.
+  var ndaBand = function () {
+    return {
+      silent: true,
+      itemStyle: { color: dark() ? 'rgba(239,68,68,.09)' : 'rgba(180,83,14,.07)' },
+      data: [[{ xAxis: '2014' }, { xAxis: String((get('economic.years') || []).slice(-1)[0]) }]]
+    };
+  };
+
+  var RENDER = {
+    indices: function (el) {
+      var c = echarts.init(el, dark() ? 'dark' : null);
+      c.setOption(Object.assign(base(), {
+        tooltip: { trigger: 'axis' },
+        legend: legend(['SSI (0-10)', 'FCI ×10', 'DQI ×10']),
+        xAxis: { type: 'category', data: years(), axisLabel: { interval: 4 } },
+        yAxis: { type: 'value', max: 10, name: '' },
+        series: [
+          { name: 'SSI (0-10)', type: 'line', smooth: true, symbol: 'none', data: joined('ssi'),
+            lineStyle: { width: 3, color: RED }, itemStyle: { color: RED },
+            areaStyle: { color: RED, opacity: .1 }, markArea: ndaBand() },
+          { name: 'FCI ×10', type: 'line', smooth: true, symbol: 'none',
+            data: joined('fci').map(function (v) { return v == null ? null : +(v * 10).toFixed(2); }),
+            lineStyle: { width: 3, color: TEAL }, itemStyle: { color: TEAL } },
+          { name: 'DQI ×10', type: 'line', smooth: true, symbol: 'none',
+            data: joined('dqi').map(function (v) { return v == null ? null : +(v * 10).toFixed(2); }),
+            lineStyle: { width: 3, color: BLUE }, itemStyle: { color: BLUE } }
+        ]
+      }), true);
+      return c;
+    },
+    decoupling: function (el) {
+      var c = echarts.init(el, dark() ? 'dark' : null);
+      var y = (get('economic.years') || []).map(String);
+      c.setOption(Object.assign(base(), {
+        tooltip: { trigger: 'axis' },
+        legend: legend(['GDP growth %', 'Formal employment %']),
+        xAxis: { type: 'category', data: y, axisLabel: { interval: 2 } },
+        yAxis: [{ type: 'value', name: 'GDP %' }, { type: 'value', name: 'Formal %', splitLine: { show: false } }],
+        series: [
+          { name: 'GDP growth %', type: 'bar', data: get('economic.gdpGrowth'),
+            itemStyle: { color: BLUE, borderRadius: [3, 3, 0, 0] } },
+          { name: 'Formal employment %', type: 'line', yAxisIndex: 1, smooth: true, symbol: 'circle',
+            symbolSize: 6, data: get('economic.formalEmployment'),
+            lineStyle: { width: 3, color: RED }, itemStyle: { color: RED } }
+        ]
+      }), true);
+      return c;
+    },
+    structure: function (el) {
+      var c = echarts.init(el, dark() ? 'dark' : null);
+      var s = get('structure.sectors') || [];
+      c.setOption(Object.assign(base(), {
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: function (v) { return v + '%'; } },
+        legend: legend(['Share of output', 'Share of jobs']),
+        xAxis: { type: 'category', data: s.map(function (x) { return x.sector; }) },
+        yAxis: { type: 'value', name: '%' },
+        series: [
+          { name: 'Share of output', type: 'bar', data: s.map(function (x) { return x.gva; }),
+            itemStyle: { color: TEAL, borderRadius: [4, 4, 0, 0] } },
+          { name: 'Share of jobs', type: 'bar', data: s.map(function (x) { return x.emp; }),
+            itemStyle: { color: ACCENT, borderRadius: [4, 4, 0, 0] } }
+        ]
+      }), true);
+      return c;
+    },
+    distribution: function (el) {
+      var c = echarts.init(el, dark() ? 'dark' : null);
+      c.setOption(Object.assign(base(), {
+        tooltip: { trigger: 'axis' },
+        legend: legend(['Top 1% share', 'Bottom 50% share']),
+        xAxis: { type: 'category', data: years(), axisLabel: { interval: 4 } },
+        yAxis: { type: 'value', name: '% of income' },
+        series: [
+          { name: 'Top 1% share', type: 'line', smooth: true, symbol: 'none', data: joined('top1Share'),
+            lineStyle: { width: 3, color: RED }, itemStyle: { color: RED },
+            areaStyle: { color: RED, opacity: .08 }, markArea: ndaBand() },
+          { name: 'Bottom 50% share', type: 'line', smooth: true, symbol: 'none', data: joined('bottom50Share'),
+            lineStyle: { width: 3, color: BLUE }, itemStyle: { color: BLUE },
+            areaStyle: { color: BLUE, opacity: .08 } }
+        ]
+      }), true);
+      return c;
+    },
+    scorecard: function (el) {
+      var c = echarts.init(el, dark() ? 'dark' : null);
+      var rows = [
+        { k: 'gdpGrowth', l: 'GDP growth', lowGood: false, dp: 1 },
+        { k: 'cpiInflation', l: 'CPI inflation', lowGood: true, dp: 1 },
+        { k: 'fiscalDeficit', l: 'Fiscal deficit', lowGood: true, dp: 1 },
+        { k: 'top1Share', l: 'Top 1% share', lowGood: true, dp: 1 },
+        { k: 'bottom50Share', l: 'Bottom 50% share', lowGood: false, dp: 1 },
+        { k: 'pressFreedom', l: 'Press freedom rank', lowGood: true, dp: 0 },
+        { k: 'ssi', l: 'Statistical suppression', lowGood: true, dp: 2 },
+        { k: 'fci', l: 'Fiscal centralisation', lowGood: true, dp: 2 },
+        { k: 'dqi', l: 'Democratic quality', lowGood: false, dp: 2 }
+      ];
+      var mean = function (a) {
+        var n = (a || []).filter(function (x) { return typeof x === 'number'; });
+        return n.length ? n.reduce(function (p, q) { return p + q; }, 0) / n.length : null;
+      };
+      // Percentage change is the wrong encoding here: SSI's UPA mean is exactly zero,
+      // so a percentage is undefined for the single largest movement in the data, and
+      // FCI's small base turns a real shift into a >500% figure that crushes the axis.
+      // Instead each indicator is normalised onto its own observed 2004-2026 range, so
+      // the two era means are plotted as positions within that indicator's own history.
+      var data = rows.map(function (r) {
+        var full = (get('eraHistory.' + r.k) || []).concat(get('economic.' + r.k) || [])
+          .filter(function (x) { return typeof x === 'number'; });
+        var lo = Math.min.apply(null, full), hi = Math.max.apply(null, full);
+        var u = mean(get('eraHistory.' + r.k)), n = mean(get('economic.' + r.k));
+        var norm = function (v) { return hi === lo ? 0.5 : (v - lo) / (hi - lo); };
+        var worse = r.lowGood ? n > u : n < u;
+        return { l: r.l, u: u, n: n, un: norm(u), nn: norm(n), worse: worse, dp: r.dp };
+      }).sort(function (a, b) { return (a.worse === b.worse) ? 0 : (a.worse ? -1 : 1); });
+
+      var fmt = function (v, dp) { return v == null ? '?' : v.toFixed(dp); };
+      c.setOption(Object.assign(base(), {
+        grid: { left: 8, right: 20, top: 34, bottom: 40, containLabel: true },
+        legend: legend(['UPA 2004-13', 'NDA 2014-26']),
+        tooltip: {
+          trigger: 'axis', axisPointer: { type: 'shadow' },
+          formatter: function (p) {
+            var d = data[p[0].dataIndex];
+            return '<strong>' + d.l + '</strong><br>UPA mean ' + fmt(d.u, d.dp) +
+                   '<br>NDA mean ' + fmt(d.n, d.dp) +
+                   '<br><em>' + (d.worse ? 'worse' : 'better') + ' under NDA</em>';
+          }
+        },
+        xAxis: {
+          type: 'value', min: 0, max: 1,
+          name: 'position within each measure\u2019s own 2004-2026 range',
+          nameLocation: 'middle', nameGap: 26, nameTextStyle: { fontSize: 10, color: C().muted },
+          axisLabel: { show: false }, splitLine: { lineStyle: { color: C().line } }
+        },
+        yAxis: {
+          type: 'category', data: data.map(function (d) { return d.l; }),
+          axisLabel: { fontSize: 10, width: 130, overflow: 'break' }
+        },
+        series: [
+          // the connecting line, drawn first so the dots sit on top
+          { name: 'shift', type: 'bar', barWidth: 2, stack: 'x', silent: true, legendHoverLink: false,
+            itemStyle: { color: 'transparent' }, tooltip: { show: false },
+            data: data.map(function (d) { return Math.min(d.un, d.nn); }) },
+          { name: 'shift2', type: 'bar', barWidth: 2, stack: 'x', silent: true, legendHoverLink: false,
+            tooltip: { show: false },
+            data: data.map(function (d) {
+              return { value: Math.abs(d.nn - d.un), itemStyle: { color: d.worse ? RED : '#15803d', opacity: .35 } };
+            }) },
+          { name: 'UPA 2004-13', type: 'scatter', symbolSize: 11,
+            itemStyle: { color: TEAL },
+            data: data.map(function (d, i) { return [d.un, i]; }) },
+          // Series colour is set to the dominant case so the legend swatch is honest;
+          // individual points override it where the measure improved.
+          { name: 'NDA 2014-26', type: 'scatter', symbolSize: 11, itemStyle: { color: RED },
+            data: data.map(function (d, i) {
+              return { value: [d.nn, i], itemStyle: { color: d.worse ? RED : '#15803d' } };
+            }) }
+        ]
+      }), true);
+      return c;
+    },
+    international: function (el) {
+      var c = echarts.init(el, dark() ? 'dark' : null);
+      var i = get('international') || {};
+      c.setOption(Object.assign(base(), {
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+        legend: legend(['V-Dem 2014', 'V-Dem 2026']),
+        xAxis: { type: 'category', data: i.countries || [], axisLabel: { fontSize: 10 } },
+        yAxis: { type: 'value', max: 1, name: 'Liberal democracy' },
+        series: [
+          { name: 'V-Dem 2014', type: 'bar', data: i.vdem2014,
+            itemStyle: { color: TEAL, borderRadius: [4, 4, 0, 0] } },
+          { name: 'V-Dem 2026', type: 'bar', data: i.vdem2026,
+            itemStyle: { color: RED, borderRadius: [4, 4, 0, 0] } }
+        ]
+      }), true);
+      return c;
+    },
+    grier: function (el) {
+      var c = echarts.init(el, dark() ? 'dark' : null);
+      var g = ((get('syntheticControl') || {}).governance || []).slice()
+        .sort(function (a, b) { return Math.abs(a.pct) - Math.abs(b.pct); });
+      c.setOption(Object.assign(base(), {
+        grid: { left: 8, right: 48, top: 24, bottom: 36, containLabel: true },
+        tooltip: {
+          trigger: 'axis', axisPointer: { type: 'shadow' },
+          formatter: function (p) {
+            var r = g[p[0].dataIndex];
+            return '<strong>' + r.indicator + '</strong><br>Gap ' + (r.gap > 0 ? '+' : '') + r.gap +
+                   '<br>' + Math.abs(r.pct) + '% ' + (r.higherIsWorse ? 'higher (worse)' : 'lower') +
+                   '<br>joint p = ' + r.p.toFixed(2);
+          }
+        },
+        xAxis: { type: 'value', name: '% deterioration vs counterfactual', nameLocation: 'middle',
+                 nameGap: 24, axisLabel: { formatter: '{value}%' } },
+        yAxis: { type: 'category', data: g.map(function (r) { return r.indicator; }),
+                 axisLabel: { fontSize: 10, width: 104, overflow: 'truncate' } },
+        series: [{
+          type: 'bar', barMaxWidth: 15,
+          data: g.map(function (r) {
+            return { value: Math.abs(r.pct), itemStyle: { color: r.higherIsWorse ? AMBER : RED, borderRadius: [0, 4, 4, 0] } };
+          }),
+          label: { show: true, position: 'right', fontSize: 10, formatter: function (p) { return p.value + '%'; } }
+        }]
+      }), true);
+      return c;
+    }
+  };
+
+  // ---- rendering -----------------------------------------------------------
+  function slideHTML(s, i) {
+    var h = '<section class="slide" id="s-' + (i + 1) + '" aria-roledescription="slide" ' +
+            'aria-label="Slide ' + (i + 1) + ' of ' + SLIDES.length + '"><div class="inner">';
+    if (s.kicker) h += '<span class="kicker">' + esc(s.kicker) + '</span>';
+    h += '<h1>' + esc(resolve(s.title)) + '</h1>';
+    if (s.body) h += '<p class="body">' + esc(resolve(s.body)) + '</p>';
+    if (s.chart) h += '<div class="chart" data-chart="' + esc(s.chart) + '" id="c-' + (i + 1) + '" role="img"></div>';
+    if (s.points && s.points.length) {
+      h += '<ul class="pts">';
+      s.points.forEach(function (p) { h += '<li>' + esc(resolve(p)) + '</li>'; });
+      h += '</ul>';
+    }
+    if (s.links && s.links.length) {
+      h += '<div class="links">';
+      s.links.forEach(function (l) { h += '<a href="' + esc(l.href) + '">' + esc(l.label) + '</a>'; });
+      h += '</div>';
+    }
+    if (s.note) h += '<p class="note">' + esc(resolve(s.note)) + '</p>';
+    return h + '</div></section>';
+  }
+
+  function drawChartsIn(i) {
+    var el = document.getElementById('c-' + (i + 1));
+    if (!el || charts[i] || typeof echarts === 'undefined') return;
+    var kind = el.getAttribute('data-chart');
+    if (RENDER[kind]) { try { charts[i] = RENDER[kind](el); } catch (e) { /* leave the slide readable */ } }
+  }
+
+  function go(i, push) {
+    i = Math.max(0, Math.min(SLIDES.length - 1, i));
+    idx = i;
+    var el = document.getElementById('s-' + (i + 1));
+    if (el) el.scrollIntoView({ block: 'start' });
+    document.getElementById('bar').style.width = ((i + 1) / SLIDES.length * 100) + '%';
+    document.getElementById('count').textContent = (i + 1) + ' / ' + SLIDES.length;
+    document.getElementById('prev').disabled = i === 0;
+    document.getElementById('next').disabled = i === SLIDES.length - 1;
+    [].forEach.call(document.querySelectorAll('.dot'), function (d, n) {
+      d.setAttribute('aria-current', n === i ? 'true' : 'false');
+    });
+    drawChartsIn(i); drawChartsIn(i + 1);
+    if (push) history.replaceState(null, '', '#s-' + (i + 1));
+  }
+
+  function build() {
+    deck.innerHTML = SLIDES.map(slideHTML).join('');
+    document.getElementById('dots').innerHTML = SLIDES.map(function (s, i) {
+      return '<button class="dotwrap" data-i="' + i + '" role="tab" aria-label="Go to slide ' + (i + 1) + '">' +
+             '<span class="dot"></span></button>';
+    }).join('');
+    [].forEach.call(document.querySelectorAll('.dotwrap'), function (b) {
+      b.addEventListener('click', function () { go(+b.getAttribute('data-i'), true); });
+    });
+    document.getElementById('prev').addEventListener('click', function () { go(idx - 1, true); });
+    document.getElementById('next').addEventListener('click', function () { go(idx + 1, true); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(idx + 1, true); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(idx - 1, true); }
+      else if (e.key === 'Home') { e.preventDefault(); go(0, true); }
+      else if (e.key === 'End') { e.preventDefault(); go(SLIDES.length - 1, true); }
+    });
+
+    // touch swipe
+    var y0 = null, x0 = null;
+    deck.addEventListener('touchstart', function (e) {
+      y0 = e.touches[0].clientY; x0 = e.touches[0].clientX;
+    }, { passive: true });
+    deck.addEventListener('touchend', function (e) {
+      if (y0 == null) return;
+      var dy = e.changedTouches[0].clientY - y0, dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) go(idx + (dx < 0 ? 1 : -1), true);
+      y0 = x0 = null;
+    }, { passive: true });
+
+    // keep the counter honest if the reader scrolls the deck directly
+    var t = null;
+    deck.addEventListener('scroll', function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        var n = Math.round(deck.scrollTop / deck.clientHeight);
+        if (n !== idx) { idx = Math.max(0, Math.min(SLIDES.length - 1, n)); go(idx, true); }
+      }, 120);
+    }, { passive: true });
+
+    addEventListener('resize', function () {
+      Object.keys(charts).forEach(function (k) { charts[k] && charts[k].resize(); });
+    });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+      Object.keys(charts).forEach(function (k) { charts[k] && charts[k].dispose(); delete charts[k]; });
+      drawChartsIn(idx);
+    });
+
+    var start = /^#s-(\d+)$/.exec(location.hash);
+    go(start ? +start[1] - 1 : 0, false);
+  }
+
+  function fail(msg) {
+    deck.innerHTML = '<div class="err"><strong>The walkthrough could not load.</strong><br>' + esc(msg) +
+      '<br><br><a href="../">Go to the main site →</a></div>';
+  }
+
+  Promise.all([
+    fetch('../data.json').then(function (r) { if (!r.ok) throw new Error('data.json ' + r.status); return r.json(); }),
+    fetch('../data/walkthrough.json').then(function (r) { if (!r.ok) throw new Error('walkthrough.json ' + r.status); return r.json(); })
+  ]).then(function (res) {
+    DATA = res[0]; SLIDES = res[1].slides || [];
+    if (!SLIDES.length) return fail('No slides were defined.');
+    // ECharts is deferred; charts draw once it lands, text does not wait for it.
+    build();
+    if (typeof echarts === 'undefined') {
+      addEventListener('load', function () { drawChartsIn(idx); drawChartsIn(idx + 1); });
+    }
+  }).catch(function (e) { fail(e.message); });
+})();
+</script>
+</body>
+</html>
