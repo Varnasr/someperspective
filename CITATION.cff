@@ -4,7 +4,7 @@ authors:
   - family-names: "Sri Raman"
     given-names: "Varna"
 title: "Some Perspective: India's Political Economy, 2004-2026"
-version: 2.38.0
+version: 2.43.0
 date-released: 2026-08-15
 url: "https://github.com/Varnasr/someperspective"
 repository-code: "https://github.com/Varnasr/someperspective"
@@ -18,6 +18,10 @@ keywords:
   - federalism
   - democracy
   - statistics
+  - open data
+  - reproducible research
+  - official statistics
+  - fiscal federalism
 license: CC-BY-4.0
 preferred-citation:
   type: report
@@ -29,3 +33,15 @@ preferred-citation:
   institution:
     name: "Independent Research"
   url: "https://someperspective.info"
+abstract: >-
+  Unfunded empirical study comparing two periods of Indian government, the United
+  Progressive Alliance (2004-2014) and the National Democratic Alliance (2014-2026),
+  across growth, employment, distribution, fiscal federalism, statistical capacity and
+  democratic quality. Constructs three indices - a Statistical Suppression Index, a
+  Fiscal Centralisation Index and a Democratic Quality Index - computed for both eras by
+  a single published script. On eight of nine directly comparable measures the later
+  period performs worse; the exception is consumer price inflation, which is reported as
+  an exception and argued out rather than claimed as a result. The author holds a
+  Manmohan Singh Fellowship of the All India Professionals' Congress, a department of
+  the Indian National Congress, and that interest is declared in the paper and on the
+  site.
