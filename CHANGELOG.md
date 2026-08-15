@@ -10,6 +10,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.39.1] - 2026-08-15
+
+### Fixed — the site was rendering at caption size on phones
+Measured on a 390px viewport by walking every visible text node and weighting by
+character count: **94.5% of visible text rendered at 12px or 14px; 0.4% at 16px.**
+The v2.36.0 pass raised a 9px floor to 12px, which stopped text being *unreadable*
+but left the whole page at caption size — 12px is a floor for incidental labels,
+not a size to read prose at.
+- Mobile scale moves up one step under `(pointer: coarse), (max-width: 640px)`:
+  `.text-sm` 14 → **16px**, `.text-base` 16 → **17px**, `.text-xs` 12 → **13.5px**,
+  and `p.text-xs` / `li.text-xs` (prose rather than labels) → **15px**.
+- Exempted where size is load-bearing and a bump would overflow: table cells
+  (12.5/13.5px), the tab bar (12.5/14px), chart containers, `code`/`pre`, chips.
+- After: **87.6% of visible text ≥ 15px**, and **no prose run anywhere below 15px**
+  (verified by re-walking every text node ≥60 chars).
+- Horizontal overflow re-checked at **320/360/390/414/480/640/768/1024/1440px across
+  all 14 tabs**: 0px everywhere.
+
+### Fixed — 320px header overflow
+The header row (title block + theme switcher + script toggle) was 24px wider than a
+320px viewport, which is what makes a phone zoom the whole page out. Gap and margin
+tightened below `sm`, and the row wraps under 340px.
+
+### Fixed — cache correctness
+- `styles.css` was linked without a cache-buster. GitHub Pages serves everything
+  with `max-age=600`, so a returning visitor could pair newly deployed markup with a
+  ten-minute-old stylesheet. Now `/styles.css?v=<version>`, with a CI check that
+  fails if the query and the `version` meta drift apart.
+- The walkthrough fetched `../data.json` and `../data/walkthrough.json` with no
+  version query and no cache directive — the only same-origin data fetches on the
+  site without them. Both now use `?v=<version>` and `cache: 'no-cache'`, matching
+  the contract the main page already used.
+
+### Removed
+- `downloads/linkedin-post.txt` and `downloads/three-indices.png`, added for the
+  launch post and no longer needed. Neither was linked from any page. The withdrawal
+  is recorded in the public updates feed rather than made silently, since 2.37.0 had
+  announced the PNG. The chart itself is unaffected — it is drawn live in the Three
+  Indices section and exportable from there.
+
 ## [2.39.0] - 2026-08-15
 
 ### Fixed — the author's role, stated correctly

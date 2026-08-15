@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
 <title>Guided walkthrough | Some Perspective</title>
+<meta name="version" content="2.39.1">
 <meta name="description" content="A ten-minute guided tour of the evidence on India's economy, institutions and inequality, 2004-2026. Every figure read live from the open dataset.">
 <link rel="canonical" href="https://someperspective.info/walkthrough/">
 <meta property="og:title" content="Some Perspective — the guided walkthrough">
@@ -479,9 +480,14 @@ border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
       '<br><br><a href="../">Go to the main site →</a></div>';
   }
 
+  // Cache-bust against the page's own version and force revalidation, so the deck
+  // can never draw yesterday's numbers from a browser cache while the page itself
+  // is current. Same contract the main site uses for data.json.
+  var V = (document.querySelector('meta[name="version"]') || {}).content || '';
+  var NOCACHE = { cache: 'no-cache' };
   Promise.all([
-    fetch('../data.json').then(function (r) { if (!r.ok) throw new Error('data.json ' + r.status); return r.json(); }),
-    fetch('../data/walkthrough.json').then(function (r) { if (!r.ok) throw new Error('walkthrough.json ' + r.status); return r.json(); })
+    fetch('../data.json?v=' + V, NOCACHE).then(function (r) { if (!r.ok) throw new Error('data.json ' + r.status); return r.json(); }),
+    fetch('../data/walkthrough.json?v=' + V, NOCACHE).then(function (r) { if (!r.ok) throw new Error('walkthrough.json ' + r.status); return r.json(); })
   ]).then(function (res) {
     DATA = res[0]; SLIDES = res[1].slides || [];
     if (!SLIDES.length) return fail('No slides were defined.');

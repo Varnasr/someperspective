@@ -104,3 +104,18 @@ jobs:
       - name: Check every published V-Dem figure is on one index
         run: python3 tools/check_vdem_basis.py
 
+      - name: Check the stylesheet cache-buster matches the page version
+        # index.html links /styles.css?v=<version>. If the two drift, a returning
+        # visitor can pair new markup with a 10-minute-old stylesheet (GitHub Pages
+        # serves everything with max-age=600).
+        run: |
+          python3 -c "
+          import re, sys
+          h = open('index.html').read()
+          ver = re.search(r'<meta name=\"version\" content=\"([^\"]+)\"', h).group(1)
+          css = re.search(r'href=\"/styles\.css\?v=([^\"]+)\"', h)
+          assert css, 'styles.css link is missing its ?v= cache-buster'
+          assert css.group(1) == ver, f'styles.css?v={css.group(1)} != version meta {ver}'
+          print(f'styles.css cache-buster matches version {ver}')
+          "
+

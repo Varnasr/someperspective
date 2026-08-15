@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.39.0">
+    <meta name="version" content="2.39.1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -206,7 +206,11 @@
     <!-- Tailwind CSS — precompiled & purged from index.html into /styles.css
          via `npm run build:css` (config in tailwind.config.js). validate.yml
          rebuilds and fails CI if this committed file is stale. -->
-    <link rel="stylesheet" href="/styles.css">
+    <!-- Version-stamped so a new index.html can never pair with a cached old
+         stylesheet. GitHub Pages serves everything with max-age=600, so without
+         this a returning visitor could hold a 10-minute-old stylesheet against
+         freshly deployed markup. Bump with the version meta above; CI enforces it. -->
+    <link rel="stylesheet" href="/styles.css?v=2.39.1">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -503,14 +507,53 @@
             /* The skip link is deliberately 1x1 until focused; leave it alone. */
             .sr-only:not(:focus) { min-width: 0; min-height: 0; }
 
-            /* Minimum readable size. 9px and 10px micro-labels are a desktop
-               device that does not survive a phone screen; 11.5-12px keeps the
-               small-caps look while staying legible. */
+            /* Readable size on a phone.
+               An earlier pass only raised a 9px floor to 12px, which stopped text
+               being unreadable but left the page at caption size: measured on a
+               390px viewport, 94.5% of all visible characters rendered at 12px or
+               14px and only 0.4% at 16px. 12px is a floor for incidental labels,
+               not a size to read a paragraph at.
+               So the whole scale moves up one step on phones. 16px for body copy
+               is the ordinary baseline (and the size below which iOS zooms form
+               fields). Sizes are raised, never lowered, and the classes that carry
+               structural width — chart labels, table cells, chips — are exempted
+               below so nothing is pushed out of its container. */
+            /* 320px is the narrowest phone still in use, and the header row
+               (title + theme switcher + script toggle) was 24px too wide for it.
+               Allow the row to wrap at that width only. */
+            @media (max-width: 340px) {
+                header .flex.items-start,
+                header .flex.items-center.justify-between { flex-wrap: wrap; row-gap: .5rem; }
+            }
+
             .text-\[9px\]  { font-size: 12px !important; }
             .text-\[10px\] { font-size: 12px !important; }
             .text-\[11px\] { font-size: 12px !important; }
             .kicker        { font-size: 12px; }
             .src-key       { font-size: 12px; }
+
+            .text-xs   { font-size: 13.5px; line-height: 1.5; }
+            /* A text-xs paragraph or list item is prose, not a label, and prose
+               needs more than 13.5px. Inline text-xs spans and divs (badges,
+               counters, axis captions) keep the smaller size. */
+            p.text-xs, li.text-xs, .text-xs > p, .text-xs > li,
+            p[class*="text-xs "], li[class*="text-xs "] { font-size: 15px; line-height: 1.55; }
+            .text-sm   { font-size: 16px;   line-height: 1.6; }
+            .text-base { font-size: 17px;   line-height: 1.65; }
+
+            /* Exemptions: places where the small size is load-bearing rather than
+               cosmetic, and a bump would overflow or wrap badly. */
+            table .text-xs, table .text-sm,
+            .chart-container .text-xs, .chart-container .text-sm,
+            .tab-btn, nav .text-xs, nav .text-sm,
+            .chip, .pill, .badge,
+            code, pre, .src-key, .kicker {
+                font-size: inherit;
+            }
+            table .text-xs { font-size: 12.5px; }
+            table .text-sm { font-size: 13.5px; }
+            nav .text-xs   { font-size: 12.5px; }
+            nav .text-sm   { font-size: 14px; }
 
             /* Tab bar, selects and remaining button shapes: all sat at 24-40px. */
             nav button,
@@ -666,7 +709,7 @@
                     </p>
                 </div>
 
-                <div class="flex items-center gap-2 ml-4 no-print">
+                <div class="flex items-center gap-1.5 sm:gap-2 ml-2 sm:ml-4 no-print flex-shrink-0">
                     <!-- Theme Switcher: Light / Dark / Device -->
                     <div class="flex bg-gray-100 dark:bg-gray-800 rounded-xl p-0.5">
                         <button @click="setTheme('light')" :class="themeMode === 'light' ? 'bg-white dark:bg-gray-700 shadow-sm' : ''" class="p-1.5 sm:p-2 rounded-lg transition-all" aria-label="Light mode" title="Light">

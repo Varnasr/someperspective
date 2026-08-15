@@ -2,6 +2,30 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.39.1",
+      "date": "2026-08-15",
+      "title": "Readable type on a phone",
+      "summary": "Nearly all the text on the site was rendering at caption size on a phone. It now reads at normal size.",
+      "changes": [
+        {
+          "kind": "Fixed",
+          "text": "Measured on a 390-pixel screen, 94.5% of all visible text on the front page was rendering at 12 or 14 pixels, and only 0.4% at 16. An earlier accessibility pass had raised a 9-pixel floor to 12, which stopped text being unreadable but left the whole page at the size normally used for captions. The scale now moves up a step on phones: body text reads at 16 pixels, paragraphs in the smaller style at 15, and secondary labels at 13.5. Chart labels, table cells and the tab bar are deliberately left where they were, because their size holds the layout together. After the change, 88% of visible text is 15 pixels or larger and no paragraph anywhere renders below 15."
+        },
+        {
+          "kind": "Fixed",
+          "text": "On a 320-pixel screen — the narrowest phone still in common use — the header row was 24 pixels wider than the display, which pushes the whole page sideways. It now wraps at that width. Checked at nine screen widths from 320 to 1440 pixels across all fourteen sections: no horizontal overflow anywhere."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The stylesheet was requested without a version stamp, so a returning visitor could pair newly published markup with a stylesheet up to ten minutes old. It is now stamped with the site version, and a build check fails if the two ever drift apart. The guided walkthrough's data requests are stamped the same way, so the deck cannot draw yesterday's numbers from a cache."
+        },
+        {
+          "kind": "Removed",
+          "text": "The shareable PNG of the three indices, added in 2.37.0 for a social-media launch, has been withdrawn along with the post text. The chart itself remains on the site, where it is drawn live from the dataset and can be exported at any time from the Three Indices section."
+        }
+      ]
+    },
+    {
       "version": "2.39.0",
       "date": "2026-08-15",
       "title": "A declared interest, corrected V-Dem inputs, a loader that recovers, and a sitewide audit",
