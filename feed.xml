@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>Correcting how we read the inflation result</title>
+    <link>https://someperspective.info/updates.html#v2.37.0</link>
+    <guid isPermaLink="false">someperspective-v2.37.0</guid>
+    <pubDate>Sat, 15 Aug 2026 12:00:00 +0000</pubDate>
+    <description>The one measure that improved was being described too generously. It is not evidence of good policy, and the paper now says so. Correction: Earlier wording called the fall in inflation 'the single most defensible economic achievement of the period' and attributed it to an institution being strengthened. That reads as crediting the government, and it does not survive scrutiny. The comparison straddles a global commodity cycle: Brent crude fell from about $115 a barrel in June 2014 to under $30 by January 2016 — around 75% — driven by US shale supply and OPEC defending market share, in an economy importing roughly 86% of its crude. A shock that size, arriving exactly at the boundary between the two periods, explains more of the gap than any change of government. Changed: Where domestic policy did contribute, the mechanism was inflation targeting — a rule that constrains the executive's discretion. If that is the channel, it supports the project's argument rather than qualifying it. And the 2026 figure sits on the reweighted CPI basket, so it prints lower for the same price movements. Added: A shareable chart of the three indices, 2004-2026, is now available as a PNG.</description>
+  </item>
+  <item>
     <title>Accessibility: touch targets and readable text on phones</title>
     <link>https://someperspective.info/updates.html#v2.36.0</link>
     <guid isPermaLink="false">someperspective-v2.36.0</guid>

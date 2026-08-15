@@ -503,9 +503,17 @@ Comparing period means across the nine directly comparable measures:
 
 **Eight of nine measures deteriorate. One improves.**
 
-The exception is real and we decline to minimise it. Average CPI inflation of 4.98 per cent against 8.05 per cent is a substantial improvement in a variable that bears directly and regressively on household welfare, and it is the single most defensible economic achievement of the period. Part of it is attributable to the adoption of formal inflation targeting and the associated strengthening of monetary-policy independence — which is worth noting precisely because it runs counter to this paper's general finding: here is an institution that was *strengthened*, with measurable benefit. Part is attributable to global commodity conditions outside any Indian government's control. We would caution, further, that the 2026 figure sits on the new CPI basis described in Section 4.3 and is not strictly comparable to the earlier values in this column.
+The exception is real as a measurement: average CPI inflation of 4.98 per cent against 8.05 per cent is a large difference in a variable that bears directly and regressively on household welfare. What it is *evidence of* is a separate question, and we think the answer is: very little about Indian policy.
 
-An honest reading of this table is not that everything got worse. It is that on measures of accountability, distribution, and statistical integrity the deterioration is uniform, while the one clear improvement lies in a domain where policy authority was *delegated* to a more independent institution rather than concentrated.
+**The comparison straddles a global commodity cycle.** The UPA average sits inside the 2008–2013 commodity boom. The NDA period opens with its collapse: Brent crude fell from about $115 a barrel in June 2014 to below $30 by January 2016, a decline of roughly 75 per cent, driven by United States shale supply and OPEC's decision to defend market share rather than cut production. India imports approximately 86 per cent of its crude. An exogenous shock of that size, arriving at precisely the boundary between the two periods, is a more parsimonious explanation for most of the gap than any change of government.
+
+Comparing era-average inflation across these two decades therefore compares world commodity conditions at least as much as it compares Indian policy, and we would not present the difference as a policy result.
+
+**To the extent domestic policy did contribute, the mechanism cuts against the bargain rather than for it.** India adopted a formal inflation-targeting framework over 2015–16, assigning the Reserve Bank a numerical target and a rules-based mandate. That is a *constraint on executive discretion*: it removes the government's latitude to lean on monetary policy for short-term stimulus. If this is the channel through which policy helped, then the mechanism is delegation and rule-binding — the opposite of the concentration of authority documented everywhere else in this paper.
+
+**And the latest figure is partly an artefact of reweighting.** As set out in Section 4.3, the 2026 value sits on the new CPI 2024=100 basket, in which food's weight falls from 45.86 to 36.75 per cent. A basket that responds less to food prices will print lower inflation than the old one would have, for the same underlying price movements.
+
+We therefore decline to read this row as an achievement of the period's governance, and we would resist anyone else doing so on our data. The honest reading of the table is that on accountability, distribution and statistical integrity the deterioration is uniform, and that the single measure moving the other way is one where the dominant driver was a world oil price and the domestic contribution, if any, came from binding the executive's hands rather than freeing them.
 
 ---
 
@@ -688,7 +696,7 @@ We report this in the paper rather than correcting it silently, for two reasons.
 
 The strongest case for the period under study is that a decisive executive, unencumbered by the veto points that had constrained earlier Indian governments, could deliver material progress that a more constrained government could not. This is a serious argument with real intellectual lineage, and it deserves to be tested rather than dismissed.
 
-Tested, it fails — not because the institutional costs were too high relative to the gains, but because the gains are not visible. Growth did not accelerate. The formal employment share fell every year for twelve years. The bottom half's income share fell by roughly an eighth. The one clear improvement, in inflation, arrived in the domain where authority was *delegated* to an institution made more independent, not concentrated in one made less so.
+Tested, it fails — not because the institutional costs were too high relative to the gains, but because the gains are not visible. Growth did not accelerate. The formal employment share fell every year for twelve years. The bottom half's income share fell by roughly an eighth. The one measure moving the other way, inflation, is largely a world oil price: Brent fell roughly 75 per cent across 2014–16 in an economy importing 86 per cent of its crude. Whatever domestic policy contributed came from a rules-based framework that binds the executive rather than empowers it.
 
 This is not a finding that the trade was unfavourable. It is a finding that there was no trade.
 
@@ -776,7 +784,7 @@ The employment finding is the most robust, because it does not depend on the dis
 
 # 11. Conclusion
 
-India between 2014 and 2026 did not exchange democratic quality for prosperity. It reduced democratic quality, centralised fiscal authority, degraded the statistical apparatus by which any of this might be independently assessed, and did not deliver superior growth, employment, or distribution. On eight of nine comparable cross-era measures the later period performs worse than the earlier one. The single exception, inflation, arrived through a delegation of authority rather than a concentration of it.
+India between 2014 and 2026 did not exchange democratic quality for prosperity. It reduced democratic quality, centralised fiscal authority, degraded the statistical apparatus by which any of this might be independently assessed, and did not deliver superior growth, employment, or distribution. On eight of nine comparable cross-era measures the later period performs worse than the earlier one. The single exception, inflation, is best explained by a global commodity collapse rather than by Indian policy; insofar as policy mattered, it acted by binding the executive rather than empowering it.
 
 The governance component of this finding is corroborated by an independent study using a different method, different data, and a different pre-treatment window, which finds all ten of the governance indicators it tests deteriorating against a synthetic counterfactual at a joint p-value of 0.00.
 

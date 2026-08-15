@@ -10,6 +10,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.37.0] - 2026-08-15
+
+### Fixed — analytical framing
+- **The inflation result was being read too generously**, in a way that amounted to
+  crediting the government for it. Previous wording called it "the single most
+  defensible economic achievement of the period" and attributed it to "an institution
+  that was *strengthened*, with measurable benefit." That does not survive scrutiny and
+  is now replaced throughout the paper, the conclusion, the abstract and the walkthrough:
+  - The era comparison **straddles a global commodity cycle.** Brent fell from ~$115/bbl
+    (June 2014) to under $30 (January 2016), ~75%, on US shale supply and OPEC's
+    market-share decision, in an economy importing ~86% of its crude. An exogenous shock
+    that size landing exactly at the era boundary is a more parsimonious explanation for
+    the gap than any change of government.
+  - Insofar as domestic policy contributed, the channel was **inflation targeting — a
+    constraint on executive discretion.** If that is the mechanism, it supports the
+    paper's thesis rather than qualifying it.
+  - The 2026 figure sits on the **reweighted CPI basket** (food 45.86% → 36.75%), so it
+    prints lower for identical underlying price movements.
+
+### Added
+- `downloads/three-indices.png` — a shareable 2400x1350 chart of SSI, FCI and DQI across
+  2004–2026, rendered from `data.json`. Series direction is labelled on the legend
+  (▲ worse / ▼ worse), since two of the three indices are "higher is worse" and one is
+  "higher is better" on a shared axis.
+
 ## [2.36.1] - 2026-08-15
 
 ### Fixed

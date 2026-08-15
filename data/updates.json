@@ -2,6 +2,26 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.37.0",
+      "date": "2026-08-15",
+      "title": "Correcting how we read the inflation result",
+      "summary": "The one measure that improved was being described too generously. It is not evidence of good policy, and the paper now says so.",
+      "changes": [
+        {
+          "kind": "Correction",
+          "text": "Earlier wording called the fall in inflation 'the single most defensible economic achievement of the period' and attributed it to an institution being strengthened. That reads as crediting the government, and it does not survive scrutiny. The comparison straddles a global commodity cycle: Brent crude fell from about $115 a barrel in June 2014 to under $30 by January 2016 — around 75% — driven by US shale supply and OPEC defending market share, in an economy importing roughly 86% of its crude. A shock that size, arriving exactly at the boundary between the two periods, explains more of the gap than any change of government."
+        },
+        {
+          "kind": "Changed",
+          "text": "Where domestic policy did contribute, the mechanism was inflation targeting — a rule that constrains the executive's discretion. If that is the channel, it supports the project's argument rather than qualifying it. And the 2026 figure sits on the reweighted CPI basket, so it prints lower for the same price movements."
+        },
+        {
+          "kind": "Added",
+          "text": "A shareable chart of the three indices, 2004-2026, is now available as a PNG."
+        }
+      ]
+    },
+    {
       "version": "2.36.0",
       "date": "2026-08-15",
       "title": "Accessibility: touch targets and readable text on phones",

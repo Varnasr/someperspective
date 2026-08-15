@@ -102,13 +102,15 @@
     {
       "id": "inflation",
       "kicker": "The honest exception",
-      "title": "One thing genuinely improved: inflation",
-      "body": "Consumer price inflation averaged {{avg:eraHistory.cpiInflation}}% in 2004-2013 against {{avg:economic.cpiInflation}}% in 2014-2026. That is a real improvement in a variable that hits poorer households hardest.",
+      "title": "The one exception, and why it isn't a win",
+      "body": "Consumer price inflation averaged {{avg:eraHistory.cpiInflation}}% in 2004-2013 against {{avg:economic.cpiInflation}}% in 2014-2026. It is the only measure moving the other way — and it is mostly not about Indian policy at all.",
       "points": [
-        "It is the single most defensible economic achievement of the period.",
-        "Note where it came from: authority was delegated to a more independent institution — inflation targeting by the RBI — rather than concentrated.",
-        "A caveat: from January 2026 the CPI moved to a new 2024=100 basket, so the latest figure is not on the same basis as earlier years."
-      ]
+        "The comparison straddles a global commodity cycle. Brent crude fell from about $115 a barrel in mid-2014 to under $30 by early 2016, driven by US shale supply and OPEC defending market share. India imports about 86% of its crude.",
+        "An external shock that size, landing exactly at the boundary between the two periods, explains more of the gap than any change of government does.",
+        "Where domestic policy did help, it was inflation targeting — a rule that binds the executive's hands. That is delegation, not concentration.",
+        "And the 2026 figure sits on a new CPI basket where food's weight fell from 45.9% to 36.8%, so it prints lower for the same price movements."
+      ],
+      "note": "Worth being precise here: a lower number is not automatically a policy achievement. Ask what moved it before you credit anyone."
     },
     {
       "id": "scorecard",
@@ -167,13 +169,34 @@
       "title": "All of this is open, and checkable",
       "body": "Every figure in this walkthrough is read live from the same dataset the site and the paper use. Nothing here is a screenshot.",
       "links": [
-        { "label": "The full research paper (15,000 words)", "href": "../downloads/paper.html" },
-        { "label": "Download the paper as PDF", "href": "../downloads/paper.pdf" },
-        { "label": "36 standing analyses of the data", "href": "../analysis/" },
-        { "label": "Explore the interactive data yourself", "href": "../#interactive-data" },
-        { "label": "How the indices are built", "href": "../#methodology" },
-        { "label": "The dataset, CSV and Excel", "href": "../downloads/research-package.html" },
-        { "label": "What changed, and when", "href": "../updates.html" }
+        {
+          "label": "The full research paper (15,000 words)",
+          "href": "../downloads/paper.html"
+        },
+        {
+          "label": "Download the paper as PDF",
+          "href": "../downloads/paper.pdf"
+        },
+        {
+          "label": "36 standing analyses of the data",
+          "href": "../analysis/"
+        },
+        {
+          "label": "Explore the interactive data yourself",
+          "href": "../#interactive-data"
+        },
+        {
+          "label": "How the indices are built",
+          "href": "../#methodology"
+        },
+        {
+          "label": "The dataset, CSV and Excel",
+          "href": "../downloads/research-package.html"
+        },
+        {
+          "label": "What changed, and when",
+          "href": "../updates.html"
+        }
       ]
     }
   ]
