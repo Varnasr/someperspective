@@ -20,7 +20,7 @@ We construct three indices to make that degradation legible and comparable acros
 
 All three are computed by a single deterministic script applied identically to 2004–2026, so that the comparison between the United Progressive Alliance decade (2004–2013) and the National Democratic Alliance period (2014–2026) rests on one consistent construction rather than on two differently-built measures.
 
-The results are one-directional. SSI moves from 0.00 across the entire UPA decade to a peak of 9.00 in 2021–22 and remains at 6.40 in 2026. FCI rises from a UPA average of 0.09 to an NDA average of 0.57, peaking at 0.92 in 2020. DQI falls from a UPA average of 0.59 to 0.29 by 2026. On eight of nine directly comparable cross-era measures India performs worse in the later period; the single exception is consumer price inflation, which is genuinely and substantially lower.
+The results are one-directional. SSI moves from 0.00 across the entire UPA decade to a peak of 9.00 in 2021–22 and remains at 6.40 in 2026. FCI rises from a UPA average of 0.09 to an NDA average of 0.57, peaking at 0.92 in 2020. DQI falls from a UPA average of 0.59 to 0.29 by 2026. On eight of nine directly comparable cross-era measures India performs worse in the later period. The single exception is consumer price inflation, which is substantially lower — though we argue at length that this should not be read as a policy result: the comparison straddles the collapse of a global commodity cycle, and insofar as domestic policy contributed, it did so through a rule that constrains executive discretion rather than expands it.
 
 We then subject the governance finding to external validation it did not generate. Grier and Grier (2026), working independently with a different method (synthetic control with randomisation inference), different data (V-Dem and the Penn World Table), and a different pre-treatment window (1984–2013), find that all ten V-Dem governance indicators they test deteriorate against a synthetic counterfactual at a joint p-value of 0.00. Their electoral-democracy gap of −60.2 per cent is close to the −63.4 per cent raw decline in India's V-Dem score recorded in our own data, despite the two quantities not being the same object. Convergence of this kind, across independent methods, is stronger evidence than either study provides alone.
 
@@ -160,7 +160,7 @@ If measurement quality differs systematically between the UPA and NDA periods, t
 
 This is the sense in which our headline result is robust to the very problem it documents. We find that India performs worse on eight of nine comparable measures in the later period. If the later period's data are, as we argue, biased in the government's favour, then correcting for that bias would strengthen rather than weaken the finding.
 
-The exception to note is that this logic does not apply symmetrically to the single measure on which the later period performs better — consumer price inflation. We discuss that measure carefully in Section 6.7, because it is the one place where the honest answer is that the improvement is real.
+The exception to note is that this logic does not apply symmetrically to the single measure on which the later period performs better — consumer price inflation. We return to that measure in Section 6.9, where we argue that its improvement is real as a measurement but is largely not a result of Indian policy.
 
 ---
 
