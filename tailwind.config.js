@@ -3,9 +3,10 @@
  *
  * The site is a single hand-edited index.html served as-is by GitHub Pages.
  * This config replaces the former runtime CDN build (cdn.tailwindcss.com) with
- * a precompiled, purged stylesheet (styles.css). Edit index.html as usual; the
- * GitHub Actions deploy recompiles styles.css before publishing, and the
- * validate workflow guards against a stale committed copy.
+ * a precompiled, purged stylesheet (styles.css). Edit index.html as usual, then
+ * run `npm run build:css` and COMMIT the result: the Pages deploy is a pure static
+ * upload and does NOT rebuild, so the committed styles.css is what ships. The
+ * validate workflow rebuilds and fails if the committed copy is stale.
  *
  * Purge note: Tailwind only keeps classes it finds as literal tokens while
  * scanning `content`. Every class in index.html — including the ternaries in

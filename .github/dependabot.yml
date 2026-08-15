@@ -7,3 +7,17 @@ updates:
     labels: ["dependencies","ci"]
     open-pull-requests-limit: 2
 
+  # The Tailwind build toolchain was previously unwatched, so styles.css was compiled
+  # by whatever tailwindcss the lockfile happened to pin, with no update PRs ever opened.
+  # Majors are ignored deliberately: Tailwind v4 is a config rewrite, not a drop-in bump,
+  # so it should be a considered migration rather than an automated PR.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels: ["dependencies","build"]
+    open-pull-requests-limit: 2
+    ignore:
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
+

@@ -10,6 +10,71 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.31.0] - 2026-08-15
+
+### Added
+- **Independent corroboration section** (Methodology tab, `#independent-check`).
+  Grier & Grier (2026), *"Promises, Promises"* — a synthetic-control study that
+  reaches this project's governance conclusion by an entirely different route:
+  a "Synthetic India" counterfactual fitted over 1984–2013, rather than composite
+  indices built from observed series. New `syntheticControl` block in `data.json`
+  (mirrored into `PRIMER_FALLBACK`), two charts (`grierGovChart` — all ten V-Dem
+  gaps; `grierDonorChart` — the income donor pool), an agreement table against
+  this project's own DQI/V-Dem/RSF figures, and an explicit statement of where
+  the two projects diverge. All figures are transcribed from the authors'
+  published summary; nothing is recomputed here.
+- Glossary entries: *Synthetic control*, *Donor pool*, *RMSPE*, *Placebo test*.
+
+### Fixed
+- **Era Comparison detail chart rendered with no data line at all.** Its
+  `visualMap` piecewise split matched none of the series points, so every point
+  took the default `outOfRange` colour `rgba(0,0,0,0)` — fully transparent. The
+  NDA-II `markLine` then had no resolvable point and threw
+  `Cannot read properties of undefined (reading 'coord')` on every render.
+  Replaced with two explicitly-coloured series (NDA-I 2014–18, NDA-II 2019–26)
+  that share the join point. The chart now draws, and the tab is free of console
+  errors for the first time.
+- **Whole site zoomed out on mobile.** `<main>` is a flex item, so it was sized
+  to its widest descendant's min-content width — the policy-timeline card strip
+  stretched it to ~1280px inside a 390px viewport and Chrome scaled the page down
+  to compensate, instead of letting the inner `overflow-x-auto` containers scroll.
+  Capped with `max-w-[min(80rem,100%)]`; the trajectory gauge card additionally
+  needed `grid-cols-1` + `min-w-0`. All 14 tabs now fit a 390px viewport exactly
+  (verified in headless Chromium; previously 8 of 14 overflowed, up to 1280px).
+- **Interactive Data era shading and policy-event markers never drew.** On a
+  category axis ECharts reads a numeric `markLine`/`markArea` `xAxis` as a
+  category *index*, so `{ xAxis: 2014 }` resolved to index 2014. Axis categories
+  are now strings and the marks reference them by value.
+- **Broken-link CI check false-positived on Alpine bindings.** `:href="expr"`
+  matched the `href="…"` regex and was tested as a file path; a negative
+  lookbehind now skips `:href` / `x-bind:href`.
+
+### Changed
+- **Data refreshed** to the latest public releases as of 15 Aug 2026:
+  - `cpiInflation[2026]`: 3.93 → **4.45** (MoSPI CPI July 2026; June 4.38%,
+    food 5.52%).
+  - `sources.unemployment` re-cited to the PLFS Monthly Bulletin **June 2026**
+    (5.5% overall — unchanged — with rural 5.0%, urban 6.6%, LFPR 54.4%).
+  - Inline `FALLBACK_DATA` mirrored; the data-parity guard passes.
+- **CPI basis break recorded, not silently spliced.** From the January 2026
+  print MoSPI replaced CPI 2012=100 with **2024=100**, reweighted on HCES
+  2023-24 and reclassified to COICOP 2018. The 2026 figure is therefore not on
+  the same basis as 2014–2025, and `sources.cpiInflation` plus `meta.notes` now
+  say so outright. The `cpiBasket` primer block was still describing the retired
+  2012 basket and has been rebuilt on the new series — most importantly food's
+  weight, which fell from **45.86% to 36.75%**, so headline CPI now responds
+  markedly less to a food-price shock than the pre-2026 series did.
+- **Dependencies.** Alpine 3.14.1 → **3.16.1**, ECharts 5.5.0 → **5.6.0**, both
+  now carrying **subresource-integrity hashes** — the CSP trusts all of
+  cdn.jsdelivr.net, so without SRI any substituted file on that host would have
+  executed. Tailwind stays on 3.4.19 (latest 3.x); v4 is a config rewrite and is
+  deliberately left as a considered migration.
+- **Dependabot now watches npm**, not just github-actions — the Tailwind build
+  toolchain was previously unwatched entirely. Tailwind majors are ignored.
+- **`tailwind.config.js` comment corrected**: it claimed the Pages deploy
+  recompiles `styles.css`, but `static.yml` is a pure static upload. The
+  committed `styles.css` is what ships.
+
 ## [2.30.1] - 2026-07-07
 
 ### Changed

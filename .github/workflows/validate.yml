@@ -46,7 +46,9 @@ jobs:
           python3 -c "
           import re, os, sys
           html = open('index.html').read()
-          hrefs = set(re.findall(r'href=\"([^\"#][^\"]*?)\"', html))
+          # Negative lookbehind skips Alpine bindings (:href=\"expr\", x-bind:href=\"expr\"),
+          # whose values are JS expressions rather than URLs and are not files on disk.
+          hrefs = set(re.findall(r'(?<![:\w-])href=\"([^\"#][^\"]*?)\"', html))
           local = [h for h in hrefs if not h.startswith('http') and not h.startswith('data:') and not h.startswith('mailto:')]
           # Root-relative URLs (e.g. /manifest.json) are served from the repo root, so check them relative to the repo.
           missing = [h for h in local if not os.path.exists(h.lstrip('/'))]

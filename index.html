@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.30.1">
+    <meta name="version" content="2.31.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -31,7 +31,7 @@
     <meta property="og:image:alt" content="Some Perspective: India's Growth Paradox - GDP Up, Jobs Down, Inequality Soaring (2004-2026)">
     <meta property="article:author" content="Dr. Varna Sri Raman">
     <meta property="article:published_time" content="2025-10-15">
-    <meta property="article:modified_time" content="2026-07-07">
+    <meta property="article:modified_time" content="2026-08-15">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -208,11 +208,20 @@
          rebuilds and fails CI if this committed file is stale. -->
     <link rel="stylesheet" href="/styles.css">
     
-    <!-- Alpine.js for interactivity -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+    <!-- Alpine.js for interactivity.
+         integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
+         subresource-integrity hash any compromised or substituted file on that host would
+         execute here. The hash pins these to the exact bytes of the pinned version; the
+         browser refuses to run anything else. Regenerate on every version bump with:
+           curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.16.1/dist/cdn.min.js"
+            integrity="sha384-75oSay1c6HzSZ8dPUa3pKH8KLR9R2yAq9zTvyhTrR3gy1qI9w3AExggq3/RE57uR"
+            crossorigin="anonymous"></script>
 
     <!-- ECharts for visualizations (deferred — not needed for initial paint) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"
+            integrity="sha384-pPi0zxBAoDu6+JXW/C68UZLvBUUtU+7zonhif43rqj7pxsGyqyqzcian2Rj37Rss"
+            crossorigin="anonymous"></script>
 
     <!-- Google Fonts (preconnect + swap for non-blocking load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -674,7 +683,13 @@
     </nav>
     
     <!-- Main Content -->
-    <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow">
+    <!-- max-w-[min(80rem,100%)] rather than a bare max-w-7xl (= 80rem): as a flex item of
+         <body class="flex flex-col">, <main> is sized to fit its widest descendant's
+         min-content width, so a wide child (e.g. the policy-timeline card strip) stretched
+         it to ~1280px on a 390px phone and Chrome zoomed the whole site out to compensate.
+         Capping at 100% keeps <main> inside the viewport, so the inner overflow-x-auto
+         containers scroll horizontally as they were designed to. -->
+    <main id="main-content" class="max-w-[min(80rem,100%)] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow">
 
         <!-- Data load failure banner -->
         <div x-show="dataLoadError" x-cloak role="alert"
@@ -1393,6 +1408,92 @@
         
         <!-- Methodology Tab -->
         <div x-show="activeTab === 'Methodology'" x-transition class="space-y-6">
+            <!-- Independent corroboration: Grier & Grier synthetic control -->
+            <div id="independent-check" class="card p-5 sm:p-6" style="border-left:4px solid var(--accent-2);scroll-margin-top:90px;">
+                <div class="kicker mb-1">External study · not produced by this project</div>
+                <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">An independent check, by a different method</h3>
+                <p class="text-sm mb-3" style="color:var(--ink-soft);">
+                    The strongest test of a finding is whether someone else reaches it without using your method, your data vintage, or your framing.
+                    Kevin and Robin Grier (Texas Tech) do exactly that in <em x-text="sc.study.title"></em>. Where this project builds
+                    <button type="button" class="term" @click="showGloss($event,'dqi')">composite indices</button> from observed series, they build a
+                    <button type="button" class="term" @click="showGloss($event,'synthcontrol')">synthetic control</button>: a weighted blend of comparator countries
+                    fitted to India's path over <span x-text="sc.window.preEnd - sc.window.preStart"></span> pre-treatment years
+                    (<span x-text="sc.window.preStart"></span>–<span x-text="sc.window.preEnd"></span>), then used as the counterfactual India that never elected the government it did.
+                </p>
+                <div class="grid sm:grid-cols-3 gap-3 mb-4">
+                    <div class="card-inner">
+                        <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--muted);">Governance indicators tested</div>
+                        <div class="text-2xl font-extrabold" style="color:var(--accent);" x-text="sc.governance.length"></div>
+                        <div class="text-xs" style="color:var(--ink-soft);">all deteriorate; every joint p-value = 0.00</div>
+                    </div>
+                    <div class="card-inner">
+                        <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--muted);">Pre-treatment fit (income)</div>
+                        <div class="text-2xl font-extrabold" style="color:var(--accent);">$<span x-text="sc.income.preTreatmentRMSPE"></span></div>
+                        <div class="text-xs" style="color:var(--ink-soft);">RMSPE, ≈<span x-text="sc.income.rmspeAsPctOf2013Income"></span>% of 2013 income</div>
+                    </div>
+                    <div class="card-inner">
+                        <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--muted);">Final income gap</div>
+                        <div class="text-2xl font-extrabold" style="color:#ef4444;">$<span x-text="Math.abs(sc.income.finalGapUSD).toLocaleString()"></span></div>
+                        <div class="text-xs" style="color:var(--ink-soft);">per person per year below counterfactual</div>
+                    </div>
+                </div>
+
+                <div class="card-inner mb-4"><div id="grierGovChart" class="chart-container"></div></div>
+                <p class="text-xs mb-4" style="color:var(--muted);">
+                    Final-year gap between India and Synthetic India, as a percentage of India's own 2013 level. Bars run rightward in the direction of
+                    <em>worse</em> governance — so political corruption, where the raw gap is positive (+0.272), appears on the same side as the freedoms that fell.
+                    Freedom of religion is measured on an interval scale rather than 0–1, which is why its percentage exceeds 100.
+                </p>
+
+                <h4 class="font-bold text-base mb-2" style="color:var(--ink);">Where the two projects agree</h4>
+                <div class="overflow-x-auto mb-2">
+                    <table class="w-full text-sm" style="border-collapse:collapse;">
+                        <thead>
+                            <tr style="border-bottom:1px solid var(--line); color:var(--muted);" class="text-left text-xs uppercase tracking-wider">
+                                <th class="py-2 pr-3 font-semibold">Measure</th>
+                                <th class="py-2 pr-3 font-semibold">Grier &amp; Grier (synthetic control)</th>
+                                <th class="py-2 font-semibold">Some Perspective (indices)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="row in sc.convergence" :key="row.measure">
+                                <tr style="border-bottom:1px solid var(--line);" class="align-top">
+                                    <td class="py-2 pr-3 font-semibold" style="color:var(--ink);" x-text="row.measure"></td>
+                                    <td class="py-2 pr-3" style="color:var(--ink-soft);" x-text="row.grier"></td>
+                                    <td class="py-2" style="color:var(--ink-soft);" x-text="row.sp"></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs mb-4" style="color:var(--muted);">
+                    Note that these are not the same quantity. Their figures are gaps against a counterfactual; this project's are observed changes over time.
+                    That two different questions produce numbers this close is the point — not that the numbers are interchangeable.
+                </p>
+
+                <h4 class="font-bold text-base mb-2" style="color:var(--ink);">Where they part company</h4>
+                <p class="text-sm mb-4" style="color:var(--ink-soft);" x-text="sc.divergence"></p>
+
+                <div class="card-inner mb-4"><div id="grierDonorChart" class="chart-container"></div></div>
+                <p class="text-xs mb-4" style="color:var(--muted);">
+                    Synthetic India for the income test is built mostly from
+                    <span x-text="sc.incomeDonors.slice(0,3).map(d => d.country).join(', ')"></span>.
+                    The democracy test uses a separate, unweighted pool of <span x-text="sc.democracyDonors.length"></span> middle-income democracies:
+                    <span x-text="sc.democracyDonors.join(', ')"></span>.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <a href="https://rgrier88.github.io/modi-promises/" target="_blank" rel="noopener noreferrer" class="btn-accent px-4 py-2 text-sm">Read their summary →</a>
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7248338" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm rounded-xl border font-semibold" style="border-color:var(--line);color:var(--ink-soft);">Paper (SSRN)</a>
+                    <a href="https://github.com/rgrier88/modi-promises-replication" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm rounded-xl border font-semibold" style="border-color:var(--line);color:var(--ink-soft);">Their replication code</a>
+                </div>
+                <p class="text-xs mt-3" style="color:var(--muted);">
+                    <span x-text="sc.study.authors"></span>, <span x-text="sc.study.affiliation"></span> (<span x-text="sc.study.year"></span>).
+                    Governance data: <span x-text="sc.study.governanceSource"></span>. Income data: <span x-text="sc.study.incomeSource"></span>.
+                    Figures transcribed from the authors' published summary; nothing on this page is recomputed by this project.
+                </p>
+            </div>
+
             <!-- Citation & downloads -->
             <div id="cite-download" class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);scroll-margin-top:90px;">
                 <div class="kicker mb-1">Open data · CC BY 4.0</div>
@@ -2063,8 +2164,12 @@ reduces overall score</pre>
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-6">
-                <div class="card p-5 sm:p-6 flex flex-col">
+            <!-- grid-cols-1 (= repeat(1,minmax(0,1fr))) rather than relying on the implicit
+                 single column: an implicit `auto` track is floored at its items' min-content
+                 width, so this card pushed the track past the viewport on a narrow phone.
+                 min-w-0 on the item lets it actually take the track's width. -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="card p-5 sm:p-6 flex flex-col min-w-0">
                     <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">India Trajectory Index, 2030</h3>
                     <p class="text-xs mb-2" style="color:var(--muted);">Composite of 8 indicators, scored 0–100 (higher = healthier). Reflects the selected scenario and any active levers.</p>
                     <div id="trajGaugeChart" style="width:100%;height:200px;"></div>
@@ -2378,7 +2483,7 @@ reduces overall score</pre>
                 <div class="card p-5 sm:p-6">
                     <div class="kicker mb-1">Section E</div>
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">How the inflation number is built</h3>
-                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">The government tracks ~<strong x-text="primer.cpiBasket.goodsTracked.toLocaleString('en-IN')"></strong> goods and services from <strong x-text="primer.cpiBasket.urbanMarkets"></strong> urban markets and <strong x-text="primer.cpiBasket.villages"></strong> villages every month, against a <strong x-text="primer.cpiBasket.baseYear"></strong> base. Food is nearly half the basket (~<span x-text="primer.cpiBasket.foodSharePct"></span>%), so a bad monsoon pushing onion and tomato prices up adds points before anything else moves. The RBI targets CPI at <span x-text="primer.cpiBasket.rbiTarget"></span>%.</p>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">The government prices <strong x-text="primer.cpiBasket.itemsWeighted"></strong> weighted items every month from <strong x-text="primer.cpiBasket.urbanMarkets.toLocaleString('en-IN')"></strong> urban markets across <strong x-text="primer.cpiBasket.urbanTowns"></strong> towns and <strong x-text="primer.cpiBasket.villages.toLocaleString('en-IN')"></strong> rural markets, against a <strong x-text="primer.cpiBasket.baseYear"></strong> base. Food is the largest single block at <span x-text="primer.cpiBasket.foodSharePct"></span>% — but note that it was <span x-text="primer.cpiBasket.foodSharePctPrev"></span>% under the old 2012 base, so the same monsoon shock now moves headline CPI by noticeably less than it used to. Housing is <span x-text="primer.cpiBasket.housingSharePct"></span>%, transport <span x-text="primer.cpiBasket.transportSharePct"></span>%. The RBI targets CPI at <span x-text="primer.cpiBasket.rbiTarget"></span>%.</p>
                     <div class="card-inner"><div id="primerInflationChart" class="chart-container"></div></div>
                     <p class="text-xs mt-2" style="color:var(--muted);">Inflation fell and mostly stayed inside the RBI band under NDA — partly because farm-gate food prices fell. Relief for the consumer; distress for the farmer.</p>
                 </div>
@@ -2753,7 +2858,7 @@ reduces overall score</pre>
             informalEmployment:  [87.0,87.2,87.5,87.8,88.1,88.4,88.6,88.5,88.7,88.8,88.8,89.0,89.1],
             pressFreedom:        [140,136,133,136,138,140,142,142,150,161,159,151,157],
             fiscalDeficit:       [4.1,3.9,3.5,3.5,3.4,4.6,9.2,6.7,6.4,5.6,4.8,4.4,4.4],
-            cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,3.93],
+            cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,4.45],
             rupeeUSD:            [61,64,67,65,68,70,74,74,79,82,84,87,95],
             ssi:                 [0.0,1.05,1.05,2.05,4.0,4.8,7.0,9.0,9.0,8.2,7.05,6.55,6.4],
             fci:                 [0.19,0.21,0.25,0.41,0.53,0.65,0.92,0.82,0.7,0.68,0.68,0.68,0.68],
@@ -2803,6 +2908,34 @@ reduces overall score</pre>
             { value:'11.2%',    label:'Tax-to-GDP',      sub:'OECD average ~34%' }
         ]},
         chinaDivergence: { note:'Nominal USD per capita. Both near $330 in 1991. Approximate.', years:[1991,2000,2010,2020,2026], india:[330,460,1350,1910,2900], china:[330,960,4550,10500,13000] },
+        // External corroboration: Grier & Grier (2026) synthetic-control study.
+        // Minimal fallback — the full block (donor pools, convergence table) lives in data.json.
+        syntheticControl: { note:'Grier & Grier (2026), "Promises, Promises". Gaps vs a synthetic counterfactual fitted to India 1984-2013.',
+            study:{ title:'Promises, Promises: Modi’s India in Comparative Perspective', authors:'Kevin Grier & Robin Grier', affiliation:'Texas Tech University', year:2026, method:'Synthetic control with randomization inference', site:'https://rgrier88.github.io/modi-promises/', paper:'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7248338', replication:'https://github.com/rgrier88/modi-promises-replication', governanceSource:'Varieties of Democracy (V-Dem)', incomeSource:'Penn World Table 11.0' },
+            window:{ preStart:1984, preEnd:2013, postStart:2014, postEnd:2024 },
+            governance:[
+                { indicator:'Freedom of religion', gap:-1.407, pct:-168.7, p:0.00 },
+                { indicator:'Liberal democracy', gap:-0.360, pct:-69.1, p:0.00 },
+                { indicator:'Electoral democracy (polyarchy)', gap:-0.391, pct:-60.2, p:0.00 },
+                { indicator:'Freedom of expression', gap:-0.488, pct:-56.2, p:0.00 },
+                { indicator:'Political corruption', gap:0.272, pct:46.8, p:0.00, higherIsWorse:true },
+                { indicator:'Equality before the law', gap:-0.221, pct:-30.4, p:0.00 },
+                { indicator:'Freedom of association', gap:-0.232, pct:-29.6, p:0.00 },
+                { indicator:'Legislative constraints', gap:-0.242, pct:-28.8, p:0.00 },
+                { indicator:'Equal protection', gap:-0.190, pct:-26.1, p:0.00 },
+                { indicator:'Judicial constraints', gap:-0.105, pct:-12.7, p:0.00 }
+            ],
+            income:{ firstYearGapUSD:-400, finalGapUSD:-1000, preTreatmentRMSPE:59, rmspeAsPctOf2013Income:1, note:'Published anchor values only; no intermediate years are interpolated.' },
+            incomeDonors:[ {country:'Ethiopia',weight:38}, {country:'China',weight:28}, {country:'Bangladesh',weight:25}, {country:'Pakistan',weight:7}, {country:'Philippines',weight:2} ],
+            democracyDonors:['Brazil','Argentina','Chile','Colombia','Peru','Mexico','South Africa','Ghana','Indonesia','Malaysia','Philippines','Sri Lanka'],
+            convergence:[
+                { measure:'Electoral democracy', grier:'-60.2% vs synthetic counterfactual (polyarchy gap -0.391)', sp:'V-Dem India 0.71 (2014) → 0.26 (2026), -63.4%' },
+                { measure:'Overall democratic quality', grier:'-69.1% liberal-democracy gap', sp:'DQI 0.54 (2014) → 0.29 (2026), -46.3%' },
+                { measure:'Press & expression', grier:'Freedom of expression -56.2%', sp:'RSF rank 140 (2014) → 157 (2026)' },
+                { measure:'Corruption', grier:'Political corruption +46.8% (worse)', sp:'Not separately indexed; SSI covers statistical opacity' }
+            ],
+            divergence:'The two projects disagree on scope, not direction. Grier & Grier make an absolute income claim this project does not test; their income donor pool is also heavily weighted to Ethiopia and Bangladesh. Treat governance as strongly corroborated and income as a separate, contestable claim.'
+        },
         taxTake: { note:'For every ₹100 the Union collects (Union Budget 2026-27).', items:[
             { label:'Borrowings', value:24, sub:'not earned — borrowed', shared:false },
             { label:'Individual income tax', value:19, sub:'salaried & professional', shared:true },
@@ -2825,7 +2958,7 @@ reduces overall score</pre>
             { state:'Tamil Nadu', ret:60 }, { state:'West Bengal', ret:120 }, { state:'Uttar Pradesh', ret:200 },
             { state:'Madhya Pradesh', ret:244 }, { state:'Bihar', ret:510 }
         ]},
-        realInflation: { note:'Everyday prices over ~a decade vs the ~3.9% headline CPI. Thali: AIPC; others illustrative.', headlineCPI:3.9, items:[
+        realInflation: { note:'Everyday prices over ~a decade vs the ~4.5% headline CPI (July 2026). Thali: AIPC; others illustrative.', headlineCPI:3.9, items:[
             { item:'Basic thali', then:19, now:28.5, unit:'₹' },
             { item:'Auto-rickshaw min. fare', then:25, now:50, unit:'₹' },
             { item:'Daily family meals', then:200, now:300, unit:'₹/day' },
@@ -2852,7 +2985,7 @@ reduces overall score</pre>
         deficitFinancing: { note:'How the deficit is financed (Budget 2026-27; RBI).', deficitPctGDP:4.3, marketBorrowingLakhCr:17.2, rbiDividendLakhCr:2.87, interestPer100:20 },
         delimitation: { note:'Projected Lok Sabha seat change after the first census post-2026 (Carnegie; ISAS; India Forum).', items:[{state:'Uttar Pradesh',change:11},{state:'Bihar',change:10},{state:'Tamil Nadu',change:-8},{state:'Kerala',change:-8}], frozenSince:1971, perMP1951Millions:0.7, perMPNowMillions:2.5 },
         monsoonChain: { note:'Why half of India’s inflation starts in the sky (IMD; RBI; IPCC).', rainfedSharePct:50, steps:['Deficient monsoon','Farm output falls','Food prices spike','CPI breaches 6%','RBI raises rates','Rural incomes squeezed'] },
-        cpiBasket: { note:'How CPI is built (MoSPI, 2012 base).', goodsTracked:80000, urbanMarkets:1114, villages:1181, baseYear:2012, rbiTarget:4, foodSharePct:46 },
+        cpiBasket: { note:'How CPI is built (MoSPI, 2024=100 series, weights from HCES 2023-24).', itemsWeighted:358, urbanMarkets:1395, urbanTowns:434, villages:1465, onlineMarkets:12, baseYear:2024, rbiTarget:4, foodSharePct:36.75, foodSharePctPrev:45.86, housingSharePct:16.48, transportSharePct:9.43, healthSharePct:6.83 },
         pumpPrice: { note:'Where every rupee of the petrol price goes (PPAC; PRS; Delhi 2026 illustrative).', parts:[{label:'Crude + refining + OMC margin',value:55.3},{label:'Central excise',value:19.9},{label:'State VAT',value:15.0},{label:'Dealer margin',value:3.8}], total:94.0, crudeImportDependence:86 },
         modiAsks: { note:'PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S.', asks:['Avoid buying gold for one year','Postpone non-essential foreign travel','Work from home where possible','Use public transport and carpooling','Reduce edible-oil consumption','Reduce chemical fertiliser use (farmers)','Buy Swadeshi, prefer Indian-made goods'], numbers:[{label:'Gold imports FY26',value:'$72 bn',sub:'2nd-largest import after crude'},{label:'Tourist spend abroad',value:'$31.7 bn',sub:'~30 mn Indians travelled out'},{label:'Crude oil imports',value:'$123 bn',sub:'85%+ of crude imported'},{label:'Rupee (crisis week)',value:'95.2/$',sub:'record low, May 2026'}] },
         gold: { note:'Indians buy gold because the formal system left no better option (WGC 2024; AMFI; RBI; IRDAI; SEBI).', privateTonnes:25000, stockValueTn:1.8, insurancePenetration:3.2, insuranceGlobal:7, excludedAdultsMn:190, equityParticipationPct:3.5 },
@@ -3051,7 +3184,11 @@ reduces overall score</pre>
                 ssi: { term: 'SSI', def: 'Statistical Suppression Index (constructed) — tracks delayed, withheld, or discontinued official statistics.' },
                 fci: { term: 'FCI', def: 'Fiscal Centralisation Index (constructed) — a 5-component measure of how much fiscal power has shifted to the centre.' },
                 dqi: { term: 'DQI', def: 'Democratic Quality Index (constructed) — geometric mean of normalised V-Dem, Freedom House and RSF scores.' },
-                rainfed: { term: 'Rainfed agriculture', def: 'Cropland watered only by rain (~50% of India’s farmland), so a weak monsoon raises food prices and rural distress.' }
+                rainfed: { term: 'Rainfed agriculture', def: 'Cropland watered only by rain (~50% of India’s farmland), so a weak monsoon raises food prices and rural distress.' },
+                synthcontrol: { term: 'Synthetic control', def: 'A method that builds a "counterfactual" version of a country from a weighted blend of comparable countries, fitted to match its path before some event. The gap that opens afterwards is the estimated effect. Used by Grier & Grier (2026) to construct "Synthetic India".' },
+                donorpool: { term: 'Donor pool', def: 'The set of countries a synthetic control draws on, each with a weight. The choice of pool is the most consequential — and most contested — design decision in the method.' },
+                rmspe: { term: 'RMSPE', def: 'Root Mean Squared Prediction Error — how closely the synthetic counterfactual tracked the real country before the event. A small pre-treatment RMSPE means the match was tight, so the post-event gap is more credible.' },
+                placebo: { term: 'Placebo test', def: 'Re-running an analysis where no real effect should exist (a fake treatment year, or treating other countries as if treated). If the method still produces a large "effect", the original result is suspect.' }
             },
             // Reading the Economy: active section (A..K), mirrors the deck's 11 sections
             primerSection: 'A',
@@ -3077,6 +3214,11 @@ reduces overall score</pre>
             get trajCurrentSpec() {
                 return (this.forecastSpec.indicators || []).find(s => s.key === this.trajIndicator) || {};
             },
+            // External synthetic-control study (Grier & Grier). Falls back to the
+            // bundled copy in PRIMER_FALLBACK if data.json hasn't loaded.
+            get sc() {
+                return (this.primer && this.primer.syntheticControl) || PRIMER_FALLBACK.syntheticControl;
+            },
             // Rows for the Sources & freshness panel, built from data.json `sources`.
             get sourceRows() {
                 const labels = {
@@ -3086,11 +3228,11 @@ reduces overall score</pre>
                     fiscalDeficit: 'Fiscal deficit', cpiInflation: 'CPI inflation', rupeeUSD: 'Rupee / USD', ssi: 'Statistical Suppression Index',
                     fci: 'Fiscal Centralisation Index', dqi: 'Democratic Quality Index', gigWorkers: 'Gig workers',
                     ruralIncome: 'Rural income (indexed)', femaleLFPR: 'Female LFPR', international: 'V-Dem / RSF (international)',
-                    primer: 'Citizen-primer datasets'
+                    primer: 'Citizen-primer datasets', syntheticControl: 'Synthetic-control check (external)'
                 };
                 const quality = (k) => ['ssi', 'fci', 'dqi'].includes(k) ? 'Constructed index'
                     : k === 'informalEmployment' ? 'Derived'
-                    : k === 'primer' ? 'Compiled' : 'Official / survey';
+                    : ['primer', 'syntheticControl'].includes(k) ? 'Compiled' : 'Official / survey';
                 const qClass = (q) => q === 'Constructed index' ? 'q-constructed' : q === 'Derived' ? 'q-derived' : q === 'Compiled' ? 'q-compiled' : 'q-official';
                 const src = this.sourcesData || {};
                 return Object.keys(labels).filter(k => src[k]).map(k => ({
@@ -3245,7 +3387,7 @@ reduces overall score</pre>
                     if (d.eraHistory) this.eraHistory = d.eraHistory;
                     this.initTrajWeights();
                     // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
-                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement','states'];
+                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement','states','syntheticControl'];
                     const merged = { ...PRIMER_FALLBACK };
                     for (const k of primerKeys) { if (d[k]) merged[k] = d[k]; }
                     this.primer = merged;
@@ -3427,7 +3569,9 @@ reduces overall score</pre>
                 primerChinaChart: 'World Bank national accounts; IMF WEO',
                 primerStructureChart: 'MoSPI/NSO GVA (FY25); PLFS employment shares',
                 primerWagesChart: 'NABARD rural income, indexed (2014=100)',
-                primerInflationChart: 'MoSPI CPI (Combined), 2012 base'
+                primerInflationChart: 'MoSPI CPI (Combined), 2012 base',
+                grierGovChart: 'Grier & Grier (2026) synthetic control, V-Dem — external study',
+                grierDonorChart: 'Grier & Grier (2026) synthetic control, Penn World Table 11.0 — external study'
             },
             chartTitleFallback: {
                 gdpEmploymentChart: 'GDP growth vs unemployment',
@@ -3551,6 +3695,7 @@ reduces overall score</pre>
                 } else if (tab === 'Methodology') {
                     this.createDataCoverageChart();
                     this.createIndexRadarChart();
+                    this.createSyntheticControlCharts();
                 } else if (tab === 'Implications') {
                     this.createInternationalChart();
                     this.createDemocraticDeclineChart();
@@ -3792,7 +3937,11 @@ reduces overall score</pre>
                 const eh = this.eraHistory || {};
                 const ehYears = eh.years || [];
                 const ndaYears = (d.years || []).filter(y => y <= 2026);
-                const fullYears = ehYears.concat(ndaYears);
+                // Strings, not numbers: on a category axis ECharts reads a NUMERIC markLine/
+                // markArea `xAxis` as a category *index* (index 2014 → out of range → it threw
+                // "Cannot read properties of undefined (reading 'coord')" and the era shading and
+                // policy-event lines silently vanished). String categories match by value.
+                const fullYears = ehYears.concat(ndaYears).map(String);
                 const hasEra = ehYears.length > 0;
                 const seriesData = (key, econArr, scale) => {
                     const s = scale || 1;
@@ -3803,8 +3952,8 @@ reduces overall score</pre>
 
                 const dividerColor = this.darkMode ? '#94a3b8' : '#64748b';
                 const markLineData = [];
-                if (hasEra) markLineData.push({ xAxis: 2014, name: '', lineStyle: { type: 'solid', color: dividerColor, width: 1.5 }, label: { show: true, rotate: 0, formatter: 'UPA | NDA', position: 'insideEndTop', color: dividerColor, fontSize: 9, fontWeight: 'bold' } });
-                if (this.showEvents && this.policyEvents.length) this.policyEvents.forEach(e => markLineData.push({ name: e.short, xAxis: e.year }));
+                if (hasEra) markLineData.push({ xAxis: '2014', name: '', lineStyle: { type: 'solid', color: dividerColor, width: 1.5 }, label: { show: true, rotate: 0, formatter: 'UPA | NDA', position: 'insideEndTop', color: dividerColor, fontSize: 9, fontWeight: 'bold' } });
+                if (this.showEvents && this.policyEvents.length) this.policyEvents.forEach(e => markLineData.push({ name: e.short, xAxis: String(e.year) }));
                 const markLine = markLineData.length ? {
                     symbol: 'none', silent: true,
                     label: { show: true, formatter: p => p.name, color: dividerColor, fontSize: 9, rotate: 90, position: 'insideEndTop' },
@@ -3814,8 +3963,8 @@ reduces overall score</pre>
                 const markArea = hasEra ? {
                     silent: true,
                     data: [
-                        [{ xAxis: 2004, itemStyle: { color: this.darkMode ? 'rgba(59,130,246,0.10)' : 'rgba(59,130,246,0.07)' }, label: { show: true, position: 'insideTopLeft', color: dividerColor, fontSize: 10, fontWeight: 'bold', formatter: 'UPA era' } }, { xAxis: 2014 }],
-                        [{ xAxis: 2014, itemStyle: { color: this.darkMode ? 'rgba(239,68,68,0.08)' : 'rgba(180,83,14,0.05)' }, label: { show: true, position: 'insideTopRight', color: dividerColor, fontSize: 10, fontWeight: 'bold', formatter: 'NDA era' } }, { xAxis: 2026 }]
+                        [{ xAxis: '2004', itemStyle: { color: this.darkMode ? 'rgba(59,130,246,0.10)' : 'rgba(59,130,246,0.07)' }, label: { show: true, position: 'insideTopLeft', color: dividerColor, fontSize: 10, fontWeight: 'bold', formatter: 'UPA era' } }, { xAxis: '2014' }],
+                        [{ xAxis: '2014', itemStyle: { color: this.darkMode ? 'rgba(239,68,68,0.08)' : 'rgba(180,83,14,0.05)' }, label: { show: true, position: 'insideTopRight', color: dividerColor, fontSize: 10, fontWeight: 'bold', formatter: 'NDA era' } }, { xAxis: '2026' }]
                     ]
                 } : null;
 
@@ -4203,29 +4352,46 @@ reduces overall score</pre>
                 const values = d[indicator];
                 if (!values) return;
 
-                // Split into pre-2014 pad + NDA era
-                // Since our data starts at 2014, we show the NDA era with a visual midpoint marker
-                const midIdx = 0; // 2014 = index 0
+                // NDA-I (2014-2018) vs NDA-II (2019 onwards), drawn as two series that share
+                // the 2018 point so the line stays continuous across the join.
+                // This replaces a `visualMap` piecewise colour split that silently broke the
+                // chart: none of the points matched its pieces, so every point took the default
+                // outOfRange colour rgba(0,0,0,0) — the whole series rendered invisible, and the
+                // NDA-II markLine then had no resolvable point and threw on every render.
+                const splitIdx = (d.years || []).indexOf(2019);
+                const cut = splitIdx > 0 ? splitIdx : 5;
+                const ndaI = values.map((v, k) => (k <= cut - 1 ? v : null));
+                const ndaII = values.map((v, k) => (k >= cut - 1 ? v : null));
 
                 const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
                     title: chartTitle(`${labels[indicator]}: NDA Era (2014-2026)`, this.darkMode),
                     tooltip: { trigger: 'axis' },
-                    xAxis: { type: 'category', data: d.years, axisLabel: { fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
+                    // yearLabels (strings) rather than years (numbers): the markLine below
+                    // references the category by the string '2019', which never matched a
+                    // numeric category — ECharts threw on the unresolved coord and the
+                    // NDA-II divider never drew.
+                    xAxis: { type: 'category', data: d.yearLabels || (d.years || []).map(String), axisLabel: { fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
                     yAxis: { type: 'value', name: mobile ? '' : labels[indicator], axisLabel: { fontSize: mobile ? 10 : 12 } },
                     dataZoom: dataZoom(),
-                    visualMap: {
-                        show: false, dimension: 0, pieces: [
-                            { lte: 4, color: '#3b82f6' },  // 2014-2018
-                            { gt: 4, color: '#f97316' }     // 2019-2026
-                        ]
-                    },
-                    series: [{
-                        type: 'line', data: values, smooth: true,
-                        areaStyle: { opacity: 0.12 },
-                        markLine: { data: [{ xAxis: '2019', label: { formatter: 'NDA-II', position: 'start' }, lineStyle: { type: 'dashed', color: '#ef4444' } }] }
-                    }]
+                    legend: chartLegend(['NDA-I (2014-18)', 'NDA-II (2019-26)']),
+                    series: [
+                        {
+                            name: 'NDA-I (2014-18)', type: 'line', data: ndaI, smooth: true, connectNulls: false,
+                            itemStyle: { color: '#3b82f6' }, lineStyle: { color: '#3b82f6', width: 3 },
+                            areaStyle: { color: '#3b82f6', opacity: 0.12 },
+                            markLine: {
+                                symbol: 'none', silent: true,
+                                data: [{ xAxis: '2019', label: { formatter: 'NDA-II', position: 'start' }, lineStyle: { type: 'dashed', color: '#ef4444' } }]
+                            }
+                        },
+                        {
+                            name: 'NDA-II (2019-26)', type: 'line', data: ndaII, smooth: true, connectNulls: false,
+                            itemStyle: { color: '#f97316' }, lineStyle: { color: '#f97316', width: 3 },
+                            areaStyle: { color: '#f97316', opacity: 0.12 }
+                        }
+                    ]
                 }, true);
             },
 
@@ -4854,6 +5020,77 @@ reduces overall score</pre>
                             { name: 'Share of output (GVA)', type: 'bar', data: sectors.map(s => s.gva), itemStyle: { color: '#0e7490', borderRadius: [4,4,0,0] }, barGap: '10%' },
                             { name: 'Share of jobs', type: 'bar', data: sectors.map(s => s.emp), itemStyle: { color: '#b4530e', borderRadius: [4,4,0,0] } }
                         ]
+                    }, true);
+                }
+            },
+
+            // ===== EXTERNAL CORROBORATION (Grier & Grier synthetic control) =====
+            // Two charts on the Methodology tab. All values are transcribed from the
+            // authors' published summary — nothing here is recomputed by this project.
+            createSyntheticControlCharts() {
+                const sc = this.sc;
+                if (!sc) return;
+
+                // 1. Governance ledger. Bars are drawn in the "worse" direction so the
+                //    corruption indicator (where a POSITIVE gap means worse) sits on the
+                //    same side as the freedoms that fell. Signed gap stays in the tooltip.
+                const gc = this.getChart('grierGovChart');
+                if (gc && Array.isArray(sc.governance)) {
+                    // Ascending, so the largest deterioration lands at the top of a horizontal axis.
+                    const rows = sc.governance.slice().sort((a, b) => Math.abs(a.pct) - Math.abs(b.pct));
+                    gc.setOption({
+                        ...baseOpts(this.darkMode),
+                        title: chartTitle('Ten governance measures, ten deteriorations', this.darkMode),
+                        // containLabel lets the long indicator names size the left margin themselves,
+                        // so this stays readable on a phone as well as a desktop.
+                        grid: { left: 8, right: 52, top: 52, bottom: 40, containLabel: true },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: { type: 'shadow' },
+                            formatter: (ps) => {
+                                const r = rows[ps[0].dataIndex];
+                                const dir = r.higherIsWorse ? 'higher (worse)' : 'lower';
+                                return `<strong>${r.indicator}</strong><br>` +
+                                    `Gap vs Synthetic India: ${r.gap > 0 ? '+' : ''}${r.gap}<br>` +
+                                    `${Math.abs(r.pct)}% ${dir} than India's 2013 level<br>` +
+                                    `Joint p-value: ${r.p.toFixed(2)}`;
+                            }
+                        },
+                        xAxis: { type: 'value', name: '% deterioration vs counterfactual', nameLocation: 'middle', nameGap: 24, axisLabel: { formatter: v => v + '%' } },
+                        yAxis: { type: 'category', data: rows.map(r => r.indicator), axisLabel: { fontSize: 11, width: isMobile() ? 96 : 200, overflow: 'truncate' } },
+                        series: [{
+                            name: 'Deterioration', type: 'bar',
+                            data: rows.map(r => ({
+                                value: Math.abs(r.pct),
+                                // Corruption is the odd one out: a rise, not a fall. Mark it.
+                                itemStyle: { color: r.higherIsWorse ? '#a16207' : '#ef4444', borderRadius: [0, 4, 4, 0] }
+                            })),
+                            label: { show: true, position: 'right', fontSize: 11, formatter: p => p.value + '%' },
+                            barMaxWidth: 20
+                        }]
+                    }, true);
+                }
+
+                // 2. Donor pool for the income counterfactual — the weights that decide
+                //    what "Synthetic India" actually is, and the main line of attack on it.
+                const dc = this.getChart('grierDonorChart');
+                if (dc && Array.isArray(sc.incomeDonors)) {
+                    const palette = ['#b4530e', '#0e7490', '#a16207', '#6d28d9', '#15803d'];
+                    dc.setOption({
+                        ...baseOpts(this.darkMode),
+                        title: chartTitle('What "Synthetic India" is made of (income test)', this.darkMode),
+                        tooltip: { trigger: 'item', formatter: p => `${p.name}: ${p.value}% of the synthetic control` },
+                        legend: chartLegend(sc.incomeDonors.map(d => d.country)),
+                        series: [{
+                            name: 'Donor weight', type: 'pie', radius: ['42%', '68%'], center: ['50%', '56%'],
+                            avoidLabelOverlap: true,
+                            itemStyle: { borderWidth: 2, borderColor: this.darkMode ? '#0c0d12' : '#fff' },
+                            label: { formatter: '{b}\n{c}%', fontSize: 11 },
+                            data: sc.incomeDonors.map((d, i) => ({
+                                name: d.country, value: d.weight,
+                                itemStyle: { color: palette[i % palette.length] }
+                            }))
+                        }]
                     }, true);
                 }
             },
