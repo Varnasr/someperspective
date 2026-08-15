@@ -33,19 +33,6 @@ described the NDA period as ending 2025, and cited the retired work title. Rewri
 current version, the declaration of interests, links to the walkthrough/paper/updates,
 an accurate repository tree, and a table of the four guards that run in CI.
 
-### Fixed — composite characters were dressed as reporting
-The `Human Stories` tab introduced its four narratives as *"representative accounts drawn
-from field reporting"* and put lines from them under a **`Quote:`** label. They are neither.
-"Rajesh", "Shankar" and the others are composite illustrations assembled from published
-survey findings, and the quoted lines are written to stand for what those findings describe.
-Nobody in them was interviewed by this project. On a site whose entire claim is that every
-assertion is traceable to a source, that framing was the most attackable content remaining
-after the affiliation line.
-- Intro rewritten to state plainly what is checkable (the figures, from `data.json`) and
-  what is not (the people and the quotes).
-- All four `Quote:` labels → `Illustrative, not a transcript:`.
-- Logged as a Correction in the public updates feed, not fixed quietly.
-
 ### Changed — dependencies
 - `postcss` 8.5.15 → **8.5.26** (transitive via Tailwind; Dependabot #70).
   Verified safe: `styles.css` is **byte-identical** after the update.
