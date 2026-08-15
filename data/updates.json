@@ -2,6 +2,30 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.36.0",
+      "date": "2026-08-15",
+      "title": "Accessibility: touch targets and readable text on phones",
+      "summary": "Buttons, links and controls that were too small to tap reliably on a phone, and text as small as 9px, are fixed.",
+      "changes": [
+        {
+          "kind": "Fixed",
+          "text": "Around forty interactive elements were smaller than the 44-pixel minimum on a phone — chart download buttons and theme toggles at 28 pixels, footer links only 14 pixels tall, filter chips at 27, and the trajectory sliders with a touch area just 4 pixels high. All now meet the minimum on touch devices."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Text rendering as small as 9px on phones is raised to a 12px floor. No text on the site now renders below 12px on a phone."
+        },
+        {
+          "kind": "Changed",
+          "text": "These changes apply only to touch devices and narrow screens. The desktop layout keeps its existing density — a mouse is precise, a fingertip is about ten millimetres."
+        },
+        {
+          "kind": "Note",
+          "text": "Links inside a sentence and the tap-to-explain glossary terms are deliberately left at text size. Enlarging them would break the line spacing of every paragraph containing one, and the accessibility guidelines specifically exempt targets positioned by the flow of text."
+        }
+      ]
+    },
+    {
       "version": "2.35.0",
       "date": "2026-08-15",
       "title": "The theory chapter moves into the paper; two presentations retired",

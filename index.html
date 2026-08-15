@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.35.0">
+    <meta name="version" content="2.36.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -462,6 +462,107 @@
 
         /* Smooth transitions - only colors, not layout */
         * { transition: background-color 0.2s, border-color 0.2s, color 0.2s; }
+
+        /* ==================================================================
+           TOUCH TARGETS AND MINIMUM TEXT SIZE
+           An audit at 320-1920px found ~40 distinct interactive elements below
+           44x44 on a phone, and text rendering as small as 9px. Both are fixed
+           here rather than by editing several hundred utility classes inline.
+
+           Scoped to `pointer: coarse` (and narrow viewports) on purpose: the
+           desktop layout depends on its current density, and inflating targets
+           for a mouse would cost information per screen for no benefit. A mouse
+           is precise; a fingertip is roughly 10mm.
+           ================================================================== */
+        @media (pointer: coarse), (max-width: 640px) {
+            /* Icon buttons, chips and pills: real 44px targets. These are all
+               inline-flex/flex already, so centring keeps the glyph where it was. */
+            .chart-dl-btn,
+            button.p-1\.5,
+            .si-btn {
+                min-width: 44px;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            /* Rounded chips: grow vertically only, so wrapped rows stay tidy. */
+            button[class*="rounded-full"],
+            button[class*="rounded-xl"],
+            a[class*="rounded-full"] {
+                min-height: 44px;
+            }
+            /* Footer link lists were 14px tall — the single worst target on the
+               site, and there are ~18 of them. In a vertical list, giving each a
+               44px row costs nothing and makes them reliably tappable. */
+            footer nav ul li a {
+                display: flex;
+                align-items: center;
+                min-height: 44px;
+            }
+            /* The skip link is deliberately 1x1 until focused; leave it alone. */
+            .sr-only:not(:focus) { min-width: 0; min-height: 0; }
+
+            /* Minimum readable size. 9px and 10px micro-labels are a desktop
+               device that does not survive a phone screen; 11.5-12px keeps the
+               small-caps look while staying legible. */
+            .text-\[9px\]  { font-size: 12px !important; }
+            .text-\[10px\] { font-size: 12px !important; }
+            .text-\[11px\] { font-size: 12px !important; }
+            .kicker        { font-size: 12px; }
+            .src-key       { font-size: 12px; }
+
+            /* Tab bar, selects and remaining button shapes: all sat at 24-40px. */
+            nav button,
+            .tab-btn,
+            button[class*="rounded-lg"],
+            button[class*="py-1"],
+            .btn-accent,
+            select,
+            a[class*="rounded-xl"][class*="border"] {
+                min-height: 44px;
+            }
+            select,
+            input[type="search"],
+            input[type="text"],
+            input[type="number"] { min-height: 44px; padding-top: .6rem; padding-bottom: .6rem; }
+
+            /* Checkboxes render ~13px; the tappable thing is really the label,
+               so the box grows and the label gets a full-height hit area. */
+            input[type="checkbox"] { width: 20px; height: 20px; }
+            label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-items: center; }
+
+            /* Range inputs were a 4px-tall box — the worst target on the page.
+               The element becomes 44px of touch area while the visible track
+               stays thin, drawn by the track pseudo-elements. */
+            /* .traj-weight carries its own `height: 4px` at higher specificity,
+               so this selector has to match it to win. */
+            input[type="range"],
+            input[type=range].traj-weight {
+                height: 44px;
+                -webkit-appearance: none;
+                appearance: none;
+                background: transparent;
+            }
+            input[type="range"]::-webkit-slider-runnable-track {
+                height: 4px; border-radius: 2px; background: var(--line-2, rgba(27,27,34,.18));
+            }
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none; width: 20px; height: 20px; margin-top: -8px;
+                border-radius: 50%; background: var(--accent); border: 0;
+            }
+            input[type="range"]::-moz-range-track {
+                height: 4px; border-radius: 2px; background: var(--line-2, rgba(27,27,34,.18));
+            }
+            input[type="range"]::-moz-range-thumb {
+                width: 20px; height: 20px; border: 0; border-radius: 50%; background: var(--accent);
+            }
+
+            /* Inline links inside a sentence, and the dotted glossary terms, are
+               left alone deliberately. WCAG 2.5.5 exempts targets whose position
+               is determined by the flow of text — padding them to 44px would break
+               the line spacing of every paragraph that contains one. */
+        }
     </style>
 </head>
 

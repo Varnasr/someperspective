@@ -10,6 +10,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.36.0] - 2026-08-15
+
+### Fixed — accessibility
+  Closes the two gaps reported as known issues in v2.34.0.
+- **~40 distinct sub-44x44 tap targets on mobile, now 0 non-exempt.** The worst were
+  the chart download button and theme toggles (28x28, 51 instances across tabs),
+  footer nav links (14px tall, 18 of them), filter chips (27-28px), tab buttons (40px),
+  selects and text inputs (38-40px), checkboxes (13px) and — worst of all — the
+  trajectory range sliders, whose touch box was **4px tall**. `.traj-weight` carried
+  its own `height: 4px` at higher specificity, so the override had to match it.
+- **All text below 12px raised to a 12px floor on phones.** Was 9px at worst
+  (`text-[9px]` badges), plus 17 `text-[10px]` micro-labels and the `kicker`/`src-key`
+  classes at 10.88-11px. Now zero elements render below 12px at 390px.
+
+### Changed
+- The whole block is scoped to `(pointer: coarse), (max-width: 640px)`. **Desktop
+  density is deliberately unchanged** — verified: footer links stay 16px with a mouse
+  and become 44px on touch. Inflating targets for a mouse would cost information per
+  screen for no benefit.
+
+### Deliberately not changed
+- **Links inside a sentence** (e.g. "Licensed under *CC BY 4.0*.") and the dotted
+  **glossary term buttons** remain at text size. WCAG 2.5.5 exempts targets whose
+  position is determined by the flow of text, and padding them to 44px would break
+  the leading of every paragraph containing one.
+- The **skip link** is 1x1 until focused, which is correct.
+
 ## [2.35.0] - 2026-08-15
 
 ### Added
