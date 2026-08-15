@@ -224,6 +224,86 @@ def tab_hash(tab):
 
 
 # --------------------------------------------------------------------------
+# Inflation explainer — the one cross-era measure that goes the other way, and
+# therefore the one that needs the most careful handling. Source: data/inflation.json.
+# --------------------------------------------------------------------------
+def build_inflation(infl, data):
+    econ = data["economic"]
+    era = data["eraHistory"]
+    nda = sum(econ["cpiInflation"]) / len(econ["cpiInflation"])
+    upa = sum(era["cpiInflation"]) / len(era["cpiInflation"])
+
+    def paras(items):
+        return "".join(f"<p>{escape(t)}</p>" for t in items)
+
+    reasons = []
+    for r in infl["reasons"]:
+        reasons.append(f"""<div class="card" id="reason-{r['n']}" style="scroll-margin-top:70px">
+<span class="kicker">Reason {r['n']} &nbsp;·&nbsp; {escape(r['weight'])}</span>
+<h2 style="margin-top:.3rem">{escape(r['head'])}</h2>
+{paras(r['body'])}
+</div>""")
+
+    toc = "".join(
+        f'<li><a href="#reason-{r["n"]}">{escape(r["head"])}</a></li>' for r in infl["reasons"])
+
+    body = f"""<p class="crumb"><a href="../">Some Perspective</a> &rsaquo; Inflation</p>
+<span class="kicker">{escape(infl['kicker'])}</span>
+<h1>{escape(infl['title'])}</h1>
+<p class="lede">{escape(infl['standfirst'])}</p>
+
+<div class="card">
+<span class="kicker">The measured gap</span>
+<p style="font-size:1.6rem;font-weight:700;margin:.3rem 0 .2rem">
+{upa:.2f}% &rarr; {nda:.2f}%</p>
+<p class="meta">Average annual consumer price inflation, UPA (2004&ndash;13) against NDA (2014&ndash;26),
+computed from the same dataset as every other figure on this site. Lower is better, so this is the one
+cross-era measure on which the later period performs better.</p>
+</div>
+
+<p>{escape(infl['why'])}</p>
+
+<h2>Six things going on underneath</h2>
+<ol class="list">{toc}</ol>
+
+{''.join(reasons)}
+
+<div class="card">
+<span class="kicker">Argued against ourselves</span>
+<h2 style="margin-top:.3rem">{escape(infl['steelman']['head'])}</h2>
+{paras(infl['steelman']['body'])}
+</div>
+
+<div class="card">
+<span class="kicker">Falsification</span>
+<h2 style="margin-top:.3rem">{escape(infl['falsify']['head'])}</h2>
+{paras(infl['falsify']['body'])}
+</div>
+
+<div class="card" style="border-left:4px solid var(--accent)">
+<span class="kicker">In one paragraph</span>
+<p class="lede">{escape(infl['bottomLine'])}</p>
+</div>
+
+<p class="rel"><a class="btn" href="../downloads/paper.html#s-6-10-the-inflation-exception-in-full">Read this in the paper &rarr;</a>
+&nbsp; <a href="../#era-comparison">See the cross-era scorecard</a>
+&nbsp; <a href="../walkthrough/#s-11">The walkthrough version</a></p>
+<p class="meta">Every figure above is either in
+<a href="../data.json">data.json</a> or carries its citation in the text.
+Crude price movements: ICE Brent. Excise duty: Ministry of Finance, as stated in Parliament.
+Monetary framework: Reserve Bank of India Act 1934 as amended by the Finance Act 2016.
+CPI basis change: MoSPI, January 2026 print.</p>"""
+
+    write("inflation/index.html",
+          page("Why inflation looks better after 2014 | Some Perspective",
+               "Consumer price inflation is the one cross-era measure on which India performs "
+               "better after 2014. This explains what that is evidence of: an oil-price collapse "
+               "arriving at the era boundary, an excise take that absorbed most of it, and a "
+               "monetary rule that works by constraining the executive.",
+               f"{SITE}/inflation/", body))
+
+
+# --------------------------------------------------------------------------
 # Updates page + RSS (the only genuinely dated content)
 # --------------------------------------------------------------------------
 def build_updates(updates):
@@ -445,6 +525,7 @@ def build_walkthrough():
 
 def build_sitemap(features, vintage):
     urls = [(f"{SITE}/", "1.0"), (f"{SITE}/walkthrough/", "0.9"),
+            (f"{SITE}/inflation/", "0.9"),
             (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):
         if rel.endswith(".html") and rel not in RETIRED:
@@ -493,11 +574,13 @@ def main():
     data = read_json("data.json")
     features = read_json("data/features.json")
     updates = read_json("data/updates.json")
+    inflation = read_json("data/inflation.json")
     vintage = data["meta"]["updated"]
 
     build_analysis(features, vintage)
     build_walkthrough()
     build_updates(updates)
+    build_inflation(inflation, data)
     build_dataset(data)
     build_package(data)
     build_sitemap(features, vintage)

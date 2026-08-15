@@ -10,6 +10,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.43.0] - 2026-08-15
+
+### Added — `/inflation/`, a dedicated page on the one measure that improved
+CPI averaged **4.98%** under the NDA against **8.05%** under the UPA — the single
+cross-era row that goes the other way. A project reporting eight findings in its own
+direction and disposing of the ninth in a paragraph has not earned the eight.
+- New generated page at `/inflation/`, sourced from `data/inflation.json` via
+  `build_inflation()` in `tools/build_site.py`. Six factors ordered by how much of the
+  gap each explains, then the strongest case against the page's own conclusion, then the
+  evidence that would overturn it. In the sitemap at priority 0.9.
+- **New material, and it cuts against the government.** Central excise on petrol was
+  ₹9.48/l and diesel ₹3.56/l in 2014; raised on **nine occasions between Nov 2014 and
+  Jan 2016** — **+₹11.77/l petrol, +₹13.47/l diesel** — for the stated purpose of moving
+  the gains from collapsing world oil prices into the exchequer rather than to the pump.
+  So the measured disinflation is the *residual after the tax take*, and fiscal policy in
+  that window acted to hold pump prices **above** what world prices would have delivered.
+- Verified against source before publishing: Brent $115/bbl (Jun 2014) → <$30 (Jan 2016);
+  86% crude import dependence; MPFA signed 20 Feb 2015, RBI Act amended by the Finance
+  Act 2016, MPC constituted Sept 2016, 4% ±2%; CPI 2024=100 from the Jan 2026 print with
+  food weight 45.86% → 36.75%.
+
+### Added — paper Section 6.10
+The same argument at full length, replacing the four-paragraph treatment inside §6.9,
+with `6.10.1 The strongest case against this section` and `6.10.2 What would change our
+reading`. States plainly that a consistent core-inflation series back to 2004 would
+settle much of it, that this project does not have one, and that it will not imply the
+test has been run. Paper is now ~18,200 words.
+
+### Changed
+- The one-line thesis ends "the one honest exception is inflation" in **four** places on
+  the site; all four now link to the explanation.
+- Footer resources and the walkthrough's inflation slide point at the page.
+- Cross-reference in Declarations → Competing interests updated from §6.9 to §6.10.
+
 ## [2.42.0] - 2026-08-15
 
 ### Data — representation now measured on 2026 population, not the 2011 census

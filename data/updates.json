@@ -2,6 +2,30 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Each entry corresponds to a published version of the site; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.43.0",
+      "date": "2026-08-15",
+      "title": "A dedicated page on why inflation looks better after 2014",
+      "summary": "The one measure that improved now gets argued out at length, on its own page and in a new section of the paper, instead of being handled in a paragraph.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "A standalone explainer at someperspective.info/inflation. Consumer price inflation is the single cross-era measure on which India performs better after 2014 — 4.98% against 8.05% — and a project that reports eight findings in its own direction and disposes of the ninth in a sentence has not earned the eight. The page sets out six factors in order of how much each explains, then the strongest case that can be made against its own conclusion, then what evidence would change it."
+        },
+        {
+          "kind": "Added",
+          "text": "One of those six is new to this project and cuts against the government rather than for it. Central excise duty on petrol was ₹9.48 a litre and on diesel ₹3.56 in 2014. Between November 2014 and January 2016 it was raised on nine separate occasions — ₹11.77 a litre on petrol, ₹13.47 on diesel — for the stated purpose of moving the gains from collapsing world oil prices into the exchequer rather than to the pump. So the disinflation households experienced was the residual after the tax take, and to the extent fiscal policy touched fuel prices in that window it acted to keep them higher than world prices would have delivered."
+        },
+        {
+          "kind": "Added",
+          "text": "The research paper gains Section 6.10, which makes the same argument at full length with two sub-sections: the strongest case against the paper's own reading, and what would falsify it. A consistent measure of core inflation excluding food and fuel would settle much of it; this project does not have one going back to 2004 and says so rather than implying the test has been run."
+        },
+        {
+          "kind": "Changed",
+          "text": "The one-line thesis, which appears in four places on the site and ends 'the one honest exception is inflation', now links straight to the explanation."
+        }
+      ]
+    },
+    {
       "version": "2.42.0",
       "date": "2026-08-15",
       "title": "A state-level view, on 2026 population rather than the 2011 census",
