@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.37.1">
+    <meta name="version" content="2.38.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -196,7 +196,7 @@
                 "name": "How has India's democracy score changed?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "India's Democratic Quality Index (DQI), the geometric mean of V-Dem Liberal Democracy, Freedom House, RSF press-freedom and V-Dem Civil Society scores, fell from a UPA-era average of ~0.59 to 0.29 by 2026 (0.54 in 2014). The sharpest fall is in civil-society space (0.87 → 0.31) and V-Dem reclassified India as an electoral autocracy in 2019. V-Dem LDI fell 0.555 → 0.270, Freedom House 78 → 66, RSF rank 140 → 157."
+                    "text": "India's Democratic Quality Index (DQI), the geometric mean of V-Dem Liberal Democracy, Freedom House, RSF press-freedom and V-Dem Core Civil Society scores, fell from a UPA-era average of 0.57 to 0.29 by 2026 (0.49 in 2014). The sharpest fall is in civil-society space (0.669 → 0.302) and V-Dem reclassified India as an electoral autocracy in 2019. V-Dem Liberal Democracy Index fell 0.488 → 0.260, Freedom House 78 → 66, RSF rank 140 → 157."
                 }
             }
         ]
@@ -572,9 +572,32 @@
 </a>
 
 <body x-data="siteApp()"
-      x-init="init()"
       :class="darkMode ? 'dark' : ''"
       class="min-h-screen flex flex-col">
+    <script>
+    // Boot watchdog. index.html is a single ~420KB file: if the transfer is cut
+    // part-way through the inline application script (a dropped mobile connection,
+    // an intermediary that truncates), siteApp() is never defined. Alpine then
+    // fails every expression on the page, which renders as silent blanks — an empty
+    // scorecard, "On [nothing] cross-era measures" — with no indication that
+    // anything went wrong. This detects that state and says so.
+    (function () {
+        var FLAG = '__spBooted';
+        setTimeout(function () {
+            if (window[FLAG]) return;
+            var reason = (typeof window.siteApp !== 'function')
+                ? 'This page did not finish downloading, so some figures are missing.'
+                : 'This page loaded but could not start, so some figures are missing.';
+            var bar = document.createElement('div');
+            bar.setAttribute('role', 'alert');
+            bar.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:9999;background:#7f1d1d;color:#fff;padding:12px 16px;font:14px/1.5 system-ui,sans-serif;text-align:center';
+            bar.innerHTML = reason + ' <button type="button" style="min-height:44px;padding:0 12px;margin-left:8px;background:#fff;color:#7f1d1d;border:0;border-radius:6px;font-weight:700;cursor:pointer">Reload</button>';
+            bar.querySelector('button').onclick = function () { location.reload(true); };
+            document.body.appendChild(bar);
+        }, 8000);
+    })();
+    </script>
+
     <script>
     // Kill any service worker left over from v3.0.0-3.0.2.
     // Runs immediately, even from cached HTML, because 'unsafe-inline' is allowed.
@@ -795,7 +818,11 @@
         <!-- Data load failure banner -->
         <div x-show="dataLoadError" x-cloak role="alert"
              class="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-700 p-3 text-sm text-amber-900 dark:text-amber-200">
-            <strong>Heads up:</strong> Live data could not be loaded. Charts are showing bundled fallback values that may be out of date.
+            <strong>Heads up:</strong> the live dataset could not be reached, so the charts are drawing from the copy bundled with this page.
+            That copy is published in step with the dataset, so the figures are almost certainly the same &mdash; but they are not guaranteed to be.
+            <button type="button" @click="retryDataLoad()" :disabled="dataRetrying"
+                    class="ml-1 underline font-semibold min-h-[44px] sm:min-h-0 disabled:opacity-60"
+                    x-text="dataRetrying ? 'Retrying…' : 'Try again'"></button>
         </div>
 
         <!-- What is This? Tab -->
@@ -842,13 +869,13 @@
             </article>
 
             <div class="card p-5 sm:p-8">
-                <div class="kicker mb-2">Independent · data-driven · unfunded</div>
+                <div class="kicker mb-2">Unfunded · reproducible · interests declared</div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold mb-2 leading-[1.05]" style="color:var(--ink);">India's Growth Paradox</h2>
                 <p class="text-lg sm:text-xl font-medium mb-6 italic font-display" style="color:var(--muted);">GDP up, jobs down, inequality soaring</p>
 
                 <div class="bg-amber-50 dark:bg-amber-900/15 border border-amber-200/60 dark:border-amber-700/30 p-5 rounded-xl mb-8">
                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                        India's GDP grew at 6.8% annually since 2014, yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This independent, data-driven research examines <strong>what the headline numbers hide</strong> — with interactive charts, downloadable datasets, and three novel indices you won't find anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
+                        India's GDP grew at 6.8% annually since 2014, yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This unfunded, data-driven research examines <strong>what the headline numbers hide</strong> — with interactive charts, downloadable datasets, and three novel indices you won't find anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
                     </p>
                 </div>
 
@@ -860,7 +887,7 @@
                         <div id="sparkWealth" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-900/30">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-orange-600 dark:text-orange-400">27%</div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-orange-600 dark:text-orange-400" x-text="currentIndex('graduateUnemployment', 1) + '%'"></div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Graduate unemployment</div>
                         <div id="sparkGradUnemp" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
@@ -909,9 +936,10 @@
                         <button @click="toggleTimeline()" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-sm rounded-xl font-medium shadow-sm transition-all flex-shrink-0">
                             <span x-text="timelinePlaying ? 'Pause' : 'Play'"></span>
                         </button>
-                        <input type="range" :min="0" :max="economicData.years.length - 1" x-model="timelineIndex" @input="updateTimelineDisplay()" class="flex-1 min-w-[120px] accent-indigo-600">
+                        <input type="range" :min="0" :max="latestObservedIndex()" x-model="timelineIndex" @input="updateTimelineDisplay()" aria-label="Year" class="flex-1 min-w-[120px] accent-indigo-600">
                         <span class="text-xl sm:text-2xl font-extrabold text-indigo-700 dark:text-indigo-300 tabular-nums min-w-[4ch]" x-text="economicData.years[timelineIndex]"></span>
                     </div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">Showing <strong x-text="economicData.years[timelineIndex]"></strong>. Drag the slider or press play to move through the years.</p>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
                         <div class="bg-white/80 dark:bg-gray-800/80 p-2 sm:p-3 rounded-xl text-center">
                             <div class="text-xs text-gray-500 font-medium">GDP Growth</div>
@@ -923,13 +951,14 @@
                         </div>
                         <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
                             <div class="text-xs text-gray-500 font-medium">SSI Score</div>
-                            <div class="text-xl font-bold text-orange-600" x-text="economicData.ssi[timelineIndex]"></div>
+                            <div class="text-xl font-bold text-orange-600" x-text="economicData.ssi[timelineIndex].toFixed(1)"></div>
                         </div>
                         <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
                             <div class="text-xs text-gray-500 font-medium">DQI Score</div>
-                            <div class="text-xl font-bold text-purple-600" x-text="economicData.dqi[timelineIndex]"></div>
+                            <div class="text-xl font-bold text-purple-600" x-text="economicData.dqi[timelineIndex].toFixed(2)"></div>
                         </div>
                     </div>
+                    <p class="text-xs mt-3" style="color:var(--muted);">The SSI reads <strong>0.0 for 2014</strong> and for the whole UPA decade before it. That is a result, not a missing value: the index counts documented suppression episodes, and none of the six it tracks had begun by 2014. It is also the most contestable number in this project, and it is argued out at length in the <a href="downloads/paper.html" class="underline" style="color:var(--accent);">paper</a>.</p>
                 </div>
 
                 <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl">
@@ -939,19 +968,19 @@
                         <div class="text-center p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
                             <div class="text-2xl font-bold text-red-600">SSI</div>
                             <div class="text-sm font-semibold">Statistical Suppression Index</div>
-                            <div class="text-xs text-gray-500 mt-1">2.3 → 8.2 (2014-2026)</div>
+                            <div class="text-xs text-gray-500 mt-1" x-text="idxRange('ssi', 1)"></div>
                             <div class="text-xs text-gray-500">Tracks suppressed surveys & delayed data</div>
                         </div>
                         <div class="text-center p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
                             <div class="text-2xl font-bold text-orange-600">FCI</div>
                             <div class="text-sm font-semibold">Fiscal Centralization Index</div>
-                            <div class="text-xs text-gray-500 mt-1">0.19 → 0.68 (2014-2026)</div>
+                            <div class="text-xs text-gray-500 mt-1" x-text="idxRange('fci', 2)"></div>
                             <div class="text-xs text-gray-500">Measures erosion of state fiscal autonomy</div>
                         </div>
                         <div class="text-center p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
                             <div class="text-2xl font-bold text-purple-600">DQI</div>
                             <div class="text-sm font-semibold">Democratic Quality Index</div>
-                            <div class="text-xs text-gray-500 mt-1">0.71 → 0.40 (2014-2026)</div>
+                            <div class="text-xs text-gray-500 mt-1" x-text="idxRange('dqi', 2)"></div>
                             <div class="text-xs text-gray-500">Composite of V-Dem, Freedom House, RSF</div>
                         </div>
                     </div>
@@ -982,15 +1011,15 @@
                                 <li>• Employment elasticity collapsed to 0.01 (2014-17)</li>
                                 <li>• Formal jobs declined from 13% to 11%</li>
                                 <li>• 80% of new jobs are precarious/informal</li>
-                                <li>• Graduate unemployment: 27% (Mar 2026)</li>
+                                <li>• Graduate unemployment: 26.5% (2026)</li>
                             </ul>
                         </div>
                         
                         <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl">
                             <h4 class="font-bold text-orange-700 dark:text-orange-400 mb-2">Inequality Surge</h4>
                             <ul class="space-y-1 text-sm">
-                                <li>• Top 1% income share: 22.8% (highest since 1922)</li>
-                                <li>• Bottom 50% share: 13% (declining)</li>
+                                <li>• Top 1% income share: 23.0% (highest since 1922)</li>
+                                <li>• Bottom 50% share: 12.9% (declining)</li>
                                 <li>• Wealth concentration exceeds Brazil</li>
                                 <li>• Regional disparities widening</li>
                             </ul>
@@ -1010,7 +1039,7 @@
                             <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-2">Democratic Erosion</h4>
                             <ul class="space-y-1 text-sm">
                                 <li>• Press freedom: 140th → 157th globally (RSF 2026)</li>
-                                <li>• V-Dem score: 0.71 → 0.26</li>
+                                <li>• V-Dem Liberal Democracy Index: 0.488 → 0.260</li>
                                 <li>• Statistical suppression rising</li>
                                 <li>• Census indefinitely postponed</li>
                             </ul>
@@ -1370,11 +1399,11 @@
                     <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl">
                         <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-2">DQI: Democratic Quality</h4>
                         <div class="text-3xl font-bold mb-2">0.29</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">2026 score (0.54 in 2014; 0.64 UPA peak)</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mb-3">2026 score (0.49 in 2014; 0.61 UPA peak)</div>
                         <ul class="space-y-1 text-xs">
-                            <li>• Civil society space: 0.87 → 0.31</li>
+                            <li>• Civil society space: 0.669 → 0.302</li>
                             <li>• "Electoral autocracy" (V-Dem, 2019)</li>
-                            <li>• V-Dem LDI: 0.555 → 0.270; FH: 78 → 66</li>
+                            <li>• V-Dem LDI: 0.488 → 0.260; FH: 78 → 66</li>
                             <li>• Press freedom: rank 140 → 157</li>
                         </ul>
                     </div>
@@ -1414,7 +1443,7 @@
                                 petrol hits ₹120. Algorithm decides everything—one bad rating and income drops 40%."
                             </p>
                             <p class="text-sm">
-                                <strong>Impact:</strong> Graduate unemployment at 28.5% forces educated youth into precarious work. 
+                                <strong>Impact:</strong> Graduate unemployment at 26.5% forces educated youth into precarious work. 
                                 The "world's fastest-growing economy" runs on exploitation of its brightest minds.
                             </p>
                         </div>
@@ -1513,6 +1542,53 @@
         
         <!-- Methodology Tab -->
         <div x-show="activeTab === 'Methodology'" x-transition class="space-y-6">
+            <!-- Declaration of interests. Stated up front rather than buried, because the
+                 author's party role is the first thing a hostile reader should be able to find. -->
+            <div id="declared-interests" class="card p-5 sm:p-6" style="border-left:4px solid #f59e0b;scroll-margin-top:90px;">
+                <div class="kicker mb-1">Read this first</div>
+                <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Declaration of interests</h3>
+                <p class="text-sm mb-3" style="color:var(--ink-soft);">
+                    <strong style="color:var(--ink);">The author is a national spokesperson of the All India Congress
+                    Committee.</strong> This site compares the record of a Congress-led government (UPA, 2004&ndash;14)
+                    with the record of its successor (NDA, 2014&ndash;26) and concludes against the successor on eight
+                    of nine measures. That is a party interest in the conclusion, and it is declared here rather than
+                    left for someone else to discover.
+                </p>
+                <p class="text-sm mb-3" style="color:var(--ink-soft);">
+                    Two things are also true. This research receives no funding &mdash; not from any institution,
+                    government, political party, foundation or commercial entity. And it is not party work: no party
+                    body commissioned it, reviewed it, approved it or saw it before publication. It was written at the
+                    author's own cost and is published under the author's own name.
+                </p>
+                <p class="text-sm mb-3" style="color:var(--ink-soft);">
+                    The honest response to a declared interest is not a claim of neutrality. Nobody who has spent two
+                    decades arguing about Indian politics is neutral, and a site that claimed otherwise would be lying
+                    to you in its first sentence. The response offered instead is that every step between the raw data
+                    and the conclusion is open to inspection:
+                </p>
+                <ul class="text-sm space-y-2 mb-3 ml-4" style="color:var(--ink-soft);list-style:disc;">
+                    <li>The complete dataset is published as <a href="data.json" class="underline" style="color:var(--accent);">JSON</a>,
+                        <a href="downloads/dataset.csv" class="underline" style="color:var(--accent);">CSV</a> and
+                        <a href="downloads/dataset.xlsx" class="underline" style="color:var(--accent);">Excel</a>, with every series
+                        traced to a named public source.</li>
+                    <li>The three constructed indices are built by a single published script, and the same script computes both
+                        eras &mdash; so no part of the gap between them can come from the two periods being measured differently.</li>
+                    <li>Where the evidence cuts against the argument it is reported anyway: inflation is lower in the second
+                        period, and the site says so and declines to explain it away.</li>
+                    <li>Corrections are published rather than made quietly, including
+                        <a href="updates.html" class="underline" style="color:var(--accent);">an error that had run in this project's
+                        own favour</a>.</li>
+                    <li>The governance finding is independently corroborated by
+                        <a href="#independent-check" class="underline" style="color:var(--accent);">a study this project did not
+                        produce</a>, using a method it does not use.</li>
+                </ul>
+                <p class="text-sm" style="color:var(--ink-soft);">
+                    None of that makes the author disinterested. It makes the author checkable, which is the only
+                    property that survives disagreement. If a figure here is wrong, it can be shown to be wrong from
+                    the published sources, and it will be corrected in public.
+                </p>
+            </div>
+
             <!-- Independent corroboration: Grier & Grier synthetic control -->
             <div id="independent-check" class="card p-5 sm:p-6" style="border-left:4px solid var(--accent-2);scroll-margin-top:90px;">
                 <div class="kicker mb-1">External study · not produced by this project</div>
@@ -1801,7 +1877,8 @@ reduces overall score</pre>
                 
                 <!-- Democratic Decline Timeline -->
                 <div class="mb-8">
-                    <h3 class="text-lg font-bold mb-4">Democratic Quality Decline: Multi-Country Comparison</h3>
+                    <h3 class="text-lg font-bold mb-4">Democratic decline: multi-country comparison</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">This chart uses the <strong>published V-Dem Liberal Democracy Index</strong>, not this project's DQI. The DQI is constructed for India alone, so it cannot be plotted for other countries; the comparison has to run on a measure that exists for all of them.</p>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="democraticDeclineChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
@@ -1991,17 +2068,17 @@ reduces overall score</pre>
                     <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.ssi < 5 ? 'border-green-400' : scenarioOutputs.ssi < 7 ? 'border-orange-400' : 'border-red-400'">
                         <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected SSI</div>
                         <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.ssi < 5 ? 'text-green-600' : scenarioOutputs.ssi < 7 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.ssi.toFixed(1)"></div>
-                        <div class="text-xs text-gray-500 mt-1">Current: 8.2</div>
+                        <div class="text-xs text-gray-500 mt-1" x-text="'Current: ' + currentIndex('ssi', 1)"></div>
                     </div>
                     <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.fci < 0.65 ? 'border-green-400' : scenarioOutputs.fci < 0.75 ? 'border-orange-400' : 'border-red-400'">
                         <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected FCI</div>
                         <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.fci < 0.65 ? 'text-green-600' : scenarioOutputs.fci < 0.75 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.fci.toFixed(2)"></div>
-                        <div class="text-xs text-gray-500 mt-1">Current: 0.80</div>
+                        <div class="text-xs text-gray-500 mt-1" x-text="'Current: ' + currentIndex('fci', 2)"></div>
                     </div>
                     <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.dqi > 0.6 ? 'border-green-400' : scenarioOutputs.dqi > 0.45 ? 'border-orange-400' : 'border-red-400'">
                         <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected DQI</div>
                         <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.dqi > 0.6 ? 'text-green-600' : scenarioOutputs.dqi > 0.45 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.dqi.toFixed(2)"></div>
-                        <div class="text-xs text-gray-500 mt-1">Current: 0.40</div>
+                        <div class="text-xs text-gray-500 mt-1" x-text="'Current: ' + currentIndex('dqi', 2)"></div>
                     </div>
                 </div>
 
@@ -2895,8 +2972,15 @@ reduces overall score</pre>
                 <div>
                     <h3 class="font-bold text-white mb-3 text-sm uppercase tracking-wider">About</h3>
                     <p class="text-xs sm:text-sm leading-relaxed text-gray-400">
-                        Independent, unfunded research on India's political economy by Dr. Varna Sri Raman.
-                        No institutional funding. No political affiliations.
+                        Research on India's political economy by Dr. Varna Sri Raman.
+                        Unfunded: no institutional, governmental, party or commercial money.
+                    </p>
+                    <p class="text-xs sm:text-sm leading-relaxed text-gray-400 mt-3">
+                        <strong class="text-gray-200">Declared interest:</strong> the author is a national
+                        spokesperson of the All India Congress Committee. This project compares a
+                        Congress-led government with its successor, so that is a live interest and not a
+                        footnote.
+                        <a href="#" @click.prevent="activeTab='Methodology'; setTimeout(() =&gt; document.getElementById('declared-interests')?.scrollIntoView({behavior:'smooth', block:'start'}), 250)" class="text-blue-400 hover:text-blue-300 underline">Read the full declaration</a>.
                     </p>
                 </div>
                 <div>
@@ -2949,7 +3033,7 @@ reduces overall score</pre>
 
             <div class="text-center text-xs mt-8 pt-6 border-t border-slate-800">
                 <p class="text-gray-500">&copy; 2025–2026 Some Perspective | Dr. Varna Sri Raman | Data through August 2026</p>
-                <p class="mt-1.5 text-gray-600">Independent research for democratic accountability. All data openly available for verification and reuse.</p>
+                <p class="mt-1.5 text-gray-600">Self-funded research for democratic accountability. Interests declared. All data openly available for verification and reuse.</p>
             </div>
         </div>
     </footer>
@@ -2978,15 +3062,15 @@ reduces overall score</pre>
             rupeeUSD:            [61,64,67,65,68,70,74,74,79,82,84,87,95],
             ssi:                 [0.0,1.05,1.05,2.05,4.0,4.8,7.0,9.0,9.0,8.2,7.05,6.55,6.4],
             fci:                 [0.19,0.21,0.25,0.41,0.53,0.65,0.92,0.82,0.7,0.68,0.68,0.68,0.68],
-            dqi:                 [0.54,0.54,0.53,0.5,0.46,0.43,0.4,0.38,0.33,0.28,0.29,0.31,0.29],
+            dqi:                 [0.49,0.46,0.46,0.44,0.42,0.39,0.36,0.37,0.34,0.28,0.28,0.3,0.29],
             gigWorkers:          [0.8,1.2,1.8,2.5,3.2,4.1,5.2,6.0,6.8,7.3,7.7,8.2,8.8],
             ruralIncome:         [100,99,98,97,96,95,93,94,95,96,98,97,97],
             femaleLFPR:          [22.5,22.0,21.8,21.5,21.2,21.0,20.8,20.5,20.3,20.5,20.8,20.9,21.0]
         },
         international: {
             countries:['India','Brazil','Turkey','Hungary','South Africa'],
-            vdem2014:[0.71,0.85,0.52,0.63,0.75],
-            vdem2026:[0.26,0.69,0.18,0.41,0.70],
+            vdem2014:[0.488,0.783,0.252,0.521,0.641],
+            vdem2026:[0.26,0.704,0.11,0.315,0.633],
             press2014:[140,99,154,64,42],
             press2026:[157,80,159,70,38]
         }
@@ -3045,8 +3129,8 @@ reduces overall score</pre>
             incomeDonors:[ {country:'Ethiopia',weight:38}, {country:'China',weight:28}, {country:'Bangladesh',weight:25}, {country:'Pakistan',weight:7}, {country:'Philippines',weight:2} ],
             democracyDonors:['Brazil','Argentina','Chile','Colombia','Peru','Mexico','South Africa','Ghana','Indonesia','Malaysia','Philippines','Sri Lanka'],
             convergence:[
-                { measure:'Electoral democracy', grier:'-60.2% vs synthetic counterfactual (polyarchy gap -0.391)', sp:'V-Dem India 0.71 (2014) → 0.26 (2026), -63.4%' },
-                { measure:'Overall democratic quality', grier:'-69.1% liberal-democracy gap', sp:'DQI 0.54 (2014) → 0.29 (2026), -46.3%' },
+                { measure:'Electoral democracy', grier:'-60.2% vs synthetic counterfactual (polyarchy gap -0.391)', sp:'V-Dem LDI India 0.488 (2014) → 0.260 (2026), -46.7%' },
+                { measure:'Overall democratic quality', grier:'-69.1% liberal-democracy gap', sp:'DQI 0.49 (2014) → 0.29 (2026), -40.8%' },
                 { measure:'Press & expression', grier:'Freedom of expression -56.2%', sp:'RSF rank 140 (2014) → 157 (2026)' },
                 { measure:'Corruption', grier:'Political corruption +46.8% (worse)', sp:'Not separately indexed; SSI covers statistical opacity' }
             ],
@@ -3227,12 +3311,13 @@ reduces overall score</pre>
             economicData: FALLBACK_DATA.economic,
             internationalData: FALLBACK_DATA.international,
             dataLoadError: false,
+            dataRetrying: false,
             dataUpdated: '',
             viewModes: { gdpEmployment: 'chart', formalEmployment: 'chart', inequality: 'chart' },
             tableSortCol: null,
             tableSortAsc: true,
             // New feature state
-            timelineIndex: 0,
+            timelineIndex: 0,          // set to the latest observed year in init(); 2014 shows SSI 0.0 and reads as a bug
             timelinePlaying: false,
             timelineTimer: null,
             scatterX: 'gdpGrowth',
@@ -3260,7 +3345,7 @@ reduces overall score</pre>
                 pressFreedom: [120,106,105,120,118,105,122,131,140,140],
                 ssi: [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
                 fci: [0.0,0.03,0.05,0.07,0.09,0.11,0.12,0.14,0.16,0.17],
-                dqi: [0.59,0.63,0.63,0.6,0.6,0.64,0.6,0.57,0.54,0.54]
+                dqi: [0.59,0.61,0.61,0.58,0.58,0.61,0.56,0.54,0.51,0.51]
             },
             // ===== STATE EXPLORER =====
             statesMetric: 'perCapita',
@@ -3458,6 +3543,51 @@ reduces overall score</pre>
                 return out;
             },
 
+            // Fetch the live dataset. Three attempts with backoff, because a single
+            // dropped request on a phone connection used to leave the page showing the
+            // "bundled fallback" banner for the rest of the session with no way back.
+            // Returns true on success. Safe to call again from the banner's retry button.
+            async loadData(attempts) {
+                const tries = attempts || 3;
+                const v = document.querySelector('meta[name="version"]')?.content || Date.now();
+                for (let n = 0; n < tries; n++) {
+                    try {
+                        const resp = await fetch('data.json?v=' + v, { cache: 'no-cache' });
+                        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                        const d = await resp.json();
+                        if (!d || !d.economic || !Array.isArray(d.economic.years)) throw new Error('malformed dataset');
+                        this.economicData = d.economic;
+                        if (d.international) this.internationalData = d.international;
+                        if (d.forecast) this.forecastSpec = d.forecast;
+                        if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
+                        if (d.meta) this.dataMeta = d.meta;
+                        if (d.sources) this.sourcesData = d.sources;
+                        if (d.eraHistory) this.eraHistory = d.eraHistory;
+                        // Citizen-primer datasets (merged over fallback so a missing block degrades gracefully)
+                        const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement','states','syntheticControl'];
+                        const merged = { ...PRIMER_FALLBACK };
+                        for (const k of primerKeys) { if (d[k]) merged[k] = d[k]; }
+                        this.primer = merged;
+                        this.dataLoadError = false;   // clears the banner if a retry succeeded
+                        return true;
+                    } catch (e) {
+                        console.warn('data.json fetch attempt ' + (n + 1) + ' failed', e);
+                        if (n < tries - 1) await new Promise(r => setTimeout(r, 400 * Math.pow(2, n)));
+                    }
+                }
+                this.dataLoadError = true;
+                return false;
+            },
+            async retryDataLoad() {
+                this.dataRetrying = true;
+                const ok = await this.loadData(2);
+                this.dataRetrying = false;
+                if (ok) {
+                    this.initTrajWeights();
+                    if (typeof echarts !== 'undefined') { this.initializeCharts(); this.initSparklines(); }
+                }
+            },
+
             // Initialize
             async init() {
                 this.themeMode = localStorage.getItem('themeMode') || 'device';
@@ -3467,34 +3597,17 @@ reduces overall score</pre>
                     if (this.themeMode === 'device') this.applyTheme();
                 });
                 document.documentElement.classList.add('js');
+                window.__spBooted = true;   // tells the boot watchdog the page came up
 
                 // Remove loading skeleton
                 const skeleton = document.getElementById('loading-skeleton');
                 if (skeleton) skeleton.remove();
 
-                // Load data from JSON
-                try {
-                    const resp = await fetch('data.json?v=' + (document.querySelector('meta[name="version"]')?.content || Date.now()), { cache: 'no-cache' });
-                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-                    const d = await resp.json();
-                    if (d.economic) this.economicData = d.economic;
-                    if (d.international) this.internationalData = d.international;
-                    if (d.forecast) this.forecastSpec = d.forecast;
-                    if (d.meta && d.meta.updated) this.dataUpdated = d.meta.updated;
-                    if (d.meta) this.dataMeta = d.meta;
-                    if (d.sources) this.sourcesData = d.sources;
-                    if (d.eraHistory) this.eraHistory = d.eraHistory;
-                    this.initTrajWeights();
-                    // Citizen-primer datasets (merge over fallback so any missing block degrades gracefully)
-                    const primerKeys = ['bigPicture','chinaDivergence','taxTake','spendSplit','stateReturns','realInflation','external','distribution','structure','jobsLesson','indexExample','gdpRevision','taxReversal','budgetArithmetic','kmut','deficitFinancing','delimitation','monsoonChain','cpiBasket','pumpPrice','modiAsks','gold','poverty','bodies','readChecklist','measurement','states','syntheticControl'];
-                    const merged = { ...PRIMER_FALLBACK };
-                    for (const k of primerKeys) { if (d[k]) merged[k] = d[k]; }
-                    this.primer = merged;
-                } catch(e) {
-                    console.warn('data.json fetch failed; using bundled fallback values', e);
-                    this.dataLoadError = true;
-                }
+                // Load data from JSON (retries; see loadData)
+                await this.loadData();
                 this.initTrajWeights();
+                // Open the timeline player on the latest observed year, not 2014.
+                this.timelineIndex = this.latestObservedIndex();
 
                 // Analyses load separately: they are not needed for first paint, and keeping
                 // them out of index.html is what lets /analysis and this list share one source.
@@ -3655,7 +3768,7 @@ reduces overall score</pre>
                 dataCoverageChart: 'Some Perspective — Methodology',
                 indexRadarChart: 'Constructed SSI/FCI/DQI — see Methodology',
                 internationalChart: 'V-Dem v15 (2026); RSF 2026',
-                democraticDeclineChart: 'V-Dem; Freedom House; RSF',
+                democraticDeclineChart: 'V-Dem Liberal Democracy Index (v2x_libdem), published series',
                 stateDisparitiesChart: 'Finance Commission; AIPC',
                 eraComparisonChart: 'MoSPI/NSO national accounts',
                 eraChart: 'MoSPI/NSO national accounts',
@@ -4366,19 +4479,22 @@ reduces overall score</pre>
                 const mobile = isMobile();
                 c.setOption({
                     ...baseOpts(this.darkMode),
-                    title: chartTitle('DQI: Multi-Country Decline (2014-2026)', this.darkMode),
+                    // Cross-country comparison uses the PUBLISHED V-Dem Liberal Democracy Index
+                    // (v2x_libdem), not this project's DQI. The DQI is constructed for India only,
+                    // so plotting other countries under that label would be a mislabel. Values are
+                    // verbatim from V-Dem; 2026 carries the 2025 observation (V-Dem's latest).
+                    title: chartTitle('V-Dem Liberal Democracy Index (2014-2026)', this.darkMode),
                     tooltip: { trigger: 'axis' },
                     legend: chartLegend(['India', 'Turkey', 'Hungary', 'Brazil']),
                     xAxis: { type: 'category', data: [2014, 2016, 2018, 2020, 2022, 2024, 2026], axisLabel: { fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
-                    yAxis: { type: 'value', min: 0.15, max: 0.85, name: mobile ? '' : 'DQI Score', axisLabel: { formatter: v => v.toFixed(2), fontSize: mobile ? 10 : 12 } },
+                    yAxis: { type: 'value', min: 0.05, max: 0.85, name: mobile ? '' : 'V-Dem LDI', axisLabel: { formatter: v => v.toFixed(2), fontSize: mobile ? 10 : 12 } },
                     dataZoom: dataZoom(),
                     series: [
-                        { name: 'India', type: 'line', data: [0.54, 0.53, 0.46, 0.40, 0.33, 0.29, 0.29], smooth: true, itemStyle: { color: '#f97316' }, lineStyle: { width: 3 }, areaStyle: { opacity: 0.08 } },
-                        { name: 'Turkey', type: 'line', data: [0.52, 0.45, 0.38, 0.30, 0.22, 0.19, 0.18], smooth: true, itemStyle: { color: '#ef4444' } },
-                        { name: 'Hungary', type: 'line', data: [0.63, 0.58, 0.52, 0.48, 0.44, 0.42, 0.41], smooth: true, itemStyle: { color: '#8b5cf6' } },
-                        { name: 'Brazil', type: 'line', data: [0.85, 0.82, 0.78, 0.72, 0.68, 0.69, 0.69], smooth: true, itemStyle: { color: '#22c55e' }, lineStyle: { type: 'dashed' } }
-                    ],
-                    markLine: { data: [{ yAxis: 0.5, label: { formatter: 'Hybrid Regime Threshold', position: 'start' }, lineStyle: { color: '#ef4444', type: 'dashed', opacity: 0.5 } }] }
+                        { name: 'India', type: 'line', data: [0.488, 0.406, 0.363, 0.292, 0.291, 0.281, 0.26], smooth: true, itemStyle: { color: '#f97316' }, lineStyle: { width: 3 }, areaStyle: { opacity: 0.08 } },
+                        { name: 'Turkey', type: 'line', data: [0.252, 0.143, 0.104, 0.115, 0.11, 0.109, 0.11], smooth: true, itemStyle: { color: '#ef4444' } },
+                        { name: 'Hungary', type: 'line', data: [0.521, 0.474, 0.373, 0.351, 0.335, 0.325, 0.315], smooth: true, itemStyle: { color: '#8b5cf6' } },
+                        { name: 'Brazil', type: 'line', data: [0.783, 0.653, 0.608, 0.534, 0.54, 0.712, 0.704], smooth: true, itemStyle: { color: '#22c55e' }, lineStyle: { type: 'dashed' } }
+                    ]
                 });
             },
 
@@ -4573,6 +4689,27 @@ reduces overall score</pre>
                 const yrs = this.economicData.years || [];
                 const projStart = (typeof PROJECTION_START_INDEX !== 'undefined') ? PROJECTION_START_INDEX : yrs.length;
                 return Math.max(0, Math.min(yrs.length - 1, projStart - 1));
+            },
+            // Every index figure quoted in prose is read through these two helpers, so a
+            // number on one tab cannot drift away from the same number on another.
+            currentIndex(key, dp) {
+                const a = this.economicData[key] || [];
+                const v = a[this.latestObservedIndex()];
+                return (typeof v === 'number') ? v.toFixed(dp) : '—';
+            },
+            idxRange(key, dp) {
+                const a = this.economicData[key] || [];
+                const i = this.latestObservedIndex();
+                if (!a.length) return '—';
+                const yrs = this.economicData.years || [];
+                const obs = a.slice(0, i + 1);
+                const peak = Math.max(...obs);
+                const peakYear = yrs[obs.indexOf(peak)];
+                // Only worth naming a peak if the series actually rose above where it started;
+                // for a monotonic decline the "peak" is just the first value again.
+                const rose = peak > a[0] + Number.EPSILON;
+                const tail = (rose && peak > a[i]) ? ` · peak ${peak.toFixed(dp)} in ${peakYear}` : '';
+                return `${a[0].toFixed(dp)} → ${a[i].toFixed(dp)} (${yrs[0]}-${yrs[i]})${tail}`;
             },
             latestObservedYear() {
                 const yrs = this.economicData.years || [];

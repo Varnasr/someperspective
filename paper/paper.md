@@ -20,9 +20,9 @@ We construct three indices to make that degradation legible and comparable acros
 
 All three are computed by a single deterministic script applied identically to 2004–2026, so that the comparison between the United Progressive Alliance decade (2004–2013) and the National Democratic Alliance period (2014–2026) rests on one consistent construction rather than on two differently-built measures.
 
-The results are one-directional. SSI moves from 0.00 across the entire UPA decade to a peak of 9.00 in 2021–22 and remains at 6.40 in 2026. FCI rises from a UPA average of 0.09 to an NDA average of 0.57, peaking at 0.92 in 2020. DQI falls from a UPA average of 0.59 to 0.29 by 2026. On eight of nine directly comparable cross-era measures India performs worse in the later period. The single exception is consumer price inflation, which is substantially lower — though we argue at length that this should not be read as a policy result: the comparison straddles the collapse of a global commodity cycle, and insofar as domestic policy contributed, it did so through a rule that constrains executive discretion rather than expands it.
+The results are one-directional. SSI moves from 0.00 across the entire UPA decade to a peak of 9.00 in 2021–22 and remains at 6.40 in 2026. FCI rises from a UPA average of 0.09 to an NDA average of 0.57, peaking at 0.92 in 2020. DQI falls from a UPA average of 0.57 to 0.29 by 2026. On eight of nine directly comparable cross-era measures India performs worse in the later period. The single exception is consumer price inflation, which is substantially lower — though we argue at length that this should not be read as a policy result: the comparison straddles the collapse of a global commodity cycle, and insofar as domestic policy contributed, it did so through a rule that constrains executive discretion rather than expands it.
 
-We then subject the governance finding to external validation it did not generate. Grier and Grier (2026), working independently with a different method (synthetic control with randomisation inference), different data (V-Dem and the Penn World Table), and a different pre-treatment window (1984–2013), find that all ten V-Dem governance indicators they test deteriorate against a synthetic counterfactual at a joint p-value of 0.00. Their electoral-democracy gap of −60.2 per cent is close to the −63.4 per cent raw decline in India's V-Dem score recorded in our own data, despite the two quantities not being the same object. Convergence of this kind, across independent methods, is stronger evidence than either study provides alone.
+We then subject the governance finding to external validation it did not generate. Grier and Grier (2026), working independently with a different method (synthetic control with randomisation inference), different data (V-Dem and the Penn World Table), and a different pre-treatment window (1984–2013), find that all ten V-Dem governance indicators they test deteriorate against a synthetic counterfactual at a joint p-value of 0.00. Their electoral-democracy gap of −60.2 per cent sits in the same territory as the −46.7 per cent raw decline in India's V-Dem Liberal Democracy Index recorded in our own data, despite the two quantities not being the same object. Convergence of this kind, across independent methods, is stronger evidence than either study provides alone.
 
 We are explicit about what this paper does not establish. The DQI is built entirely from published third-party series and inherits their assumptions. The SSI severities are author-coded against a documented rubric and are the most contestable component here. The FCI is relative by construction and its values are not interpretable outside the 2004–2026 sample. None of the three indices identifies a causal effect. We do not claim that Indian incomes would have been higher under different governance, and we note where a companion study does make that claim on evidence we have not independently verified.
 
@@ -356,7 +356,7 @@ Two choices warrant defence.
 
 **Why a geometric mean.** An arithmetic mean permits compensation: a collapse on one dimension can be offset by stability on another, yielding a moderate composite that describes no actual state of affairs. The geometric mean penalises imbalance, which is the correct behaviour for a concept like democratic quality where the dimensions are closer to jointly necessary than to substitutable. A country with a free press and no independent judiciary is not "averagely" democratic.
 
-**Why civil society is included.** The RSF press-freedom rank barely separates the two eras — India ranked poorly throughout, at 140 in 2014 and 157 in 2026, having been as low as 161 in 2023 and as high as 105 during the UPA period. A composite built only on headline democracy scores and press rank would therefore understate the change. The V-Dem Core Civil Society Index, by contrast, falls from approximately 0.87 to approximately 0.31 over the period. That is the dimension along which the change is sharpest, and omitting it would flatten precisely the phenomenon under study.
+**Why civil society is included.** The RSF press-freedom rank barely separates the two eras — India ranked poorly throughout, at 140 in 2014 and 157 in 2026, having been as low as 161 in 2023 and as high as 105 during the UPA period. A composite built only on headline democracy scores and press rank would therefore understate the change. The V-Dem Core Civil Society Index, by contrast, falls from 0.669 to 0.302 over the period. That is the dimension along which the change is sharpest, and omitting it would flatten precisely the phenomenon under study.
 
 We note the risk in this choice: including the component that moves most is a decision that increases the measured effect, and a sceptical reader is entitled to ask whether it was selected for that reason. Our answer is that the inclusion is theoretically motivated — associational freedom is a standard component of liberal-democratic quality, not an exotic addition — and that we report the DQI's behaviour without it in Section 8.2.
 
@@ -441,13 +441,13 @@ The post-2020 decline from 0.92 to 0.68 should not be read as decentralisation. 
 
 ## 6.6 Democratic quality
 
-The DQI averages 0.59 across 2004–2013, peaking at 0.64 in 2009 and standing at 0.54 in 2013.
+The DQI averages 0.57 across 2004–2013, peaking at 0.61 in 2005, 2006 and 2009, and standing at 0.51 in 2013.
 
-Within the NDA period it falls from 0.54 (2014) to **0.29 (2026)**, with the steepest single-year declines after 2019 — the year V-Dem reclassified India from "electoral democracy" to "electoral autocracy". The era means are 0.59 against 0.41; the endpoint comparison is 0.54 against 0.29, a decline of 46.3 per cent within the later period alone.
+Within the NDA period it falls from 0.49 (2014) to **0.29 (2026)**, with the steepest single-year declines after 2019 — the year V-Dem reclassified India from "electoral democracy" to "electoral autocracy". The era means are 0.57 against 0.38; the endpoint comparison is 0.49 against 0.29, a decline of 40.8 per cent within the later period alone.
 
-The component behaviour is instructive. India's V-Dem Liberal Democracy score falls from 0.71 to 0.26 — a 63.4 per cent decline. The press-freedom rank moves from 140 to 157, a deterioration but not a dramatic one against an already-poor base. Freedom House's aggregate score falls, with the reclassification from "Free" to "Partly Free" in 2021. The civil-society index falls from approximately 0.87 to approximately 0.31.
+The component behaviour is instructive. India's V-Dem Liberal Democracy Index falls from 0.488 to 0.260 — a 46.7 per cent decline. The press-freedom rank moves from 140 to 157, a deterioration but not a dramatic one against an already-poor base. Freedom House's aggregate score falls, with the reclassification from "Free" to "Partly Free" in 2021. The V-Dem Core Civil Society Index falls from 0.669 to 0.302, a fall of 54.9 per cent and the steepest of the four components.
 
-In international context, India's V-Dem decline over 2014–2026 (0.71 → 0.26) is larger than that recorded for Turkey (0.52 → 0.18) or Hungary (0.63 → 0.41) over the same period, from a substantially higher starting point. Brazil (0.85 → 0.69) and South Africa (0.75 → 0.70) show the comparatively mild movement one might expect of large democracies under ordinary political stress.
+In international context, India's V-Dem decline over 2014–2026 (0.488 → 0.260, a fall of 0.228) is the largest absolute fall in the comparison cohort, ahead of Hungary (0.521 → 0.315, −0.206) and Turkey (0.252 → 0.110, −0.142). In proportional terms Turkey falls further, but from a base already close to the floor. Brazil (0.783 → 0.704) and South Africa (0.641 → 0.633) show the comparatively mild movement one might expect of large democracies under ordinary political stress.
 
 ## 6.7 Macroeconomic and external position
 
@@ -469,21 +469,23 @@ A decline measured only against a country's own past invites the response that t
 
 Across 2014 to 2026, on the V-Dem Liberal Democracy Index and the RSF press-freedom rank:
 
-| Country | V-Dem 2014 | V-Dem 2026 | Change | Press rank 2014 | Press rank 2026 |
-|---|---|---|---|---|---|
-| India | 0.71 | 0.26 | −63.4% | 140 | 157 |
-| Turkey | 0.52 | 0.18 | −65.4% | 154 | 159 |
-| Hungary | 0.63 | 0.41 | −34.9% | 64 | 70 |
-| Brazil | 0.85 | 0.69 | −18.8% | 99 | 80 |
-| South Africa | 0.75 | 0.70 | −6.7% | 42 | 38 |
+| Country | V-Dem 2014 | V-Dem 2026 | Change | Absolute fall | Press rank 2014 | Press rank 2026 |
+|---|---|---|---|---|---|---|
+| India | 0.488 | 0.260 | −46.7% | −0.228 | 140 | 157 |
+| Turkey | 0.252 | 0.110 | −56.3% | −0.142 | 154 | 159 |
+| Hungary | 0.521 | 0.315 | −39.5% | −0.206 | 64 | 70 |
+| Brazil | 0.783 | 0.704 | −10.1% | −0.079 | 99 | 80 |
+| South Africa | 0.641 | 0.633 | −1.2% | −0.008 | 42 | 38 |
+
+All values are the V-Dem Liberal Democracy Index (`v2x_libdem`) as published; the 2026 column carries V-Dem's 2025 observation, the latest available. An earlier version of this table mixed two different V-Dem indices between the two columns; see Section 9.9.
 
 Three observations follow.
 
-First, India's proportional decline is comparable to Turkey's, a country widely treated as the reference case for democratic backsliding in a large middle-income state — and India began the period from a substantially higher base (0.71 against 0.52), so the absolute fall is larger.
+First, India records the largest absolute decline in the cohort — larger than Hungary's and larger than Turkey's, the country most often treated as the reference case for backsliding in a large middle-income state. Turkey's proportional fall is steeper, but Turkey entered the period at 0.252, already near the bottom of the scale, and a country close to the floor has less left to lose. India entered at 0.488 and gave up 0.228 of it.
 
 Second, the comparison discriminates. Brazil and South Africa, large democracies subject to serious political stress over the same years, register modest movement. Whatever is happening in the V-Dem instrument globally, it is not producing large declines indiscriminately.
 
-Third, the press-freedom rank behaves differently from the composite in every case, and this is why Section 5.4 declines to rest the DQI on it. Brazil's press rank *improved* while its V-Dem score fell; India's press rank worsened by 17 places while its V-Dem score fell by nearly two-thirds. A rank is a positional measure across 180 countries and is insensitive to large absolute changes when many countries move together. It is a poor instrument for exactly the question at issue here.
+Third, the press-freedom rank behaves differently from the composite in every case, and this is why Section 5.4 declines to rest the DQI on it. Brazil's press rank *improved* while its V-Dem score fell; India's press rank worsened by 17 places while its V-Dem score fell by almost half. A rank is a positional measure across 180 countries and is insensitive to large absolute changes when many countries move together. It is a poor instrument for exactly the question at issue here.
 
 ## 6.9 The cross-era scorecard
 
@@ -499,7 +501,7 @@ Comparing period means across the nine directly comparable measures:
 | Press freedom rank | 120.7 | 145.0 | Worse |
 | Statistical Suppression Index | 0.00 | 5.09 | Worse |
 | Fiscal Centralisation Index | 0.09 | 0.57 | Worse |
-| Democratic Quality Index | 0.59 | 0.41 | Worse |
+| Democratic Quality Index | 0.57 | 0.38 | Worse |
 
 **Eight of nine measures deteriorate. One improves.**
 
@@ -552,11 +554,11 @@ The correspondence with our results is close:
 
 | Dimension | Grier & Grier | This paper |
 |---|---|---|
-| Electoral democracy | −60.2% vs counterfactual | V-Dem 0.71 → 0.26, −63.4% |
-| Overall democratic quality | −69.1% liberal-democracy gap | DQI 0.54 → 0.29, −46.3% |
+| Electoral democracy | −60.2% vs counterfactual | V-Dem LDI 0.488 → 0.260, −46.7% |
+| Overall democratic quality | −69.1% liberal-democracy gap | DQI 0.49 → 0.29, −40.8% |
 | Press and expression | Freedom of expression −56.2% | RSF rank 140 → 157 |
 
-**These are not the same quantity, and we want to be precise about that.** Their figures are gaps against a counterfactual India that never elected the government it did; ours are observed changes over time. A gap of −60.2 per cent and a raw decline of −63.4 per cent describe different objects, and their numerical proximity is not itself evidence of anything.
+**These are not the same quantity, and we want to be precise about that.** Their figures are gaps against a counterfactual India that never elected the government it did; ours are observed changes over time. A gap of −60.2 per cent and a raw decline of −46.7 per cent describe different objects, and their rough proximity is not itself evidence of anything.
 
 What the convergence does establish is more modest and more useful: that two research designs with almost no shared machinery, applied to the same country and period, agree on direction, on rough magnitude, and on which dimensions moved most. Our DQI result is not an artefact of our weighting scheme, our geometric mean, or our decision to include the civil-society index, because a study using none of those things finds the same thing.
 
@@ -600,7 +602,7 @@ Dropping the single highest-weighted stream (census delay, weight 2.5) reduces t
 
 The DQI's most questionable choice is the inclusion of the V-Dem Core Civil Society Index, which is also the fastest-falling component.
 
-Computed as a geometric mean of the remaining three components, the index still declines across the NDA period, though less steeply: the fall is driven substantially but not exclusively by civil society. The V-Dem Liberal Democracy Index alone falls 63.4 per cent over the period, so a DQI excluding the civil-society term still registers a large deterioration through that channel.
+Computed as a geometric mean of the remaining three components, the index still declines across the NDA period, though less steeply: the fall is driven substantially but not exclusively by civil society. The V-Dem Liberal Democracy Index alone falls 46.7 per cent over the period, so a DQI excluding the civil-society term still registers a large deterioration through that channel.
 
 We report this rather than resolving it, because the honest position is that the four-component index shows a larger decline than a three-component one would, and readers should know that the choice affects the magnitude. It does not affect the sign, and it does not affect the cross-era ranking.
 
@@ -687,6 +689,18 @@ This paper is about aggregate national indicators. It does not address state-lev
 As reported in Section 6.3, preparation of this paper surfaced an error in three of the project's own previously-published summary documents, which had stated the 2014 top 1 per cent income share as 15 per cent — the bottom 50 per cent figure — thereby overstating the rise in top-end concentration as 7.6 percentage points rather than 1.3. The documents have been corrected and a continuous-integration check now compares every year-labelled figure in the project's published documents against the source dataset, failing the build on any contradiction.
 
 We report this in the paper rather than correcting it silently, for two reasons. The error ran in the direction of the project's thesis, which is precisely the kind of error that deserves visible correction rather than a quiet edit. And a project whose central argument concerns the integrity of published statistics has an obligation to hold its own output to the standard it applies to others.
+
+## 9.9 A second error corrected, in the DQI's own inputs
+
+A review of the index inputs immediately before publication found a second error, in the DQI itself, and it is reported here on the same principle as Section 9.8.
+
+Two of the DQI's four components are V-Dem series: the Liberal Democracy Index (`v2x_libdem`) and the Core Civil Society Index (`v2xcs_ccsi`). The table used to compute the index held approximated rather than published values for both, and the approximations were systematically too high in the UPA decade. For 2014 the table carried a Liberal Democracy value of 0.555 against a published 0.488, and a civil-society value of 0.87 against a published 0.669. Because the error inflated the earlier baseline while leaving the later years close to correct, it exaggerated the measured decline. It ran, in other words, in the direction of this paper's argument.
+
+Both columns are now the published V-Dem series verbatim. The effect on the results is as follows. The UPA-decade DQI mean falls from 0.59 to 0.57; the 2014 value falls from 0.54 to 0.49; the 2026 value is unchanged at 0.29. The within-period decline is therefore 40.8 per cent rather than 46.3 per cent, and the cross-era gap narrows from 0.18 to 0.19 index points on means that are themselves lower. The direction of the result, its size relative to the other two indices, and the cross-era scorecard of eight-of-nine are all unaffected.
+
+The same error appeared in a second place. The international comparison table had its 2014 column on V-Dem's Electoral Democracy Index and its 2026 column on the Liberal Democracy Index — two different instruments read as one series. India's decline appeared as 0.71 → 0.26 when the correct like-for-like comparison on the Liberal Democracy Index is 0.488 → 0.260. This too overstated the finding: the proportional decline falls from 63.4 per cent to 46.7 per cent, and India ceases to have the steepest proportional fall in the cohort, though it retains the largest absolute one. Section 6.8 now reports the corrected figures.
+
+Neither error was caught by the consistency check introduced after Section 9.8, because that check compares published documents against the dataset and both errors were *in* the dataset. A second check now runs on the dataset itself: it fails the build unless the international comparison table and the DQI's component table report the same V-Dem figure for India, which they can only do if both are on the Liberal Democracy Index. A crossed-series error of this shape cannot pass silently again.
 
 ---
 
@@ -798,11 +812,15 @@ The most consequential finding is the one that is least often quantified. A gove
 
 ## Funding
 
-This research received no funding from any institution, government, political party, foundation, or commercial entity. It was conducted independently and at the author's own cost. The absence of funding is stated here not as a virtue but because, in a paper whose subject is the independence of research-producing institutions from the governments they assess, the author's own position is a material fact for the reader to weigh.
+This research received no funding from any institution, government, political party, foundation, or commercial entity. It was conducted independently and at the author's own cost. The absence of funding is stated here not as a virtue but because, in a paper whose subject is the independence of research-producing institutions from the governments they assess, the author's own position is a material fact for the reader to weigh. Absence of funding is not absence of interest; the author's political affiliation is declared immediately below.
 
 ## Competing interests
 
-The author declares no competing financial interests. The author holds views about the subject matter that the reader may reasonably infer from the analysis; the mitigation offered is not a claim of neutrality but the publication of the complete dataset, construction code, and paper source, so that any reader may recompute the results under different assumptions and reach a different conclusion.
+The author is a national spokesperson of the All India Congress Committee. This paper compares the performance of a Congress-led government (UPA, 2004–14) against that of its successor (NDA, 2014–26) and reports against the successor on eight of nine comparable measures. The author therefore holds a political interest in the direction of the finding, and that interest is declared here in full rather than left to be discovered.
+
+The author declares no competing financial interests. No party body commissioned, funded, reviewed, or approved this work, and no part of it was seen by any such body before publication.
+
+The mitigation offered is not a claim of neutrality, which would be false, and which a paper arguing that institutional independence is a structural rather than a personal property has no business asserting about its own author. It is that every step between the raw series and the conclusion is inspectable. The complete dataset, the construction code, and the source of this paper are published; both eras are computed by the same script, so no part of the measured gap can originate in the two periods being handled differently; the index weightings are stated and their sensitivity reported in Section 8; the one measure that improved under the second period is reported as improved and is explicitly not attributed to the government's credit (Section 6.9); an error that had run in the project's own favour is documented in Section 9.8; and the governance result is corroborated in Section 7 by an independent study using a method this paper does not use. A reader who distrusts the author's motives can recompute every figure under different assumptions and reach a different conclusion from the same published inputs. That is the only defence a partisan author can honestly offer, and it is offered here.
 
 ## Data and code availability
 
@@ -895,27 +913,27 @@ Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`.
 | Year | GDP growth | Top 1% | Bottom 50% | Press rank | SSI | FCI | DQI |
 |---|---|---|---|---|---|---|---|
 | 2004 | 7.9 | 18.2 | 16.5 | 120 | 0.00 | 0.00 | 0.59 |
-| 2005 | 9.3 | 18.8 | 16.3 | 106 | 0.00 | 0.03 | 0.63 |
-| 2006 | 9.3 | 19.6 | 16.0 | 105 | 0.00 | 0.05 | 0.63 |
-| 2007 | 7.7 | 20.1 | 15.8 | 120 | 0.00 | 0.07 | 0.60 |
-| 2008 | 3.1 | 20.5 | 15.6 | 118 | 0.00 | 0.09 | 0.60 |
-| 2009 | 7.9 | 20.6 | 15.5 | 105 | 0.00 | 0.11 | 0.64 |
-| 2010 | 8.5 | 21.0 | 15.4 | 122 | 0.00 | 0.12 | 0.60 |
-| 2011 | 5.2 | 21.3 | 15.3 | 131 | 0.00 | 0.14 | 0.57 |
-| 2012 | 5.5 | 21.0 | 15.2 | 140 | 0.00 | 0.16 | 0.54 |
-| 2013 | 6.4 | 21.2 | 15.1 | 140 | 0.00 | 0.17 | 0.54 |
-| 2014 | 7.4 | 21.3 | 15.0 | 140 | 0.00 | 0.19 | 0.54 |
-| 2015 | 8.0 | 21.7 | 14.7 | 136 | 1.05 | 0.21 | 0.54 |
-| 2016 | 8.2 | 21.5 | 14.9 | 133 | 1.05 | 0.25 | 0.53 |
-| 2017 | 7.2 | 21.5 | 14.9 | 136 | 2.05 | 0.41 | 0.50 |
-| 2018 | 6.1 | 21.7 | 14.7 | 138 | 4.00 | 0.53 | 0.46 |
-| 2019 | 4.2 | 22.1 | 13.5 | 140 | 4.80 | 0.65 | 0.43 |
-| 2020 | −7.3 | 22.3 | 13.3 | 142 | 7.00 | 0.92 | 0.40 |
-| 2021 | 8.7 | 22.5 | 13.1 | 142 | 9.00 | 0.82 | 0.38 |
-| 2022 | 7.2 | 22.6 | 13.1 | 150 | 9.00 | 0.70 | 0.33 |
+| 2005 | 9.3 | 18.8 | 16.3 | 106 | 0.00 | 0.03 | 0.61 |
+| 2006 | 9.3 | 19.6 | 16.0 | 105 | 0.00 | 0.05 | 0.61 |
+| 2007 | 7.7 | 20.1 | 15.8 | 120 | 0.00 | 0.07 | 0.58 |
+| 2008 | 3.1 | 20.5 | 15.6 | 118 | 0.00 | 0.09 | 0.58 |
+| 2009 | 7.9 | 20.6 | 15.5 | 105 | 0.00 | 0.11 | 0.61 |
+| 2010 | 8.5 | 21.0 | 15.4 | 122 | 0.00 | 0.12 | 0.56 |
+| 2011 | 5.2 | 21.3 | 15.3 | 131 | 0.00 | 0.14 | 0.54 |
+| 2012 | 5.5 | 21.0 | 15.2 | 140 | 0.00 | 0.16 | 0.51 |
+| 2013 | 6.4 | 21.2 | 15.1 | 140 | 0.00 | 0.17 | 0.51 |
+| 2014 | 7.4 | 21.3 | 15.0 | 140 | 0.00 | 0.19 | 0.49 |
+| 2015 | 8.0 | 21.7 | 14.7 | 136 | 1.05 | 0.21 | 0.46 |
+| 2016 | 8.2 | 21.5 | 14.9 | 133 | 1.05 | 0.25 | 0.46 |
+| 2017 | 7.2 | 21.5 | 14.9 | 136 | 2.05 | 0.41 | 0.44 |
+| 2018 | 6.1 | 21.7 | 14.7 | 138 | 4.00 | 0.53 | 0.42 |
+| 2019 | 4.2 | 22.1 | 13.5 | 140 | 4.80 | 0.65 | 0.39 |
+| 2020 | −7.3 | 22.3 | 13.3 | 142 | 7.00 | 0.92 | 0.36 |
+| 2021 | 8.7 | 22.5 | 13.1 | 142 | 9.00 | 0.82 | 0.37 |
+| 2022 | 7.2 | 22.6 | 13.1 | 150 | 9.00 | 0.70 | 0.34 |
 | 2023 | 7.6 | 22.6 | 13.1 | 161 | 8.20 | 0.68 | 0.28 |
-| 2024 | 7.8 | 22.6 | 13.1 | 159 | 7.05 | 0.68 | 0.29 |
-| 2025 | 6.5 | 22.8 | 13.0 | 151 | 6.55 | 0.68 | 0.31 |
+| 2024 | 7.8 | 22.6 | 13.1 | 159 | 7.05 | 0.68 | 0.28 |
+| 2025 | 6.5 | 22.8 | 13.0 | 151 | 6.55 | 0.68 | 0.30 |
 | 2026 | 7.4 | 23.0 | 12.9 | 157 | 6.40 | 0.68 | 0.29 |
 
 ---

@@ -132,30 +132,46 @@ def compute_fci_series():
 #    reclassified India from electoral democracy to electoral autocracy in 2019.)
 # ---------------------------------------------------------------------------
 # year: [vdem_ldi, freedom_house_100, rsf_rank, vdem_civil_society]
+#
+# SOURCES for the two V-Dem columns (corrected August 2026 - see below):
+#   vdem_ldi           = V-Dem Liberal Democracy Index, v2x_libdem
+#   vdem_civil_society = V-Dem Core Civil Society Index, v2xcs_ccsi
+# Both are taken verbatim from the published V-Dem series (latest release,
+# data through 2025; 2026 carries the 2025 observation forward because V-Dem
+# has not yet published a 2026 figure). They are NOT estimates.
+#
+# CORRECTION (2026-08-15): the earlier table used approximated V-Dem values
+# whose UPA-decade entries were too high - vdem_ldi 0.555 for 2014 against a
+# published 0.488, and vdem_civil_society 0.87 for 2014 against a published
+# 0.669. Both errors inflated the pre-2014 baseline and therefore exaggerated
+# the measured decline, i.e. they ran in this project's own favour. The
+# published values are used below. The direction of the DQI result survives:
+# the UPA mean falls 0.59 -> 0.57 and 2014 falls 0.54 -> 0.49, while the 2026
+# value is unchanged at 0.29.
 DQI_COMPONENTS = {
-    2004: [0.553, 78, 120, 0.86],
-    2005: [0.560, 78, 106, 0.86],
-    2006: [0.562, 78, 105, 0.86],
-    2007: [0.567, 78, 120, 0.87],
-    2008: [0.566, 78, 118, 0.87],
-    2009: [0.567, 79, 105, 0.88],
-    2010: [0.566, 79, 122, 0.88],
-    2011: [0.560, 79, 131, 0.87],
-    2012: [0.557, 79, 140, 0.87],
-    2013: [0.554, 78, 140, 0.87],
-    2014: [0.555, 78, 140, 0.87],
-    2015: [0.529, 77, 136, 0.83],
-    2016: [0.501, 77, 133, 0.78],
-    2017: [0.462, 77, 136, 0.70],
-    2018: [0.422, 75, 138, 0.62],
-    2019: [0.389, 71, 140, 0.55],
-    2020: [0.365, 67, 142, 0.48],
-    2021: [0.357, 66, 142, 0.42],
-    2022: [0.290, 66, 150, 0.36],
-    2023: [0.275, 66, 161, 0.33],
-    2024: [0.271, 66, 159, 0.32],
-    2025: [0.270, 66, 151, 0.32],
-    2026: [0.270, 66, 157, 0.31],
+    2004: [0.578, 78, 120, 0.826],
+    2005: [0.573, 78, 106, 0.760],
+    2006: [0.569, 78, 105, 0.760],
+    2007: [0.569, 78, 120, 0.760],
+    2008: [0.569, 78, 118, 0.760],
+    2009: [0.539, 79, 105, 0.760],
+    2010: [0.532, 79, 122, 0.744],
+    2011: [0.532, 79, 131, 0.744],
+    2012: [0.525, 79, 140, 0.743],
+    2013: [0.522, 78, 140, 0.735],
+    2014: [0.488, 78, 140, 0.669],
+    2015: [0.417, 77, 136, 0.576],
+    2016: [0.406, 77, 133, 0.555],
+    2017: [0.371, 77, 136, 0.523],
+    2018: [0.363, 75, 138, 0.471],
+    2019: [0.324, 71, 140, 0.454],
+    2020: [0.292, 67, 142, 0.404],
+    2021: [0.307, 66, 142, 0.421],
+    2022: [0.291, 66, 150, 0.421],
+    2023: [0.273, 66, 161, 0.346],
+    2024: [0.281, 66, 159, 0.302],
+    2025: [0.260, 66, 151, 0.302],
+    2026: [0.260, 66, 157, 0.302],
 }
 
 

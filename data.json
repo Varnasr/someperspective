@@ -21,127 +21,709 @@
     "rupeeUSD": "RBI reference rates, annual average INR per USD",
     "ssi": "Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py",
     "fci": "Constructed: mean of 6 min-max-normalised centralisation components incl. GST structural centralisation (2004-2026 sample); see data/compute_indices.py",
-    "dqi": "Constructed: geometric mean of V-Dem LDI × (Freedom House/100) × ((180-RSF)/180) × V-Dem Civil Society Index; see data/compute_indices.py",
+    "dqi": "Constructed: geometric mean of V-Dem Liberal Democracy Index (v2x_libdem) × (Freedom House/100) × ((180-RSF rank)/180) × V-Dem Core Civil Society Index (v2xcs_ccsi); see data/compute_indices.py. The two V-Dem columns are the published series verbatim; earlier approximations that overstated the pre-2014 baseline were corrected on 15 August 2026.",
     "gigWorkers": "NITI Aayog 'India's Booming Gig and Platform Economy' + Code on Social Security 2020 estimates",
     "ruralIncome": "NABARD All India Rural Financial Inclusion Survey, indexed (2014=100)",
     "femaleLFPR": "PLFS, Usual Status (ps+ss), women 15+",
-    "international": "V-Dem v15 (2026 release) + RSF 2026",
+    "international": "V-Dem Liberal Democracy Index (v2x_libdem), latest release (data through 2025; the 2026 column carries the 2025 observation forward) + RSF World Press Freedom Index 2026. Both V-Dem columns are on the SAME index: an earlier version of this table had the 2014 column on the Electoral Democracy Index and the 2026 column on the Liberal Democracy Index, which overstated India's decline. Corrected 15 August 2026.",
     "primer": "Reading the Indian Economy: A Citizen's Primer (Varna Sri Raman, 16 June 2026). Figures latest available as of June 2026; several provisional, estimated, or illustrative as noted.",
     "syntheticControl": "Grier & Grier (2026), 'Promises, Promises' — figures transcribed from the authors' published summary (rgrier88.github.io/modi-promises). Underlying data: V-Dem (governance), Penn World Table 11.0 (income). External study, not produced by this project."
   },
   "economic": {
-    "years":               [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
-    "yearLabels":          ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
-    "gdpGrowth":           [7.4,  8.0,  8.2,  7.2,  6.1,  4.2,  -7.3, 8.7,  7.2,  7.6,  7.8,  6.5,  7.4],
-    "unemployment":        [4.9,  5.0,  5.0,  6.0,  6.1,  5.8,  7.1,  4.2,  4.1,  3.2,  3.2,  3.1,  5.5],
-    "youthUnemployment":   [13.5, 13.8, 14.2, 15.6, 16.1, 14.8, 17.8, 13.2, 12.9, 12.9, 12.8, 12.5, 12.3],
-    "graduateUnemployment":[18.5, 19.2, 21.0, 23.5, 25.0, 23.0, 31.0, 25.0, 22.0, 29.1, 28.5, 27.0, 26.5],
-    "top1Share":           [21.3, 21.7, 21.5, 21.5, 21.7, 22.1, 22.3, 22.5, 22.6, 22.6, 22.6, 22.8, 23.0],
-    "bottom50Share":       [15.0, 14.7, 14.9, 14.9, 14.7, 13.5, 13.3, 13.1, 13.1, 13.1, 13.1, 13.0, 12.9],
-    "formalEmployment":    [13.0, 12.8, 12.5, 12.2, 11.9, 11.6, 11.4, 11.5, 11.3, 11.2, 11.2, 11.0, 10.9],
-    "informalEmployment":  [87.0, 87.2, 87.5, 87.8, 88.1, 88.4, 88.6, 88.5, 88.7, 88.8, 88.8, 89.0, 89.1],
-    "pressFreedom":        [140,  136,  133,  136,  138,  140,  142,  142,  150,  161,  159,  151,  157],
-    "fiscalDeficit":       [4.1,  3.9,  3.5,  3.5,  3.4,  4.6,  9.2,  6.7,  6.4,  5.6,  4.8,  4.4,  4.4],
-    "cpiInflation":        [6.7,  4.9,  4.5,  3.6,  3.4,  4.8,  6.2,  5.5,  6.7,  5.4,  4.6,  4.0,  4.45],
-    "rupeeUSD":            [61,   64,   67,   65,   68,   70,   74,   74,   79,   82,   84,   87,   95],
-    "ssi":                 [0.0, 1.05, 1.05, 2.05, 4.0, 4.8, 7.0, 9.0, 9.0, 8.2, 7.05, 6.55, 6.4],
-    "fci":                 [0.19, 0.21, 0.25, 0.41, 0.53, 0.65, 0.92, 0.82, 0.7, 0.68, 0.68, 0.68, 0.68],
-    "dqi":                 [0.54, 0.54, 0.53, 0.5, 0.46, 0.43, 0.4, 0.38, 0.33, 0.28, 0.29, 0.31, 0.29],
-    "gigWorkers":          [0.8,  1.2,  1.8,  2.5,  3.2,  4.1,  5.2,  6.0,  6.8,  7.3,  7.7,  8.2,  8.8],
-    "ruralIncome":         [100,  99,   98,   97,   96,   95,   93,   94,   95,   96,   98,   97,   97],
-    "femaleLFPR":          [22.5, 22.0, 21.8, 21.5, 21.2, 21.0, 20.8, 20.5, 20.3, 20.5, 20.8, 20.9, 21.0]
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "yearLabels": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
+    "gdpGrowth": [
+      7.4,
+      8.0,
+      8.2,
+      7.2,
+      6.1,
+      4.2,
+      -7.3,
+      8.7,
+      7.2,
+      7.6,
+      7.8,
+      6.5,
+      7.4
+    ],
+    "unemployment": [
+      4.9,
+      5.0,
+      5.0,
+      6.0,
+      6.1,
+      5.8,
+      7.1,
+      4.2,
+      4.1,
+      3.2,
+      3.2,
+      3.1,
+      5.5
+    ],
+    "youthUnemployment": [
+      13.5,
+      13.8,
+      14.2,
+      15.6,
+      16.1,
+      14.8,
+      17.8,
+      13.2,
+      12.9,
+      12.9,
+      12.8,
+      12.5,
+      12.3
+    ],
+    "graduateUnemployment": [
+      18.5,
+      19.2,
+      21.0,
+      23.5,
+      25.0,
+      23.0,
+      31.0,
+      25.0,
+      22.0,
+      29.1,
+      28.5,
+      27.0,
+      26.5
+    ],
+    "top1Share": [
+      21.3,
+      21.7,
+      21.5,
+      21.5,
+      21.7,
+      22.1,
+      22.3,
+      22.5,
+      22.6,
+      22.6,
+      22.6,
+      22.8,
+      23.0
+    ],
+    "bottom50Share": [
+      15.0,
+      14.7,
+      14.9,
+      14.9,
+      14.7,
+      13.5,
+      13.3,
+      13.1,
+      13.1,
+      13.1,
+      13.1,
+      13.0,
+      12.9
+    ],
+    "formalEmployment": [
+      13.0,
+      12.8,
+      12.5,
+      12.2,
+      11.9,
+      11.6,
+      11.4,
+      11.5,
+      11.3,
+      11.2,
+      11.2,
+      11.0,
+      10.9
+    ],
+    "informalEmployment": [
+      87.0,
+      87.2,
+      87.5,
+      87.8,
+      88.1,
+      88.4,
+      88.6,
+      88.5,
+      88.7,
+      88.8,
+      88.8,
+      89.0,
+      89.1
+    ],
+    "pressFreedom": [
+      140,
+      136,
+      133,
+      136,
+      138,
+      140,
+      142,
+      142,
+      150,
+      161,
+      159,
+      151,
+      157
+    ],
+    "fiscalDeficit": [
+      4.1,
+      3.9,
+      3.5,
+      3.5,
+      3.4,
+      4.6,
+      9.2,
+      6.7,
+      6.4,
+      5.6,
+      4.8,
+      4.4,
+      4.4
+    ],
+    "cpiInflation": [
+      6.7,
+      4.9,
+      4.5,
+      3.6,
+      3.4,
+      4.8,
+      6.2,
+      5.5,
+      6.7,
+      5.4,
+      4.6,
+      4.0,
+      4.45
+    ],
+    "rupeeUSD": [
+      61,
+      64,
+      67,
+      65,
+      68,
+      70,
+      74,
+      74,
+      79,
+      82,
+      84,
+      87,
+      95
+    ],
+    "ssi": [
+      0.0,
+      1.05,
+      1.05,
+      2.05,
+      4.0,
+      4.8,
+      7.0,
+      9.0,
+      9.0,
+      8.2,
+      7.05,
+      6.55,
+      6.4
+    ],
+    "fci": [
+      0.19,
+      0.21,
+      0.25,
+      0.41,
+      0.53,
+      0.65,
+      0.92,
+      0.82,
+      0.7,
+      0.68,
+      0.68,
+      0.68,
+      0.68
+    ],
+    "dqi": [
+      0.49,
+      0.46,
+      0.46,
+      0.44,
+      0.42,
+      0.39,
+      0.36,
+      0.37,
+      0.34,
+      0.28,
+      0.28,
+      0.3,
+      0.29
+    ],
+    "gigWorkers": [
+      0.8,
+      1.2,
+      1.8,
+      2.5,
+      3.2,
+      4.1,
+      5.2,
+      6.0,
+      6.8,
+      7.3,
+      7.7,
+      8.2,
+      8.8
+    ],
+    "ruralIncome": [
+      100,
+      99,
+      98,
+      97,
+      96,
+      95,
+      93,
+      94,
+      95,
+      96,
+      98,
+      97,
+      97
+    ],
+    "femaleLFPR": [
+      22.5,
+      22.0,
+      21.8,
+      21.5,
+      21.2,
+      21.0,
+      20.8,
+      20.5,
+      20.3,
+      20.5,
+      20.8,
+      20.9,
+      21.0
+    ]
   },
   "international": {
-    "countries":  ["India", "Brazil", "Turkey", "Hungary", "South Africa"],
-    "vdem2014":   [0.71, 0.85, 0.52, 0.63, 0.75],
-    "vdem2026":   [0.26, 0.69, 0.18, 0.41, 0.70],
-    "press2014":  [140, 99, 154, 64, 42],
-    "press2026":  [157, 80, 159, 70, 38]
+    "countries": [
+      "India",
+      "Brazil",
+      "Turkey",
+      "Hungary",
+      "South Africa"
+    ],
+    "vdem2014": [
+      0.488,
+      0.783,
+      0.252,
+      0.521,
+      0.641
+    ],
+    "vdem2026": [
+      0.26,
+      0.704,
+      0.11,
+      0.315,
+      0.633
+    ],
+    "press2014": [
+      140,
+      99,
+      154,
+      64,
+      42
+    ],
+    "press2026": [
+      157,
+      80,
+      159,
+      70,
+      38
+    ]
   },
   "regimes": {
-    "upa": { "label": "UPA", "fullName": "United Progressive Alliance", "start": 2004, "end": 2014 },
-    "nda": { "label": "NDA", "fullName": "National Democratic Alliance", "start": 2014, "end": 2026 }
+    "upa": {
+      "label": "UPA",
+      "fullName": "United Progressive Alliance",
+      "start": 2004,
+      "end": 2014
+    },
+    "nda": {
+      "label": "NDA",
+      "fullName": "National Democratic Alliance",
+      "start": 2014,
+      "end": 2026
+    }
   },
   "forecast": {
     "horizonYear": 2030,
     "baseYear": 2026,
     "disclaimer": "These are scenario projections, not predictions. Each path extends the recent trend of an observed series and then applies an explicit annual adjustment for one of three scenarios. Uncertainty bands widen with the horizon because the further out you look, the more the assumption — not the economy — decides the number. Read every projection by asking: whose assumption is this, and what would break it?",
     "scenarios": {
-      "reform": { "label": "Reform push", "desc": "Statistical independence restored, garment/labour-intensive manufacturing prioritised, fiscal federalism rebalanced, formalisation incentives." },
-      "baseline": { "label": "Current trajectory", "desc": "Recent-trend continuation: policy mix and institutional direction of 2019-2026 persist." },
-      "stress": { "label": "Stress", "desc": "External shock (oil/rupee), weak monsoon, continued informalisation and statistical opacity." }
+      "reform": {
+        "label": "Reform push",
+        "desc": "Statistical independence restored, garment/labour-intensive manufacturing prioritised, fiscal federalism rebalanced, formalisation incentives."
+      },
+      "baseline": {
+        "label": "Current trajectory",
+        "desc": "Recent-trend continuation: policy mix and institutional direction of 2019-2026 persist."
+      },
+      "stress": {
+        "label": "Stress",
+        "desc": "External shock (oil/rupee), weak monsoon, continued informalisation and statistical opacity."
+      }
     },
     "indicators": [
-      { "key": "gdpGrowth",        "label": "GDP growth",                "unit": "%",    "goodHigh": true,  "trendYears": 5, "reform": 0.55, "stress": -1.6, "uncertainty": 1.1,  "min": -10, "max": 12,  "decimals": 1, "drivers": "Post-COVID base-effect rebounds are fading; the level itself is contested after the 2015 MCA21 revision.", "breaks": "An external oil/rupee shock, a weak monsoon, or investment that keeps growing output without jobs or consumption." },
-      { "key": "formalEmployment", "label": "Formal employment share",   "unit": "%",    "goodHigh": true,  "trendYears": 6, "reform": 0.65, "stress": -0.35, "uncertainty": 0.6, "min": 6,   "max": 25,  "decimals": 1, "drivers": "Twelve straight years of informalisation; capital-intensive PLI adds output, not payroll.", "breaks": "A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it." },
-      { "key": "unemployment",     "label": "Unemployment rate",          "unit": "%",    "goodHigh": false, "trendYears": 4, "reform": -0.5, "stress": 1.2,  "uncertainty": 0.9,  "min": 0,   "max": 15,  "decimals": 1, "drivers": "The headline is held low by self-employment and discouraged workers; graduate joblessness runs ~26%.", "breaks": "A genuine youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up." },
-      { "key": "top1Share",        "label": "Top 1% income share",        "unit": "%",    "goodHigh": false, "trendYears": 6, "reform": -0.5, "stress": 0.4,  "uncertainty": 0.7,  "min": 10,  "max": 30,  "decimals": 1, "drivers": "Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.", "breaks": "A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing." },
-      { "key": "cpiInflation",     "label": "CPI inflation",              "unit": "%",    "goodHigh": false, "trendYears": 5, "reform": -0.3, "stress": 2.2,  "uncertainty": 1.0,  "min": 0,   "max": 14,  "decimals": 1, "drivers": "Food is ~half the CPI basket and ~50% of farmland is rainfed, so inflation tracks the monsoon.", "breaks": "A deficient monsoon or an oil spike pushes CPI above the RBI's 6% ceiling." },
-      { "key": "fiscalDeficit",    "label": "Fiscal deficit",             "unit": "% GDP","goodHigh": false, "trendYears": 5, "reform": -0.3, "stress": 1.3,  "uncertainty": 0.7,  "min": 0,   "max": 12,  "decimals": 1, "drivers": "Consolidation leans on a record RBI dividend and off-budget borrowing.", "breaks": "A growth slowdown, a smaller RBI surplus, or new cash-transfer commitments widen it." },
-      { "key": "rupeeUSD",         "label": "Rupee (INR per USD)",        "unit": "₹/$",  "goodHigh": false, "trendYears": 6, "reform": -2,   "stress": 9,    "uncertainty": 4.5,  "min": 50,  "max": 130, "decimals": 0, "drivers": "A $333bn goods deficit is offset by services; FPI outflows and a $123bn oil bill pressure the rupee.", "breaks": "An oil shock or sustained FPI exit accelerates depreciation; reserves can only slow it." },
-      { "key": "dqi",              "label": "Democratic Quality Index",   "unit": "",     "goodHigh": true,  "trendYears": 6, "reform": 0.04, "stress": -0.03, "uncertainty": 0.04, "min": 0, "max": 1, "decimals": 2, "drivers": "Geometric mean of V-Dem, Freedom House and RSF — all trending down since 2014.", "breaks": "Restored statistical and press independence would lift it; continued pressure pushes it lower." }
+      {
+        "key": "gdpGrowth",
+        "label": "GDP growth",
+        "unit": "%",
+        "goodHigh": true,
+        "trendYears": 5,
+        "reform": 0.55,
+        "stress": -1.6,
+        "uncertainty": 1.1,
+        "min": -10,
+        "max": 12,
+        "decimals": 1,
+        "drivers": "Post-COVID base-effect rebounds are fading; the level itself is contested after the 2015 MCA21 revision.",
+        "breaks": "An external oil/rupee shock, a weak monsoon, or investment that keeps growing output without jobs or consumption."
+      },
+      {
+        "key": "formalEmployment",
+        "label": "Formal employment share",
+        "unit": "%",
+        "goodHigh": true,
+        "trendYears": 6,
+        "reform": 0.65,
+        "stress": -0.35,
+        "uncertainty": 0.6,
+        "min": 6,
+        "max": 25,
+        "decimals": 1,
+        "drivers": "Twelve straight years of informalisation; capital-intensive PLI adds output, not payroll.",
+        "breaks": "A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it."
+      },
+      {
+        "key": "unemployment",
+        "label": "Unemployment rate",
+        "unit": "%",
+        "goodHigh": false,
+        "trendYears": 4,
+        "reform": -0.5,
+        "stress": 1.2,
+        "uncertainty": 0.9,
+        "min": 0,
+        "max": 15,
+        "decimals": 1,
+        "drivers": "The headline is held low by self-employment and discouraged workers; graduate joblessness runs ~26%.",
+        "breaks": "A genuine youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up."
+      },
+      {
+        "key": "top1Share",
+        "label": "Top 1% income share",
+        "unit": "%",
+        "goodHigh": false,
+        "trendYears": 6,
+        "reform": -0.5,
+        "stress": 0.4,
+        "uncertainty": 0.7,
+        "min": 10,
+        "max": 30,
+        "decimals": 1,
+        "drivers": "Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.",
+        "breaks": "A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing."
+      },
+      {
+        "key": "cpiInflation",
+        "label": "CPI inflation",
+        "unit": "%",
+        "goodHigh": false,
+        "trendYears": 5,
+        "reform": -0.3,
+        "stress": 2.2,
+        "uncertainty": 1.0,
+        "min": 0,
+        "max": 14,
+        "decimals": 1,
+        "drivers": "Food is ~half the CPI basket and ~50% of farmland is rainfed, so inflation tracks the monsoon.",
+        "breaks": "A deficient monsoon or an oil spike pushes CPI above the RBI's 6% ceiling."
+      },
+      {
+        "key": "fiscalDeficit",
+        "label": "Fiscal deficit",
+        "unit": "% GDP",
+        "goodHigh": false,
+        "trendYears": 5,
+        "reform": -0.3,
+        "stress": 1.3,
+        "uncertainty": 0.7,
+        "min": 0,
+        "max": 12,
+        "decimals": 1,
+        "drivers": "Consolidation leans on a record RBI dividend and off-budget borrowing.",
+        "breaks": "A growth slowdown, a smaller RBI surplus, or new cash-transfer commitments widen it."
+      },
+      {
+        "key": "rupeeUSD",
+        "label": "Rupee (INR per USD)",
+        "unit": "₹/$",
+        "goodHigh": false,
+        "trendYears": 6,
+        "reform": -2,
+        "stress": 9,
+        "uncertainty": 4.5,
+        "min": 50,
+        "max": 130,
+        "decimals": 0,
+        "drivers": "A $333bn goods deficit is offset by services; FPI outflows and a $123bn oil bill pressure the rupee.",
+        "breaks": "An oil shock or sustained FPI exit accelerates depreciation; reserves can only slow it."
+      },
+      {
+        "key": "dqi",
+        "label": "Democratic Quality Index",
+        "unit": "",
+        "goodHigh": true,
+        "trendYears": 6,
+        "reform": 0.04,
+        "stress": -0.03,
+        "uncertainty": 0.04,
+        "min": 0,
+        "max": 1,
+        "decimals": 2,
+        "drivers": "Geometric mean of V-Dem, Freedom House and RSF — all trending down since 2014.",
+        "breaks": "Restored statistical and press independence would lift it; continued pressure pushes it lower."
+      }
     ]
   },
   "bigPicture": {
     "note": "India in five numbers (Economic Survey 2025-26; IMF WEO; NSO). Large in total, modest per person.",
     "items": [
-      { "value": "~$4.0 tn",  "label": "Size of economy",   "sub": "4th largest nominal GDP" },
-      { "value": "~$2,900",   "label": "Per person",        "sub": "~109th in the world" },
-      { "value": "1.46 bn",   "label": "People",            "sub": "most populous nation" },
-      { "value": "7.4%",      "label": "Real growth FY26",  "sub": "Economic Survey estimate" },
-      { "value": "11.2%",     "label": "Tax-to-GDP",        "sub": "OECD average ~34%" }
+      {
+        "value": "~$4.0 tn",
+        "label": "Size of economy",
+        "sub": "4th largest nominal GDP"
+      },
+      {
+        "value": "~$2,900",
+        "label": "Per person",
+        "sub": "~109th in the world"
+      },
+      {
+        "value": "1.46 bn",
+        "label": "People",
+        "sub": "most populous nation"
+      },
+      {
+        "value": "7.4%",
+        "label": "Real growth FY26",
+        "sub": "Economic Survey estimate"
+      },
+      {
+        "value": "11.2%",
+        "label": "Tax-to-GDP",
+        "sub": "OECD average ~34%"
+      }
     ]
   },
   "chinaDivergence": {
     "note": "Nominal USD per capita. In 1991 both countries were near $330. Approximate. World Bank national accounts; IMF WEO.",
-    "years":  [1991, 2000, 2010, 2020, 2026],
-    "india":  [330,  460,  1350, 1910, 2900],
-    "china":  [330,  960,  4550, 10500, 13000]
+    "years": [
+      1991,
+      2000,
+      2010,
+      2020,
+      2026
+    ],
+    "india": [
+      330,
+      460,
+      1350,
+      1910,
+      2900
+    ],
+    "china": [
+      330,
+      960,
+      4550,
+      10500,
+      13000
+    ]
   },
   "taxTake": {
     "note": "For every ₹100 the Union government collects (Union Budget 2026-27, Budget at a Glance; approximate, rounded). 'shared' flags revenue shared with states via the Finance Commission formula.",
     "items": [
-      { "label": "Borrowings",              "value": 24, "sub": "not earned — borrowed", "shared": false },
-      { "label": "Individual income tax",   "value": 19, "sub": "salaried & professional",  "shared": true },
-      { "label": "GST (indirect)",          "value": 18, "sub": "falls on everyone equally", "shared": true },
-      { "label": "Corporation tax",         "value": 17, "sub": "cut 30%→22% in 2019",     "shared": true },
-      { "label": "Excise + customs",        "value": 9,  "sub": "fuel, imports; much via cess", "shared": false },
-      { "label": "Non-tax revenue",         "value": 9,  "sub": "RBI dividend, fees, tolls", "shared": false },
-      { "label": "Other receipts",          "value": 4,  "sub": "capital, disinvestment",   "shared": false }
+      {
+        "label": "Borrowings",
+        "value": 24,
+        "sub": "not earned — borrowed",
+        "shared": false
+      },
+      {
+        "label": "Individual income tax",
+        "value": 19,
+        "sub": "salaried & professional",
+        "shared": true
+      },
+      {
+        "label": "GST (indirect)",
+        "value": 18,
+        "sub": "falls on everyone equally",
+        "shared": true
+      },
+      {
+        "label": "Corporation tax",
+        "value": 17,
+        "sub": "cut 30%→22% in 2019",
+        "shared": true
+      },
+      {
+        "label": "Excise + customs",
+        "value": 9,
+        "sub": "fuel, imports; much via cess",
+        "shared": false
+      },
+      {
+        "label": "Non-tax revenue",
+        "value": 9,
+        "sub": "RBI dividend, fees, tolls",
+        "shared": false
+      },
+      {
+        "label": "Other receipts",
+        "value": 4,
+        "sub": "capital, disinvestment",
+        "shared": false
+      }
     ]
   },
   "spendSplit": {
     "note": "For every ₹100 the Union government spends (Union Budget 2026-27, Budget at a Glance; approximate). Interest + states' share take 42 paise before a single scheme is funded.",
     "items": [
-      { "label": "Capital expenditure",     "value": 22, "sub": "roads, railways, ports" },
-      { "label": "States' share of taxes",  "value": 22, "sub": "devolution to states" },
-      { "label": "Interest payments",       "value": 20, "sub": "cost of past borrowing" },
-      { "label": "Other",                   "value": 14, "sub": "salaries, other grants" },
-      { "label": "Welfare",                 "value": 11, "sub": "MGNREGA, PDS, schemes" },
-      { "label": "Defence",                 "value": 11, "sub": "armed forces" }
+      {
+        "label": "Capital expenditure",
+        "value": 22,
+        "sub": "roads, railways, ports"
+      },
+      {
+        "label": "States' share of taxes",
+        "value": 22,
+        "sub": "devolution to states"
+      },
+      {
+        "label": "Interest payments",
+        "value": 20,
+        "sub": "cost of past borrowing"
+      },
+      {
+        "label": "Other",
+        "value": 14,
+        "sub": "salaries, other grants"
+      },
+      {
+        "label": "Welfare",
+        "value": 11,
+        "sub": "MGNREGA, PDS, schemes"
+      },
+      {
+        "label": "Defence",
+        "value": 11,
+        "sub": "armed forces"
+      }
     ]
   },
   "stateReturns": {
     "note": "Approximate return per ₹100 of taxes paid to the Union, by state (Finance Commission devolution; Praveen Chakravarty / AIPC). Direction is the point; exact ratios vary by year. Rich states finance poorer states — that is the design.",
     "items": [
-      { "state": "Maharashtra",    "ret": 30 },
-      { "state": "Gujarat",        "ret": 50 },
-      { "state": "Karnataka",      "ret": 60 },
-      { "state": "Tamil Nadu",     "ret": 60 },
-      { "state": "West Bengal",    "ret": 120 },
-      { "state": "Uttar Pradesh",  "ret": 200 },
-      { "state": "Madhya Pradesh", "ret": 244 },
-      { "state": "Bihar",          "ret": 510 }
+      {
+        "state": "Maharashtra",
+        "ret": 30
+      },
+      {
+        "state": "Gujarat",
+        "ret": 50
+      },
+      {
+        "state": "Karnataka",
+        "ret": 60
+      },
+      {
+        "state": "Tamil Nadu",
+        "ret": 60
+      },
+      {
+        "state": "West Bengal",
+        "ret": 120
+      },
+      {
+        "state": "Uttar Pradesh",
+        "ret": 200
+      },
+      {
+        "state": "Madhya Pradesh",
+        "ret": 244
+      },
+      {
+        "state": "Bihar",
+        "ret": 510
+      }
     ]
   },
   "realInflation": {
     "note": "Your real inflation index: everyday prices over roughly a decade vs the ~4.5% headline CPI (July 2026). Thali prices: Praveen Chakravarty / AIPC; others illustrative for a mid-market urban household.",
     "headlineCPI": 3.9,
     "items": [
-      { "item": "Basic thali",            "then": 19,    "now": 28.5,  "unit": "₹" },
-      { "item": "Auto-rickshaw min. fare","then": 25,    "now": 50,    "unit": "₹" },
-      { "item": "Daily family meals",     "then": 200,   "now": 300,   "unit": "₹/day" },
-      { "item": "School fees (mid-market)","then": 30000, "now": 70000, "unit": "₹/yr" }
+      {
+        "item": "Basic thali",
+        "then": 19,
+        "now": 28.5,
+        "unit": "₹"
+      },
+      {
+        "item": "Auto-rickshaw min. fare",
+        "then": 25,
+        "now": 50,
+        "unit": "₹"
+      },
+      {
+        "item": "Daily family meals",
+        "then": 200,
+        "now": 300,
+        "unit": "₹/day"
+      },
+      {
+        "item": "School fees (mid-market)",
+        "then": 30000,
+        "now": 70000,
+        "unit": "₹/yr"
+      }
     ]
   },
   "external": {
@@ -160,11 +742,31 @@
   "distribution": {
     "note": "Monthly income and where it places you (WIR 2022/2026; HCES 2022-23; PLFS; NCAER). Thresholds approximate. The salaried, tax-paying middle is ~80-120 million, not the 300-400 million quoted by market research.",
     "thresholds": [
-      { "income": 5000,   "label": "Bottom 20-25%", "sub": "below rural minimum wage in most states" },
-      { "income": 10000,  "label": "~40th percentile", "sub": "below urban poverty-adjacent thresholds" },
-      { "income": 25000,  "label": "~80-85th percentile", "sub": "most who consider themselves 'middle class'" },
-      { "income": 50000,  "label": "Top 3-5%", "sub": "what marketing calls aspirational middle class" },
-      { "income": 100000, "label": "Top 1-2%", "sub": "what politics calls 'affluent'" }
+      {
+        "income": 5000,
+        "label": "Bottom 20-25%",
+        "sub": "below rural minimum wage in most states"
+      },
+      {
+        "income": 10000,
+        "label": "~40th percentile",
+        "sub": "below urban poverty-adjacent thresholds"
+      },
+      {
+        "income": 25000,
+        "label": "~80-85th percentile",
+        "sub": "most who consider themselves 'middle class'"
+      },
+      {
+        "income": 50000,
+        "label": "Top 3-5%",
+        "sub": "what marketing calls aspirational middle class"
+      },
+      {
+        "income": 100000,
+        "label": "Top 1-2%",
+        "sub": "what politics calls 'affluent'"
+      }
     ],
     "bottom50AvgAnnual": 71000,
     "ruralMPCE": 3773,
@@ -176,10 +778,26 @@
   "structure": {
     "note": "The central mismatch: output here, jobs there (MoSPI/NSO GVA shares FY25; PLFS employment shares). Agriculture makes under a fifth of output but holds over two-fifths of jobs.",
     "sectors": [
-      { "sector": "Agriculture",  "gva": 18, "emp": 42 },
-      { "sector": "Manufacturing","gva": 17, "emp": 11 },
-      { "sector": "Services",     "gva": 53, "emp": 33 },
-      { "sector": "Other",        "gva": 12, "emp": 14 }
+      {
+        "sector": "Agriculture",
+        "gva": 18,
+        "emp": 42
+      },
+      {
+        "sector": "Manufacturing",
+        "gva": 17,
+        "emp": 11
+      },
+      {
+        "sector": "Services",
+        "gva": 53,
+        "emp": 33
+      },
+      {
+        "sector": "Other",
+        "gva": 12,
+        "emp": 14
+      }
     ]
   },
   "jobsLesson": {
@@ -195,9 +813,24 @@
   "indexExample": {
     "note": "A worked example: an index is one number summarising many prices, via a chosen basket and weights. Change the basket or the base year and the headline moves (MoSPI methodology).",
     "items": [
-      { "item": "Onions",      "weight": 15, "then": 30,  "now": 50 },
-      { "item": "Petrol",      "weight": 12, "then": 90,  "now": 94 },
-      { "item": "School fees",  "weight": 8,  "then": 800, "now": 1200 }
+      {
+        "item": "Onions",
+        "weight": 15,
+        "then": 30,
+        "now": 50
+      },
+      {
+        "item": "Petrol",
+        "weight": 12,
+        "then": 90,
+        "now": 94
+      },
+      {
+        "item": "School fees",
+        "weight": 8,
+        "then": 800,
+        "now": 1200
+      }
     ]
   },
   "gdpRevision": {
@@ -213,52 +846,109 @@
   },
   "taxReversal": {
     "note": "The tax reversal (Union Budget documents; Finance Ministry; PRS).",
-    "corpRateBefore": 30, "corpRateAfter": 22, "yearCut": 2019, "revenueLostLakhCr": 1.45,
-    "wealthTaxAbolished": 2015, "wealthTaxRevenueCr": 1000,
-    "pikettyRate": 2, "pikettyThresholdCr": 50,
-    "taxToGDP": 11.2, "oecdAvg": 34
+    "corpRateBefore": 30,
+    "corpRateAfter": 22,
+    "yearCut": 2019,
+    "revenueLostLakhCr": 1.45,
+    "wealthTaxAbolished": 2015,
+    "wealthTaxRevenueCr": 1000,
+    "pikettyRate": 2,
+    "pikettyThresholdCr": 50,
+    "taxToGDP": 11.2,
+    "oecdAvg": 34
   },
   "budgetArithmetic": {
     "note": "Welfare budget shrinks twice: BE → RE → Actuals (PRS; Union Budget documents).",
-    "mgnregaBE": 100, "mgnregaActualsLo": 78, "mgnregaActualsHi": 82,
-    "healthTarget": 2.5, "educationTarget": 6
+    "mgnregaBE": 100,
+    "mgnregaActualsLo": 78,
+    "mgnregaActualsHi": 82,
+    "healthTarget": 2.5,
+    "educationTarget": 6
   },
   "kmut": {
     "note": "Tamil Nadu's KMUT cash transfer (TN Dept of Civil Supplies; KMUT data 2026).",
-    "perMonth": 1000, "womenCoveredCrore": 1.30, "annualOutlayCr": 13000, "priorOutlayCr": 7000
+    "perMonth": 1000,
+    "womenCoveredCrore": 1.3,
+    "annualOutlayCr": 13000,
+    "priorOutlayCr": 7000
   },
   "deficitFinancing": {
     "note": "How the deficit is financed (Union Budget 2026-27; RBI Annual Report 2025-26; PRS).",
-    "deficitPctGDP": 4.3, "marketBorrowingLakhCr": 17.2, "rbiDividendLakhCr": 2.87, "interestPer100": 20
+    "deficitPctGDP": 4.3,
+    "marketBorrowingLakhCr": 17.2,
+    "rbiDividendLakhCr": 2.87,
+    "interestPer100": 20
   },
   "delimitation": {
     "note": "Counting people allocates power. Projected Lok Sabha seat change after the first census post-2026 (Carnegie Endowment; ISAS; India Forum). Estimates vary.",
     "items": [
-      { "state": "Uttar Pradesh", "change": 11 },
-      { "state": "Bihar",         "change": 10 },
-      { "state": "Tamil Nadu",    "change": -8 },
-      { "state": "Kerala",        "change": -8 }
+      {
+        "state": "Uttar Pradesh",
+        "change": 11
+      },
+      {
+        "state": "Bihar",
+        "change": 10
+      },
+      {
+        "state": "Tamil Nadu",
+        "change": -8
+      },
+      {
+        "state": "Kerala",
+        "change": -8
+      }
     ],
-    "frozenSince": 1971, "perMP1951Millions": 0.7, "perMPNowMillions": 2.5
+    "frozenSince": 1971,
+    "perMP1951Millions": 0.7,
+    "perMPNowMillions": 2.5
   },
   "monsoonChain": {
     "note": "Why half of India's inflation starts in the sky (IMD; RBI; NSSO; IPCC). ~50% of cultivated area is unirrigated.",
     "rainfedSharePct": 50,
-    "steps": ["Deficient monsoon", "Farm output falls", "Food prices spike", "CPI breaches 6%", "RBI raises rates", "Rural incomes squeezed"]
+    "steps": [
+      "Deficient monsoon",
+      "Farm output falls",
+      "Food prices spike",
+      "CPI breaches 6%",
+      "RBI raises rates",
+      "Rural incomes squeezed"
+    ]
   },
   "cpiBasket": {
     "note": "How the CPI number is built. Updated to the CPI 2024=100 series (first published 12 Feb 2026), whose weights come from HCES 2023-24 and which adopts the COICOP 2018 classification in place of the old six-group structure. Food's weight fell from 45.86% under 2012=100 to 36.75% here — the single biggest change, and the reason headline CPI now moves less on a food-price shock than the pre-2026 series did.",
-    "itemsWeighted": 358, "urbanMarkets": 1395, "urbanTowns": 434, "villages": 1465, "onlineMarkets": 12,
-    "baseYear": 2024, "rbiTarget": 4, "foodSharePct": 36.75, "foodSharePctPrev": 45.86,
-    "housingSharePct": 16.48, "transportSharePct": 9.43, "healthSharePct": 6.83
+    "itemsWeighted": 358,
+    "urbanMarkets": 1395,
+    "urbanTowns": 434,
+    "villages": 1465,
+    "onlineMarkets": 12,
+    "baseYear": 2024,
+    "rbiTarget": 4,
+    "foodSharePct": 36.75,
+    "foodSharePctPrev": 45.86,
+    "housingSharePct": 16.48,
+    "transportSharePct": 9.43,
+    "healthSharePct": 6.83
   },
   "pumpPrice": {
     "note": "Where every rupee of the petrol price goes — about half is tax (Petroleum Planning & Analysis Cell; PRS; illustrative for Delhi 2026).",
     "parts": [
-      { "label": "Crude + refining + OMC margin", "value": 55.3 },
-      { "label": "Central excise",                "value": 19.9 },
-      { "label": "State VAT",                      "value": 15.0 },
-      { "label": "Dealer margin",                  "value": 3.8 }
+      {
+        "label": "Crude + refining + OMC margin",
+        "value": 55.3
+      },
+      {
+        "label": "Central excise",
+        "value": 19.9
+      },
+      {
+        "label": "State VAT",
+        "value": 15.0
+      },
+      {
+        "label": "Dealer margin",
+        "value": 3.8
+      }
     ],
     "total": 94.0,
     "crudeImportDependence": 86
@@ -275,28 +965,65 @@
       "Buy Swadeshi, prefer Indian-made goods"
     ],
     "numbers": [
-      { "label": "Gold imports FY26",   "value": "$72 bn",  "sub": "2nd-largest import after crude" },
-      { "label": "Tourist spend abroad","value": "$31.7 bn","sub": "~30 mn Indians travelled out" },
-      { "label": "Crude oil imports",   "value": "$123 bn", "sub": "85%+ of crude imported" },
-      { "label": "Rupee (crisis week)", "value": "95.2/$",  "sub": "record low, May 2026" }
+      {
+        "label": "Gold imports FY26",
+        "value": "$72 bn",
+        "sub": "2nd-largest import after crude"
+      },
+      {
+        "label": "Tourist spend abroad",
+        "value": "$31.7 bn",
+        "sub": "~30 mn Indians travelled out"
+      },
+      {
+        "label": "Crude oil imports",
+        "value": "$123 bn",
+        "sub": "85%+ of crude imported"
+      },
+      {
+        "label": "Rupee (crisis week)",
+        "value": "95.2/$",
+        "sub": "record low, May 2026"
+      }
     ]
   },
   "gold": {
     "note": "Indians buy gold because the formal system left them no better option (World Gold Council 2024; AMFI; RBI; IRDAI; SEBI).",
-    "privateTonnes": 25000, "stockValueTn": 1.8, "insurancePenetration": 3.2, "insuranceGlobal": 7,
-    "excludedAdultsMn": 190, "equityParticipationPct": 3.5
+    "privateTonnes": 25000,
+    "stockValueTn": 1.8,
+    "insurancePenetration": 3.2,
+    "insuranceGlobal": 7,
+    "excludedAdultsMn": 190,
+    "equityParticipationPct": 3.5
   },
   "poverty": {
     "note": "Poverty is a contested number: three official lines, three answers. India has had no officially accepted poverty line since 2014.",
     "lines": [
-      { "name": "Tendulkar (2011-12)", "detail": "₹27/day rural, ₹33/day urban", "headcount": "21.9%", "status": "never updated" },
-      { "name": "Rangarajan (2014)",   "detail": "₹30/day rural, ₹47/day urban", "headcount": "29.5%", "status": "shelved, not adopted" },
-      { "name": "NITI MPI (2022-23)",  "detail": "multidimensional, not income", "headcount": "11.3%", "status": "current official" }
+      {
+        "name": "Tendulkar (2011-12)",
+        "detail": "₹27/day rural, ₹33/day urban",
+        "headcount": "21.9%",
+        "status": "never updated"
+      },
+      {
+        "name": "Rangarajan (2014)",
+        "detail": "₹30/day rural, ₹47/day urban",
+        "headcount": "29.5%",
+        "status": "shelved, not adopted"
+      },
+      {
+        "name": "NITI MPI (2022-23)",
+        "detail": "multidimensional, not income",
+        "headcount": "11.3%",
+        "status": "current official"
+      }
     ]
   },
   "bodies": {
     "note": "The economy shows up in bodies and classrooms (NFHS-5 2019-21; National Health Accounts; Economic Survey).",
-    "stuntedPct": 35, "outOfPocketPct": 40, "publicHealthPctGDP": 1.9
+    "stuntedPct": 35,
+    "outOfPocketPct": 40,
+    "publicHealthPctGDP": 1.9
   },
   "readChecklist": {
     "note": "How to read any official number.",
@@ -313,31 +1040,155 @@
   "measurement": {
     "note": "How do we know? Five places where the choice, not the economy, moved the number (NSO; HCES 2022-23; Census of India; Carnegie Endowment).",
     "items": [
-      { "title": "The GDP back-series", "body": "2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed." },
-      { "title": "The surveys that went missing", "body": "The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable." },
-      { "title": "A census a decade late", "body": "Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers." },
-      { "title": "Counting = allocating power", "body": "Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose." }
+      {
+        "title": "The GDP back-series",
+        "body": "2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed."
+      },
+      {
+        "title": "The surveys that went missing",
+        "body": "The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable."
+      },
+      {
+        "title": "A census a decade late",
+        "body": "Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers."
+      },
+      {
+        "title": "Counting = allocating power",
+        "body": "Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose."
+      }
     ]
   },
   "states": {
     "note": "Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); 2011 Census population (crore); total fertility rate (NFHS-5, 2019-21). Compiled from public sources; per-capita estimates vary slightly by release.",
     "items": [
-      { "state": "Telangana",      "region": "South", "perCapita": 356564, "seats": 17, "pop": 3.52,  "tfr": 1.8 },
-      { "state": "Karnataka",      "region": "South", "perCapita": 332926, "seats": 28, "pop": 6.11,  "tfr": 1.7 },
-      { "state": "Haryana",        "region": "North", "perCapita": 325759, "seats": 10, "pop": 2.54,  "tfr": 1.9 },
-      { "state": "Tamil Nadu",     "region": "South", "perCapita": 315220, "seats": 39, "pop": 7.21,  "tfr": 1.8 },
-      { "state": "Gujarat",        "region": "West",  "perCapita": 297722, "seats": 26, "pop": 6.04,  "tfr": 1.9 },
-      { "state": "Kerala",         "region": "South", "perCapita": 281001, "seats": 20, "pop": 3.34,  "tfr": 1.8 },
-      { "state": "Maharashtra",    "region": "West",  "perCapita": 263974, "seats": 48, "pop": 11.24, "tfr": 1.7 },
-      { "state": "Andhra Pradesh", "region": "South", "perCapita": 231553, "seats": 25, "pop": 4.94,  "tfr": 1.7 },
-      { "state": "Punjab",         "region": "North", "perCapita": 213008, "seats": 13, "pop": 2.77,  "tfr": 1.6 },
-      { "state": "West Bengal",    "region": "East",  "perCapita": 160182, "seats": 42, "pop": 9.13,  "tfr": 1.6 },
-      { "state": "Rajasthan",      "region": "North", "perCapita": 141651, "seats": 25, "pop": 6.85,  "tfr": 2.0 },
-      { "state": "Odisha",         "region": "East",  "perCapita": 132197, "seats": 21, "pop": 4.20,  "tfr": 1.8 },
-      { "state": "Madhya Pradesh", "region": "North", "perCapita": 126249, "seats": 29, "pop": 7.27,  "tfr": 2.0 },
-      { "state": "Jharkhand",      "region": "North", "perCapita": 105274, "seats": 14, "pop": 3.30,  "tfr": 2.3 },
-      { "state": "Uttar Pradesh",  "region": "North", "perCapita": 93514,  "seats": 80, "pop": 19.98, "tfr": 2.4 },
-      { "state": "Bihar",          "region": "North", "perCapita": 60337,  "seats": 40, "pop": 10.41, "tfr": 3.0 }
+      {
+        "state": "Telangana",
+        "region": "South",
+        "perCapita": 356564,
+        "seats": 17,
+        "pop": 3.52,
+        "tfr": 1.8
+      },
+      {
+        "state": "Karnataka",
+        "region": "South",
+        "perCapita": 332926,
+        "seats": 28,
+        "pop": 6.11,
+        "tfr": 1.7
+      },
+      {
+        "state": "Haryana",
+        "region": "North",
+        "perCapita": 325759,
+        "seats": 10,
+        "pop": 2.54,
+        "tfr": 1.9
+      },
+      {
+        "state": "Tamil Nadu",
+        "region": "South",
+        "perCapita": 315220,
+        "seats": 39,
+        "pop": 7.21,
+        "tfr": 1.8
+      },
+      {
+        "state": "Gujarat",
+        "region": "West",
+        "perCapita": 297722,
+        "seats": 26,
+        "pop": 6.04,
+        "tfr": 1.9
+      },
+      {
+        "state": "Kerala",
+        "region": "South",
+        "perCapita": 281001,
+        "seats": 20,
+        "pop": 3.34,
+        "tfr": 1.8
+      },
+      {
+        "state": "Maharashtra",
+        "region": "West",
+        "perCapita": 263974,
+        "seats": 48,
+        "pop": 11.24,
+        "tfr": 1.7
+      },
+      {
+        "state": "Andhra Pradesh",
+        "region": "South",
+        "perCapita": 231553,
+        "seats": 25,
+        "pop": 4.94,
+        "tfr": 1.7
+      },
+      {
+        "state": "Punjab",
+        "region": "North",
+        "perCapita": 213008,
+        "seats": 13,
+        "pop": 2.77,
+        "tfr": 1.6
+      },
+      {
+        "state": "West Bengal",
+        "region": "East",
+        "perCapita": 160182,
+        "seats": 42,
+        "pop": 9.13,
+        "tfr": 1.6
+      },
+      {
+        "state": "Rajasthan",
+        "region": "North",
+        "perCapita": 141651,
+        "seats": 25,
+        "pop": 6.85,
+        "tfr": 2.0
+      },
+      {
+        "state": "Odisha",
+        "region": "East",
+        "perCapita": 132197,
+        "seats": 21,
+        "pop": 4.2,
+        "tfr": 1.8
+      },
+      {
+        "state": "Madhya Pradesh",
+        "region": "North",
+        "perCapita": 126249,
+        "seats": 29,
+        "pop": 7.27,
+        "tfr": 2.0
+      },
+      {
+        "state": "Jharkhand",
+        "region": "North",
+        "perCapita": 105274,
+        "seats": 14,
+        "pop": 3.3,
+        "tfr": 2.3
+      },
+      {
+        "state": "Uttar Pradesh",
+        "region": "North",
+        "perCapita": 93514,
+        "seats": 80,
+        "pop": 19.98,
+        "tfr": 2.4
+      },
+      {
+        "state": "Bihar",
+        "region": "North",
+        "perCapita": 60337,
+        "seats": 40,
+        "pop": 10.41,
+        "tfr": 3.0
+      }
     ]
   },
   "syntheticControl": {
@@ -354,18 +1205,74 @@
       "governanceSource": "Varieties of Democracy (V-Dem)",
       "incomeSource": "Penn World Table 11.0"
     },
-    "window": { "preStart": 1984, "preEnd": 2013, "postStart": 2014, "postEnd": 2024 },
+    "window": {
+      "preStart": 1984,
+      "preEnd": 2013,
+      "postStart": 2014,
+      "postEnd": 2024
+    },
     "governance": [
-      { "indicator": "Freedom of religion",        "gap": -1.407, "pct": -168.7, "p": 0.00 },
-      { "indicator": "Liberal democracy",          "gap": -0.360, "pct": -69.1,  "p": 0.00 },
-      { "indicator": "Electoral democracy (polyarchy)", "gap": -0.391, "pct": -60.2, "p": 0.00 },
-      { "indicator": "Freedom of expression",      "gap": -0.488, "pct": -56.2,  "p": 0.00 },
-      { "indicator": "Political corruption",       "gap":  0.272, "pct":  46.8,  "p": 0.00, "higherIsWorse": true },
-      { "indicator": "Equality before the law",    "gap": -0.221, "pct": -30.4,  "p": 0.00 },
-      { "indicator": "Freedom of association",     "gap": -0.232, "pct": -29.6,  "p": 0.00 },
-      { "indicator": "Legislative constraints",    "gap": -0.242, "pct": -28.8,  "p": 0.00 },
-      { "indicator": "Equal protection",           "gap": -0.190, "pct": -26.1,  "p": 0.00 },
-      { "indicator": "Judicial constraints",       "gap": -0.105, "pct": -12.7,  "p": 0.00 }
+      {
+        "indicator": "Freedom of religion",
+        "gap": -1.407,
+        "pct": -168.7,
+        "p": 0.0
+      },
+      {
+        "indicator": "Liberal democracy",
+        "gap": -0.36,
+        "pct": -69.1,
+        "p": 0.0
+      },
+      {
+        "indicator": "Electoral democracy (polyarchy)",
+        "gap": -0.391,
+        "pct": -60.2,
+        "p": 0.0
+      },
+      {
+        "indicator": "Freedom of expression",
+        "gap": -0.488,
+        "pct": -56.2,
+        "p": 0.0
+      },
+      {
+        "indicator": "Political corruption",
+        "gap": 0.272,
+        "pct": 46.8,
+        "p": 0.0,
+        "higherIsWorse": true
+      },
+      {
+        "indicator": "Equality before the law",
+        "gap": -0.221,
+        "pct": -30.4,
+        "p": 0.0
+      },
+      {
+        "indicator": "Freedom of association",
+        "gap": -0.232,
+        "pct": -29.6,
+        "p": 0.0
+      },
+      {
+        "indicator": "Legislative constraints",
+        "gap": -0.242,
+        "pct": -28.8,
+        "p": 0.0
+      },
+      {
+        "indicator": "Equal protection",
+        "gap": -0.19,
+        "pct": -26.1,
+        "p": 0.0
+      },
+      {
+        "indicator": "Judicial constraints",
+        "gap": -0.105,
+        "pct": -12.7,
+        "p": 0.0
+      }
     ],
     "income": {
       "firstYearGapUSD": -400,
@@ -375,32 +1282,186 @@
       "note": "The authors publish the first-year and final-year gaps and the pre-treatment fit statistic, not a machine-readable annual series. Only those published anchor values are stored here; no intermediate years are interpolated or reconstructed."
     },
     "incomeDonors": [
-      { "country": "Ethiopia",    "weight": 38 },
-      { "country": "China",       "weight": 28 },
-      { "country": "Bangladesh",  "weight": 25 },
-      { "country": "Pakistan",    "weight": 7 },
-      { "country": "Philippines", "weight": 2 }
+      {
+        "country": "Ethiopia",
+        "weight": 38
+      },
+      {
+        "country": "China",
+        "weight": 28
+      },
+      {
+        "country": "Bangladesh",
+        "weight": 25
+      },
+      {
+        "country": "Pakistan",
+        "weight": 7
+      },
+      {
+        "country": "Philippines",
+        "weight": 2
+      }
     ],
-    "democracyDonors": ["Brazil", "Argentina", "Chile", "Colombia", "Peru", "Mexico", "South Africa", "Ghana", "Indonesia", "Malaysia", "Philippines", "Sri Lanka"],
+    "democracyDonors": [
+      "Brazil",
+      "Argentina",
+      "Chile",
+      "Colombia",
+      "Peru",
+      "Mexico",
+      "South Africa",
+      "Ghana",
+      "Indonesia",
+      "Malaysia",
+      "Philippines",
+      "Sri Lanka"
+    ],
     "convergence": [
-      { "measure": "Electoral democracy", "grier": "-60.2% vs synthetic counterfactual (polyarchy gap -0.391)", "sp": "V-Dem India 0.71 (2014) -> 0.26 (2026), -63.4%" },
-      { "measure": "Overall democratic quality", "grier": "-69.1% liberal-democracy gap", "sp": "DQI 0.54 (2014) -> 0.29 (2026), -46.3%" },
-      { "measure": "Press & expression", "grier": "Freedom of expression -56.2%", "sp": "RSF rank 140 (2014) -> 157 (2026)" },
-      { "measure": "Corruption", "grier": "Political corruption +46.8% (worse)", "sp": "Not separately indexed; SSI covers statistical opacity" }
+      {
+        "measure": "Electoral democracy",
+        "grier": "-60.2% vs synthetic counterfactual (polyarchy gap -0.391)",
+        "sp": "V-Dem India 0.71 (2014) -> 0.26 (2026), -63.4%"
+      },
+      {
+        "measure": "Overall democratic quality",
+        "grier": "-69.1% liberal-democracy gap",
+        "sp": "DQI 0.54 (2014) -> 0.29 (2026), -46.3%"
+      },
+      {
+        "measure": "Press & expression",
+        "grier": "Freedom of expression -56.2%",
+        "sp": "RSF rank 140 (2014) -> 157 (2026)"
+      },
+      {
+        "measure": "Corruption",
+        "grier": "Political corruption +46.8% (worse)",
+        "sp": "Not separately indexed; SSI covers statistical opacity"
+      }
     ],
     "divergence": "The two projects disagree on scope, not direction. Grier & Grier make an absolute income claim — India ended roughly $1,000 per person per year below its counterfactual — which this project does not test. Some Perspective documents the decoupling of growth from employment and the concentration of its gains, but makes no claim that aggregate income would have been higher under a different government. Their income donor pool is also heavily weighted to Ethiopia (38%) and Bangladesh (25%), a defensible fit to India's pre-2014 trajectory but the part of the design most exposed to challenge. Treat the governance findings as the strongly corroborated result and the income finding as a separate, contestable claim."
   },
   "eraHistory": {
     "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. GDP growth & CPI inflation — World Bank (the same continuous World Bank series used for 2014+); fiscal deficit — Union Budget/RBI (centre, % GDP); top 1% & bottom 50% income share — WID.world (harmonised across 2004-2026); press-freedom rank — RSF. SSI, FCI and DQI before 2014 are the author's back-cast reconstruction of these constructed indices (from the documented record: survey timeliness, states' tax share/cesses, and the V-Dem/Freedom House/RSF scores) — see Methodology. Unemployment and formal/informal employment are NOT extended before 2014: no annual series on the PLFS basis exists for the UPA decade, so they are shown from 2014 only.",
-    "years":             [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013],
-    "gdpGrowth":         [7.9,  9.3,  9.3,  7.7,  3.1,  7.9,  8.5,  5.2,  5.5,  6.4],
-    "cpiInflation":      [3.8,  4.2,  5.8,  6.4,  8.3,  10.9, 12.0, 8.9,  9.3,  10.9],
-    "fiscalDeficit":     [4.0,  4.0,  3.3,  2.5,  6.0,  6.5,  4.8,  5.9,  4.9,  4.5],
-    "top1Share":         [18.2, 18.8, 19.6, 20.1, 20.5, 20.6, 21.0, 21.3, 21.0, 21.2],
-    "bottom50Share":     [16.5, 16.3, 16.0, 15.8, 15.6, 15.5, 15.4, 15.3, 15.2, 15.1],
-    "pressFreedom":      [120,  106,  105,  120,  118,  105,  122,  131,  140,  140],
-    "ssi":               [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-    "fci":               [0.0, 0.03, 0.05, 0.07, 0.09, 0.11, 0.12, 0.14, 0.16, 0.17],
-    "dqi":               [0.59, 0.63, 0.63, 0.6, 0.6, 0.64, 0.6, 0.57, 0.54, 0.54]
+    "years": [
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013
+    ],
+    "gdpGrowth": [
+      7.9,
+      9.3,
+      9.3,
+      7.7,
+      3.1,
+      7.9,
+      8.5,
+      5.2,
+      5.5,
+      6.4
+    ],
+    "cpiInflation": [
+      3.8,
+      4.2,
+      5.8,
+      6.4,
+      8.3,
+      10.9,
+      12.0,
+      8.9,
+      9.3,
+      10.9
+    ],
+    "fiscalDeficit": [
+      4.0,
+      4.0,
+      3.3,
+      2.5,
+      6.0,
+      6.5,
+      4.8,
+      5.9,
+      4.9,
+      4.5
+    ],
+    "top1Share": [
+      18.2,
+      18.8,
+      19.6,
+      20.1,
+      20.5,
+      20.6,
+      21.0,
+      21.3,
+      21.0,
+      21.2
+    ],
+    "bottom50Share": [
+      16.5,
+      16.3,
+      16.0,
+      15.8,
+      15.6,
+      15.5,
+      15.4,
+      15.3,
+      15.2,
+      15.1
+    ],
+    "pressFreedom": [
+      120,
+      106,
+      105,
+      120,
+      118,
+      105,
+      122,
+      131,
+      140,
+      140
+    ],
+    "ssi": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fci": [
+      0.0,
+      0.03,
+      0.05,
+      0.07,
+      0.09,
+      0.11,
+      0.12,
+      0.14,
+      0.16,
+      0.17
+    ],
+    "dqi": [
+      0.59,
+      0.61,
+      0.61,
+      0.58,
+      0.58,
+      0.61,
+      0.56,
+      0.54,
+      0.51,
+      0.51
+    ]
   }
 }

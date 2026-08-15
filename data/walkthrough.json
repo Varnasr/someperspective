@@ -125,7 +125,7 @@
       "kicker": "Against comparable countries",
       "title": "A decline comparable to Turkey's, from a higher base",
       "chart": "international",
-      "body": "India's V-Dem liberal democracy score fell from 0.71 to 0.26 over the period. Turkey fell from 0.52 to 0.18; Hungary from 0.63 to 0.41.",
+      "body": "India's V-Dem Liberal Democracy Index fell from 0.488 to 0.260 over the period, a fall of 0.228 points. Turkey fell from 0.252 to 0.110; Hungary from 0.521 to 0.315. Turkey's proportional fall is steeper, from a base already near the floor; India's is the largest absolute fall of the three.",
       "note": "Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking everyone down."
     },
     {
@@ -142,6 +142,7 @@
       "title": "The limits, stated plainly",
       "body": "This project is descriptive. It establishes what happened on both dimensions; it does not identify a causal effect of governance on growth.",
       "points": [
+        "The author is a national spokesperson of the All India Congress Committee, and this comparison runs in that party's favour. The interest is declared in full on the site; what is offered against it is that every input, every weighting and every step is published and can be recomputed.",
         "The SSI's zero for the UPA decade is the most contestable number here — though the conclusion survives even a generous re-coding of that era.",
         "The DQI inherits whatever biases exist in V-Dem, Freedom House and RSF.",
         "The FCI is relative to its own sample and means nothing outside it.",

@@ -1,0 +1,35 @@
+The last time India counted its own people, there was no UPI. No Jio. Manmohan Singh was Prime Minister.
+
+That was 2011. The census due in 2021 still hasn't happened.
+
+So every welfare scheme and every per-capita figure runs on a headcount from fifteen years ago. Tens of millions have never been counted into the system.
+
+Seventy-nine years of governing ourselves, and we've stopped counting ourselves.
+
+That's what set me off. Today I'm publishing Some Perspective: two decades of India's political economy, 2004 to 2026, measured properly and put online in full. Unfunded, every figure traceable to a source, every index reproducible from the code.
+
+I started with a question I genuinely didn't know the answer to. Did India trade democratic quality for prosperity?
+
+It's a fair question. A government that doesn't have to bargain with coalition partners or wait on courts can move fast, and serious people have argued that's what India needed. So I measured both halves. What was given up, and what was received. Same method, both eras, one script.
+
+There was no trade.
+
+Eight of nine comparable measures are worse in 2014-26 than in 2004-14. Growth didn't accelerate. The share of workers with any social security fell every year for twelve years, 13.0% to 10.9%. More than one in four graduates is unemployed. The bottom half of the country now holds 12.9% of national income, down from 15.0%.
+
+Inflation is the one number that improved, and I want to be careful about it, because it's the number people will reach for. Most of that fall isn't policy. Brent crude went from $115 a barrel in mid-2014 to under $30 by early 2016, and we import 86% of our oil. A shock that size at the changeover explains more than any government does.
+
+The hardest part was measuring the measurement. A census a decade late. A consumption survey shelved once it showed rural spending falling. The NSSO folded into the ministry whose performance it exists to check.
+
+You can't grade a government using instruments that got worse during the years you're grading. So I built an index for that too, and it's the part I'd defend hardest.
+
+One thing to know before you read any of it. I'm a national spokesperson for the Congress party, and this compares a Congress government with the one that came after. So don't take my word for it. Take the data, the code and the paper, all published, and check. I've also published both places where I found my own numbers wrong, including one that ran in my favour.
+
+Nor does it rest on my method alone. Kevin and Robin Grier at Texas Tech built a synthetic counterfactual India from a completely different direction. All ten governance indicators deteriorate, every one at p = 0.00.
+
+The dataset, the code, a 17,000-word paper, 36 analyses, a ten-minute walkthrough.
+
+I'd rather be corrected than agreed with. Go and check it.
+
+someperspective.info
+
+#IndependenceDay #India #IndianEconomy #PoliticalEconomy #OpenData #Inequality #PublicPolicy #Democracy #Research

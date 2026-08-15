@@ -101,3 +101,6 @@ jobs:
       - name: Check downloads/ docs agree with data.json
         run: python3 tools/check_docs_consistency.py
 
+      - name: Check every published V-Dem figure is on one index
+        run: python3 tools/check_vdem_basis.py
+

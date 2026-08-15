@@ -10,6 +10,100 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.38.0] - 2026-08-15
+
+### Fixed — a false claim about the author
+- **The footer said "No political affiliations." That was false.** The author is a
+  national spokesperson of the All India Congress Committee, and this project compares
+  a Congress-led government (UPA) with its successor (NDA), concluding against the
+  successor on eight of nine measures. On a site whose whole argument is that comparison,
+  a denial of affiliation was the single most attackable sentence on it.
+- Replaced with an affirmative **Declaration of interests**, carried in four places:
+  - `index.html` footer (About column), with a link into the full statement;
+  - a new `#declared-interests` card at the top of the Methodology tab;
+  - `downloads/media-kit.html`, immediately after the 90-second brief, so a journalist
+    hits it before quoting anything;
+  - `paper/paper.md` → Declarations → Competing interests, rewritten in full;
+  - a point on the walkthrough's "limits" slide.
+- The declaration does **not** claim neutrality. It states the interest, states that the
+  work is unfunded and that no party body commissioned, reviewed or approved it, and
+  then rests on what is actually checkable: published data, published code, one script
+  for both eras, the one contrary measure reported as contrary, and corrections published
+  rather than made quietly.
+- Related rewording: hero kicker "Independent · data-driven · unfunded" →
+  "Unfunded · reproducible · interests declared"; footer strapline "Independent research"
+  → "Self-funded research … Interests declared". `Independent` was doing work it cannot do.
+
+### Fixed — two errors in this project's own V-Dem inputs, both in its favour
+- **DQI components.** Two of the DQI's four inputs are V-Dem series. `DQI_COMPONENTS`
+  held *approximated* values for both, systematically too high in the UPA decade:
+  Liberal Democracy 0.555 for 2014 against a published **0.488**; Core Civil Society
+  0.87 against a published **0.669**. Inflating the earlier baseline while leaving the
+  later years roughly right exaggerated the measured decline. Both columns are now the
+  published V-Dem series verbatim (`v2x_libdem`, `v2xcs_ccsi`).
+  - Effect: UPA-decade DQI mean **0.59 → 0.57**; 2014 **0.54 → 0.49**; 2026 unchanged at
+    **0.29**; within-period decline **46.3% → 40.8%**. The eight-of-nine cross-era result
+    is unaffected.
+- **International comparison.** `international.vdem2014` was on V-Dem's *Electoral*
+  Democracy Index and `vdem2026` on the *Liberal* Democracy Index — two instruments read
+  as one series. India showed as 0.71 → 0.26; like-for-like on the Liberal Democracy
+  Index it is **0.488 → 0.260**. All five countries are now on one index for both years.
+  India's proportional fall drops from −63.4% to −46.7%; Turkey's is now steeper; India
+  retains the **largest absolute fall** in the cohort (−0.228).
+- **Mislabelled chart.** `democraticDeclineChart` plotted four countries under the title
+  "DQI: Multi-Country Decline". The DQI is constructed for India alone and cannot be
+  computed for the others. Retitled to "V-Dem Liberal Democracy Index" and repopulated
+  from the published series.
+- Propagated to: `data.json`, the inline `FALLBACK_DATA`, `eraHistory`, the paper
+  (§6.6, §6.8, §6.9, §7, §8.2, Appendix B), `downloads/technical-appendix.html` (A4 table
+  regenerated), `downloads/executive-summary.html`, `data/features.json`,
+  `data/walkthrough.json`, and the shareable `downloads/three-indices.png`.
+- New paper section **9.9** documents both errors, on the same principle as 9.8.
+
+### Added
+- `tools/check_vdem_basis.py`, wired into CI. Fails the build unless the international
+  table and the DQI component table report the **same** V-Dem figure for India — which
+  they can only do if both are on the same V-Dem index. `check_docs_consistency.py`
+  could not have caught this: it compares documents against `data.json`, and both wrong
+  figures were *in* `data.json`.
+
+### Fixed — the page could fail silently
+- **Double initialisation.** Alpine calls a component's `init()` automatically when the
+  `x-data` object defines one; `<body>` also carried `x-init="init()"`. The whole boot
+  sequence ran twice: two `data.json` requests, two sets of listeners, two chart
+  initialisations. Because `dataLoadError` latched once set, **one flaky request out of
+  the two was enough to raise the "using bundled fallback" banner on a page whose data
+  had loaded**. Verified by request count: 2 → 1.
+- **No recovery from a transient failure.** `loadData()` now retries three times with
+  backoff, validates the payload shape before assigning it, and clears `dataLoadError`
+  if a retry succeeds. The banner carries a working retry button.
+- **Silent blanks on a truncated transfer.** `index.html` is a single ~420KB file. If the
+  transfer is cut inside the inline application script, `siteApp` is never defined; Alpine
+  then fails every expression on the page. The observable result is a page that looks
+  almost normal with computed slots empty — an empty scorecard `<tbody>`, a sentence
+  reading "On &nbsp; cross-era measures" — and no indication anything went wrong.
+  Reproduced under Playwright by truncating the response. A boot watchdog now sets
+  `window.__spBooted` from `init()` and, if the flag is still unset after 8s, shows a
+  fixed banner naming the failure with a reload button.
+
+### Fixed — figures that had drifted between sections
+- SSI shown as **8.2** (a 2023 value) in the hero index cards and the scenario lab against
+  **6.4** in the index detail card; FCI as **0.80** against 0.68; DQI as **0.40** (a 2020
+  value) against 0.29, with a 2014 baseline given as **0.71** (which is not a DQI value at
+  all — it was the old V-Dem number); graduate unemployment as **27%** in the hero and
+  **28.5%** in the gig-economy narrative against a dataset value of **26.5%**; top 1% as
+  22.8% against 23.0%; bottom 50% as 13% against 12.9%.
+- All of these now read from the dataset at render time via two new helpers,
+  `currentIndex(key, dp)` and `idxRange(key, dp)`, so they cannot drift again.
+
+### Fixed — "why is SSI zero?"
+- The animated timeline opened at `timelineIndex: 0` — 2014, where the SSI is **0.0** — so
+  the first thing the panel showed was "SSI Score: 0", which reads as a broken figure
+  rather than a result. It now opens on the latest observed year, states which year it is
+  showing, formats SSI/DQI to fixed precision, and carries a note explaining that the
+  index counts documented suppression episodes and none had begun by 2014 (and that the
+  zero is the most contestable number in the project, argued out in the paper).
+
 ## [2.37.0] - 2026-08-15
 
 ### Fixed — analytical framing

@@ -95,8 +95,8 @@
   {
     "slug": "indias-v-dem-score-has-fallen-further-than-any",
     "category": "Democracy",
-    "title": "India's V-Dem score has fallen further than any major democracy's",
-    "body": "V-Dem Liberal Democracy: India 0.71 (2014) → 0.26 (2026), a 63% decline. Brazil 0.85 → 0.69 (-19%). Turkey 0.52 → 0.18 (-65%). Hungary 0.63 → 0.41 (-35%). South Africa 0.75 → 0.70 (-7%). India's slide ranks with Turkey's as the steepest in the cohort.",
+    "title": "India's V-Dem score has fallen furthest in absolute terms",
+    "body": "V-Dem Liberal Democracy Index: India 0.488 (2014) → 0.260 (2026), a 47% decline and a fall of 0.228 points. Brazil 0.783 → 0.704 (-10%). Turkey 0.252 → 0.110 (-56%). Hungary 0.521 → 0.315 (-40%). South Africa 0.641 → 0.633 (-1%). Turkey falls further in percentage terms, but from a base already near the floor; India's is the largest absolute fall in the cohort.",
     "takeaway": "On the most-cited cross-country democracy index, India has erased four decades of liberalisation in one.",
     "tab": "Deep Analysis",
     "chart": {
@@ -109,7 +109,7 @@
     "slug": "the-democratic-quality-index-is-the-lowest-it-has",
     "category": "Democracy",
     "title": "The Democratic Quality Index is the lowest it has been",
-    "body": "DQI combines V-Dem, Freedom House, and RSF rankings via geometric mean — so weakness in any single dimension pulls the composite down. It has fallen from 0.71 (2014) to 0.40 (2026). The 2014-2020 slide alone wiped out half the index's headroom.",
+    "body": "DQI combines the V-Dem Liberal Democracy Index, Freedom House, the RSF rank and the V-Dem Core Civil Society Index via a geometric mean — so weakness in any single dimension pulls the composite down. It has fallen from 0.49 (2014) to 0.29 (2026), against a UPA-decade average of 0.57. The steepest single-year falls come after 2019.",
     "takeaway": "No single index tells the whole story, but every credible index points the same direction.",
     "tab": "Three Indices",
     "chart": {
@@ -567,7 +567,7 @@
     "slug": "india-and-hungary-are-now-travelling-the-same-road",
     "category": "Comparative",
     "title": "India and Hungary are now travelling the same road",
-    "body": "On V-Dem Liberal Democracy: Hungary 0.63 (2014) → 0.41 (2026). India 0.71 → 0.26. Both started above 0.6; both ended below 0.45. India's slide started later but went further. The Hungary 2010-2024 trajectory has become the most-cited template for understanding India's path.",
+    "body": "On the V-Dem Liberal Democracy Index: Hungary 0.521 (2014) → 0.315 (2026). India 0.488 → 0.260. The two began the period within 0.04 of each other and both ended near 0.3; India's slide started later and travelled slightly further. The Hungary 2010-2024 trajectory has become the most-cited template for understanding India's path.",
     "takeaway": "A democracy can fall this far while remaining electorally competitive — Hungary showed it first.",
     "tab": "Deep Analysis",
     "chart": {
