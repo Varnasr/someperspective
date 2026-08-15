@@ -10,6 +10,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.40.0] - 2026-08-15
+
+### Added — the walkthrough was effectively hidden
+The guided walkthrough — 17 slides, ~10 minutes, every figure drawn live from the
+dataset — was reachable from exactly **two** places: a tile in a resource grid inside
+the `What Next?` tab (the last tab of the last nav group) and one footer link. It is
+arguably the best entry point for a first-time reader.
+- Added to the **top navigation** as a pinned link after the featured tab, marked "10 min".
+  It is a separate page rather than a tab, so it is an `<a>`, styled to match `.tab-btn`.
+- Added a **card at the top of the `What is This?` tab**, above today's analysis.
+
+### Fixed — an untrue claim on the updates page
+`data/updates.json` opened with *"Every entry maps to a tagged release."* The repository
+has **no tags and no releases** (verified against the GitHub API), so the claim was false.
+Reworded to what is actually true: each entry corresponds to a published version, with
+the technical detail in this changelog.
+
+### Changed — README was three versions and one project title stale
+Declared `v2.9.0` (actual: 2.40.0), titled *"India's Economic Transformation 2014-2026"*,
+described the NDA period as ending 2025, and cited the retired work title. Rewritten:
+current version, the declaration of interests, links to the walkthrough/paper/updates,
+an accurate repository tree, and a table of the four guards that run in CI.
+
+### Changed — dependencies
+- `postcss` 8.5.15 → **8.5.26** (transitive via Tailwind; Dependabot #70).
+  Verified safe: `styles.css` is **byte-identical** after the update.
+- **Not** applied: `actions/configure-pages` v5→v6 and `actions/deploy-pages` v4→v5
+  (Dependabot #15, #16, open since April). These are the actions that publish the site.
+  Bumping them the same day as a launch risks breaking the deploy for no benefit; they
+  should go in as their own change once traffic settles.
+- `tailwindcss` remains on 3.4.19. v4 is available but is a rewrite with a new config
+  format and different class semantics — a deliberate migration, not a version bump.
+- `echarts` remains pinned at 5.6.0 (6.1.0 available). The pin carries an SRI hash, so
+  moving requires regenerating it; v6 also changes several defaults this site relies on.
+
 ## [2.39.1] - 2026-08-15
 
 ### Fixed — the site was rendering at caption size on phones

@@ -1,4 +1,4 @@
-# Some Perspective: India's Economic Transformation 2014-2026
+# Some Perspective: India's Political Economy, 2004–2026
 
 [![Website](https://img.shields.io/badge/Website-someperspective.info-blue)](https://someperspective.info)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -6,11 +6,20 @@
 
 ## Overview
 
-This repository contains the complete replication package for "Narratives, Numbers, and Democratic Accountability: India's Economic Transformation 2004-2026," an independent empirical study examining how two distinct political periods—the United Progressive Alliance (UPA, 2004-2014) and National Democratic Alliance (NDA, 2014-2025)—produced fundamentally different models of economic growth, governance, and democratic accountability in India.
+This repository is the complete replication package for **Some Perspective: India's Political Economy, 2004–2026** — an unfunded empirical study comparing two political periods, the United Progressive Alliance (UPA, 2004–2014) and the National Democratic Alliance (NDA, 2014–2026), across growth, employment, distribution, fiscal federalism, statistical capacity and democratic quality.
 
-**Research initiated:** March 2024  
-**Current version:** June 2026 (v2.9.0)  
-**Interactive website:** [someperspective.info](https://someperspective.info)
+Everything the site publishes is generated from `data.json` by scripts in this repository. The site is a static build with no server: what is committed here is what ships.
+
+**Research initiated:** March 2024
+**Current version:** v2.39.1 (15 August 2026)
+**Interactive site:** [someperspective.info](https://someperspective.info)
+**Guided walkthrough:** [someperspective.info/walkthrough](https://someperspective.info/walkthrough/) — 17 slides, ~10 minutes
+**Working paper:** [Growth Without Accountability](https://someperspective.info/downloads/paper.html) (~17,500 words) · [PDF](https://someperspective.info/downloads/paper.pdf)
+**What changed, and when:** [Updates & corrections](https://someperspective.info/updates.html) · [RSS](https://someperspective.info/feed.xml)
+
+### Declaration of interests
+
+The author is a Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This project compares a Congress-led government with its successor and concludes against the successor on eight of nine measures, so the author holds a political interest in the direction of the finding. The research is unfunded, and no party body commissioned, reviewed or approved it. The response offered is not a claim of neutrality but full publication of the dataset, the construction code and the paper source, so any figure here can be recomputed under different assumptions. The full declaration is on the site under Methodology, and in the paper's Declarations.
 
 ## Abstract
 
@@ -40,7 +49,7 @@ This study addresses four central questions:
 
 1. **Employment:** Why did employment elasticity collapse to 0.01 (2011-2016) before recovering through informal gig work rather than formal job creation?
 
-2. **Inequality:** What mechanisms drove the top 1% income share to 22.6%—higher than during British colonial rule?
+2. **Inequality:** What mechanisms drove the top 1% income share to 23.0% — its highest level since 1922 — while the bottom 50% share fell from 15.0% to 12.9%?
 
 3. **Federalism:** How did the constitutional guarantee of fiscal devolution get undermined despite 14th and 15th Finance Commission recommendations?
 
@@ -57,7 +66,7 @@ someperspective/
 ├── CONTRIBUTING.md            # Contribution guidelines
 │
 ├── index.html                 # Interactive single-page site (ECharts + Alpine)
-├── data.json                  # Website dataset (annual, 2014-2026)
+├── data.json                  # Source of record — annual series, 2004–2026
 ├── data_dictionary.md         # Variable definitions
 ├── replication_code.R         # R analysis script
 ├── replication_code.py        # Python analysis script
@@ -68,10 +77,38 @@ someperspective/
 │   ├── SP_masterdataset.csv
 │   └── *.csv                  # Per-topic series (regime periods, finances, etc.)
 │
-├── downloads/                 # Public-facing HTML artifacts (briefs, summaries)
+├── downloads/                 # Public documents, dataset exports, research package ZIP
+├── paper/paper.md             # Working paper source (built to HTML + PDF)
+├── analysis/                  # 36 generated standing analyses, one permalink each
+├── walkthrough/               # Generated guided deck (source: tools/walkthrough_shell.html)
+├── tools/                     # Build + guard scripts (see below)
 ├── sitemap.xml, robots.txt    # Search/crawler metadata
 └── CNAME                      # GitHub Pages domain
 ```
+
+## Build and verify
+
+The deploy is a pure static upload, so committed artifacts are what ship. Regenerate and
+check them with:
+
+```bash
+npm ci && npm run build:css        # compile styles.css (committed, CI fails if stale)
+python3 tools/build_paper.py       # paper.md -> downloads/paper.html + paper.pdf
+python3 tools/build_site.py        # analyses, updates, feed, sitemap, exports, ZIP
+```
+
+Guards, all run in CI on every push:
+
+| Script | What it refuses to let through |
+|---|---|
+| `tools/check_data_parity.py` | the inline fallback, `data.json` and `compute_indices.py` disagreeing |
+| `tools/check_docs_consistency.py` | a document quoting a figure that contradicts `data.json` for that year |
+| `tools/check_vdem_basis.py` | two different V-Dem indices being published as one series |
+| `build_paper.py --check` / `build_site.py --check` | committed artifacts drifting from their sources |
+
+`data/compute_indices.py` is the single source for all three indices, and it computes both
+political eras identically — so no part of the measured gap between them can come from the
+two periods being handled differently.
 
 ## Key Findings
 

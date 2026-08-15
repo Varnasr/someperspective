@@ -1,11 +1,11 @@
 {
-  "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
+  "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Each entry corresponds to a published version of the site; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
-      "version": "2.39.1",
+      "version": "2.40.0",
       "date": "2026-08-15",
-      "title": "Readable type on a phone",
-      "summary": "Nearly all the text on the site was rendering at caption size on a phone. It now reads at normal size.",
+      "title": "The walkthrough gets a front door, and readable type on a phone",
+      "summary": "The guided walkthrough was reachable only from a card in the last section and one footer link; it is now in the navigation and on the landing page. Text on phones was rendering at caption size and now reads normally.",
       "changes": [
         {
           "kind": "Fixed",
@@ -22,6 +22,18 @@
         {
           "kind": "Removed",
           "text": "The shareable PNG of the three indices, added in 2.37.0 for a social-media launch, has been withdrawn along with the post text. The chart itself remains on the site, where it is drawn live from the dataset and can be exported at any time from the Three Indices section."
+        },
+        {
+          "kind": "Added",
+          "text": "The guided walkthrough now has a place in the top navigation and a card at the top of the opening section. It is the shortest honest route through the argument — seventeen slides, about ten minutes, every figure drawn live from the dataset — and until now it was reachable only from a tile buried in the last section and a single footer link."
+        },
+        {
+          "kind": "Correction",
+          "text": "This page previously said that every entry here maps to a tagged release. The repository has no tags, so that was not true. The sentence now says what is actually the case: each entry corresponds to a published version of the site, with the full technical detail in the repository's changelog."
+        },
+        {
+          "kind": "Changed",
+          "text": "The repository's README was three versions and one project title out of date. It now carries the current version, the declaration of interests, links to the walkthrough and paper, and a table of the checks that run on every change."
         }
       ]
     },

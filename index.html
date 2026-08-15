@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.39.1">
+    <meta name="version" content="2.40.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.39.1">
+    <link rel="stylesheet" href="/styles.css?v=2.40.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -845,6 +845,19 @@
                     <span x-show="newTabs.includes(featuredTab)"
                           class="px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-500 text-white">New</span>
                 </button>
+
+                <!-- The guided walkthrough is a separate page, so it cannot be a tab — but it
+                     is the best entry point for a first-time reader and was previously reachable
+                     only from a card buried in the last tab and one footer link. It belongs in
+                     the navigation. -->
+                <a href="walkthrough/"
+                   class="tab-btn text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap inline-flex items-center gap-1.5 flex-shrink-0 no-underline">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <polygon points="5,3.5 12.5,8 5,12.5" stroke-linejoin="round"/>
+                    </svg>
+                    Walkthrough
+                    <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-indigo-500 text-white">10 min</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -876,6 +889,36 @@
                 <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The thesis, in one line</div>
                 <p class="text-sm" style="color:var(--ink-soft);">High headline growth has masked a measurable decline in the <strong>institutions of accountability</strong> and the <strong>income share of ordinary Indians</strong>. On <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14) — democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated; the one honest exception is inflation. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
             </div>
+
+            <!-- Primary entry point for a first-time reader. The walkthrough answers the
+                 question the site is about in ten minutes, with the charts drawn from the
+                 same dataset, and it used to be reachable only from the last tab. -->
+            <a href="walkthrough/" class="block no-underline group">
+                <div class="card p-5 sm:p-6 transition-shadow hover:shadow-lg"
+                     style="border-left:4px solid var(--accent-2); background:linear-gradient(120deg, color-mix(in srgb, var(--accent-2) 7%, var(--surface)), var(--surface) 65%);">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 mt-1 rounded-full w-11 h-11 flex items-center justify-center"
+                             style="background:var(--accent-2);">
+                            <svg class="w-5 h-5" viewBox="0 0 16 16" fill="#fff" aria-hidden="true">
+                                <polygon points="5,3.5 12.5,8 5,12.5"/>
+                            </svg>
+                        </div>
+                        <div class="min-w-0">
+                            <div class="kicker mb-1">New here? Start with this</div>
+                            <h2 class="text-lg sm:text-xl font-bold mb-1" style="color:var(--ink);">
+                                The guided walkthrough
+                                <span class="ml-1 align-middle px-1.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-white" style="background:var(--accent-2);">10 min</span>
+                            </h2>
+                            <p class="text-sm" style="color:var(--ink-soft);">
+                                Seventeen slides from the question to the evidence to what follows, with seven charts
+                                drawn live from the dataset. If you only have ten minutes, spend them here rather than
+                                on the tabs below.
+                                <span class="font-semibold group-hover:underline" style="color:var(--accent);">Start the walkthrough &rarr;</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
             <!-- Today's Analysis: substantive daily finding -->
             <article class="bg-gradient-to-br from-slate-50 via-white to-indigo-50/40 dark:from-slate-900/40 dark:via-slate-900/20 dark:to-indigo-900/20 border border-slate-200 dark:border-slate-700 p-5 sm:p-6 rounded-2xl shadow-sm">
