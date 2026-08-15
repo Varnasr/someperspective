@@ -1059,7 +1059,7 @@
     ]
   },
   "states": {
-    "note": "Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); 2011 Census population (crore); total fertility rate (NFHS-5, 2019-21). Compiled from public sources; per-capita estimates vary slightly by release.",
+    "note": "Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); 2011 Census population (crore) — the most recent census India has, because the 2021 census has not happened; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of the 2011 population and 477 of 543 Lok Sabha seats. Compiled from public sources; per-capita estimates vary slightly by release.",
     "items": [
       {
         "state": "Telangana",
@@ -1075,7 +1075,8 @@
         "perCapita": 332926,
         "seats": 28,
         "pop": 6.11,
-        "tfr": 1.7
+        "tfr": 1.7,
+        "ret": 60
       },
       {
         "state": "Haryana",
@@ -1091,7 +1092,9 @@
         "perCapita": 315220,
         "seats": 39,
         "pop": 7.21,
-        "tfr": 1.8
+        "tfr": 1.8,
+        "ret": 60,
+        "delim": -8
       },
       {
         "state": "Gujarat",
@@ -1099,7 +1102,8 @@
         "perCapita": 297722,
         "seats": 26,
         "pop": 6.04,
-        "tfr": 1.9
+        "tfr": 1.9,
+        "ret": 50
       },
       {
         "state": "Kerala",
@@ -1107,7 +1111,8 @@
         "perCapita": 281001,
         "seats": 20,
         "pop": 3.34,
-        "tfr": 1.8
+        "tfr": 1.8,
+        "delim": -8
       },
       {
         "state": "Maharashtra",
@@ -1115,7 +1120,8 @@
         "perCapita": 263974,
         "seats": 48,
         "pop": 11.24,
-        "tfr": 1.7
+        "tfr": 1.7,
+        "ret": 30
       },
       {
         "state": "Andhra Pradesh",
@@ -1139,7 +1145,8 @@
         "perCapita": 160182,
         "seats": 42,
         "pop": 9.13,
-        "tfr": 1.6
+        "tfr": 1.6,
+        "ret": 120
       },
       {
         "state": "Rajasthan",
@@ -1163,7 +1170,8 @@
         "perCapita": 126249,
         "seats": 29,
         "pop": 7.27,
-        "tfr": 2.0
+        "tfr": 2.0,
+        "ret": 244
       },
       {
         "state": "Jharkhand",
@@ -1179,7 +1187,9 @@
         "perCapita": 93514,
         "seats": 80,
         "pop": 19.98,
-        "tfr": 2.4
+        "tfr": 2.4,
+        "ret": 200,
+        "delim": 11
       },
       {
         "state": "Bihar",
@@ -1187,9 +1197,13 @@
         "perCapita": 60337,
         "seats": 40,
         "pop": 10.41,
-        "tfr": 3.0
+        "tfr": 3.0,
+        "ret": 510,
+        "delim": 10
       }
-    ]
+    ],
+    "retNote": "Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is the design of the system, not a malfunction.",
+    "delimNote": "Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them."
   },
   "syntheticControl": {
     "note": "Independent corroboration from outside this project. Grier & Grier (2026) build a 'Synthetic India' — a weighted blend of comparator countries fitted to India's pre-2014 path — and measure the gap that opens after 2014. Different method, different data vintage, different authors; convergent conclusion. All values below are transcribed from the authors' published summary, not recomputed here.",

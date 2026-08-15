@@ -10,6 +10,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.41.0] - 2026-08-15
+
+### Added — `Your State`, a state-level view
+The paper's own research agenda names state-level variation as item #1, and "what about
+my state?" is the most common question a reader has that the site could not answer.
+- New tab under **Data**, deep-linkable at `#your-state`. Pick a state; get a quotable
+  sentence assembled from that state's row plus four figures: per-capita NSDP with rank
+  and distance from the median, **people per Lok Sabha seat**, rupees returned per ₹100
+  of Union tax paid, and projected seat change under a fresh delimitation.
+- Three charts: income ranking and representation ranking (both with the selected state
+  highlighted), and a per-capita-income × tax-return scatter on a log y-axis.
+- **People per MP is computed here for the first time** — `pop(crore) × 10 / seats` — and
+  it is the sharpest figure in the section. Seats are frozen on the 1971 census, so
+  representation varies **1.64×** across these states: **1.67M** people per seat in Kerala
+  against **2.74M** in Rajasthan.
+
+### Changed — state data was fragmented across three blocks
+`states` (income, seats, population, TFR), `stateReturns` (8 states) and `delimitation`
+(4 states) were three unrelated objects used only by the citizen primer, so no reader
+could see all four facts about one state together. `states.items` now carries optional
+`ret` and `delim`, with `retNote` and `delimNote` for provenance. `stateReturns` and
+`delimitation` are retained unchanged for the primer.
+- The inline `PRIMER_FALLBACK.states` held only **7** of the 16 states. Now mirrors all
+  16, so the flagship view still works when `data.json` cannot be reached.
+- Missing values degrade to `—` with an explicit "not published for this state", rather
+  than being hidden — coverage is 8/16 for tax returns and 4/16 for delimitation.
+
+### Notes on provenance, stated in the UI
+- Every population figure is **2011 Census**, the most recent India has. Representation is
+  therefore measured with a fifteen-year-old ruler — this project's central argument
+  arriving somewhere it cannot be avoided. Said plainly in the section.
+- The tax-return figures are Praveen Chakravarty's estimates **for the AIPC** — the same
+  party body in which the author holds a fellowship. Flagged in the section as a
+  politically affiliated source on a politically contested question: direction well
+  established, exact ratios contestable.
+
 ## [2.40.0] - 2026-08-15
 
 ### Added — the walkthrough was effectively hidden

@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.40.0">
+    <meta name="version" content="2.41.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.40.0">
+    <link rel="stylesheet" href="/styles.css?v=2.41.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -1230,6 +1230,104 @@
         </div>
         
         <!-- Interactive Data Explorer Tab -->
+        <!-- Your State Tab -->
+        <div x-show="activeTab === 'Your State'" x-transition class="space-y-6">
+
+            <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
+                <div class="kicker mb-1">Federalism, representation and income</div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2" style="color:var(--ink);">Your state</h2>
+                <p class="text-sm mb-4" style="color:var(--ink-soft);">
+                    The national picture hides most of what is interesting. India&rsquo;s richest large state has
+                    <strong x-text="stateSpread.ratio + '&times;'"></strong> the per-capita income of its poorest, and a
+                    vote is not worth the same everywhere: seats were frozen on the 1971 census, so the number of people
+                    behind each MP now varies by <strong x-text="stateRepSpread.ratio + '&times;'"></strong> between the
+                    best- and worst-represented states here. Pick a state.
+                </p>
+
+                <label for="stateSelect" class="sr-only">Choose a state</label>
+                <select id="stateSelect" x-model="selectedState" @change="renderStateCharts()"
+                        class="w-full sm:w-auto mb-3 px-3 py-2.5 rounded-lg border text-sm font-semibold"
+                        style="border-color:var(--line);background:var(--surface);color:var(--ink);min-height:44px;">
+                    <template x-for="st in statesSorted" :key="st.state">
+                        <option :value="st.state" x-text="st.state"></option>
+                    </template>
+                </select>
+
+                <div class="flex flex-wrap gap-2 mb-5">
+                    <template x-for="st in statesSorted.slice(0, 6)" :key="'chip-' + st.state">
+                        <button @click="selectedState = st.state; renderStateCharts()"
+                                :style="selectedState === st.state ? 'background:var(--accent);color:#fff;border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
+                                class="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" x-text="st.state"></button>
+                    </template>
+                </div>
+
+                <template x-if="currentState">
+                    <div>
+                        <p class="text-base mb-4 leading-relaxed" style="color:var(--ink);" x-html="stateNarrative"></p>
+
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+                            <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
+                                <div class="text-xs font-semibold mb-1" style="color:var(--muted);">Per-capita income</div>
+                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="'₹' + Math.round(currentState.perCapita/1000) + 'k'"></div>
+                                <div class="text-xs mt-1" style="color:var(--muted);" x-text="'Rank ' + stateRank('perCapita') + ' of ' + statesAll.length + ' · ' + stateVsMedian + ' the median'"></div>
+                            </div>
+                            <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
+                                <div class="text-xs font-semibold mb-1" style="color:var(--muted);">People per MP</div>
+                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.perMP.toFixed(2) + 'M'"></div>
+                                <div class="text-xs mt-1" style="color:var(--muted);" x-text="currentState.seats + ' seats · 2011 population'"></div>
+                            </div>
+                            <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
+                                <div class="text-xs font-semibold mb-1" style="color:var(--muted);">Back per ₹100 of tax</div>
+                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.ret != null ? '₹' + currentState.ret : '—'"></div>
+                                <div class="text-xs mt-1" style="color:var(--muted);" x-text="currentState.ret != null ? (currentState.ret < 100 ? 'net contributor' : 'net recipient') : 'not published for this state'"></div>
+                            </div>
+                            <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
+                                <div class="text-xs font-semibold mb-1" style="color:var(--muted);">If seats are redrawn</div>
+                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.delim != null ? (currentState.delim > 0 ? '+' + currentState.delim : String(currentState.delim)) : '—'"></div>
+                                <div class="text-xs mt-1" style="color:var(--muted);" x-text="currentState.delim != null ? 'projected seat change' : 'no published projection'"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h3 class="text-sm font-bold mb-1" style="color:var(--ink);">Where it sits on income</h3>
+                                <p class="text-xs mb-2" style="color:var(--muted);">Per-capita net state domestic product, 2023-24. Your state is highlighted.</p>
+                                <div id="stateIncomeChart" style="width:100%;height:380px;"></div>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold mb-1" style="color:var(--ink);">Where it sits on representation</h3>
+                                <p class="text-xs mb-2" style="color:var(--muted);">Millions of people per Lok Sabha seat. Higher means each vote carries less weight.</p>
+                                <div id="stateRepChart" style="width:100%;height:380px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <h3 class="text-sm font-bold mb-1" style="color:var(--ink);">Paying in and getting back</h3>
+                            <p class="text-xs mb-2" style="color:var(--muted);">Per-capita income against the rupees returned for every ₹100 of Union tax paid. The pattern is the design of the system working, not failing: richer states finance poorer ones. What is argued about is the rate.</p>
+                            <div id="stateFiscalChart" style="width:100%;height:340px;"></div>
+                        </div>
+
+                        <div class="mt-5 p-4 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
+                            <div class="kicker mb-1">What this section can and cannot tell you</div>
+                            <p class="text-xs leading-relaxed" style="color:var(--ink-soft);">
+                                Every population figure here is from the <strong>2011 census</strong>, because that is the
+                                most recent one India has. Representation is therefore being measured with a ruler fifteen
+                                years old &mdash; which is the argument this whole project makes, arriving in a place where
+                                it is impossible to avoid.
+                                <span x-text="(primer.states && primer.states.note) || ''"></span>
+                            </p>
+                            <p class="text-xs leading-relaxed mt-2" style="color:var(--ink-soft);">
+                                <strong>On the tax-return figures:</strong> <span x-text="(primer.states && primer.states.retNote) || ''"></span>
+                            </p>
+                            <p class="text-xs leading-relaxed mt-2" style="color:var(--ink-soft);">
+                                <strong>On the seat projections:</strong> <span x-text="(primer.states && primer.states.delimNote) || ''"></span>
+                            </p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
         <div x-show="activeTab === 'Interactive Data'" x-transition class="space-y-6">
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Interactive Data Explorer</h2>
@@ -3283,14 +3381,28 @@ reduces overall score</pre>
         bodies: { note:'The economy in bodies and classrooms (NFHS-5; National Health Accounts).', stuntedPct:35, outOfPocketPct:40, publicHealthPctGDP:1.9 },
         readChecklist: { note:'How to read any official number.', questions:['Which definition is being used, and who set it?','What does the number leave out?','When was the underlying data collected?','Who gains if the number looks good?','Has the method changed?','Did the inconvenient survey get published?','How does it compare with independent estimates?'] },
         measurement: { note:'Five places where the choice, not the economy, moved the number.', items:[{title:'The GDP back-series',body:'2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed.'},{title:'The surveys that went missing',body:'The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable.'},{title:'A census a decade late',body:'Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers.'},{title:'Counting = allocating power',body:'Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose.'}] },
-        states: { note:'Per-capita NSDP 2023-24 (MoSPI/RBI); current Lok Sabha seats; 2011 Census population; TFR (NFHS-5). Compiled from public sources.', items:[
-            { state:'Telangana', region:'South', perCapita:356564, seats:17, pop:3.52, tfr:1.8 },
-            { state:'Karnataka', region:'South', perCapita:332926, seats:28, pop:6.11, tfr:1.7 },
-            { state:'Tamil Nadu', region:'South', perCapita:315220, seats:39, pop:7.21, tfr:1.8 },
-            { state:'Kerala', region:'South', perCapita:281001, seats:20, pop:3.34, tfr:1.8 },
-            { state:'Maharashtra', region:'West', perCapita:263974, seats:48, pop:11.24, tfr:1.7 },
-            { state:'Uttar Pradesh', region:'North', perCapita:93514, seats:80, pop:19.98, tfr:2.4 },
-            { state:'Bihar', region:'North', perCapita:60337, seats:40, pop:10.41, tfr:3.0 }
+        // Full 16-state table, mirrored from data.json: the state view is a headline
+        // feature, so it must still work when the live dataset cannot be reached.
+        states: { note:"Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); 2011 Census population (crore) — the most recent census India has, because the 2021 census has not happened; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of the 2011 population and 477 of 543 Lok Sabha seats. Compiled from public sources; per-capita estimates vary slightly by release.",
+            retNote:"Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is the design of the system, not a malfunction.",
+            delimNote:"Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them.",
+            items:[
+            { state:"Telangana", region:"South", perCapita:356564, seats:17, pop:3.52, tfr:1.8 },
+            { state:"Karnataka", region:"South", perCapita:332926, seats:28, pop:6.11, tfr:1.7, ret:60 },
+            { state:"Haryana", region:"North", perCapita:325759, seats:10, pop:2.54, tfr:1.9 },
+            { state:"Tamil Nadu", region:"South", perCapita:315220, seats:39, pop:7.21, tfr:1.8, ret:60, delim:-8 },
+            { state:"Gujarat", region:"West", perCapita:297722, seats:26, pop:6.04, tfr:1.9, ret:50 },
+            { state:"Kerala", region:"South", perCapita:281001, seats:20, pop:3.34, tfr:1.8, delim:-8 },
+            { state:"Maharashtra", region:"West", perCapita:263974, seats:48, pop:11.24, tfr:1.7, ret:30 },
+            { state:"Andhra Pradesh", region:"South", perCapita:231553, seats:25, pop:4.94, tfr:1.7 },
+            { state:"Punjab", region:"North", perCapita:213008, seats:13, pop:2.77, tfr:1.6 },
+            { state:"West Bengal", region:"East", perCapita:160182, seats:42, pop:9.13, tfr:1.6, ret:120 },
+            { state:"Rajasthan", region:"North", perCapita:141651, seats:25, pop:6.85, tfr:2.0 },
+            { state:"Odisha", region:"East", perCapita:132197, seats:21, pop:4.2, tfr:1.8 },
+            { state:"Madhya Pradesh", region:"North", perCapita:126249, seats:29, pop:7.27, tfr:2.0, ret:244 },
+            { state:"Jharkhand", region:"North", perCapita:105274, seats:14, pop:3.3, tfr:2.3 },
+            { state:"Uttar Pradesh", region:"North", perCapita:93514, seats:80, pop:19.98, tfr:2.4, ret:200, delim:11 },
+            { state:"Bihar", region:"North", perCapita:60337, seats:40, pop:10.41, tfr:3.0, ret:510, delim:10 }
         ] }
     };
 
@@ -3299,6 +3411,7 @@ reduces overall score</pre>
         'What is This?': 'what-is-this',
         'Executive Summary': 'executive-summary',
         'Key Findings': 'key-findings',
+        'Your State': 'your-state',
         'Interactive Data': 'interactive-data',
         'Correlation Explorer': 'correlation-explorer',
         'Three Indices': 'three-indices',
@@ -3439,6 +3552,8 @@ reduces overall score</pre>
             },
             // ===== STATE EXPLORER =====
             statesMetric: 'perCapita',
+            // ===== YOUR STATE =====
+            selectedState: 'Tamil Nadu',
             // ===== POLICY EVENT TIMELINE =====
             showEvents: true,
             policyEvents: [
@@ -3563,7 +3678,7 @@ reduces overall score</pre>
             // Grouped nav structure
             tabGroups: [
                 { label: 'Overview', tabs: ['What is This?', 'Executive Summary', 'Key Findings'] },
-                { label: 'Data',     tabs: ['Interactive Data', 'Correlation Explorer', 'Three Indices'] },
+                { label: 'Data',     tabs: ['Your State', 'Interactive Data', 'Correlation Explorer', 'Three Indices'] },
                 { label: 'Read',     tabs: ['Reading the Economy', 'Era Comparison', 'Human Stories'] },
                 { label: 'Methods',  tabs: ['Methodology', 'Scenario Lab', 'Deep Analysis'] },
                 { label: 'Action',   tabs: ['Implications', 'What Next?'] }
@@ -3987,6 +4102,10 @@ reduces overall score</pre>
                     this.createFormalEmploymentChart();
                     this.createInequalityChart();
                     echarts.connect('keyFindings');
+                } else if (tab === 'Your State') {
+                    this.createStateIncomeChart();
+                    this.createStateRepChart();
+                    this.createStateFiscalChart();
                 } else if (tab === 'Interactive Data') {
                     this.updateInteractiveChart();
                 } else if (tab === 'Correlation Explorer') {
@@ -5121,6 +5240,143 @@ reduces overall score</pre>
             },
 
             // ----- State Explorer -----
+            // ===== YOUR STATE =====
+            // One derived table for the whole section. perMP converts population in crore
+            // to millions per Lok Sabha seat: pop(cr) * 10 / seats.
+            get statesAll() {
+                return (((this.primer || {}).states || {}).items || [])
+                    .map(st => ({ ...st, perMP: (st.pop * 10) / st.seats }));
+            },
+            get statesSorted() {
+                return [...this.statesAll].sort((a, b) => b.perCapita - a.perCapita);
+            },
+            get currentState() {
+                return this.statesAll.find(st => st.state === this.selectedState) || null;
+            },
+            get stateSpread() {
+                const v = this.statesAll.map(st => st.perCapita).filter(Number.isFinite);
+                if (v.length < 2) return { ratio: '—' };
+                return { ratio: (Math.max(...v) / Math.min(...v)).toFixed(1) };
+            },
+            get stateRepSpread() {
+                const v = this.statesAll.map(st => st.perMP).filter(Number.isFinite);
+                if (v.length < 2) return { ratio: '—' };
+                return { ratio: (Math.max(...v) / Math.min(...v)).toFixed(2) };
+            },
+            stateRank(key) {
+                const sorted = [...this.statesAll].sort((a, b) => b[key] - a[key]);
+                return sorted.findIndex(st => st.state === this.selectedState) + 1;
+            },
+            get stateVsMedian() {
+                const st = this.currentState;
+                if (!st) return '';
+                const v = this.statesAll.map(x => x.perCapita).sort((a, b) => a - b);
+                const med = v[Math.floor(v.length / 2)];
+                const r = st.perCapita / med;
+                if (Math.abs(r - 1) < 0.03) return 'about';
+                return (r > 1 ? (r.toFixed(2) + '× above') : ((1 / r).toFixed(2) + '× below'));
+            },
+            // A sentence a reader can quote, assembled from that state's own row.
+            get stateNarrative() {
+                const st = this.currentState;
+                if (!st) return '';
+                const all = this.statesAll;
+                const n = all.length;
+                const incRank = this.stateRank('perCapita');
+                const repSorted = [...all].sort((a, b) => a.perMP - b.perMP);
+                const repRank = repSorted.findIndex(x => x.state === st.state) + 1;
+                const best = repSorted[0], worst = repSorted[n - 1];
+                // "the 16th richest of 16" is a clumsy way to say "the poorest".
+                const incPhrase = incRank === 1 ? '<strong>the richest</strong>'
+                    : incRank === n ? '<strong>the poorest</strong>'
+                    : `the <strong>${this.ordinal(incRank)}</strong> richest`;
+                const repPhrase = repRank === 1 ? '<strong>the best represented</strong>'
+                    : repRank === n ? '<strong>the worst represented</strong>'
+                    : `the <strong>${this.ordinal(repRank)}</strong> best represented`;
+                let out = `<strong>${st.state}</strong> is ${incPhrase} of the ${n} states here on per-capita income ` +
+                          `(₹${Math.round(st.perCapita / 1000)}k), and ${repPhrase}: ` +
+                          `<strong>${st.perMP.toFixed(2)} million</strong> people behind each of its ${st.seats} Lok Sabha seats, ` +
+                          `against ${best.perMP.toFixed(2)}M in ${best.state} and ${worst.perMP.toFixed(2)}M in ${worst.state}.`;
+                if (st.ret != null) {
+                    out += st.ret < 100
+                        ? ` For every ₹100 it sends the Union government it gets about <strong>₹${st.ret}</strong> back, so it is a net contributor to the rest of the country.`
+                        : ` For every ₹100 it sends the Union government it gets about <strong>₹${st.ret}</strong> back, so it is a net recipient.`;
+                }
+                if (st.delim != null) {
+                    out += st.delim > 0
+                        ? ` If seats are redrawn on a fresh census it is projected to <strong>gain about ${st.delim}</strong>.`
+                        : ` If seats are redrawn on a fresh census it is projected to <strong>lose about ${Math.abs(st.delim)}</strong>.`;
+                }
+                out += ` Fertility is ${st.tfr.toFixed(1)}.`;
+                return out;
+            },
+            ordinal(n) {
+                const s2 = ['th', 'st', 'nd', 'rd'], v = n % 100;
+                return n + (s2[(v - 20) % 10] || s2[v] || s2[0]);
+            },
+            renderStateCharts() {
+                this.$nextTick(() => {
+                    if (typeof echarts === 'undefined') return;
+                    this.createStateIncomeChart();
+                    this.createStateRepChart();
+                    this.createStateFiscalChart();
+                });
+            },
+            stateBar(elId, key, fmt, ascending) {
+                const c = this.getChart(elId);
+                if (!c) return;
+                const rows = [...this.statesAll].sort((a, b) => ascending ? (b[key] - a[key]) : (a[key] - b[key]));
+                const sel = this.selectedState;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    grid: { left: 8, right: 58, top: 10, bottom: 10, containLabel: true },
+                    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' },
+                        formatter: p => `<b>${rows[p[0].dataIndex].state}</b><br>${fmt(p[0].value)}` },
+                    xAxis: { type: 'value', axisLabel: { fontSize: 10 } },
+                    yAxis: { type: 'category', data: rows.map(r => r.state),
+                        axisLabel: { fontSize: 10, formatter: v => v === sel ? '{sel|' + v + '}' : v,
+                            rich: { sel: { fontWeight: 'bold', color: '#b4530e' } } } },
+                    series: [{
+                        type: 'bar', barWidth: '64%',
+                        data: rows.map(r => ({ value: r[key],
+                            itemStyle: { color: r.state === sel ? '#b4530e' : (this.darkMode ? '#475569' : '#cbd5e1') } })),
+                        label: { show: true, position: 'right', fontSize: 9, formatter: p => fmt(p.value),
+                            color: this.darkMode ? '#94a3b8' : '#64748b' }
+                    }]
+                }, true);
+            },
+            createStateIncomeChart() {
+                this.stateBar('stateIncomeChart', 'perCapita', v => '₹' + Math.round(v / 1000) + 'k', true);
+            },
+            createStateRepChart() {
+                this.stateBar('stateRepChart', 'perMP', v => v.toFixed(2) + 'M', false);
+            },
+            createStateFiscalChart() {
+                const c = this.getChart('stateFiscalChart');
+                if (!c) return;
+                // Only the states with a published return figure can appear here.
+                const rows = this.statesAll.filter(st => st.ret != null);
+                const sel = this.selectedState;
+                c.setOption({
+                    ...baseOpts(this.darkMode),
+                    grid: { left: 10, right: 24, top: 30, bottom: 24, containLabel: true },
+                    tooltip: { trigger: 'item',
+                        formatter: p => `<b>${p.data[2]}</b><br>₹${Math.round(p.data[0] / 1000)}k per head<br>₹${p.data[1]} back per ₹100 paid` },
+                    xAxis: { type: 'value', name: 'Per-capita income (₹)', nameLocation: 'middle', nameGap: 28,
+                        axisLabel: { fontSize: 10, formatter: v => '₹' + Math.round(v / 1000) + 'k' } },
+                    yAxis: { type: 'log', name: '₹ back per ₹100', nameGap: 12, axisLabel: { fontSize: 10 } },
+                    series: [{
+                        type: 'scatter',
+                        symbolSize: d => d[2] === sel ? 22 : 13,
+                        data: rows.map(r => [r.perCapita, r.ret, r.state]),
+                        itemStyle: { color: p => p.data[2] === sel ? '#b4530e' : (p.data[1] < 100 ? '#0e7490' : '#f59e0b') },
+                        label: { show: true, position: 'top', fontSize: 9, formatter: p => p.data[2],
+                            color: this.darkMode ? '#cbd5e1' : '#475569' }
+                    }],
+                    markLine: { silent: true }
+                }, true);
+            },
+
             setStatesMetric(m) { this.statesMetric = m; this.createStatesExplorerChart(); },
             get statesMetricMeta() {
                 return ({

@@ -2,6 +2,30 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Each entry corresponds to a published version of the site; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.41.0",
+      "date": "2026-08-15",
+      "title": "A state-level view: pick your state",
+      "summary": "The national picture hides most of what matters. There is now a section that answers 'what about my state?' for sixteen states covering about 90% of the country.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "A new 'Your State' section under Data. Choose a state and it reports where that state sits on per-capita income, how many people stand behind each of its Lok Sabha seats, how many rupees come back for every ₹100 of Union tax it pays, and how many seats it is projected to gain or lose if constituencies are ever redrawn — with a sentence you can quote and three charts placing it against the other fifteen."
+        },
+        {
+          "kind": "Added",
+          "text": "People per MP is computed here for the first time, and it is the sharpest number in the section. Because seats were frozen on the 1971 census, representation now varies by a factor of 1.64 across these states: 1.67 million people behind each seat in Kerala against 2.74 million in Rajasthan. A vote is not worth the same everywhere in India, and this says by how much."
+        },
+        {
+          "kind": "Changed",
+          "text": "State information was previously scattered across three separate blocks — an income and seats table in one place, tax-return ratios in another, delimitation projections in a third — none of which could be read together. They are now one table, so a reader can see all four facts about a state at once."
+        },
+        {
+          "kind": "Note",
+          "text": "Two honest limits are stated in the section itself. Every population figure is from the 2011 census, because that is the most recent one India has — so representation is being measured with a fifteen-year-old ruler, which is this project's own argument arriving somewhere it cannot be avoided. And the tax-return figures come from an analyst affiliated with the same party body the author holds a fellowship in; the direction is well established, the exact ratios are contestable, and the section says so."
+        }
+      ]
+    },
+    {
       "version": "2.40.0",
       "date": "2026-08-15",
       "title": "The walkthrough gets a front door, and readable type on a phone",
