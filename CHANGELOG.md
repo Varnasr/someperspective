@@ -10,6 +10,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.35.0] - 2026-08-15
+
+### Added
+- **Paper §2.4, "Where this sits in the literature, and what it adds."** This content
+  existed only inside `economy-presentation.html` and would have been destroyed by
+  deleting it. Comparing headings, **71 of 78 in the two decks appeared nowhere else on
+  the site.** Harvested into the paper: the refinement of modernisation theory (growth
+  can *legitimise* erosion rather than only produce democracy); the extension of
+  Levitsky & Way (2010) toward incremental, legal, cumulative erosion — which is also the
+  justification for the SSI's graded-with-persistence design; and the proposed concept of
+  **fiscal authoritarianism**, the use of federal fiscal architecture to centralise power
+  while leaving the constitution formally intact, which is what the FCI measures.
+- **Paper §10.6, a research agenda** — state-level variation as the closest thing to a
+  natural experiment here, sectoral analysis, caste/religion/gender disaggregation,
+  district-level indices, media-ownership concentration, and the observation that
+  measures independent of the national statistical apparatus (satellite, private, third
+  party) are worth more here than their usual accuracy warrants.
+- The policy section now carries the full immediate/structural split.
+- Levitsky & Way (2010) added to references.
+
+### Changed
+- **The two presentation documents are retired.** They were hand-maintained, stamped
+  May 2026, and one carried the top 1% error fixed in v2.33.0. Their unique content is
+  now in the paper; their presentation role is served by `/walkthrough/`. Rather than
+  404, each URL is a redirect stub — `research-presentation` → the paper,
+  `economy-presentation` → the walkthrough — with a note pointing at §2.4. Both are
+  excluded from the sitemap and from the research package via a `RETIRED` set in
+  `tools/build_site.py`. All four inbound links in `index.html` and both in
+  `research-package.html` now point at the live destinations.
+
 ## [2.34.0] - 2026-08-15
 
 ### Added

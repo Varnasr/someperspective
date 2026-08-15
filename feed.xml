@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>The theory chapter moves into the paper; two presentations retired</title>
+    <link>https://someperspective.info/updates.html#v2.35.0</link>
+    <guid isPermaLink="false">someperspective-v2.35.0</guid>
+    <pubDate>Sat, 15 Aug 2026 12:00:00 +0000</pubDate>
+    <description>Original theoretical work that only existed inside a slide deck is now part of the research paper, and the two hand-maintained presentations have been withdrawn. Added: The paper gains a section setting out where this work sits in the literature and what it adds: a refinement of modernisation theory (growth can legitimise erosion, not only produce democracy), an extension of Levitsky and Way's competitive authoritarianism toward incremental and legal erosion, and a proposed concept — 'fiscal authoritarianism', the use of federal fiscal architecture to centralise power while leaving the constitution formally intact. It also gains a research agenda: state-level variation, sectoral and social disaggregation, district-level indices, and comparative work. Changed: The two presentation documents have been retired. Their content is now either in the paper or in the guided walkthrough, both of which stay in step with the dataset. The old links still work and redirect rather than breaking. Changed: The paper's policy section now carries the fuller set of immediate and structural reforms, stated as directions the measurements point in rather than as costed proposals.</description>
+  </item>
+  <item>
     <title>A guided walkthrough, and a responsive audit</title>
     <link>https://someperspective.info/updates.html#v2.34.0</link>
     <guid isPermaLink="false">someperspective-v2.34.0</guid>

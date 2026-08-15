@@ -114,6 +114,28 @@ Institutional quality and economic performance are jointly determined and share 
 
 Our approach is therefore descriptive by choice rather than by default: establish carefully what happened on both dimensions, on one consistent measurement basis, and let the pattern discipline the interpretation. Section 7 reports what a well-executed counterfactual design finds when applied to the governance half of the question, which is the closest thing to causal evidence available on this episode — and it was produced independently of us.
 
+## 2.4 Where this sits in the literature, and what it adds
+
+The account defended here is not free-standing. It modifies three existing bodies of work and introduces one concept we have not found named elsewhere.
+
+**Reframing modernisation theory.** The classical expectation runs from growth to democracy: rising incomes produce an educated middle class with the means and the motive to demand accountable government. The Indian case suggests a refinement rather than a refutation. Growth can also *legitimise* erosion. Economic performance functions as political capital that purchases tolerance for institutional consolidation; a middle class that is benefiting can be co-opted rather than mobilised. What the data here describe is development coexisting with — and arguably underwriting — democratic decline, which the classical sequence does not anticipate.
+
+We would stress the conditional. This is one country over twelve years, and a single case cannot overturn a cross-national regularity. The claim is that the mechanism is available, not that it is general.
+
+**Extending competitive authoritarianism.** Levitsky and Way (2010) describe hybrid regimes in which meaningful electoral competition persists alongside an incumbent advantage substantial enough to make the playing field unfair. India after 2014 fits the category, but the mode of transition is distinctive in a way worth naming.
+
+The erosion documented here is *incremental and legal*. No election was cancelled, no constitution suspended, no emergency declared — the contrast with 1975–77 is instructive precisely because the current V-Dem score is comparable to that period without any of its formal apparatus. Each individual step was procedurally lawful: a survey withheld on stated quality grounds, a census postponed on pandemic grounds, a statistical office reorganised by administrative order, a tax reform that happened to remove state fiscal discretion. What the indices capture is the *accumulation* of such steps, each defensible alone.
+
+That suggests a refinement to the competitive-authoritarianism framework: the useful unit of analysis is not the discrete transgression but the graded, cumulative loss of accountability capacity. This is why the SSI is constructed from graded severities with a persistence term rather than from binary events — the measurement design follows from the theoretical claim about how this kind of transition proceeds.
+
+**A proposed concept: fiscal authoritarianism.** The FCI measures something for which we lack a standard term: the use of federal fiscal architecture to centralise political power while leaving the constitutional structure formally intact.
+
+The instruments are ordinary and individually unremarkable — cesses levied outside the divisible pool, conditional transfers that constrain state expenditure discretion, borrowing restrictions, and a consumption-tax regime that removes independent state rate-setting. None requires constitutional amendment. None reads, on its own, as a transfer of political authority. Together they shift the practical balance of the federation while every formal guarantee remains in place.
+
+We offer *fiscal authoritarianism* as the name for this: revenue instruments functioning as control mechanisms, conditional transfers as political tools, and the subversion of fiscal federalism through means that never require the constitution to be touched. Whether the term proves useful beyond India is an empirical question we cannot settle here — but the phenomenon it names is measurable, and Section 6.5 measures it.
+
+**Measurement as contribution.** The final contribution is instrumental rather than theoretical. Arguments about statistical suppression are usually conducted anecdotally, one episode at a time, which makes them easy to answer one episode at a time. Rendering the phenomenon as a weighted, graded, reproducible index makes it something that can be plotted against other series, compared across political eras, and — most importantly — disputed on the record. A critic who thinks the SSI is wrong can say precisely where, and recompute.
+
 # 3. The measurement problem
 
 ## 3.1 Why statistical capacity is not background
@@ -716,7 +738,31 @@ This ordering is not rhetorical. A government that implemented every other refor
 
 **Delimitation needs to be settled before it arrives, not after.** The seat reapportionment deferred by the census delay is arithmetically severe and regionally asymmetric. It will be substantially harder to negotiate under the time pressure of an imminent census than in advance of one.
 
-## 10.6 What would falsify this
+The full set, separated by how quickly each could move and stated as directions rather than drafted policy:
+
+*Immediate.* Constitutional protection for statistical independence; restoration of the states' share in the divisible pool; electoral-finance reform following the Electoral Bonds judgment; anti-concentration rules for media ownership; and restoration of civil-society licensing under the foreign-contribution regime, this last bearing directly on the V-Dem civil-society index whose collapse drives much of the DQI result.
+
+*Structural.* An urban employment guarantee on the MGNREGA model, addressing the informalisation documented in Section 6.2; wealth taxation, restored and strengthened, against the concentration in Section 6.3; a federal council institutionalising the GST Council's consultative form across a wider set of union–state questions; transparency in judicial appointments; and statutory limits on surveillance and data collection.
+
+We do not model the effects of any of these, and we are conscious that listing them invites a demand for evidence we have not supplied. They are offered as the directions the measurements point in, not as costed proposals.
+
+## 10.6 A research agenda
+
+This paper measures a national aggregate over twelve years. That is a narrow slice of what the question deserves, and the omissions are as informative as the findings. We set out what we think should follow, partly because several of these would test the account here rather than merely extend it.
+
+**Empirical extensions.** The most valuable is state-level variation: India's states diverge substantially in governance quality, and if some resisted the national pattern, the reasons why are the closest thing to a natural experiment this case offers. Beyond that: sectoral analysis of which industries gained and lost; disaggregation of the distributional results by caste, religion and gender, without which "the bottom 50 per cent" conceals more than it reveals; district-level construction of the indices, where the aggregate may be hiding wide dispersion; and media-ownership concentration, which bears on the press-freedom and civil-society components directly.
+
+**Methodological advances.** Machine-learning imputation for the survey gaps documented in Section 5.2.1; satellite data as an independent economic proxy, valuable precisely because it is outside the control of the statistical system whose independence is in question; network analysis of firm–state relationships; and text analysis of judgments and policy documents to measure institutional posture rather than infer it.
+
+The satellite point generalises. The deepest methodological problem this paper raises is that its subject matter degrades its instruments. Measures that do not depend on the national statistical apparatus — remote sensing, private-sector data, third-party surveys — are therefore worth more here than their usual accuracy would justify.
+
+**Comparative work.** Cross-national comparison with other large democracies under similar pressure; historical comparison with the 1975–77 Emergency, which is the obvious internal benchmark and would test the claim in Section 2.4 that the current episode achieves comparable outcomes through incremental legal means; and subnational comparison across state governance models.
+
+**Policy research.** Institutional design for resilience; early-warning indicators; the mechanics of reversal, on which there is much less literature than on decline; and the role of international accountability where domestic accountability has weakened.
+
+One question runs underneath all of these, and we would put it to other researchers rather than pretend to have answered it: **how do you study the health of a democracy when the data about that democracy is itself among the things being suppressed?** This paper's answer — measure the suppression explicitly, and treat statistical capacity as an endogenous variable — is one approach. It is unlikely to be the best one.
+
+## 10.7 What would falsify this
 
 We think it is worth stating what evidence would overturn the paper's conclusions, since a thesis that cannot be falsified is not doing empirical work.
 
@@ -777,6 +823,8 @@ Freedom House. *Freedom in the World*. Annual editions, 2004–2026.
 Government of India, Ministry of Finance. *Union Budget documents and Receipt Budget*. Annual editions.
 
 Government of India, Ministry of Finance. *Economic Survey 2025–26*.
+
+Levitsky, S., and Way, L.A. (2010). *Competitive Authoritarianism: Hybrid Regimes After the Cold War*. Cambridge University Press.
 
 Grier, K., and Grier, R. (2026). *Promises, Promises: Modi's India in Comparative Perspective*. SSRN Working Paper 7248338. Replication materials: github.com/rgrier88/modi-promises-replication.
 

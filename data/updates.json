@@ -2,6 +2,26 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Every entry maps to a tagged release; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.35.0",
+      "date": "2026-08-15",
+      "title": "The theory chapter moves into the paper; two presentations retired",
+      "summary": "Original theoretical work that only existed inside a slide deck is now part of the research paper, and the two hand-maintained presentations have been withdrawn.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "The paper gains a section setting out where this work sits in the literature and what it adds: a refinement of modernisation theory (growth can legitimise erosion, not only produce democracy), an extension of Levitsky and Way's competitive authoritarianism toward incremental and legal erosion, and a proposed concept — 'fiscal authoritarianism', the use of federal fiscal architecture to centralise power while leaving the constitution formally intact. It also gains a research agenda: state-level variation, sectoral and social disaggregation, district-level indices, and comparative work."
+        },
+        {
+          "kind": "Changed",
+          "text": "The two presentation documents have been retired. Their content is now either in the paper or in the guided walkthrough, both of which stay in step with the dataset. The old links still work and redirect rather than breaking."
+        },
+        {
+          "kind": "Changed",
+          "text": "The paper's policy section now carries the fuller set of immediate and structural reforms, stated as directions the measurements point in rather than as costed proposals."
+        }
+      ]
+    },
+    {
       "version": "2.34.0",
       "date": "2026-08-15",
       "title": "A guided walkthrough, and a responsive audit",

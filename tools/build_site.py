@@ -39,6 +39,11 @@ from xml.sax.saxutils import escape
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://someperspective.info"
+
+# Retired documents. These files still exist under downloads/ but contain only a
+# redirect stub, so that links published before they were withdrawn still resolve.
+# They are excluded from the sitemap and from the research package.
+RETIRED = {"research-presentation.html", "economy-presentation.html"}
 FIXED_ZIP_DATE = (2026, 1, 1, 0, 0, 0)  # any constant; keeps rebuilds byte-identical
 
 
@@ -384,7 +389,7 @@ def build_package(data):
     """
     parts = []
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):
-        if rel.endswith(".html"):
+        if rel.endswith(".html") and rel not in RETIRED:
             with open(os.path.join(ROOT, "downloads", rel), encoding="utf-8") as fh:
                 parts.append((f"someperspective/documents/{rel}", fh.read()))
     for rel in ("data.json", "data_dictionary.md", "replication_code.py", "replication_code.R",
@@ -439,7 +444,7 @@ def build_sitemap(features, vintage):
     urls = [(f"{SITE}/", "1.0"), (f"{SITE}/walkthrough/", "0.9"),
             (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):
-        if rel.endswith(".html"):
+        if rel.endswith(".html") and rel not in RETIRED:
             urls.append((f"{SITE}/downloads/{rel}", "0.6"))
     for f in features:
         urls.append((f"{SITE}/analysis/{f['slug']}.html", "0.6"))
