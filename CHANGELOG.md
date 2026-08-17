@@ -10,6 +10,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.47.0] - 2026-08-15
+
+### Fixed — both explainers were buried
+`/care/` had exactly **two** inbound links: one sentence mid-paragraph inside the *Reading
+the Economy* tab, and one footer entry. `/inflation/` had five, but all of them inline in
+prose. **Neither was in the navigation.** The same mistake as the walkthrough, made twice more.
+- New **Explainers** dropdown in the top nav, rendering `<a>` items rather than tab buttons
+  (these are pages, not tabs, so they cannot live in `tabGroups`).
+- New card near the top of *What is This?*, above today's analysis, carrying both with blurbs.
+- Both driven off a new `explainers` array, so the next one appears in the nav and on the
+  landing page from a single line.
+- The dropdown right-aligns below `sm` and is clamped to `calc(100vw-2.5rem)`. The first
+  attempt at 240px `left-0` overflowed a 390px phone by **75px**, caught by re-measuring.
+
+### Added — walkthrough slide 12
+The deck now carries the argument rather than pointing at it. Placed directly after the
+inflation slide, so the reader reaches the verdict holding both caveats about what the
+headline figure contains. Deck is **18 slides**; all 7 charts still draw, no page errors,
+no unresolved tokens (verified by walking every slide). The bullet previously added to the
+limits slide is removed, the point now having a slide of its own.
+
+### Fixed — counts typed into the page
+"Seventeen slides", "17 slides", "All 36 analyses", "Analysis library (36)" — all stale or
+about to be. Slide and analysis counts now come from the data.
+
 ## [2.46.0] - 2026-08-15
 
 ### Changed — the production-boundary argument runs through every document

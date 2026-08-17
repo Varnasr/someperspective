@@ -2,9 +2,9 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Each entry corresponds to a published version of the site; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
-      "version": "2.46.0",
+      "version": "2.47.0",
       "date": "2026-08-15",
-      "title": "What GDP does not count, across the whole project",
+      "title": "The explainers get a front door, and a walkthrough slide",
       "summary": "GDP prices the rent on a flat you own and puts nothing against the meal cooked in it. That now runs through the paper, the methodology, the appendix, the summary, the citizen guide, the policy brief and the analyses, not just one page.",
       "changes": [
         {
@@ -42,6 +42,18 @@
         {
           "kind": "Changed",
           "text": "The walkthrough's limits slide now names this too. Every growth figure in the deck sits on the official boundary and none is adjusted."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Both long-form explainers were badly buried. The GDP page was reachable from one sentence inside another section and a single footer link, and neither page was in the navigation at all. There is now an Explainers menu in the top navigation and a card near the top of the opening section carrying both. The list is held as data, so the next explainer appears in both places from one line."
+        },
+        {
+          "kind": "Added",
+          "text": "The guided walkthrough gains a slide on it, placed straight after the inflation slide so a reader reaches the verdict holding both caveats about what the headline figure does and does not contain. The deck is now eighteen slides. The bullet that had been added to the limits slide is removed, since the point now has a slide of its own."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The slide count and the analysis count were typed into the page in several places and had already gone stale twice. Both now come from the data."
         }
       ]
     },

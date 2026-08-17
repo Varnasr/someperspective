@@ -113,6 +113,20 @@
       "note": "The full argument — six factors, the strongest case against us, and what would change our reading — is at someperspective.info/inflation."
     },
     {
+      "id": "boundary",
+      "kicker": "What the headline leaves out",
+      "title": "GDP counts the rent, not the cooking",
+      "body": "Every growth figure in this deck is a GDP figure. GDP counts work inside a boundary somebody drew. Own the flat you live in and the accounts work out a rent you never paid and add it to output. Cook the evening meal in that flat and nothing is added.",
+      "points": [
+        "India already counts the hours. The Time Use Survey found women aged 15-59 who do unpaid domestic work spending 289 minutes a day on it in 2024. Men spent 88.",
+        "For a woman that is about 1,758 hours a year, in no employment figure and no output series.",
+        "Two survey rounds, five years apart: far more men now do some of this work, 26.1% to 45.8%. But the minutes fell for both sexes, so the gap between a woman who does it and a man who does it went from 202 minutes to 201. One minute in five years.",
+        "Published estimates of what the work is worth run from 7.5% to 36% of GDP. That spread is disagreement about the price of an hour, not doubt about the hours.",
+        "It changes how to read one of our own numbers. Female workforce participation of about 21% is discussed as women not working. The same surveys found 83.9% of them doing unpaid work at home."
+      ],
+      "note": "Nothing in this deck is adjusted for any of it. These are the official figures on the official boundary. The full argument is at someperspective.info/care."
+    },
+    {
       "id": "scorecard",
       "kicker": "The verdict",
       "title": "Eight of nine measures worse; one better",
@@ -143,7 +157,6 @@
       "body": "This project is descriptive. It establishes what happened on both dimensions; it does not identify a causal effect of governance on growth.",
       "points": [
         "The author is a Manmohan Singh Fellow of the All India Professionals' Congress, a department of the Indian National Congress, and this comparison runs in that party's favour. The interest is declared in full on the site; what is offered against it is that every input, every weighting and every step is published and can be recomputed.",
-        "Every growth figure here is a GDP figure, and GDP counts work inside a boundary that excludes unpaid household work. Women aged 15-59 who do it spent 289 minutes a day on it in 2024, men 88. Nothing here is adjusted for that. See someperspective.info/care.",
         "The SSI's zero for the UPA decade is the most contestable number here — though the conclusion survives even a generous re-coding of that era.",
         "The DQI inherits whatever biases exist in V-Dem, Freedom House and RSF.",
         "The FCI is relative to its own sample and means nothing outside it.",

@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.46.0">
+    <meta name="version" content="2.47.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.46.0">
+    <link rel="stylesheet" href="/styles.css?v=2.47.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -854,6 +854,28 @@
                           class="px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-500 text-white">New</span>
                 </button>
 
+                <!-- Explainers are separate pages too, so the items are links rather than
+                     tab buttons. Same shape as the group dropdowns above. -->
+                <div class="relative flex-shrink-0">
+                    <button
+                        @click="openGroup = (openGroup === 'Explainers' ? null : 'Explainers')"
+                        :class="openGroup === 'Explainers' ?
+                            'tab-btn active text-blue-600 dark:text-blue-400 font-semibold' :
+                            'tab-btn text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'"
+                        class="px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap inline-flex items-center gap-1">
+                        <span>Explainers</span>
+                        <svg class="w-3 h-3 transition-transform" :class="openGroup === 'Explainers' ? 'rotate-180' : ''" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l5 5 5-5"/></svg>
+                    </button>
+                    <div x-show="openGroup === 'Explainers'" x-transition.opacity x-cloak
+                         class="absolute top-full right-0 sm:right-auto sm:left-0 mt-1 w-[min(15rem,calc(100vw-2.5rem))] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl py-1 z-50">
+                        <template x-for="e in explainers" :key="e.href">
+                            <a :href="e.href"
+                               class="block w-full text-left px-4 py-2 text-xs sm:text-sm transition-colors no-underline text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                               x-text="e.label"></a>
+                        </template>
+                    </div>
+                </div>
+
                 <!-- The guided walkthrough is a separate page, so it cannot be a tab — but it
                      is the best entry point for a first-time reader and was previously reachable
                      only from a card buried in the last tab and one footer link. It belongs in
@@ -918,7 +940,7 @@
                                 <span class="ml-1 align-middle px-1.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-white" style="background:var(--accent-2);">10 min</span>
                             </h2>
                             <p class="text-sm" style="color:var(--ink-soft);">
-                                Seventeen slides from the question to the evidence to what follows, with seven charts
+                                Eighteen slides from the question to the evidence to what follows, with seven charts
                                 drawn live from the dataset. If you only have ten minutes, spend them here rather than
                                 on the tabs below.
                                 <span class="font-semibold group-hover:underline" style="color:var(--accent);">Start the walkthrough &rarr;</span>
@@ -927,6 +949,28 @@
                     </div>
                 </div>
             </a>
+
+            <!-- Standalone explainers. Both were reachable only from a footer link and, in
+                 one case, a sentence buried inside another tab. They are long-form pieces and
+                 belong on the way in. Rendered from the explainers list so adding one shows
+                 up here automatically. -->
+            <div class="card p-5 sm:p-6">
+                <div class="kicker mb-1">Explainers</div>
+                <h2 class="text-lg sm:text-xl font-bold mb-1" style="color:var(--ink);">Two numbers that need more than a footnote</h2>
+                <p class="text-sm mb-4" style="color:var(--ink-soft);">
+                    One measure on this site moves in the government's favour, and one measure leaves out
+                    most of the work women do. Neither is honestly handled in a sentence, so each gets a page.
+                </p>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <template x-for="e in explainers" :key="'card-' + e.href">
+                        <a :href="e.href" class="block no-underline group p-4 rounded-xl transition-shadow hover:shadow-md"
+                           style="background:var(--surface-2);border:1px solid var(--line);">
+                            <div class="text-sm font-bold mb-1 group-hover:underline" style="color:var(--accent);" x-text="e.label"></div>
+                            <div class="text-xs leading-relaxed" style="color:var(--ink-soft);" x-text="e.blurb"></div>
+                        </a>
+                    </template>
+                </div>
+            </div>
 
             <!-- Today's Analysis: substantive daily finding -->
             <article class="bg-gradient-to-br from-slate-50 via-white to-indigo-50/40 dark:from-slate-900/40 dark:via-slate-900/20 dark:to-indigo-900/20 border border-slate-200 dark:border-slate-700 p-5 sm:p-6 rounded-2xl shadow-sm">
@@ -2503,7 +2547,7 @@ reduces overall score</pre>
                     <a href="walkthrough/" class="block p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
                         <div class="text-2xl mb-2"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"></div>
                         <div class="text-sm font-semibold">Guided Walkthrough</div>
-                        <div class="text-xs text-gray-500 mt-1">17 slides, live charts</div>
+                        <div class="text-xs text-gray-500 mt-1">18 slides, live charts</div>
                     </a>
                     <a href="downloads/paper.html" class="block p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
                         <div class="text-2xl mb-2"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"></div>
@@ -3691,6 +3735,15 @@ reduces overall score</pre>
             },
             // Featured standalone tab pinned to the end of the nav
             featuredTab: 'Economic Trajectory',
+            // Standalone explainer pages. Separate pages rather than tabs, so they get
+            // their own nav dropdown and a card on the landing tab. Add one line here and
+            // it appears in both places.
+            explainers: [
+                { href: 'inflation/', label: 'Why inflation looks better after 2014',
+                  blurb: 'The one measure that improved. An oil-price collapse landing at the era boundary, an excise take that absorbed most of it, and a monetary rule that works by binding the executive.' },
+                { href: 'care/', label: 'What GDP does not count',
+                  blurb: 'The accounts price the rent on a flat you own and put nothing against the meal cooked in it. India measures those hours and leaves them out.' }
+            ],
             // Grouped nav structure
             tabGroups: [
                 { label: 'Overview', tabs: ['What is This?', 'Executive Summary', 'Key Findings'] },
