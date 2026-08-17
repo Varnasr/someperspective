@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.45.0">
+    <meta name="version" content="2.46.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.45.0">
+    <link rel="stylesheet" href="/styles.css?v=2.46.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -954,7 +954,7 @@
                             Source data in <span x-text="todaysFeature.tab"></span> →
                         </a>
                         <a :href="todaysFeatureLink" class="hover:underline" style="color:var(--accent);">Permalink</a>
-                        <a href="analysis/" class="hover:underline" style="color:var(--muted);">All 36 analyses</a>
+                        <a href="analysis/" class="hover:underline" style="color:var(--muted);" x-text="'All ' + dailyFeatures.length + ' analyses'">All 37 analyses</a>
                     </span>
                     <div class="flex items-center gap-2">
                         <button @click="shareFinding(todaysFeature.title + ' — ' + todaysFeature.takeaway, todaysFeature.tab)"
@@ -3184,7 +3184,7 @@ reduces overall score</pre>
                         <ul class="text-xs sm:text-sm space-y-2">
                             <li class="text-[10px] font-bold uppercase tracking-wider text-gray-500 pt-1">Start here</li>
                             <li><a href="walkthrough/" class="text-blue-400 hover:text-blue-300 transition-colors">Guided walkthrough</a></li>
-                            <li><a href="analysis/" class="text-blue-400 hover:text-blue-300 transition-colors">Analysis library (36)</a></li>
+                            <li><a href="analysis/" class="text-blue-400 hover:text-blue-300 transition-colors">Analysis library</a></li>
                             <li><a href="downloads/citizen-guide.html" class="text-blue-400 hover:text-blue-300 transition-colors">Citizen guide</a></li>
 
                             <li class="text-[10px] font-bold uppercase tracking-wider text-gray-500 pt-3">The research</li>
@@ -3720,7 +3720,7 @@ reduces overall score</pre>
                 const f = this.todaysFeature;
                 return f && f.slug ? 'analysis/' + f.slug + '.html' : 'analysis/';
             },
-            // The 36 analyses live in data/features.json rather than inline, so the
+            // The analyses live in data/features.json rather than inline, so the
             // generated pages under /analysis and this list are built from one source.
             async loadFeatures() {
                 try {

@@ -17,7 +17,7 @@ Generates:
   downloads/dataset.xlsx minimal, deterministic XLSX of the same table
   downloads/someperspective-research-package.zip  docs + data, deterministic
 
-A note on dates. The 36 analyses carry no publication date — they are evergreen
+A note on dates. The analyses carry no publication date — they are evergreen
 readings of the dataset, not posts — so none is invented here. They are stamped
 with the *data vintage* (`meta.updated`) instead. The RSS feed therefore tracks
 `updates.json`, which is the only content with real dates attached.
@@ -339,11 +339,6 @@ def build_care(care, data):
 <span class="kicker">{escape(care['kicker'])}</span>
 <h1>{escape(care['title'])}</h1>
 <p class="lede">{escape(care['standfirst'])}</p>
-
-<div class="card" style="border-left:4px solid var(--accent-2)">
-<span class="kicker">Why this page exists</span>
-<p>{escape(care['prompt'])}</p>
-</div>
 
 <div class="card">
 <span class="kicker">The gap, measured across two surveys</span>

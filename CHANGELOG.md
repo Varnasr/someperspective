@@ -10,13 +10,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.46.0] - 2026-08-15
+
+### Changed — the production-boundary argument runs through every document
+It was on one page. Now it is where a reader will actually meet it.
+- `downloads/methodology.html` — new §6.1 under Limitations, plus the boundary added to the
+  critical-limitations list.
+- `downloads/technical-appendix.html` — new **A4b**, with both Time Use Survey rounds
+  tabulated by sex (minutes, participation, employment participation, caregiving), the
+  derived 202→201 result shown as arithmetic, and all five valuations listed with methods.
+  Added to the appendix contents.
+- `downloads/executive-summary.html` — states before the Five Critical Findings that every
+  growth figure below excludes this work.
+- `downloads/citizen-guide.html` — plain-language version. Opens on the asymmetry: the
+  accounts price a rent you never paid, and nothing for the person who cooked dinner.
+- `downloads/policy-brief.html` — the concrete ask, under Statistical System Independence:
+  a **household production satellite account**, noting the expensive part (the survey)
+  already exists and has run twice.
+- `downloads/media-kit.html` — quotable fact card: "289 min … counted in GDP at zero."
+- `data/walkthrough.json` — limits slide names it, since it limits every figure in the deck.
+- Paper §6.11 rewritten.
+
+### Added
+- New standing analysis, "GDP counts the rent on your flat, not the cooking", with its own
+  permalink. Library is now **37** pieces.
+- The visible analysis count is bound to `dailyFeatures.length` instead of the literal `36`
+  in two places, so it stops going stale when the library grows. "Analysis library (36)" in
+  the footer is now just "Analysis library".
+
+### Changed — voice
+`/care/` and paper §6.11 rewritten. The first draft read as machine prose: em-dashes
+throughout, repeated "not X, it is Y", rule-of-three lists, uniform paragraph lengths, a
+closing flourish. Measured on the rewrite: **0 em-dashes** (was a dozen), 0 instances of the
+"not X, it is Y" construction, 0 filler intensifiers, mean sentence length 11.4 words across
+a 1–28 word range, with fragments doing work ("Zero." / "One minute." / "Five years.").
+Word count down from 1,681 to 1,230 saying the same things.
+
+### Removed
+- The page previously credited the reader whose question prompted it. Removed from the page,
+  the updates feed and this changelog. The work is the author's own.
+
 ## [2.45.0] - 2026-08-15
 
 ### Added — `/care/`, the production boundary
-Prompted by a launch-day question from **Amita Pitre**, asking whether the project had
-looked behind the GDP numbers at how they are counted. Half the answer was yes — the
-disputed 2015 revision is examined at length in §8.4 and weighted in the SSI. The other
-half was no: the site carried **one sentence** about unpaid care work and nothing behind it.
+The site already examined how GDP is *compiled* — the disputed 2015 revision, at length in
+§8.4 and weighted in the SSI. It said nothing about what GDP counts as production in the
+first place, beyond a single sentence about unpaid care work.
 - New generated page at `/care/`, sourced from `data/care.json` via `build_care()`,
   sitemap priority 0.9. The argument: the SNA production boundary is a convention, not a
   discovery — it **imputes rent for an owner-occupied dwelling** and records **zero** for

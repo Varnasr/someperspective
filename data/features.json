@@ -714,5 +714,13 @@
       ],
       "unit": "%"
     }
+  },
+  {
+    "title": "GDP counts the rent on your flat, not the cooking",
+    "slug": "gdp-counts-the-rent-on-your-flat-not-the-cooking",
+    "category": "Statistics",
+    "tab": "Reading the Economy",
+    "body": "Own the flat you live in and the national accounts estimate a rent for it and add that to GDP. Cook the meal inside it and nothing is added. India's Time Use Survey found women aged 15-59 who do unpaid domestic work spending 289 minutes a day on it in 2024, against 88 minutes for men. About 1,758 hours a year for a woman, in no employment figure and no output series. Published valuations of that work run from 7.5% to 36% of GDP, the spread coming from the price put on an hour rather than from any doubt about the hours.",
+    "takeaway": "The production boundary is a convention. India collects the hours needed to price what falls outside it and does not do so."
   }
 ]

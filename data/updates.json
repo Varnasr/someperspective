@@ -2,14 +2,14 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public rather than quietly — so this page exists to make both visible. Each entry corresponds to a published version of the site; the full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
-      "version": "2.45.0",
+      "version": "2.46.0",
       "date": "2026-08-15",
-      "title": "What GDP does not count: the production boundary and unpaid work",
-      "summary": "GDP imputes a rent for the house you own and records nothing for the care performed inside it. India measures those hours and declines to value them. A new page and paper section take that seriously instead of leaving it as a single line.",
+      "title": "What GDP does not count, across the whole project",
+      "summary": "GDP prices the rent on a flat you own and puts nothing against the meal cooked in it. That now runs through the paper, the methodology, the appendix, the summary, the citizen guide, the policy brief and the analyses, not just one page.",
       "changes": [
         {
           "kind": "Added",
-          "text": "A page at someperspective.info/care on the production boundary — what national accounts count as production and what they place outside it. It exists because Amita Pitre asked, on launch day, whether this project had looked behind the GDP numbers at how they are counted. Half the answer was yes: the disputed 2015 revision is examined at length. The other half was no. The site had one sentence about unpaid care work and nothing behind it."
+          "text": "A page at someperspective.info/care on the production boundary: what the national accounts count as production, and what they leave outside. The accounts work out a rent for the flat you own and add it to output. They put nothing against the meal cooked in it. The site had one sentence on unpaid work and nothing behind it."
         },
         {
           "kind": "Data",
@@ -30,6 +30,18 @@
         {
           "kind": "Note",
           "text": "No figure on this site has been adjusted. Every growth series remains the official one on the official boundary. The claim is that the boundary is a choice, that India already collects the hours needed to value what sits outside it, and that a framework which imputes rent for a dwelling but records zero for the care performed inside it embeds a judgement about whose work counts as production. The research paper carries the same argument as Section 6.11."
+        },
+        {
+          "kind": "Changed",
+          "text": "The argument now sits in every document rather than on one page. Methodology gains a section under Limitations. The technical appendix gains A4b, with both Time Use Survey rounds tabulated by sex and the five published valuations listed with their methods. The executive summary states before its findings that the growth figures exclude this work. The citizen guide explains it in plain language. The policy brief asks for the specific thing that would fix it: a household production satellite account, using the survey hours India already collects. The media kit carries it as a quotable fact. The paper has it as Section 6.11."
+        },
+        {
+          "kind": "Added",
+          "text": "A new standing analysis, 'GDP counts the rent on your flat, not the cooking', with its own permalink. The library is now 37 pieces, and the count on the site is read from the data rather than typed in, so it stops going stale."
+        },
+        {
+          "kind": "Changed",
+          "text": "The walkthrough's limits slide now names this too. Every growth figure in the deck sits on the official boundary and none is adjusted."
         }
       ]
     },
