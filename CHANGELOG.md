@@ -10,6 +10,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.45.0] - 2026-08-15
+
+### Added — `/care/`, the production boundary
+Prompted by a launch-day question from **Amita Pitre**, asking whether the project had
+looked behind the GDP numbers at how they are counted. Half the answer was yes — the
+disputed 2015 revision is examined at length in §8.4 and weighted in the SSI. The other
+half was no: the site carried **one sentence** about unpaid care work and nothing behind it.
+- New generated page at `/care/`, sourced from `data/care.json` via `build_care()`,
+  sitemap priority 0.9. The argument: the SNA production boundary is a convention, not a
+  discovery — it **imputes rent for an owner-occupied dwelling** and records **zero** for
+  the care performed inside it.
+- Paper gains **Section 6.11**, same argument at length. Paper now ~18,900 words.
+
+### Data — NSO Time Use Surveys 2019 and 2024
+New `careEconomy` block in `data.json`, transcribed from the published results.
+- Unpaid domestic services, ages 15–59, minutes/day **among participants**:
+  women **299 → 289**, men **97 → 88**.
+- Participation: women **81.2% → 83.9%**, men **26.1% → 45.8%**.
+- Caregiving 2024: participation W **41%** / M **21.4%**; minutes W **140** / M **74**.
+- Employment participation: women **21.8% → 25.0%**, men **70.9% → 75.0%**.
+
+**The computed finding, which is sharper than any of the raw numbers:** men's
+participation nearly doubled, but minutes fell for both sexes, so the participant gap went
+from **202 minutes to 201 — one minute in five years**. More women moved into paid work;
+the unpaid work was not meaningfully redistributed.
+
+### Added — the valuation range, published rather than resolved
+Five published Indian estimates, **7.5% to 36% of GDP**, a factor of ~4.8 driven almost
+entirely by valuation method: SBI Ecowrap 2023 (minimum wage, 7.5%), MWCD 2024 submission
+(15–17%), generalised opportunity cost 2019-20 (24.6%), EPW 2024 for 2022-23 (26–36%),
+replacement cost 2019-20 (32.4%). The page tabulates all five with methods named and
+**publishes no preferred figure**.
+
+### Changed — the effect on this project's own employment numbers
+Female LFPR of ~21% is customarily read as an absence of work; the TUS records **83.9%** of
+women aged 15–59 doing unpaid domestic work on the reference day. Both true. The
+participation figure measures an absence of work *inside the boundary*. Now stated as such.
+
+**No figure on the site is adjusted.** Every growth series remains official, on the official
+boundary. The claim is about the boundary, not about the numbers computed within it.
+
 ## [2.44.0] - 2026-08-15
 
 ### Fixed — the header crushed itself on a phone

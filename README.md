@@ -11,7 +11,7 @@ This repository is the complete replication package for **Some Perspective: Indi
 Everything the site publishes is generated from `data.json` by scripts in this repository. The site is a static build with no server: what is committed here is what ships.
 
 **Research initiated:** March 2024
-**Current version:** v2.44.0 (15 August 2026)
+**Current version:** v2.45.0 (15 August 2026)
 **Interactive site:** [someperspective.info](https://someperspective.info)
 **Guided walkthrough:** [someperspective.info/walkthrough](https://someperspective.info/walkthrough/) — 17 slides, ~10 minutes
 **Working paper:** [Growth Without Accountability](https://someperspective.info/downloads/paper.html) (~17,500 words) · [PDF](https://someperspective.info/downloads/paper.pdf)

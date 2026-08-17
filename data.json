@@ -1495,5 +1495,86 @@
       0.51,
       0.51
     ]
+  },
+  "careEconomy": {
+    "note": "India's two Time Use Surveys, conducted by the National Statistical Office over Jan-Dec 2019 and Jan-Dec 2024. The 2024 round covered about 4.5 lakh people in 1.3 lakh households. Ages 15-59. 'Minutes' are the daily average among those who participated in the activity, not across everyone.",
+    "source": "NSO Time Use Survey 2019 and 2024, Ministry of Statistics and Programme Implementation.",
+    "years": [
+      2019,
+      2024
+    ],
+    "unpaidDomesticMinutes": {
+      "women": [
+        299,
+        289
+      ],
+      "men": [
+        97,
+        88
+      ]
+    },
+    "unpaidDomesticParticipationPct": {
+      "women": [
+        81.2,
+        83.9
+      ],
+      "men": [
+        26.1,
+        45.8
+      ]
+    },
+    "employmentParticipationPct": {
+      "women": [
+        21.8,
+        25.0
+      ],
+      "men": [
+        70.9,
+        75.0
+      ]
+    },
+    "caregiving2024": {
+      "participationPctWomen": 41.0,
+      "participationPctMen": 21.4,
+      "minutesWomen": 140,
+      "minutesMen": 74
+    },
+    "valuations": [
+      {
+        "source": "SBI Ecowrap (2023)",
+        "method": "minimum-wage valuation",
+        "pctGDPLow": 7.5,
+        "pctGDPHigh": 7.5,
+        "note": "₹22.7 lakh crore. The most conservative published figure."
+      },
+      {
+        "source": "Ministry of Women and Child Development (2024 submission)",
+        "method": "not fully specified",
+        "pctGDPLow": 15.0,
+        "pctGDPHigh": 17.0,
+        "note": "The government's own working range."
+      },
+      {
+        "source": "Generalised opportunity cost, 2019-20",
+        "method": "opportunity cost",
+        "pctGDPLow": 24.6,
+        "pctGDPHigh": 24.6,
+        "note": "₹49.5 lakh crore. Values an hour at what the person could have earned instead."
+      },
+      {
+        "source": "Economic and Political Weekly (2024), 2022-23",
+        "method": "replacement and opportunity cost",
+        "pctGDPLow": 26.0,
+        "pctGDPHigh": 36.0,
+        "note": "Range reflects the two methods."
+      },
+      {
+        "source": "Replacement cost method, 2019-20",
+        "method": "replacement cost",
+        "pctGDPLow": 32.4,
+        "pctGDPHigh": 32.4,
+        "note": "₹65.1 lakh crore. Values an hour at what it would cost to hire someone to do it."
+      }
+    ]
   }
 }

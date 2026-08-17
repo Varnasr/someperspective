@@ -1,0 +1,53 @@
+{
+  "note": "Source for the standalone explainer at /care/. Figures come from data.json's careEconomy block, which holds the NSO Time Use Survey results verbatim. Edit this file, then run tools/build_site.py.",
+  "title": "What GDP does not count",
+  "kicker": "The production boundary",
+  "standfirst": "Every growth figure on this site is a GDP figure, and GDP is not a measure of all the work done in an economy. It is a measure of production inside a boundary drawn by convention — one that includes a soldier's salary and excludes the four hours and forty-nine minutes an Indian woman spends each day on unpaid domestic work. This page is about that boundary: where it sits, what it leaves out, and why leaving it out is a choice rather than an oversight.",
+  "prompt": "This page exists because Amita Pitre asked, on the day this site launched, whether the project had looked behind the GDP numbers at how they are counted. Half the answer was yes — the disputed 2015 revision is examined at length. The other half was no. This is the other half.",
+  "boundaryHead": "The boundary is drawn, not discovered",
+  "boundary": [
+    "National accounts follow the System of National Accounts, an international standard. It draws a production boundary: activities inside it count towards GDP, activities outside it do not. The boundary is not a fact about the world. It is an agreement about what to measure, and it has been redrawn before.",
+    "The clearest way to see that it is a convention is to notice what it already imputes. If you own the house you live in, the accounts do not record zero housing consumption. They estimate what you would have paid to rent it from yourself and add that imputed rent to GDP. The reasoning is that a real service is being consumed, and leaving it out would make countries with high home ownership look poorer than they are.",
+    "That reasoning applies with equal force to a meal cooked at home, a child minded, an elderly parent nursed. The accounts decline to apply it. Own-account household services are placed outside the boundary and valued at nothing — not estimated badly, not estimated with wide error bars, but recorded as zero.",
+    "So the same set of rules imputes a rent for the building and imputes nothing for the person cooking inside it. Whatever the practical arguments for that asymmetry, and there are some, it is not a neutral technical judgement about what constitutes production."
+  ],
+  "hoursHead": "India measures the hours. It just does not value them.",
+  "hours": [
+    "This is the part that makes the exclusion hard to defend on grounds of feasibility. India runs a Time Use Survey. The National Statistical Office conducted the first over January to December 2019 and the second over January to December 2024, the latter covering about 4.5 lakh people across 1.3 lakh households. The hours are counted. They are published. They are simply not carried into the national accounts.",
+    "Among people aged 15 to 59 who do it at all, women spent 289 minutes a day on unpaid domestic services in 2024 and men spent 88. That is four hours and forty-nine minutes against one hour and twenty-eight — roughly 1,758 hours a year for a woman, or the better part of a full-time job that appears in no employment statistic and no output figure.",
+    "Caregiving sits on top of that. In 2024, 41% of women aged 15-59 cared for household members against 21.4% of men, and those who did spent 140 minutes against 74."
+  ],
+  "changeHead": "Five years of change, measured precisely",
+  "change": [
+    "Because there are now two rounds, the movement can be measured rather than asserted, and it is more interesting than a simple story of progress or stagnation.",
+    "Men's participation nearly doubled: 26.1% of men aged 15-59 did any unpaid domestic work in 2019, against 45.8% in 2024. That is a real change in behaviour and it should be said plainly.",
+    "But the minutes moved the other way. Men who participated spent 97 minutes a day in 2019 and 88 in 2024. Women's fell too, 299 to 289. So the gap among participants went from 202 minutes to 201.",
+    "One minute in five years. Nearly twice as many men are now doing some unpaid domestic work, and each of them is doing slightly less of it, and the distance between what a participating woman does and what a participating man does has closed by a single minute a day.",
+    "Over the same period women's participation in employment rose from 21.8% to 25.0%. More women in paid work, and the unpaid work not meaningfully redistributed."
+  ],
+  "valueHead": "Nobody agrees what it is worth, and the disagreement is the point",
+  "value": [
+    "Published Indian estimates of what unpaid household work would be worth, expressed as a share of GDP, range from 7.5% to 36%. That is not a margin of error. It is a factor of nearly five, and it comes almost entirely from the choice of valuation method.",
+    "Value an hour at the minimum wage and you get the low end. Value it at what the person could have earned in paid work instead — opportunity cost — and you get the middle. Value it at what it would cost to hire someone to do that specific task — replacement cost — and you get the top.",
+    "This project does not adjudicate between them and does not publish a preferred figure. What we will say is narrower and, we think, harder to argue with: every one of these estimates is large. Even the most conservative published number, the minimum-wage valuation, is bigger than several sectors that are counted. A quantity that might be a third of GDP is recorded as zero, and the reason nobody can say which of these numbers is right is that no statistical agency has been asked to settle it."
+  ],
+  "employmentHead": "What this does to the employment figures on this site",
+  "employment": [
+    "This is not a separate concern from the rest of the project. It runs directly into one of its own headline numbers.",
+    "Female labour force participation in India sits at about 21% on the definitions this site uses, which is among the lowest in the world and is usually discussed as an absence — women not working. The Time Use Survey says 83.9% of women aged 15-59 did unpaid domestic work on the reference day.",
+    "Both statements are true, and together they say something the first alone does not: the low participation figure is not measuring an absence of work. It is measuring an absence of work that falls inside the boundary. How much of India's female participation gap is behaviour and how much is definitional is a genuine research question, and it is not one this project has answered.",
+    "We flag it because a reader entitled to our conclusions is also entitled to know which of our numbers rests on a convention that could have been drawn elsewhere."
+  ],
+  "claimHead": "What this project claims, and what it does not",
+  "claim": [
+    "We do not construct our own valuation of unpaid work, we do not adjust any GDP figure on this site for it, and we do not offer a corrected growth series. Every growth number here remains the official one, on the official boundary.",
+    "What we claim is that the boundary is a choice; that India already collects the hours needed to value what sits outside it; that published estimates of the excluded quantity run from 7.5% to 36% of GDP; and that a measurement framework which imputes rent for a house but nothing for the care performed inside it is making a judgement about whose work counts as production.",
+    "That judgement belongs in the same category as the other measurement problems this project documents. It is not a scandal, nobody suppressed it, and it long predates the period under study. But it is the largest single thing the headline number leaves out, and a site arguing that measurement is political has no business quietly accepting the most consequential measurement convention of all."
+  ],
+  "falsifyHead": "What would change this page",
+  "falsify": [
+    "A national accounts satellite account for household production, which several countries maintain and India does not, would replace this entire argument with a number. If the NSO published one, this page would become a report of its findings rather than a complaint about its absence.",
+    "We would also revise if a convincing case were made that the Time Use Survey hours are too unreliable to value — though note that this would be an argument for improving the survey rather than for continuing to record the quantity as zero."
+  ],
+  "bottomLine": "GDP counts what it has agreed to count. India's women perform roughly 1,758 hours a year of work that the agreement excludes, the country measures those hours and then declines to value them, and published estimates of what they are worth vary by a factor of five because no one has been asked to settle the question. None of the growth figures on this site are adjusted for any of that. They are the official numbers, on the official boundary — and now you know where the boundary is."
+}

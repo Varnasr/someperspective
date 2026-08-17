@@ -304,6 +304,102 @@ CPI basis change: MoSPI, January 2026 print.</p>"""
 
 
 # --------------------------------------------------------------------------
+# The production boundary — what GDP leaves out. Source: data/care.json plus the
+# Time Use Survey figures held in data.json's careEconomy block.
+# --------------------------------------------------------------------------
+def build_care(care, data):
+    c = data["careEconomy"]
+    w = c["unpaidDomesticMinutes"]["women"]
+    m = c["unpaidDomesticMinutes"]["men"]
+    pw = c["unpaidDomesticParticipationPct"]["women"]
+    pm = c["unpaidDomesticParticipationPct"]["men"]
+    gap0, gap1 = w[0] - m[0], w[1] - m[1]
+    hrs = round(w[1] * 365 / 60)
+    lows = [v["pctGDPLow"] for v in c["valuations"]]
+    highs = [v["pctGDPHigh"] for v in c["valuations"]]
+    lo, hi = min(lows), max(highs)
+
+    def paras(items):
+        return "".join(f"<p>{escape(t)}</p>" for t in items)
+
+    def section(head, items):
+        return f"""<div class="card">
+<h2 style="margin-top:0">{escape(head)}</h2>
+{paras(items)}
+</div>"""
+
+    val_rows = "".join(
+        f"<tr><td>{escape(v['source'])}</td><td>{escape(v['method'])}</td>"
+        f"<td style=\"text-align:right;white-space:nowrap\"><strong>"
+        f"{v['pctGDPLow']:g}{'' if v['pctGDPLow'] == v['pctGDPHigh'] else '–' + format(v['pctGDPHigh'], 'g')}%"
+        f"</strong></td></tr>"
+        for v in sorted(c["valuations"], key=lambda x: x["pctGDPLow"]))
+
+    body = f"""<p class="crumb"><a href="../">Some Perspective</a> &rsaquo; What GDP does not count</p>
+<span class="kicker">{escape(care['kicker'])}</span>
+<h1>{escape(care['title'])}</h1>
+<p class="lede">{escape(care['standfirst'])}</p>
+
+<div class="card" style="border-left:4px solid var(--accent-2)">
+<span class="kicker">Why this page exists</span>
+<p>{escape(care['prompt'])}</p>
+</div>
+
+<div class="card">
+<span class="kicker">The gap, measured across two surveys</span>
+<p style="font-size:1.6rem;font-weight:700;margin:.3rem 0 .2rem">{gap0} min &rarr; {gap1} min</p>
+<p class="meta">Daily minutes on unpaid domestic services, women minus men, among those aged 15&ndash;59 who
+do it at all. Time Use Survey {c['years'][0]} against {c['years'][1]}. The gap closed by
+<strong>{gap0 - gap1} minute</strong> in five years, while men&rsquo;s participation went from
+{pm[0]:g}% to {pm[1]:g}% and women&rsquo;s from {pw[0]:g}% to {pw[1]:g}%.</p>
+</div>
+
+{section(care['boundaryHead'], care['boundary'])}
+{section(care['hoursHead'], care['hours'])}
+{section(care['changeHead'], care['change'])}
+
+<div class="card">
+<h2 style="margin-top:0">{escape(care['valueHead'])}</h2>
+{paras(care['value'])}
+<div class="tw"><table>
+<thead><tr><th>Estimate</th><th>Method</th><th style="text-align:right">% of GDP</th></tr></thead>
+<tbody>{val_rows}</tbody>
+</table></div>
+<p class="meta">Range {lo:g}% to {hi:g}% &mdash; a factor of {hi / lo:.1f}. This project publishes the
+range and does not pick a number.</p>
+</div>
+
+{section(care['employmentHead'], care['employment'])}
+{section(care['claimHead'], care['claim'])}
+
+<div class="card">
+<span class="kicker">Falsification</span>
+<h2 style="margin-top:.3rem">{escape(care['falsifyHead'])}</h2>
+{paras(care['falsify'])}
+</div>
+
+<div class="card" style="border-left:4px solid var(--accent)">
+<span class="kicker">In one paragraph</span>
+<p class="lede">{escape(care['bottomLine'])}</p>
+</div>
+
+<p class="rel"><a class="btn" href="../downloads/paper.html#s-6-11-what-gdp-does-not-count">Read this in the paper &rarr;</a>
+&nbsp; <a href="../inflation/">Why inflation looks better after 2014</a>
+&nbsp; <a href="../#reading-the-economy">How GDP is built</a></p>
+<p class="meta">Time use figures: {escape(c['source'])} Ages 15&ndash;59; minutes are the daily average
+among participants, not across everyone. Held in
+<a href="../data.json">data.json</a> under <code>careEconomy</code>. Valuation estimates are cited in the
+table above and are other people&rsquo;s work, not this project&rsquo;s.</p>"""
+
+    write("care/index.html",
+          page("What GDP does not count | Some Perspective",
+               "GDP imputes a rent for the house you own but records nothing for the care performed "
+               "inside it. India measures the hours through its Time Use Survey and declines to value "
+               "them; published estimates of what they are worth range from 7.5% to 36% of GDP.",
+               f"{SITE}/care/", body))
+
+
+# --------------------------------------------------------------------------
 # Updates page + RSS (the only genuinely dated content)
 # --------------------------------------------------------------------------
 def build_updates(updates):
@@ -525,7 +621,7 @@ def build_walkthrough():
 
 def build_sitemap(features, vintage):
     urls = [(f"{SITE}/", "1.0"), (f"{SITE}/walkthrough/", "0.9"),
-            (f"{SITE}/inflation/", "0.9"),
+            (f"{SITE}/inflation/", "0.9"), (f"{SITE}/care/", "0.9"),
             (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):
         if rel.endswith(".html") and rel not in RETIRED:
@@ -575,12 +671,14 @@ def main():
     features = read_json("data/features.json")
     updates = read_json("data/updates.json")
     inflation = read_json("data/inflation.json")
+    care = read_json("data/care.json")
     vintage = data["meta"]["updated"]
 
     build_analysis(features, vintage)
     build_walkthrough()
     build_updates(updates)
     build_inflation(inflation, data)
+    build_care(care, data)
     build_dataset(data)
     build_package(data)
     build_sitemap(features, vintage)
