@@ -1,7 +1,41 @@
 /* Tailwind entrypoint — compiled to /styles.css by `npm run build:css`.
    The site's bespoke design-system CSS (paper canvas, serif type, custom
    classes such as .src-key / .q-constructed / .chart-dl-btn) lives in the
-   inline <style> block in index.html and layers on top of these utilities. */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+   inline <style> block in index.html and layers on top of these utilities.
+
+   Tailwind 4 is configured here rather than in a JS config file: the v4 CLI
+   reads its theme, its sources and its variants from CSS. tailwind.config.js
+   is gone; everything it held is below. */
+@import "tailwindcss";
+
+/* What to scan for class names. index.html is the whole site's markup. */
+@source "../index.html";
+
+/* v3 had darkMode: "class". v4 defaults to the prefers-color-scheme media
+   query, so the class behaviour has to be restated or every dark: utility
+   would start following the OS instead of the site's own toggle. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-accent: #f59e0b;
+}
+
+/* v3 had a safelist for classes that only ever appear in JavaScript, so the
+   scanner never sees them as literals. v4 spells this @source inline(). */
+@source inline("text-emerald-600 dark:text-emerald-400 text-red-600 dark:text-red-400 text-amber-600 dark:text-amber-400 text-gray-500");
+@source inline("fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg z-[100] text-sm font-medium");
+
+/* Tailwind 4 changed two defaults that this site's markup relies on.
+
+   1. The default border colour became currentColor. In v3 it was gray-200,
+      so every element carrying `border` without a colour utility drew a
+      light grey rule; under v4 those same elements drew a near-black one.
+      Restored below, which is the compatibility rule from Tailwind's own
+      v4 upgrade guide. */
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
