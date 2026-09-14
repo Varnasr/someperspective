@@ -717,7 +717,7 @@
                     </p>
                 </div>
 
-                <div class="flex items-center gap-1.5 sm:gap-2 ml-0 sm:ml-4 no-print flex-shrink-0 self-start sm:self-auto">
+                <div data-dyslexia-slot class="flex items-center gap-1.5 sm:gap-2 ml-0 sm:ml-4 no-print flex-shrink-0 self-start sm:self-auto">
                     <!-- Theme Switcher: Light / Dark / Device -->
                     <div class="flex bg-gray-100 dark:bg-gray-800 rounded-xl p-0.5">
                         <button @click="setTheme('light')" :class="themeMode === 'light' ? 'bg-white dark:bg-gray-700 shadow-sm' : ''" class="p-1.5 sm:p-2 rounded-lg transition-all" aria-label="Light mode" title="Light">
@@ -5966,5 +5966,6 @@ reduces overall score</pre>
         <span class="gloss-term" x-text="glossTip.term"></span>
         <span x-text="glossTip.def"></span>
     </div>
+<script src="js/dyslexia-font.js" defer></script>
 </body>
 </html>
