@@ -277,7 +277,9 @@ def build_html(meta, body, toc):
 </div>
 <nav class="toc"><div>Contents</div>{toc_html}</nav>
 {body}
-</div></body></html>
+</div>
+<script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0.75rem" defer></script>
+</body></html>
 """
 
 
