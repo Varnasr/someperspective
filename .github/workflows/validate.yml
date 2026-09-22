@@ -31,6 +31,9 @@ jobs:
           fi
           echo "styles.css is up to date"
 
+      - name: Every page is indexed on purpose or excluded on purpose
+        run: python3 tools/check_indexability.py
+
       - name: Check JSON validity
         run: |
           python3 -c "import json; json.load(open('data.json')); print('data.json OK')"
