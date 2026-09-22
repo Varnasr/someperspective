@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
+# tools/ holds the build scripts and walkthrough_shell.html, which
+# build_site.py copies verbatim into walkthrough/index.html. The shell sits in
+# the published tree and renders the deck engine with DATA = null if a visitor
+# lands on it directly: chrome, no slides. The exclusion has to live here
+# rather than as a noindex meta tag, because the build would copy that tag into
+# the real walkthrough and take a priority-0.9 page out of the index with it.
+Disallow: /tools/
+
 Sitemap: https://someperspective.info/sitemap.xml
