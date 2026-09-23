@@ -51,7 +51,8 @@
       "title": "Every index moves the same way after 2014",
       "chart": "indices",
       "body": "SSI is zero across the entire UPA decade, peaks at {{max:economic.ssi}} in 2021-22, and is still {{last:economic.ssi}} in 2026. FCI rises from {{first:eraHistory.fci}} to {{last:economic.fci}}. DQI falls from {{first:eraHistory.dqi}} to {{last:economic.dqi}}.",
-      "note": "The shaded band marks the NDA period. SSI is shown on its own 0-10 scale."
+      "note": "The shaded band marks the NDA period. SSI is shown on its own 0-10 scale.",
+      "chartAlt": "Line chart, 2004 to 2026. The Statistical Suppression Index, the Fiscal Centralisation Index and the Democratic Quality Index, all rescaled to 0-10. The first two rise after 2014 and the third falls."
     },
     {
       "id": "ssi",
@@ -81,7 +82,8 @@
       "title": "Twelve straight years of falling formal employment",
       "chart": "decoupling",
       "body": "The share of workers with any social-security cover fell from {{first:economic.formalEmployment}}% in 2014 to {{last:economic.formalEmployment}}% in 2026 — down or flat in every single year, while GDP grew throughout.",
-      "note": "This is the most consistent multi-year pattern in the dataset, and it does not depend on the disputed national accounts."
+      "note": "This is the most consistent multi-year pattern in the dataset, and it does not depend on the disputed national accounts.",
+      "chartAlt": "Combination chart, 2004 to 2026. Bars show annual GDP growth against the left axis; a line shows formal employment as a percentage of all employment against the right axis. Growth continues while the line declines."
     },
     {
       "id": "structure",
@@ -89,7 +91,8 @@
       "title": "The growth happened where the jobs are not",
       "chart": "structure",
       "body": "Agriculture holds 42% of employment while producing 18% of output. Manufacturing — the sector that in the standard development sequence absorbs that labour — holds only 11% of jobs.",
-      "note": "Industrial policy weighted toward capital-intensive sectors raises output more than payroll. Electronics generates roughly one job per ₹1.5 crore invested; garments, at comparable investment, generate vastly more."
+      "note": "Industrial policy weighted toward capital-intensive sectors raises output more than payroll. Electronics generates roughly one job per ₹1.5 crore invested; garments, at comparable investment, generate vastly more.",
+      "chartAlt": "Grouped bar chart by sector, comparing each sector’s share of output with its share of jobs. The sectors holding most of the jobs hold much less of the output."
     },
     {
       "id": "distribution",
@@ -97,7 +100,8 @@
       "title": "The bottom half lost about an eighth of its share",
       "chart": "distribution",
       "body": "The top 1% share rose from {{first:economic.top1Share}}% to {{last:economic.top1Share}}%. The bottom 50% share fell from {{first:economic.bottom50Share}}% to {{last:economic.bottom50Share}}%.",
-      "note": "The top-end level matters more than its movement: at {{last:economic.top1Share}}%, it is the highest recorded since 1922. The sharper decade change is at the bottom."
+      "note": "The top-end level matters more than its movement: at {{last:economic.top1Share}}%, it is the highest recorded since 1922. The sharper decade change is at the bottom.",
+      "chartAlt": "Line chart, 2004 to 2026, of income shares. The top 1 per cent share rises; the bottom 50 per cent share falls."
     },
     {
       "id": "inflation",
@@ -132,7 +136,8 @@
       "title": "Eight of nine measures worse; one better",
       "chart": "scorecard",
       "body": "Comparing period averages across every directly comparable measure, the later period performs worse on eight and better on one.",
-      "note": "If the later period's statistics are biased in the government's favour — as the SSI argues — then this comparison understates the deterioration rather than overstating it."
+      "note": "If the later period's statistics are biased in the government's favour — as the SSI argues — then this comparison understates the deterioration rather than overstating it.",
+      "chartAlt": "Dumbbell chart of nine measures. For each, one marker is the UPA 2004-13 average and the other the NDA 2014-26 average, both placed within that measure’s own 2004-2026 range. Eight markers move towards the worse end."
     },
     {
       "id": "international",
@@ -140,7 +145,8 @@
       "title": "A decline comparable to Turkey's, from a higher base",
       "chart": "international",
       "body": "India's V-Dem Liberal Democracy Index fell from 0.488 to 0.260 over the period, a fall of 0.228 points. Turkey fell from 0.252 to 0.110; Hungary from 0.521 to 0.315. Turkey's proportional fall is steeper, from a base already near the floor; India's is the largest absolute fall of the three.",
-      "note": "Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking everyone down."
+      "note": "Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking everyone down.",
+      "chartAlt": "Grouped bar chart comparing V-Dem liberal democracy scores in 2014 and 2026 for India and its peer countries."
     },
     {
       "id": "grier",
@@ -148,7 +154,8 @@
       "title": "A different method reaches the same conclusion",
       "chart": "grier",
       "body": "Kevin and Robin Grier (Texas Tech) build a synthetic counterfactual — a weighted blend of comparator countries fitted to India's path over 1984-2013 — and measure the gap that opens after 2014. All ten governance indicators they test deteriorate, every one at a joint p-value of 0.00.",
-      "note": "Different method, different data, different authors, no shared machinery with this project. Their electoral-democracy gap of -60.2% sits close to the -63.4% raw decline measured here — though the two are not the same quantity."
+      "note": "Different method, different data, different authors, no shared machinery with this project. Their electoral-democracy gap of -60.2% sits close to the -63.4% raw decline measured here — though the two are not the same quantity.",
+      "chartAlt": "Horizontal bar chart. For each indicator, the percentage deterioration against the synthetic-control counterfactual."
     },
     {
       "id": "limits",

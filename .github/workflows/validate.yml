@@ -34,6 +34,13 @@ jobs:
       - name: Every page is indexed on purpose or excluded on purpose
         run: python3 tools/check_indexability.py
 
+      # There is no shared stylesheet: each page carries its own :root block, so
+      # a colour fixed on one page is fixed on one page and nothing says so.
+      # --accent was darkened on the homepage first and the other 46 copies kept
+      # the value that fails (4.44:1 on the cream paper every essay sits on).
+      - name: Palette copies agree, and every pair clears AA
+        run: python3 tools/check_palette.py
+
       - name: Check JSON validity
         run: |
           python3 -c "import json; json.load(open('data.json')); print('data.json OK')"
