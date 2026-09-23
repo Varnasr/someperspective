@@ -57,11 +57,11 @@ def read_json(rel):
 # as part of the site rather than as the differently-styled downloads/ docs.
 # --------------------------------------------------------------------------
 CSS = """
-:root{--paper:#f4f1ea;--surface:#fff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
---muted:#6b6b78;--line:rgba(27,27,34,.10);--accent:#b4530e;--accent-2:#0e7490}
+:root{--paper:#f4f1ea;--surface:#ffffff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
+--muted:#6b6b78;--line:rgba(27,27,34,.10);--accent:#a34a0c;--on-accent:#ffffff;--accent-2:#155e75}
 @media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--surface:#161922;--surface-2:#1c2029;
 --ink:#edeff5;--ink-soft:#d3d7e0;--muted:#99a0b1;--line:rgba(255,255,255,.09);
---accent:#fb923c;--accent-2:#22d3ee}}
+--accent:#fb923c;--on-accent:#1b1b22;--accent-2:#22d3ee}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
 line-height:1.65;padding:2rem 1.25rem 4rem}
@@ -87,7 +87,7 @@ ul.list li{border-bottom:1px solid var(--line);padding:.9rem 0}
 ul.list li:last-child{border-bottom:0}
 ul.list a{font-weight:700;text-decoration:none;font-size:1.02rem}
 ul.list p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
-.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:700;
 padding:.6rem 1rem;border-radius:12px;font-size:.9rem}
 .rel{font-size:.85rem}
 """

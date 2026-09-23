@@ -257,10 +257,15 @@
             --ink:      #1b1b22;
             --ink-soft: #34343f;
             --muted:    #6b6b78;
-            --line:     rgba(27,27,34,0.10);
+            --line:     rgba(27,27,34,.10);
             --line-2:   rgba(27,27,34,0.06);
-            --accent:   #b4530e;   /* burnt amber */
-            --accent-2: #0e7490;   /* deep teal */
+            --accent:   #a34a0c;   /* burnt amber */
+            --accent-2: #155e75;   /* deep teal */
+            /* Ink for text painted ON the accents. An accent that is dark on a
+               light page and light on a dark one cannot carry one ink: white on
+               the dark-theme amber measures 2.26:1. */
+            --on-accent:   #ffffff;
+            --on-accent-2: #ffffff;
             --gold:     #c79a3a;
             --brand-grad: linear-gradient(115deg, #b4530e 0%, #d97706 48%, #0e7490 100%);
             --shadow-sm: 0 1px 2px rgba(20,20,30,0.05);
@@ -279,6 +284,8 @@
             --line-2:   rgba(255,255,255,0.05);
             --accent:   #fb923c;
             --accent-2: #22d3ee;
+            --on-accent:   #1b1b22;
+            --on-accent-2: #1b1b22;
             --gold:     #e3c068;
             --brand-grad: linear-gradient(115deg, #fb923c 0%, #fbbf24 48%, #22d3ee 100%);
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
@@ -366,7 +373,7 @@
 
         /* Pill button */
         .btn-accent {
-            background: var(--accent); color: #fff; border-radius: 0.8rem;
+            background: var(--accent); color: var(--on-accent); border-radius: 0.8rem;
             font-weight: 600; transition: filter 0.15s, transform 0.15s;
         }
         .btn-accent:hover { filter: brightness(1.08); transform: translateY(-1px); }
@@ -391,7 +398,7 @@
             border: 1px solid var(--line);
             transition: color .15s, background .15s, transform .15s;
         }
-        .chart-dl-btn:hover { color: #fff; background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+        .chart-dl-btn:hover { color: var(--on-accent); background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
 
         /* Prominent WhatsApp share — floating action button */
         .wa-fab {
@@ -399,7 +406,7 @@
             right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
             display: inline-flex; align-items: center; gap: 8px;
             padding: 12px 18px 12px 14px; border-radius: 999px;
-            background: #25D366; color: #fff; font-weight: 700; font-size: 14px;
+            background: #075E54; color: #fff; font-weight: 700; font-size: 14px;
             box-shadow: 0 6px 20px rgba(37,211,102,.45); cursor: pointer;
             border: none; transition: transform .15s, box-shadow .15s;
         }
@@ -409,10 +416,22 @@
 
         /* Source quality flags */
         .src-key { display: inline-block; padding: 2px 8px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
-        .q-official    { background: color-mix(in srgb, #2563eb 16%, transparent); color: #2563eb; }
-        .q-constructed { background: color-mix(in srgb, #b4530e 18%, transparent); color: #b4530e; }
-        .q-derived     { background: color-mix(in srgb, #7c3aed 16%, transparent); color: #7c3aed; }
-        .q-compiled    { background: color-mix(in srgb, #0d9488 18%, transparent); color: #0d9488; }
+        .q-official    { background: color-mix(in srgb, #1d4ed8 16%, transparent); color: #1d4ed8; }
+        .q-constructed { background: color-mix(in srgb, #8a3f0a 18%, transparent); color: #8a3f0a; }
+        .q-derived     { background: color-mix(in srgb, #6d28d9 16%, transparent); color: #6d28d9; }
+        .q-compiled    { background: color-mix(in srgb, #115e59 18%, transparent); color: #115e59; }
+        /* The site footer is a dark band inside a light page. The light-theme
+           accent is ink there and measures 3.55:1 on #0f172b, so the band takes
+           the dark-theme values. A token that must be dark on light and light on
+           dark cannot be one value. */
+        footer.bg-slate-900 { --accent: #fb923c; --accent-2: #22d3ee; }
+        /* The same trap one level down: each chip is its own hue as ink on an
+           18% tint of itself, so an ink chosen for a white page lands on a
+           near-black card at ~2.1:1. The dark theme takes the light steps. */
+        .dark .q-official    { background: color-mix(in srgb, #93c5fd 18%, transparent); color: #93c5fd; }
+        .dark .q-constructed { background: color-mix(in srgb, #fdba74 18%, transparent); color: #fdba74; }
+        .dark .q-derived     { background: color-mix(in srgb, #d8b4fe 18%, transparent); color: #d8b4fe; }
+        .dark .q-compiled    { background: color-mix(in srgb, #5eead4 18%, transparent); color: #5eead4; }
 
         /* Glossary: inline tap-to-explain terms + popover */
         .term {
@@ -692,7 +711,7 @@
                 <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-4/6"></div>
             </div>
         </div>
-        <p class="mt-6 text-sm text-gray-400 dark:text-gray-600">Loading analysis...</p>
+        <p class="mt-6 text-sm text-gray-600 dark:text-gray-400">Loading analysis...</p>
     </div>
 
     <!-- Fallback for No JavaScript -->
@@ -726,7 +745,7 @@
                             </svg>
                         </button>
                         <button @click="setTheme('device')" :class="themeMode === 'device' ? 'bg-white dark:bg-gray-700 shadow-sm' : ''" class="p-1.5 sm:p-2 rounded-lg transition-all" aria-label="System theme" title="Device">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </button>
@@ -741,12 +760,12 @@
                     <div class="relative" x-data="{ langOpen: false }">
                         <button @click="langOpen = !langOpen" class="px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors inline-flex items-center gap-1 text-gray-700 dark:text-gray-300" aria-label="Translate" title="Translate">
                             <span class="text-base sm:text-lg leading-none font-semibold" lang="hi" style="font-family: 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;">अ</span>
-                            <span class="text-xs text-gray-400">/</span>
+                            <span class="text-xs text-gray-600 dark:text-gray-400">/</span>
                             <span class="text-sm sm:text-base leading-none font-semibold">A</span>
                         </button>
                         <div x-show="langOpen" @click.outside="langOpen = false" x-transition
                              class="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-50 py-1 overflow-hidden">
-                            <div class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700">Translate to</div>
+                            <div class="px-3 py-2 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700">Translate to</div>
                             <button @click="translatePage('hi'); langOpen=false" class="w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
                                 <span class="text-base"></span> हिन्दी (Hindi)
                             </button>
@@ -770,7 +789,7 @@
 
             <!-- Audience Selector -->
             <div class="mt-3 flex flex-wrap items-center gap-2">
-                <label class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Audience:</label>
+                <label class="text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">Audience:</label>
                 <div class="flex flex-wrap gap-1.5">
                     <template x-for="audience in audiences" :key="audience">
                         <button
@@ -792,7 +811,7 @@
                 <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300" x-html="roleConfig[selectedAudience].intro"></p>
                 <p class="mt-2 text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300" x-text="'Path for you: ' + roleConfig[selectedAudience].cta"></p>
                 <div class="mt-2 flex flex-wrap items-center gap-1.5">
-                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mr-1">Jump to:</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-wider text-gray-600 dark:text-gray-400 mr-1">Jump to:</span>
                     <template x-for="t in roleConfig[selectedAudience].suggested" :key="t">
                         <button @click="activeTab = t"
                                 class="px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-white dark:bg-gray-800 border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors">
@@ -818,7 +837,7 @@
                             @click="openGroup = (openGroup === group.label ? null : group.label)"
                             :class="(openGroup === group.label || isGroupActive(group)) ?
                                 'tab-btn active text-blue-600 dark:text-blue-400 font-semibold' :
-                                'tab-btn text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'"
+                                'tab-btn text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'"
                             class="px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap inline-flex items-center gap-1">
                             <span x-text="group.label"></span>
                             <svg class="w-3 h-3 transition-transform" :class="openGroup === group.label ? 'rotate-180' : ''" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -851,7 +870,7 @@
                     class="px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap inline-flex items-center gap-1.5 flex-shrink-0">
                     <span x-text="featuredTab"></span>
                     <span x-show="newTabs.includes(featuredTab)"
-                          class="px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-500 text-white">New</span>
+                          class="px-1.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-700 text-white">New</span>
                 </button>
 
                 <!-- Explainers are separate pages too, so the items are links rather than
@@ -861,7 +880,7 @@
                         @click="openGroup = (openGroup === 'Explainers' ? null : 'Explainers')"
                         :class="openGroup === 'Explainers' ?
                             'tab-btn active text-blue-600 dark:text-blue-400 font-semibold' :
-                            'tab-btn text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'"
+                            'tab-btn text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'"
                         class="px-3 sm:px-4 py-3 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap inline-flex items-center gap-1">
                         <span>Explainers</span>
                         <svg class="w-3 h-3 transition-transform" :class="openGroup === 'Explainers' ? 'rotate-180' : ''" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l5 5 5-5"/></svg>
@@ -929,7 +948,7 @@
                     <div class="flex items-start gap-4">
                         <div class="flex-shrink-0 mt-1 rounded-full w-11 h-11 flex items-center justify-center"
                              style="background:var(--accent-2);">
-                            <svg class="w-5 h-5" viewBox="0 0 16 16" fill="#fff" aria-hidden="true">
+                            <svg class="w-5 h-5" viewBox="0 0 16 16" fill="var(--on-accent-2)" aria-hidden="true">
                                 <polygon points="5,3.5 12.5,8 5,12.5"/>
                             </svg>
                         </div>
@@ -937,7 +956,7 @@
                             <div class="kicker mb-1">New here? Start with this</div>
                             <h2 class="text-lg sm:text-xl font-bold mb-1" style="color:var(--ink);">
                                 The guided walkthrough
-                                <span class="ml-1 align-middle px-1.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-white" style="background:var(--accent-2);">10 min</span>
+                                <span class="ml-1 align-middle px-1.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background:var(--accent-2);color:var(--on-accent-2);">10 min</span>
                             </h2>
                             <p class="text-sm" style="color:var(--ink-soft);">
                                 Eighteen slides from the question to the evidence to what follows, with seven charts
@@ -979,7 +998,7 @@
                         <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-900 dark:bg-slate-200 text-white dark:text-slate-900">Today's analysis</span>
                         <span class="text-xs font-semibold uppercase tracking-wider text-indigo-700 dark:text-indigo-300" x-text="todaysFeature.category"></span>
                     </div>
-                    <span class="text-xs text-gray-400 dark:text-gray-500 font-mono" x-text="new Date().toISOString().slice(0,10)"></span>
+                    <span class="text-xs text-gray-600 dark:text-gray-400 font-mono" x-text="new Date().toISOString().slice(0,10)"></span>
                 </header>
                 <!-- h2, not h3: this article's title sits directly under the page h1, and
                      skipping a level breaks the document outline. Size is set by classes,
@@ -991,7 +1010,7 @@
                     <div class="text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1">Key takeaway</div>
                     <p class="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100" x-text="todaysFeature.takeaway"></p>
                 </div>
-                <footer class="flex items-center justify-between gap-3 flex-wrap text-xs text-gray-500 dark:text-gray-400">
+                <footer class="flex items-center justify-between gap-3 flex-wrap text-xs text-gray-600 dark:text-gray-400">
                     <span class="flex items-center gap-3 flex-wrap">
                         <a @click.prevent="activeTab = todaysFeature.tab" href="#"
                            class="text-indigo-600 dark:text-indigo-400 hover:underline">
@@ -1002,7 +1021,7 @@
                     </span>
                     <div class="flex items-center gap-2">
                         <button @click="shareFinding(todaysFeature.title + ' — ' + todaysFeature.takeaway, todaysFeature.tab)"
-                            class="px-3 py-1 rounded-lg font-semibold text-white" style="background:#25D366;">Share</button>
+                            class="px-3 py-1 rounded-lg font-semibold text-white" style="background:#075E54;">Share</button>
                         <button @click="copyLink(todaysFeature.tab)"
                             class="px-3 py-1 rounded-lg font-semibold border" style="border-color:var(--line);color:var(--ink-soft);">Copy link</button>
                     </div>
@@ -1023,12 +1042,12 @@
                 <!-- Key Stats Banner -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
                     <div class="stat-card bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-red-600 dark:text-red-400">40.1%</div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-red-700 dark:text-red-400">40.1%</div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Wealth held by top 1%</div>
                         <div id="sparkWealth" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-900/30">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-orange-600 dark:text-orange-400" x-text="currentIndex('graduateUnemployment', 1) + '%'"></div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-orange-700 dark:text-orange-400" x-text="currentIndex('graduateUnemployment', 1) + '%'"></div>
                         <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Graduate unemployment</div>
                         <div id="sparkGradUnemp" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
@@ -1057,7 +1076,7 @@
                     </div>
 
                     <div class="card p-5 sm:p-6">
-                        <h3 class="text-lg font-bold mb-3 text-emerald-600 dark:text-emerald-400">What You'll Find Here</h3>
+                        <h3 class="text-lg font-bold mb-3 text-emerald-800 dark:text-emerald-400">What You'll Find Here</h3>
                         <ul class="space-y-2 text-sm">
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Interactive charts comparing 20+ economic indicators (2004-2026)</li>
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Three novel indices: SSI, FCI, DQI — quantifying what others describe qualitatively</li>
@@ -1080,23 +1099,23 @@
                         <input type="range" :min="0" :max="latestObservedIndex()" x-model="timelineIndex" @input="updateTimelineDisplay()" aria-label="Year" class="flex-1 min-w-[120px] accent-indigo-600">
                         <span class="text-xl sm:text-2xl font-extrabold text-indigo-700 dark:text-indigo-300 tabular-nums min-w-[4ch]" x-text="economicData.years[timelineIndex]"></span>
                     </div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">Showing <strong x-text="economicData.years[timelineIndex]"></strong>. Drag the slider or press play to move through the years.</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">Showing <strong x-text="economicData.years[timelineIndex]"></strong>. Drag the slider or press play to move through the years.</p>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
                         <div class="bg-white/80 dark:bg-gray-800/80 p-2 sm:p-3 rounded-xl text-center">
-                            <div class="text-xs text-gray-500 font-medium">GDP Growth</div>
-                            <div class="text-lg sm:text-xl font-bold text-blue-600" x-text="economicData.gdpGrowth[timelineIndex] + '%'"></div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 font-medium">GDP Growth</div>
+                            <div class="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400" x-text="economicData.gdpGrowth[timelineIndex] + '%'"></div>
                         </div>
                         <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
-                            <div class="text-xs text-gray-500 font-medium">Top 1% Share</div>
-                            <div class="text-xl font-bold text-red-600" x-text="economicData.top1Share[timelineIndex] + '%'"></div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 font-medium">Top 1% Share</div>
+                            <div class="text-xl font-bold text-red-700 dark:text-red-400" x-text="economicData.top1Share[timelineIndex] + '%'"></div>
                         </div>
                         <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
-                            <div class="text-xs text-gray-500 font-medium">SSI Score</div>
-                            <div class="text-xl font-bold text-orange-600" x-text="economicData.ssi[timelineIndex].toFixed(1)"></div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 font-medium">SSI Score</div>
+                            <div class="text-xl font-bold text-orange-700 dark:text-orange-400" x-text="economicData.ssi[timelineIndex].toFixed(1)"></div>
                         </div>
                         <div class="bg-white/80 dark:bg-gray-800/80 p-3 rounded-xl text-center">
-                            <div class="text-xs text-gray-500 font-medium">DQI Score</div>
-                            <div class="text-xl font-bold text-purple-600" x-text="economicData.dqi[timelineIndex].toFixed(2)"></div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 font-medium">DQI Score</div>
+                            <div class="text-xl font-bold text-purple-600 dark:text-purple-400" x-text="economicData.dqi[timelineIndex].toFixed(2)"></div>
                         </div>
                     </div>
                     <p class="text-xs mt-3" style="color:var(--muted);">The SSI reads <strong>0.0 for 2014</strong> and for the whole UPA decade before it. That is a result, not a missing value: the index counts documented suppression episodes, and none of the six it tracks had begun by 2014. It is also the most contestable number in this project, and it is argued out at length in the <a href="downloads/paper.html" class="underline" style="color:var(--accent);">paper</a>.</p>
@@ -1107,22 +1126,22 @@
                     <p class="text-sm mb-4 text-gray-600 dark:text-gray-400">Original research contributions that quantify institutional deterioration empirically:</p>
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="text-center p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
-                            <div class="text-2xl font-bold text-red-600">SSI</div>
+                            <div class="text-2xl font-bold text-red-700 dark:text-red-400">SSI</div>
                             <div class="text-sm font-semibold">Statistical Suppression Index</div>
-                            <div class="text-xs text-gray-500 mt-1" x-text="idxRange('ssi', 1)"></div>
-                            <div class="text-xs text-gray-500">Tracks suppressed surveys & delayed data</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1" x-text="idxRange('ssi', 1)"></div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Tracks suppressed surveys & delayed data</div>
                         </div>
                         <div class="text-center p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
-                            <div class="text-2xl font-bold text-orange-600">FCI</div>
+                            <div class="text-2xl font-bold text-orange-700 dark:text-orange-400">FCI</div>
                             <div class="text-sm font-semibold">Fiscal Centralization Index</div>
-                            <div class="text-xs text-gray-500 mt-1" x-text="idxRange('fci', 2)"></div>
-                            <div class="text-xs text-gray-500">Measures erosion of state fiscal autonomy</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1" x-text="idxRange('fci', 2)"></div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Measures erosion of state fiscal autonomy</div>
                         </div>
                         <div class="text-center p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
-                            <div class="text-2xl font-bold text-purple-600">DQI</div>
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">DQI</div>
                             <div class="text-sm font-semibold">Democratic Quality Index</div>
-                            <div class="text-xs text-gray-500 mt-1" x-text="idxRange('dqi', 2)"></div>
-                            <div class="text-xs text-gray-500">Composite of V-Dem, Freedom House, RSF</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1" x-text="idxRange('dqi', 2)"></div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Composite of V-Dem, Freedom House, RSF</div>
                         </div>
                     </div>
                 </div>
@@ -1310,7 +1329,7 @@
                 <div class="flex flex-wrap gap-2 mb-5">
                     <template x-for="st in statesSorted.slice(0, 6)" :key="'chip-' + st.state">
                         <button @click="selectedState = st.state; renderStateCharts()"
-                                :style="selectedState === st.state ? 'background:var(--accent);color:#fff;border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
+                                :style="selectedState === st.state ? 'background:var(--accent);color:var(--on-accent);border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
                                 class="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" x-text="st.state"></button>
                     </template>
                 </div>
@@ -1393,8 +1412,8 @@
                 <!-- Data Selector Controls -->
                 <div class="grid md:grid-cols-3 gap-4 mb-6">
                     <div>
-                        <label class="block text-sm font-medium mb-2">Primary Indicator</label>
-                        <select x-model="chartOptions.primary" 
+                        <label for="sp-chart-primary" class="block text-sm font-medium mb-2">Primary Indicator</label>
+                        <select x-model="chartOptions.primary" id="sp-chart-primary" 
                                 @change="updateInteractiveChart()"
                                 class="w-full p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                             <option value="gdpGrowth">GDP Growth Rate (%)</option>
@@ -1412,8 +1431,8 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium mb-2">Comparison 1 (Optional)</label>
-                        <select x-model="chartOptions.comparison1" 
+                        <label for="sp-chart-cmp1" class="block text-sm font-medium mb-2">Comparison 1 (Optional)</label>
+                        <select x-model="chartOptions.comparison1" id="sp-chart-cmp1" 
                                 @change="updateInteractiveChart()"
                                 class="w-full p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                             <option value="">None</option>
@@ -1432,8 +1451,8 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-medium mb-2">Comparison 2 (Optional)</label>
-                        <select x-model="chartOptions.comparison2" 
+                        <label for="sp-chart-cmp2" class="block text-sm font-medium mb-2">Comparison 2 (Optional)</label>
+                        <select x-model="chartOptions.comparison2" id="sp-chart-cmp2" 
                                 @change="updateInteractiveChart()"
                                 class="w-full p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                             <option value="">None</option>
@@ -1478,7 +1497,7 @@
                 <div id="policy-timeline" class="mt-6 pt-5" style="border-top:1px solid var(--line);scroll-margin-top:90px;">
                     <h3 class="font-bold text-lg mb-1" style="color:var(--ink);">Policy timeline, 2016–2024</h3>
                     <p class="text-xs mb-3" style="color:var(--muted);">The moments that bend the lines above. Toggle the overlay to line them up against any indicator.</p>
-                    <div class="flex gap-3 overflow-x-auto pb-2">
+                    <div class="flex gap-3 overflow-x-auto pb-2" tabindex="0" role="group" aria-label="Policy timeline, 2016 to 2024">
                         <template x-for="e in policyEvents" :key="e.year">
                             <div class="flex-none" style="width:200px;">
                                 <div class="card-inner h-full" style="border-top:3px solid var(--accent);">
@@ -1509,8 +1528,8 @@
 
                 <div class="grid md:grid-cols-2 gap-4 mb-6">
                     <div>
-                        <label class="block text-sm font-medium mb-2">X-Axis (Horizontal)</label>
-                        <select x-model="scatterX" @change="updateScatterPlot()"
+                        <label for="sp-scatter-x" class="block text-sm font-medium mb-2">X-Axis (Horizontal)</label>
+                        <select x-model="scatterX" id="sp-scatter-x" @change="updateScatterPlot()"
                                 class="w-full p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-purple-500 outline-none">
                             <option value="gdpGrowth">GDP Growth Rate (%)</option>
                             <option value="unemployment">Unemployment Rate (%)</option>
@@ -1528,8 +1547,8 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium mb-2">Y-Axis (Vertical)</label>
-                        <select x-model="scatterY" @change="updateScatterPlot()"
+                        <label for="sp-scatter-y" class="block text-sm font-medium mb-2">Y-Axis (Vertical)</label>
+                        <select x-model="scatterY" id="sp-scatter-y" @change="updateScatterPlot()"
                                 class="w-full p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-purple-500 outline-none">
                             <option value="gdpGrowth">GDP Growth Rate (%)</option>
                             <option value="unemployment" selected>Unemployment Rate (%)</option>
@@ -1555,10 +1574,10 @@
                 <!-- Correlation coefficient display -->
                 <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-4">
                     <div class="bg-white dark:bg-gray-800 px-3 sm:px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700">
-                        <span class="text-xs text-gray-500">Correlation (r):</span>
-                        <span class="text-lg font-bold ml-1" :class="Math.abs(correlationR) > 0.7 ? 'text-red-600' : Math.abs(correlationR) > 0.4 ? 'text-orange-600' : 'text-green-600'" x-text="correlationR.toFixed(3)"></span>
+                        <span class="text-xs text-gray-600 dark:text-gray-400">Correlation (r):</span>
+                        <span class="text-lg font-bold ml-1" :class="Math.abs(correlationR) > 0.7 ? 'text-red-700 dark:text-red-400' : Math.abs(correlationR) > 0.4 ? 'text-orange-700 dark:text-orange-400' : 'text-green-700 dark:text-green-400'" x-text="correlationR.toFixed(3)"></span>
                     </div>
-                    <div class="text-xs text-gray-500" x-text="Math.abs(correlationR) > 0.7 ? 'Strong correlation' : Math.abs(correlationR) > 0.4 ? 'Moderate correlation' : 'Weak correlation'"></div>
+                    <div class="text-xs text-gray-600 dark:text-gray-400" x-text="Math.abs(correlationR) > 0.7 ? 'Strong correlation' : Math.abs(correlationR) > 0.4 ? 'Moderate correlation' : 'Weak correlation'"></div>
                     <div class="flex gap-2 w-full sm:w-auto sm:ml-auto">
                         <button @click="exportChart('scatterChart', 'correlation')"
                                 class="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-xs sm:text-sm rounded-xl font-medium shadow-sm transition-all">
@@ -1974,7 +1993,7 @@
             <div id="glossary" class="card p-5 sm:p-6" style="scroll-margin-top:90px;">
                 <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Glossary</h3>
                 <p class="text-sm mb-3" style="color:var(--ink-soft);">Plain-language definitions for the terms used across the site. Dotted-underlined words elsewhere are tappable for the same pop-up.</p>
-                <input type="search" x-model="glossQuery" placeholder="Search terms…"
+                <input type="search" x-model="glossQuery" placeholder="Search terms…" aria-label="Search glossary terms"
                        class="w-full sm:w-72 mb-4 px-3 py-2 text-sm rounded-xl border"
                        style="border-color:var(--line); background:var(--surface-2); color:var(--ink);">
                 <div class="grid sm:grid-cols-2 gap-3">
@@ -2211,35 +2230,35 @@ reduces overall score</pre>
                 <!-- Delta cards (period averages, computed live) -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
                     <div class="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="text-xs text-gray-500 font-medium mb-1">Avg GDP Growth</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('gdpGrowth'),1)+'%'"></span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('gdpGrowth'),1)+'%'"></span></div>
-                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('gdpGrowth',1,'pp')"></div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1">Avg GDP Growth</div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('gdpGrowth'),1)+'%'"></span></div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('gdpGrowth'),1)+'%'"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-600 dark:text-gray-400" x-text="eraDeltaTxt('gdpGrowth',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="text-xs text-gray-500 font-medium mb-1">Avg CPI Inflation</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('cpiInflation'),1)+'%'"></span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('cpiInflation'),1)+'%'"></span></div>
-                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('cpiInflation',1,'pp')"></div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1">Avg CPI Inflation</div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('cpiInflation'),1)+'%'"></span></div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('cpiInflation'),1)+'%'"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-600 dark:text-gray-400" x-text="eraDeltaTxt('cpiInflation',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="text-xs text-gray-500 font-medium mb-1">Top 1% Share</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('top1Share'),1)+'%'"></span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('top1Share'),1)+'%'"></span></div>
-                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('top1Share',1,'pp')"></div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1">Top 1% Share</div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('top1Share'),1)+'%'"></span></div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('top1Share'),1)+'%'"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-600 dark:text-gray-400" x-text="eraDeltaTxt('top1Share',1,'pp')"></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="text-xs text-gray-500 font-medium mb-1">Press Freedom rank</div>
-                        <div class="text-sm"><span class="text-gray-500">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('pressFreedom'),0)"></span></div>
-                        <div class="text-sm"><span class="text-gray-500">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('pressFreedom'),0)"></span></div>
-                        <div class="text-xs mt-1 font-semibold text-gray-500" x-text="eraDeltaTxt('pressFreedom',0,' ranks')"></div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1">Press Freedom rank</div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">UPA:</span> <span class="font-bold" x-text="fmt(upaAverage('pressFreedom'),0)"></span></div>
+                        <div class="text-sm"><span class="text-gray-600 dark:text-gray-400">NDA:</span> <span class="font-bold" x-text="fmt(ndaAverage('pressFreedom'),0)"></span></div>
+                        <div class="text-xs mt-1 font-semibold text-gray-600 dark:text-gray-400" x-text="eraDeltaTxt('pressFreedom',0,' ranks')"></div>
                     </div>
                 </div>
 
                 <!-- Detailed era comparison chart by indicator -->
                 <div class="mb-6">
-                    <label class="block text-sm font-medium mb-2">Compare specific indicator:</label>
-                    <select x-model="eraIndicator" @change="updateEraChart()"
+                    <label for="sp-era-indicator" class="block text-sm font-medium mb-2">Compare specific indicator:</label>
+                    <select x-model="eraIndicator" id="sp-era-indicator" @change="updateEraChart()"
                             class="w-full md:w-1/3 p-2.5 border border-gray-200 dark:border-gray-600 rounded-xl dark:bg-gray-800 bg-white text-sm focus:ring-2 focus:ring-amber-500 outline-none">
                         <option value="gdpGrowth">GDP Growth Rate</option>
                         <option value="unemployment">Unemployment Rate</option>
@@ -2281,24 +2300,24 @@ reduces overall score</pre>
                 <!-- Scenario sliders -->
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
-                        <label class="block text-sm font-medium mb-2">Formal Employment Rate: <span class="text-blue-600 font-bold" x-text="scenarioInputs.formalEmp + '%'"></span></label>
-                        <input type="range" min="8" max="25" step="0.5" x-model="scenarioInputs.formalEmp" @input="updateScenario()" class="w-full accent-blue-600">
-                        <div class="flex justify-between text-xs text-gray-400"><span>8%</span><span>Current: 10.9%</span><span>25%</span></div>
+                        <label for="sp-sc-formalemp" class="block text-sm font-medium mb-2">Formal Employment Rate: <span class="text-blue-600 dark:text-blue-400 font-bold" x-text="scenarioInputs.formalEmp + '%'"></span></label>
+                        <input type="range" min="8" max="25" step="0.5" x-model="scenarioInputs.formalEmp" id="sp-sc-formalemp" @input="updateScenario()" class="w-full accent-blue-600">
+                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400"><span>8%</span><span>Current: 10.9%</span><span>25%</span></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
-                        <label class="block text-sm font-medium mb-2">Press Freedom Rank: <span class="text-purple-600 font-bold" x-text="scenarioInputs.pressFreedom + 'th'"></span></label>
-                        <input type="range" min="30" max="180" step="1" x-model="scenarioInputs.pressFreedom" @input="updateScenario()" class="w-full accent-purple-600">
-                        <div class="flex justify-between text-xs text-gray-400"><span>30 (free)</span><span x-text="'Current: ' + economicData.pressFreedom[latestObservedIndex()]"></span><span>180 (worst)</span></div>
+                        <label for="sp-sc-pressfreedom" class="block text-sm font-medium mb-2">Press Freedom Rank: <span class="text-purple-600 dark:text-purple-400 font-bold" x-text="scenarioInputs.pressFreedom + 'th'"></span></label>
+                        <input type="range" min="30" max="180" step="1" x-model="scenarioInputs.pressFreedom" id="sp-sc-pressfreedom" @input="updateScenario()" class="w-full accent-purple-600">
+                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400"><span>30 (free)</span><span x-text="'Current: ' + economicData.pressFreedom[latestObservedIndex()]"></span><span>180 (worst)</span></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
-                        <label class="block text-sm font-medium mb-2">Cess/Surcharge Share: <span class="text-orange-600 font-bold" x-text="scenarioInputs.cessShare + '%'"></span></label>
-                        <input type="range" min="5" max="30" step="0.5" x-model="scenarioInputs.cessShare" @input="updateScenario()" class="w-full accent-orange-600">
-                        <div class="flex justify-between text-xs text-gray-400"><span>5%</span><span>Current: 20.5%</span><span>30%</span></div>
+                        <label for="sp-sc-cessshare" class="block text-sm font-medium mb-2">Cess/Surcharge Share: <span class="text-orange-700 dark:text-orange-400 font-bold" x-text="scenarioInputs.cessShare + '%'"></span></label>
+                        <input type="range" min="5" max="30" step="0.5" x-model="scenarioInputs.cessShare" id="sp-sc-cessshare" @input="updateScenario()" class="w-full accent-orange-600">
+                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400"><span>5%</span><span>Current: 20.5%</span><span>30%</span></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
-                        <label class="block text-sm font-medium mb-2">Statistical Reports Released: <span class="text-red-600 font-bold" x-text="scenarioInputs.statsReleased + '%'"></span></label>
-                        <input type="range" min="20" max="100" step="5" x-model="scenarioInputs.statsReleased" @input="updateScenario()" class="w-full accent-red-600">
-                        <div class="flex justify-between text-xs text-gray-400"><span>20%</span><span>Current: ~40%</span><span>100%</span></div>
+                        <label for="sp-sc-statsreleased" class="block text-sm font-medium mb-2">Statistical Reports Released: <span class="text-red-700 dark:text-red-400 font-bold" x-text="scenarioInputs.statsReleased + '%'"></span></label>
+                        <input type="range" min="20" max="100" step="5" x-model="scenarioInputs.statsReleased" id="sp-sc-statsreleased" @input="updateScenario()" class="w-full accent-red-600">
+                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400"><span>20%</span><span>Current: ~40%</span><span>100%</span></div>
                     </div>
                 </div>
 
@@ -2306,18 +2325,18 @@ reduces overall score</pre>
                 <div class="grid md:grid-cols-3 gap-4 mb-6">
                     <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.ssi < 5 ? 'border-green-400' : scenarioOutputs.ssi < 7 ? 'border-orange-400' : 'border-red-400'">
                         <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected SSI</div>
-                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.ssi < 5 ? 'text-green-600' : scenarioOutputs.ssi < 7 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.ssi.toFixed(1)"></div>
-                        <div class="text-xs text-gray-500 mt-1" x-text="'Current: ' + currentIndex('ssi', 1)"></div>
+                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.ssi < 5 ? 'text-green-700 dark:text-green-400' : scenarioOutputs.ssi < 7 ? 'text-orange-700 dark:text-orange-400' : 'text-red-700 dark:text-red-400'" x-text="scenarioOutputs.ssi.toFixed(1)"></div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1" x-text="'Current: ' + currentIndex('ssi', 1)"></div>
                     </div>
                     <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.fci < 0.65 ? 'border-green-400' : scenarioOutputs.fci < 0.75 ? 'border-orange-400' : 'border-red-400'">
                         <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected FCI</div>
-                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.fci < 0.65 ? 'text-green-600' : scenarioOutputs.fci < 0.75 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.fci.toFixed(2)"></div>
-                        <div class="text-xs text-gray-500 mt-1" x-text="'Current: ' + currentIndex('fci', 2)"></div>
+                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.fci < 0.65 ? 'text-green-700 dark:text-green-400' : scenarioOutputs.fci < 0.75 ? 'text-orange-700 dark:text-orange-400' : 'text-red-700 dark:text-red-400'" x-text="scenarioOutputs.fci.toFixed(2)"></div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1" x-text="'Current: ' + currentIndex('fci', 2)"></div>
                     </div>
                     <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl text-center border-2" :class="scenarioOutputs.dqi > 0.6 ? 'border-green-400' : scenarioOutputs.dqi > 0.45 ? 'border-orange-400' : 'border-red-400'">
                         <div class="text-sm font-medium text-gray-600 dark:text-gray-400">Projected DQI</div>
-                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.dqi > 0.6 ? 'text-green-600' : scenarioOutputs.dqi > 0.45 ? 'text-orange-600' : 'text-red-600'" x-text="scenarioOutputs.dqi.toFixed(2)"></div>
-                        <div class="text-xs text-gray-500 mt-1" x-text="'Current: ' + currentIndex('dqi', 2)"></div>
+                        <div class="text-3xl font-bold mt-1" :class="scenarioOutputs.dqi > 0.6 ? 'text-green-700 dark:text-green-400' : scenarioOutputs.dqi > 0.45 ? 'text-orange-700 dark:text-orange-400' : 'text-red-700 dark:text-red-400'" x-text="scenarioOutputs.dqi.toFixed(2)"></div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1" x-text="'Current: ' + currentIndex('dqi', 2)"></div>
                     </div>
                 </div>
 
@@ -2350,7 +2369,7 @@ reduces overall score</pre>
                 <div class="flex flex-wrap gap-2 mb-3">
                     <template x-for="m in [{k:'perCapita',l:'Per-capita income'},{k:'perMP',l:'People per MP'},{k:'tfr',l:'Fertility rate'},{k:'seats',l:'Lok Sabha seats'}]" :key="m.k">
                         <button @click="setStatesMetric(m.k)"
-                            :style="statesMetric===m.k ? 'background:var(--accent);color:#fff;border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
+                            :style="statesMetric===m.k ? 'background:var(--accent);color:var(--on-accent);border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
                             class="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all" x-text="m.l"></button>
                     </template>
                 </div>
@@ -2367,14 +2386,14 @@ reduces overall score</pre>
 
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-white">Deep Analysis</h2>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Computed from <code class="text-xs">data.json</code>. Every value here is observed (2014–2026); scenario projections live in the Economic Trajectory tab.</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">Computed from <code class="text-xs">data.json</code>. Every value here is observed (2014–2026); scenario projections live in the Economic Trajectory tab.</p>
 
                 <!-- A. UPA vs NDA computed scorecard -->
                 <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">UPA vs NDA: Computed Scorecard</h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Averages over each regime period from <code class="text-xs">data.json</code>. UPA averages reflect 2004-2014 published estimates; NDA averages are computed live from the loaded series.</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Averages over each regime period from <code class="text-xs">data.json</code>. UPA averages reflect 2004-2014 published estimates; NDA averages are computed live from the loaded series.</p>
                 <div class="overflow-x-auto mb-8">
                     <table class="w-full text-sm">
-                        <thead class="text-xs uppercase text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                        <thead class="text-xs uppercase text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
                             <tr>
                                 <th class="text-left py-2">Indicator</th>
                                 <th class="text-right py-2">UPA (2004-14)</th>
@@ -2388,18 +2407,18 @@ reduces overall score</pre>
 
                 <!-- B. Decoupling chart -->
                 <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">The Decoupling: Growth Without Jobs</h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Cumulative real GDP growth since 2014 (left axis) plotted against formal employment share (right axis). If growth and jobs moved together, the lines would track. They don't.</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Cumulative real GDP growth since 2014 (left axis) plotted against formal employment share (right axis). If growth and jobs moved together, the lines would track. They don't.</p>
                 <div class="card-inner mb-2">
                     <div id="deepDecouplingChart" class="chart-container"></div>
                 </div>
-                <p class="text-xs text-gray-500 dark:text-gray-400 italic mb-8">Cumulative GDP series compounds annual growth from a 2014 base of 100. Formal employment is the share of workers with social security cover (PLFS).</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 italic mb-8">Cumulative GDP series compounds annual growth from a 2014 base of 100. Formal employment is the share of workers with social security cover (PLFS).</p>
 
                 <!-- C. International league table -->
                 <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">Peer Trajectories (2014 → 2026)</h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">India alongside four other backsliding-or-recovering democracies. Click a header to sort.</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">India alongside four other backsliding-or-recovering democracies. Click a header to sort.</p>
                 <div class="overflow-x-auto mb-8">
                     <table class="w-full text-sm">
-                        <thead class="text-xs uppercase text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
+                        <thead class="text-xs uppercase text-gray-600 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
                             <tr>
                                 <th class="text-left py-2">Country</th>
                                 <th class="text-right py-2">V-Dem 2014</th>
@@ -2416,12 +2435,12 @@ reduces overall score</pre>
 
                 <!-- D. Year-over-year delta strip -->
                 <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">What Moved in the Latest Year</h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Change between the previous and latest <em>observed</em> years for each headline indicator.</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Change between the previous and latest <em>observed</em> years for each headline indicator.</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" x-html="renderYoYDeltas()"></div>
 
                 <!-- E. Supplementary Data Series (from data/*.csv) -->
                 <h3 class="text-lg sm:text-xl font-bold mt-10 mb-1 text-gray-900 dark:text-white">Supplementary Data Series</h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Five additional indicator series from <code>data/*.csv</code> (2004-2025). Shaded bands show the estimation confidence interval (lo/hi). Click <strong>Export CSV</strong> on any chart to download its raw data.</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">Five additional indicator series from <code>data/*.csv</code> (2004-2025). Shaded bands show the estimation confidence interval (lo/hi). Click <strong>Export CSV</strong> on any chart to download its raw data.</p>
 
                 <!-- Communal Incidents -->
                 <div class="card-inner mb-6">
@@ -2469,7 +2488,7 @@ reduces overall score</pre>
                 </div>
 
                 <!-- Source note -->
-                <details class="mt-8 text-xs text-gray-500 dark:text-gray-400">
+                <details class="mt-8 text-xs text-gray-600 dark:text-gray-400">
                     <summary class="cursor-pointer font-semibold">Sources for all values</summary>
                     <ul class="mt-2 space-y-1 ml-4 list-disc">
                         <li>GDP growth: MOSPI <em>First Advance Estimates of National Income 2025-26</em> (2011-12 base).</li>
@@ -2537,22 +2556,22 @@ reduces overall score</pre>
                     <a href="downloads/research-package.html" class="block p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
                         <div class="text-2xl mb-2"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Article.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"></div>
                         <div class="text-sm font-semibold">Research Package</div>
-                        <div class="text-xs text-gray-500 mt-1">Full paper, data & code</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Full paper, data & code</div>
                     </a>
                     <a href="downloads/technical-appendix.html" class="block p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
                         <div class="text-2xl mb-2"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Settings.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"></div>
                         <div class="text-sm font-semibold">Technical Appendix</div>
-                        <div class="text-xs text-gray-500 mt-1">Index formulas & methodology</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Index formulas & methodology</div>
                     </a>
                     <a href="walkthrough/" class="block p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
                         <div class="text-2xl mb-2"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"></div>
                         <div class="text-sm font-semibold">Guided Walkthrough</div>
-                        <div class="text-xs text-gray-500 mt-1">18 slides, live charts</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">18 slides, live charts</div>
                     </a>
                     <a href="downloads/paper.html" class="block p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md hover:-translate-y-0.5 transition-all text-center">
                         <div class="text-2xl mb-2"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"></div>
                         <div class="text-sm font-semibold">Research Paper</div>
-                        <div class="text-xs text-gray-500 mt-1">Full working paper &amp; PDF</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Full working paper &amp; PDF</div>
                     </a>
                 </div>
 
@@ -2615,7 +2634,7 @@ reduces overall score</pre>
                     <div class="flex flex-wrap gap-2 mb-2">
                         <template x-for="sc in scenarioList" :key="sc.key">
                             <button @click="setTrajScenario(sc.key)"
-                                :style="trajScenario === sc.key ? 'background:var(--accent);color:#fff;border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
+                                :style="trajScenario === sc.key ? 'background:var(--accent);color:var(--on-accent);border-color:var(--accent);' : 'border-color:var(--line);color:var(--ink-soft);'"
                                 class="px-4 py-2 rounded-xl text-sm font-semibold border transition-all" x-text="sc.label"></button>
                         </template>
                     </div>
@@ -2663,7 +2682,7 @@ reduces overall score</pre>
                 <div class="flex flex-wrap gap-1.5 mb-3">
                     <template x-for="sp in forecastSpec.indicators" :key="sp.key">
                         <button @click="setTrajIndicator(sp.key)"
-                            :style="trajIndicator === sp.key ? 'background:var(--accent);color:#fff;' : 'background:var(--surface-2);color:var(--ink-soft);'"
+                            :style="trajIndicator === sp.key ? 'background:var(--accent);color:var(--on-accent);' : 'background:var(--surface-2);color:var(--ink-soft);'"
                             class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all" x-text="sp.label"></button>
                     </template>
                 </div>
@@ -2727,7 +2746,7 @@ reduces overall score</pre>
                 <div class="flex flex-wrap gap-1.5 mt-5">
                     <template x-for="s in primerSections" :key="s.id">
                         <button @click="selectPrimerSection(s.id)"
-                            :style="primerSection===s.id ? 'background:var(--accent);color:#fff;' : 'background:var(--surface-2);color:var(--ink-soft);'"
+                            :style="primerSection===s.id ? 'background:var(--accent);color:var(--on-accent);' : 'background:var(--surface-2);color:var(--ink-soft);'"
                             class="px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all">
                             <span class="font-mono font-bold" x-text="s.id"></span> · <span x-text="s.label"></span>
                         </button>
@@ -3185,7 +3204,7 @@ reduces overall score</pre>
                     <ol class="space-y-2">
                         <template x-for="(q, i) in primer.readChecklist.questions" :key="q">
                             <li class="flex gap-3 items-start">
-                                <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:var(--accent);" x-text="i+1"></span>
+                                <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background:var(--accent);color:var(--on-accent);" x-text="i+1"></span>
                                 <span class="text-sm" style="color:var(--ink-soft);" x-text="q"></span>
                             </li>
                         </template>
@@ -3226,28 +3245,28 @@ reduces overall score</pre>
                     <h3 class="font-bold text-white mb-3 text-sm uppercase tracking-wider">Resources</h3>
                     <nav aria-label="Footer resources">
                         <ul class="text-xs sm:text-sm space-y-2">
-                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-500 pt-1">Start here</li>
+                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-400 pt-1">Start here</li>
                             <li><a href="walkthrough/" class="text-blue-400 hover:text-blue-300 transition-colors">Guided walkthrough</a></li>
                             <li><a href="analysis/" class="text-blue-400 hover:text-blue-300 transition-colors">Analysis library</a></li>
                             <li><a href="downloads/citizen-guide.html" class="text-blue-400 hover:text-blue-300 transition-colors">Citizen guide</a></li>
 
-                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-500 pt-3">The research</li>
+                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-400 pt-3">The research</li>
                             <li><a href="downloads/paper.html" class="text-blue-400 hover:text-blue-300 transition-colors">Research paper</a>
-                                <a href="downloads/paper.pdf" class="text-gray-500 hover:text-gray-300 transition-colors ml-1">(PDF)</a></li>
+                                <a href="downloads/paper.pdf" class="text-gray-400 hover:text-gray-300 transition-colors ml-1">(PDF)</a></li>
                             <li><a href="downloads/methodology.html" class="text-blue-400 hover:text-blue-300 transition-colors">Methodology</a></li>
                             <li><a href="inflation/" class="text-blue-400 hover:text-blue-300 transition-colors">Why inflation looks better</a></li>
                             <li><a href="care/" class="text-blue-400 hover:text-blue-300 transition-colors">What GDP does not count</a></li>
                             <li><a href="downloads/technical-appendix.html" class="text-blue-400 hover:text-blue-300 transition-colors">Technical appendix</a></li>
 
-                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-500 pt-3">Summaries</li>
+                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-400 pt-3">Summaries</li>
                             <li><a href="downloads/executive-summary.html" class="text-blue-400 hover:text-blue-300 transition-colors">Executive summary</a></li>
                             <li><a href="downloads/policy-brief.html" class="text-blue-400 hover:text-blue-300 transition-colors">Policy brief</a></li>
                             <li><a href="downloads/media-kit.html" class="text-blue-400 hover:text-blue-300 transition-colors">Media kit</a></li>
 
-                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-500 pt-3">Data &amp; changes</li>
+                            <li class="text-[10px] font-bold uppercase tracking-wider text-gray-400 pt-3">Data &amp; changes</li>
                             <li><a href="downloads/research-package.html" class="text-blue-400 hover:text-blue-300 transition-colors">All downloads &amp; data</a></li>
                             <li><a href="updates.html" class="text-blue-400 hover:text-blue-300 transition-colors">Updates &amp; corrections</a>
-                                <a href="feed.xml" class="text-gray-500 hover:text-gray-300 transition-colors ml-1">(RSS)</a></li>
+                                <a href="feed.xml" class="text-gray-400 hover:text-gray-300 transition-colors ml-1">(RSS)</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -3264,7 +3283,7 @@ reduces overall score</pre>
                     <p class="text-xs sm:text-sm mb-2 text-gray-400">
                         Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="underline hover:text-white">CC BY 4.0</a>.
                     </p>
-                    <p class="text-xs text-gray-500">
+                    <p class="text-xs text-gray-400">
                         <strong class="text-gray-400">Cite as:</strong><br>
                         Raman, V.S. (2026). <em>Some Perspective: India’s Political Economy, 2004–2026.</em>
                         someperspective.info
@@ -3275,9 +3294,9 @@ reduces overall score</pre>
             <div class="text-center text-xs mt-8 pt-6 border-t border-slate-800">
                 <!-- End year is written by Alpine so it cannot go stale on 1 January;
                      the static 2026 is the fallback if Alpine never initialises. -->
-                <p class="text-gray-500">&copy; 2025&ndash;<span x-text="new Date().getFullYear()">2026</span>
+                <p class="text-gray-400">&copy; 2025&ndash;<span x-text="new Date().getFullYear()">2026</span>
                     Some Perspective | Dr. Varna Sri Raman | Data through <span x-text="dataUpdatedLong">August 2026</span></p>
-                <p class="mt-1.5 text-gray-600">Self-funded research for democratic accountability. Interests declared. All data openly available for verification and reuse.</p>
+                <p class="mt-1.5 text-gray-400">Self-funded research for democratic accountability. Interests declared. All data openly available for verification and reuse.</p>
             </div>
         </div>
     </footer>
@@ -3624,7 +3643,7 @@ reduces overall score</pre>
                 { year: 2021, short: 'Census', label: 'Census postponed', desc: 'The decennial Census was indefinitely postponed; every population figure since is an interpolation.' },
                 { year: 2024, short: 'Election', label: '2024 general election', desc: 'NDA returned to power with a reduced majority, now reliant on coalition partners.' }
             ],
-            trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-500' },
+            trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-600' },
             primer: PRIMER_FALLBACK,
             sourcesData: {},
             dataMeta: {},
@@ -4017,11 +4036,18 @@ reduces overall score</pre>
                 if (this.charts[id]) { this.charts[id].dispose(); }
                 const theme = this.darkMode ? 'dark' : null;
                 const chart = echarts.init(dom, theme);
-                if (!dom.getAttribute('role')) dom.setAttribute('role', 'img');
+                if (!dom.getAttribute('role')) dom.setAttribute('role', 'figure');
                 const origSetOption = chart.setOption.bind(chart);
                 chart.setOption = (opt, ...rest) => {
                     if (opt && typeof opt === 'object' && !opt.aria) opt.aria = { enabled: true };
-                    return origSetOption(opt, ...rest);
+                    const out = origSetOption(opt, ...rest);
+                    // ECharts writes role="img" on the root when aria is enabled, and
+                    // separately gives its canvas a tabindex for keyboard navigation.
+                    // role="img" means "one image, contents not exposed", so the pair
+                    // hides a control a keyboard user can still reach. The generated
+                    // aria-label is worth keeping; the role is the error.
+                    if (dom.getAttribute('role') === 'img') dom.setAttribute('role', 'figure');
+                    return out;
                 };
                 this.charts[id] = chart;
                 if (group) echarts.connect(group);
@@ -5089,10 +5115,10 @@ reduces overall score</pre>
                     const nda = this.ndaAverage(r.key);
                     const change = (nda !== null && upa !== null) ? (nda - upa) : null;
                     const improved = (change !== null) && ((r.betterLow && change < 0) || (!r.betterLow && change > 0));
-                    const colour = (change === null || Math.abs(change) < 0.01) ? 'text-gray-500' :
-                                   improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
+                    const colour = (change === null || Math.abs(change) < 0.01) ? 'text-gray-600' :
+                                   improved ? 'text-emerald-800 dark:text-emerald-400' : 'text-red-700 dark:text-red-400';
                     const sign = (change > 0) ? '+' : '';
-                    const upaStr = (upa === null) ? '<span class="text-gray-400">n/a</span>' : this.fmt(upa, r.dp) + r.suffix;
+                    const upaStr = (upa === null) ? '<span class="text-gray-600 dark:text-gray-400">n/a</span>' : this.fmt(upa, r.dp) + r.suffix;
                     const changeStr = (change === null) ? '—' : sign + this.fmt(change, r.dp) + r.suffix;
                     html += `<tr class="border-b border-gray-100 dark:border-gray-800">
                         <td class="py-2 text-gray-700 dark:text-gray-300">${r.label}</td>
@@ -5101,7 +5127,7 @@ reduces overall score</pre>
                         <td class="py-2 text-right tabular-nums font-semibold ${colour}">${changeStr}</td>
                     </tr>`;
                 }
-                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-500 dark:text-gray-400">Period averages from the same data the charts use. CPI inflation is the one measure that was <em>worse</em> under UPA (UPA-2 ran double digits) — shown honestly, not hidden. Unemployment and formal employment have no comparable UPA-era series (n/a); SSI/FCI/DQI before 2014 are the author's back-cast.</td></tr>`;
+                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-600 dark:text-gray-400">Period averages from the same data the charts use. CPI inflation is the one measure that was <em>worse</em> under UPA (UPA-2 ran double digits) — shown honestly, not hidden. Unemployment and formal employment have no comparable UPA-era series (n/a); SSI/FCI/DQI before 2014 are the author's back-cast.</td></tr>`;
                 return html;
             },
             renderInternationalTable() {
@@ -5111,9 +5137,9 @@ reduces overall score</pre>
                 for (let i = 0; i < d.countries.length; i++) {
                     const dV = d.vdem2026[i] - d.vdem2014[i];
                     const dP = d.press2026[i] - d.press2014[i];
-                    const vColour = dV > 0 ? 'text-emerald-600 dark:text-emerald-400' : (dV < 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-500');
+                    const vColour = dV > 0 ? 'text-emerald-800 dark:text-emerald-400' : (dV < 0 ? 'text-red-700 dark:text-red-400' : 'text-gray-600');
                     // RSF: lower is better, so a positive delta is worse.
-                    const pColour = dP < 0 ? 'text-emerald-600 dark:text-emerald-400' : (dP > 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-500');
+                    const pColour = dP < 0 ? 'text-emerald-800 dark:text-emerald-400' : (dP > 0 ? 'text-red-700 dark:text-red-400' : 'text-gray-600');
                     const isIndia = d.countries[i] === 'India';
                     html += `<tr class="border-b border-gray-100 dark:border-gray-800${isIndia ? ' bg-amber-50/40 dark:bg-amber-900/10' : ''}">
                         <td class="py-2 ${isIndia ? 'font-bold' : 'text-gray-700 dark:text-gray-300'}">${d.countries[i]}</td>
@@ -5150,13 +5176,13 @@ reduces overall score</pre>
                     const cur = arr[i], prev = arr[i - 1];
                     const delta = cur - prev;
                     const improved = (betterLow && delta < 0) || (!betterLow && delta > 0);
-                    const colour = Math.abs(delta) < 1e-9 ? 'text-gray-500' :
-                                   improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
+                    const colour = Math.abs(delta) < 1e-9 ? 'text-gray-600' :
+                                   improved ? 'text-emerald-800 dark:text-emerald-400' : 'text-red-700 dark:text-red-400';
                     const sign = delta > 0 ? '+' : '';
                     html += `<div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3">
-                        <div class="text-xs text-gray-500 dark:text-gray-400">${label}</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">${label}</div>
                         <div class="text-base font-bold tabular-nums text-gray-900 dark:text-gray-100">${this.fmt(cur, dp)}${suffix}</div>
-                        <div class="text-xs tabular-nums ${colour}">${sign}${this.fmt(delta, dp)}${suffix} <span class="text-gray-400">(${yPrev}→${yLatest})</span></div>
+                        <div class="text-xs tabular-nums ${colour}">${sign}${this.fmt(delta, dp)}${suffix} <span class="text-gray-600 dark:text-gray-400">(${yPrev}→${yLatest})</span></div>
                     </div>`;
                 }
                 return html;
@@ -5507,8 +5533,8 @@ reduces overall score</pre>
                 this.trajOut.index2026 = i26;
                 this.trajOut.index2030 = i30;
                 const diff = i30 - i26;
-                if (diff >= 4) { this.trajOut.verdict = 'Improving'; this.trajOut.verdictClass = 'text-emerald-600 dark:text-emerald-400'; }
-                else if (diff <= -4) { this.trajOut.verdict = 'Declining'; this.trajOut.verdictClass = 'text-red-600 dark:text-red-400'; }
+                if (diff >= 4) { this.trajOut.verdict = 'Improving'; this.trajOut.verdictClass = 'text-emerald-800 dark:text-emerald-400'; }
+                else if (diff <= -4) { this.trajOut.verdict = 'Declining'; this.trajOut.verdictClass = 'text-red-700 dark:text-red-400'; }
                 else { this.trajOut.verdict = 'Flat'; this.trajOut.verdictClass = 'text-amber-600 dark:text-amber-400'; }
                 this.createTrajGauge();
                 this.createTrajFanChart();
@@ -5526,10 +5552,10 @@ reduces overall score</pre>
                     const delta = p - cur;
                     const improved = (spec.goodHigh && delta > 0) || (!spec.goodHigh && delta < 0);
                     const flat = Math.abs(delta) < Math.pow(10, -dp) / 2;
-                    const colour = flat ? 'text-gray-500' : improved ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400';
+                    const colour = flat ? 'text-gray-600' : improved ? 'text-emerald-800 dark:text-emerald-400' : 'text-red-700 dark:text-red-400';
                     const arrow = flat ? '→' : (delta > 0 ? '▲' : '▼');
                     html += `<tr class="border-b border-gray-100 dark:border-gray-800">
-                        <td class="py-2 text-gray-700 dark:text-gray-300">${spec.label}${spec.unit ? ' <span class="text-gray-400">('+spec.unit+')</span>' : ''}</td>
+                        <td class="py-2 text-gray-700 dark:text-gray-300">${spec.label}${spec.unit ? ' <span class="text-gray-600 dark:text-gray-400">('+spec.unit+')</span>' : ''}</td>
                         <td class="py-2 text-right tabular-nums">${cur.toFixed(dp)}</td>
                         <td class="py-2 text-right tabular-nums font-semibold">${p.toFixed(dp)}</td>
                         <td class="py-2 text-right tabular-nums font-semibold ${colour}">${arrow} ${(delta>0?'+':'')}${delta.toFixed(dp)}</td>

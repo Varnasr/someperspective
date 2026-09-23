@@ -18,11 +18,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f4f1ea;--surface:#fff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
---muted:#6b6b78;--line:rgba(27,27,34,.12);--accent:#b4530e;--accent-2:#0e7490;--bad:#ef4444}
+:root{--paper:#f4f1ea;--surface:#ffffff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
+--muted:#6b6b78;--line:rgba(27,27,34,.10);--accent:#a34a0c;--on-accent:#ffffff;--accent-2:#155e75;--bad:#ef4444}
 @media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--surface:#161922;--surface-2:#1c2029;
 --ink:#edeff5;--ink-soft:#d3d7e0;--muted:#99a0b1;--line:rgba(255,255,255,.12);
---accent:#fb923c;--accent-2:#22d3ee}}
+--accent:#fb923c;--on-accent:#1b1b22;--accent-2:#22d3ee}}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
@@ -70,7 +70,7 @@ border-top:1px solid var(--line)}
 background:var(--surface);color:var(--ink);font-weight:700;font-size:.88rem;cursor:pointer;
 display:inline-flex;align-items:center;gap:.35rem}
 .btn:disabled{opacity:.35;cursor:default}
-.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .dots{display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;flex:1 1 auto;max-width:60%}
 .dot{width:9px;height:9px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0}
 .dot[aria-current="true"]{background:var(--accent);transform:scale(1.35)}
@@ -384,7 +384,11 @@ border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
     if (s.kicker) h += '<span class="kicker">' + esc(s.kicker) + '</span>';
     h += '<h1>' + esc(resolve(s.title)) + '</h1>';
     if (s.body) h += '<p class="body">' + esc(resolve(s.body)) + '</p>';
-    if (s.chart) h += '<div class="chart" data-chart="' + esc(s.chart) + '" id="c-' + (i + 1) + '" role="img"></div>';
+    // role="img" with no name is announced as nothing at all. `chartAlt` in
+    // walkthrough.json describes what the chart shows; the title is the claim,
+    // not the picture, so it is only the fallback.
+    if (s.chart) h += '<div class="chart" data-chart="' + esc(s.chart) + '" id="c-' + (i + 1) +
+      '" role="img" aria-label="' + esc(s.chartAlt || resolve(s.title)) + '"></div>';
     if (s.points && s.points.length) {
       h += '<ul class="pts">';
       s.points.forEach(function (p) { h += '<li>' + esc(resolve(p)) + '</li>'; });
