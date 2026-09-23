@@ -186,10 +186,10 @@ def render(md):
 
 
 CSS = """
-:root{--paper:#fff;--ink:#1b1b22;--ink-soft:#34343f;--muted:#6b6b78;--line:rgba(27,27,34,.12);
---accent:#b4530e;--accent-2:#0e7490;--surface-2:#faf7f1}
+:root{--paper:#fff;--ink:#1b1b22;--ink-soft:#34343f;--muted:#6b6b78;--line:rgba(27,27,34,.10);
+--accent:#a34a0c;--on-accent:#ffffff;--accent-2:#155e75;--surface-2:#faf7f1}
 @media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--ink:#edeff5;--ink-soft:#d3d7e0;
---muted:#99a0b1;--line:rgba(255,255,255,.12);--accent:#fb923c;--accent-2:#22d3ee;--surface-2:#161922}}
+--muted:#99a0b1;--line:rgba(255,255,255,.12);--accent:#fb923c;--on-accent:#1b1b22;--accent-2:#22d3ee;--surface-2:#161922}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);
 line-height:1.62;font-size:17px;padding:2.5rem 1.25rem 5rem}
