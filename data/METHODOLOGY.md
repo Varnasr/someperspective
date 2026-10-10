@@ -3,7 +3,7 @@
 This note documents the supplementary CSV series in the `data/` folder and the three indices
 built for this project. The CSV series hold published figures only. A year with no published
 figure is left empty or left out, and no series is extended by a trend or filled by a fitted curve.
-The three indices combine published series with coded severities, and section 2.6 says which
+The three indices combine published series with coded severities, and section 2 says which
 inputs are coded.
 
 ---
@@ -82,7 +82,7 @@ report totals over a period.
 
 ---
 
-## 2.6 The three constructed indices (SSI, FCI, DQI)
+## 2. The three constructed indices (SSI, FCI, DQI)
 
 All three indices constructed for this project are computed by a single deterministic
 script, `data/compute_indices.py`, applied identically to both eras (2004-2026), so the
@@ -112,7 +112,10 @@ back-series and the permanent NSO merger. It is 4.65 in 2026. The census is scor
 the rubric's level for a delay, because houselisting runs from April to September 2026 and
 population enumeration is notified for February 2027 (Ministry of Home Affairs); it was 1.0 for
 2020-2025, while the census stood postponed with no date. The NSO merger and the shelved GDP
-back-series still count at full weight. NDA-era mean 4.79.
+back-series still count at full weight. The employment stream starts with the withholding of the
+PLFS 2017-18 report (December 2018 to 31 May 2019), the consumption stream with the scrapping of
+the 2017-18 survey in November 2019, and the GDP stream scores 0.7 for 2015-2017 (the disputed new
+series) and 1.0 from 2018 (the back-series shelved). NDA-era mean 4.79.
 
 ### Fiscal Centralisation Index (FCI), scale 0-1 (relative)
 The mean of the components published for each year. C1-C4 are min-max normalised over the
@@ -152,8 +155,6 @@ The Freedom House and RSF columns were checked against the publishers on 10 Octo
 Freedom House scores for the UPA years had been 78-79 against published scores of 76-77, and 2024-2025
 had carried 66 against published scores of 63 and 62; the RSF rank for 2012 had carried 140, the 2013
 rank, where RSF's 2011-12 index gives 131. Both V-Dem columns match V-Dem's March 2026 release.
-
----
 
 ---
 
