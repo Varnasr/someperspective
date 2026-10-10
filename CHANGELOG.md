@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.52.0] - 2026-10-10
+
+### Fixed
+- Full fact check: nine read-only verification passes (index.html in two halves, data.json primer blocks, paper in two halves, features and walkthrough, explainers and docs, downloads, data series), then file-partitioned fixes.
+- `gdpGrowth`: fiscal-year-starting convention, latest MoSPI estimates, 2022-23 base from 2023; `eraHistory` 2005-2006 from the current World Bank series. `cpiInflation`: calendar years; 2025 2.2. `unemployment` 2014, 2016 empty. Basis-break marker for GDP at 2023.
+- SSI employment and consumption streams dated to the events; NDA mean 4.79.
+- `international.press2014/press2026` corrected to RSF files.
+- `data/society_communal_incidents.csv` rebuilt (MHA 2004-2017); `data/sanitation_odf_verified.csv` rebuilt (published figures); incarceration and exam CSVs deleted with their charts.
+- data.json primer blocks, index.html, paper, features, walkthrough, explainers, README, METHODOLOGY, data dictionary and all hand-written downloads corrected to sources.
+
 ## [2.51.0] - 2026-10-10
 
 ### Fixed

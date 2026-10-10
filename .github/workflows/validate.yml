@@ -90,11 +90,12 @@ jobs:
           "
 
       - name: Check for stale date references
-        # Reject any "<Month> 2025" string in index.html or downloads/.
-        # 2025 is the last calendar year before the current data cutoff;
-        # any 2025-month string is a leftover from an earlier release.
+        # Reject a data-vintage label such as "data through <Month> 2025" or
+        # "updated <Month> 2025" in index.html or downloads/: those are leftovers
+        # from an earlier release. A dated event ("raised in April 2025", "the
+        # press release of 25 February 2025") is a fact, not a vintage, and passes.
         run: |
-          ! grep -rE '\b(January|February|March|April|May|June|July|August|September|October|November|December) 2025\b' \
+          ! grep -rEi '(through|as of|updated|last updated|data to|current to) (January|February|March|April|May|June|July|August|September|October|November|December) 2025\b' \
               index.html downloads/ --include='*.html' || {
             echo "ERROR: Stale <Month> 2025 references found (see hits above)"
             exit 1

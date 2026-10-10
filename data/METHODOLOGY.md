@@ -1,54 +1,58 @@
-# Methodology and Data Construction: India 2004-2026
+# Methodology and data construction: India 2004-2026
 
-This note documents how every dataset in the `/Data` folder was compiled, verified, and estimated.  
-All numbers are derived from official or peer-reviewed sources, and no placeholders or arbitrary adjustments are used.
+This note documents the supplementary CSV series in the `data/` folder and the three indices
+built for this project. The CSV series hold published figures only. A year with no published
+figure is left empty or left out, and no series is extended by a trend or filled by a fitted curve.
+The three indices combine published series with coded severities, and section 2 says which
+inputs are coded.
 
 ---
 
 ## Overview
 
-Each CSV in this dataset includes the following columns:
+Each supplementary CSV has the following columns, which the site's charts read:
 
 | Column | Description |
 |---------|-------------|
-| `year` | Calendar year (2004-2026) |
-| `raw_value` | Official anchor or directly sourced number |
-| `estimate` | Value produced through transparent mechanical estimation |
-| `lo`, `hi` | ±5% bounds (or exact for integer counts) |
-| `method` | Description of the computation rule |
-| `notes` | Comments such as “anchor” or method-specific remarks |
+| `year` | Calendar year, or the fiscal year starting in April where the notes say so |
+| `raw_value` | The published figure |
+| `estimate` | The figure the chart plots. In every current file it equals `raw_value` |
+| `lo`, `hi` | A published interval where one exists. Empty in every current file |
+| `method` | The kind of source |
+| `notes` | The publisher, document and date behind the figure |
 
-Political regimes for shading and comparison are defined in `_regime_periods.csv` as:  
-**UPA I (2004-09), UPA II (2009-14), Modi I (2014-19), Modi II (2019-24), Modi III (2024-present)**.
-
----
-
-## 1. Real-data series
-
-| Domain | Series | Primary Sources | Method |
-|---------|---------|----------------|--------|
-| **Health (Finance)** | Out-of-Pocket Expenditure (OOPE) share of Total Health Expenditure | National Health Accounts (MoHFW, PIB) 2014-15 → 2021-22 | Linear interpolation between official anchors |
-| **Health (Outcomes)** | Full Immunization (children 12-23 months) | NFHS-3, 4, 5 (2005-06 → 2019-21) | Linear interpolation between survey mid-years |
-| **Environment (Forests)** | Forest cover (sq km) | ISFR reports 2011-2023 | Linear interpolation between biennial reports |
-| **Environment (Air)** | PM₂.₅ population-weighted exposure (µg/m³) | World Bank/GBD 2004-2020; IQAir 2023-2024 | Linear interpolation within sources; methods flagged in `note` column |
-| **Water** | Rural households with tap water (%) | NSS 2008, MDWS 2012, JJM Dashboard 2019-2025 | Linear interpolation between JJM/PIB anchors |
-| **State Finances** | Debt-to-GSDP (%) | RBI *State Finances* (2021, 2023) | Linear interpolation between anchor years |
-| **Energy** | Coal share in electricity generation (%) | CEA/IEA 2014, 2018, 2022, 2023 | Piecewise linear interpolation between anchors |
+Political regimes for shading and comparison are defined in `_regime_periods.csv` as
+UPA I (2004-09), UPA II (2009-14), Modi I (2014-19), Modi II (2019-24) and Modi III (2024-present).
 
 ---
 
-## 2. Estimated series (with documented models)
+## 1. The supplementary CSV series
 
-### 2.1 Sanitation (ODF verified, %)
-*Anchors:* 2014 ≈ 40%, 2019 ≈ 95%, 2024 ≈ 98.5% (Swachh Bharat Mission reports).  
-*Model:* Logistic S-curve  
-\[
-\hat{y}(t) = \frac{L}{1 + e^{-k(t - t_0)}}
-\]
-Parameters: L = 99.0, k = 0.8, t₀ = 2018.0.  
-The curve captures a slow start, rapid growth in the middle years, and saturation near 100%.
+### 1.1 Sanitation (`sanitation_odf_verified.csv`, rural household toilet coverage, %)
+Rebuilt on 10 October 2026 from published figures. The earlier file was a logistic curve with
+parameters L = 99, k = 0.8 and t0 = 2018, which did not pass through its own anchors (it gave 3.9%
+for 2014 and 49.5% for 2018), so the file overwrote the anchor years and jumped from 49.5% in 2018
+to 95% in 2019. Its anchors of 95% (2019) and 98.5% (2024) had no source. The file now holds
+five published figures and leaves every other year empty.
 
-### 2.2 State finances (cesses and surcharges, % of gross tax revenue)
+| Year | Value | Source |
+|---|---|---|
+| 2011 | 30.7 | Census of India 2011, rural households with a latrine within the premises |
+| 2014 | 38.7 | Swachh Bharat Mission (Gramin) MIS at launch on 2 October 2014, as given in a Lok Sabha reply of 13 December 2018 |
+| 2017 | 74.34 | SBM(G) MIS as on 22 December 2017, Lok Sabha reply of the Minister of Drinking Water and Sanitation |
+| 2018 | 97 | Lok Sabha reply of 13 December 2018, which says coverage "has crossed 97%" |
+| 2019 | 100 | SBM(G) MIS, all villages declared open defecation free (PIB factsheet of 31 July 2022) |
+
+The MIS figures are administrative counts of toilets built. The Census figure uses a different
+definition. Parliamentary replies made before 2018 put coverage at the launch at 42.01% on an
+earlier baseline, which was later revised to 38.7%, so their figures for 2015, 2016 and early 2017
+are left out.
+The independent NSS 76th round (July to December 2018) found 71.3% of rural households with access
+to a latrine, well below the MIS figure for the same months. The file name is kept for the
+site's code. The series is rural toilet coverage, and no published series measures verified
+open-defecation-free status by year.
+
+### 1.2 State finances (cesses and surcharges, % of gross tax revenue)
 This series is no longer estimated. Since 10 October 2026 it holds the published figures:
 2011-12 to 2018-19 from the 15th Finance Commission report, Vol I Table 3.8 (with the GST
 compensation cess included from 2017-18), and 2019-20 to 2026-27 summed from every cess and
@@ -59,23 +63,27 @@ budget estimate. No figure is published on this definition before 2011-12, so 20
 The earlier version of this file interpolated between nine anchors running from 8.0% (2004) to
 29.0% (2024), which matched no published series.
 
-### 2.3 Education (exam leaks and cancellations, count)
-*Anchors:* 2008:1, 2013:2, 2016:3, 2018:4, 2020:6, 2022:8, 2024:10, 2025:12.  
-*Model:* Rounded piecewise-linear counts of discrete integer events.  
-Counts are not interpolated as fractional rates.
+### 1.3 Society (`society_communal_incidents.csv`, communal incidents, count)
+Rebuilt on 10 October 2026 from the Ministry of Home Affairs' own counts for 2004 to 2017:
+677, 779, 698, 761, 943, 849, 701, 580, 668, 823, 644, 751, 703 and 822 incidents. They come
+from an MHA reply to an RTI application, reported by PTI and published by The Wire on 3 January
+2019, and the 2008-2017 figures sum to the 7,484 incidents IndiaSpend reported from MHA Lok Sabha
+replies for that decade. The notes column carries the deaths and injuries for each year. MHA has
+published no count after 2017, so the file ends there. The earlier version carried anchors
+that did not match MHA (764 for 2014, 723 for 2017) and extended the series after 2017 by an
+assumed 25 incidents a year.
 
-### 2.4 Society (communal incidents, count)
-*Anchors:* MHA official values 2004-2017 (e.g., 2004:640; 2017:723).  
-*Model:* Linear interpolation up to 2017, then +25 incidents per year.  
-Uncertainty is ±5%.
-
-### 2.5 Politics (opposition-leader incarcerations, count)
-*Anchors:* 2004:0; 2014:1; 2019:3; 2020:4; 2022:7; 2023:9; 2024:10; 2025:11.  
-*Model:* Rounded piecewise-linear annual counts (not cumulative).
+### 1.4 Series removed on 10 October 2026
+`education_exam_events.csv` (exam leaks and cancellations) and
+`politics_opposition_incarceration.csv` (opposition leaders jailed) were deleted. Both were
+interpolated between unnamed milestone counts. No published source gives either count year by
+year. The Ministry of Education told Parliament in 2024 that it does not maintain data on paper
+leaks, and the press compilations that exist (Newslaundry, July 2024, 89 cases over ten years)
+report totals over a period.
 
 ---
 
-## 2.6 The three constructed indices (SSI, FCI, DQI)
+## 2. The three constructed indices (SSI, FCI, DQI)
 
 All three indices constructed for this project are computed by a single deterministic
 script, `data/compute_indices.py`, applied identically to both eras (2004-2026), so the
@@ -105,7 +113,10 @@ back-series and the permanent NSO merger. It is 4.65 in 2026. The census is scor
 the rubric's level for a delay, because houselisting runs from April to September 2026 and
 population enumeration is notified for February 2027 (Ministry of Home Affairs); it was 1.0 for
 2020-2025, while the census stood postponed with no date. The NSO merger and the shelved GDP
-back-series still count at full weight. NDA-era mean 4.95.
+back-series still count at full weight. The employment stream starts with the withholding of the
+PLFS 2017-18 report (December 2018 to 31 May 2019), the consumption stream with the scrapping of
+the 2017-18 survey in November 2019, and the GDP stream scores 0.7 for 2015-2017 (the disputed new
+series) and 1.0 from 2018 (the back-series shelved). NDA-era mean 4.79.
 
 ### Fiscal Centralisation Index (FCI), scale 0-1 (relative)
 The mean of the components published for each year. C1-C4 are min-max normalised over the
@@ -140,7 +151,7 @@ separates the eras (India was mediocre throughout), while civil-society space co
 0.669 in 2014 to 0.302 in 2026. A headline democracy score flattens that dimension. DQI falls from a
 UPA-era average of 0.57 (peak 0.61, in 2005 and 2006) to 0.28 in 2026 (0.49 → 0.28 within the NDA
 period, a fall of 42.9%; NDA-era mean 0.37),
-with the steepest drop after 2019, the year V-Dem reclassified India as an electoral autocracy.
+with the steepest drop after 2019. V-Dem first classified India as an electoral autocracy in its March 2021 Democracy Report.
 The Freedom House and RSF columns were checked against the publishers on 10 October 2026. The
 Freedom House scores for the UPA years had been 78-79 against published scores of 76-77, and 2024-2025
 had carried 66 against published scores of 63 and 62; the RSF rank for 2012 had carried 140, the 2013
@@ -148,51 +159,33 @@ rank, where RSF's 2011-12 index gives 131. Both V-Dem columns match V-Dem's Marc
 
 ---
 
-## 3. Estimation principles
+## 3. Principles
 
-1. **Anchors supersede models.** No extrapolation or fitting beyond verified anchor range.  
-2. **Transparency.** All rules and parameters appear within each CSV.  
-3. **Consistency.** Deterministic and replicable; identical inputs yield identical results.  
-4. **Neutrality.** Estimation describes continuity and makes no evaluation.  
-5. **Auditability.** Every dataset can be regenerated from this note.
-
----
-
-## 4. Uncertainty representation
-
-- Continuous variables: ±5% bounds (`lo`, `hi` columns).  
-- Fiscal ratios: ±3% bounds.  
-- Discrete counts (exam events, incarcerations): `lo = hi = estimate`.  
-- These allow shaded uncertainty envelopes in plots.
+1. **Published figures only.** A CSV holds what a named publisher printed, and nothing is fitted or extrapolated.
+2. **Gaps stay gaps.** A year with no published figure is empty, or the file stops at the last published year.
+3. **Sources in the file.** Every row's notes name the publisher, document and date.
+4. **One definition per series.** Where a source changes definition, the notes say so.
 
 ---
 
-## 5. File structure
+## 4. File structure
 
 ```
-/Data
-├── environment_forest_cover.csv
-├── environment_pm25.csv
-├── water_tap_coverage.csv
-├── health_oop_share.csv
-├── health_immunization.csv
-├── state_finances_debt_gsdp.csv
-├── energy_coal_share.csv
+data/
 ├── sanitation_odf_verified.csv
 ├── state_finances_cess_share.csv
-├── education_exam_events.csv
-├── education_student_suicides.csv
 ├── society_communal_incidents.csv
-├── politics_opposition_incarceration.csv
-└── _regime_periods.csv
+├── _regime_periods.csv
+├── compute_indices.py
+└── SP_masterdataset.csv   (generated by tools/build_master.py)
 ```
 
 ---
 
-## 6. Citation
+## 5. Citation
 
-> Data compiled by the author (2026) from Government of India sources (NFHS, NHA, ISFR, IQAir, RBI, PRS, JJM, MHA, CEA and others) using transparent interpolation and estimation rules (see *Methodology and Data Construction: India 2004-2026*).
+> Data compiled by the author (2026) from Government of India sources (Census of India, Swachh Bharat Mission (Gramin) MIS, Ministry of Home Affairs, Union Receipt Budgets, Finance Commission reports, RBI) and from V-Dem, Freedom House and RSF. Sources for each figure are named in the files.
 
 ---
 
-*Generated automatically; last refreshed May 2026.*
+*Last revised 10 October 2026.*

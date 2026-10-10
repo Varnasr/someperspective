@@ -332,15 +332,17 @@ border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
     international: function (el) {
       var c = echarts.init(el, dark() ? 'dark' : null);
       var i = get('international') || {};
+      // data.json keeps the key vdem2026, but V-Dem v16 ends in 2025 and the
+      // dataset carries that observation forward, so the label says 2025.
       c.setOption(Object.assign(base(), {
         tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-        legend: legend(['V-Dem 2014', 'V-Dem 2026']),
+        legend: legend(['V-Dem 2014', 'V-Dem 2025']),
         xAxis: { type: 'category', data: i.countries || [], axisLabel: { fontSize: 10 } },
         yAxis: { type: 'value', max: 1, name: 'Liberal democracy' },
         series: [
           { name: 'V-Dem 2014', type: 'bar', data: i.vdem2014,
             itemStyle: { color: TEAL, borderRadius: [4, 4, 0, 0] } },
-          { name: 'V-Dem 2026', type: 'bar', data: i.vdem2026,
+          { name: 'V-Dem 2025', type: 'bar', data: i.vdem2026,
             itemStyle: { color: RED, borderRadius: [4, 4, 0, 0] } }
         ]
       }), true);

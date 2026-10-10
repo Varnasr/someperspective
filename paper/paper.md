@@ -2,17 +2,17 @@
 title: "Growth Without Accountability: Measuring India's Institutional and Distributional Transformation, 2004–2026"
 author: "Varna Sri Raman"
 affiliation: "Independent researcher"
-date: "2026-08-15"
-version: "1.0"
+date: "2026-10-10"
+version: "1.2"
 license: "CC BY 4.0"
-data_vintage: "2026-08-15"
+data_vintage: "2026-10-10"
 repository: "https://github.com/Varnasr/someperspective"
 site: "https://someperspective.info"
 ---
 
 # Abstract
 
-India's economy grew at an average of 6.1 per cent a year between 2014 and 2026. Over the same period the share of national income going to the top 1 per cent reached 22.6 per cent in 2022-23, its highest level since 1922, the share of workers holding regular jobs with any social-security cover fell from 11.5 per cent in 2017-18, the first year the Periodic Labour Force Survey measures it, to 10.1 per cent in 2023-24, and every available third-party measure of democratic quality deteriorated. This paper asks whether these facts are separable, that is, whether India experienced a familiar and possibly tolerable trade of political openness for material progress, and concludes that it did not.
+India's economy grew at an average of 6.2 per cent a year over the fiscal years 2014–15 to 2025–26, against 6.8 per cent over 2004–05 to 2013–14. Over the same period the share of national income going to the top 1 per cent reached 22.6 per cent in 2022-23, its highest level since 1922, the share of workers holding regular jobs with any social-security cover fell from 11.5 per cent in 2017-18, the first year the Periodic Labour Force Survey measures it, to 10.1 per cent in 2023-24, and every available third-party measure of democratic quality deteriorated. This paper asks whether these facts are separable, that is, whether India experienced a familiar and possibly tolerable trade of political openness for material progress, and concludes that it did not.
 
 The difficulty in answering the question is that the instruments needed to answer it have themselves degraded. A decennial census was postponed in 2020 with no new date, and enumeration is now notified for February 2027; a national consumption survey was conducted and then withheld; the national accounts were rebased in a manner that remains disputed and has never been independently reviewed; and the statistical system's institutional independence was reduced by merger and resignation. Any assessment of Indian economic performance after 2014 must therefore treat measurement capacity as an endogenous variable, one that moved during the period under study.
 
@@ -22,7 +22,7 @@ All three are computed by a single deterministic script applied identically to 2
 
 SSI moves from 0.00 across the entire UPA decade to a peak of 9.00 in 2021–22 and is 4.65 in 2026, when the census, now on a notified schedule, counts as a delay. DQI falls from a UPA average of 0.57 to 0.28 in 2026. FCI rises from a UPA average of 0.30 to an NDA average of 0.43 and peaks at 0.87 in 2020, but this result is weaker than the other two. On the four measured fiscal ratios alone the eras are close (0.49 under UPA, 0.45 under NDA), and the NDA's higher score comes from the two coded components, GST and the 2020 borrowing conditions. On eight of nine directly comparable cross-era measures India performs worse in the later period. The single exception is consumer price inflation, which is substantially lower. We argue at length that this should not be read as a policy result. The comparison straddles the collapse of a global commodity cycle, and insofar as domestic policy contributed, it did so through a rule that constrains executive discretion.
 
-We then subject the governance finding to external validation it did not generate. Grier and Grier (2026), working independently with a different method (synthetic control with randomisation inference), different data (V-Dem and the Penn World Table), and a different pre-treatment window (1984–2013), find that all ten V-Dem governance indicators they test deteriorate against a synthetic counterfactual at a joint p-value of 0.00. Their electoral-democracy gap of −60.2 per cent sits in the same territory as the −46.7 per cent raw decline in India's V-Dem Liberal Democracy Index recorded in our own data, despite the two quantities not being the same object. Convergence of this kind, across independent methods, is stronger evidence than either study provides alone.
+We then subject the governance finding to external validation it did not generate. Grier and Grier (2026), working independently with a different method (synthetic control with randomisation inference), partly different data (V-Dem, which our DQI also uses, and the Penn World Table), and a different pre-treatment window (1984–2013), find that all ten V-Dem governance indicators they test deteriorate against a synthetic counterfactual at a joint p-value of 0.00. Their liberal-democracy gap of −69.1 per cent sits in the same territory as the −46.7 per cent raw decline in India's V-Dem Liberal Democracy Index recorded in our own data, despite the two quantities not being the same object. Convergence of this kind, across independent methods, is stronger evidence than either study provides alone.
 
 We are explicit about what this paper does not establish. The DQI is built entirely from published third-party series and inherits their assumptions. The SSI severities are author-coded against a documented rubric and are the most contestable component here. The FCI is relative by construction and its values are not interpretable outside the 2004–2026 sample. None of the three indices identifies a causal effect. We do not claim that Indian incomes would have been higher under different governance, and we note where a companion study does make that claim on evidence we have not independently verified.
 
@@ -36,7 +36,7 @@ We are explicit about what this paper does not establish. The DQI is built entir
 
 ## 1.1 The question
 
-Between 2014 and 2026 India became the world's most populous country, the fourth-largest economy at market exchange rates, and, on the assessment of Varieties of Democracy, Freedom House, and Reporters Without Borders alike, substantially less democratic. Each of these facts is well documented on its own. The relationship between them is contested.
+Between 2014 and 2026 India became the world's most populous country, the sixth-largest economy at market exchange rates in the IMF's World Economic Outlook of April 2026, and, on the assessment of Varieties of Democracy, Freedom House, and Reporters Without Borders alike, substantially less democratic. Each of these facts is well documented on its own. The relationship between them is contested.
 
 One reading treats the two developments as a bargain of a familiar kind: a state that concentrates authority can act decisively, and the material returns compensate for the political costs. This argument has a long lineage in development economics and a specific Indian articulation in the case made for a strong executive capable of overriding the veto points that were held to have slowed Indian growth for decades. On this reading, the erosion of institutional constraint is a price, and the question is only whether the price was worth paying.
 
@@ -52,7 +52,7 @@ The measurement apparatus deteriorated during the period under study, through a 
 
 - The decennial census due in 2021 was postponed in 2020 with no new date. Houselisting began in April 2026 and population enumeration is notified for February 2027, so welfare allocation, seat apportionment, and every population-denominated statistic have run on 2011 figures for fifteen years.
 - The 2017–18 Consumer Expenditure Survey was completed and then withheld from publication after leaked findings indicated the first fall in real rural consumption in four decades. No comparable survey was published until HCES 2022–23, which changed methodology sufficiently that it does not cleanly splice onto the earlier series.
-- The 2015 revision of the national accounts shifted the base year from 2004–05 to 2011–12 and, more consequentially, changed the measurement of manufacturing output from a production survey to the MCA21 corporate-filings database. The revision lowered measured UPA-era growth and raised measured NDA-era growth. Subramanian (2019) estimated that growth over 2011–17 was overstated by roughly 2.5 percentage points annually; the Economic Advisory Council to the Prime Minister issued a rebuttal; no independent review was ever conducted.
+- The 2015 revision of the national accounts shifted the base year from 2004–05 to 2011–12 and, more consequentially, changed the measurement of manufacturing output from a production survey to the MCA21 corporate-filings database. The new series raised measured growth for the years it covered, so that growth in 2013–14 went from 4.7 to 6.9 per cent. The back-series for the UPA years, released by the Central Statistics Office with NITI Aayog in November 2018, lowered measured UPA-era growth. Subramanian (2019) estimated that growth over 2011–17 was overstated by roughly 2.5 percentage points annually; the Economic Advisory Council to the Prime Minister issued a rebuttal; no independent review was ever conducted.
 - The Periodic Labour Force Survey's 2017–18 results were withheld, prompting the resignation of two members of the National Statistical Commission, and the National Sample Survey Office was subsequently merged into the National Statistical Office, reducing its institutional separation from the ministry whose performance its data measures.
 - Official COVID-19 mortality was recorded at approximately 0.5 million, against excess-mortality estimates in the range of 3–5 million from multiple independent teams.
 
@@ -180,8 +180,8 @@ We distinguish four provenance classes, and label every series accordingly, beca
 
 | Series | Source |
 |---|---|
-| GDP growth | MoSPI national accounts and Economic Survey 2025–26 (2011–12 base) for 2014–2025; MoSPI Provisional Estimates 2025–26 (2022–23 base) for 2026 |
-| Unemployment | PLFS Annual Reports, usual status, for 2014–2025; average of the PLFS Monthly Bulletins for January to August 2026, current weekly status, for 2026 |
+| GDP growth | Year Y is the fiscal year starting in April of Y. MoSPI national accounts, latest estimates on the 2011–12 base for 2014–15 to 2022–23 and the new series on base 2022–23 (released 27 February 2026) for 2023–24 to 2025–26, the last being the Provisional Estimate; no annual estimate for 2026–27 yet. World Bank series on the same convention for 2004–2013 |
+| Unemployment | Labour Bureau, Fifth Employment-Unemployment Survey (2015–16), usual principal status, for 2015, a different survey from PLFS; no figure for 2014 or 2016; PLFS Annual Reports, usual status, for 2017–2025; average of the PLFS Monthly Bulletins for January to August 2026, current weekly status, for 2026 |
 | Youth unemployment | MoSPI PLFS, usual status, ages 15–29 (2017–2025) |
 | Graduate unemployment | MoSPI PLFS, usual status, graduates aged 15 and over (2017-18 to 2023-24) |
 | Top 1% income share | World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Statistical Appendix, per-adult pre-tax national income shares (2004–2022; no published figure for 2023–2026) |
@@ -189,8 +189,8 @@ We distinguish four provenance classes, and label every series accordingly, beca
 | Formal employment | MoSPI PLFS published tables, usual status: regular wage/salaried share of all workers times the share of those employees with any social security (2017-18 to 2023-24) |
 | Press freedom rank | Reporters Without Borders, World Press Freedom Index |
 | Fiscal deficit | Union Budget documents, central government, % of GDP |
-| CPI inflation | MoSPI CPI (Combined); 2026 is the average of the January to August 2026 prints on base 2024=100 |
-| Rupee / USD | RBI reference rates, annual average |
+| CPI inflation | Calendar-year averages. World Bank series for 2004–2013; MoSPI CPI (Combined), base 2012=100, for 2014–2025; 2026 is the average of the January to August 2026 prints on base 2024=100 |
+| Rupee / USD | Federal Reserve H.10 release, calendar-year average of monthly averages |
 
 **Derived.** Computed from an official series by an explicit rule. An example is the informal employment share, which is 100 minus the formal employment share by construction.
 
@@ -210,7 +210,7 @@ This is a defensible and overdue revision: food's share of household expenditure
 
 Our 2026 inflation figure (3.8 per cent, the average of the eight monthly prints from January to August 2026) is therefore not on the same basis as the 2014–2025 values, and we flag it as such in the dataset. Readers comparing 2026 inflation to earlier years should treat the comparison as approximate. This is the class of methodological change that the SSI is designed to make visible: legitimate in itself, consequential for comparison, and easy to miss.
 
-Two other series change basis in 2026. Unemployment for 2014 to 2025 is the usual-status rate of the PLFS annual reports, while the 2026 value is the average of the 2026 monthly bulletins, which report current weekly status and run well above usual status. On that weekly measure the 2025 calendar-year rate was 5.3 per cent, against the 2026 average of 5.2 per cent. From 2017 each year in the unemployment series is the PLFS survey year that starts in July of it, through 2023, and 2024 and 2025 are MoSPI's calendar-year rates. GDP growth for 2014 to 2025 is on the 2011–12 national accounts base, while the 2026 value (7.8 per cent for 2025–26) is MoSPI's Provisional Estimate on the new 2022–23 base, which covers 2023–24 onward only. The last estimate for 2025–26 on the old base was the First Advance Estimate of 7.4 per cent. Both breaks are flagged in the dataset and marked on the site's charts, and the cross-era comparisons in Section 6.9 are not changed by either, because one year moves a thirteen-year mean by a few hundredths.
+Two other series change basis. Unemployment for 2017 to 2025 is the usual-status rate of the PLFS annual reports, and the 2015 value is from the Labour Bureau's 2015–16 survey, which is a different survey; the 2026 value is the average of the 2026 monthly bulletins, which report current weekly status and run well above usual status. On that weekly measure the 2025 calendar-year rate was 5.3 per cent, against the 2026 average of 5.2 per cent. From 2017 each year in the unemployment series is the PLFS survey year that starts in July of it, through 2023, and 2024 and 2025 are MoSPI's calendar-year rates. GDP growth for 2014–15 to 2022–23 is on the 2011–12 national accounts base, and 2023–24 to 2025–26 are on the new 2022–23 base released on 27 February 2026, which covers 2023–24 onward only (7.3, 7.2 and 7.8 per cent, the last MoSPI's Provisional Estimate for 2025–26). On the old base 2023–24 had been 9.2 per cent and 2024–25 6.5 per cent, which would raise the later-period mean by about a tenth of a point. No annual estimate for 2026–27 exists yet, so the growth series ends in 2025–26. Both breaks are flagged in the dataset and marked on the site's charts, and neither changes the direction of any comparison in Section 6.9.
 
 ## 4.4 The pre-2014 reconstruction
 
@@ -297,7 +297,7 @@ Because the SSI is the least conventional construction here, and because its cre
 
 The consequences are not confined to demography. The census supplies the population denominator for essentially every per-capita and coverage statistic the state publishes, so welfare coverage ratios computed on 2011 denominators overstate reach by the extent of subsequent population growth. Estimates of the number of people excluded from subsidised food entitlements on this basis alone run to the tens of millions.
 
-There is also a political consequence, discussed further in Section 10.3: Lok Sabha seat apportionment has been frozen on 1971 population data since 1976, and the freeze expires with the first census conducted after 2026. Postponing the census postpones a reallocation of parliamentary seats that projections suggest would transfer roughly eleven seats to Uttar Pradesh and ten to Bihar while removing approximately eight each from Tamil Nadu and Kerala. Average constituency size has risen from about 0.7 million people per member in 1951 to about 2.5 million today. A delayed census therefore also defers a redistribution of political representation.
+There is also a political consequence, discussed further in Section 10.3: Lok Sabha seat apportionment has been frozen on 1971 population data since 1976, and the freeze expires with the first census conducted after 2026. Postponing the census postpones a reallocation of parliamentary seats that projections suggest would transfer roughly eleven seats to Uttar Pradesh and ten to Bihar while removing approximately eight each from Tamil Nadu and Kerala. Average constituency size has risen from about 0.7 million people per member in 1951 to about 2.7 million today. A delayed census therefore also defers a redistribution of political representation.
 
 Severity is coded at full weight from 2020 to 2025, while the census stood postponed with no date. In 2026 it is coded at 0.3, the rubric's level for a delay, because the exercise is under way on a notified schedule. Until 10 October 2026 the 2026 value was also coded at full weight, which held the 2026 SSI at 6.40; under the rubric it is 4.65.
 
@@ -305,21 +305,21 @@ Severity is coded at full weight from 2020 to 2025, while the census stood postp
 
 Severity is coded at full weight for 2021–22 and decays thereafter, since the acute measurement episode passed while the unreconciled record persists.
 
-**Consumption survey suppression (weight 1.5).** The 2017–18 Consumer Expenditure Survey was completed by the National Sample Survey Office. Following leaked findings indicating a fall in real rural consumption (which would have been the first such fall in over four decades), the survey was withheld from publication, with quality concerns cited. No comparable survey appeared until HCES 2022–23, producing an eleven-year gap in the primary instrument for measuring living standards and poverty. The 2022–23 survey employed a revised methodology that does not cleanly splice onto the earlier series, so the gap is not fully closed even retrospectively.
+**Consumption survey suppression (weight 1.5).** The 2017–18 Consumer Expenditure Survey was completed by the National Sample Survey Office. Following leaked findings indicating a fall in real rural consumption (which would have been the first such fall in over four decades), the survey was withheld from publication, with quality concerns cited. No comparable survey appeared until HCES 2022–23, producing an eleven-year gap in the primary instrument for measuring living standards and poverty. The 2022–23 survey employed a revised methodology that does not cleanly splice onto the earlier series, so the gap is not fully closed even retrospectively. The Ministry announced in November 2019 that it would not release the results. The stream is coded at full severity from 2019, the year of that decision, to 2023, and decays after HCES 2022–23 was published in February 2024.
 
 This is the clearest instance of the asymmetry described in Section 2.2: a survey was suppressed after its findings became known, and the findings were unfavourable.
 
-**GDP back-series dispute (weight 1.5).** The 2015 revision shifted the national accounts base year from 2004–05 to 2011–12, moved manufacturing measurement from the Annual Survey of Industries production basis to the MCA21 corporate-filings database, and valued output at market prices rather than factor cost. The resulting back-series lowered measured UPA-era growth and raised measured NDA-era growth.
+**GDP back-series dispute (weight 1.5).** The 2015 revision shifted the national accounts base year from 2004–05 to 2011–12, moved manufacturing measurement from the Annual Survey of Industries production basis to the MCA21 corporate-filings database, and valued output at basic prices in place of factor cost. The new series raised measured growth for the years it covered (2013–14 went from 4.7 to 6.9 per cent). A back-series for the earlier years prepared by a committee of the National Statistical Commission, released in August 2018, showed higher UPA-era growth and was set aside; the back-series released by the Central Statistics Office with NITI Aayog in November 2018 lowered measured UPA-era growth.
 
-Subramanian (2019) estimated that growth over 2011–17 was overstated by approximately 2.5 percentage points annually, attributing the discrepancy principally to the MCA21 shift and the treatment of dormant firms. The Economic Advisory Council to the Prime Minister issued a detailed rebuttal. The dispute was never referred to an independent review, and remains unresolved.
+Subramanian (2019) estimated that growth over 2011–17 was overstated by approximately 2.5 percentage points annually, attributing the discrepancy principally to the change in how manufacturing is measured, including the shift to MCA21 data. The Economic Advisory Council to the Prime Minister issued a detailed rebuttal. The dispute was never referred to an independent review, and remains unresolved.
 
-The stream is coded at the "live methodology dispute" level, below full suppression, since the revision was published and documented; what is absent is independent adjudication.
+The stream is coded at the live-methodology-dispute level (0.7) for 2015 to 2017, since the revision was published and documented, and at full severity from 2018, when the back-series question was settled by setting the committee's series aside with no independent review.
 
 **Institutional independence (weight 1.5).** In January 2019 two members of the National Statistical Commission resigned, citing the government's failure to release the PLFS 2017–18 results and the sidelining of the Commission in the GDP back-series decision. The National Sample Survey Office was subsequently merged into the National Statistical Office, reducing the organisational separation between the body collecting the data and the ministry whose performance the data evaluates.
 
 Unlike the other streams, this one does not decay: an organisational merger is a structural change that persists until reversed, and it has not been reversed. This is the principal reason the SSI does not return toward zero after 2022.
 
-**Employment data delay (weight 1.0).** The PLFS 2017–18 results, which showed unemployment at a 45-year high, were withheld from publication and released only after the 2019 general election. The stream is coded at delay severity, with a residual scar thereafter.
+**Employment data delay (weight 1.0).** The PLFS 2017–18 results, which showed unemployment at a 45-year high, were due in December 2018 and were withheld until 31 May 2019, after the general election. The stream is coded at 0.3 in 2018, when the report fell due and was held back, at full severity in 2019, and at 0.3 in 2020 as a scar.
 
 ### 5.2.2 What the weights encode
 
@@ -370,21 +370,21 @@ We note the risk in this choice: including the component that moves most is a de
 
 ## 6.1 Growth
 
-Real GDP growth averaged 7.08 per cent across 2004–2013 and 6.11 per cent across 2014–2026. The later period contains the pandemic contraction of −7.3 per cent in 2020, which accounts for a substantial part of the gap; excluding 2020, the later-period average is materially higher, though still not above the earlier one.
+Real GDP growth averaged 6.82 per cent across the fiscal years 2004–05 to 2013–14 and 6.23 per cent across 2014–15 to 2025–26; no annual estimate for 2026–27 exists yet. The later period contains the pandemic contraction of −5.8 per cent in 2020–21, and that one year accounts for more than the whole gap. Excluding it, the later-period average is 7.32 per cent, above the earlier one. Excluding the earlier period's own crisis year, 2008–09, raises the UPA average to 7.23 per cent, so on that comparison the later period is higher by about a tenth of a point.
 
-The more important observation is that the growth figures for the two periods are not straightforwardly comparable, for the reason set out in Section 2: the 2015 rebasing altered the measurement of manufacturing output in a manner that lowered measured UPA-era growth and raised measured NDA-era growth, and the resulting back-series was never independently reviewed. Subramanian's (2019) estimate of a 2.5-percentage-point overstatement for 2011–17, if accepted, would place NDA-era growth materially below the UPA average. We do not adopt that correction, since it is contested and the EAC-PM rebuttal is on record. We also decline to present the two periods' growth rates as a clean comparison, because they are not one.
+The more important observation is that the growth figures for the two periods are not straightforwardly comparable, for the reason set out in Section 2: the 2015 rebasing altered the measurement of manufacturing output and raised measured growth for the years it covered, the back-series released in November 2018 lowered measured UPA-era growth, and neither was independently reviewed. The 2026 rebasing moved two recent years by 1.9 and 0.7 points. Subramanian's (2019) estimate of a 2.5-percentage-point overstatement covers 2011–12 to 2016–17, which takes in the last three UPA years and the first three NDA years alike, so applying it would lower both averages and would not by itself settle the comparison. We do not adopt that correction, since it is contested and the EAC-PM rebuttal is on record. We also decline to present the two periods' growth rates as a clean comparison, because they are not one.
 
-What can be said without relying on the disputed revision is that the later period did not deliver an acceleration. Whatever the trade of institutional constraint for economic dynamism was supposed to purchase, a higher growth rate is not visible in the data even before adjusting for a revision that runs in the government's favour.
+What can be said is limited. Over the whole period growth was lower than in the decade before. Leaving out the pandemic year it was higher, by about half a point against the UPA decade as a whole and by about a tenth of a point once the 2008–09 crisis year is also left out. Those margins are smaller than the revisions the series has been through, and the comparison turns on which crisis years are counted. Whatever the trade of institutional constraint for economic dynamism was supposed to purchase, the data do not show a clear and sustained acceleration in growth.
 
 ## 6.2 Employment
 
 The employment result does not depend on the disputed national accounts at all, although it covers fewer years than the other series.
 
-The formal employment share is the share of all workers who are regular wage or salaried employees with any social-security benefit, derived from the published tables of the Periodic Labour Force Survey (PLFS). The survey begins in 2017-18, so the series covers the survey years 2017-18 to 2023-24 and has no value for 2014 to 2016 or for 2024 onward. The share was 11.5 per cent in 2017-18 and 11.4 per cent in 2018-19. It fell to 10.5 per cent in 2019-20 and 9.7 per cent in the pandemic year 2020-21, rose to 10.1 per cent in 2021-22, reached its low of 9.6 per cent in 2022-23 and was 10.1 per cent in 2023-24. That is a fall of 1.4 points, about 12 per cent of the share, over six years, with a dip in the pandemic year and a partial recovery. It did not fall in every year. Informal employment, which is 100 minus the formal share, correspondingly rises from 88.5 to 89.9 per cent, so roughly nine in ten Indian workers have no social-security cover.
+The formal employment share is the share of all workers who are regular wage or salaried employees with any social-security benefit, derived from the published tables of the Periodic Labour Force Survey (PLFS). The survey begins in 2017-18, so the series covers the survey years 2017-18 to 2023-24 and has no value for 2014 to 2016 or for 2024 onward. The share was 11.5 per cent in 2017-18 and 11.4 per cent in 2018-19. It fell to 10.5 per cent in 2019-20 and 9.7 per cent in the pandemic year 2020-21, rose to 10.1 per cent in 2021-22, reached its low of 9.6 per cent in 2022-23 and was 10.1 per cent in 2023-24. That is a fall of 1.4 points, about 12 per cent of the share, over six years, with a dip in the pandemic year and a partial recovery. It did not fall in every year. Informal employment, which is 100 minus the formal share, correspondingly rises from 88.5 to 89.9 per cent, so roughly nine in ten Indian workers are outside regular salaried work with social-security cover. PLFS asks about social security only for regular wage and salaried employees, so it does not measure cover among the self-employed and casual workers.
 
 Two movements lie underneath the share. Regular wage and salaried work fell from 22.8 to 21.7 per cent of all workers between 2017-18 and 2023-24. Among those employees, the share without any social security rose from 49.6 per cent to 53.4 per cent, after a peak of 54.2 per cent in 2019-20. By 2023-24 more than half of India's regular salaried employees had no social security, so most of the jobs that look formal by their pay arrangement lacked the protection the word implies.
 
-Headline unemployment is 4.9 per cent in 2014 and 3.1 per cent in 2025 on the usual-status measure of the annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment, on MoSPI's published usual-status series, was 13.0 per cent in 2023-24, down from 17.2 per cent in 2017-18. MoSPI publishes no figure for graduates before PLFS began or after 2023-24.
+Headline unemployment was 5.0 per cent in 2015–16 on the Labour Bureau's survey, a different survey from PLFS, 6.0 per cent in 2017–18, the first PLFS year, and 3.1 per cent in 2025 on the usual-status measure of the PLFS annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment, on MoSPI's published usual-status series, was 13.0 per cent in 2023-24, down from 17.2 per cent in 2017-18. MoSPI publishes no figure for graduates before PLFS began or after 2023-24.
 
 An unemployment rate of 13.0 per cent among degree-holders, four times the 3.2 per cent for all workers on the same measure in the same year, cannot be explained by weak aggregate labour demand. The graduate rate has fallen since 2017-18, and the ratio to the overall rate has stayed at about three to four. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
 
@@ -394,7 +394,7 @@ Aggregate GDP grew in every year from 2017-18 to 2022-23 except the pandemic yea
 
 Aggregate growth figures conceal the composition of what grew, and the composition explains the employment result.
 
-Industrial policy in the period concentrated on capital-intensive sectors through Production-Linked Incentive schemes. The employment arithmetic of that choice is unfavourable by construction. Electronics manufacturing under PLI generates on the order of one job per ₹1.5 crore of investment; garment manufacturing, at comparable investment, generates employment approximately two orders of magnitude larger, and does so with a workforce roughly 70 per cent female. That composition matters in an economy where women's labour force participation, though it rose to 40.0 per cent by 2025 on PLFS usual status, is half the 79.1 per cent for men.
+Industrial policy in the period concentrated on capital-intensive sectors, electronics among them, through Production-Linked Incentive schemes. Capital-intensive manufacturing creates fewer jobs per rupee invested than labour-intensive manufacturing such as garments. We have not found a published estimate of jobs per crore of investment under the PLI schemes and give no figure. The jobs question matters most for women, whose labour force participation, though it rose to 40.0 per cent by 2025 on PLFS usual status, is half the 79.1 per cent for men.
 
 None of this says electronics manufacturing is a mistake. An industrial strategy weighted toward capital intensity will raise output more than payroll, and the observed pattern, with output growing while the formal employment share falls, is the predictable consequence of that strategy and needs no separate explanation.
 
@@ -404,14 +404,12 @@ The scale of unmet demand for formal employment is visible in a different series
 
 The standard development sequence moves labour out of agriculture into manufacturing, and subsequently into services, with sectoral employment shares converging toward sectoral output shares. India's current composition departs from this sequence sharply:
 
-| Sector | Share of output (GVA) | Share of employment |
+| Sector | Share of output (GVA, current prices, 2024–25) | Share of employment (PLFS 2023–24) |
 |---|---|---|
-| Agriculture | 18% | 42% |
-| Manufacturing | 17% | 11% |
-| Services | 53% | 33% |
-| Other | 12% | 14% |
+| Agriculture | about 18% | 46.1% |
+| Manufacturing | about 14% | 11.4% |
 
-Agriculture retains 42 per cent of employment while producing 18 per cent of output. That productivity gap is the standard signature of surplus labour held in low-productivity work for want of alternatives. Manufacturing, the sector that in the canonical sequence absorbs that labour, holds only 11 per cent of employment against 17 per cent of output. Services produce over half of output with a third of employment.
+Services produce over half of output. Agriculture retains 46 per cent of employment while producing about 18 per cent of output. That productivity gap is the standard signature of surplus labour held in low-productivity work for want of alternatives. Manufacturing, the sector that in the canonical sequence absorbs that labour, holds only 11 per cent of employment against about 14 per cent of output.
 
 The implication is that India's growth has been concentrated in sectors that do not absorb labour at scale, while the sector holding most of the labour has not been the locus of growth. This is a structural fact about the growth model, and it is the mechanism underlying the employment result in Section 6.2. It also bears on the distributional result: growth concentrated in high-productivity, low-employment sectors accrues disproportionately to capital and to a small skilled workforce, which is what the income-share movements in Section 6.3 record.
 
@@ -419,21 +417,21 @@ The implication is that India's growth has been concentrated in sectors that do 
 
 The top 1 per cent income share rises from 18.4 per cent in 2004 to 21.3 per cent in 2014 and 22.6 per cent in 2022-23, the last year published. It dips in 2019 and 2020 and does not rise in every year. The bottom 50 per cent share falls from 18.8 per cent in 2004 to 14.7 per cent in 2014 and a low of 13.9 per cent in 2017. It then rises to 15.5 per cent in 2020 and stands at 15.0 per cent in 2022-23. No annual figure has been published for 2023 to 2026, and the dataset leaves those years empty.
 
-Both series are taken from the Statistical Appendix of Bharti, Chancel, Piketty and Somanchi (2024), the World Inequality Lab's table of per-adult pre-tax national income shares for 1951 to 2022. An earlier version of this dataset carried values that did not match that table, including figures for 2023 to 2026, years for which nothing has been published. Those values have been replaced with the published series. We flag a correction here that materially affects how this result should be read, and that we found in our own earlier public materials during preparation of this paper: three of the project's summary documents had stated the 2014 top 1 per cent share as 15 per cent, yielding an apparent rise of 7.6 percentage points. That figure was wrong. The figure of 15.0 per cent is the 2014 bottom 50 per cent share, and the two series had been crossed. The correct rise in the top 1 per cent share between 2014 and 2022-23 is 1.3 percentage points.
+Both series are taken from the Statistical Appendix of Bharti, Chancel, Piketty and Somanchi (2024), the World Inequality Lab's table of per-adult pre-tax national income shares for 1951 to 2022. An earlier version of this dataset carried values that did not match that table, including figures for 2023 to 2026, years for which nothing has been published. Those values have been replaced with the published series. We flag a correction here that materially affects how this result should be read, and that we found in our own earlier public materials during preparation of this paper: three of the project's summary documents had stated the 2014 top 1 per cent share as 15 per cent, yielding an apparent rise of 7.6 percentage points. That figure was wrong. A figure of 15 per cent belongs to the other series, close to the bottom 50 per cent share (14.7 per cent in 2014), and the two series had been crossed. The correct rise in the top 1 per cent share between 2014 and 2022-23 is 1.3 percentage points.
 
-We report this because the error inflated a headline claim in the project's favour, and because correcting it changes which fact carries the argument. The defensible statements are these. First, the top 1 per cent share of 22.6 per cent in 2022-23 is the highest in the series since 1922, higher than during the inter-war colonial period, and Bharti et al. (2024) find it among the highest in the world, above South Africa, Brazil and the US. Second, the bottom of the distribution moved in two phases. The bottom half lost about a fifth of its share between 2004 and 2017, falling from 18.8 to 13.9 per cent, and then regained part of it, which the authors describe as a temporary marginal rise in the years 2018 to 2020. Within the later period the bottom share was 14.7 per cent in 2014 and 15.0 per cent in 2022-23. The cross-era result for the bottom half therefore rests on the period averages, 16.75 per cent in 2004–2013 against 14.69 per cent in 2014–2022. Third, the same authors find that from 2014 to 2022 the middle 40 per cent seem to have grown slower than the bottom 50 per cent. The top of the distribution carries the clearer finding for the later period.
+We report this because the error inflated a headline claim in the project's favour, and because correcting it changes which fact carries the argument. The defensible statements are these. First, the top 1 per cent share of 22.6 per cent in 2022-23 is the highest in the series since 1922, higher than during the inter-war colonial period, and Bharti et al. (2024) find it among the highest in the world, above South Africa, Brazil and the US. Second, the bottom of the distribution moved in two phases. The bottom half lost about a quarter of its share between 2004 and 2017, falling from 18.8 to 13.9 per cent, and then regained part of it, which the authors describe as a temporary marginal rise in the years 2018 to 2020. Within the later period the bottom share was 14.7 per cent in 2014 and 15.0 per cent in 2022-23. The cross-era result for the bottom half therefore rests on the period averages, 16.75 per cent in 2004–2013 against 14.69 per cent in 2014–2022. Third, the same authors find that from 2014 to 2022 the middle 40 per cent seem to have grown slower than the bottom 50 per cent. The top of the distribution carries the clearer finding for the later period.
 
 ## 6.4 Statistical suppression
 
 The SSI is 0.00 for every year from 2004 to 2013.
 
-It first moves in 2015, reaching 1.05, on the national-accounts rebasing. It rises through 2.05 (2017), 4.00 (2018) and 4.80 (2019) as the PLFS withholding and the consumption-survey suppression enter, reaches 7.00 in 2020, and peaks at 9.00 in 2021 and 2022.
+It first moves in 2015, reaching 1.05, on the national-accounts rebasing, and stays there through 2017. It rises to 1.80 in 2018, when the back-series was set aside and the PLFS 2017–18 report fell due in December and was held back, and to 5.50 in 2019, as that report stayed withheld until 31 May, the NSC members resigned, the NSSO was merged into the NSO and the consumption survey was scrapped in November. It reaches 7.30 in 2020 with the census postponement and peaks at 9.00 in 2021 and 2022.
 
 The peak is a stacking effect: the COVID mortality undercount at full severity, on top of an already-delayed census, an already-withheld consumption survey, an unresolved back-series dispute, and the by-then-permanent NSO merger.
 
 The index then declines (8.20 in 2023, 7.05 in 2024, 6.55 in 2025) and stands at 4.65 in 2026. It does not return to zero, and this is the persistence term working as designed. The NSO merger is not reversed and the back-series was never independently reviewed, so both still count at full weight. The census moves from full severity to 0.3 in 2026, because houselisting is under way and population enumeration is notified for February 2027, which under the rubric is a delay. The decline after 2022 reflects the end of the acute phase, and the structural changes remain in the index.
 
-The cross-era contrast is the sharpest in this paper: an era mean of 0.00 against 4.95.
+The cross-era contrast is the sharpest in this paper: an era mean of 0.00 against 4.79.
 
 ## 6.5 Fiscal centralisation
 
@@ -447,11 +445,11 @@ The era comparison therefore rests on the two coded components. On the four meas
 
 The DQI averages 0.57 across 2004–2013, peaking at 0.61 in 2005 and 2006, and standing at 0.51 in 2013.
 
-Within the NDA period it falls from 0.49 (2014) to 0.28 (2026), with the steepest single-year declines after 2019, the year V-Dem reclassified India from "electoral democracy" to "electoral autocracy". The era means are 0.57 against 0.37; the endpoint comparison is 0.49 against 0.28, a decline of 42.9 per cent within the later period alone.
+Within the NDA period it falls from 0.49 (2014) to 0.28 (2026), with the steepest single-year declines after 2019 and the largest between 2022 and 2023. V-Dem first classified India as an "electoral autocracy" in its Democracy Report of March 2021. The era means are 0.57 against 0.37; the endpoint comparison is 0.49 against 0.28, a decline of 42.9 per cent within the later period alone.
 
 The component behaviour is instructive. India's V-Dem Liberal Democracy Index falls from 0.488 to 0.260, a 46.7 per cent decline. The press-freedom rank moves from 140 to 157, a modest deterioration against an already-poor base. Freedom House's aggregate score falls from 78 to 62, with the reclassification from "Free" to "Partly Free" in 2021. The V-Dem Core Civil Society Index falls from 0.669 to 0.302, a fall of 54.9 per cent and the steepest of the four components.
 
-In international context, India's V-Dem decline over 2014–2026 (0.488 → 0.260, a fall of 0.228) is the largest absolute fall in the comparison cohort, ahead of Hungary (0.521 → 0.315, −0.206) and Turkey (0.252 → 0.110, −0.142). In proportional terms Turkey falls further, but from a base already close to the floor. Brazil (0.783 → 0.704) and South Africa (0.641 → 0.633) show the comparatively mild movement one might expect of large democracies under ordinary political stress.
+In international context, India's V-Dem decline over 2014–2026 (0.488 → 0.260, a fall of 0.228) is the largest absolute fall in this five-country comparison cohort, ahead of Hungary (0.521 → 0.315, −0.206) and Turkey (0.252 → 0.110, −0.142). In proportional terms Turkey falls further, but from a base already close to the floor. Brazil (0.783 → 0.704) and South Africa (0.641 → 0.633) show the comparatively mild movement one might expect of large democracies under ordinary political stress.
 
 ## 6.7 Macroeconomic and external position
 
@@ -461,9 +459,9 @@ Two further dimensions bear on the "bargain" question, since a defender of the p
 
 **External.** The external position as of FY26 is mixed and adequately buffered. Foreign-exchange reserves of approximately $691 billion provide around eleven months of import cover, which is comfortable by any conventional standard, and the current-account deficit is contained at approximately 1.0 per cent of GDP.
 
-The composition beneath that headline is less reassuring. The goods trade deficit runs at approximately $333 billion, offset by a services surplus of approximately $190 billion, so the external accounts depend heavily on services exports to cover a structural merchandise gap. Crude imports of approximately $123 billion against an import dependence of roughly 86 per cent leave the position exposed to oil-price movements, and gold imports of approximately $72 billion represent household savings flowing into an unproductive asset, itself a signal about the perceived returns available in formal financial instruments. Portfolio outflows of approximately $16.5 billion were recorded in the period.
+The composition beneath that headline is less reassuring. The goods trade deficit runs at approximately $333 billion, offset by a services surplus of approximately $190 billion, so the external accounts depend heavily on services exports to cover a structural merchandise gap. Crude imports of approximately $123 billion against an import dependence of 88.2 per cent in 2024–25 (Petroleum Planning and Analysis Cell, provisional) leave the position exposed to oil-price movements, and gold imports of approximately $72 billion represent household savings flowing into an unproductive asset, itself a signal about the perceived returns available in formal financial instruments. Portfolio outflows of approximately $16.5 billion were recorded in the period.
 
-The rupee depreciated from 61 to the dollar in 2014 to a record low of approximately 95 in 2026, a decline of roughly 36 per cent. Some depreciation is expected for an economy with an inflation differential against the United States, and a nominal rate is not by itself a welfare measure. But it bears directly on the crude and gold import bills above, and it is not consistent with an account in which the period delivered exceptional macroeconomic management.
+The rupee depreciated from 61 to the dollar in 2014 to a record low of 96.8 on 20 May 2026, a fall of about 37 per cent in the rupee's dollar value. Some depreciation is expected for an economy with an inflation differential against the United States, and a nominal rate is not by itself a welfare measure. But it bears directly on the crude and gold import bills above, and it is not consistent with an account in which the period delivered exceptional macroeconomic management.
 
 Neither dimension supports a "stability" defence of the period. Fiscal performance is slightly worse on average than the earlier era; the external position is adequately buffered but structurally dependent on services exports to offset a widening merchandise gap.
 
@@ -476,12 +474,12 @@ Across 2014 to 2026, on the V-Dem Liberal Democracy Index and the RSF press-free
 | Country | V-Dem 2014 | V-Dem 2026 | Change | Absolute fall | Press rank 2014 | Press rank 2026 |
 |---|---|---|---|---|---|---|
 | India | 0.488 | 0.260 | −46.7% | −0.228 | 140 | 157 |
-| Turkey | 0.252 | 0.110 | −56.3% | −0.142 | 154 | 159 |
-| Hungary | 0.521 | 0.315 | −39.5% | −0.206 | 64 | 70 |
-| Brazil | 0.783 | 0.704 | −10.1% | −0.079 | 99 | 80 |
-| South Africa | 0.641 | 0.633 | −1.2% | −0.008 | 42 | 38 |
+| Turkey | 0.252 | 0.110 | −56.3% | −0.142 | 154 | 163 |
+| Hungary | 0.521 | 0.315 | −39.5% | −0.206 | 64 | 74 |
+| Brazil | 0.783 | 0.704 | −10.1% | −0.079 | 111 | 52 |
+| South Africa | 0.641 | 0.633 | −1.2% | −0.008 | 42 | 21 |
 
-All values are the V-Dem Liberal Democracy Index (`v2x_libdem`) as published; the 2026 column carries V-Dem's 2025 observation, the latest available. An earlier version of this table mixed two different V-Dem indices between the two columns; see Section 9.9.
+All values are the V-Dem Liberal Democracy Index (`v2x_libdem`) as published; the 2026 column carries V-Dem's 2025 observation from the v16 release of March 2026, the latest available, carried forward. Press ranks are RSF's 2014 and 2026 indices. An earlier version of this table mixed two different V-Dem indices between the two columns; see Section 9.9.
 
 Three observations follow.
 
@@ -489,7 +487,7 @@ First, India records the largest absolute decline in the cohort, larger than Hun
 
 Second, the comparison discriminates. Brazil and South Africa, large democracies subject to serious political stress over the same years, register modest movement. Whatever is happening in the V-Dem instrument globally, it is not producing large declines indiscriminately.
 
-Third, the press-freedom rank behaves differently from the composite in every case, and this is why Section 5.4 declines to rest the DQI on it. Brazil's press rank improved while its V-Dem score fell; India's press rank worsened by 17 places while its V-Dem score fell by almost half. A rank is a positional measure across 180 countries and is insensitive to large absolute changes when many countries move together. It is a poor instrument for the question at issue here.
+Third, the press-freedom rank behaves differently from the composite in every case, and this is why Section 5.4 declines to rest the DQI on it. Brazil's press rank improved from 111 to 52 and South Africa's from 42 to 21 while both V-Dem scores fell; India's press rank worsened by 17 places while its V-Dem score fell by almost half. A rank is a positional measure across 180 countries and is insensitive to large absolute changes when many countries move together. It is a poor instrument for the question at issue here.
 
 ## 6.9 The cross-era scorecard
 
@@ -497,31 +495,31 @@ Comparing period means across the nine directly comparable measures:
 
 | Measure | UPA (2004–13) | NDA (2014–26) | Direction |
 |---|---|---|---|
-| GDP growth (%) | 7.08 | 6.11 | Worse |
-| CPI inflation (%) | 8.05 | 4.93 | Better |
+| GDP growth (%) | 6.82 | 6.23 | Worse |
+| CPI inflation (%) | 7.98 | 4.80 | Better |
 | Fiscal deficit (% GDP) | 4.64 | 4.95 | Worse |
 | Top 1% income share (%) | 20.39 | 21.92 | Worse |
 | Bottom 50% income share (%) | 16.75 | 14.69 | Worse |
 | Press freedom rank | 119.8 | 145.0 | Worse |
-| Statistical Suppression Index | 0.00 | 4.95 | Worse |
+| Statistical Suppression Index | 0.00 | 4.79 | Worse |
 | Fiscal Centralisation Index | 0.30 | 0.43 | Worse |
 | Democratic Quality Index | 0.57 | 0.37 | Worse |
 
-Eight of the nine measures deteriorate and one improves. The two income shares average the years with a published figure, 2004–2013 and 2014–2022. The FCI is the narrowest of the eight. Its gap of 0.13 comes from the two coded components, GST and the 2020 borrowing conditions; on the four measured fiscal ratios alone the UPA years average 0.49 and the NDA years 0.45 (Section 6.5).
+Eight of the nine measures deteriorate and one improves. The two income shares average the years with a published figure, 2004–2013 and 2014–2022, and GDP growth averages the fiscal years 2014–15 to 2025–26. The growth row is the one most sensitive to the pandemic year: without 2020–21 the later period averages 7.32 per cent and is higher (Section 6.1). The FCI is the narrowest of the eight. Its gap of 0.13 comes from the two coded components, GST and the 2020 borrowing conditions; on the four measured fiscal ratios alone the UPA years average 0.49 and the NDA years 0.45 (Section 6.5).
 
-The exception is real as a measurement: average CPI inflation of 4.93 per cent against 8.05 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
+The exception is real as a measurement: average CPI inflation of 4.80 per cent against 7.98 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
 
 ## 6.10 The inflation exception, in full
 
 The disinflation is the strongest available argument against this paper's reading of the period, and we address it directly. We set out six factors, roughly in order of how much of the gap we think each explains, and then the strongest case we can construct against our own conclusion.
 
-**First, the comparison straddles the collapse of a global oil cycle, and this is the largest single factor.** Brent crude fell from about $115 a barrel in June 2014 to below $30 by January 2016, a decline of roughly 75 per cent in nineteen months, driven by United States shale supply arriving at scale and OPEC's decision to keep production up in order to defend market share. India imports approximately 86 per cent of the crude it consumes; energy enters the consumer price index directly through fuel and light and indirectly through the transport cost of everything else. The timing carries the argument: the shock arrives at the boundary between the two periods being compared. Any price measure sensitive to world energy will break at 2014 whether or not anything changed in Delhi.
+**First, the comparison straddles the collapse of a global oil cycle, and this is the largest single factor.** Brent crude fell from about $115 a barrel in June 2014 to below $30 by January 2016, a decline of roughly 75 per cent in nineteen months, driven by United States shale supply arriving at scale and OPEC's decision to keep production up in order to defend market share. India imported about 81 per cent of the crude it consumed in 2015–17, and 88.2 per cent in 2024–25 (Petroleum Planning and Analysis Cell); energy enters the consumer price index directly through fuel and light and indirectly through the transport cost of everything else. The timing carries the argument: the shock arrives at the boundary between the two periods being compared. Any price measure sensitive to world energy will break at 2014 whether or not anything changed in Delhi.
 
 **Second, and less often noted, the government captured much of that fall through excise duty.** Central excise duty on petrol stood at ₹9.48 a litre and on diesel at ₹3.56 a litre in 2014. Between November 2014 and January 2016 it was raised on nine separate occasions, by ₹11.77 a litre on petrol and ₹13.47 on diesel, with the explicit purpose of transferring the gains from falling world prices to the exchequer. Two implications follow. The measured disinflation is the residual after the tax take, so it understates the size of the imported shock. And to the extent that fiscal policy acted on fuel prices in this window, it acted to hold them above what world prices would have delivered. That is a defensible fiscal choice, and it does not count toward the government's record on inflation.
 
-**Third, the earlier baseline was raised by a commodity boom.** The UPA's second term coincided with the 2008 food and fuel spike, the commodity boom running through 2013, and the global stimulus that followed the financial crisis; Indian inflation printed 10.9 per cent in 2009, 12.0 in 2010 and 10.9 in 2013. Setting an era containing a boom against an era containing its collapse yields a difference that is substantially a statement about two adjacent decades of world prices.
+**Third, the earlier baseline was raised by a commodity boom.** The UPA's second term coincided with the 2008 food and fuel spike, the commodity boom running through 2013, and the global stimulus that followed the financial crisis; Indian inflation averaged 10.9 per cent in 2009, 12.0 in 2010 and 10.0 in 2013. Setting an era containing a boom against an era containing its collapse yields a difference that is substantially a statement about two adjacent decades of world prices.
 
-**Fourth, where domestic policy did contribute, the mechanism supports this paper's thesis.** India adopted formal inflation targeting in this period, and it is a real institutional change: the Monetary Policy Framework Agreement was signed on 20 February 2015, the Finance Act 2016 amended the Reserve Bank of India Act 1934 to give it statutory backing and to create a Monetary Policy Committee constituted that September, and the target is 4 per cent with a two-point tolerance band. There is a reasonable case that this anchored expectations, and we do not dismiss it. But note what kind of instrument it is. Inflation targeting is a rule that binds the executive. It moves an instrument out of the discretionary reach of whichever government holds office, assigns it to a committee with a published mandate, and compels a written explanation to Parliament when the target is missed. If this is the channel, then the period's best macroeconomic outcome was produced by deliberately constraining executive discretion, which is the argument this paper makes throughout. It is an instance of the thesis.
+**Fourth, where domestic policy did contribute, the mechanism supports this paper's thesis.** India adopted formal inflation targeting in this period, and it is a real institutional change: the Monetary Policy Framework Agreement was signed on 20 February 2015, the Finance Act 2016 amended the Reserve Bank of India Act 1934 to give it statutory backing and to create a Monetary Policy Committee constituted that September, and the target is 4 per cent with a two-point tolerance band. There is a reasonable case that this anchored expectations, and we do not dismiss it. But note what kind of instrument it is. Inflation targeting is a rule that binds the executive. It moves an instrument out of the discretionary reach of whichever government holds office, assigns it to a committee with a published mandate, and, when the target is missed for three consecutive quarters, compels a written report to the Central Government under section 45ZN of the Reserve Bank of India Act. If this is the channel, then the period's best macroeconomic outcome was produced by deliberately constraining executive discretion, which is the argument this paper makes throughout. It is an instance of the thesis.
 
 **Fifth, the most recent figure is not on the same basis as the rest of the series.** As set out in Section 4.3, from the January 2026 print the 2012=100 CPI was replaced by a series on 2024=100, weighted from HCES 2023-24 and classified on COICOP 2018. Food's weight falls from 45.86 to 36.75 per cent, so identical food-price movements now produce a smaller headline number. Reweighting was overdue and is legitimate, but the 2026 value and the 2014–2025 values are measured on different rulers.
 
@@ -545,13 +543,13 @@ We therefore decline to read this row as an achievement of the period's governan
 
 Every growth figure in this paper is a GDP figure. GDP measures work inside a production boundary set by the System of National Accounts, which covers less than the work an economy does. That boundary is a convention, and the way to see it is to look at what it already crosses. Where a household owns the dwelling it occupies, the accounts estimate the rent it would otherwise have paid and add that sum to output, on the reasoning that a real service is being consumed. The same reasoning is not applied to cooking a meal in that dwelling, minding a child or nursing a parent. Own-account household services fall outside the boundary and enter the accounts at zero.
 
-The feasibility defence has run out in the Indian case, because the hours are counted. The National Statistical Office ran Time Use Surveys over January–December 2019 and January–December 2024, the later covering roughly 4.5 lakh people in 1.3 lakh households. Among those aged 15–59 who perform it at all, women spent 289 minutes a day on unpaid domestic services in 2024 and men 88. For a woman that is about 1,758 hours a year, appearing in no employment statistic and no output series. Care of household members sits above that: 41 per cent of women in the age band participated against 21.4 per cent of men, at 140 minutes against 74.
+The feasibility defence has run out in the Indian case, because the hours are counted. The National Statistical Office ran Time Use Surveys over January–December 2019 and January–December 2024, the later covering 1.39 lakh households. Among those aged 6 and above who perform it at all, women spent 289 minutes a day on unpaid domestic services in 2024 and men 88; among women aged 15 to 59 it was 305 minutes. For a woman doing it every day, 289 minutes is about 1,758 hours a year, appearing in no employment statistic and no output series. Care of household members comes on top of that. Among those aged 15 to 59, 41 per cent of women took part against 21.4 per cent of men, and women who did so spent about 140 minutes a day against 74 for men.
 
-Two rounds allow the change to be measured. Male participation rose steeply, from 26.1 per cent in 2019 to 45.8 per cent in 2024. Minutes among participants fell for both sexes over the same period, men 97 to 88 and women 299 to 289. The participant gap therefore moved from 202 minutes to 201, a change of one minute across five years, while female participation in employment rose from 21.8 to 25.0 per cent. More women entered paid work and the unpaid work stayed close to where it was.
+Two rounds allow the change to be measured. Participation in unpaid domestic services barely moved among those aged 6 and above, from 81.2 to 81.5 per cent of women and from 26.1 to 27.1 per cent of men. Minutes among participants fell for both sexes over the same period, men 97 to 88 and women 299 to 289. The participant gap therefore moved from 202 minutes to 201, a change of one minute across five years, while the participation of women aged 15 to 59 in employment-related activities rose from 21.8 to 25.0 per cent. More women entered paid work and the unpaid work stayed close to where it was.
 
-Published Indian valuations of unpaid household work span 7.5 per cent of GDP (SBI Ecowrap 2023, minimum-wage valuation), a government working range of 15–17 per cent, 24.6 per cent on generalised opportunity cost and 32.4 per cent on replacement cost for 2019–20, and 26–36 per cent in *Economic and Political Weekly* (2024) for 2022–23. The spread is a factor of nearly five. The hours are known, so the spread comes from disagreement about the price to attach to them. We adjudicate between none of these and publish no preferred figure. Two things can be said without choosing a method: all of the estimates are large, the lowest exceeding several sectors that are counted; and the question stays unsettled because no statistical agency has been asked to settle it.
+Published Indian valuations of unpaid household work span 7.5 per cent of GDP (SBI Ecowrap 2023, minimum-wage valuation), 24.6 per cent on generalised opportunity cost and 32.4 per cent on replacement cost for 2019–20, and 26–36 per cent in *Economic and Political Weekly* (2024) for 2022–23. The spread is a factor of nearly five. The hours are known, so the spread comes from disagreement about the price to attach to them. We adjudicate between none of these and publish no preferred figure. Two things can be said without choosing a method: all of the estimates are large, the lowest exceeding several sectors that are counted; and the question stays unsettled because no statistical agency has been asked to settle it.
 
-This bears on a figure used elsewhere in the paper. Female labour force participation, 40.0 per cent in 2025 on PLFS usual status after rising from 23.3 per cent in 2017-18, is customarily read as the share of women who work. The Time Use Survey records 83.9 per cent of women aged 15–59 performing unpaid domestic work on the reference day. Both are correct. Together they indicate that the participation figure measures only the work the accounts recognise, and how much of India's participation gap is behavioural and how much is definitional is an open question this paper has not answered.
+This bears on a figure used elsewhere in the paper. Female labour force participation, 40.0 per cent in 2025 on PLFS usual status after rising from 23.3 per cent in 2017-18, is customarily read as the share of women who work. The Time Use Survey records 81.5 per cent of women aged 6 and above performing unpaid domestic services on the reference day. Both are correct. Together they indicate that the participation figure measures only the work the accounts recognise, and how much of India's participation gap is behavioural and how much is definitional is an open question this paper has not answered.
 
 We adjust nothing. Every growth series here is the official one on the official boundary. The claim concerns the boundary: it was drawn by people, India already collects the hours needed to price what falls outside it, the excluded quantity is plausibly between a thirteenth and a third of GDP, and a framework pricing a dwelling while entering zero for the care performed within it has settled a question about whose work constitutes production. That sits with the other measurement problems documented in Section 3. Nobody concealed it and it long predates the period under study. It is also the largest single omission from the headline figure. A household-production satellite account, which several statistical systems maintain and India's does not, would put a number on it.
 
@@ -563,7 +561,7 @@ A composite index built by one researcher, from partly self-coded inputs, showin
 
 ## 7.2 Grier and Grier (2026)
 
-Kevin Grier and Robin Grier, of Texas Tech University, address the same period in "Promises, Promises: Modi's India in Comparative Perspective" using synthetic control with randomisation inference. Their design shares none of our machinery.
+Kevin Grier and Robin Grier, of Texas Tech University, address the same period in "Promises, Promises: Governance and Growth in India under Modi and the BJP" (SSRN Working Paper 7248338, August 2026) using synthetic control with randomisation inference. Their design shares none of our machinery.
 
 Where we build composite indices from observed series, they construct a counterfactual: a weighted blend of comparator countries fitted to India's pre-treatment path, against which post-2014 India is compared. Their pre-treatment window is 1984–2013, roughly thirty years, against our 2004–2013. Their governance data is V-Dem, an input we share, but their income data is the Penn World Table 11.0, which we do not use at all. Their democracy donor pool comprises twelve middle-income democracies: Brazil, Argentina, Chile, Colombia, Peru, Mexico, South Africa, Ghana, Indonesia, Malaysia, the Philippines, and Sri Lanka.
 
@@ -588,13 +586,14 @@ All ten indicators move in the direction of worse governance, at a joint p-value
 
 The correspondence with our results is close:
 
-| Dimension | Grier & Grier | This paper |
+| Dimension | Grier & Grier (gap against counterfactual) | This paper (observed change) |
 |---|---|---|
-| Electoral democracy | −60.2% vs counterfactual | V-Dem LDI 0.488 → 0.260, −46.7% |
-| Overall democratic quality | −69.1% liberal-democracy gap | DQI 0.49 → 0.28, −42.9% |
+| Liberal democracy | −69.1% | V-Dem LDI 0.488 → 0.260, −46.7% |
+| Electoral democracy (polyarchy) | −60.2% | V-Dem EDI 0.617 → 0.377, −38.9% |
+| Overall democratic quality | no single counterpart | DQI 0.49 → 0.28, −42.9% |
 | Press and expression | Freedom of expression −56.2% | RSF rank 140 → 157 |
 
-These are not the same quantity. Their figures are gaps against a counterfactual India that never elected the government it did; ours are observed changes over time. A gap of −60.2 per cent and a raw decline of −46.7 per cent describe different objects, and their rough proximity is not itself evidence of anything.
+These are not the same quantity. Their figures are gaps against a counterfactual India that never elected the government it did; ours are observed changes over time. A gap of −69.1 per cent and a raw decline of −46.7 per cent in the same V-Dem index describe different objects, and their rough proximity is not itself evidence of anything.
 
 What the convergence does establish is more modest and more useful: that two research designs with almost no shared machinery, applied to the same country and period, agree on direction, on rough magnitude, and on which dimensions moved most. Our DQI result is not an artefact of our weighting scheme, our geometric mean, or our decision to include the civil-society index, because a study using none of those things finds the same thing.
 
@@ -604,17 +603,17 @@ The convergence argument in Section 7.3 is only as good as the study it leans on
 
 **Placebo in time.** They re-run the entire procedure pretending treatment began in 2001 and ending the sample in 2010, a period in which no treatment occurred. If the method manufactured gaps as an artefact, it would manufacture one here. It does not: no individual placebo effect is significant and the joint p-value is 0.5, placing the fake-treatment India squarely in the middle of the fake-effect distribution. This is the check that most directly addresses the concern that synthetic control finds effects where none exist.
 
-**Alternative donor pools.** The governance results are re-estimated with a donor pool selected on economic rather than political criteria, and again with an alternative pool. The results survive both.
+**Donor pools.** The governance models use the twelve-country pool of developing democracies. The authors set the economic donor pool used for income aside for the governance outcomes, because India sits at the ceiling of that pool on polyarchy and cannot be matched from it. They report no test of the governance results on an economic pool, and we claim none.
 
-**Leave-one-out.** Removing individual donor countries does not overturn the governance findings.
+**Leave-one-out.** The authors' summary reports a leave-one-out check for the income result only, discussed below. We have found no leave-one-out test of the governance results and do not claim one.
 
-**Income robustness.** For the income result, they report a specification excluding Ethiopia, the largest single donor weight and the component we flag in Section 7.5 as the most exposed to challenge. Excluding it produces a larger post-2013 gap. This does not fully dispose of the donor-pool objection, since the concern is the pool's overall composition, but it does address the most obvious form of the criticism.
+**Income robustness.** For the income result, they report a specification excluding Ethiopia, the largest single donor weight and the component we flag in Section 7.5 as the most exposed to challenge. Excluding it produces a larger post-2013 gap and a worse pre-treatment fit, with the RMSPE rising from 58 to 132. This does not fully dispose of the donor-pool objection, since the concern is the pool's overall composition, but it does address the most obvious form of the criticism.
 
 We report these because a reader evaluating our convergence claim should be able to judge for themselves whether the study we are converging with is sound.
 
 ## 7.5 Where the two studies diverge
 
-Grier and Grier also report an income result: real per-capita income ending approximately $1,000 per person per year below their counterfactual, widening from approximately −$400 in the first year, on a pre-treatment fit with an RMSPE of $59, about 1 per cent of 2013 income. That is a tight pre-treatment match.
+Grier and Grier also report an income result: real per-capita income ending approximately $1,000 per person per year below their counterfactual, widening from approximately −$400 in the first year, on a pre-treatment fit with an RMSPE of 58, about 1 per cent of 2013 income. That is a tight pre-treatment match.
 
 We do not adopt this claim, and our own work does not test it. This paper documents the decoupling of growth from employment and the concentration of its gains; it makes no claim about what aggregate Indian income would have been under a different government. That is a counterfactual we have not constructed and cannot evaluate.
 
@@ -628,11 +627,11 @@ We would add one observation about their design, offered as a reader's caution. 
 
 The SSI's severities are author-coded, making it the most subjective construction here. We assess sensitivity by re-computing under alternative codings.
 
-Because the index is a weighted sum with weights summing to 10, a uniform proportional error in severity coding scales the index without changing its shape or the cross-era comparison: if every severity were overstated by 20 per cent, the NDA-era mean would fall from 4.95 to 3.96 and the UPA mean would remain 0.00. The cross-era conclusion is invariant to any uniform mis-calibration.
+Because the index is a weighted sum with weights summing to 10, a uniform proportional error in severity coding scales the index without changing its shape or the cross-era comparison: if every severity were cut by 20 per cent, the NDA-era mean would fall from 4.79 to 3.83 and the UPA mean would remain 0.00. The cross-era conclusion is invariant to any uniform mis-calibration.
 
 The conclusion is sensitive, in principle, to differential mis-coding, that is, systematically overstating NDA-era severities relative to UPA-era ones. But the UPA-era value is zero because no event in that period met the coding threshold, so there was nothing to code leniently. Differential mis-coding would therefore have to take the form of omitting UPA-era events entirely, which is the objection we address in Section 9.2.
 
-Dropping the single highest-weighted stream (census delay, weight 2.5) reduces the NDA-era mean from 4.95 to approximately 3.7 and lowers the 2021–22 peak from 9.00 to 6.50. The cross-era contrast survives the removal of any single stream, because no single stream accounts for more than a quarter of the total weight.
+Dropping the single highest-weighted stream (census delay, weight 2.5) reduces the NDA-era mean from 4.79 to 3.57 and lowers the 2021–22 peak from 9.00 to 6.50. The cross-era contrast survives the removal of any single stream, because no single stream accounts for more than a quarter of the total weight.
 
 ## 8.2 Sensitivity of the DQI to component selection
 
@@ -652,7 +651,7 @@ Two checks bound the result. Dropping the borrowing component raises the 2024 va
 
 ## 8.4 The disputed national accounts
 
-We do not adopt Subramanian's (2019) correction, and our growth comparison in Section 6.1 uses official figures throughout. Adopting the correction would strengthen our finding, since it would lower measured NDA-era growth further. Our decision not to adopt it means our growth result is conservative relative to the alternative in the literature.
+We do not adopt Subramanian's (2019) correction, and our growth comparison in Section 6.1 uses official figures throughout. The correction covers 2011–12 to 2016–17, three years in each era, so adopting it would lower both era averages. Subtracting 2.5 points from each of those six years gives 6.07 per cent for the UPA decade and 5.60 per cent for 2014–15 to 2025–26, the same direction as the official figures. With the pandemic year left out the later period averages 6.64 per cent, slightly further ahead of the earlier one than on the official figures. The correction therefore does not make our growth result conservative, and Section 6.1 states that result with the limits set out there.
 
 ---
 
@@ -668,7 +667,7 @@ The specific claim we defend is narrower than a causal one and, we think, suffic
 
 This is the strongest objection to the paper and we treat it at length.
 
-An index that assigns exactly zero to one political era and a mean of 4.95 to the other invites the suspicion that the coder found what they were looking for. Indian statistical administration before 2014 was not beyond criticism: there were delays, methodological disputes, and instances of political discomfort with unwelcome findings.
+An index that assigns exactly zero to one political era and a mean of 4.79 to the other invites the suspicion that the coder found what they were looking for. Indian statistical administration before 2014 was not beyond criticism: there were delays, methodological disputes, and instances of political discomfort with unwelcome findings.
 
 Three responses, in ascending order of force.
 
@@ -676,7 +675,7 @@ First, the SSI codes a specific and narrow class of event: suppression, disconti
 
 Second, the zero is a falsifiable claim. The rubric is published; the streams are enumerated; the weights are fixed. A critic who identifies a qualifying UPA-era event can code it and recompute, and the code to do so is public. We would regard such a contribution as an improvement to the index.
 
-Third, the cross-era conclusion does not depend on the zero. Suppose a critic assigns the UPA decade a mean of 2.0, a substantial concession implying suppression activity at 40 per cent of the NDA average. The comparison would still be 2.0 against 4.95. The result is a difference in kind that survives a generous re-coding.
+Third, the cross-era conclusion does not depend on the zero. Suppose a critic assigns the UPA decade a mean of 2.0, a substantial concession implying suppression activity at over 40 per cent of the NDA average. The comparison would still be 2.0 against 4.79. The result is a difference in kind that survives a generous re-coding.
 
 We nonetheless record that the zero is the single most contestable number in this paper, and that a reader who rejects it is applying appropriate scrutiny.
 
@@ -684,13 +683,13 @@ We nonetheless record that the zero is the single most contestable number in thi
 
 The comparison window contains a global pandemic, and this is the most serious threat to the cross-era comparison after the SSI coding question.
 
-COVID-19 affected both halves of the paper's argument simultaneously. On the economic side it produced a −7.3 per cent contraction in 2020, disrupted labour markets, and drove a fiscal deficit of 9.2 per cent of GDP. On the institutional side it supplied a legitimate justification for postponing a census, for emergency restrictions on assembly and movement, and for centralised control of borrowing. A democratic government facing a real emergency might reasonably take such measures, and our indices register them as deterioration.
+COVID-19 affected both halves of the paper's argument simultaneously. On the economic side it produced a −5.8 per cent contraction in 2020–21, disrupted labour markets, and drove a fiscal deficit of 9.2 per cent of GDP. On the institutional side it supplied a legitimate justification for postponing a census, for emergency restrictions on assembly and movement, and for centralised control of borrowing. A democratic government facing a real emergency might reasonably take such measures, and our indices register them as deterioration.
 
 We take three steps in response, and concede that none fully resolves it.
 
-First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises the mean growth rate materially, but the direction of every other measure is unchanged: the formal employment share fell in each PLFS year before the pandemic, from 11.5 to 10.5 per cent, and in the three years after it stayed between 9.6 and 10.1 per cent, below its 2019-20 level, the income-share movements are continuous through it, and in both 2018–19 and 2023–26 the SSI is higher and the DQI lower than in any UPA year. The FCI is the exception. In those years it runs from 0.35 to 0.48, close to its UPA peak of 0.43, and above that peak only in 2019, 2023 and 2024. For the statistical and democratic measures, the pandemic made a pattern already present on either side of it larger.
+First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises its mean growth rate from 6.23 to 7.08 per cent, above the UPA average of 6.82, so the growth comparison reverses. The direction of every other measure is unchanged: the formal employment share fell in each PLFS year before the pandemic, from 11.5 to 10.5 per cent, and in the three years after it stayed between 9.6 and 10.1 per cent, below its 2019-20 level, the income-share movements are continuous through it, and in both 2018–19 and 2023–26 the SSI is higher and the DQI lower than in any UPA year. The FCI is the exception. In those years it runs from 0.35 to 0.48, close to its UPA peak of 0.43, and above that peak only in 2019, 2023 and 2024. For the statistical and democratic measures, the pandemic made a pattern already present on either side of it larger.
 
-Second, the timing. The DQI's steepest decline begins in 2019, before the pandemic, and V-Dem's reclassification of India as an electoral autocracy is a 2019 event. The consumption-survey suppression is 2019, the PLFS withholding 2019, the NSC resignations January 2019, and the GDP revision 2015. Four of the six SSI streams pre-date the pandemic entirely.
+Second, the timing. The DQI's steepest decline begins in 2019, before the pandemic. The PLFS 2017–18 report was withheld from December 2018 to 31 May 2019, the NSC members resigned in January 2019, the consumption survey was scrapped in November 2019, and the GDP revision dates from 2015. Four of the six SSI streams pre-date the pandemic entirely.
 
 Third, the persistence. Emergency measures justified by an emergency should lapse when it does. The census was not under way until 2026, five years after the acute phase; the NSSO–NSO merger was not reversed. The signature that distinguishes an emergency response from a structural change is whether it unwinds, and on these measures it did not. The fiscal measures did unwind. The borrowing conditions lapsed after 2021–22, and the FCI fell from 0.87 in 2020 to 0.35 in 2026, below its 2014 value of 0.42. Only its GST component stays at full weight.
 
@@ -698,7 +697,7 @@ What we cannot do is separate the portion of the 2020–22 deterioration attribu
 
 ## 9.4 The indices are not independent of one another
 
-The SSI and DQI move closely together and the FCI less so (over 2004–2026 the SSI's correlation with the DQI is −0.89, the FCI's −0.46). A reader may reasonably ask whether three indices that co-move are really three pieces of evidence or one piece counted three times.
+The SSI and DQI move closely together and the FCI less so (over 2004–2026 the SSI's correlation with the DQI is −0.87, the FCI's −0.46). A reader may reasonably ask whether three indices that co-move are really three pieces of evidence or one piece counted three times.
 
 They share no inputs. The DQI is built entirely from four published third-party series; the FCI from fiscal aggregates; the SSI from coded statistical events. No number enters more than one index. But they are plausibly measuring correlated aspects of a single underlying process, and if that process is "concentration of executive authority", then their co-movement is the expected result and provides no independent confirmation.
 
@@ -720,11 +719,11 @@ Our mitigations are procedural: every weight and component is published; the con
 
 ## 9.7 Scope
 
-This paper is about aggregate national indicators. It does not address state-level variation, which is substantial and in several respects runs counter to the national picture. It does not address caste, gender, or religious disaggregation of the distributional results, all of which are material to any full account of who bore the costs described here. And its coverage of the informal economy is limited to what the PLFS measures, which is a real constraint given that roughly nine in ten Indian workers have no social-security cover (89.9 per cent in 2023-24 on PLFS).
+This paper is about aggregate national indicators. It does not address state-level variation, which is substantial and in several respects runs counter to the national picture. It does not address caste, gender, or religious disaggregation of the distributional results, all of which are material to any full account of who bore the costs described here. And its coverage of the informal economy is limited to what the PLFS measures, which is a real constraint given that roughly nine in ten Indian workers (89.9 per cent in 2023-24) are outside regular salaried work with social-security cover, and PLFS records social-security cover only for regular salaried employees.
 
 ## 9.8 An error corrected in preparation
 
-As reported in Section 6.3, preparation of this paper surfaced an error in three of the project's own previously-published summary documents, which had stated the 2014 top 1 per cent income share as 15 per cent. That is the bottom 50 per cent figure, and using it overstated the rise in top-end concentration as 7.6 percentage points against a correct 1.3. The documents have been corrected and a continuous-integration check now compares every year-labelled figure in the project's published documents against the source dataset, failing the build on any contradiction.
+As reported in Section 6.3, preparation of this paper surfaced an error in three of the project's own previously-published summary documents, which had stated the 2014 top 1 per cent income share as 15 per cent. That figure belongs to the bottom 50 per cent series, whose 2014 value is 14.7 per cent, and using it overstated the rise in top-end concentration as 7.6 percentage points against a correct 1.3. The documents have been corrected and a continuous-integration check now compares every year-labelled figure in the project's published documents against the source dataset, failing the build on any contradiction.
 
 We report this in the paper for two reasons. The error ran in the direction of the project's thesis, which is the kind of error that should be corrected in public. And a project whose central argument concerns the integrity of published statistics has an obligation to hold its own output to the standard it applies to others.
 
@@ -750,7 +749,15 @@ Two DQI inputs were corrected. The Freedom House scores for the UPA decade were 
 
 The 2026 census severity was recoded. The census stream was held at full severity in 2026, the rubric's level for a postponement with no date. Houselisting runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs), which under the rubric is a delay, coded 0.3. The 2026 SSI falls from 6.40 to 4.65 and the NDA-era mean from 5.09 to 4.95. The earlier coding overstated the 2026 value and ran in this paper's favour.
 
-None of these changes alters the eight-of-nine scorecard. The FCI result is weaker than the paper previously reported, and Section 6.9 now says so.
+The growth series was replaced with the published one. Years 2017 to 2022 had carried early estimates (7.2, 6.1, 4.2, −7.3, 8.7 and 7.2 per cent) where MoSPI's latest figures are 6.8, 6.5, 3.9, −5.8, 9.7 and 7.6. The years from 2023–24 now use the new 2022–23 base, 2026 is empty because no annual estimate for 2026–27 exists, and the UPA years are the World Bank series the dataset names, where 2005 and 2006 had carried 9.3 per cent each from the MoSPI back-series. The UPA mean falls from 7.08 to 6.82 per cent and the NDA mean rises from 6.11 to 6.23. The earlier figures widened the gap and ran in this paper's favour. Section 6.1 had also said that the later period was still below the earlier one with 2020 excluded. That was wrong even on the old figures, and on the published ones the later period is higher once the pandemic year is left out.
+
+The inflation series was put on calendar-year averages throughout. Its 2025 value of 4.0 per cent was replaced by the calendar-2025 average of 2.2 per cent, and Section 6.10 now gives 2013 as 10.0 per cent, the published figure, where it had 10.9. The UPA mean moves from 8.05 to 7.98 per cent and the NDA mean from 4.93 to 4.80. The earlier figures understated the later period's improvement and ran in this paper's favour.
+
+The SSI's employment and consumption streams were redated to the events. The employment stream had been coded at full severity in 2017 and 2018, before the PLFS 2017–18 report fell due in December 2018, and the consumption stream from 2018, before the survey was scrapped in November 2019. Both now start in the year of the event, and the text on the GDP stream now matches its coding (0.7 for 2015 to 2017 and full severity from 2018). The SSI for 2017 moves from 2.05 to 1.05, 2018 from 4.00 to 1.80, 2019 from 4.80 to 5.50 and 2020 from 7.00 to 7.30, and the NDA-era mean falls from 4.95 to 4.79. The earlier dating ran in this paper's favour.
+
+The RSF ranks for the comparison countries in Section 6.8 were corrected to RSF's own indices. Brazil's 2014 rank was 111, where the table had 99, and the 2026 ranks are Brazil 52, Turkey 163, Hungary 74 and South Africa 21, where the table had 80, 159, 70 and 38. These ranks enter no index. The corrections show Brazil and South Africa improving more, and Turkey and Hungary falling further, than the table had shown.
+
+None of these changes alters the eight-of-nine scorecard. The FCI result is weaker than the paper previously reported, and Section 6.9 now says so. The growth row now depends on whether the pandemic year is counted, and Sections 6.1 and 6.9 say so.
 
 ---
 
@@ -760,7 +767,7 @@ None of these changes alters the eight-of-nine scorecard. The FCI result is weak
 
 The strongest case for the period under study is that a decisive executive, unencumbered by the veto points that had constrained earlier Indian governments, could deliver material progress that a more constrained government could not. This is a serious argument with real intellectual lineage, and it deserves a test.
 
-Tested, it fails, because the gains are not visible in the data. The question of whether the institutional costs were too high relative to the gains does not arise. Growth did not accelerate. The share of workers in regular jobs with social-security cover fell from 11.5 per cent in 2017-18 to 9.6 per cent in 2022-23 while GDP grew, and at 10.1 per cent in 2023-24 it remained below where the survey began. The top 1 per cent's income share reached its highest level since 1922, and the bottom half's share averaged about two points less than in the decade before. The one measure moving the other way, inflation, is largely a world oil price: Brent fell roughly 75 per cent across 2014–16 in an economy importing 86 per cent of its crude. Whatever domestic policy contributed came from a rules-based framework that binds the executive.
+Tested, it fails, because the gains are not visible in the data. The question of whether the institutional costs were too high relative to the gains does not arise. Growth did not clearly accelerate. It averaged 6.2 per cent against 6.8 per cent, and 7.3 per cent with the pandemic year left out, a margin over the earlier decade smaller than the revisions to the series. The share of workers in regular jobs with social-security cover fell from 11.5 per cent in 2017-18 to 9.6 per cent in 2022-23 while GDP grew, and at 10.1 per cent in 2023-24 it remained below where the survey began. The top 1 per cent's income share reached its highest level since 1922, and the bottom half's share averaged about two points less than in the decade before. The one measure moving the other way, inflation, is largely a world oil price: Brent fell roughly 75 per cent across 2014–16 in an economy then importing about 81 per cent of its crude. Whatever domestic policy contributed came from a rules-based framework that binds the executive.
 
 The finding is that there was no trade to evaluate.
 
@@ -780,7 +787,7 @@ The census delay appears in this paper as the highest-weighted component of the 
 
 Lok Sabha seats have been apportioned on 1971 population figures since the freeze imposed in 1976, which was itself a federal bargain: states that succeeded in reducing fertility would not be penalised with reduced representation. That freeze expires with the first census conducted after 2026.
 
-The arithmetic of unfreezing is severe. Average constituency size has risen from roughly 0.7 million people per member in 1951 to roughly 2.5 million today, and it has risen unevenly, because fertility fell earlier and faster in the southern states. Projections indicate a transfer of approximately eleven seats to Uttar Pradesh and ten to Bihar, with Tamil Nadu and Kerala each losing roughly eight.
+The arithmetic of unfreezing is severe. Average constituency size has risen from roughly 0.7 million people per member in 1951 to roughly 2.7 million today, and it has risen unevenly, because fertility fell earlier and faster in the southern states. Projections indicate a transfer of approximately eleven seats to Uttar Pradesh and ten to Bihar, with Tamil Nadu and Kerala each losing roughly eight.
 
 Two consequences follow for this paper's argument. First, the census is an input to welfare statistics and also the instrument that determines the distribution of parliamentary representation across a federation of considerable regional divergence. Postponing it postpones that reallocation while leaving representation frozen on data now more than half a century old. Second, this connects the SSI directly to the DQI, because the statistical omission has a determinate effect on the distribution of political power.
 
@@ -848,9 +855,9 @@ The employment finding does not depend on the disputed national accounts, on any
 
 # 11. Conclusion
 
-India between 2014 and 2026 did not exchange democratic quality for prosperity. It reduced democratic quality, centralised indirect taxation through the GST, degraded the statistical apparatus by which any of this might be independently assessed, and did not deliver superior growth, employment, or distribution. On eight of nine comparable cross-era measures the later period performs worse than the earlier one. The single exception, inflation, is best explained by a global commodity collapse; insofar as Indian policy mattered, it acted by binding the executive.
+India between 2014 and 2026 did not exchange democratic quality for prosperity. It reduced democratic quality, centralised indirect taxation through the GST, degraded the statistical apparatus by which any of this might be independently assessed, and did not deliver clearly superior growth, or better employment or distribution. On eight of nine comparable cross-era measures the later period performs worse than the earlier one. The single exception, inflation, is best explained by a global commodity collapse; insofar as Indian policy mattered, it acted by binding the executive.
 
-The governance component of this finding is corroborated by an independent study using a different method, different data, and a different pre-treatment window, which finds all ten of the governance indicators it tests deteriorating against a synthetic counterfactual at a joint p-value of 0.00.
+The governance component of this finding is corroborated by an independent study using a different method, partly different data (it shares the V-Dem governance series), and a different pre-treatment window, which finds all ten of the governance indicators it tests deteriorating against a synthetic counterfactual at a joint p-value of 0.00.
 
 We have been explicit about what is not established: no causal claim is made; the SSI's UPA-era zero is the most contestable number here and we have set out the objection to it at length; the DQI inherits the assumptions of its third-party sources; the FCI is meaningful only within its own sample, and its cross-era result rests on the GST and the 2020 borrowing conditions. We have also reported errors in the project's own materials and inputs, including several that ran in the direction of its thesis, and corrected them.
 
@@ -882,7 +889,7 @@ Drafting, code generation for the site's analysis tooling, and consistency check
 
 ## Version
 
-Version 1.1, data vintage 10 October 2026. Subsequent revisions, including any corrections, are recorded at someperspective.info/updates.html and in the repository's changelog.
+Version 1.2, data vintage 10 October 2026. Subsequent revisions, including any corrections, are recorded at someperspective.info/updates.html and in the repository's changelog.
 
 ---
 
@@ -890,9 +897,9 @@ Version 1.1, data vintage 10 October 2026. Subsequent revisions, including any c
 
 Bharti, N.K., Chancel, L., Piketty, T., and Somanchi, A. (2024). *Income and Wealth Inequality in India, 1922–2023: The Rise of the Billionaire Raj*. World Inequality Lab Working Paper 2024/09.
 
-Coppedge, M., Gerring, J., Knutsen, C.H., Lindberg, S.I., Teorell, J., et al. *V-Dem Dataset v15*. Varieties of Democracy Institute, University of Gothenburg, 2026.
+Coppedge, M., Gerring, J., Knutsen, C.H., Lindberg, S.I., Teorell, J., et al. *V-Dem Dataset v16*. Varieties of Democracy Institute, University of Gothenburg, March 2026.
 
-Economic Advisory Council to the Prime Minister (2019). *Rebuttal to "India's GDP Mis-estimation"*. Government of India, June 2019.
+Economic Advisory Council to the Prime Minister (2019). *GDP Estimation in India: Perspectives and Facts*. Government of India, 19 June 2019.
 
 Fifteenth Finance Commission (2021). *Finance Commission in COVID Times: Report for 2021–26*, Volume I. Government of India.
 
@@ -904,7 +911,7 @@ Government of India, Ministry of Finance. *Economic Survey 2025–26*.
 
 Levitsky, S., and Way, L.A. (2010). *Competitive Authoritarianism: Hybrid Regimes After the Cold War*. Cambridge University Press.
 
-Grier, K., and Grier, R. (2026). *Promises, Promises: Modi's India in Comparative Perspective*. SSRN Working Paper 7248338. Replication materials: github.com/rgrier88/modi-promises-replication.
+Grier, K., and Grier, R. (2026). *Promises, Promises: Governance and Growth in India under Modi and the BJP*. SSRN Working Paper 7248338, August 2026. Replication materials: github.com/rgrier88/modi-promises-replication.
 
 Ministry of Finance. *Receipt Budget* and *Budget at a Glance*, Union Budgets 2019–20 to 2026–27.
 
@@ -916,17 +923,27 @@ Ministry of Statistics and Programme Implementation. *Periodic Labour Force Surv
 
 Ministry of Statistics and Programme Implementation. *Household Consumption Expenditure Survey 2022–23 and 2023–24*.
 
-Ministry of Statistics and Programme Implementation. *First Advance Estimates of National Income 2025–26*.
+Ministry of Statistics and Programme Implementation (2026). *Provisional Estimates of Annual Gross Domestic Product for 2025–26*, and the new series of national accounts on base 2022–23, released 27 February 2026.
+
+Ministry of Statistics and Programme Implementation (2025). *Time Use Survey 2024*, press release and factsheet, 25 February 2025.
+
+Labour Bureau, Ministry of Labour and Employment (2016). *Report on Fifth Annual Employment-Unemployment Survey (2015–16)*.
 
 National Health Accounts, Ministry of Health and Family Welfare. Estimates for India, 2014–15 to 2021–22.
 
+International Monetary Fund (2026). *World Economic Outlook*, April 2026.
+
 Penn World Table version 11.0. Groningen Growth and Development Centre.
+
+Petroleum Planning and Analysis Cell, Ministry of Petroleum and Natural Gas. *Snapshot of India's Oil and Gas Data*, crude oil import dependence, 2015–16 to 2024–25.
 
 PRS Legislative Research. *Union Budget analyses*. Annual editions.
 
 Reporters Without Borders. *World Press Freedom Index*. Annual editions, 2004–2026.
 
-Reserve Bank of India (2025). *Handbook of Statistics on the Indian Economy 2025–26*, Table 94.
+Board of Governors of the Federal Reserve System. *H.10 Foreign Exchange Rates*, Indian rupee per US dollar.
+
+Reserve Bank of India (2026). *Handbook of Statistics on the Indian Economy 2025–26*, Table 94.
 
 Reserve Bank of India. *State Finances: A Study of Budgets*, 2021 and 2023 editions; reference exchange rates.
 
@@ -934,8 +951,10 @@ Sixteenth Finance Commission. *Report for 2026–31*, Volume II. Government of I
 
 Subramanian, A. (2019). *India's GDP Mis-estimation: Likelihood, Magnitudes, Mechanisms, and Implications*. Harvard Center for International Development Faculty Working Paper No. 354.
 
+World Bank. *World Development Indicators*: GDP growth (NY.GDP.MKTP.KD.ZG) and consumer price inflation (FP.CPI.TOTL.ZG), India.
 
-Raman, V.S. (2026). *Some Perspective: India's Economic Transformation*. Dataset and replication code. someperspective.info; github.com/Varnasr/someperspective. CC BY 4.0.
+
+Raman, V.S. (2026). *Some Perspective: India's Political Economy, 2004–2026*. Dataset and replication code. someperspective.info; github.com/Varnasr/someperspective. CC BY 4.0.
 
 ---
 
@@ -967,33 +986,33 @@ $V$ = V-Dem Liberal Democracy Index; $F$ = Freedom House aggregate score; $R$ = 
 
 # Appendix B: Principal series, 2004–2026
 
-Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`. The income shares are from Bharti, Chancel, Piketty and Somanchi (2024); n/a marks a year with no published figure.
+Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`. GDP growth is for the fiscal year starting in April of the year shown (2014 = 2014–15): World Bank for 2004–2013, MoSPI's latest estimates on the 2011–12 base for 2014–2022 and on the 2022–23 base for 2023–2025, with no annual estimate yet for 2026–27. CPI inflation is the calendar-year average: World Bank for 2004–2013, MoSPI CPI (Combined) on base 2012=100 for 2014–2025, and the January to August average on base 2024=100 for 2026. The income shares are from Bharti, Chancel, Piketty and Somanchi (2024); n/a marks a year with no published figure.
 
-| Year | GDP growth | Top 1% | Bottom 50% | Press rank | SSI | FCI | DQI |
-|---|---|---|---|---|---|---|---|
-| 2004 | 7.9 | 18.4 | 18.8 | 120 | 0.00 | 0.28 | 0.59 |
-| 2005 | 9.3 | 19.3 | 18.4 | 106 | 0.00 | 0.29 | 0.61 |
-| 2006 | 9.3 | 19.7 | 17.9 | 105 | 0.00 | 0.32 | 0.61 |
-| 2007 | 7.7 | 20.1 | 17.5 | 120 | 0.00 | 0.35 | 0.58 |
-| 2008 | 3.1 | 20.4 | 17.0 | 118 | 0.00 | 0.39 | 0.58 |
-| 2009 | 7.9 | 20.8 | 16.5 | 105 | 0.00 | 0.43 | 0.60 |
-| 2010 | 8.5 | 21.2 | 16.0 | 122 | 0.00 | 0.34 | 0.56 |
-| 2011 | 5.2 | 21.1 | 15.3 | 131 | 0.00 | 0.23 | 0.54 |
-| 2012 | 5.5 | 21.3 | 15.1 | 131 | 0.00 | 0.20 | 0.53 |
-| 2013 | 6.4 | 21.6 | 15.0 | 140 | 0.00 | 0.19 | 0.51 |
-| 2014 | 7.4 | 21.3 | 14.7 | 140 | 0.00 | 0.42 | 0.49 |
-| 2015 | 8.0 | 21.7 | 14.5 | 136 | 1.05 | 0.19 | 0.46 |
-| 2016 | 8.2 | 22.2 | 14.1 | 133 | 1.05 | 0.20 | 0.46 |
-| 2017 | 7.2 | 22.3 | 13.9 | 136 | 2.05 | 0.36 | 0.44 |
-| 2018 | 6.1 | 22.4 | 14.4 | 138 | 4.00 | 0.38 | 0.42 |
-| 2019 | 4.2 | 21.6 | 14.7 | 140 | 4.80 | 0.48 | 0.39 |
-| 2020 | −7.3 | 21.5 | 15.5 | 142 | 7.00 | 0.87 | 0.36 |
-| 2021 | 8.7 | 21.7 | 15.4 | 142 | 9.00 | 0.58 | 0.37 |
-| 2022 | 7.2 | 22.6 | 15.0 | 150 | 9.00 | 0.51 | 0.34 |
-| 2023 | 7.6 | n/a | n/a | 161 | 8.20 | 0.45 | 0.28 |
-| 2024 | 7.8 | n/a | n/a | 159 | 7.05 | 0.44 | 0.28 |
-| 2025 | 6.5 | n/a | n/a | 151 | 6.55 | 0.41 | 0.30 |
-| 2026 | 7.8 | n/a | n/a | 157 | 4.65 | 0.35 | 0.28 |
+| Year | GDP growth | CPI inflation | Top 1% | Bottom 50% | Press rank | SSI | FCI | DQI |
+|---|---|---|---|---|---|---|---|---|
+| 2004 | 7.9 | 3.8 | 18.4 | 18.8 | 120 | 0.00 | 0.28 | 0.59 |
+| 2005 | 7.9 | 4.2 | 19.3 | 18.4 | 106 | 0.00 | 0.29 | 0.61 |
+| 2006 | 8.1 | 5.8 | 19.7 | 17.9 | 105 | 0.00 | 0.32 | 0.61 |
+| 2007 | 7.7 | 6.4 | 20.1 | 17.5 | 120 | 0.00 | 0.35 | 0.58 |
+| 2008 | 3.1 | 8.3 | 20.4 | 17.0 | 118 | 0.00 | 0.39 | 0.58 |
+| 2009 | 7.9 | 10.9 | 20.8 | 16.5 | 105 | 0.00 | 0.43 | 0.60 |
+| 2010 | 8.5 | 12.0 | 21.2 | 16.0 | 122 | 0.00 | 0.34 | 0.56 |
+| 2011 | 5.2 | 8.9 | 21.1 | 15.3 | 131 | 0.00 | 0.23 | 0.54 |
+| 2012 | 5.5 | 9.5 | 21.3 | 15.1 | 131 | 0.00 | 0.20 | 0.53 |
+| 2013 | 6.4 | 10.0 | 21.6 | 15.0 | 140 | 0.00 | 0.19 | 0.51 |
+| 2014 | 7.4 | 6.7 | 21.3 | 14.7 | 140 | 0.00 | 0.42 | 0.49 |
+| 2015 | 8.0 | 4.9 | 21.7 | 14.5 | 136 | 1.05 | 0.19 | 0.46 |
+| 2016 | 8.3 | 5.0 | 22.2 | 14.1 | 133 | 1.05 | 0.20 | 0.46 |
+| 2017 | 6.8 | 3.3 | 22.3 | 13.9 | 136 | 1.05 | 0.36 | 0.44 |
+| 2018 | 6.5 | 3.9 | 22.4 | 14.4 | 138 | 1.80 | 0.38 | 0.42 |
+| 2019 | 3.9 | 3.7 | 21.6 | 14.7 | 140 | 5.50 | 0.48 | 0.39 |
+| 2020 | −5.8 | 6.6 | 21.5 | 15.5 | 142 | 7.30 | 0.87 | 0.36 |
+| 2021 | 9.7 | 5.1 | 21.7 | 15.4 | 142 | 9.00 | 0.58 | 0.37 |
+| 2022 | 7.6 | 6.7 | 22.6 | 15.0 | 150 | 9.00 | 0.51 | 0.34 |
+| 2023 | 7.3 | 5.6 | n/a | n/a | 161 | 8.20 | 0.45 | 0.28 |
+| 2024 | 7.2 | 4.9 | n/a | n/a | 159 | 7.05 | 0.44 | 0.28 |
+| 2025 | 7.8 | 2.2 | n/a | n/a | 151 | 6.55 | 0.41 | 0.30 |
+| 2026 | n/a | 3.8 | n/a | n/a | 157 | 4.65 | 0.35 | 0.28 |
 
 ---
 

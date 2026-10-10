@@ -1,8 +1,8 @@
 {
-  "note": "Source for the standalone explainer at /care/. Figures come from data.json's careEconomy block, which holds the NSO Time Use Survey results verbatim. Edit this file, then run tools/build_site.py.",
+  "note": "Source for the standalone explainer at /care/. The Time Use Survey figures are from MoSPI's press release of 25 February 2025 (Time Use Survey 2024, Tables 1 and 2 and the key highlights). Each figure states its age group, because the release reports some for persons aged six and above and others for ages 15 to 59. Edit this file, then run tools/build_site.py.",
   "title": "What GDP does not count",
   "kicker": "The production boundary",
-  "standfirst": "GDP measures the work an economy has agreed to count. That agreement leaves out the four hours and forty-nine minutes an Indian woman spends every day on unpaid domestic work. This page sets out where the line sits, and who drew it.",
+  "standfirst": "GDP measures the work an economy has agreed to count. That agreement leaves out the four hours and forty-nine minutes a day that an Indian woman who does unpaid domestic work spends on it. This page sets out where the line sits, and who drew it.",
   "boundaryHead": "Somebody drew the line",
   "boundary": [
     "National accounts run on a rulebook, the System of National Accounts. It sets a production boundary. Work inside the boundary adds to GDP. Work outside it adds nothing.",
@@ -12,30 +12,30 @@
   ],
   "hoursHead": "India counts the hours already",
   "hours": [
-    "The usual defence is that this work is too hard to measure. In India that defence has run out. The National Statistical Office ran a Time Use Survey through 2019 and a second through 2024, the later one covering about 4.5 lakh people in 1.3 lakh households. The hours exist and are published, and they stop at the edge of the national accounts.",
-    "Take women aged 15 to 59 who do unpaid domestic work at all. In 2024 they spent 289 minutes a day on it, and men spent 88. That is four hours forty-nine minutes against one hour twenty-eight. For a woman it comes to roughly 1,758 hours a year, and none of it appears in an employment figure or an output series.",
-    "Care of family members sits on top of that. 41% of women in that age band did it, against 21.4% of men. Those who did it spent 140 minutes a day, against 74 for men."
+    "The usual defence is that this work is too hard to measure. In India that defence has run out. The National Statistical Office ran a Time Use Survey through 2019 and a second through 2024, the later one covering about 4.5 lakh people aged six and above in about 1.4 lakh households. The hours exist and are published, and they stop at the edge of the national accounts.",
+    "Take people aged six and above who do unpaid domestic work at all. In 2024 the women among them spent 289 minutes a day on it, and the men spent 88. That is four hours forty-nine minutes against one hour twenty-eight. For a woman who does this work every day it comes to roughly 1,758 hours a year, and none of it appears in an employment figure or an output series. Women aged 15 to 59 who did it spent longer, 305 minutes a day.",
+    "Care of family members sits on top of that. 41% of women aged 15 to 59 did it, against 21.4% of men in the same age group. Those who did it spent 140 minutes a day, against 74 for men."
   ],
   "changeHead": "Two surveys, five years apart",
   "change": [
     "Two rounds mean the change can be counted. The result is not what most people would expect.",
-    "Far more men now do some unpaid domestic work, 26.1% in 2019 and 45.8% in 2024. That is close to double, and it should be said.",
-    "The minutes went the other way. Men who did it spent 97 minutes a day in 2019 and 88 in 2024. Women's fell too, 299 to 289.",
+    "The share of men doing any unpaid domestic work barely moved. It was 26.1% of men aged six and above in 2019 and 27.1% in 2024. For women it went from 81.2% to 81.5%.",
+    "The minutes fell for both. Men aged six and above who did this work spent 97 minutes a day in 2019 and 88 in 2024. Women's time fell from 299 to 289 minutes, and for women aged 15 to 59 from 315 to 305.",
     "So the gap between a woman who does this work and a man who does it was 202 minutes, and it is now 201.",
     "The gap narrowed by one minute in five years.",
-    "Over the same period women in paid employment rose from 21.8% to 25.0%. More women went out to work. The work at home stayed roughly where it was."
+    "Over the same period the share of women aged 15 to 59 who took part in employment and related activities on the survey day rose from 21.8% to 25.0%. More women went out to work. The work at home stayed roughly where it was."
   ],
   "valueHead": "Nobody can say what it is worth",
   "value": [
     "Published Indian estimates put the value of unpaid household work somewhere between 7.5% and 36% of GDP.",
-    "The spread comes from disagreement about what price to put on the hours, which are known. Pay minimum wage for an hour and you land at the bottom of the range. Pay what the woman could have earned in a job instead and you land in the middle. Pay what it would cost to hire a cook, a cleaner and a nurse to do the specific tasks and you land at the top.",
+    "The spread comes from disagreement about what price to put on the hours, which are known. Assume a modest monthly income forgone, as the SBI estimate does with ₹5,000 a month for a rural woman and ₹8,000 for an urban one, and you land at the bottom of the range. Pay what the woman could have earned in a job instead and you land in the middle. Pay what it would cost to hire a cook, a cleaner and a nurse to do the specific tasks and you land at the top.",
     "This project picks none of these and publishes no figure of its own. The table below is other people's work.",
     "Some things can be said without choosing a method. All of these numbers are large. The lowest of them is bigger than several sectors that do get counted. And the argument stays unsettled because no statistical agency has been asked to settle it."
   ],
   "employmentHead": "This changes how to read our own employment numbers",
   "employment": [
     "On MoSPI's usual-status series, female labour force participation in India was 40.0% in 2025, up from 23.3% in 2017-18. It is usually discussed as the share of women who work.",
-    "The Time Use Survey found 83.9% of women aged 15 to 59 doing unpaid domestic work on the day they were asked.",
+    "The Time Use Survey found 81.5% of women aged six and above doing unpaid domestic work on the day they were asked.",
     "Both figures are right. Read together, they say the participation rate measures only the kind of work the accounts recognise. The unpaid domestic work that the Time Use Survey finds most women doing every day sits outside it.",
     "How much of India's participation gap is behaviour and how much is definition is an open question. This project has not answered it. Anyone using our employment figures should know the question is open."
   ],
@@ -50,5 +50,5 @@
     "Several countries keep a satellite account for household production. India does not. If the NSO published one, this page would report its number.",
     "A good case that the Time Use Survey hours are too shaky to price would also change it. That would be an argument for a better survey. It would not justify carrying on with zero."
   ],
-  "bottomLine": "GDP counts what it was told to count. Indian women do about 1,758 hours a year of work that falls outside the instruction. The country measures those hours and then leaves them out. Estimates of what they are worth vary five-fold because nobody has been asked to settle it. The growth figures on this site are unadjusted for any of that."
+  "bottomLine": "GDP counts what it was told to count. An Indian woman who does unpaid domestic work every day spends about 1,758 hours a year on it, and that work falls outside the instruction. The country measures those hours and then leaves them out. Estimates of what they are worth vary five-fold because nobody has been asked to settle it. The growth figures on this site are unadjusted for any of that."
 }
