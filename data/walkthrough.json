@@ -6,7 +6,7 @@
       "id": "open",
       "kicker": "A guided tour · about 10 minutes",
       "title": "India grew. Did that growth buy what it was supposed to?",
-      "body": "Between 2014 and 2026 India became the world's most populous country and its fourth-largest economy. Over the same years, every available measure of democratic quality fell. This walkthrough sets out what the data shows about whether those two facts were a trade, and concludes that they were not.",
+      "body": "Between 2014 and 2026 India became the world's most populous country and the sixth-largest economy at market exchange rates (IMF World Economic Outlook, April 2026). Over the same years, every available measure of democratic quality fell. This walkthrough sets out what the data shows about whether those two facts were a trade, and concludes that they were not.",
       "note": "Use the arrow keys, or swipe. Every figure here is read live from the site's dataset."
     },
     {
@@ -28,7 +28,7 @@
       "points": [
         "The 2021 census was postponed in 2020 with no new date. Houselisting began in April 2026 and population enumeration is notified for February 2027.",
         "The 2017-18 consumption survey was completed, then withheld after it showed rural consumption falling.",
-        "The national accounts were rebased in 2015 in a way that lowered earlier growth and raised later growth, and the revision was never independently reviewed.",
+        "The national accounts moved to a 2011-12 base in 2015, which raised measured growth for the years it covered. In 2018 a back-series drafted by a National Statistical Commission committee, which raised UPA-era growth, was shelved, and the back-series the CSO and NITI Aayog released instead lowered it. Neither revision was independently reviewed.",
         "Two statistical commissioners resigned, and the NSSO was merged into the NSO.",
         "Official COVID mortality was ~0.5 million against independent excess-mortality estimates of 3-5 million."
       ],
@@ -68,12 +68,13 @@
     {
       "id": "growth",
       "kicker": "The first half of the bargain",
-      "title": "Growth did not accelerate",
-      "body": "Real GDP growth averaged {{avg:eraHistory.gdpGrowth}}% across 2004-2013 and {{avg:economic.gdpGrowth}}% across 2014-2026.",
+      "title": "Growth was about the same in both periods",
+      "body": "Real GDP growth averaged {{avg:eraHistory.gdpGrowth}}% across 2004-05 to 2013-14 and {{avg:economic.gdpGrowth}}% across 2014-15 to 2025-26. There is no annual estimate for 2026-27 yet.",
       "points": [
-        "The later figure includes the 2020 pandemic contraction, which accounts for much of the gap.",
-        "The two periods are also not cleanly comparable. The 2015 rebasing moved measured growth in the government's favour, and it was never independently reviewed.",
-        "Even taking the official numbers at face value, no acceleration is visible."
+        "The later figure includes the 2020-21 pandemic contraction of 5.8%, which accounts for all of the gap. Without that year the NDA average is 7.32%, above the UPA figure.",
+        "The earlier figure includes the 2008-09 global financial crisis year. Without it the UPA average is 7.23%, so with both shock years set aside the two periods grew at almost the same rate.",
+        "The two periods are also not cleanly comparable. The UPA years rest on a back-series whose method was disputed, and the years from 2023-24 sit on a new 2022-23 base released in February 2026.",
+        "Taking the official numbers at face value, growth did not accelerate after 2014."
       ]
     },
     {
@@ -90,8 +91,8 @@
       "kicker": "Why jobs did not follow",
       "title": "The growth happened where the jobs are not",
       "chart": "structure",
-      "body": "Agriculture holds 42% of employment while producing 18% of output. Manufacturing, the sector that in the standard development sequence absorbs that labour, holds only 11% of jobs.",
-      "note": "Industrial policy weighted toward capital-intensive sectors raises output more than payroll. Electronics generates roughly one job per ₹1.5 crore invested; garments, at comparable investment, generate vastly more.",
+      "body": "Agriculture holds 43% of employment (PLFS, 2025) while producing about 18% of output. Manufacturing, the sector that in the standard development sequence absorbs that labour, holds only 12% of jobs.",
+      "note": "Industrial policy weighted toward capital-intensive sectors can raise output more than it raises employment.",
       "chartAlt": "Grouped bar chart by sector, comparing each sector’s share of output with its share of jobs. The sectors holding most of the jobs hold much less of the output."
     },
     {
@@ -109,7 +110,7 @@
       "title": "The one exception, and why it does not count as a win",
       "body": "Consumer price inflation averaged {{avg:eraHistory.cpiInflation}}% in 2004-2013 against {{avg:economic.cpiInflation}}% in 2014-2026. It is the only measure moving the other way, and most of the movement has little to do with Indian policy.",
       "points": [
-        "The comparison straddles a global commodity cycle. Brent crude fell from about $115 a barrel in mid-2014 to under $30 by early 2016, driven by US shale supply and OPEC defending market share. India imports about 86% of its crude.",
+        "The comparison straddles a global commodity cycle. Brent crude fell from about $115 a barrel in mid-2014 to under $30 by early 2016, driven by US shale supply and OPEC defending market share. India imported 88.2% of its crude oil in 2024-25 (PPAC, provisional).",
         "An external shock that size, landing exactly at the boundary between the two periods, explains more of the gap than any change of government does.",
         "Where domestic policy did help, it was inflation targeting, a rule that binds the executive's hands. That is a delegation of power away from the executive.",
         "The 2026 figure also sits on a new CPI basket where food's weight fell from 45.9% to 36.8%, so it prints lower for the same price movements."
@@ -122,11 +123,11 @@
       "title": "GDP counts the rent and leaves out the cooking",
       "body": "Every growth figure in this deck is a GDP figure. GDP counts work inside a boundary somebody drew. Own the flat you live in and the accounts work out a rent you never paid and add it to output. Cook the evening meal in that flat and nothing is added.",
       "points": [
-        "India already counts the hours. The Time Use Survey found women aged 15-59 who do unpaid domestic work spending 289 minutes a day on it in 2024. Men spent 88.",
-        "For a woman that is about 1,758 hours a year, in no employment figure and no output series.",
-        "Two survey rounds, five years apart, show far more men now doing some of this work, up from 26.1% to 45.8%. The minutes fell for both sexes, however, so the gap between a woman who does it and a man who does it went from 202 minutes to 201, a change of one minute in five years.",
+        "India already counts the hours. The Time Use Survey found that women aged 6 and above who do unpaid domestic work spent 289 minutes a day on it in 2024 (305 minutes for women aged 15-59). Men spent 88.",
+        "At 289 minutes that is about 1,758 hours a year for a woman, in no employment figure and no output series.",
+        "Two survey rounds, five years apart, show little change in who does this work. The share of men doing any unpaid domestic work rose from 26.1% to 27.1%, against 81.2% and 81.5% for women. The minutes fell for both sexes, so the gap between a woman who does it and a man who does it went from 202 minutes to 201, a change of one minute in five years.",
         "Published estimates of what the work is worth run from 7.5% to 36% of GDP. That spread is a disagreement about the price of an hour. There is little doubt about the hours.",
-        "It changes how to read one of our own numbers. About 40% of women are counted in the workforce (PLFS, 2025), and the rest are discussed as women not working. The same surveys found 83.9% of them doing unpaid work at home."
+        "It changes how to read one of our own numbers. About 40% of women aged 15 and over are counted in the labour force (PLFS, 2025), and the rest are often described as not working. The Time Use Survey found 81.5% of women aged 6 and above doing unpaid domestic work on the day it asked about in 2024."
       ],
       "note": "Nothing in this deck is adjusted for any of it. These are the official figures on the official boundary. The full argument is at someperspective.info/care."
     },
@@ -144,17 +145,17 @@
       "kicker": "Against comparable countries",
       "title": "A decline comparable to Turkey's, from a higher base",
       "chart": "international",
-      "body": "India's V-Dem Liberal Democracy Index fell from 0.488 to 0.260 over the period, a fall of 0.228 points. Turkey fell from 0.252 to 0.110, and Hungary from 0.521 to 0.315. Turkey's proportional fall is steeper, from a base already near the floor. India's is the largest absolute fall of the three.",
-      "note": "Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking every country down.",
-      "chartAlt": "Grouped bar chart comparing V-Dem liberal democracy scores in 2014 and 2026 for India and its peer countries."
+      "body": "India's V-Dem Liberal Democracy Index fell from 0.488 in 2014 to 0.260 in 2025, a fall of 0.228 points. Turkey fell from 0.252 to 0.110, and Hungary from 0.521 to 0.315. Turkey's proportional fall is steeper, from a base already near the floor. India's is the largest absolute fall of the three.",
+      "note": "2025 is V-Dem's latest observation (v16, March 2026). Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking every country down.",
+      "chartAlt": "Grouped bar chart comparing V-Dem liberal democracy scores in 2014 and 2025 for India and its peer countries."
     },
     {
       "id": "grier",
       "kicker": "An independent check",
       "title": "A different method reaches the same conclusion",
       "chart": "grier",
-      "body": "Kevin and Robin Grier (Texas Tech) build a synthetic counterfactual, a weighted blend of comparator countries fitted to India's path over 1984-2013, and measure the gap that opens after 2014. All ten governance indicators they test deteriorate, every one at a joint p-value of 0.00.",
-      "note": "The method, the data and the authors are all different, and there is no shared machinery with this project. Their electoral-democracy gap of -60.2% sits close to the -63.4% raw decline measured here, though the two are not the same quantity.",
+      "body": "Kevin and Robin Grier (Texas Tech) build a synthetic counterfactual, a weighted blend of comparator countries fitted to India's path over 1984-2013, and measure the gap that opens after 2014. All ten governance indicators they test deteriorate, and the authors report a p-value of 0.00 for each.",
+      "note": "The method, the data and the authors are all different, and there is no shared machinery with this project. Their electoral-democracy gap is -60.2% against the counterfactual. India's own V-Dem Electoral Democracy Index fell from 0.617 in 2014 to 0.377 in 2025, a decline of 38.9%. The two measure different things, so the numbers are not directly comparable.",
       "chartAlt": "Horizontal bar chart. For each indicator, the percentage deterioration against the synthetic-control counterfactual."
     },
     {
@@ -192,7 +193,7 @@
       "body": "Every figure in this walkthrough is read live from the same dataset the site and the paper use. Nothing here is a screenshot.",
       "links": [
         {
-          "label": "The full research paper (15,000 words)",
+          "label": "The full research paper (about 21,000 words)",
           "href": "../downloads/paper.html"
         },
         {

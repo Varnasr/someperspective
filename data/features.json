@@ -51,7 +51,7 @@
     "slug": "graduate-unemployment-is-five-times-the-headline-rate",
     "category": "Jobs",
     "title": "Graduate unemployment is four times the overall rate",
-    "body": "On MoSPI's usual-status series, unemployment among graduates aged 15 and over was 13.0% in 2023-24, against 3.2% for all workers on the same measure. The graduate rate has fallen from 17.2% in 2017-18, and it has stayed three to four times the overall rate throughout. The gap reflects an economy that has expanded low-skill informal work while shedding formal salaried positions.",
+    "body": "On MoSPI's usual-status series, unemployment among graduates aged 15 and over was 13.0% in 2023-24, against 3.2% for all workers on the same measure. The graduate rate has fallen from 17.2% in 2017-18, and it has stayed three to four times the overall rate throughout. Over the same years regular wage and salaried work slipped from 22.8% to 21.7% of all workers, so graduates looking for salaried jobs entered a labour market where the share of such jobs was not growing.",
     "takeaway": "Aggregate labour data masks the structural mismatch facing the educated workforce.",
     "tab": "Key Findings",
     "chart": {
@@ -95,9 +95,9 @@
   {
     "slug": "indias-v-dem-score-has-fallen-further-than-any",
     "category": "Democracy",
-    "title": "India's V-Dem score has fallen furthest in absolute terms",
-    "body": "V-Dem Liberal Democracy Index: India 0.488 (2014) → 0.260 (2026), a 47% decline and a fall of 0.228 points. Brazil 0.783 → 0.704 (-10%). Turkey 0.252 → 0.110 (-56%). Hungary 0.521 → 0.315 (-40%). South Africa 0.641 → 0.633 (-1%). Turkey falls further in percentage terms, but from a base already near the floor. India's is the largest absolute fall in the cohort.",
-    "takeaway": "On the most-cited cross-country democracy index, India has erased four decades of liberalisation in one.",
+    "title": "India's V-Dem score has fallen furthest of its five-country peer group",
+    "body": "V-Dem Liberal Democracy Index (v16, March 2026): India 0.488 (2014) → 0.260 (2025), a 47% decline and a fall of 0.228 points. Brazil 0.783 → 0.704 (-10%). Turkey 0.252 → 0.110 (-56%). Hungary 0.521 → 0.315 (-40%). South Africa 0.641 → 0.633 (-1%). Turkey falls further in percentage terms, from a base already near the floor. India's is the largest absolute fall of these five countries. Among all major economies the United States fell further in absolute terms, from 0.848 to 0.571. V-Dem's latest observation is for 2025, and the dataset carries it forward to 2026.",
+    "takeaway": "India's 2025 score of 0.260 is its lowest on V-Dem's series since 1950, and slightly below the 0.265 recorded in 1976, during the Emergency.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "intl",
@@ -185,9 +185,9 @@
   {
     "slug": "reported-communal-incidents-are-40-above-their-2004-baseline",
     "category": "Society",
-    "title": "Reported communal incidents are 40% above their 2004 baseline",
-    "body": "MHA-reported and independently verified communal incidents rose from 640 (2004) to ~923 (2025). The trend is not monotonic. There is a peak in 2013, a dip in 2016, and steady acceleration since 2017. The series carries a wide confidence band given documented underreporting.",
-    "takeaway": "Even with conservative counting, the floor of communal violence has risen considerably.",
+    "title": "The Home Ministry's count of communal incidents stops in 2017",
+    "body": "The Ministry of Home Affairs counted 677 communal incidents in 2004, a peak of 943 in 2008 and 823 in 2013 (MHA reply to an RTI application, reported by The Wire). Its replies to the Lok Sabha give 644 incidents in 2014, 751 in 2015, 703 in 2016 and 822 in 2017, when 111 people were killed. The yearly count averaged about 748 over 2004-2013 and 730 over 2014-2017. The ministry has not published a comparable national count for any year after 2017, so the series cannot show what happened since.",
+    "takeaway": "On the ministry's own count, communal incidents in 2014-2017 were close to the UPA-decade level. The record after 2017 is missing.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "csv-line",
@@ -199,9 +199,9 @@
   {
     "slug": "opposition-incarceration-cases-were-near-zero-until-they-werent",
     "category": "Democracy",
-    "title": "Opposition incarceration cases were near zero until 2014, then rose",
-    "body": "Documented cases of high-profile opposition political figures being formally incarcerated (charged or held in pre-trial detention) were essentially zero from 2004 through 2014. They rose moderately in 2015-2018 and accelerated sharply from 2019, with 9-11 cases per year in 2023-2025.",
-    "takeaway": "A specific tool of political pressure shifted from rare to routine within a single decade.",
+    "title": "Central agencies arrested senior opposition leaders in 2023 and 2024",
+    "body": "The Central Bureau of Investigation arrested Manish Sisodia, then Delhi's deputy chief minister, in February 2023. The Enforcement Directorate arrested Hemant Soren in January 2024, on the day he resigned as chief minister of Jharkhand, and Arvind Kejriwal in March 2024 while he was chief minister of Delhi. No government agency publishes a count of arrests of opposition politicians, and this project holds no case-by-case register, so it states no annual number.",
+    "takeaway": "The arrest of a sitting chief minister in 2024 had no precedent. A yearly count would need a published case list, which does not yet exist.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "csv-line",
@@ -213,9 +213,9 @@
   {
     "slug": "exam-disruption-events-have-multiplied",
     "category": "Statistics",
-    "title": "Exam disruption events have multiplied",
-    "body": "Documented exam leaks, cancellations, and disruption events across school and competitive exams rose from near-zero in 2004 to ~12 events per year by 2025. The acceleration concentrates after 2018 and reflects both increased reporting and underlying integrity failures.",
-    "takeaway": "The institutions that gate the labour market are showing visible strain.",
+    "title": "Exam leaks prompted a national law in 2024",
+    "body": "Parliament passed the Public Examinations (Prevention of Unfair Means) Act in February 2024, and it came into force in June 2024. That month the Ministry of Education cancelled the June 2024 UGC-NET a day after it was held, on information that its integrity had been compromised, and the CBI took up the alleged leak of the NEET-UG paper. In July 2024 the Supreme Court declined to order a NEET-UG re-test, finding no evidence of a systemic breach. No agency publishes an annual count of exam leaks or cancellations, so this card states no yearly number.",
+    "takeaway": "The 2024 law and the cancellations show that leaks reached national examinations. Measuring how often they happen would need a published list of events.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "csv-line",
@@ -227,9 +227,9 @@
   {
     "slug": "open-defecation-free-coverage-is-a-textbook-logistic-curve",
     "category": "Public services",
-    "title": "Open Defecation Free coverage is a textbook logistic curve",
-    "body": "Verified ODF coverage went from <0.2% (2004) to 98.5% (2024). The growth is the cleanest S-curve in the entire dataset, with a slow climb in 2004-2011, steep adoption in 2011-2018, and saturation thereafter. It is a case study in a state programme that delivered.",
-    "takeaway": "Where there is sustained political will and clear measurement, India's state can move very fast.",
+    "title": "Rural toilet access rose fastest under Swachh Bharat",
+    "body": "The census found a latrine in 21.9% of rural households in 2001 and 30.7% in 2011. When the Swachh Bharat Mission (Gramin) began on 2 October 2014, the programme put rural sanitation coverage at 38.7% (Lok Sabha replies). On 2 October 2019 all rural India was declared open defecation free, on the basis of declarations by villages and states. The National Annual Rural Sanitation Survey 2018-19 found 93.1% of rural households with access to a toilet. Programme figures count toilets built and declarations made, and they measure access, which is a separate question from use.",
+    "takeaway": "Rural toilet access rose more between 2014 and 2019 than in the previous decade, on both programme and survey figures.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "csv-line",
@@ -326,7 +326,7 @@
     "slug": "the-2020-gdp-contraction-was-the-steepest-since-independence",
     "category": "Growth",
     "title": "The 2020 GDP contraction was the steepest since independence",
-    "body": "GDP shrank 7.3% in calendar 2020, the largest annual contraction in India's recorded history. The headline V-shape (8.7% in 2021) masked a structural break. Formal employment never recovered its pre-COVID trajectory. The ILO-IHD India Employment Report 2024 finds that nearly two thirds of the employment added after 2019 was self-employment. NITI Aayog puts the number of gig workers at 7.7 million in 2020-21.",
+    "body": "GDP shrank 5.8% in 2020-21 (April 2020 to March 2021, MoSPI's latest estimate on the 2011-12 base), the largest annual contraction since independence. The previous largest was 5.2% in 1979-80. Growth rebounded to 9.7% in 2021-22, and formal employment did not follow it. The ILO-IHD India Employment Report 2024 finds that nearly two thirds of the incremental employment after 2019 comprised self-employed workers, most of them unpaid family workers, who are mainly women. NITI Aayog puts the number of gig workers at 7.7 million in 2020-21.",
     "takeaway": "The recovery showed up in GDP and did not show up in employment.",
     "tab": "Interactive Data",
     "chart": {
@@ -346,9 +346,9 @@
   {
     "slug": "india-is-now-the-worst-ranked-of-its-peer",
     "category": "Comparative",
-    "title": "India is now the worst-ranked of its peer democracies on press freedom",
-    "body": "2026 RSF ranks: India 157, Turkey 159 (essentially tied), Hungary 70, Brazil 80, South Africa 38. India and Turkey have moved together. The others have stayed roughly stable or improved. South Africa is the only peer that improved materially over the period.",
-    "takeaway": "The relevant comparison set for Indian press freedom is now Turkey. Brazil and South Africa no longer belong in it.",
+    "title": "India and Turkey rank lowest of the peer democracies on press freedom",
+    "body": "RSF ranks for 2026: India 157, Turkey 163, Hungary 74, Brazil 52, South Africa 21. In 2014 they were India 140, Turkey 154, Hungary 64, Brazil 111 and South Africa 42. India, Turkey and Hungary fell. Brazil rose 59 places, the largest improvement of the five, and South Africa rose 21.",
+    "takeaway": "On press freedom India now ranks close to Turkey and far below Brazil and South Africa, both of which improved over the period.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "intl",
@@ -456,7 +456,7 @@
     "slug": "a-regime-comparison-computed-live-from-the-data",
     "category": "Comparative",
     "title": "A regime comparison, computed live from the data",
-    "body": "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, a 20.4% top 1% income share, and a press-freedom rank around 121. NDA's same averages are computed live from the loaded series. Unemployment and formal employment have no series on the PLFS basis for the UPA years, so those two are marked as not available.",
+    "body": "Averaging the data over each regime period: UPA averaged 6.8% GDP growth, a 20.4% top 1% income share, and a press-freedom rank of about 120. NDA's same averages are computed live from the loaded series. Unemployment and formal employment have no series on the PLFS basis for the UPA years, so those two are marked as not available.",
     "takeaway": "The regime comparison is mechanical. It averages the data and interprets nothing, and it does not flatter either side.",
     "tab": "Deep Analysis",
     "chart": {
@@ -477,7 +477,7 @@
     "slug": "press-freedom-and-statistical-suppression-move-in-lockstep",
     "category": "Correlation",
     "title": "Press freedom and statistical suppression worsened together after 2014",
-    "body": "The Pearson correlation between India's annual SSI and its RSF press-freedom rank is about 0.64 over 2014-2026, so years with more statistical suppression tend to be years with a worse press-freedom rank. Pressure on independent statistics and pressure on an independent press can serve a similar purpose, which would explain the link, but thirteen annual observations cannot establish it.",
+    "body": "The Pearson correlation between India's annual SSI and its RSF press-freedom rank is about 0.65 over 2014-2026, so years with more statistical suppression tend to be years with a worse press-freedom rank. Pressure on independent statistics and pressure on an independent press can serve a similar purpose, which would explain the link, but thirteen annual observations cannot establish it.",
     "takeaway": "The two series move in the same direction. The correlation is moderate and does not by itself show a common cause.",
     "tab": "Correlation Explorer",
     "chart": {
@@ -567,8 +567,8 @@
     "slug": "india-and-hungary-are-now-travelling-the-same-road",
     "category": "Comparative",
     "title": "India and Hungary are now travelling the same road",
-    "body": "On the V-Dem Liberal Democracy Index: Hungary 0.521 (2014) → 0.315 (2026). India 0.488 → 0.260. The two began the period within 0.04 of each other and both ended near 0.3. India's slide started later and travelled slightly further. The Hungary 2010-2024 trajectory has become the most-cited template for understanding India's path.",
-    "takeaway": "A democracy can fall this far while remaining electorally competitive. Hungary showed it first.",
+    "body": "On the V-Dem Liberal Democracy Index: Hungary 0.521 (2014) → 0.315 (2025). India 0.488 → 0.260. The two began the period within 0.04 of each other and both ended near 0.3. India's fall of 0.228 points is slightly larger than Hungary's 0.206. V-Dem's latest observation is for 2025.",
+    "takeaway": "Hungary's score fell by a similar amount over the same years, and both countries continued to hold competitive elections.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "intl",
@@ -579,9 +579,9 @@
   {
     "slug": "south-africa-is-the-only-peer-that-recovered-on",
     "category": "Comparative",
-    "title": "South Africa is the only peer that recovered on press freedom",
-    "body": "2014→2026 RSF rank: South Africa 42→38 (improved), Brazil 99→80 (improved). Turkey 154→159 (worsened slightly). Hungary 64→70 (worsened slightly). India 140→157 (worsened sharply). The recovery cases share institutional reform processes that the decline cases lack.",
-    "takeaway": "Decline can be reversed. Peer countries have done it.",
+    "title": "Brazil and South Africa improved on press freedom while India fell",
+    "body": "2014→2026 RSF rank: Brazil 111→52 (improved), South Africa 42→21 (improved). Turkey 154→163 (worsened). Hungary 64→74 (worsened). India 140→157 (worsened).",
+    "takeaway": "Press-freedom ranks can recover within a decade. Brazil rose 59 places between 2014 and 2026.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "intl",
@@ -592,9 +592,9 @@
   {
     "slug": "gdp-growth-volatility-has-risen-the-boom-and-bust",
     "category": "Growth",
-    "title": "GDP growth volatility has risen, with larger booms and larger busts",
-    "body": "Headline GDP growth 2014-2026 has ranged from -7.3% (2020) to +8.7% (2021). The 2017-2019 demonetisation-and-GST window also showed a clear deceleration (8.2→6.1→4.2). The level is high on average, and the year-to-year variance exceeds the pre-2014 period.",
-    "takeaway": "Average GDP growth is a useful number. For India today, the spread around the average tells you more.",
+    "title": "GDP growth swung more after 2014, and the pandemic accounts for the difference",
+    "body": "Annual GDP growth from 2014-15 to 2025-26 ranged from -5.8% (2020-21) to 9.7% (2021-22). Growth slowed from 8.3% in 2016-17 to 6.8% in 2017-18, 6.5% in 2018-19 and 3.9% in 2019-20, the years after demonetisation and the GST. The standard deviation of annual growth was about 4.0 points over 2014-2025 against 1.7 over 2004-2013. Without 2020-21 it falls to 1.4, below the UPA decade's.",
+    "takeaway": "The pandemic year drives the wider spread. Outside it, growth after 2014 was no more volatile than before.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -677,8 +677,8 @@
     "slug": "v-dem-score-is-at-1976-emergency-levels",
     "category": "Democracy",
     "title": "V-Dem score is at 1976-emergency levels",
-    "body": "India's V-Dem Liberal Democracy score in 2026 (~0.26) is comparable to the score recorded during the 1975-1977 Emergency, when civil liberties were formally suspended. The current score has been reached without a formal Emergency declaration.",
-    "takeaway": "A democracy can be functionally undone without ever being formally suspended.",
+    "body": "India's V-Dem Liberal Democracy score in 2025, the latest observation, was 0.260. That is slightly below the 0.265 recorded in 1976, during the 1975-1977 Emergency, when civil liberties were formally suspended, and the lowest since 1950. The current score has been reached without a formal Emergency declaration.",
+    "takeaway": "India's V-Dem score fell to Emergency-era levels without any formal suspension of civil liberties.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -720,7 +720,7 @@
     "slug": "gdp-counts-the-rent-on-your-flat-not-the-cooking",
     "category": "Statistics",
     "tab": "Reading the Economy",
-    "body": "Own the flat you live in and the national accounts estimate a rent for it and add that to GDP. Cook the meal inside it and nothing is added. India's Time Use Survey found women aged 15-59 who do unpaid domestic work spending 289 minutes a day on it in 2024, against 88 minutes for men. That is about 1,758 hours a year for a woman, in no employment figure and no output series. Published valuations of that work run from 7.5% to 36% of GDP. The spread comes from the price put on an hour, and there is little doubt about the hours themselves.",
+    "body": "Own the flat you live in and the national accounts estimate a rent for it and add that to GDP. Cook the meal inside it and nothing is added. India's Time Use Survey found that women aged 6 and above who do unpaid domestic work spent 289 minutes a day on it in 2024, against 88 minutes for men (305 minutes for women aged 15-59). At 289 minutes that is about 1,758 hours a year for a woman, in no employment figure and no output series. Published valuations of that work run from 7.5% to 36% of GDP. The spread comes from the price put on an hour, and there is little doubt about the hours themselves.",
     "takeaway": "The production boundary is a convention. India collects the hours needed to price what falls outside it and does not do so."
   }
 ]
