@@ -18,7 +18,7 @@
     "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual)",
     "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP, for the fiscal year starting in the year shown (2014 = 2014-15). 2025 is the Revised Estimate for 2025-26 (4.4); 2026 is the Budget Estimate for 2026-27 (4.3), from the Union Budget of 1 February 2026.",
     "cpiInflation": "MoSPI CPI (Combined), year-on-year. 2026: the average of the 8 monthly prints published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from 2014-2025 and the two are not strictly comparable. RBI target band 2-6%.",
-    "rupeeUSD": "Calendar-year average rupees per US dollar (RBI/FBIL reference rate). 2026 is the day-weighted average of the January to September 2026 monthly averages published by X-Rates (90.7 in January to 95.5 in September), 93.9, shown rounded to 94. 2025 on the same source averages 87.1.",
+    "rupeeUSD": "Calendar-year average rupees per US dollar: the mean of the monthly averages in the Federal Reserve's H.10 release (FRED series EXINUS), rounded to the nearest rupee. 2026 is January to September (93.9, shown as 94); 2025 averages 87.2. The record low of 96.8 is the Fed's daily rate for 20 May 2026 (DEXINUS 96.82).",
     "ssi": "Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py",
     "fci": "Constructed: mean of 6 min-max-normalised centralisation components incl. GST structural centralisation (2004-2026 sample); see data/compute_indices.py",
     "dqi": "Constructed: geometric mean of V-Dem Liberal Democracy Index (v2x_libdem) × (Freedom House/100) × ((180-RSF rank)/180) × V-Dem Core Civil Society Index (v2xcs_ccsi); see data/compute_indices.py. The two V-Dem columns are the published series verbatim; earlier approximations that overstated the pre-2014 baseline were corrected on 15 August 2026.",
@@ -235,7 +235,7 @@
       74,
       74,
       79,
-      82,
+      83,
       84,
       87,
       94
