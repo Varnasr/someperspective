@@ -111,6 +111,11 @@ font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(-
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 @media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
+/* On a phone the page runs on plain paper; the split stays in the header bar,
+   where a bordered panel would only leave two slivers of field at the edges. */
+@media (max-width:700px){body{background:var(--paper)}
+.top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
 """
 

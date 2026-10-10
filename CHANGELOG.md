@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.53.1] - 2026-10-10
+
+### Fixed
+- Phones: below 700px the text panels ran at full width with two 12px slivers of field at the edges. Text now runs on plain paper with a 16px margin, and the split stays only where it carries data: the era header, the scorecard rows and the charts. The three indices stack as number beside description. Same treatment on the analysis pages, explainers, walkthrough and downloads.
+
 ## [2.53.0] - 2026-10-10
 
 ### Changed

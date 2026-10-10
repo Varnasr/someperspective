@@ -247,6 +247,27 @@ width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
 .foot .note{margin-top:.6rem;color:var(--muted);max-width:40rem}
 @media (max-width:600px){body{font-size:1rem}.top nav{gap:.1rem .8rem;font-size:.8rem}.m .lab{font-size:.7rem}
 .src{width:auto;text-align:left}}
+/* On a phone the split stays only where it carries data (the era header, the
+   scorecard rows, the charts). Text runs on plain paper, edge to edge, because
+   a bordered panel at full width left two 12px slivers of field that meant
+   nothing. */
+@media (max-width:700px){
+body{background:var(--paper)}
+.top,.eras,.m,.chart.tall{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.slab{border:0;border-top:2px solid var(--ink);width:auto;margin:0;padding:1.6rem 1rem 1.4rem}
+.chart.tall{height:220px;margin:0 0 1.9rem;border-top:2px solid var(--ink)}
+.src{background:var(--paper);margin:0;padding:.2rem 1rem 1.6rem;text-align:left;width:auto}
+.rows{border-bottom:2px solid var(--ink)}
+.idx{gap:0;border-top:2px solid var(--ink);margin-top:1.2rem}
+.idx>div{display:grid;grid-template-columns:5.6rem 1fr;column-gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.idx>div>.kicker,.idx>div>.big{grid-column:1}
+.idx>div>p:last-child{grid-column:2;grid-row:1/span 2;font-size:.9rem;line-height:1.45}
+.idx .big{font-size:1.9rem}
+.idx .big small{display:block;margin:.2rem 0 0;font-size:.62rem}
+.count{font-size:3.4rem}
+h1{font-size:1.85rem}
+.foot{background:var(--paper)}
+}
 @media print{.top nav,.more{display:none}body{background:none}.slab{border-width:1px}}
 """
 
