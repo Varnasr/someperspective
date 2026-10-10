@@ -14,13 +14,13 @@ site: "https://someperspective.info"
 
 India's economy grew at an average of 6.1 per cent a year between 2014 and 2026. Over the same period the share of national income going to the top 1 per cent reached 22.6 per cent in 2022-23, its highest level since 1922, the share of workers holding regular jobs with any social-security cover fell from 11.5 per cent in 2017-18, the first year the Periodic Labour Force Survey measures it, to 10.1 per cent in 2023-24, and every available third-party measure of democratic quality deteriorated. This paper asks whether these facts are separable, that is, whether India experienced a familiar and possibly tolerable trade of political openness for material progress, and concludes that it did not.
 
-The difficulty in answering the question is that the instruments needed to answer it have themselves degraded. A decennial census was postponed indefinitely; a national consumption survey was conducted and then withheld; the national accounts were rebased in a manner that remains disputed and has never been independently reviewed; and the statistical system's institutional independence was reduced by merger and resignation. Any assessment of Indian economic performance after 2014 must therefore treat measurement capacity as an endogenous variable, one that moved during the period under study.
+The difficulty in answering the question is that the instruments needed to answer it have themselves degraded. A decennial census was postponed in 2020 with no new date, and enumeration is now notified for February 2027; a national consumption survey was conducted and then withheld; the national accounts were rebased in a manner that remains disputed and has never been independently reviewed; and the statistical system's institutional independence was reduced by merger and resignation. Any assessment of Indian economic performance after 2014 must therefore treat measurement capacity as an endogenous variable, one that moved during the period under study.
 
 We construct three indices to make that degradation legible and comparable across political eras. The Statistical Suppression Index (SSI, 0–10) aggregates graded severities across six documented streams of statistical interference, with a persistence term so that resolved episodes decay slowly toward zero. The Fiscal Centralisation Index (FCI, 0–1) averages six min–max normalised components of the fiscal relationship between the union and the states, including the structural transfer of indirect taxing power effected by the Goods and Services Tax. The Democratic Quality Index (DQI, 0–1) is the geometric mean of four published third-party series: V-Dem's Liberal Democracy and Core Civil Society indices, Freedom House's aggregate score, and the Reporters Without Borders press-freedom rank.
 
 All three are computed by a single deterministic script applied identically to 2004–2026, so that the comparison between the United Progressive Alliance decade (2004–2013) and the National Democratic Alliance period (2014–2026) rests on one consistent construction applied to both.
 
-The results are one-directional. SSI moves from 0.00 across the entire UPA decade to a peak of 9.00 in 2021–22 and remains at 6.40 in 2026. FCI rises from a UPA average of 0.09 to an NDA average of 0.57, peaking at 0.92 in 2020. DQI falls from a UPA average of 0.57 to 0.29 by 2026. On eight of nine directly comparable cross-era measures India performs worse in the later period. The single exception is consumer price inflation, which is substantially lower. We argue at length that this should not be read as a policy result. The comparison straddles the collapse of a global commodity cycle, and insofar as domestic policy contributed, it did so through a rule that constrains executive discretion.
+SSI moves from 0.00 across the entire UPA decade to a peak of 9.00 in 2021–22 and is 4.65 in 2026, when the census, now on a notified schedule, counts as a delay. DQI falls from a UPA average of 0.57 to 0.28 in 2026. FCI rises from a UPA average of 0.30 to an NDA average of 0.43 and peaks at 0.87 in 2020, but this result is weaker than the other two: on the four measured fiscal ratios alone the eras are close (0.49 under UPA, 0.45 under NDA), and the NDA's higher score comes from the two coded components, GST and the 2020 borrowing conditions. On eight of nine directly comparable cross-era measures India performs worse in the later period. The single exception is consumer price inflation, which is substantially lower. We argue at length that this should not be read as a policy result. The comparison straddles the collapse of a global commodity cycle, and insofar as domestic policy contributed, it did so through a rule that constrains executive discretion.
 
 We then subject the governance finding to external validation it did not generate. Grier and Grier (2026), working independently with a different method (synthetic control with randomisation inference), different data (V-Dem and the Penn World Table), and a different pre-treatment window (1984–2013), find that all ten V-Dem governance indicators they test deteriorate against a synthetic counterfactual at a joint p-value of 0.00. Their electoral-democracy gap of −60.2 per cent sits in the same territory as the −46.7 per cent raw decline in India's V-Dem Liberal Democracy Index recorded in our own data, despite the two quantities not being the same object. Convergence of this kind, across independent methods, is stronger evidence than either study provides alone.
 
@@ -50,7 +50,7 @@ There is a difficulty that any such exercise must confront first, and that most 
 
 The measurement apparatus deteriorated during the period under study, through a specific and datable sequence of events:
 
-- The decennial census due in 2021 was postponed and had not been conducted as of this writing, leaving welfare allocation, seat apportionment, and every population-denominated statistic running on 2011 figures for over a decade.
+- The decennial census due in 2021 was postponed in 2020 with no new date. Houselisting began in April 2026 and population enumeration is notified for February 2027, so welfare allocation, seat apportionment, and every population-denominated statistic have run on 2011 figures for fifteen years.
 - The 2017–18 Consumer Expenditure Survey was completed and then withheld from publication after leaked findings indicated the first fall in real rural consumption in four decades. No comparable survey was published until HCES 2022–23, which changed methodology sufficiently that it does not cleanly splice onto the earlier series.
 - The 2015 revision of the national accounts shifted the base year from 2004–05 to 2011–12 and, more consequentially, changed the measurement of manufacturing output from a production survey to the MCA21 corporate-filings database. The revision lowered measured UPA-era growth and raised measured NDA-era growth. Subramanian (2019) estimated that growth over 2011–17 was overstated by roughly 2.5 percentage points annually; the Economic Advisory Council to the Prime Minister issued a rebuttal; no independent review was ever conducted.
 - The Periodic Labour Force Survey's 2017–18 results were withheld, prompting the resignation of two members of the National Statistical Commission, and the National Sample Survey Office was subsequently merged into the National Statistical Office, reducing its institutional separation from the ministry whose performance its data measures.
@@ -214,15 +214,15 @@ Two other series change basis in 2026. Unemployment for 2014 to 2025 is the usua
 
 ## 4.4 The pre-2014 reconstruction
 
-The SSI, FCI and DQI values for 2004–2013 are reconstructed after the fact from the documented record: survey timeliness and publication dates for SSI, Finance Commission devolution shares and Receipt Budget cess and centrally-sponsored-scheme shares for FCI, and the published V-Dem, Freedom House and RSF scores for DQI.
+The SSI, FCI and DQI values for 2004–2013 are computed after the fact from the documented record: survey timeliness and publication dates for SSI, published Finance Commission, RBI and Union Budget fiscal series for FCI, and the published V-Dem, Freedom House and RSF scores for DQI.
 
-For the DQI the reconstruction is trivial: all four inputs are third-party series that exist for the full period and require only assembly. For the FCI the official anchors exist and the interpolation between them is mechanical. For the SSI the reconstruction is more consequential, because it produces a value of exactly zero for all ten UPA years.
+For the DQI the reconstruction is trivial: all four inputs are third-party series that exist for the full period and require only assembly. For the FCI, three of the four measured inputs are published for every year from 2004; the cess share is published on a consistent definition only from 2011, and the earlier years average the components they have. For the SSI the reconstruction is more consequential, because it produces a value of exactly zero for all ten UPA years.
 
 We address the obvious objection to that zero directly in Section 9.2, since a reader's assessment of this paper's central cross-era claim will turn substantially on whether they accept it.
 
 ## 4.5 Estimation principles for interpolated series
 
-Several supporting series in the wider dataset exist only as periodic official anchors, with no annual observations: sanitation coverage, cess share, forest cover, out-of-pocket health expenditure, immunisation, tap-water coverage, state debt and coal share. Where annual values are needed, they are produced by explicit interpolation under five principles, stated here because the difference between an observation and an estimate is the kind of distinction this paper argues should not be blurred.
+Several supporting series in the wider dataset exist only as periodic official anchors, with no annual observations: sanitation coverage, forest cover, out-of-pocket health expenditure, immunisation, tap-water coverage, state debt and coal share. Where annual values are needed, they are produced by explicit interpolation under five principles, stated here because the difference between an observation and an estimate is the kind of distinction this paper argues should not be blurred.
 
 1. **Anchors supersede models.** No value is extrapolated beyond the range of verified anchors. Where the official record stops, the series stops.
 2. **Transparency.** The interpolation rule and its parameters are recorded in the data file itself as well as in the documentation.
@@ -232,9 +232,9 @@ Several supporting series in the wider dataset exist only as periodic official a
 
 Uncertainty is represented explicitly: ±5 per cent bounds on continuous variables, ±3 per cent on fiscal ratios, and exact values for discrete counts, where an interpolated fractional count would be meaningless.
 
-Two estimated series carry more modelling than the rest and are flagged accordingly. Sanitation coverage is fitted with a logistic curve between anchors of approximately 40 per cent (2014), 95 per cent (2019) and 98.5 per cent (2024), with parameters L = 99.0, k = 0.8, t₀ = 2018.0, chosen to reproduce the observed slow start, rapid middle and saturation. The cess share is piecewise linear between nine fiscal anchors running from 8.0 per cent (2004) to 29.0 per cent (2024).
+One estimated series carries more modelling than the rest and are flagged accordingly. Sanitation coverage is fitted with a logistic curve between anchors of approximately 40 per cent (2014), 95 per cent (2019) and 98.5 per cent (2024), with parameters L = 99.0, k = 0.8, t₀ = 2018.0, chosen to reproduce the observed slow start, rapid middle and saturation. The cess share is no longer estimated. Since 10 October 2026 it is the published series: the 15th Finance Commission's Table 3.8 for 2011–12 to 2018–19 and the Union Receipt Budgets for 2019–20 onward, with no figure before 2011.
 
-None of the three headline indices depends on these interpolated supporting series. The SSI, FCI and DQI draw on the anchors and published third-party series directly.
+None of the three headline indices depends on these interpolated supporting series. The SSI draws on the documented record, and the FCI and DQI on published series directly.
 
 ## 4.6 How to read an official statistic
 
@@ -293,13 +293,13 @@ The index is anchored at zero for the UPA decade because no coded event occurred
 
 Because the SSI is the least conventional construction here, and because its credibility rests entirely on whether the underlying events are real and correctly graded, we set out each stream's record.
 
-**Census delay (weight 2.5).** India's decennial census has been conducted without interruption since 1881, through partition, war and famine. The 2021 census was postponed, initially on pandemic grounds, and had not been conducted as of this writing. That is a gap of over a decade against a ten-year cycle. Budgetary provision of ₹11,718 crore for a 2027 exercise has since been approved.
+**Census delay (weight 2.5).** India's decennial census has been conducted without interruption since 1881, through partition, war and famine. The 2021 census was postponed in 2020, initially on pandemic grounds, with no new date. Budgetary provision of ₹11,718 crore for a 2027 exercise has since been approved, and the Ministry of Home Affairs has notified the schedule: houselisting from April to September 2026 and population enumeration in February 2027. The gap between counts will be sixteen years against a ten-year cycle.
 
 The consequences are not confined to demography. The census supplies the population denominator for essentially every per-capita and coverage statistic the state publishes, so welfare coverage ratios computed on 2011 denominators overstate reach by the extent of subsequent population growth. Estimates of the number of people excluded from subsidised food entitlements on this basis alone run to the tens of millions.
 
 There is also a political consequence, discussed further in Section 10.3: Lok Sabha seat apportionment has been frozen on 1971 population data since 1976, and the freeze expires with the first census conducted after 2026. Postponing the census postpones a reallocation of parliamentary seats that projections suggest would transfer roughly eleven seats to Uttar Pradesh and ten to Bihar while removing approximately eight each from Tamil Nadu and Kerala. Average constituency size has risen from about 0.7 million people per member in 1951 to about 2.5 million today. A delayed census therefore also defers a redistribution of political representation.
 
-Severity is coded at full weight from 2021 onward and retained thereafter, since the omission is not retrospectively repairable.
+Severity is coded at full weight from 2020 to 2025, while the census stood postponed with no date. In 2026 it is coded at 0.3, the rubric's level for a delay, because the exercise is under way on a notified schedule. Until 10 October 2026 the 2026 value was also coded at full weight, which held the 2026 SSI at 6.40; under the rubric it is 4.65.
 
 **COVID mortality undercount (weight 2.0).** Official Indian COVID-19 mortality was recorded at approximately 0.5 million. Independent excess-mortality estimates from multiple teams, using civil registration data, serological surveys and household surveys, cluster in the range of 3 to 5 million. A discrepancy of this magnitude in a headline vital statistic is the largest single divergence between official and independent estimates in the period.
 
@@ -329,22 +329,24 @@ A reader who disputes the ordering can recompute with alternative weights. Secti
 
 ## 5.3 The Fiscal Centralisation Index
 
-The FCI is the unweighted mean of six components, each min–max normalised over the full 2004–2026 sample:
+The FCI is the unweighted mean of the components published for each year. The four measured components are min–max normalised over the years in which each is published:
 
-$$\mathrm{FCI}_t = \frac{1}{6}\sum_{j=1}^{6} \tilde{C}_{jt}$$
+$$\mathrm{FCI}_t = \frac{1}{|J_t|}\sum_{j \in J_t} \tilde{C}_{jt}$$
 
-with components:
+where $J_t$ is the set of components available in year $t$, with components:
 
-- $C_1$: cess and surcharge share of gross tax revenue. Cesses are not shared with states under the Finance Commission formula, so a rising cess share centralises revenue without any change in the formula itself.
-- $C_2$: one minus the devolution share to states.
-- $C_3$: one minus states' own-revenue share.
-- $C_4$: conditional transfer (centrally-sponsored scheme) share, which constrains state discretion over expenditure.
-- $C_5$: borrowing restriction, coded on {0, 0.5, 1}.
-- $C_6$: GST structural centralisation, on [0,1]: zero before the 2017 rollout, phasing to full weight once GST compensation to states ended in June 2022.
+- $C_1$: cess and surcharge share of the Union's gross tax revenue. Cesses are not shared with states under the Finance Commission formula, so a rising cess share centralises revenue without any change in the formula itself. Source: 15th Finance Commission, Vol I Table 3.8 (2011–12 to 2018–19, with the GST compensation cess included from 2017–18); Union Receipt Budgets (2019–20 to 2026–27, summed by us, actuals to 2024–25, 2025–26 RE, 2026–27 BE). No figure is published on this definition before 2011–12.
+- $C_2$: tax devolution to states as a share of gross tax revenue, inverted. Source: 16th Finance Commission, Vol II Annexure 7.1 (2004–05 to 2023–24); Budget at a Glance 2026–27.
+- $C_3$: states' own revenue as a share of their revenue receipts, inverted. Source: RBI Handbook of Statistics on the Indian Economy 2025–26, Table 94 (to 2025–26 BE).
+- $C_4$: non-Finance-Commission grants as a share of total Union transfers. These are mostly centrally sponsored schemes, which constrain state discretion over expenditure, plus the GST compensation grants of 2017–22. Source: 16th Finance Commission, Vol II Annexure 7.1.
+- $C_5$: borrowing restriction, coded on {0, 0.5, 1}: 1 for 2020–21, when additional borrowing of up to 2 per cent of GSDP was allowed with part of it tied to reforms (15th Finance Commission, para 10.100), and 0.5 for 2021–22.
+- $C_6$: GST structural centralisation, on [0,1]: zero before the 2017 rollout, phasing to full weight once GST compensation to states ended on 30 June 2022 (16th Finance Commission, paras 5.7 and 7.63).
+
+$C_1$ is missing for 2004–2010, and $C_3$ and $C_4$ for 2026, so those years average the components they have. The 2014 value of $C_4$ (40.0 per cent) reflects an accounting change: centrally sponsored scheme funds began to flow through state budgets in 2014–15, which raised recorded non-Finance-Commission grants for that year.
 
 The inclusion of $C_6$ is a substantive judgement and we flag it as such. Cesses and conditional transfers are symptoms of centralisation that operate within the existing constitutional settlement. The Goods and Services Tax is a different kind of object: it removed states' capacity to set indirect tax rates independently, replacing it with a collective body in which the union holds an effective veto. Treating it as one more component alongside cess share would understate it. It is a regime shift, and that is why it enters with a phase-in tied to the end of the compensation guarantee.
 
-Because normalisation spans both eras, the FCI is relative. A value of 0.00 identifies the least-centralised year in the sample (2004) and 0.92 the most (2020). The numbers carry no meaning outside this sample and should not be compared to a similarly-named index computed elsewhere.
+Because normalisation spans both eras, the FCI is relative. Its lowest value in the sample is 0.19 (2013 and 2015) and its highest 0.87 (2020). The numbers carry no meaning outside this sample and should not be compared to a similarly-named index computed elsewhere.
 
 ## 5.4 The Democratic Quality Index
 
@@ -429,27 +431,25 @@ It first moves in 2015, reaching 1.05, on the national-accounts rebasing. It ris
 
 The peak is a stacking effect: the COVID mortality undercount at full severity, on top of an already-delayed census, an already-withheld consumption survey, an unresolved back-series dispute, and the by-then-permanent NSO merger.
 
-The index then declines (8.20 in 2023, 7.05 in 2024, 6.55 in 2025) and settles at 6.40 in 2026. It does not return to zero, and this is the persistence term working as designed. The census remains outstanding. The NSO merger is not reversed. The back-series was never independently reviewed. The decline after 2022 reflects the end of the acute phase, and the structural changes remain in the index.
+The index then declines (8.20 in 2023, 7.05 in 2024, 6.55 in 2025) and stands at 4.65 in 2026. It does not return to zero, and this is the persistence term working as designed. The NSO merger is not reversed and the back-series was never independently reviewed, so both still count at full weight. The census moves from full severity to 0.3 in 2026, because houselisting is under way and population enumeration is notified for February 2027, which under the rubric is a delay. The decline after 2022 reflects the end of the acute phase, and the structural changes remain in the index.
 
-The cross-era contrast is the sharpest in this paper: an era mean of 0.00 against 5.09.
+The cross-era contrast is the sharpest in this paper: an era mean of 0.00 against 4.95.
 
 ## 6.5 Fiscal centralisation
 
-The FCI rises from 0.00 in 2004 to 0.17 by 2013, a modest drift within the UPA decade driven mostly by a rising cess share.
+The FCI averages 0.30 across the UPA decade, and its path within that decade is not flat. It rises from 0.28 in 2004 to 0.43 in 2009: devolution stayed close to 26 per cent of gross tax revenue, states' own revenue fell from 62.9 per cent of their revenue receipts in 2004–05 to about 58 per cent, and non-Finance-Commission grants rose to 38.4 per cent of Union transfers in 2009–10. It then falls to 0.19 by 2013, as those grants fell back to 29.0 per cent and devolution rose to 27.9 per cent.
 
-Within the NDA period it moves from 0.19 (2014) to a peak of 0.92 in 2020, then settles at 0.68 from 2023 onward. The era means are 0.09 against 0.57.
+The NDA period averages 0.43. Its 2014 value of 0.42 rests largely on an accounting change: centrally sponsored scheme funds began to flow through state budgets in 2014–15, which lifted non-Finance-Commission grants to 40.0 per cent of transfers for that year. The index falls to 0.19 in 2015, when the 14th Finance Commission raised the states' share of the divisible pool from 32 to 42 per cent and devolution rose to 34.8 per cent of gross tax revenue. It rises again after the GST rollout in 2017 (0.36), to 0.48 in 2019, and peaks at 0.87 in 2020. In that year the cess and surcharge share of gross tax revenue reached 24.4 per cent (20.2 per cent without the GST compensation cess), states' own revenue fell to 52.1 per cent of their receipts, its lowest in the sample, non-Finance-Commission grants rose to 37.1 per cent of transfers, and additional borrowing of up to 2 per cent of GSDP was allowed with part of it tied to reforms. The index then declines to 0.35 in 2026, as devolution rose to 33.9 per cent of gross tax revenue in 2024–25 and 34.7 per cent in the 2026–27 budget estimate and the cess share fell to 18.0 per cent and then 14.3 per cent. The 15th and 16th Finance Commissions set the divisible-pool share at 41 per cent, so the formula share barely moved; the realised share of gross tax revenue rose because the cess share fell.
 
-The trajectory has clear inflection points corresponding to identifiable policy events: the GST rollout in 2017 (FCI moves 0.25 → 0.41), the pandemic-period borrowing restrictions and cess expansion in 2020, and the end of GST compensation to states in mid-2022, after which $C_6$ carries full weight and the index stabilises at a structurally higher level than anything recorded in the earlier era.
-
-The post-2020 decline from 0.92 to 0.68 reflects the unwinding of emergency borrowing restrictions. No taxing authority returned to the states, and the decline should not be read as decentralisation. The later floor of 0.68 is four times the UPA peak of 0.17.
+The era comparison therefore rests on the two coded components. On the four measured fiscal ratios alone ($C_1$ to $C_4$) the UPA years average 0.49 and the NDA years 0.45, slightly lower. The NDA's higher FCI comes from $C_6$, which records the GST's removal of independent state indirect taxation from 2017 and stays at full weight after compensation ended in June 2022, and from $C_5$, the 2020 borrowing conditions. We treat GST as a real transfer of taxing power, for the reasons given in Section 5.3, but a reader who weighs it less will find the fiscal-centralisation result close to a draw on measured flows. The decline after 2020 comes from the measured ratios; no indirect taxing authority returned to the states.
 
 ## 6.6 Democratic quality
 
-The DQI averages 0.57 across 2004–2013, peaking at 0.61 in 2005, 2006 and 2009, and standing at 0.51 in 2013.
+The DQI averages 0.57 across 2004–2013, peaking at 0.61 in 2005 and 2006, and standing at 0.51 in 2013.
 
-Within the NDA period it falls from 0.49 (2014) to 0.29 (2026), with the steepest single-year declines after 2019, the year V-Dem reclassified India from "electoral democracy" to "electoral autocracy". The era means are 0.57 against 0.38; the endpoint comparison is 0.49 against 0.29, a decline of 40.8 per cent within the later period alone.
+Within the NDA period it falls from 0.49 (2014) to 0.28 (2026), with the steepest single-year declines after 2019, the year V-Dem reclassified India from "electoral democracy" to "electoral autocracy". The era means are 0.57 against 0.38; the endpoint comparison is 0.49 against 0.28, a decline of 42.9 per cent within the later period alone.
 
-The component behaviour is instructive. India's V-Dem Liberal Democracy Index falls from 0.488 to 0.260, a 46.7 per cent decline. The press-freedom rank moves from 140 to 157, a modest deterioration against an already-poor base. Freedom House's aggregate score falls, with the reclassification from "Free" to "Partly Free" in 2021. The V-Dem Core Civil Society Index falls from 0.669 to 0.302, a fall of 54.9 per cent and the steepest of the four components.
+The component behaviour is instructive. India's V-Dem Liberal Democracy Index falls from 0.488 to 0.260, a 46.7 per cent decline. The press-freedom rank moves from 140 to 157, a modest deterioration against an already-poor base. Freedom House's aggregate score falls from 78 to 62, with the reclassification from "Free" to "Partly Free" in 2021. The V-Dem Core Civil Society Index falls from 0.669 to 0.302, a fall of 54.9 per cent and the steepest of the four components.
 
 In international context, India's V-Dem decline over 2014–2026 (0.488 → 0.260, a fall of 0.228) is the largest absolute fall in the comparison cohort, ahead of Hungary (0.521 → 0.315, −0.206) and Turkey (0.252 → 0.110, −0.142). In proportional terms Turkey falls further, but from a base already close to the floor. Brazil (0.783 → 0.704) and South Africa (0.641 → 0.633) show the comparatively mild movement one might expect of large democracies under ordinary political stress.
 
@@ -457,7 +457,7 @@ In international context, India's V-Dem decline over 2014–2026 (0.488 → 0.26
 
 Two further dimensions bear on the "bargain" question, since a defender of the period might argue that its achievement lies in stability.
 
-**Fiscal.** The central fiscal deficit averaged 4.96 per cent of GDP across 2014–2026 against 4.64 per cent across 2004–2013. The later period contains a real consolidation from 4.1 per cent (2014) to 3.4 per cent (2018), an emergency expansion to 9.2 per cent in 2020, and a partial return to 4.4 per cent by 2025–26, a level still above the pre-pandemic trough and above the earlier era's average. The consolidation before 2020 was real; it was not sustained through and beyond the shock.
+**Fiscal.** The central fiscal deficit averaged 4.95 per cent of GDP across 2014–2026 against 4.64 per cent across 2004–2013. The later period contains a real consolidation from 4.1 per cent (2014) to 3.4 per cent (2018), an emergency expansion to 9.2 per cent in 2020, and a partial return to 4.4 per cent by 2025–26, a level still above the pre-pandemic trough and above the earlier era's average. The consolidation before 2020 was real; it was not sustained through and beyond the shock.
 
 **External.** The external position as of FY26 is mixed and adequately buffered. Foreign-exchange reserves of approximately $691 billion provide around eleven months of import cover, which is comfortable by any conventional standard, and the current-account deficit is contained at approximately 1.0 per cent of GDP.
 
@@ -499,15 +499,15 @@ Comparing period means across the nine directly comparable measures:
 |---|---|---|---|
 | GDP growth (%) | 7.08 | 6.11 | Worse |
 | CPI inflation (%) | 8.05 | 4.93 | Better |
-| Fiscal deficit (% GDP) | 4.64 | 4.96 | Worse |
+| Fiscal deficit (% GDP) | 4.64 | 4.95 | Worse |
 | Top 1% income share (%) | 20.39 | 21.92 | Worse |
 | Bottom 50% income share (%) | 16.75 | 14.69 | Worse |
-| Press freedom rank | 120.7 | 145.0 | Worse |
-| Statistical Suppression Index | 0.00 | 5.09 | Worse |
-| Fiscal Centralisation Index | 0.09 | 0.57 | Worse |
+| Press freedom rank | 119.8 | 145.0 | Worse |
+| Statistical Suppression Index | 0.00 | 4.95 | Worse |
+| Fiscal Centralisation Index | 0.30 | 0.43 | Worse |
 | Democratic Quality Index | 0.57 | 0.38 | Worse |
 
-Eight of the nine measures deteriorate and one improves. The two income shares average the years with a published figure, 2004–2013 and 2014–2022.
+Eight of the nine measures deteriorate and one improves. The two income shares average the years with a published figure, 2004–2013 and 2014–2022. The FCI is the narrowest of the eight. Its gap of 0.13 comes from the two coded components, GST and the 2020 borrowing conditions; on the four measured fiscal ratios alone the UPA years average 0.49 and the NDA years 0.45 (Section 6.5).
 
 The exception is real as a measurement: average CPI inflation of 4.93 per cent against 8.05 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
 
@@ -591,7 +591,7 @@ The correspondence with our results is close:
 | Dimension | Grier & Grier | This paper |
 |---|---|---|
 | Electoral democracy | −60.2% vs counterfactual | V-Dem LDI 0.488 → 0.260, −46.7% |
-| Overall democratic quality | −69.1% liberal-democracy gap | DQI 0.49 → 0.29, −40.8% |
+| Overall democratic quality | −69.1% liberal-democracy gap | DQI 0.49 → 0.28, −42.9% |
 | Press and expression | Freedom of expression −56.2% | RSF rank 140 → 157 |
 
 These are not the same quantity. Their figures are gaps against a counterfactual India that never elected the government it did; ours are observed changes over time. A gap of −60.2 per cent and a raw decline of −46.7 per cent describe different objects, and their rough proximity is not itself evidence of anything.
@@ -628,11 +628,11 @@ We would add one observation about their design, offered as a reader's caution. 
 
 The SSI's severities are author-coded, making it the most subjective construction here. We assess sensitivity by re-computing under alternative codings.
 
-Because the index is a weighted sum with weights summing to 10, a uniform proportional error in severity coding scales the index without changing its shape or the cross-era comparison: if every severity were overstated by 20 per cent, the NDA-era mean would fall from 5.09 to 4.07 and the UPA mean would remain 0.00. The cross-era conclusion is invariant to any uniform mis-calibration.
+Because the index is a weighted sum with weights summing to 10, a uniform proportional error in severity coding scales the index without changing its shape or the cross-era comparison: if every severity were overstated by 20 per cent, the NDA-era mean would fall from 4.95 to 3.96 and the UPA mean would remain 0.00. The cross-era conclusion is invariant to any uniform mis-calibration.
 
 The conclusion is sensitive, in principle, to differential mis-coding, that is, systematically overstating NDA-era severities relative to UPA-era ones. But the UPA-era value is zero because no event in that period met the coding threshold, so there was nothing to code leniently. Differential mis-coding would therefore have to take the form of omitting UPA-era events entirely, which is the objection we address in Section 9.2.
 
-Dropping the single highest-weighted stream (census delay, weight 2.5) reduces the NDA-era mean from 5.09 to approximately 3.6 and lowers the 2021–22 peak from 9.00 to 6.50. The cross-era contrast survives the removal of any single stream, because no single stream accounts for more than a quarter of the total weight.
+Dropping the single highest-weighted stream (census delay, weight 2.5) reduces the NDA-era mean from 4.95 to approximately 3.7 and lowers the 2021–22 peak from 9.00 to 6.50. The cross-era contrast survives the removal of any single stream, because no single stream accounts for more than a quarter of the total weight.
 
 ## 8.2 Sensitivity of the DQI to component selection
 
@@ -644,9 +644,11 @@ We report this without resolving it. The four-component index shows a larger dec
 
 ## 8.3 The relative construction of the FCI
 
-Because the FCI's components are min–max normalised over the full sample, the index is guaranteed to have a minimum of approximately 0 and a maximum of approximately 1 somewhere in 2004–2026. It cannot, by construction, report that centralisation was uniformly low or uniformly high.
+Because each measured component of the FCI is min–max normalised over the years in which it is published, each takes the value 0 in its least-centralised year and 1 in its most-centralised year. The index cannot, by construction, report that centralisation was uniformly low or uniformly high.
 
-What it can report is where in the sample the extremes fall, and that is the informative content: the minimum falls in 2004 and the maximum in 2020, with a structural break at the 2017 GST rollout. A reader who rejects the normalisation can inspect the underlying components, all of which are published in absolute units.
+What it can report is where in the sample the extremes fall. The index runs from 0.19 (2013 and 2015) to 0.87 (2020). Its components do not peak together in a single era: the devolution component is highest in the UPA years, when devolution was about 26 per cent of gross tax revenue, while the cess and own-revenue components are highest in 2020. A reader who rejects the normalisation can inspect the underlying components, all of which are published in absolute units in `data/compute_indices.py`.
+
+Two checks bound the result. Dropping the borrowing component raises the 2024 value from 0.44 to 0.53, because that component is zero in every year but 2020 and 2021. Dropping both coded components reverses the era ranking: on $C_1$ to $C_4$ alone the UPA years average 0.49 and the NDA years 0.45. The cross-era FCI result therefore depends on treating the GST as a centralising change in the federal settlement, which Section 5.3 argues for and a reader may reject.
 
 ## 8.4 The disputed national accounts
 
@@ -666,7 +668,7 @@ The specific claim we defend is narrower than a causal one and, we think, suffic
 
 This is the strongest objection to the paper and we treat it at length.
 
-An index that assigns exactly zero to one political era and a mean of 5.09 to the other invites the suspicion that the coder found what they were looking for. Indian statistical administration before 2014 was not beyond criticism: there were delays, methodological disputes, and instances of political discomfort with unwelcome findings.
+An index that assigns exactly zero to one political era and a mean of 4.95 to the other invites the suspicion that the coder found what they were looking for. Indian statistical administration before 2014 was not beyond criticism: there were delays, methodological disputes, and instances of political discomfort with unwelcome findings.
 
 Three responses, in ascending order of force.
 
@@ -674,7 +676,7 @@ First, the SSI codes a specific and narrow class of event: suppression, disconti
 
 Second, the zero is a falsifiable claim. The rubric is published; the streams are enumerated; the weights are fixed. A critic who identifies a qualifying UPA-era event can code it and recompute, and the code to do so is public. We would regard such a contribution as an improvement to the index.
 
-Third, the cross-era conclusion does not depend on the zero. Suppose a critic assigns the UPA decade a mean of 2.0, a substantial concession implying suppression activity at 40 per cent of the NDA average. The comparison would still be 2.0 against 5.09. The result is a difference in kind that survives a generous re-coding.
+Third, the cross-era conclusion does not depend on the zero. Suppose a critic assigns the UPA decade a mean of 2.0, a substantial concession implying suppression activity at 40 per cent of the NDA average. The comparison would still be 2.0 against 4.95. The result is a difference in kind that survives a generous re-coding.
 
 We nonetheless record that the zero is the single most contestable number in this paper, and that a reader who rejects it is applying appropriate scrutiny.
 
@@ -686,17 +688,17 @@ COVID-19 affected both halves of the paper's argument simultaneously. On the eco
 
 We take three steps in response, and concede that none fully resolves it.
 
-First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises the mean growth rate materially, but the direction of every other measure is unchanged: the formal employment share fell in each PLFS year before the pandemic, from 11.5 to 10.5 per cent, and in the three years after it stayed between 9.6 and 10.1 per cent, below its 2019-20 level, the income-share movements are continuous through it, and the SSI, FCI and DQI are all substantially higher in both 2018–19 and 2023–26 than in any UPA year. The pandemic made a pattern already present on either side of it larger.
+First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises the mean growth rate materially, but the direction of every other measure is unchanged: the formal employment share fell in each PLFS year before the pandemic, from 11.5 to 10.5 per cent, and in the three years after it stayed between 9.6 and 10.1 per cent, below its 2019-20 level, the income-share movements are continuous through it, and in both 2018–19 and 2023–26 the SSI is higher and the DQI lower than in any UPA year. The FCI is the exception: in those years it runs from 0.35 to 0.48, close to its UPA peak of 0.43, and above that peak only in 2019, 2023 and 2024. For the statistical and democratic measures, the pandemic made a pattern already present on either side of it larger.
 
 Second, the timing. The DQI's steepest decline begins in 2019, before the pandemic, and V-Dem's reclassification of India as an electoral autocracy is a 2019 event. The consumption-survey suppression is 2019, the PLFS withholding 2019, the NSC resignations January 2019, and the GDP revision 2015. Four of the six SSI streams pre-date the pandemic entirely.
 
-Third, the persistence. Emergency measures justified by an emergency should lapse when it does. The census had not been conducted five years after the acute phase; the NSSO–NSO merger was not reversed; the FCI settles at 0.68, against its 2014 level of 0.19. The signature that distinguishes an emergency response from a structural change is whether it unwinds, and on these measures it did not.
+Third, the persistence. Emergency measures justified by an emergency should lapse when it does. The census was not under way until 2026, five years after the acute phase; the NSSO–NSO merger was not reversed. The signature that distinguishes an emergency response from a structural change is whether it unwinds, and on these measures it did not. The fiscal measures did unwind: the borrowing conditions lapsed after 2021–22, and the FCI fell from 0.87 in 2020 to 0.35 in 2026, below its 2014 value of 0.42. Only its GST component stays at full weight.
 
-What we cannot do is separate the portion of the 2020–22 deterioration attributable to the pandemic from the portion attributable to political choice, and we do not claim to. A reader who attributes the entire 2020–22 spike to the emergency would still face a pre-2020 deterioration and a post-2022 floor well above anything in the earlier era.
+What we cannot do is separate the portion of the 2020–22 deterioration attributable to the pandemic from the portion attributable to political choice, and we do not claim to. A reader who attributes the entire 2020–22 spike to the emergency would still face a pre-2020 deterioration and, on the SSI and the DQI, post-2022 values outside anything recorded in the earlier era.
 
 ## 9.4 The indices are not independent of one another
 
-The SSI, FCI and DQI move together, and a reader may reasonably ask whether three indices that co-move are really three pieces of evidence or one piece counted three times.
+The SSI and DQI move closely together and the FCI less so (over 2004–2026 the SSI's correlation with the DQI is −0.89, the FCI's −0.46). A reader may reasonably ask whether three indices that co-move are really three pieces of evidence or one piece counted three times.
 
 They share no inputs. The DQI is built entirely from four published third-party series; the FCI from fiscal aggregates; the SSI from coded statistical events. No number enters more than one index. But they are plausibly measuring correlated aspects of a single underlying process, and if that process is "concentration of executive authority", then their co-movement is the expected result and provides no independent confirmation.
 
@@ -732,11 +734,23 @@ A review of the index inputs immediately before publication found a second error
 
 Two of the DQI's four components are V-Dem series: the Liberal Democracy Index (`v2x_libdem`) and the Core Civil Society Index (`v2xcs_ccsi`). The table used to compute the index held approximated rather than published values for both, and the approximations were systematically too high in the UPA decade. For 2014 the table carried a Liberal Democracy value of 0.555 against a published 0.488, and a civil-society value of 0.87 against a published 0.669. Because the error inflated the earlier baseline while leaving the later years close to correct, it exaggerated the measured decline. It ran, in other words, in the direction of this paper's argument.
 
-Both columns are now the published V-Dem series verbatim. The effect on the results is as follows. The UPA-decade DQI mean falls from 0.59 to 0.57; the 2014 value falls from 0.54 to 0.49; the 2026 value is unchanged at 0.29. The within-period decline is therefore 40.8 per cent, against 46.3 per cent before the correction, and the cross-era gap moves from 0.18 to 0.19 index points, because the later-period mean fell along with the earlier one. The direction of the result, its size relative to the other two indices, and the cross-era scorecard of eight-of-nine are all unaffected.
+Both columns are now the published V-Dem series verbatim. The effect on the results is as follows. The UPA-decade DQI mean falls from 0.59 to 0.57; the 2014 value falls from 0.54 to 0.49; the 2026 value is unchanged at 0.29. The within-period decline is therefore 40.8 per cent, against 46.3 per cent before the correction (Section 9.10 records a later correction that moves these figures to 0.28 and 42.9 per cent), and the cross-era gap moves from 0.18 to 0.19 index points, because the later-period mean fell along with the earlier one. The direction of the result, its size relative to the other two indices, and the cross-era scorecard of eight-of-nine are all unaffected.
 
 The same error appeared in a second place. The international comparison table had its 2014 column on V-Dem's Electoral Democracy Index and its 2026 column on the Liberal Democracy Index, two different instruments read as one series. India's decline appeared as 0.71 → 0.26 when the correct like-for-like comparison on the Liberal Democracy Index is 0.488 → 0.260. This too overstated the finding: the proportional decline falls from 63.4 per cent to 46.7 per cent, and India ceases to have the steepest proportional fall in the cohort, though it retains the largest absolute one. Section 6.8 now reports the corrected figures.
 
 Neither error was caught by the consistency check introduced after Section 9.8, because that check compares published documents against the dataset and both errors were inside the dataset itself. A second check now runs on the dataset itself: it fails the build unless the international comparison table and the DQI's component table report the same V-Dem figure for India, which they can only do if both are on the Liberal Democracy Index. A crossed-series error of this shape cannot pass silently again.
+
+## 9.10 Further corrections to the index inputs, 10 October 2026
+
+A check of all three indices against their published inputs on 10 October 2026 found errors in each. They are reported here on the same principle as Sections 9.8 and 9.9, with the direction in which each one ran.
+
+**The FCI was rebuilt from published figures.** The earlier component table was described as Finance Commission and budget anchors but matched no published series. It put devolution at 31 to 37 per cent of gross tax revenue and falling under the NDA, where the published share rose from 25.8 per cent in 2004–05 to 33.9 per cent in 2024–25. It put states' own revenue 15 to 20 points below the RBI's figures, and it showed conditional transfers rising steadily to 42 per cent, where the published share of non-Finance-Commission grants moves between 27 and 40 per cent with no trend. The cess share was interpolated between anchors that ran from 8.0 per cent in 2004 to 29.0 per cent in 2024; the published series starts at 10.4 per cent in 2011–12, peaks at 24.4 per cent in 2020–21 and is 18.0 per cent in 2024–25. The rebuilt index averages 0.30 under UPA (previously 0.09) and 0.43 under NDA (previously 0.57), peaks at 0.87 in 2020 (previously 0.92) and is 0.35 in 2026 (previously 0.68). The error in the UPA years ran in this paper's favour, since it made the earlier decade look far less centralised than the published figures show. On the measured fiscal ratios alone the NDA years are now slightly less centralised than the UPA years, and the cross-era FCI result rests on the GST and borrowing components, as Sections 6.5 and 8.3 set out.
+
+**Two DQI inputs were corrected.** The Freedom House scores for the UPA decade were 78 and 79 against published scores of 76 and 77, which raised the earlier baseline and ran in this paper's favour. The scores for 2024 and 2025 were 66 against published scores of 63 and 62, which flattered the later years and ran against the paper's argument. The RSF rank for 2012 was 140, the 2013 rank; RSF's 2011–12 index gives 131. With these corrections the DQI's UPA mean stays at 0.57, its UPA peak is 0.61 in 2005 and 2006, its 2026 value falls from 0.29 to 0.28, and the within-period decline is 42.9 per cent rather than 40.8 per cent.
+
+**The 2026 census severity was recoded.** The census stream was held at full severity in 2026, the rubric's level for a postponement with no date. Houselisting runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs), which under the rubric is a delay, coded 0.3. The 2026 SSI falls from 6.40 to 4.65 and the NDA-era mean from 5.09 to 4.95. The earlier coding overstated the 2026 value and ran in this paper's favour.
+
+None of these changes alters the eight-of-nine scorecard. The FCI result is weaker than the paper previously reported, and Section 6.9 now says so.
 
 ---
 
@@ -774,9 +788,9 @@ We make no claim about intent here, and none is required. The point is structura
 
 ## 10.4 Federalism as the underrated channel
 
-The FCI result receives less attention than the democracy result, and probably should receive more.
+The FCI result receives less attention than the democracy result. It is also the narrowest of the three cross-era results, and the reason is worth stating.
 
-The Indian constitutional settlement distributes fiscal authority between the union and the states, and that distribution is a substantial part of what makes a country of India's scale and heterogeneity governable. The movement documented here is a shift in that settlement, accomplished largely without constitutional amendment and largely without public debate framed in those terms: the cess share rose, devolution fell, conditional transfers expanded, and the GST removed independent state indirect taxation altogether.
+The Indian constitutional settlement distributes fiscal authority between the union and the states, and that distribution is a substantial part of what makes a country of India's scale and heterogeneity governable. The published fiscal series show movement in both directions after 2014. The cess and surcharge share of gross tax revenue, which states do not share in, rose from 13.5 per cent in 2014–15 to 24.4 per cent in 2020–21 and fell back to 14.3 per cent in the 2026–27 budget estimate. Additional borrowing in 2020–21 carried reform conditions. Devolution moved the other way: the 14th Finance Commission raised the states' share of the divisible pool from 32 to 42 per cent, and devolution rose from 27.1 per cent of gross tax revenue in 2014–15 to 33.9 per cent in 2024–25. Non-Finance-Commission grants, mostly centrally sponsored schemes, moved between 27 and 40 per cent of Union transfers in both eras without a trend. On these measured flows the two eras are close. The change that separates them is the GST, which removed independent state indirect taxation without a constitutional amendment framed in federal terms.
 
 The GST is the clearest case. It was argued, defensibly, on efficiency grounds. Its federal consequence, that states no longer set indirect tax rates independently, was a structural change to the constitutional balance effected through a tax reform. Whatever one concludes about the efficiency case, the federal consequence is a fact about the distribution of power, and it is permanent in a way that a fiscal-deficit number is not.
 
@@ -792,13 +806,13 @@ The ordering follows from a practical point. A government that implemented every
 
 **Industrial policy weighting bears re-examination.** Section 6.2.1 does not argue against capital-intensive manufacturing. Its point is the employment arithmetic. A strategy seeking employment absorption at scale would weight labour-intensive sectors (garments, food processing, construction and care) considerably more heavily than the current allocation does.
 
-**Fiscal federalism requires an explicit settlement.** The FCI documents a shift accomplished largely through instruments that individually attracted little debate in federal terms: cesses outside the divisible pool, conditional transfers, and the GST structure. Rebalancing means constraining the cess share of gross tax revenue, restoring the share of transfers that are untied, and addressing the position states occupy in GST rate-setting.
+**Fiscal federalism requires an explicit settlement.** The FCI documents a shift accomplished largely through instruments that individually attracted little debate in federal terms: cesses outside the divisible pool, the reform conditions on borrowing in 2020–21, and the GST structure. Rebalancing means constraining the cess share of gross tax revenue, restoring the share of transfers that are untied, and addressing the position states occupy in GST rate-setting.
 
 **Delimitation needs to be settled before it arrives.** The seat reapportionment deferred by the census delay is arithmetically severe and regionally asymmetric. It will be substantially harder to negotiate under the time pressure of an imminent census than in advance of one.
 
 The full set, separated by how quickly each could move and stated as general directions:
 
-*Immediate.* Constitutional protection for statistical independence; restoration of the states' share in the divisible pool; electoral-finance reform following the Electoral Bonds judgment; anti-concentration rules for media ownership; and restoration of civil-society licensing under the foreign-contribution regime, this last bearing directly on the V-Dem civil-society index whose collapse drives much of the DQI result.
+*Immediate.* Constitutional protection for statistical independence; a cap on the share of gross tax revenue raised through cesses and surcharges outside the divisible pool; electoral-finance reform following the Electoral Bonds judgment; anti-concentration rules for media ownership; and restoration of civil-society licensing under the foreign-contribution regime, this last bearing directly on the V-Dem civil-society index whose collapse drives much of the DQI result.
 
 *Structural.* An urban employment guarantee on the MGNREGA model, addressing the informalisation documented in Section 6.2; wealth taxation, restored and strengthened, against the concentration in Section 6.3; a federal council institutionalising the GST Council's consultative form across a wider set of union–state questions; transparency in judicial appointments; and statutory limits on surveillance and data collection.
 
@@ -824,7 +838,7 @@ One question runs underneath all of these, and we put it to other researchers be
 
 We set out here what evidence would overturn the paper's conclusions.
 
-The cross-era institutional finding would be substantially weakened by documented UPA-era events meeting the SSI's coding threshold in sufficient number to lift that era's mean materially above zero. It would be weakened by a demonstration that the V-Dem, Freedom House and RSF movements are artefacts of instrument drift, though such a demonstration would need to account for the synthetic-control corroboration.
+The cross-era institutional finding would be substantially weakened by documented UPA-era events meeting the SSI's coding threshold in sufficient number to lift that era's mean materially above zero. It would be weakened by a demonstration that the V-Dem, Freedom House and RSF movements are artefacts of instrument drift, though such a demonstration would need to account for the synthetic-control corroboration. The fiscal part of the finding is already narrow: it rests on counting the GST and the 2020 borrowing conditions as centralisation, and on the four measured fiscal ratios alone the NDA years are slightly less centralised than the UPA years.
 
 The distributional finding would be weakened by a revision to the World Inequality Lab series, which is itself estimated from combined survey, fiscal and national-accounts sources and is not beyond revision.
 
@@ -834,11 +848,11 @@ The employment finding does not depend on the disputed national accounts, on any
 
 # 11. Conclusion
 
-India between 2014 and 2026 did not exchange democratic quality for prosperity. It reduced democratic quality, centralised fiscal authority, degraded the statistical apparatus by which any of this might be independently assessed, and did not deliver superior growth, employment, or distribution. On eight of nine comparable cross-era measures the later period performs worse than the earlier one. The single exception, inflation, is best explained by a global commodity collapse; insofar as Indian policy mattered, it acted by binding the executive.
+India between 2014 and 2026 did not exchange democratic quality for prosperity. It reduced democratic quality, centralised indirect taxation through the GST, degraded the statistical apparatus by which any of this might be independently assessed, and did not deliver superior growth, employment, or distribution. On eight of nine comparable cross-era measures the later period performs worse than the earlier one. The single exception, inflation, is best explained by a global commodity collapse; insofar as Indian policy mattered, it acted by binding the executive.
 
 The governance component of this finding is corroborated by an independent study using a different method, different data, and a different pre-treatment window, which finds all ten of the governance indicators it tests deteriorating against a synthetic counterfactual at a joint p-value of 0.00.
 
-We have been explicit about what is not established: no causal claim is made; the SSI's UPA-era zero is the most contestable number here and we have set out the objection to it at length; the DQI inherits the assumptions of its third-party sources; the FCI is meaningful only within its own sample. We have also reported an error in the project's own prior materials that ran in the direction of its thesis, and corrected it.
+We have been explicit about what is not established: no causal claim is made; the SSI's UPA-era zero is the most contestable number here and we have set out the objection to it at length; the DQI inherits the assumptions of its third-party sources; the FCI is meaningful only within its own sample, and its cross-era result rests on the GST and the 2020 borrowing conditions. We have also reported errors in the project's own materials and inputs, including several that ran in the direction of its thesis, and corrected them.
 
 The most consequential finding is the one that is least often quantified. A government's performance can be debated only against evidence, and the evidence-producing institutions were among the things that degraded during the period. This degradation is the mechanism by which every other question in this paper becomes harder to answer next time, and it is the reason we regard the Statistical Suppression Index, whatever its imperfections, as the most important of the three constructions offered here.
 
@@ -856,7 +870,7 @@ The author is a Manmohan Singh Fellow of the All India Professionals' Congress (
 
 The author declares no competing financial interests. No party body commissioned, funded, reviewed, or approved this work, and no part of it was seen by any such body before publication.
 
-The author makes no claim of neutrality. Such a claim would be false, and a paper arguing that institutional independence is a property of structures has no business claiming it as a personal quality of its own author. The mitigation offered is that every step between the raw series and the conclusion is inspectable. The complete dataset, the construction code, and the source of this paper are published; both eras are computed by the same script, so no part of the measured gap can originate in the two periods being handled differently; the index weightings are stated and their sensitivity reported in Section 8; the one measure that improved under the second period is reported as improved, is explicitly not credited to the government, and is examined at length (Section 6.10); an error that had run in the project's own favour is documented in Section 9.8; and the governance result is corroborated in Section 7 by an independent study using a method this paper does not use. A reader who distrusts the author's motives can recompute every figure under different assumptions and reach a different conclusion from the same published inputs. That is the only defence a partisan author can offer in good faith, and it is offered here.
+The author makes no claim of neutrality. Such a claim would be false, and a paper arguing that institutional independence is a property of structures has no business claiming it as a personal quality of its own author. The mitigation offered is that every step between the raw series and the conclusion is inspectable. The complete dataset, the construction code, and the source of this paper are published; both eras are computed by the same script, so no part of the measured gap can originate in the two periods being handled differently; the index weightings are stated and their sensitivity reported in Section 8; the one measure that improved under the second period is reported as improved, is explicitly not credited to the government, and is examined at length (Section 6.10); errors in the project's own figures, including those that ran in its favour, are documented in Sections 9.8 to 9.10; and the governance result is corroborated in Section 7 by an independent study using a method this paper does not use. A reader who distrusts the author's motives can recompute every figure under different assumptions and reach a different conclusion from the same published inputs. That is the only defence a partisan author can offer in good faith, and it is offered here.
 
 ## Data and code availability
 
@@ -880,6 +894,8 @@ Coppedge, M., Gerring, J., Knutsen, C.H., Lindberg, S.I., Teorell, J., et al. *V
 
 Economic Advisory Council to the Prime Minister (2019). *Rebuttal to "India's GDP Mis-estimation"*. Government of India, June 2019.
 
+Fifteenth Finance Commission (2021). *Finance Commission in COVID Times: Report for 2021–26*, Volume I. Government of India.
+
 Freedom House. *Freedom in the World*. Annual editions, 2004–2026.
 
 Government of India, Ministry of Finance. *Union Budget documents and Receipt Budget*. Annual editions.
@@ -889,6 +905,10 @@ Government of India, Ministry of Finance. *Economic Survey 2025–26*.
 Levitsky, S., and Way, L.A. (2010). *Competitive Authoritarianism: Hybrid Regimes After the Cold War*. Cambridge University Press.
 
 Grier, K., and Grier, R. (2026). *Promises, Promises: Modi's India in Comparative Perspective*. SSRN Working Paper 7248338. Replication materials: github.com/rgrier88/modi-promises-replication.
+
+Ministry of Finance. *Receipt Budget* and *Budget at a Glance*, Union Budgets 2019–20 to 2026–27.
+
+Ministry of Home Affairs. Notification of the schedule for the houselisting operations (April to September 2026) and population enumeration (February 2027) of Census 2027.
 
 Ministry of Statistics and Programme Implementation (2026). *Consumer Price Index on Base 2024=100: First Press Release and Frequently Asked Questions*. Government of India, February 2026.
 
@@ -902,11 +922,15 @@ National Health Accounts, Ministry of Health and Family Welfare. Estimates for I
 
 Penn World Table version 11.0. Groningen Growth and Development Centre.
 
-PRS Legislative Research. *Union Budget analyses and cess/surcharge share of gross tax revenue*. Annual editions.
+PRS Legislative Research. *Union Budget analyses*. Annual editions.
 
 Reporters Without Borders. *World Press Freedom Index*. Annual editions, 2004–2026.
 
+Reserve Bank of India (2025). *Handbook of Statistics on the Indian Economy 2025–26*, Table 94.
+
 Reserve Bank of India. *State Finances: A Study of Budgets*, 2021 and 2023 editions; reference exchange rates.
+
+Sixteenth Finance Commission. *Report for 2026–31*, Volume II. Government of India.
 
 Subramanian, A. (2019). *India's GDP Mis-estimation: Likelihood, Magnitudes, Mechanisms, and Implications*. Harvard Center for International Development Faculty Working Paper No. 354.
 
@@ -927,11 +951,11 @@ Severity rubric: ≈1.0 full suppression or discontinuation; ≈0.7 live methodo
 
 ## A.2 Fiscal Centralisation Index
 
-$$\mathrm{FCI}_t = \frac{1}{6}\sum_{j=1}^{6} \tilde{C}_{jt}, \qquad \tilde{C}_{jt} = \frac{C_{jt} - \min_t C_{jt}}{\max_t C_{jt} - \min_t C_{jt}}$$
+$$\mathrm{FCI}_t = \frac{1}{|J_t|}\sum_{j \in J_t} \tilde{C}_{jt}, \qquad \tilde{C}_{jt} = \frac{C_{jt} - \min_t C_{jt}}{\max_t C_{jt} - \min_t C_{jt}}$$
 
-Components: $C_1$ cess share; $C_2$ = 1 − devolution share; $C_3$ = 1 − states' own-revenue share; $C_4$ conditional-transfer share; $C_5$ borrowing restriction ∈ {0, 0.5, 1}; $C_6$ GST structural centralisation ∈ [0,1].
+$J_t$ is the set of components published for year $t$. Components: $C_1$ cess and surcharge share of the Union's gross tax revenue (15th Finance Commission Table 3.8, 2011–2018; Union Receipt Budgets, 2019–2026); $C_2$ = 1 − tax devolution as a share of gross tax revenue (16th Finance Commission Annexure 7.1; Budget at a Glance 2026–27); $C_3$ = 1 − states' own revenue as a share of their revenue receipts (RBI Handbook 2025–26, Table 94); $C_4$ non-Finance-Commission grants as a share of total Union transfers (16th Finance Commission Annexure 7.1); $C_5$ borrowing restriction ∈ {0, 0.5, 1}; $C_6$ GST structural centralisation ∈ [0,1].
 
-Normalisation spans 2004–2026. The index is relative to this sample.
+$C_1$ to $C_4$ are normalised over the years in which each is published ($C_1$ from 2011; $C_3$ and $C_4$ to 2025), with $C_2$ and $C_3$ inverted as shown. The index is relative to this sample.
 
 ## A.3 Democratic Quality Index
 
@@ -947,29 +971,29 @@ Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`. T
 
 | Year | GDP growth | Top 1% | Bottom 50% | Press rank | SSI | FCI | DQI |
 |---|---|---|---|---|---|---|---|
-| 2004 | 7.9 | 18.4 | 18.8 | 120 | 0.00 | 0.00 | 0.59 |
-| 2005 | 9.3 | 19.3 | 18.4 | 106 | 0.00 | 0.03 | 0.61 |
-| 2006 | 9.3 | 19.7 | 17.9 | 105 | 0.00 | 0.05 | 0.61 |
-| 2007 | 7.7 | 20.1 | 17.5 | 120 | 0.00 | 0.07 | 0.58 |
-| 2008 | 3.1 | 20.4 | 17.0 | 118 | 0.00 | 0.09 | 0.58 |
-| 2009 | 7.9 | 20.8 | 16.5 | 105 | 0.00 | 0.11 | 0.60 |
-| 2010 | 8.5 | 21.2 | 16.0 | 122 | 0.00 | 0.12 | 0.56 |
-| 2011 | 5.2 | 21.1 | 15.3 | 131 | 0.00 | 0.14 | 0.54 |
-| 2012 | 5.5 | 21.3 | 15.1 | 131 | 0.00 | 0.16 | 0.53 |
-| 2013 | 6.4 | 21.6 | 15.0 | 140 | 0.00 | 0.17 | 0.51 |
-| 2014 | 7.4 | 21.3 | 14.7 | 140 | 0.00 | 0.19 | 0.49 |
-| 2015 | 8.0 | 21.7 | 14.5 | 136 | 1.05 | 0.21 | 0.46 |
-| 2016 | 8.2 | 22.2 | 14.1 | 133 | 1.05 | 0.25 | 0.46 |
-| 2017 | 7.2 | 22.3 | 13.9 | 136 | 2.05 | 0.41 | 0.44 |
-| 2018 | 6.1 | 22.4 | 14.4 | 138 | 4.00 | 0.53 | 0.42 |
-| 2019 | 4.2 | 21.6 | 14.7 | 140 | 4.80 | 0.65 | 0.39 |
-| 2020 | −7.3 | 21.5 | 15.5 | 142 | 7.00 | 0.92 | 0.36 |
-| 2021 | 8.7 | 21.7 | 15.4 | 142 | 9.00 | 0.82 | 0.37 |
-| 2022 | 7.2 | 22.6 | 15.0 | 150 | 9.00 | 0.70 | 0.34 |
-| 2023 | 7.6 | n/a | n/a | 161 | 8.20 | 0.68 | 0.28 |
-| 2024 | 7.8 | n/a | n/a | 159 | 7.05 | 0.68 | 0.28 |
-| 2025 | 6.5 | n/a | n/a | 151 | 6.55 | 0.68 | 0.30 |
-| 2026 | 7.8 | n/a | n/a | 157 | 6.40 | 0.68 | 0.28 |
+| 2004 | 7.9 | 18.4 | 18.8 | 120 | 0.00 | 0.28 | 0.59 |
+| 2005 | 9.3 | 19.3 | 18.4 | 106 | 0.00 | 0.29 | 0.61 |
+| 2006 | 9.3 | 19.7 | 17.9 | 105 | 0.00 | 0.32 | 0.61 |
+| 2007 | 7.7 | 20.1 | 17.5 | 120 | 0.00 | 0.35 | 0.58 |
+| 2008 | 3.1 | 20.4 | 17.0 | 118 | 0.00 | 0.39 | 0.58 |
+| 2009 | 7.9 | 20.8 | 16.5 | 105 | 0.00 | 0.43 | 0.60 |
+| 2010 | 8.5 | 21.2 | 16.0 | 122 | 0.00 | 0.34 | 0.56 |
+| 2011 | 5.2 | 21.1 | 15.3 | 131 | 0.00 | 0.23 | 0.54 |
+| 2012 | 5.5 | 21.3 | 15.1 | 131 | 0.00 | 0.20 | 0.53 |
+| 2013 | 6.4 | 21.6 | 15.0 | 140 | 0.00 | 0.19 | 0.51 |
+| 2014 | 7.4 | 21.3 | 14.7 | 140 | 0.00 | 0.42 | 0.49 |
+| 2015 | 8.0 | 21.7 | 14.5 | 136 | 1.05 | 0.19 | 0.46 |
+| 2016 | 8.2 | 22.2 | 14.1 | 133 | 1.05 | 0.20 | 0.46 |
+| 2017 | 7.2 | 22.3 | 13.9 | 136 | 2.05 | 0.36 | 0.44 |
+| 2018 | 6.1 | 22.4 | 14.4 | 138 | 4.00 | 0.38 | 0.42 |
+| 2019 | 4.2 | 21.6 | 14.7 | 140 | 4.80 | 0.48 | 0.39 |
+| 2020 | −7.3 | 21.5 | 15.5 | 142 | 7.00 | 0.87 | 0.36 |
+| 2021 | 8.7 | 21.7 | 15.4 | 142 | 9.00 | 0.58 | 0.37 |
+| 2022 | 7.2 | 22.6 | 15.0 | 150 | 9.00 | 0.51 | 0.34 |
+| 2023 | 7.6 | n/a | n/a | 161 | 8.20 | 0.45 | 0.28 |
+| 2024 | 7.8 | n/a | n/a | 159 | 7.05 | 0.44 | 0.28 |
+| 2025 | 6.5 | n/a | n/a | 151 | 6.55 | 0.41 | 0.30 |
+| 2026 | 7.8 | n/a | n/a | 157 | 4.65 | 0.35 | 0.28 |
 
 ---
 

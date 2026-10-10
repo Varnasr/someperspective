@@ -26,7 +26,7 @@
       "title": "The instruments needed to check also degraded",
       "body": "Assessing performance after 2014 runs into a specific difficulty. The statistical apparatus that would register the answer was itself weakened during the period.",
       "points": [
-        "The 2021 census was postponed and still has not been conducted.",
+        "The 2021 census was postponed in 2020 with no new date. Houselisting began in April 2026 and population enumeration is notified for February 2027.",
         "The 2017-18 consumption survey was completed, then withheld after it showed rural consumption falling.",
         "The national accounts were rebased in 2015 in a way that lowered earlier growth and raised later growth, and the revision was never independently reviewed.",
         "Two statistical commissioners resigned, and the NSSO was merged into the NSO.",
@@ -48,11 +48,11 @@
     {
       "id": "indices-chart",
       "kicker": "All three, 2004-2026",
-      "title": "Every index moves the same way after 2014",
+      "title": "Suppression rose and democratic quality fell after 2014",
       "chart": "indices",
-      "body": "SSI is zero across the entire UPA decade, peaks at {{max:economic.ssi}} in 2021-22, and is still {{last:economic.ssi}} in 2026. FCI rises from {{first:eraHistory.fci}} to {{last:economic.fci}}. DQI falls from {{first:eraHistory.dqi}} to {{last:economic.dqi}}.",
+      "body": "SSI is zero across the entire UPA decade, peaks at {{max:economic.ssi}} in 2021-22, and is {{last:economic.ssi}} in 2026. DQI falls from {{first:eraHistory.dqi}} to {{last:economic.dqi}}. FCI averages {{avg:eraHistory.fci}} under UPA and {{avg:economic.fci}} under NDA, peaks at {{max:economic.fci}} in 2020 and is {{last:economic.fci}} in 2026. Most of its NDA-era rise comes from GST and the 2020 borrowing conditions.",
       "note": "The shaded band marks the NDA period. SSI is shown on its own 0-10 scale.",
-      "chartAlt": "Line chart, 2004 to 2026. The Statistical Suppression Index, the Fiscal Centralisation Index and the Democratic Quality Index, all rescaled to 0-10. The first two rise after 2014 and the third falls."
+      "chartAlt": "Line chart, 2004 to 2026. The Statistical Suppression Index, the Fiscal Centralisation Index and the Democratic Quality Index, all rescaled to 0-10. The SSI rises after 2014 and peaks in 2021-22, the FCI peaks in 2020 and then falls, and the DQI falls throughout the NDA period."
     },
     {
       "id": "ssi",
@@ -62,7 +62,7 @@
       "points": [
         "No qualifying event occurred in 2004-2013, so that decade scores zero.",
         "The 2021-22 peak of {{max:economic.ssi}} comes from these streams stacking up over several years.",
-        "It settles at {{last:economic.ssi}} because the damage is structural. The census is still outstanding and the NSO merger was never reversed."
+        "It is {{last:economic.ssi}} in 2026. The census now has a schedule and counts as a delay, while the NSO merger and the shelved GDP back-series still count at full weight."
       ]
     },
     {
