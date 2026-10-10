@@ -180,7 +180,7 @@
                 "name": "Why is India's unemployment high despite GDP growth?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "India's employment elasticity collapsed to 0.01 during 2014-2017, meaning GDP growth did not translate into jobs. Formal employment declined from 13% to 10.9%, while ~80% of new jobs are precarious or informal. Graduate unemployment was 13.0% in 2023-24 (PLFS), four times the overall rate of 3.2%."
+                    "text": "India's employment elasticity collapsed to 0.01 during 2014-2017, meaning GDP growth did not translate into jobs. On the Periodic Labour Force Survey, the share of workers in regular wage or salaried jobs with social security fell from 11.5% in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24, so roughly nine in ten workers have no social-security cover. About 80% of new jobs are precarious or informal. Graduate unemployment was 13.0% in 2023-24 (PLFS), four times the overall rate of 3.2%."
                 }
             },
             {
@@ -1035,7 +1035,7 @@
 
                 <div class="bg-amber-50 dark:bg-amber-900/15 border border-amber-200/60 dark:border-amber-700/30 p-5 rounded-xl mb-8">
                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                        India's GDP averaged 6.1% a year since 2014 (7.2% if you set the pandemic year aside, against 7.1% in the decade before), yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This unfunded, data-driven research examines <strong>what the headline numbers hide</strong>, with interactive charts, downloadable datasets, and three new indices that are not published anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
+                        India's GDP averaged 6.1% a year since 2014 (7.2% if you set the pandemic year aside, against 7.1% in the decade before), yet the share of workers in formal jobs fell between 2017-18 and 2023-24, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This unfunded, data-driven research examines <strong>what the headline numbers hide</strong>, with interactive charts, downloadable datasets, and three new indices that are not published anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
                     </p>
                 </div>
 
@@ -1159,7 +1159,7 @@
 
                 <div class="prose prose-sm dark:prose-invert max-w-none">
                     <p class="lead text-lg mb-4">
-                        India grew at 6.1% a year on average from 2014 to 2026 (7.2% excluding the pandemic year, against 7.1% under UPA), yet formal employment <em>declined</em>, inequality reached levels unseen since 1922, and every major international index recorded democratic deterioration. The record is one of <strong>growth that bypassed the majority</strong>.
+                        India grew at 6.1% a year on average from 2014 to 2026 (7.2% excluding the pandemic year, against 7.1% under UPA), yet the share of workers in formal jobs fell between 2017-18 and 2023-24, inequality reached levels unseen since 1922, and every major international index recorded democratic deterioration. The record is one of <strong>growth that bypassed the majority</strong>.
                     </p>
                     
                     <h3 class="text-xl font-bold mt-6 mb-3">Core Findings</h3>
@@ -1169,7 +1169,7 @@
                             <h4 class="font-bold text-red-700 dark:text-red-400 mb-2">Employment Crisis</h4>
                             <ul class="space-y-1 text-sm">
                                 <li>• Employment elasticity collapsed to 0.01 (2014-17)</li>
-                                <li>• Formal jobs declined from 13% to 11%</li>
+                                <li>• Formal job coverage fell from 11.5% (2017-18) to 10.1% (2023-24) on PLFS</li>
                                 <li>• 80% of new jobs are precarious/informal</li>
                                 <li>• Graduate unemployment: 13.0% (2023-24)</li>
                             </ul>
@@ -1265,7 +1265,7 @@
                     </div>
                     <div x-show="viewModes.formalEmployment === 'chart'" class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="formalEmploymentChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">Formal/informal employment is shown from 2014 (PLFS-era series); no comparable annual series exists for the UPA decade.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">Formal/informal employment is shown for the PLFS survey years 2017-18 to 2023-24, each plotted at the year the survey starts. There is no comparable annual series before PLFS, and no annual table yet for 2024-25 onward.</p>
                     </div>
                     <div x-show="viewModes.formalEmployment === 'table'" class="overflow-x-auto mb-4" x-html="renderTable(['Year','Formal (%)','Informal (%)'], economicData.years.map((y,i) => [y, economicData.formalEmployment[i], economicData.informalEmployment[i]]))"></div>
                     <button @click="exportChart('formalEmploymentChart', 'formal-employment')" 
@@ -1273,7 +1273,7 @@
                         <img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_File_download.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Export Chart
                     </button>
                     <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3">
-                        Formal employment declined from 13% to 11% despite economic growth through Mar 2026.
+                        The share of workers in regular wage or salaried jobs with social security fell from 11.5% in 2017-18 to 9.6% in 2022-23 while GDP grew, and recovered to 10.1% in 2023-24 (PLFS). Roughly nine in ten workers have no social-security cover.
                     </p>
                 </div>
                 
@@ -1478,7 +1478,7 @@
                         Overlay policy events on the chart
                     </label>
                     <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
-                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the UPA era (2004-14) and the NDA era (2014-26), split at the 2014 divider. GDP, inflation, fiscal deficit, inequality and press freedom run from 2004 to 2026. Unemployment and formal employment start in 2014, and SSI, FCI and DQI before 2014 are the author's back-cast (see Methodology). A circled 2026 point marks a change of measure. Unemployment for 2026 is the average of the monthly bulletins, which use current weekly status, while earlier years use usual status. Inflation for 2026 is on the 2024=100 CPI base, and GDP growth for 2026 is on the 2022-23 national accounts base.</p>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the UPA era (2004-14) and the NDA era (2014-26), split at the 2014 divider. GDP, inflation, fiscal deficit, inequality and press freedom run from 2004 to 2026. Unemployment starts in 2014 and formal employment covers the PLFS years 2017-18 to 2023-24, and SSI, FCI and DQI before 2014 are the author's back-cast (see Methodology). A circled 2026 point marks a change of measure. Unemployment for 2026 is the average of the monthly bulletins, which use current weekly status, while earlier years use usual status. Inflation for 2026 is on the 2024=100 CPI base, and GDP growth for 2026 is on the 2022-23 national accounts base.</p>
                 </div>
 
                 <!-- Export Controls -->
@@ -2301,7 +2301,7 @@ reduces overall score</pre>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
                         <label for="sp-sc-formalemp" class="block text-sm font-medium mb-2">Formal Employment Rate: <span class="text-blue-600 dark:text-blue-400 font-bold" x-text="scenarioInputs.formalEmp + '%'"></span></label>
                         <input type="range" min="8" max="25" step="0.5" x-model="scenarioInputs.formalEmp" id="sp-sc-formalemp" @input="updateScenario()" class="w-full accent-blue-600">
-                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400"><span>8%</span><span>Current: 10.9%</span><span>25%</span></div>
+                        <div class="flex justify-between text-xs text-gray-600 dark:text-gray-400"><span>8%</span><span>Current: 10.1% (2023-24)</span><span>25%</span></div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
                         <label for="sp-sc-pressfreedom" class="block text-sm font-medium mb-2">Press Freedom Rank: <span class="text-purple-600 dark:text-purple-400 font-bold" x-text="scenarioInputs.pressFreedom + 'th'"></span></label>
@@ -2406,11 +2406,11 @@ reduces overall score</pre>
 
                 <!-- B. Decoupling chart -->
                 <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">The Decoupling: Growth Without Jobs</h3>
-                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Cumulative real GDP growth since 2014 (left axis) plotted against formal employment share (right axis). If growth and jobs moved together, the lines would track. They don't.</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Cumulative real GDP growth since 2014 (left axis) plotted against the formal employment share (right axis), which PLFS measures from 2017-18. If growth brought formal jobs, the two lines would rise together. Between 2017-18 and 2022-23 GDP grew and the formal share fell from 11.5% to 9.6%, and it was 10.1% in 2023-24.</p>
                 <div class="card-inner mb-2">
                     <div id="deepDecouplingChart" class="chart-container"></div>
                 </div>
-                <p class="text-xs text-gray-600 dark:text-gray-400 italic mb-8">Cumulative GDP series compounds annual growth from a 2014 base of 100. Formal employment is the share of workers with social security cover (PLFS).</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400 italic mb-8">Cumulative GDP series compounds annual growth from a 2014 base of 100. Formal employment is the share of all workers who are regular wage or salaried employees with any social-security benefit (PLFS, 2017-18 to 2023-24).</p>
 
                 <!-- C. International league table -->
                 <h3 class="text-lg sm:text-xl font-bold mb-3 text-gray-900 dark:text-white">Peer Trajectories (2014 → 2026)</h3>
@@ -3315,12 +3315,12 @@ reduces overall score</pre>
             graduateUnemployment:[null,null,null,17.2,16.9,17.2,15.5,14.9,13.4,13.0,null,null,null],
             top1Share:           [21.3,21.7,21.5,21.5,21.7,22.1,22.3,22.5,22.6,22.6,22.6,22.8,23.0],
             bottom50Share:       [15.0,14.7,14.9,14.9,14.7,13.5,13.3,13.1,13.1,13.1,13.1,13.0,12.9],
-            formalEmployment:    [13.0,12.8,12.5,12.2,11.9,11.6,11.4,11.5,11.3,11.2,11.2,11.0,10.9],
-            informalEmployment:  [87.0,87.2,87.5,87.8,88.1,88.4,88.6,88.5,88.7,88.8,88.8,89.0,89.1],
+            formalEmployment:    [null,null,null,11.5,11.4,10.5,9.7,10.1,9.6,10.1,null,null,null],
+            informalEmployment:  [null,null,null,88.5,88.6,89.5,90.3,89.9,90.4,89.9,null,null,null],
             pressFreedom:        [140,136,133,136,138,140,142,142,150,161,159,151,157],
-            fiscalDeficit:       [4.1,3.9,3.5,3.5,3.4,4.6,9.2,6.7,6.4,5.6,4.8,4.4,4.4],
+            fiscalDeficit:       [4.1,3.9,3.5,3.5,3.4,4.6,9.2,6.7,6.4,5.6,4.8,4.4,4.3],
             cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,3.8],
-            rupeeUSD:            [61,64,67,65,68,70,74,74,79,82,84,87,95],
+            rupeeUSD:            [61,64,67,65,68,70,74,74,79,82,84,87,94],
             ssi:                 [0.0,1.05,1.05,2.05,4.0,4.8,7.0,9.0,9.0,8.2,7.05,6.55,6.4],
             fci:                 [0.19,0.21,0.25,0.41,0.53,0.65,0.92,0.82,0.7,0.68,0.68,0.68,0.68],
             dqi:                 [0.49,0.46,0.46,0.44,0.42,0.39,0.36,0.37,0.34,0.28,0.28,0.3,0.29],
@@ -3349,7 +3349,7 @@ reduces overall score</pre>
         },
         indicators: [
             { key:'gdpGrowth',        label:'GDP growth',              unit:'%',     goodHigh:true,  trendYears:5, reform:0.55, stress:-1.6,  uncertainty:1.1,  min:-10, max:12,  decimals:1, drivers:'Post-COVID base-effect rebounds are fading; the level itself is contested after the 2015 MCA21 revision.', breaks:'An external oil/rupee shock, a weak monsoon, or investment that keeps growing output without jobs or consumption.' },
-            { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1, drivers:'Twelve straight years of informalisation; capital-intensive PLI adds output without adding much payroll.', breaks:'A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it.' },
+            { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1, drivers:'On PLFS, coverage fell from 11.5% in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24. Capital-intensive PLI adds output without adding much payroll.', breaks:'A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it.' },
             { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1, drivers:'The headline is held low by self-employment and discouraged workers; graduate joblessness runs about 13%, four times the overall rate.', breaks:'A serious youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up.' },
             { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1, drivers:'Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.', breaks:'A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing.' },
             { key:'cpiInflation',     label:'CPI inflation',           unit:'%',     goodHigh:false, trendYears:5, reform:-0.3, stress:2.2,   uncertainty:1.0,  min:0,   max:14,  decimals:1, drivers:'Food is ~half the CPI basket and ~50% of farmland is rainfed, so inflation tracks the monsoon.', breaks:'A deficient monsoon or an oil spike pushes CPI above the RBI\'s 6% ceiling.' },
@@ -3425,7 +3425,7 @@ reduces overall score</pre>
             { item:'Daily family meals', then:200, now:300, unit:'₹/day' },
             { item:'School fees (mid-market)', then:30000, now:70000, unit:'₹/yr' }
         ]},
-        external: { note:'External sector FY26 (RBI; DGCI&S; IMF WEO 2026).', goodsDeficitBn:-333, servicesSurplusBn:190, cadPctGDP:1.0, reservesBn:691, importCoverMonths:11, rupeeRecordLow:95.2, goldImportsBn:72, crudeImportsBn:123, crudeImportDependence:86, fpiOutflowBn:-16.5 },
+        external: { note:'External sector FY26 (RBI; DGCI&S; IMF WEO 2026).', goodsDeficitBn:-333, servicesSurplusBn:190, cadPctGDP:1.0, reservesBn:691, importCoverMonths:11, rupeeRecordLow:96.8, goldImportsBn:72, crudeImportsBn:123, crudeImportDependence:86, fpiOutflowBn:-16.5 },
         distribution: { note:'Monthly income and where it places you (WIR; HCES; PLFS; NCAER). Approximate.', thresholds:[
             { income:5000, label:'Bottom 20-25%', sub:'below rural minimum wage in most states' },
             { income:10000, label:'~40th percentile', sub:'below urban poverty-adjacent thresholds' },
@@ -3448,7 +3448,7 @@ reduces overall score</pre>
         monsoonChain: { note:'Why about half of India’s inflation depends on the monsoon (IMD; RBI; IPCC).', rainfedSharePct:50, steps:['Deficient monsoon','Farm output falls','Food prices spike','CPI breaches 6%','RBI raises rates','Rural incomes squeezed'] },
         cpiBasket: { note:'How CPI is built (MoSPI, 2024=100 series, weights from HCES 2023-24).', itemsWeighted:358, urbanMarkets:1395, urbanTowns:434, villages:1465, onlineMarkets:12, baseYear:2024, rbiTarget:4, foodSharePct:36.75, foodSharePctPrev:45.86, housingSharePct:16.48, transportSharePct:9.43, healthSharePct:6.83 },
         pumpPrice: { note:'Where every rupee of the petrol price goes (PPAC; PRS; Delhi 2026 illustrative).', parts:[{label:'Crude + refining + OMC margin',value:55.3},{label:'Central excise',value:19.9},{label:'State VAT',value:15.0},{label:'Dealer margin',value:3.8}], total:94.0, crudeImportDependence:86 },
-        modiAsks: { note:'PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S.', asks:['Avoid buying gold for one year','Postpone non-essential foreign travel','Work from home where possible','Use public transport and carpooling','Reduce edible-oil consumption','Reduce chemical fertiliser use (farmers)','Buy Swadeshi, prefer Indian-made goods'], numbers:[{label:'Gold imports FY26',value:'$72 bn',sub:'2nd-largest import after crude'},{label:'Tourist spend abroad',value:'$31.7 bn',sub:'~30 mn Indians travelled out'},{label:'Crude oil imports',value:'$123 bn',sub:'85%+ of crude imported'},{label:'Rupee (crisis week)',value:'95.2/$',sub:'record low, May 2026'}] },
+        modiAsks: { note:'PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S.', asks:['Avoid buying gold for one year','Postpone non-essential foreign travel','Work from home where possible','Use public transport and carpooling','Reduce edible-oil consumption','Reduce chemical fertiliser use (farmers)','Buy Swadeshi, prefer Indian-made goods'], numbers:[{label:'Gold imports FY26',value:'$72 bn',sub:'2nd-largest import after crude'},{label:'Tourist spend abroad',value:'$31.7 bn',sub:'~30 mn Indians travelled out'},{label:'Crude oil imports',value:'$123 bn',sub:'85%+ of crude imported'},{label:'Rupee (crisis week)',value:'96.8/$',sub:'record low, 20 May 2026 (reference rate)'}] },
         gold: { note:'Indians buy gold because the formal system left no better option (WGC 2024; AMFI; RBI; IRDAI; SEBI).', privateTonnes:25000, stockValueTn:1.8, insurancePenetration:3.2, insuranceGlobal:7, excludedAdultsMn:190, equityParticipationPct:3.5 },
         poverty: { note:'Three official lines give three different answers. India has had no accepted poverty line since 2014.', lines:[{name:'Tendulkar (2011-12)',detail:'₹27/day rural, ₹33/day urban',headcount:'21.9%',status:'never updated'},{name:'Rangarajan (2014)',detail:'₹30/day rural, ₹47/day urban',headcount:'29.5%',status:'shelved and never adopted'},{name:'NITI MPI (2022-23)',detail:'multidimensional, with no income line',headcount:'11.3%',status:'current official'}] },
         bodies: { note:'The economy’s effects on health and education (NFHS-5; National Health Accounts).', stuntedPct:35, outOfPocketPct:40, publicHealthPctGDP:1.9 },
@@ -3604,7 +3604,7 @@ reduces overall score</pre>
             scatterY: 'formalEmployment',
             correlationR: 0,
             eraIndicator: 'gdpGrowth',
-            scenarioInputs: { formalEmp: 10.9, pressFreedom: 157, cessShare: 20.5, statsReleased: 40 },
+            scenarioInputs: { formalEmp: 10.1, pressFreedom: 157, cessShare: 20.5, statsReleased: 40 },
             scenarioOutputs: { ssi: 6.4, fci: 0.68, dqi: 0.29 },
 
             // ===== ECONOMIC TRAJECTORY (forecast) state =====
@@ -3615,7 +3615,7 @@ reduces overall score</pre>
             trajWeights: {},                    // user-adjustable weights per indicator (default 1)
             // ===== UPA-decade history (2004-2013) for era differentiation =====
             eraHistory: {
-                note: 'UPA decade (2004-2013) on the same basis as the 2014+ series: World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%/bottom 50%, harmonised), RSF (press freedom). SSI/FCI/DQI before 2014 are the author\'s back-cast. Unemployment & employment are shown from 2014 only (no comparable annual UPA series).',
+                note: 'UPA decade (2004-2013) on the same basis as the 2014+ series: World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%/bottom 50%, harmonised), RSF (press freedom). SSI/FCI/DQI before 2014 are the author\'s back-cast. Unemployment is shown from 2014 and formal/informal employment for the PLFS years 2017-18 to 2023-24 (no comparable annual UPA series).',
                 years: [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013],
                 gdpGrowth: [7.9,9.3,9.3,7.7,3.1,7.9,8.5,5.2,5.5,6.4],
                 cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.3,10.9],
@@ -3637,7 +3637,7 @@ reduces overall score</pre>
                 { year: 2016, short: 'Demon.', label: 'Demonetisation', desc: '86% of cash voided overnight; informal economy and small business hit hardest.' },
                 { year: 2017, short: 'GST', label: 'GST rollout', desc: 'A single nationwide indirect tax, and a structural shift of revenue power toward the centre.' },
                 { year: 2019, short: 'Tax cut', label: 'Corporate tax cut', desc: '₹1.45 lakh crore corporate tax cut; the effective rate fell, widening the inequality gap.' },
-                { year: 2020, short: 'COVID', label: 'COVID lockdown', desc: 'Steepest GDP contraction since independence (−7.3%); formal jobs never regained trend.' },
+                { year: 2020, short: 'COVID', label: 'COVID lockdown', desc: 'Steepest GDP contraction since independence (−7.3%); formal job coverage has not regained its 2019-20 level.' },
                 { year: 2021, short: 'Census', label: 'Census postponed', desc: 'The decennial Census was indefinitely postponed; every population figure since is an interpolation.' },
                 { year: 2024, short: 'Election', label: '2024 general election', desc: 'NDA returned to power with a reduced majority, now reliant on coalition partners.' }
             ],
@@ -3655,7 +3655,7 @@ reduces overall score</pre>
                 elasticity: { term: 'Employment elasticity', def: 'How much employment grows for each 1% of GDP growth. A value near zero means "jobless growth".' },
                 informalisation: { term: 'Informalisation', def: 'A rising share of workers without a written contract, social security, or job protection.' },
                 fiscalDeficit: { term: 'Fiscal deficit', def: 'The gap between government spending and revenue in a year, financed by borrowing; shown as % of GDP.' },
-                formalEmployment: { term: 'Formal employment', def: 'Jobs with a written contract and access to social security (EPF/ESI).' },
+                formalEmployment: { term: 'Formal employment', def: 'Regular wage or salaried jobs with at least one social-security benefit, such as a provident fund or pension, as the Periodic Labour Force Survey records them.' },
                 plfs: { term: 'PLFS', def: "India's official Periodic Labour Force Survey of employment and unemployment, run since 2017-18." },
                 pli: { term: 'PLI', def: 'Production-Linked Incentive: subsidies tied to output in chosen sectors. Capital-intensive, so it lifts output more than payroll.' },
                 top1: { term: 'Top 1% share', def: 'The slice of national income going to the richest 1% of adults (World Inequality Database).' },
@@ -5059,7 +5059,7 @@ reduces overall score</pre>
                 const i = this.latestObservedIndex();
                 const d = this.economicData;
                 return {
-                    formalEmp: d.formalEmployment[i],
+                    formalEmp: +this.lastObserved('formalEmployment', 1),
                     pressFreedom: d.pressFreedom[i],
                     cessShare: 20.5,
                     statsReleased: 40
@@ -5089,7 +5089,8 @@ reduces overall score</pre>
             },
             ndaAverage(key) {
                 const i = this.latestObservedIndex();
-                const arr = (this.economicData[key] || []).slice(0, i + 1);
+                // Average the published years only; a series can have empty years.
+                const arr = (this.economicData[key] || []).slice(0, i + 1).filter(v => typeof v === 'number');
                 if (!arr.length) return null;
                 return arr.reduce((a, b) => a + b, 0) / arr.length;
             },
@@ -5188,13 +5189,15 @@ reduces overall score</pre>
                     ssi:                 ['SSI', '', 1, true],
                     dqi:                 ['DQI', '', 2, false]
                 };
-                const yLatest = d.years[i];
-                const yPrev = d.years[i - 1];
                 let html = '';
                 for (const key of Object.keys(labels)) {
                     const [label, suffix, dp, betterLow] = labels[key];
                     const arr = d[key]; if (!arr) continue;
-                    const cur = arr[i], prev = arr[i - 1];
+                    // The two latest published years of this series, which can end early.
+                    const idx = []; for (let j = i; j >= 0 && idx.length < 2; j--) if (typeof arr[j] === 'number') idx.push(j);
+                    if (idx.length < 2) continue;
+                    const cur = arr[idx[0]], prev = arr[idx[1]];
+                    const yLatest = d.years[idx[0]], yPrev = d.years[idx[1]];
                     const delta = cur - prev;
                     const improved = (betterLow && delta < 0) || (!betterLow && delta > 0);
                     const colour = Math.abs(delta) < 1e-9 ? 'text-gray-600' :
@@ -5269,16 +5272,20 @@ reduces overall score</pre>
 
             // OLS slope (per year) over the last n observed points.
             _trendSlope(arr, n) {
-                const obs = arr.slice(0, this.latestObservedIndex() + 1);
-                const pts = obs.slice(Math.max(0, obs.length - n));
+                // Fit over the last n published points. A series can stop before the
+                // final year (formal employment ends with PLFS 2023-24), so empty years
+                // are skipped and x is the year index, not the position in the list.
+                const li = this.latestObservedIndex();
+                const all = [];
+                for (let i = 0; i <= li; i++) if (typeof arr[i] === 'number') all.push([i, arr[i]]);
+                const pts = all.slice(Math.max(0, all.length - n));
                 const m = pts.length;
                 if (m < 2) return 0;
-                const xs = pts.map((_, i) => i);
-                const mx = xs.reduce((a,b)=>a+b,0)/m;
-                const my = pts.reduce((a,b)=>a+b,0)/m;
+                const mx = pts.reduce((a, p) => a + p[0], 0) / m;
+                const my = pts.reduce((a, p) => a + p[1], 0) / m;
                 let num = 0, den = 0;
-                for (let i=0;i<m;i++){ num += (xs[i]-mx)*(pts[i]-my); den += (xs[i]-mx)**2; }
-                return den === 0 ? 0 : num/den;
+                for (const [x, y] of pts) { num += (x - mx) * (y - my); den += (x - mx) ** 2; }
+                return den === 0 ? 0 : num / den;
             },
 
             // Project one indicator under one scenario. Returns paths from baseYear+1 to horizon.
@@ -5287,7 +5294,10 @@ reduces overall score</pre>
                 const d = this.economicData;
                 const arr = d[key];
                 if (!spec || !arr) return null;
-                const li = this.latestObservedIndex();
+                // Anchor on this series' own latest published year.
+                let li = this.latestObservedIndex();
+                while (li > 0 && typeof arr[li] !== 'number') li--;
+                if (typeof arr[li] !== 'number') return null;
                 const baseYear = d.years[li];
                 const horizon = this.forecastSpec.horizonYear || 2030;
                 const nYears = horizon - baseYear;
@@ -5614,7 +5624,7 @@ reduces overall score</pre>
                 const d = this.economicData;
                 const f = this.buildForecast(key, this.trajScenario);
                 if (!spec || !f) return;
-                const li = this.latestObservedIndex();
+                const li = d.years.indexOf(f.baseYear);
                 const obsYears = d.years.slice(0, li + 1);
                 const obsVals = d[key].slice(0, li + 1);
                 const allYears = obsYears.concat(f.fyears);
@@ -5657,7 +5667,10 @@ reduces overall score</pre>
                     const vals = fyears.map(y => {
                         const byKey = {};
                         for (const k of Object.keys(this.TRAJ_SCORE_REF)) {
-                            byKey[k] = (y === baseYear) ? (d[k]||[])[li] : (paths[k] ? paths[k].central[y - baseYear - 1] : null);
+                            const obs = (d[k]||[])[li];
+                            // A path can start before baseYear when its series ends early, so look it up by year.
+                            const pi = paths[k] ? paths[k].fyears.indexOf(y) : -1;
+                            byKey[k] = (y === baseYear && typeof obs === 'number') ? obs : (pi >= 0 ? paths[k].central[pi] : null);
                         }
                         return this.compositeIndex(byKey);
                     });

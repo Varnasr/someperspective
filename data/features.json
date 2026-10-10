@@ -26,9 +26,9 @@
   {
     "slug": "growth-and-formal-jobs-have-moved-in-opposite-directions",
     "category": "Growth vs jobs",
-    "title": "Growth and formal jobs have moved in opposite directions for a decade",
-    "body": "GDP grew 7.8% in FY26 (MoSPI Provisional Estimates, new 2022-23 base). Over the same twelve years, formal employment fell from 13.0% to 10.9% of the workforce. Cumulatively, real GDP is up roughly 90% and the formal employment share is down 16%.",
-    "takeaway": "Headline GDP growth and labour market quality have come apart, and they now move in opposite directions.",
+    "title": "Formal job coverage fell while the economy grew",
+    "body": "GDP grew 7.8% in FY26 (MoSPI Provisional Estimates, new 2022-23 base). On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security was 11.5% in 2017-18 and 9.6% in 2022-23, and GDP grew in every year of that period except the pandemic year. The share recovered to 10.1% in 2023-24, which is still 1.4 points below where the survey began. PLFS starts in 2017-18, so there is no comparable figure for the years before it.",
+    "takeaway": "Headline GDP growth did not bring a larger share of workers into jobs with social security.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "dual",
@@ -304,9 +304,9 @@
   {
     "slug": "informal-employment-share-crossed-89",
     "category": "Jobs",
-    "title": "Informal employment share crossed 89%",
-    "body": "The share of workers without any social security cover (PLFS definition) rose from 87.0% (2014) to 89.1% (2026). The formal share fell in ten of the twelve years. It rose once, from 11.4% to 11.5% in 2021, and held at 11.2% from 2023 to 2024.",
-    "takeaway": "Nine in ten Indian workers have no statutory pension, EPF, ESI, or written contract.",
+    "title": "Nine in ten Indian workers have no social-security cover",
+    "body": "On the Periodic Labour Force Survey, the share of workers who are not in regular wage or salaried jobs with any social security was 88.5% in 2017-18 and 89.9% in 2023-24. It rose to 90.3% in the pandemic year 2020-21 and reached 90.4% in 2022-23. Among regular wage and salaried employees themselves, the share without any social security rose from 49.6% in 2017-18 to 53.4% in 2023-24.",
+    "takeaway": "Roughly nine in ten Indian workers have no social-security cover, a larger share than in 2017-18.",
     "tab": "Key Findings",
     "chart": {
       "type": "line",
@@ -456,7 +456,7 @@
     "slug": "a-regime-comparison-computed-live-from-the-data",
     "category": "Comparative",
     "title": "A regime comparison, computed live from the data",
-    "body": "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, ~20.2% top 1% share, and a press-freedom rank around 121. NDA's same averages are computed live from the loaded series. (UPA-era unemployment and formal-employment figures use a different statistical basis, World Bank/ILO and NSSO, so those two are flagged as not strictly comparable.)",
+    "body": "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, ~20.2% top 1% share, and a press-freedom rank around 121. NDA's same averages are computed live from the loaded series. Unemployment and formal employment have no series on the PLFS basis for the UPA years, so those two are marked as not available.",
     "takeaway": "The regime comparison is mechanical. It averages the data and interprets nothing, and it does not flatter either side.",
     "tab": "Deep Analysis",
     "chart": {
@@ -613,9 +613,9 @@
   {
     "slug": "the-post-2017-formal-employment-drop-is-visible-in",
     "category": "Jobs",
-    "title": "The post-2017 formal employment drop is visible in the data",
-    "body": "Formal employment share: 12.5% (2016) → 12.2% (2017) → 11.9% (2018) → 11.6% (2019). The 2016-2019 window (demonetisation, GST, the 2017-18 PLFS leak) coincides with the steepest sustained decline in formal employment share in the modern series.",
-    "takeaway": "A policy regime can be visible in a labour market series even before the headline reports catch up.",
+    "title": "Formal job coverage dipped in the pandemic year and has only partly recovered",
+    "body": "On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security was 11.5% in 2017-18, 11.4% in 2018-19 and 10.5% in 2019-20. It fell to 9.7% in the pandemic year 2020-21, rose to 10.1% in 2021-22, fell to 9.6% in 2022-23 and was 10.1% in 2023-24. The survey begins in 2017-18, so it cannot show what happened to this share in the demonetisation and GST years before it.",
+    "takeaway": "The share has not returned to its 2017-18 level in any later year of the survey.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -634,9 +634,9 @@
   {
     "slug": "twelve-consecutive-years-of-formal-employment-decline",
     "category": "Jobs",
-    "title": "Formal employment fell in ten of twelve years",
-    "body": "The formal employment share fell in ten of the twelve years since 2014. It rose once, in 2021, and held level from 2023 to 2024. The cumulative drop is from 13.0% to 10.9%, a 16% decline in the share. Over most of the same period, NITI Aayog estimates the gig workforce grew from 2.5 million (2011-12) to 6.8 million (2019-20).",
-    "takeaway": "This is the most consistent multi-year trend in the entire labour-market dataset.",
+    "title": "Formal job coverage fell by 1.4 points over six years of the labour survey",
+    "body": "On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security fell from 11.5% in 2017-18 to 10.1% in 2023-24, a drop of 1.4 points, or about 12%. It did not fall in every year, and its lowest point was 9.6% in 2022-23. Two things moved underneath it. Regular wage and salaried work slipped from 22.8% to 21.7% of all workers, and the share of those employees without any social security rose from 49.6% to 53.4%, after a peak of 54.2% in 2019-20. Over part of the same period, NITI Aayog estimates the gig workforce grew from 2.5 million (2011-12) to 6.8 million (2019-20).",
+    "takeaway": "More than half of India's regular salaried employees have no social security, a larger share than in 2017-18.",
     "tab": "Key Findings",
     "chart": {
       "type": "line",

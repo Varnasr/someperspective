@@ -79,11 +79,11 @@
     {
       "id": "jobs",
       "kicker": "Growth and jobs",
-      "title": "Twelve straight years of falling formal employment",
+      "title": "Formal job coverage fell while GDP grew",
       "chart": "decoupling",
-      "body": "The share of workers with any social-security cover fell from {{first:economic.formalEmployment}}% in 2014 to {{last:economic.formalEmployment}}% in 2026. It was down or flat in every single year, while GDP grew throughout.",
-      "note": "This is the most consistent multi-year pattern in the dataset, and it does not depend on the disputed national accounts.",
-      "chartAlt": "Combination chart, 2004 to 2026. Bars show annual GDP growth against the left axis; a line shows formal employment as a percentage of all employment against the right axis. Growth continues while the line declines."
+      "body": "On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security was {{first:economic.formalEmployment}}% in 2017-18. It fell to a low of {{min:economic.formalEmployment}}% in 2022-23 and was {{last:economic.formalEmployment}}% in 2023-24, while GDP grew in every year of that period except the pandemic year. Roughly nine in ten Indian workers have no social-security cover.",
+      "note": "Among regular wage and salaried employees, the share with no social security rose from 49.6% in 2017-18 to 53.4% in 2023-24. The survey begins in 2017-18, so it cannot show the years before it. The finding does not depend on the disputed national accounts.",
+      "chartAlt": "Combination chart. Bars show annual GDP growth from 2004 to 2026 against the left axis. A line shows formal employment as a percentage of all workers against the right axis, for the PLFS years 2017-18 to 2023-24 only. The line falls from 2017-18 to 2022-23 and turns up in 2023-24."
     },
     {
       "id": "structure",

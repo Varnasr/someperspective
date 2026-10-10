@@ -12,7 +12,7 @@ site: "https://someperspective.info"
 
 # Abstract
 
-India's economy grew at an average of 6.1 per cent a year between 2014 and 2026. Over the same period the share of national income accruing to the bottom half of the population fell from 15.0 to 12.9 per cent, the share of workers holding jobs with any social-security cover fell from 13.0 to 10.9 per cent, and every available third-party measure of democratic quality deteriorated. This paper asks whether these facts are separable, that is, whether India experienced a familiar and possibly tolerable trade of political openness for material progress, and concludes that it did not.
+India's economy grew at an average of 6.1 per cent a year between 2014 and 2026. Over the same period the share of national income accruing to the bottom half of the population fell from 15.0 to 12.9 per cent, the share of workers holding regular jobs with any social-security cover fell from 11.5 per cent in 2017-18, the first year the Periodic Labour Force Survey measures it, to 10.1 per cent in 2023-24, and every available third-party measure of democratic quality deteriorated. This paper asks whether these facts are separable, that is, whether India experienced a familiar and possibly tolerable trade of political openness for material progress, and concludes that it did not.
 
 The difficulty in answering the question is that the instruments needed to answer it have themselves degraded. A decennial census was postponed indefinitely; a national consumption survey was conducted and then withheld; the national accounts were rebased in a manner that remains disputed and has never been independently reviewed; and the statistical system's institutional independence was reduced by merger and resignation. Any assessment of Indian economic performance after 2014 must therefore treat measurement capacity as an endogenous variable, one that moved during the period under study.
 
@@ -186,7 +186,7 @@ We distinguish four provenance classes, and label every series accordingly, beca
 | Graduate unemployment | MoSPI PLFS, usual status, graduates aged 15 and over (2017-18 to 2023-24) |
 | Top 1% income share | World Inequality Database (WID.world) India series; WIR 2026 |
 | Bottom 50% income share | World Inequality Database (WID.world) India series; WIR 2026 |
-| Formal employment | PLFS workers with social-security cover; EPFO net additions cross-check |
+| Formal employment | MoSPI PLFS published tables, usual status: regular wage/salaried share of all workers times the share of those employees with any social security (2017-18 to 2023-24) |
 | Press freedom rank | Reporters Without Borders, World Press Freedom Index |
 | Fiscal deficit | Union Budget documents, central government, % of GDP |
 | CPI inflation | MoSPI CPI (Combined); 2026 is the average of the January to August 2026 prints on base 2024=100 |
@@ -376,15 +376,17 @@ What can be said without relying on the disputed revision is that the later peri
 
 ## 6.2 Employment
 
-The employment result is the clearest in the dataset, because it does not depend on the disputed national accounts at all.
+The employment result does not depend on the disputed national accounts at all, although it covers fewer years than the other series.
 
-The formal employment share (workers with any social-security cover) falls from 13.0 per cent in 2014 to 10.9 per cent in 2026. This is a decline in the share itself. The share fell in ten of the twelve year-on-year changes, held level from 2023 to 2024, and rose once, from 11.4 to 11.5 per cent, in 2021. Informal employment correspondingly rises from 87.0 to 89.1 per cent.
+The formal employment share is the share of all workers who are regular wage or salaried employees with any social-security benefit, derived from the published tables of the Periodic Labour Force Survey (PLFS). The survey begins in 2017-18, so the series covers the survey years 2017-18 to 2023-24 and has no value for 2014 to 2016 or for 2024 onward. The share was 11.5 per cent in 2017-18 and 11.4 per cent in 2018-19. It fell to 10.5 per cent in 2019-20 and 9.7 per cent in the pandemic year 2020-21, rose to 10.1 per cent in 2021-22, reached its low of 9.6 per cent in 2022-23 and was 10.1 per cent in 2023-24. That is a fall of 1.4 points, about 12 per cent of the share, over six years, with a dip in the pandemic year and a partial recovery. It did not fall in every year. Informal employment, which is 100 minus the formal share, correspondingly rises from 88.5 to 89.9 per cent, so roughly nine in ten Indian workers have no social-security cover.
+
+Two movements lie underneath the share. Regular wage and salaried work fell from 22.8 to 21.7 per cent of all workers between 2017-18 and 2023-24. Among those employees, the share without any social security rose from 49.6 per cent to 53.4 per cent, after a peak of 54.2 per cent in 2019-20. By 2023-24 more than half of India's regular salaried employees had no social security, so most of the jobs that look formal by their pay arrangement lacked the protection the word implies.
 
 Headline unemployment is 4.9 per cent in 2014 and 3.1 per cent in 2025 on the usual-status measure of the annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment, on MoSPI's published usual-status series, was 13.0 per cent in 2023-24, down from 17.2 per cent in 2017-18. MoSPI publishes no figure for graduates before PLFS began or after 2023-24.
 
 An unemployment rate of 13.0 per cent among degree-holders, four times the 3.2 per cent for all workers on the same measure in the same year, cannot be explained by weak aggregate labour demand. The graduate rate has fallen since 2017-18, and the ratio to the overall rate has stayed at about three to four. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
 
-The conjunction of positive aggregate growth with a formal-employment share that fell in ten of twelve years is the single most consistent multi-year pattern in the dataset. It is difficult to reconcile with any account in which the period's institutional changes purchased broad-based material progress.
+Aggregate GDP grew in every year from 2017-18 to 2022-23 except the pandemic year, and over the same years the formal employment share fell from 11.5 to 9.6 per cent. Its recovery to 10.1 per cent in 2023-24 left it below where the survey began. That conjunction is difficult to reconcile with any account in which the period's institutional changes purchased broad-based material progress.
 
 ### 6.2.1 The capital intensity of the growth that occurred
 
@@ -684,7 +686,7 @@ COVID-19 affected both halves of the paper's argument simultaneously. On the eco
 
 We take three steps in response, and concede that none fully resolves it.
 
-First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises the mean growth rate materially, but the direction of every other measure is unchanged: the formal employment share falls monotonically in the years on either side of the pandemic, the income-share movements are continuous through it, and the SSI, FCI and DQI are all substantially higher in both 2018–19 and 2023–26 than in any UPA year. The pandemic made a pattern already present on either side of it larger.
+First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises the mean growth rate materially, but the direction of every other measure is unchanged: the formal employment share fell in each PLFS year before the pandemic, from 11.5 to 10.5 per cent, and in the three years after it stayed between 9.6 and 10.1 per cent, below its 2019-20 level, the income-share movements are continuous through it, and the SSI, FCI and DQI are all substantially higher in both 2018–19 and 2023–26 than in any UPA year. The pandemic made a pattern already present on either side of it larger.
 
 Second, the timing. The DQI's steepest decline begins in 2019, before the pandemic, and V-Dem's reclassification of India as an electoral autocracy is a 2019 event. The consumption-survey suppression is 2019, the PLFS withholding 2019, the NSC resignations January 2019, and the GDP revision 2015. Four of the six SSI streams pre-date the pandemic entirely.
 
@@ -716,7 +718,7 @@ Our mitigations are procedural: every weight and component is published; the con
 
 ## 9.7 Scope
 
-This paper is about aggregate national indicators. It does not address state-level variation, which is substantial and in several respects runs counter to the national picture. It does not address caste, gender, or religious disaggregation of the distributional results, all of which are material to any full account of who bore the costs described here. And its coverage of the informal economy is limited to what the PLFS measures, which is a real constraint given that the informal sector accounts for approximately 89 per cent of Indian employment.
+This paper is about aggregate national indicators. It does not address state-level variation, which is substantial and in several respects runs counter to the national picture. It does not address caste, gender, or religious disaggregation of the distributional results, all of which are material to any full account of who bore the costs described here. And its coverage of the informal economy is limited to what the PLFS measures, which is a real constraint given that roughly nine in ten Indian workers have no social-security cover (89.9 per cent in 2023-24 on PLFS).
 
 ## 9.8 An error corrected in preparation
 
@@ -744,7 +746,7 @@ Neither error was caught by the consistency check introduced after Section 9.8, 
 
 The strongest case for the period under study is that a decisive executive, unencumbered by the veto points that had constrained earlier Indian governments, could deliver material progress that a more constrained government could not. This is a serious argument with real intellectual lineage, and it deserves a test.
 
-Tested, it fails, because the gains are not visible in the data. The question of whether the institutional costs were too high relative to the gains does not arise. Growth did not accelerate. The formal employment share fell from 13.0 to 10.9 per cent, and it fell in ten of the twelve years. The bottom half's income share fell by roughly an eighth. The one measure moving the other way, inflation, is largely a world oil price: Brent fell roughly 75 per cent across 2014–16 in an economy importing 86 per cent of its crude. Whatever domestic policy contributed came from a rules-based framework that binds the executive.
+Tested, it fails, because the gains are not visible in the data. The question of whether the institutional costs were too high relative to the gains does not arise. Growth did not accelerate. The share of workers in regular jobs with social-security cover fell from 11.5 per cent in 2017-18 to 9.6 per cent in 2022-23 while GDP grew, and at 10.1 per cent in 2023-24 it remained below where the survey began. The bottom half's income share fell by roughly an eighth. The one measure moving the other way, inflation, is largely a world oil price: Brent fell roughly 75 per cent across 2014–16 in an economy importing 86 per cent of its crude. Whatever domestic policy contributed came from a rules-based framework that binds the executive.
 
 The finding is that there was no trade to evaluate.
 
@@ -786,7 +788,7 @@ We are wary of appending policy prescriptions to a descriptive paper, since the 
 
 The ordering follows from a practical point. A government that implemented every other reform below, while leaving the statistical system as it is, would leave the public unable to determine whether any of them had worked.
 
-**Formalisation is where the employment result points.** The finding concerns the quality of jobs, which increasingly lack social-security cover, written contracts, and the protections that make employment a basis for planning. The instruments are conventional: extension of EPF/ESI coverage, enforcement of written contracts, and a social-security floor for platform and gig work, where NITI Aayog estimates the workforce grew from 2.5 million in 2011-12 to 6.8 million in 2019-20, with substantially no coverage.
+**Formalisation is where the employment result points.** The finding concerns the quality of jobs, which increasingly lack social-security cover and the protections that make employment a basis for planning. Among regular salaried employees, the share without any social security rose from 49.6 per cent in 2017-18 to 53.4 per cent in 2023-24. The instruments are conventional: extension of EPF/ESI coverage, enforcement of written contracts, and a social-security floor for platform and gig work, where NITI Aayog estimates the workforce grew from 2.5 million in 2011-12 to 6.8 million in 2019-20, with substantially no coverage.
 
 **Industrial policy weighting bears re-examination.** Section 6.2.1 does not argue against capital-intensive manufacturing. Its point is the employment arithmetic. A strategy seeking employment absorption at scale would weight labour-intensive sectors (garments, food processing, construction and care) considerably more heavily than the current allocation does.
 
@@ -826,7 +828,7 @@ The cross-era institutional finding would be substantially weakened by documente
 
 The distributional finding would be weakened by a revision to the WID India series, which is itself estimated from combined survey, fiscal and national-accounts sources and is not beyond revision.
 
-The employment finding is the most secure, because it does not depend on the disputed national accounts, on any index we constructed, or on any expert survey: it is a direct survey measure of the share of workers with social-security cover, and it fell from 13.0 to 10.9 per cent across the period.
+The employment finding does not depend on the disputed national accounts, on any index we constructed, or on any expert survey. It is a direct survey measure of the share of workers in regular jobs with social-security cover, which fell from 11.5 per cent in 2017-18 to 10.1 per cent in 2023-24, with a low of 9.6 per cent in 2022-23. It would be weakened if later PLFS rounds showed coverage back above its 2017-18 level, and it is limited by the survey beginning in 2017-18, three years into the period.
 
 ---
 

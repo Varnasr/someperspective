@@ -57,12 +57,12 @@ in `data.json`.
 - **Notes:** Represents percentage seeking but unable to find work
 
 #### `formal_employment_share`
-- **Definition:** Share of workers in formal sector with social security benefits
+- **Definition:** Regular wage or salaried employees with any social security benefit, as a share of all workers (usual status, ps+ss)
 - **Unit:** Percentage (%)
-- **Source:** EPFO, ESIC, PLFS
-- **Methodology:** (Workers with EPF/ESI / Total Employment) × 100
-- **Coverage:** 2004-2024
-- **Notes:** Formal sector defined as workers with at least one social security benefit
+- **Source:** MoSPI, Periodic Labour Force Survey (PLFS) published tables
+- **Methodology:** (Regular wage/salaried share of all workers) × (share of those employees with any social security benefit, which is 100 minus the published share without any) / 100
+- **Coverage:** PLFS survey years 2017-18 to 2023-24, stored at the year each survey starts. 2014-2016 (before PLFS) and 2024 onward are empty
+- **Notes:** Informal employment is 100 minus this share. The social security table covers regular wage/salaried employees in the non-agricultural sector
 
 #### `employment_elasticity`
 - **Definition:** Employment elasticity of GDP growth

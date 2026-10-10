@@ -120,7 +120,7 @@ two periods being handled differently.
 ### 1. Employment: growth without jobs
 
 - **2011-2016:** Employment elasticity collapsed to 0.01, the lowest in India's post-independence history
-- **Formal employment** declined from 13.0% (2014) to 10.9% (2026) of the workforce
+- **Formal employment** (regular wage or salaried work with any social security, PLFS) fell from 11.5% of all workers in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24, so roughly nine in ten workers have no social-security cover
 - **Youth unemployment** (ages 15-29) was 17.8% in 2017-18 and 9.9% in 2025; graduate unemployment was 13.0% in 2023-24, four times the overall rate
 - **Recovery (2017-2023):** Elasticity increased to 1.11, driven by precarious gig work
 

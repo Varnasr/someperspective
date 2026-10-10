@@ -13,12 +13,12 @@
     "graduateUnemployment": "MoSPI PLFS, usual status (ps+ss), persons aged 15 and over with a graduate degree, all-India, rural + urban, from api.mospi.gov.in (retrieved 10 October 2026). 2017-2023 are the PLFS survey years starting in July of the year shown (2017 = 2017-18). MoSPI publishes no figure for graduates for 2014-2016 (before PLFS) or for 2024 onward yet, so those years are left empty.",
     "top1Share": "World Inequality Database (WID.world) India series; WIR 2026",
     "bottom50Share": "World Inequality Database (WID.world) India series; WIR 2026",
-    "formalEmployment": "PLFS workers with social security cover; EPFO net additions cross-check",
-    "informalEmployment": "100 - formalEmployment by construction",
+    "formalEmployment": "Derived from MoSPI PLFS published tables (api.mospi.gov.in, retrieved 10 October 2026), usual status (ps+ss), all-India, persons: the share of regular wage/salaried workers among all workers, multiplied by the share of regular wage/salaried employees with any social security benefit (100 minus the published share without any). 2017-18: 22.8% x 50.4% = 11.5; 2018-19: 23.8 x 48.1 = 11.4; 2019-20: 22.9 x 45.8 = 10.5; 2020-21: 21.1 x 46.2 = 9.7; 2021-22: 21.5 x 47.0 = 10.1; 2022-23: 20.9 x 46.1 = 9.6; 2023-24: 21.7 x 46.6 = 10.1. The social security table covers regular wage/salaried employees in the non-agricultural sector; regular wage work in agriculture is about 1% of workers. Years are PLFS survey years starting in July of the year shown. 2014-2016 (before PLFS) and 2024 onward (no annual table yet) are left empty.",
+    "informalEmployment": "100 minus formalEmployment, for the years formalEmployment has a value.",
     "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual)",
-    "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP (FY ending)",
+    "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP, for the fiscal year starting in the year shown (2014 = 2014-15). 2025 is the Revised Estimate for 2025-26 (4.4); 2026 is the Budget Estimate for 2026-27 (4.3), from the Union Budget of 1 February 2026.",
     "cpiInflation": "MoSPI CPI (Combined), year-on-year. 2026: the average of the 8 monthly prints published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from 2014-2025 and the two are not strictly comparable. RBI target band 2-6%.",
-    "rupeeUSD": "RBI reference rates, annual average INR per USD",
+    "rupeeUSD": "Calendar-year average rupees per US dollar (RBI/FBIL reference rate). 2026 is the day-weighted average of the January to September 2026 monthly averages published by X-Rates (90.7 in January to 95.5 in September), 93.9, shown rounded to 94. 2025 on the same source averages 87.1.",
     "ssi": "Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py",
     "fci": "Constructed: mean of 6 min-max-normalised centralisation components incl. GST structural centralisation (2004-2026 sample); see data/compute_indices.py",
     "dqi": "Constructed: geometric mean of V-Dem Liberal Democracy Index (v2x_libdem) × (Freedom House/100) × ((180-RSF rank)/180) × V-Dem Core Civil Society Index (v2xcs_ccsi); see data/compute_indices.py. The two V-Dem columns are the published series verbatim; earlier approximations that overstated the pre-2014 baseline were corrected on 15 August 2026.",
@@ -151,34 +151,34 @@
       12.9
     ],
     "formalEmployment": [
-      13.0,
-      12.8,
-      12.5,
-      12.2,
-      11.9,
-      11.6,
-      11.4,
+      null,
+      null,
+      null,
       11.5,
-      11.3,
-      11.2,
-      11.2,
-      11.0,
-      10.9
+      11.4,
+      10.5,
+      9.7,
+      10.1,
+      9.6,
+      10.1,
+      null,
+      null,
+      null
     ],
     "informalEmployment": [
-      87.0,
-      87.2,
-      87.5,
-      87.8,
-      88.1,
-      88.4,
-      88.6,
+      null,
+      null,
+      null,
       88.5,
-      88.7,
-      88.8,
-      88.8,
-      89.0,
-      89.1
+      88.6,
+      89.5,
+      90.3,
+      89.9,
+      90.4,
+      89.9,
+      null,
+      null,
+      null
     ],
     "pressFreedom": [
       140,
@@ -208,7 +208,7 @@
       5.6,
       4.8,
       4.4,
-      4.4
+      4.3
     ],
     "cpiInflation": [
       6.7,
@@ -238,7 +238,7 @@
       82,
       84,
       87,
-      95
+      94
     ],
     "ssi": [
       0.0,
@@ -428,7 +428,7 @@
         "min": 6,
         "max": 25,
         "decimals": 1,
-        "drivers": "Twelve straight years of informalisation; capital-intensive PLI adds output without adding much payroll.",
+        "drivers": "On PLFS, coverage fell from 11.5% in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24. Capital-intensive PLI adds output without adding much payroll.",
         "breaks": "A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it."
       },
       {
@@ -733,7 +733,7 @@
     "cadPctGDP": 1.0,
     "reservesBn": 691,
     "importCoverMonths": 11,
-    "rupeeRecordLow": 95.2,
+    "rupeeRecordLow": 96.8,
     "goldImportsBn": 72,
     "crudeImportsBn": 123,
     "crudeImportDependence": 86,
@@ -1374,7 +1374,7 @@
     "divergence": "The two projects agree on direction and differ on scope. Grier & Grier make an absolute income claim, that India ended roughly $1,000 per person per year below its counterfactual, which this project does not test. Some Perspective documents the decoupling of growth from employment and the concentration of its gains, but makes no claim that aggregate income would have been higher under a different government. Their income donor pool is also heavily weighted to Ethiopia (38%) and Bangladesh (25%), a defensible fit to India's pre-2014 trajectory but the part of the design most exposed to challenge. Treat the governance findings as the strongly corroborated result and the income finding as a separate, contestable claim."
   },
   "eraHistory": {
-    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. Sources: GDP growth and CPI inflation from the World Bank (the same continuous World Bank series used for 2014+); fiscal deficit from the Union Budget/RBI (centre, % GDP); top 1% and bottom 50% income share from WID.world (harmonised across 2004-2026); press-freedom rank from RSF. SSI, FCI and DQI before 2014 are the author's back-cast reconstruction of these constructed indices (from the documented record: survey timeliness, states' tax share/cesses, and the V-Dem/Freedom House/RSF scores). See Methodology. Unemployment and formal/informal employment are not extended before 2014, because no annual series on the PLFS basis exists for the UPA decade. They are shown from 2014 only.",
+    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. Sources: GDP growth and CPI inflation from the World Bank (the same continuous World Bank series used for 2014+); fiscal deficit from the Union Budget/RBI (centre, % GDP); top 1% and bottom 50% income share from WID.world (harmonised across 2004-2026); press-freedom rank from RSF. SSI, FCI and DQI before 2014 are the author's back-cast reconstruction of these constructed indices (from the documented record: survey timeliness, states' tax share/cesses, and the V-Dem/Freedom House/RSF scores). See Methodology. Unemployment and formal/informal employment are not extended before 2014, because no annual series on the PLFS basis exists for the UPA decade. Unemployment is shown from 2014, and formal and informal employment for the PLFS survey years 2017-18 to 2023-24.",
     "years": [
       2004,
       2005,
