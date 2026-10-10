@@ -97,11 +97,11 @@
     {
       "id": "distribution",
       "kicker": "Who received the growth",
-      "title": "The bottom half lost about an eighth of its share",
+      "title": "The top 1% gained and the bottom half lost ground",
       "chart": "distribution",
-      "body": "The top 1% share rose from {{first:economic.top1Share}}% to {{last:economic.top1Share}}%. The bottom 50% share fell from {{first:economic.bottom50Share}}% to {{last:economic.bottom50Share}}%.",
-      "note": "The top-end level matters more than its movement. At {{last:economic.top1Share}}%, it is the highest recorded since 1922. The larger change over the decade is at the bottom.",
-      "chartAlt": "Line chart, 2004 to 2026, of income shares. The top 1 per cent share rises; the bottom 50 per cent share falls."
+      "body": "The top 1% income share rose from {{first:eraHistory.top1Share}}% in 2004 to {{last:economic.top1Share}}% in 2022-23. The bottom 50% share fell from {{first:eraHistory.bottom50Share}}% in 2004 to a low of {{min:economic.bottom50Share}}% in 2017 and was {{last:economic.bottom50Share}}% in 2022-23.",
+      "note": "At {{last:economic.top1Share}}%, the top 1% share is the highest recorded since 1922, higher than in the inter-war colonial period (World Inequality Lab). The bottom 50% share rose a little in 2018-2020, which its authors describe as temporary. No annual figure is published for 2023 to 2026.",
+      "chartAlt": "Line chart of income shares from 2004 to 2022, the last published year. The top 1 per cent share rises. The bottom 50 per cent share falls to 2017 and then partly recovers."
     },
     {
       "id": "inflation",

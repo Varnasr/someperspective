@@ -2,6 +2,34 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.50.0",
+      "date": "2026-10-10",
+      "title": "Formal employment and income shares corrected to the published figures",
+      "summary": "Two more findings rested on figures that did not match their sources. Formal employment now comes from the Periodic Labour Force Survey, and the top 1% and bottom 50% income shares come from the World Inequality Lab's published table. Both still show the NDA years doing worse than the UPA years, by less than the site said.",
+      "changes": [
+        {
+          "kind": "Fixed",
+          "text": "Formal employment was shown falling from 13.0% in 2014 to 10.9% in 2026, in ten of twelve years. The site now derives it from PLFS: regular wage and salaried workers as a share of all workers, times the share of those employees with any social security. That gives 11.5% in 2017-18, 9.6% in 2022-23 and 10.1% in 2023-24. PLFS begins in 2017-18, so the other years are empty. The share fell before the pandemic and has recovered part of the loss. Among regular employees, the share with no social security rose from 49.6% to 53.4%."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The top 1% income share was shown at 23.0% in 2026 and the bottom 50% at 12.9%. The World Inequality Lab's table (Bharti, Chancel, Piketty and Somanchi, 2024) ends at 2022-23, with the top 1% at 22.6%, its highest since 1922, and the bottom 50% at 15.0%. The bottom half's share fell to 13.9% in 2017 and rose to 15.5% in 2020, so the claim that income was redistributed upward for twelve straight years is withdrawn. The years 2023 to 2026 are left empty."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The primer said the top 1% share fell from 12% in 1951 to 4.4% in 1981. The table gives 11.5% in 1951 and a low of 6.1% in 1982. The bottom 50% wealth share was shown as 4%; the table gives 6.4% for 2022-23. A robustness row comparing CMIE and WID inequality figures was removed from the technical appendix because no source for it could be found."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The 2026 rupee average is now 94 to the dollar (January to September), the 2026 fiscal deficit is the Budget Estimate for 2026-27, 4.3% of GDP, and the rupee's record low is 96.8 (20 May 2026)."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Tables, the timeline, the era comparison chart, the CSV export, the scatter plot, the projections and the change cards now skip years with no published figure. The scatter plot's correlation had been computed over empty years since the earlier corrections."
+        }
+      ]
+    },
+    {
       "version": "2.49.0",
       "date": "2026-10-10",
       "title": "Five series corrected to the published figures, and a data story rewritten",

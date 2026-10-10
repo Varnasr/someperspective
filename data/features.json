@@ -2,9 +2,9 @@
   {
     "slug": "the-top-1-income-share-is-at-colonial-era",
     "category": "Inequality",
-    "title": "The top 1% income share is at colonial-era levels",
-    "body": "India's top 1% income share crossed 23% in 2026, the highest since 1922, when the colonial economy was at its most extractive. The bottom 50% share has slid from 15.0% (2014) to 12.9% over the same period.",
-    "takeaway": "A growing economy has redistributed upward for twelve straight years.",
+    "title": "The top 1% income share is at its highest since 1922",
+    "body": "India's top 1% income share was 22.6% in 2022-23, the latest year published, up from 18.4% in 2004. The World Inequality Lab puts it at the highest level in its series since 1922, higher than in the inter-war colonial period. The bottom 50% share fell from 18.8% in 2004 to a low of 13.9% in 2017 and was 15.0% in 2022-23.",
+    "takeaway": "Over two decades the top 1% took a larger share of national income. The bottom half lost ground until 2017 and has recovered part of it since.",
     "tab": "Key Findings",
     "chart": {
       "type": "pair",
@@ -435,7 +435,7 @@
     "slug": "the-top-1-holds-40-of-the-countrys-wealth",
     "category": "Inequality",
     "title": "The top 1% holds 40% of the country's wealth",
-    "body": "Income concentration is the top 1%'s 23% share. Wealth concentration is higher, at ~40% (WID estimates), nearly twice the income concentration. The bottom 50%'s wealth share is below 7%.",
+    "body": "The top 1% received 22.6% of national income in 2022-23. Its share of national wealth was 40.1%, close to twice as large (Bharti, Chancel, Piketty and Somanchi, World Inequality Lab, 2024). The bottom 50%'s wealth share is below 7%.",
     "takeaway": "Within India's already-high inequality, wealth inequality is meaningfully higher than income inequality.",
     "tab": "Key Findings",
     "chart": {
@@ -456,7 +456,7 @@
     "slug": "a-regime-comparison-computed-live-from-the-data",
     "category": "Comparative",
     "title": "A regime comparison, computed live from the data",
-    "body": "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, ~20.2% top 1% share, and a press-freedom rank around 121. NDA's same averages are computed live from the loaded series. Unemployment and formal employment have no series on the PLFS basis for the UPA years, so those two are marked as not available.",
+    "body": "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, a 20.4% top 1% income share, and a press-freedom rank around 121. NDA's same averages are computed live from the loaded series. Unemployment and formal employment have no series on the PLFS basis for the UPA years, so those two are marked as not available.",
     "takeaway": "The regime comparison is mechanical. It averages the data and interprets nothing, and it does not flatter either side.",
     "tab": "Deep Analysis",
     "chart": {
@@ -697,9 +697,9 @@
   {
     "slug": "the-bottom-50-income-share-has-been-falling-since",
     "category": "Inequality",
-    "title": "The bottom 50% income share has been falling since 2018",
-    "body": "Bottom 50% income share: 15.0% (2014) → 14.7% (2018) → 13.1% (2021) → 12.9% (2026). The decline accelerated after 2018. Together with the rising top 1% share, this is a direct measure of the redistribution that growth has produced.",
-    "takeaway": "A majority of Indians have a smaller share of national income today than they had in 2014.",
+    "title": "The bottom 50% income share fell until 2017 and has partly recovered",
+    "body": "On the World Inequality Lab series the bottom 50% received 18.8% of national income in 2004, 14.7% in 2014 and a low of 13.9% in 2017. The share rose to 15.5% in 2020, which its authors describe as a temporary marginal rise, and was 15.0% in 2022-23. Over the whole period the bottom half lost 3.8 points while the top 1% gained 4.2.",
+    "takeaway": "The bottom half of India held a smaller share of national income in 2022-23 than in 2004, and a slightly larger one than in 2014.",
     "tab": "Key Findings",
     "chart": {
       "type": "line",

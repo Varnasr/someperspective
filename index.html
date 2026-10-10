@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.49.0">
+    <meta name="version" content="2.50.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability (democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality), India is measurably worse under NDA (2014-26) than under UPA (2004-14). Inflation is the one exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -169,10 +169,10 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What is India's income inequality in 2025?",
+                "name": "What is India's income inequality today?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "As of August 2026, India's top 1% holds 23.0% of national income (the highest since 1922) and 40.1% of national wealth, while the bottom 50% holds 12.9% of income. This wealth concentration exceeds colonial-era levels and surpasses Brazil's inequality."
+                    "text": "In 2022-23, the latest year with a published figure, India's top 1% received 22.6% of national income and held 40.1% of national wealth, and the bottom 50% received 15.0% of income. The World Inequality Lab finds the top 1% income share at its highest level since 1922, higher than in the inter-war colonial period, and higher than in South Africa, Brazil and the US (Bharti, Chancel, Piketty and Somanchi, 2024)."
                 }
             },
             {
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.49.0">
+    <link rel="stylesheet" href="/styles.css?v=2.50.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -1069,7 +1069,7 @@
                         <p class="mb-3 text-sm">India is the world's fastest-growing large economy, but growth alone does not show how people are living. This research links the macro numbers to household and labour-market data.</p>
                         <ul class="space-y-2 text-sm">
                             <li>• Employment elasticity collapsed to near-zero despite GDP growth</li>
-                            <li>• Inequality now exceeds every comparable democracy</li>
+                            <li>• The top 1% income share is higher than in South Africa, Brazil and the US</li>
                             <li>• Key economic surveys suppressed or indefinitely delayed</li>
                             <li>• States losing fiscal autonomy through cess and surcharge mechanisms</li>
                         </ul>
@@ -1178,9 +1178,9 @@
                         <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl">
                             <h4 class="font-bold text-orange-700 dark:text-orange-400 mb-2">Inequality Surge</h4>
                             <ul class="space-y-1 text-sm">
-                                <li>• Top 1% income share: 23.0% (highest since 1922)</li>
-                                <li>• Bottom 50% share: 12.9% (declining)</li>
-                                <li>• Wealth concentration exceeds Brazil</li>
+                                <li>• Top 1% income share: 22.6% in 2022-23 (highest since 1922)</li>
+                                <li>• Bottom 50% share: 15.0% in 2022-23, down from 18.8% in 2004</li>
+                                <li>• Top 1% income share higher than in Brazil</li>
                                 <li>• Regional disparities widening</li>
                             </ul>
                         </div>
@@ -1294,7 +1294,7 @@
                         <img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_File_download.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Export Chart
                     </button>
                     <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3">
-                        Top 1% income share rose to 22.8% while bottom 50% fell to 13% by Mar 2026.
+                        The top 1% income share rose from 18.4% in 2004 to 22.6% in 2022-23, its highest since 1922. The bottom 50% share fell from 18.8% to a low of 13.9% in 2017 and was 15.0% in 2022-23. No annual figure is published for 2023 to 2026 (World Inequality Lab).
                     </p>
                 </div>
             </div>
@@ -2494,7 +2494,7 @@ reduces overall score</pre>
                         <li>Unemployment (Mar 2026 monthly): NSO PLFS Monthly Bulletin.</li>
                         <li>Press freedom: Reporters Without Borders, <em>2026 World Press Freedom Index</em> (released 30 April 2026).</li>
                         <li>V-Dem: Varieties of Democracy v15 dataset (2026 release).</li>
-                        <li>Inequality: World Inequality Database (WID.world) India series.</li>
+                        <li>Inequality: World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Income and Wealth Inequality in India, 1922-2023, Working Paper 2024/09.</li>
                         <li>Supplementary CSVs: Compiled from Government of India sources (NFHS, NHA, ISFR, MHA, CEA, and others) with transparent interpolation rules. See <code>data/METHODOLOGY.md</code> for details.</li>
                     </ul>
                 </details>
@@ -2911,8 +2911,8 @@ reduces overall score</pre>
                     <p class="text-xs mt-3 italic" style="color:var(--muted);">A rural family of four spends ~₹15,000 a month on everything. That is the median Indian household's world, and it is far from the one in the newspaper lifestyle section.</p>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The long view: India was most equal in 1981</h3>
-                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">Banerjee &amp; Piketty: the top 1% income share fell from 12% (1951) to a historic low of <strong>4.4% in 1981</strong>, driven down by high marginal taxes and nationalisation. The 1981 IMF loan came with conditions; Indira Gandhi began the pro-business reversal. Inequality has risen in every decade since. Today the top 1% takes ~23%; the bottom 50% takes ~13%.</p>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The long view: India was most equal in the early 1980s</h3>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">In the World Inequality Lab's series the top 1% income share fell from 11.5% in 1951 to its lowest, <strong>6.1% in 1982</strong>, in a period of high marginal tax rates and nationalisation. The 1981 IMF loan came with conditions; Indira Gandhi began the pro-business reversal. The top 1% share has risen over the decades since, though not in every year: it fell in 2019 and 2020. In 2022-23 the top 1% took 22.6% of national income and the bottom 50% took 15.0% (World Inequality Lab).</p>
                 </div>
             </div>
 
@@ -3351,7 +3351,7 @@ reduces overall score</pre>
             { key:'gdpGrowth',        label:'GDP growth',              unit:'%',     goodHigh:true,  trendYears:5, reform:0.55, stress:-1.6,  uncertainty:1.1,  min:-10, max:12,  decimals:1, drivers:'Post-COVID base-effect rebounds are fading; the level itself is contested after the 2015 MCA21 revision.', breaks:'An external oil/rupee shock, a weak monsoon, or investment that keeps growing output without jobs or consumption.' },
             { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1, drivers:'On PLFS, coverage fell from 11.5% in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24. Capital-intensive PLI adds output without adding much payroll.', breaks:'A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it.' },
             { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1, drivers:'The headline is held low by self-employment and discouraged workers; graduate joblessness runs about 13%, four times the overall rate.', breaks:'A serious youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up.' },
-            { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1, drivers:'Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.', breaks:'A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing.' },
+            { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1, drivers:'On the World Inequality Lab series the share rose from 18.4% in 2004 to 22.6% in 2022-23, its highest since 1922, with a dip in 2019 and 2020. No annual figure is published after 2022-23.', breaks:'A wealth tax or a more progressive income tax would lower it. Without either, the trend since 2004 points upward.' },
             { key:'cpiInflation',     label:'CPI inflation',           unit:'%',     goodHigh:false, trendYears:5, reform:-0.3, stress:2.2,   uncertainty:1.0,  min:0,   max:14,  decimals:1, drivers:'Food is ~half the CPI basket and ~50% of farmland is rainfed, so inflation tracks the monsoon.', breaks:'A deficient monsoon or an oil spike pushes CPI above the RBI\'s 6% ceiling.' },
             { key:'fiscalDeficit',    label:'Fiscal deficit',          unit:'% GDP', goodHigh:false, trendYears:5, reform:-0.3, stress:1.3,   uncertainty:0.7,  min:0,   max:12,  decimals:1, drivers:'Consolidation leans on a record RBI dividend and off-budget borrowing.', breaks:'A growth slowdown, a smaller RBI surplus, or new cash-transfer commitments widen it.' },
             { key:'rupeeUSD',         label:'Rupee (INR per USD)',     unit:'₹/$',   goodHigh:false, trendYears:6, reform:-2,   stress:9,     uncertainty:4.5,  min:50,  max:130, decimals:0, drivers:'A $333bn goods deficit is offset by services; FPI outflows and a $123bn oil bill pressure the rupee.', breaks:'An oil shock or sustained FPI exit accelerates depreciation; reserves can only slow it.' },
@@ -3432,7 +3432,7 @@ reduces overall score</pre>
             { income:25000, label:'~80-85th percentile', sub:"most who consider themselves 'middle class'" },
             { income:50000, label:'Top 3-5%', sub:'aspirational middle class' },
             { income:100000, label:'Top 1-2%', sub:"what politics calls 'affluent'" }
-        ], bottom50AvgAnnual:71000, ruralMPCE:3773, urbanMPCE:6459, top10IncomeShare:58, top1WealthShare:40, bottom50WealthShare:4 },
+        ], bottom50AvgAnnual:71000, ruralMPCE:3773, urbanMPCE:6459, top10IncomeShare:58, top1WealthShare:40, bottom50WealthShare:6.4 },
         structure: { note:'Output and jobs sit in different sectors (MoSPI/NSO GVA FY25; PLFS).', sectors:[
             { sector:'Agriculture', gva:18, emp:42 }, { sector:'Manufacturing', gva:17, emp:11 },
             { sector:'Services', gva:53, emp:33 }, { sector:'Other', gva:12, emp:14 }
@@ -3615,7 +3615,7 @@ reduces overall score</pre>
             trajWeights: {},                    // user-adjustable weights per indicator (default 1)
             // ===== UPA-decade history (2004-2013) for era differentiation =====
             eraHistory: {
-                note: 'UPA decade (2004-2013) on the same basis as the 2014+ series: World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), WID.world (top 1%/bottom 50%, harmonised), RSF (press freedom). SSI/FCI/DQI before 2014 are the author\'s back-cast. Unemployment is shown from 2014 and formal/informal employment for the PLFS years 2017-18 to 2023-24 (no comparable annual UPA series).',
+                note: 'UPA decade (2004-2013) on the same basis as the 2014+ series: World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), World Inequality Lab, Bharti, Chancel, Piketty and Somanchi 2024 (top 1%/bottom 50%), RSF (press freedom). SSI/FCI/DQI before 2014 are the author\'s back-cast. Unemployment is shown from 2014 and formal/informal employment for the PLFS years 2017-18 to 2023-24 (no comparable annual UPA series).',
                 years: [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013],
                 gdpGrowth: [7.9,9.3,9.3,7.7,3.1,7.9,8.5,5.2,5.5,6.4],
                 cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.3,10.9],
@@ -3658,7 +3658,7 @@ reduces overall score</pre>
                 formalEmployment: { term: 'Formal employment', def: 'Regular wage or salaried jobs with at least one social-security benefit, such as a provident fund or pension, as the Periodic Labour Force Survey records them.' },
                 plfs: { term: 'PLFS', def: "India's official Periodic Labour Force Survey of employment and unemployment, run since 2017-18." },
                 pli: { term: 'PLI', def: 'Production-Linked Incentive: subsidies tied to output in chosen sectors. Capital-intensive, so it lifts output more than payroll.' },
-                top1: { term: 'Top 1% share', def: 'The slice of national income going to the richest 1% of adults (World Inequality Database).' },
+                top1: { term: 'Top 1% share', def: 'The slice of pre-tax national income going to the richest 1% of adults (World Inequality Lab).' },
                 gva: { term: 'GVA', def: 'Gross Value Added: output measured at the sector level before taxes/subsidies; the building block of GDP.' },
                 devolution: { term: 'Devolution', def: 'The share of central tax revenue transferred to states under the Finance Commission formula.' },
                 delimitation: { term: 'Delimitation', def: 'Redrawing Lok Sabha seats by population. Frozen since 1976; if redone, slower-growing southern states lose seats relative to the north.' },
@@ -3779,7 +3779,7 @@ reduces overall score</pre>
             // Loaded from data/features.json at runtime (see loadFeatures). These two are a
             // minimal fallback so "Today's Analysis" still renders if that fetch fails,
             // the full set lives in the JSON so the analysis pages and this list cannot drift.
-            dailyFeatures: [{"slug": "the-top-1-income-share-is-at-colonial-era", "category": "Inequality", "title": "The top 1% income share is at colonial-era levels", "body": "India's top 1% income share crossed 23% in 2026, the highest since 1922, when the colonial economy was at its most extractive. The bottom 50% share has slid from 15.0% (2014) to 12.9% over the same period.", "takeaway": "A growing economy has redistributed upward for twelve straight years.", "tab": "Key Findings", "chart": {"type": "pair", "series": ["top1Share", "bottom50Share"], "labels": ["Top 1%", "Bottom 50%"], "colors": ["#ef4444", "#3b82f6"], "unit": "%"}}, {"slug": "india-ranks-157th-of-180-on-press-freedom", "category": "Democracy", "title": "India ranks 157th of 180 on press freedom", "body": "The RSF 2026 World Press Freedom Index, released 30 April, dropped India six places from 151 in 2025. India now sits below Pakistan (153), Bangladesh (152), and Nepal (87). RSF cites concentrated ownership, violence against journalists, and overt political alignment of outlets.", "takeaway": "India's press environment is now judged worse than that of every immediate neighbour except Afghanistan.", "tab": "Deep Analysis", "chart": {"type": "bar-inv", "series": ["pressFreedom"], "labels": ["World rank (lower = better)"], "colors": ["#a855f7"], "unit": ""}}],
+            dailyFeatures: [{"slug": "the-top-1-income-share-is-at-colonial-era", "category": "Inequality", "title": "The top 1% income share is at its highest since 1922", "body": "India's top 1% income share was 22.6% in 2022-23, the latest year published, up from 18.4% in 2004. The World Inequality Lab puts it at the highest level in its series since 1922, higher than in the inter-war colonial period. The bottom 50% share fell from 18.8% in 2004 to a low of 13.9% in 2017 and was 15.0% in 2022-23.", "takeaway": "Over two decades the top 1% took a larger share of national income. The bottom half lost ground until 2017 and has recovered part of it since.", "tab": "Key Findings", "chart": {"type": "pair", "series": ["top1Share", "bottom50Share"], "labels": ["Top 1%", "Bottom 50%"], "colors": ["#ef4444", "#3b82f6"], "unit": "%"}}, {"slug": "india-ranks-157th-of-180-on-press-freedom", "category": "Democracy", "title": "India ranks 157th of 180 on press freedom", "body": "The RSF 2026 World Press Freedom Index, released 30 April, dropped India six places from 151 in 2025. India now sits below Pakistan (153), Bangladesh (152), and Nepal (87). RSF cites concentrated ownership, violence against journalists, and overt political alignment of outlets.", "takeaway": "India's press environment is now judged worse than that of every immediate neighbour except Afghanistan.", "tab": "Deep Analysis", "chart": {"type": "bar-inv", "series": ["pressFreedom"], "labels": ["World rank (lower = better)"], "colors": ["#a855f7"], "unit": ""}}],
             get todaysFeature() {
                 // Deterministic daily rotation: same day -> same feature globally.
                 const day = Math.floor(Date.now() / 86400000);
@@ -4057,7 +4057,7 @@ reduces overall score</pre>
             chartSources: {
                 gdpEmploymentChart: 'MoSPI/NSO national accounts; PLFS 2024-25',
                 formalEmploymentChart: 'PLFS (workers with social-security cover)',
-                inequalityChart: 'World Inequality Database (WID.world); WIR 2026',
+                inequalityChart: 'World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024)',
                 interactiveChart: 'Some Perspective dataset (data.json)',
                 scatterChart: 'Some Perspective dataset (data.json)',
                 indicesChart: 'Constructed SSI/FCI/DQI (see Methodology)',

@@ -4,7 +4,7 @@
     "author": "Dr. Varna Sri Raman",
     "updated": "2026-10-10",
     "license": "CC BY 4.0",
-    "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of August 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin June 2026, Union Budget 2026-27, CPI July 2026, WIR 2026). One caveat carries across the whole CPI series: MoSPI replaced the 2012=100 index with a 2024=100 index from the January 2026 print, reweighted on HCES 2023-24, so the 2026 inflation figure is not on the same basis as 2014-2025 (see sources.cpiInflation). All values in the 'economic' block are observed (2014-2026); there is no projected year in this block. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, and none of them is a prediction. Every assumption is a choice, and every one is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
+    "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of August 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin June 2026, Union Budget 2026-27, CPI July 2026, World Inequality Lab Working Paper 2024/09). One caveat carries across the whole CPI series: MoSPI replaced the 2012=100 index with a 2024=100 index from the January 2026 print, reweighted on HCES 2023-24, so the 2026 inflation figure is not on the same basis as 2014-2025 (see sources.cpiInflation). All values in the 'economic' block are observed (2014-2026); there is no projected year in this block. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, and none of them is a prediction. Every assumption is a choice, and every one is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
   },
   "sources": {
     "gdpGrowth": "2014-2025: MoSPI national accounts and the Economic Survey, 2011-12 base. 2026 (FY 2025-26): 7.8%, MoSPI Provisional Estimates on the new 2022-23 base, which replaced the 2011-12 base. The last estimate for 2025-26 on the 2011-12 base was the First Advance Estimate of 7.4%. BASIS BREAK: the 2022-23 base covers 2023-24 onward only, so 2026 is on a different base from the years before it.",
@@ -458,8 +458,8 @@
         "min": 10,
         "max": 30,
         "decimals": 1,
-        "drivers": "Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.",
-        "breaks": "A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing."
+        "drivers": "On the World Inequality Lab series the share rose from 18.4% in 2004 to 22.6% in 2022-23, its highest since 1922, with a dip in 2019 and 2020. No annual figure is published after 2022-23.",
+        "breaks": "A wealth tax or a more progressive income tax would lower it. Without either, the trend since 2004 points upward."
       },
       {
         "key": "cpiInflation",
@@ -773,7 +773,7 @@
     "urbanMPCE": 6459,
     "top10IncomeShare": 58,
     "top1WealthShare": 40,
-    "bottom50WealthShare": 4
+    "bottom50WealthShare": 6.4
   },
   "structure": {
     "note": "Output and jobs sit in different sectors (MoSPI/NSO GVA shares FY25; PLFS employment shares). Agriculture makes under a fifth of output but holds over two-fifths of jobs.",
@@ -1374,7 +1374,7 @@
     "divergence": "The two projects agree on direction and differ on scope. Grier & Grier make an absolute income claim, that India ended roughly $1,000 per person per year below its counterfactual, which this project does not test. Some Perspective documents the decoupling of growth from employment and the concentration of its gains, but makes no claim that aggregate income would have been higher under a different government. Their income donor pool is also heavily weighted to Ethiopia (38%) and Bangladesh (25%), a defensible fit to India's pre-2014 trajectory but the part of the design most exposed to challenge. Treat the governance findings as the strongly corroborated result and the income finding as a separate, contestable claim."
   },
   "eraHistory": {
-    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. Sources: GDP growth and CPI inflation from the World Bank (the same continuous World Bank series used for 2014+); fiscal deficit from the Union Budget/RBI (centre, % GDP); top 1% and bottom 50% income share from WID.world (harmonised across 2004-2026); press-freedom rank from RSF. SSI, FCI and DQI before 2014 are the author's back-cast reconstruction of these constructed indices (from the documented record: survey timeliness, states' tax share/cesses, and the V-Dem/Freedom House/RSF scores). See Methodology. Unemployment and formal/informal employment are not extended before 2014, because no annual series on the PLFS basis exists for the UPA decade. Unemployment is shown from 2014, and formal and informal employment for the PLFS survey years 2017-18 to 2023-24.",
+    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. Sources: GDP growth and CPI inflation from the World Bank (the same continuous World Bank series used for 2014+); fiscal deficit from the Union Budget/RBI (centre, % GDP); top 1% and bottom 50% income share from the World Inequality Lab (Bharti, Chancel, Piketty and Somanchi 2024, Statistical Appendix), published for 2004-2022; press-freedom rank from RSF. SSI, FCI and DQI before 2014 are the author's back-cast reconstruction of these constructed indices (from the documented record: survey timeliness, states' tax share/cesses, and the V-Dem/Freedom House/RSF scores). See Methodology. Unemployment and formal/informal employment are not extended before 2014, because no annual series on the PLFS basis exists for the UPA decade. Unemployment is shown from 2014, and formal and informal employment for the PLFS survey years 2017-18 to 2023-24.",
     "years": [
       2004,
       2005,
