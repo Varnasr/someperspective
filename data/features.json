@@ -1,10 +1,10 @@
 [
   {
-    "slug": "the-top-1-income-share-is-at-colonial-era",
+    "slug": "top-1-percent-income-share-highest-in-a-series-from-1922",
     "category": "Inequality",
-    "title": "The top 1% income share is at its highest since 1922",
-    "body": "India's top 1% income share was 22.6% in 2022-23, the latest year published, up from 18.4% in 2004. The World Inequality Lab puts it at the highest level in its series since 1922, higher than in the inter-war colonial period. The bottom 50% share fell from 18.8% in 2004 to a low of 13.9% in 2017 and was 15.0% in 2022-23.",
-    "takeaway": "Over two decades the top 1% took a larger share of national income. The bottom half lost ground until 2017 and has recovered part of it since.",
+    "title": "The top 1% income share is the highest in a series that begins in 1922",
+    "body": "India's top 1% income share was 22.6% in 2022-23, the latest year published, up from 18.4% in 2004. The World Inequality Lab puts it at the highest level in its series, which begins in 1922, higher than in the inter-war colonial period. The bottom 50% share fell from 18.8% in 2004 to a low of 13.9% in 2017 and was 15.0% in 2022-23.",
+    "takeaway": "Over two decades the top 1% took a larger share of national income. The bottom half lost ground until 2017, gained some of it back by 2020 and has lost part of that again since.",
     "tab": "Key Findings",
     "chart": {
       "type": "pair",
@@ -21,13 +21,16 @@
         "#3b82f6"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "the-top-1-income-share-is-at-colonial-era"
+    ]
   },
   {
-    "slug": "growth-and-formal-jobs-have-moved-in-opposite-directions",
+    "slug": "formal-job-coverage-fell-while-the-economy-grew",
     "category": "Growth vs jobs",
     "title": "Formal job coverage fell while the economy grew",
-    "body": "GDP grew 7.8% in FY26 (MoSPI Provisional Estimates, new 2022-23 base). On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security was 11.5% in 2017-18 and 9.6% in 2022-23, and GDP grew in every year of that period except the pandemic year. The share recovered to 10.1% in 2023-24, which is still 1.4 points below where the survey began. PLFS starts in 2017-18, so there is no comparable figure for the years before it.",
+    "body": "GDP grew 7.7% in FY26 (MoSPI Provisional Estimates, 5 June 2026, new 2022-23 base). On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security was 11.5% in 2017-18 and 9.6% in 2022-23, and GDP grew in every year of that period except the pandemic year. The share recovered to 10.1% in 2023-24, which is still 1.4 points below where the survey began. PLFS starts in 2017-18, so there is no comparable figure for the years before it.",
     "takeaway": "Headline GDP growth did not bring a larger share of workers into jobs with social security.",
     "tab": "Deep Analysis",
     "chart": {
@@ -45,13 +48,16 @@
         "#ef4444"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "growth-and-formal-jobs-have-moved-in-opposite-directions"
+    ]
   },
   {
-    "slug": "graduate-unemployment-is-five-times-the-headline-rate",
+    "slug": "graduate-unemployment-is-four-times-the-overall-rate",
     "category": "Jobs",
     "title": "Graduate unemployment is four times the overall rate",
-    "body": "On MoSPI's usual-status series, unemployment among graduates aged 15 and over was 13.0% in 2023-24, against 3.2% for all workers on the same measure. The graduate rate has fallen from 17.2% in 2017-18, and it has stayed three to four times the overall rate throughout. Over the same years regular wage and salaried work slipped from 22.8% to 21.7% of all workers, so graduates looking for salaried jobs entered a labour market where the share of such jobs was not growing.",
+    "body": "On MoSPI's usual-status series, unemployment among graduates aged 15 and over was 13.0% in 2023-24, against 3.2% for all workers on the same measure. The graduate rate has fallen from 17.2% in 2017-18, and over the same years it rose from about three times the overall rate to about four times. Over the same years regular wage and salaried work slipped from 22.8% to 21.7% of all workers, so graduates looking for salaried jobs entered a labour market where the share of such jobs was not growing.",
     "takeaway": "Aggregate labour data masks the structural mismatch facing the educated workforce.",
     "tab": "Key Findings",
     "chart": {
@@ -69,7 +75,10 @@
         "#3b82f6"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "graduate-unemployment-is-five-times-the-headline-rate"
+    ]
   },
   {
     "slug": "india-ranks-157th-of-180-on-press-freedom",
@@ -93,7 +102,7 @@
     }
   },
   {
-    "slug": "indias-v-dem-score-has-fallen-further-than-any",
+    "slug": "india-v-dem-score-fell-furthest-of-five-peers",
     "category": "Democracy",
     "title": "India's V-Dem score has fallen furthest of its five-country peer group",
     "body": "V-Dem Liberal Democracy Index (v16, March 2026): India 0.488 (2014) → 0.260 (2025), a 47% decline and a fall of 0.228 points. Brazil 0.783 → 0.704 (-10%). Turkey 0.252 → 0.110 (-56%). Hungary 0.521 → 0.315 (-40%). South Africa 0.641 → 0.633 (-1%). Turkey falls further in percentage terms, from a base already near the floor. India's is the largest absolute fall of these five countries. Among all major economies the United States fell further in absolute terms, from 0.848 to 0.571. V-Dem's latest observation is for 2025, and the dataset carries it forward to 2026.",
@@ -103,14 +112,17 @@
       "type": "intl",
       "metric": "vdem",
       "unit": "V-Dem score"
-    }
+    },
+    "redirectFrom": [
+      "indias-v-dem-score-has-fallen-further-than-any"
+    ]
   },
   {
-    "slug": "the-democratic-quality-index-is-the-lowest-it-has",
+    "slug": "democratic-quality-index-at-low-of-its-series",
     "category": "Democracy",
-    "title": "The Democratic Quality Index is the lowest it has been",
-    "body": "DQI combines the V-Dem Liberal Democracy Index, Freedom House, the RSF rank and the V-Dem Core Civil Society Index through a geometric mean, so weakness in any single dimension pulls the composite down. It has fallen from 0.49 (2014) to 0.28 (2026), against a UPA-decade average of 0.57. The steepest single-year falls come after 2019.",
-    "takeaway": "No single index tells the whole story, and every credible index points the same direction.",
+    "title": "The Democratic Quality Index is at the low of its series",
+    "body": "DQI combines the V-Dem Liberal Democracy Index, Freedom House, the RSF rank and the V-Dem Core Civil Society Index through a geometric mean, so weakness in any single dimension pulls the composite down. It has fallen from 0.49 (2014) to 0.28 (2026), against a UPA-decade average of 0.57. The largest single-year fall came between 2022 and 2023.",
+    "takeaway": "The composite fell in 8 of the 12 years after 2014, and each of its four published inputs was worse in 2025 than in 2014.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -124,14 +136,17 @@
         "#22c55e"
       ],
       "unit": ""
-    }
+    },
+    "redirectFrom": [
+      "the-democratic-quality-index-is-the-lowest-it-has"
+    ]
   },
   {
-    "slug": "statistical-suppression-spiked-to-a-peak-then-stayed-high",
+    "slug": "statistical-suppression-spiked-to-a-peak-and-has-eased",
     "category": "Statistics",
     "title": "Statistical suppression spiked to a peak and has eased since",
-    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams, including suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years. It peaked at 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent merger of the NSSO into the NSO. It was 4.65 in 2026. The largest single change that year is the census, which now has a schedule. Houselisting runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs). Under the rubric that is a delay, scored 0.3.",
-    "takeaway": "The acute events have eased and the census is back on a schedule. The shelved GDP back-series and the NSSO-NSO merger still count at full weight.",
+    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams, including suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years. It peaked at 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the 2019 merger of the NSSO and the CSO into a single National Statistical Office. It was 4.65 in 2026. The largest single change that year is the census, which now has a schedule. Houselisting runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs). Under the rubric that is a delay, scored 0.3.",
+    "takeaway": "The acute events have eased and the census is back on a schedule. The shelved GDP back-series and the 2019 merger of the NSSO and the CSO into the NSO still count at full weight.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -145,10 +160,13 @@
         "#ef4444"
       ],
       "unit": ""
-    }
+    },
+    "redirectFrom": [
+      "statistical-suppression-spiked-to-a-peak-then-stayed-high"
+    ]
   },
   {
-    "slug": "fiscal-centralisation-is-at-its-highest-in-the-modern",
+    "slug": "fiscal-centralisation-peaked-in-2020-and-has-fallen",
     "category": "Federalism",
     "title": "Fiscal centralisation peaked in 2020 and has fallen since",
     "body": "The Fiscal Centralisation Index (FCI) is the mean of six components. Four are published fiscal ratios: the cess and surcharge share of gross tax revenue, tax devolution as a share of gross tax revenue, states' own revenue as a share of their revenue receipts, and non-Finance-Commission grants as a share of Union transfers. Two are coded: GST, which from 2017 took most independent indirect taxation away from the states, and the reform conditions on extra borrowing in 2020-21. On a relative 0-1 scale the FCI averaged 0.30 under UPA and 0.43 under NDA. It peaked at 0.87 in 2020, when the cess share reached 24.4%, states' own revenue fell to 52.1% of their receipts and borrowing came with conditions. It was 0.35 in 2026, as devolution rose and the cess share fell. The 2014 value of 0.42 reflects an accounting change, when centrally sponsored scheme funds began to flow through state budgets.",
@@ -166,10 +184,13 @@
         "#f59e0b"
       ],
       "unit": ""
-    }
+    },
+    "redirectFrom": [
+      "fiscal-centralisation-is-at-its-highest-in-the-modern"
+    ]
   },
   {
-    "slug": "central-cess-and-surcharge-share-of-tax-revenue-tripled",
+    "slug": "cesses-and-surcharges-reached-a-quarter-of-union-tax",
     "category": "Federalism",
     "title": "Cesses and surcharges reached a quarter of Union tax revenue in 2020-21",
     "body": "Cesses and surcharges are not shared with states under the Finance Commission formula. Their share of the Union's gross tax revenue was 10.4% in 2011-12 and 13.5% in 2014-15 (15th Finance Commission, Table 3.8). It rose to 19.9% in 2018-19, with the GST compensation cess included from 2017-18, and peaked at 24.4% in 2020-21 (20.2% without the compensation cess). It has fallen since, to 18.0% in 2024-25 and 14.3% in the 2026-27 budget estimate (Union Receipt Budgets).",
@@ -180,10 +201,13 @@
       "csv": "cess",
       "color": "#3b82f6",
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "central-cess-and-surcharge-share-of-tax-revenue-tripled"
+    ]
   },
   {
-    "slug": "reported-communal-incidents-are-40-above-their-2004-baseline",
+    "slug": "the-home-ministrys-count-of-communal-incidents-stops",
     "category": "Society",
     "title": "The Home Ministry's count of communal incidents stops in 2017",
     "body": "The Ministry of Home Affairs counted 677 communal incidents in 2004, a peak of 943 in 2008 and 823 in 2013 (MHA reply to an RTI application, reported by The Wire). Its replies to the Lok Sabha give 644 incidents in 2014, 751 in 2015, 703 in 2016 and 822 in 2017, when 111 people were killed. The yearly count averaged about 748 over 2004-2013 and 730 over 2014-2017. The ministry has not published a comparable national count for any year after 2017, so the series cannot show what happened since.",
@@ -194,42 +218,54 @@
       "csv": "communal",
       "color": "#ef4444",
       "unit": "incidents"
-    }
+    },
+    "redirectFrom": [
+      "reported-communal-incidents-are-40-above-their-2004-baseline"
+    ]
   },
   {
-    "slug": "opposition-incarceration-cases-were-near-zero-until-they-werent",
+    "slug": "central-agencies-arrested-senior-opposition-leaders-in-2023",
     "category": "Democracy",
     "title": "Central agencies arrested senior opposition leaders in 2023 and 2024",
     "body": "The Central Bureau of Investigation arrested Manish Sisodia, then Delhi's deputy chief minister, in February 2023. The Enforcement Directorate arrested Hemant Soren in January 2024, on the day he resigned as chief minister of Jharkhand, and Arvind Kejriwal in March 2024 while he was chief minister of Delhi. No government agency publishes a count of arrests of opposition politicians, and this project holds no case-by-case register, so it states no annual number.",
     "takeaway": "The arrest of a sitting chief minister in 2024 had no precedent. A yearly count would need a published case list, which does not yet exist.",
     "tab": "Deep Analysis",
-    "chart": null
+    "chart": null,
+    "redirectFrom": [
+      "opposition-incarceration-cases-were-near-zero-until-they-werent"
+    ]
   },
   {
-    "slug": "exam-disruption-events-have-multiplied",
+    "slug": "exam-leaks-prompted-a-national-law-in-2024",
     "category": "Statistics",
     "title": "Exam leaks prompted a national law in 2024",
     "body": "Parliament passed the Public Examinations (Prevention of Unfair Means) Act in February 2024, and it came into force in June 2024. That month the Ministry of Education cancelled the June 2024 UGC-NET a day after it was held, on information that its integrity had been compromised, and the CBI took up the alleged leak of the NEET-UG paper. In July 2024 the Supreme Court declined to order a NEET-UG re-test, finding no evidence of a systemic breach. No agency publishes an annual count of exam leaks or cancellations, so this card states no yearly number.",
     "takeaway": "The 2024 law and the cancellations show that leaks reached national examinations. Measuring how often they happen would need a published list of events.",
     "tab": "Deep Analysis",
-    "chart": null
+    "chart": null,
+    "redirectFrom": [
+      "exam-disruption-events-have-multiplied"
+    ]
   },
   {
-    "slug": "open-defecation-free-coverage-is-a-textbook-logistic-curve",
+    "slug": "rural-toilet-access-rose-fastest-under-swachh-bharat",
     "category": "Public services",
     "title": "Rural toilet access rose fastest under Swachh Bharat",
-    "body": "The census found a latrine in 21.9% of rural households in 2001 and 30.7% in 2011. When the Swachh Bharat Mission (Gramin) began on 2 October 2014, the programme put rural sanitation coverage at 38.7% (Lok Sabha replies). On 2 October 2019 all rural India was declared open defecation free, on the basis of declarations by villages and states. The National Annual Rural Sanitation Survey 2018-19 found 93.1% of rural households with access to a toilet. Programme figures count toilets built and declarations made, and they measure access, which is a separate question from use.",
-    "takeaway": "Rural toilet access rose more between 2014 and 2019 than in the previous decade, on both programme and survey figures.",
+    "body": "The census found a latrine in 21.9% of rural households in 2001 and 30.7% in 2011. When the Swachh Bharat Mission (Gramin) began on 2 October 2014, the programme put rural sanitation coverage at 38.7% (Lok Sabha replies). On 2 October 2019 all rural India was declared open defecation free, on the basis of declarations by villages and states. The National Annual Rural Sanitation Survey 2018-19 found 93.1% of rural households with access to a toilet. The NSO's own survey for July to December 2018 (NSS 76th round) found 71.3%. Programme figures count toilets built and declarations made, and they measure access, which is a separate question from use.",
+    "takeaway": "Rural toilet access rose more between 2014 and 2019 than in the previous decade, on programme figures and on both surveys, which disagree on the level.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "csv-line",
       "csv": "sanitation",
       "color": "#22c55e",
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "open-defecation-free-coverage-is-a-textbook-logistic-curve"
+    ]
   },
   {
-    "slug": "womens-labour-force-participation-has-fallen-since-2014",
+    "slug": "womens-labour-force-participation-has-risen-sharply-since-2017",
     "category": "Jobs",
     "title": "Women's labour force participation has risen sharply since 2017-18",
     "body": "On MoSPI's usual-status series, the labour force participation rate of women aged 15 and over rose from 23.3% in 2017-18 to 41.7% in 2023-24, and was 40.0% in 2025. PLFS counts a woman who helps without pay in a household enterprise as a worker, so the rate measures participation in work the survey recognises. It does not measure paid employment.",
@@ -247,14 +283,17 @@
         "#ec4899"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "womens-labour-force-participation-has-fallen-since-2014"
+    ]
   },
   {
-    "slug": "gig-and-platform-workers-grew-eleven-fold-in-twelve",
+    "slug": "gig-and-platform-workers-nearly-tripled-2011-to-2019",
     "category": "Jobs",
     "title": "Gig and platform workers nearly tripled between 2011-12 and 2019-20",
-    "body": "NITI Aayog estimates 2.5 million gig and platform workers in 2011-12 and 6.8 million in 2019-20, 2.7 times as many. It puts 2020-21 at 7.7 million and projects 23.5 million by 2029-30. This is where employment growth showed up while the formal share was falling.",
-    "takeaway": "The jobs that replaced shrinking formal employment carry none of formal employment's protections.",
+    "body": "NITI Aayog estimates 2.5 million gig and platform workers in 2011-12 and 6.8 million in 2019-20, 2.7 times as many. It puts 2020-21 at 7.7 million and projects 23.5 million by 2029-30. Gig workers were 1.3% of all workers in 2019-20 on NITI's estimate.",
+    "takeaway": "Gig work grew quickly from a small base, and most gig workers have no employer-linked social security.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -268,10 +307,13 @@
         "#06b6d4"
       ],
       "unit": "M"
-    }
+    },
+    "redirectFrom": [
+      "gig-and-platform-workers-grew-eleven-fold-in-twelve"
+    ]
   },
   {
-    "slug": "rural-household-income-has-been-flat-for-twelve-years",
+    "slug": "rural-household-income-rose-27-percent-in-real-terms",
     "category": "Growth",
     "title": "Rural household income rose 27% in real terms between 2016-17 and 2021-22",
     "body": "NABARD's two rural financial inclusion surveys put average monthly household income at Rs 8,059 in 2016-17 and Rs 12,698 in 2021-22, a nominal rise of 57.6%. Rural consumer prices rose 24.2% over the same years, so the real rise is about 27%, close to 5% a year. Borrowing rose too: the share of rural households with outstanding debt went from 47.4% to 52%.",
@@ -289,14 +331,17 @@
         "#84cc16"
       ],
       "unit": ""
-    }
+    },
+    "redirectFrom": [
+      "rural-household-income-has-been-flat-for-twelve-years"
+    ]
   },
   {
-    "slug": "informal-employment-share-crossed-89",
+    "slug": "nine-in-ten-workers-outside-regular-jobs-with-social-security",
     "category": "Jobs",
-    "title": "Nine in ten Indian workers have no social-security cover",
+    "title": "Nine in ten Indian workers are outside regular jobs with social security",
     "body": "On the Periodic Labour Force Survey, the share of workers who are not in regular wage or salaried jobs with any social security was 88.5% in 2017-18 and 89.9% in 2023-24. It rose to 90.3% in the pandemic year 2020-21 and reached 90.4% in 2022-23. Among regular wage and salaried employees themselves, the share without any social security rose from 49.6% in 2017-18 to 53.4% in 2023-24.",
-    "takeaway": "Roughly nine in ten Indian workers have no social-security cover, a larger share than in 2017-18.",
+    "takeaway": "Roughly nine in ten Indian workers are outside regular jobs with social security, a larger share than in 2017-18. The survey records no cover for the self-employed and casual workers among them, so it cannot say how many of those have some.",
     "tab": "Key Findings",
     "chart": {
       "type": "line",
@@ -310,14 +355,17 @@
         "#f97316"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "informal-employment-share-crossed-89"
+    ]
   },
   {
     "slug": "the-2020-gdp-contraction-was-the-steepest-since-independence",
     "category": "Growth",
     "title": "The 2020 GDP contraction was the steepest since independence",
-    "body": "GDP shrank 5.8% in 2020-21 (April 2020 to March 2021, MoSPI's latest estimate on the 2011-12 base), the largest annual contraction since independence. The previous largest was 5.2% in 1979-80. Growth rebounded to 9.7% in 2021-22, and formal employment did not follow it. The ILO-IHD India Employment Report 2024 finds that nearly two thirds of the incremental employment after 2019 comprised self-employed workers, most of them unpaid family workers, who are mainly women. NITI Aayog puts the number of gig workers at 7.7 million in 2020-21.",
-    "takeaway": "The recovery showed up in GDP and did not show up in employment.",
+    "body": "GDP shrank 5.8% in 2020-21 (April 2020 to March 2021, MoSPI's latest estimate on the 2011-12 base), the largest annual contraction since independence. The previous largest was 5.2% in 1979-80. Growth rebounded to 9.7% in 2021-22, and the share of formal jobs did not follow it. The ILO-IHD India Employment Report 2024 finds that nearly two thirds of the incremental employment after 2019 comprised self-employed workers, most of them unpaid family workers, who are mainly women. NITI Aayog puts the number of gig workers at 7.7 million in 2020-21.",
+    "takeaway": "The recovery added jobs, and most of them were self-employment and unpaid family work. The share of workers in formal jobs did not return to its 2017-18 level.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -334,9 +382,9 @@
     }
   },
   {
-    "slug": "india-is-now-the-worst-ranked-of-its-peer",
+    "slug": "india-and-turkey-rank-lowest-of-five-peers-on-press-freedom",
     "category": "Comparative",
-    "title": "India and Turkey rank lowest of the peer democracies on press freedom",
+    "title": "India and Turkey rank lowest of the five peer countries on press freedom",
     "body": "RSF ranks for 2026: India 157, Turkey 163, Hungary 74, Brazil 52, South Africa 21. In 2014 they were India 140, Turkey 154, Hungary 64, Brazil 111 and South Africa 42. India, Turkey and Hungary fell. Brazil rose 59 places, the largest improvement of the five, and South Africa rose 21.",
     "takeaway": "On press freedom India now ranks close to Turkey and far below Brazil and South Africa, both of which improved over the period.",
     "tab": "Deep Analysis",
@@ -344,14 +392,17 @@
       "type": "intl",
       "metric": "press",
       "unit": "World rank"
-    }
+    },
+    "redirectFrom": [
+      "india-is-now-the-worst-ranked-of-its-peer"
+    ]
   },
   {
-    "slug": "youth-unemployment-peaked-at-18-during-covid",
+    "slug": "youth-unemployment-fell-from-17-8-to-9-9-percent",
     "category": "Jobs",
     "title": "Youth unemployment has fallen from 17.8% to 9.9% since 2017-18",
     "body": "On MoSPI's usual-status series, unemployment among people aged 15-29 was 17.8% in 2017-18, the first PLFS year, 12.9% in 2020-21 and 9.9% in 2025. It has stayed about three times the all-age rate in every year. The PLFS series begins in 2017-18, so there is no comparable figure for the years before it.",
-    "takeaway": "The cohort that should be powering growth is the one most excluded from formal work.",
+    "takeaway": "Young people are about three times as likely to be unemployed as the workforce as a whole, and that ratio has not narrowed as the rate has fallen.",
     "tab": "Interactive Data",
     "chart": {
       "type": "pair",
@@ -368,12 +419,15 @@
         "#3b82f6"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "youth-unemployment-peaked-at-18-during-covid"
+    ]
   },
   {
-    "slug": "all-three-constructed-indices-point-the-same-direction",
+    "slug": "all-three-index-averages-are-worse-after-2014",
     "category": "Indices",
-    "title": "All three constructed indices point the same direction",
+    "title": "All three index averages are worse after 2014, and the fiscal index has fallen since 2020",
     "body": "SSI (statistical suppression) rose sharply after 2014 and DQI (democratic quality) fell. FCI (fiscal centralisation) moved differently. Its NDA average of 0.43 is above the UPA average of 0.30, mostly because of GST and the 2020 borrowing conditions, but it peaked in 2020 and was 0.35 in 2026, below its 2014 value of 0.42. The three are built from separate data sources.",
     "takeaway": "On era averages all three indices are worse under NDA. The FCI gap is the smallest of the three and rests on its two coded components.",
     "tab": "Three Indices",
@@ -398,10 +452,13 @@
         "ssi": 0.1
       },
       "unit": ""
-    }
+    },
+    "redirectFrom": [
+      "all-three-constructed-indices-point-the-same-direction"
+    ]
   },
   {
-    "slug": "the-census-is-15-years-overdue-and-counting",
+    "slug": "india-has-not-counted-its-population-since-2011",
     "category": "Statistics",
     "title": "India has not counted its population since 2011",
     "body": "The last Indian census was taken in 2011. The 2021 census was postponed in 2020 with no new date. Houselisting now runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs). Until that count is published, population figures used for ration cards, electoral rolls and survey sample frames rest on the 2011 count and projections from it.",
@@ -419,10 +476,13 @@
         "#ef4444"
       ],
       "unit": ""
-    }
+    },
+    "redirectFrom": [
+      "the-census-is-15-years-overdue-and-counting"
+    ]
   },
   {
-    "slug": "the-top-1-holds-40-of-the-countrys-wealth",
+    "slug": "top-1-percent-holds-40-percent-of-wealth",
     "category": "Inequality",
     "title": "The top 1% holds 40% of the country's wealth",
     "body": "The top 1% received 22.6% of national income in 2022-23. Its share of national wealth was 40.1%, close to twice as large (Bharti, Chancel, Piketty and Somanchi, World Inequality Lab, 2024). The bottom 50%'s wealth share is below 7%.",
@@ -434,13 +494,16 @@
         "top1Share"
       ],
       "labels": [
-        "Top 1% income %"
+        "Top 1% income share (wealth is not charted)"
       ],
       "colors": [
         "#ef4444"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "the-top-1-holds-40-of-the-countrys-wealth"
+    ]
   },
   {
     "slug": "a-regime-comparison-computed-live-from-the-data",
@@ -464,7 +527,7 @@
     }
   },
   {
-    "slug": "press-freedom-and-statistical-suppression-move-in-lockstep",
+    "slug": "press-freedom-and-statistical-suppression-worsened-together-after-2014",
     "category": "Correlation",
     "title": "Press freedom and statistical suppression worsened together after 2014",
     "body": "The Pearson correlation between India's annual SSI and its RSF press-freedom rank is about 0.65 over 2014-2026, so years with more statistical suppression tend to be years with a worse press-freedom rank. Pressure on independent statistics and pressure on an independent press can serve a similar purpose, which would explain the link, but thirteen annual observations cannot establish it.",
@@ -488,7 +551,10 @@
         "pressFreedom": 0.04
       },
       "unit": ""
-    }
+    },
+    "redirectFrom": [
+      "press-freedom-and-statistical-suppression-move-in-lockstep"
+    ]
   },
   {
     "slug": "what-goes-into-the-statistical-suppression-index",
@@ -515,7 +581,7 @@
     "slug": "why-the-democratic-quality-index-uses-a-geometric-mean",
     "category": "Methodology",
     "title": "Why the Democratic Quality Index uses a geometric mean",
-    "body": "DQI = (V-Dem Liberal Democracy Index × Freedom House score/100 × (180 - RSF rank)/180 × V-Dem Core Civil Society Index)^(1/4). A geometric mean is used so that a collapse in any single dimension drags the whole index down, and a country with strong elections but no press freedom is correctly penalised. An arithmetic mean would hide this.",
+    "body": "DQI = (V-Dem Liberal Democracy Index × Freedom House score/100 × (180 - RSF rank)/180 × V-Dem Core Civil Society Index)^(1/4). A geometric mean is used so that a collapse in any single dimension drags the whole index down, and a country with strong elections but no press freedom is correctly penalised. An arithmetic mean would hide this. RSF ranked between 167 and 179 countries before 2013 and 180 since, so the rank term is on a slightly different scale in the early years.",
     "takeaway": "Democratic quality is multiplicative. One weak pillar undermines the rest.",
     "tab": "Methodology",
     "chart": {
@@ -567,7 +633,7 @@
     }
   },
   {
-    "slug": "south-africa-is-the-only-peer-that-recovered-on",
+    "slug": "brazil-and-south-africa-improved-on-press-freedom",
     "category": "Comparative",
     "title": "Brazil and South Africa improved on press freedom while India fell",
     "body": "2014→2026 RSF rank: Brazil 111→52 (improved), South Africa 42→21 (improved). Turkey 154→163 (worsened). Hungary 64→74 (worsened). India 140→157 (worsened).",
@@ -577,10 +643,13 @@
       "type": "intl",
       "metric": "press",
       "unit": "World rank"
-    }
+    },
+    "redirectFrom": [
+      "south-africa-is-the-only-peer-that-recovered-on"
+    ]
   },
   {
-    "slug": "gdp-growth-volatility-has-risen-the-boom-and-bust",
+    "slug": "gdp-growth-swung-more-after-2014-because-of-the-pandemic",
     "category": "Growth",
     "title": "GDP growth swung more after 2014, and the pandemic accounts for the difference",
     "body": "Annual GDP growth from 2014-15 to 2025-26 ranged from -5.8% (2020-21) to 9.7% (2021-22). Growth slowed from 8.3% in 2016-17 to 6.8% in 2017-18, 6.5% in 2018-19 and 3.9% in 2019-20, the years after demonetisation and the GST. The standard deviation of annual growth was about 4.0 points over 2014-2025 against 1.7 over 2004-2013. Without 2020-21 it falls to 1.4, below the UPA decade's.",
@@ -598,10 +667,13 @@
         "#3b82f6"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "gdp-growth-volatility-has-risen-the-boom-and-bust"
+    ]
   },
   {
-    "slug": "the-post-2017-formal-employment-drop-is-visible-in",
+    "slug": "formal-job-coverage-dipped-in-the-pandemic-year",
     "category": "Jobs",
     "title": "Formal job coverage dipped in the pandemic year and has only partly recovered",
     "body": "On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security was 11.5% in 2017-18, 11.4% in 2018-19 and 10.5% in 2019-20. It fell to 9.7% in the pandemic year 2020-21, rose to 10.1% in 2021-22, fell to 9.6% in 2022-23 and was 10.1% in 2023-24. The survey begins in 2017-18, so it cannot show what happened to this share in the demonetisation and GST years before it.",
@@ -619,10 +691,13 @@
         "#ef4444"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "the-post-2017-formal-employment-drop-is-visible-in"
+    ]
   },
   {
-    "slug": "twelve-consecutive-years-of-formal-employment-decline",
+    "slug": "formal-job-coverage-fell-1-4-points-in-six-survey-years",
     "category": "Jobs",
     "title": "Formal job coverage fell by 1.4 points over six years of the labour survey",
     "body": "On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security fell from 11.5% in 2017-18 to 10.1% in 2023-24, a drop of 1.4 points, or about 12%. It did not fall in every year, and its lowest point was 9.6% in 2022-23. Two things moved underneath it. Regular wage and salaried work slipped from 22.8% to 21.7% of all workers, and the share of those employees without any social security rose from 49.6% to 53.4%, after a peak of 54.2% in 2019-20. Over part of the same period, NITI Aayog estimates the gig workforce grew from 2.5 million (2011-12) to 6.8 million (2019-20).",
@@ -640,10 +715,13 @@
         "#ef4444"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "twelve-consecutive-years-of-formal-employment-decline"
+    ]
   },
   {
-    "slug": "indias-5-1-unemployment-rate-is-unusually-low-for",
+    "slug": "india-unemployment-close-to-lower-middle-income-peers",
     "category": "Statistics",
     "title": "India's unemployment rate is close to other lower-middle-income countries'",
     "body": "The PLFS monthly bulletins average 5.2% from January to August 2026, on the current weekly status measure. On the ILO's modelled estimates, which put every country on one definition, India's rate was 4.2% in 2025, against 4.5% for lower-middle-income countries and 4.9% for middle-income countries as a whole (World Bank, World Development Indicators, SL.UEM.TOTL.ZS). The headline rate is low because most Indian workers are self-employed or casual and count as employed however little they earn, and because people who have stopped looking for work drop out of the labour force.",
@@ -661,7 +739,10 @@
         "#3b82f6"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "indias-5-1-unemployment-rate-is-unusually-low-for"
+    ]
   },
   {
     "slug": "v-dem-score-is-at-1976-emergency-levels",
@@ -670,24 +751,12 @@
     "body": "India's V-Dem Liberal Democracy score in 2025, the latest observation, was 0.260. That is slightly below the 0.265 recorded in 1976, during the 1975-1977 Emergency, when civil liberties were formally suspended, and the lowest since 1950. The current score has been reached without a formal Emergency declaration.",
     "takeaway": "India's V-Dem score fell to Emergency-era levels without any formal suspension of civil liberties.",
     "tab": "Three Indices",
-    "chart": {
-      "type": "line",
-      "series": [
-        "dqi"
-      ],
-      "labels": [
-        "DQI"
-      ],
-      "colors": [
-        "#22c55e"
-      ],
-      "unit": ""
-    }
+    "chart": null
   },
   {
-    "slug": "the-bottom-50-income-share-has-been-falling-since",
+    "slug": "bottom-50-percent-income-share-low-2017-falling-since-2020",
     "category": "Inequality",
-    "title": "The bottom 50% income share fell until 2017 and has partly recovered",
+    "title": "The bottom 50% income share fell to a low in 2017, rose until 2020 and has fallen since",
     "body": "On the World Inequality Lab series the bottom 50% received 18.8% of national income in 2004, 14.7% in 2014 and a low of 13.9% in 2017. The share rose to 15.5% in 2020, which its authors describe as a temporary marginal rise, and was 15.0% in 2022-23. Over the whole period the bottom half lost 3.8 points while the top 1% gained 4.2.",
     "takeaway": "The bottom half of India held a smaller share of national income in 2022-23 than in 2004, and a slightly larger one than in 2014.",
     "tab": "Key Findings",
@@ -703,14 +772,20 @@
         "#3b82f6"
       ],
       "unit": "%"
-    }
+    },
+    "redirectFrom": [
+      "the-bottom-50-income-share-has-been-falling-since"
+    ]
   },
   {
     "title": "GDP counts the rent on your flat and nothing for the cooking",
-    "slug": "gdp-counts-the-rent-on-your-flat-not-the-cooking",
+    "slug": "gdp-counts-rent-on-your-flat-and-nothing-for-cooking",
     "category": "Statistics",
     "tab": "Reading the Economy",
-    "body": "Own the flat you live in and the national accounts estimate a rent for it and add that to GDP. Cook the meal inside it and nothing is added. India's Time Use Survey found that women aged 6 and above who do unpaid domestic work spent 289 minutes a day on it in 2024, against 88 minutes for men (305 minutes for women aged 15-59). At 289 minutes that is about 1,758 hours a year for a woman, in no employment figure and no output series. Published valuations of that work run from 7.5% to 36% of GDP. The spread comes from the price put on an hour, and there is little doubt about the hours themselves.",
-    "takeaway": "The production boundary is a convention. India collects the hours needed to price what falls outside it and does not do so."
+    "body": "Own the flat you live in and the national accounts estimate a rent for it and add that to GDP. Cook the meal inside it and nothing is added. India's Time Use Survey found that women aged 6 and above who do unpaid domestic work spent 289 minutes a day on it in 2024, against 88 minutes for men (305 minutes for women aged 15-59). At 289 minutes that is about 1,758 hours a year for a woman, in no employment figure and no output series. Published valuations of that work run from 7.5% to 32.4% of GDP, and one reported estimate reaches 36%. The spread comes from the price put on an hour, and there is little doubt about the hours themselves.",
+    "takeaway": "The production boundary is a convention. India collects the hours needed to price what falls outside it and does not do so.",
+    "redirectFrom": [
+      "gdp-counts-the-rent-on-your-flat-not-the-cooking"
+    ]
   }
 ]

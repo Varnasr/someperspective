@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What GDP does not count | Some Perspective</title>
-<meta name="description" content="GDP imputes a rent for the house you own but records nothing for the care performed inside it. India measures the hours through its Time Use Survey and declines to value them. Published estimates of what they are worth range from 7.5% to 36% of GDP.">
+<meta name="description" content="GDP imputes a rent for the house you own but records nothing for the care performed inside it. India measures the hours through its Time Use Survey and declines to value them. Published estimates of what they are worth range from 7.5% to 32.4% of GDP, and one reported estimate reaches 36%.">
 <link rel="canonical" href="https://someperspective.info/care/">
 <meta property="og:title" content="What GDP does not count | Some Perspective">
-<meta property="og:description" content="GDP imputes a rent for the house you own but records nothing for the care performed inside it. India measures the hours through its Time Use Survey and declines to value them. Published estimates of what they are worth range from 7.5% to 36% of GDP.">
+<meta property="og:description" content="GDP imputes a rent for the house you own but records nothing for the care performed inside it. India measures the hours through its Time Use Survey and declines to value them. Published estimates of what they are worth range from 7.5% to 32.4% of GDP, and one reported estimate reaches 36%.">
 <meta property="og:url" content="https://someperspective.info/care/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://someperspective.info/og-preview.png">
@@ -33,7 +36,7 @@ a:hover{text-decoration-thickness:2px}
 .top{display:grid;grid-template-columns:var(--seam) 1fr;border-bottom:2px solid var(--ink);align-items:center}
 .top>*{padding:.8rem clamp(.75rem,2.5vw,2rem)}
 .top .l{text-align:right}
-.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
 .top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
 .top nav a{text-decoration:none;padding:.3rem 0}
 .top nav a:hover{text-decoration:underline}
@@ -71,7 +74,8 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 @media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
 /* On a phone the page runs on plain paper; the split stays in the header bar,
    where a bordered panel would only leave two slivers of field at the edges. */
-@media (max-width:700px){body{background:var(--paper)}
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+body{background:var(--paper)}
 .top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
@@ -79,7 +83,7 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 
 </head>
 <body>
-<header class="top"><div class="l"><a class="name" href="/">Some Perspective</a></div>
+<header class="top"><div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
 <nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a></nav></header>
 <main class="wrap">
 <p class="crumb"><a href="../">Some Perspective</a> &rsaquo; What GDP does not count</p>
@@ -111,10 +115,10 @@ do it at all. Time Use Survey 2019 against 2024. The gap closed by
 
 <div class="card">
 <h2 style="margin-top:0">Nobody can say what it is worth</h2>
-<p>Published Indian estimates put the value of unpaid household work somewhere between 7.5% and 36% of GDP.</p><p>The spread comes from disagreement about what price to put on the hours, which are known. Assume a modest monthly income forgone, as the SBI estimate does with ₹5,000 a month for a rural woman and ₹8,000 for an urban one, and you land at the bottom of the range. Pay what the woman could have earned in a job instead and you land in the middle. Pay what it would cost to hire a cook, a cleaner and a nurse to do the specific tasks and you land at the top.</p><p>This project picks none of these and publishes no figure of its own. The table below is other people's work.</p><p>Some things can be said without choosing a method. All of these numbers are large. The lowest of them is bigger than several sectors that do get counted. And the argument stays unsettled because no statistical agency has been asked to settle it.</p>
+<p>Published Indian estimates put the value of unpaid household work somewhere between 7.5% and 32.4% of GDP in the studies that could be traced, and one reported estimate reaches 36%.</p><p>The spread comes from disagreement about what price to put on the hours, which are known. Assume a modest monthly income forgone, as the SBI estimate does with ₹5,000 a month for a rural woman and ₹8,000 for an urban one, and you land at the bottom of the range. Pay what the woman could have earned in a job instead and you land in the middle. Pay what it would cost to hire a cook, a cleaner and a nurse to do the specific tasks and you land at the top.</p><p>This project picks none of these and publishes no figure of its own. The table below is other people's work.</p><p>Some things can be said without choosing a method. All of these numbers are large. The lowest of them is bigger than several sectors that do get counted. And the argument stays unsettled because no statistical agency has been asked to settle it.</p>
 <div class="tw"><table>
 <thead><tr><th>Estimate</th><th>Method</th><th style="text-align:right">% of GDP</th></tr></thead>
-<tbody><tr><td>SBI Ecowrap (2023)</td><td>minimum-wage valuation</td><td style="text-align:right;white-space:nowrap"><strong>7.5%</strong></td></tr><tr><td>Ministry of Women and Child Development (2024 submission)</td><td>not fully specified</td><td style="text-align:right;white-space:nowrap"><strong>15–17%</strong></td></tr><tr><td>Generalised opportunity cost, 2019-20</td><td>opportunity cost</td><td style="text-align:right;white-space:nowrap"><strong>24.6%</strong></td></tr><tr><td>Economic and Political Weekly (2024), 2022-23</td><td>replacement and opportunity cost</td><td style="text-align:right;white-space:nowrap"><strong>26–36%</strong></td></tr><tr><td>Replacement cost method, 2019-20</td><td>replacement cost</td><td style="text-align:right;white-space:nowrap"><strong>32.4%</strong></td></tr></tbody>
+<tbody><tr><td>SBI Ecowrap (2023)</td><td>minimum-wage valuation</td><td style="text-align:right;white-space:nowrap"><strong>7.5%</strong></td></tr><tr><td>Ministry of Women and Child Development, 2024 submission (as reported by Policy Circle; ORF, September 2025, cites a PIB release)</td><td>not fully specified</td><td style="text-align:right;white-space:nowrap"><strong>15–17%</strong></td></tr><tr><td>Opportunity cost, 2019-20 (study on CMIE household data, reported November 2024)</td><td>opportunity cost</td><td style="text-align:right;white-space:nowrap"><strong>24.6%</strong></td></tr><tr><td>Economic and Political Weekly (2024), 2022-23, as reported by Policy Circle</td><td>replacement and opportunity cost</td><td style="text-align:right;white-space:nowrap"><strong>26–36%</strong></td></tr><tr><td>Replacement cost, 2019-20 (same study)</td><td>replacement cost</td><td style="text-align:right;white-space:nowrap"><strong>32.4%</strong></td></tr></tbody>
 </table></div>
 <p class="meta">Range 7.5% to 36%, a factor of 4.8. This project publishes the
 range and does not pick a number.</p>

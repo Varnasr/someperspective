@@ -5,7 +5,7 @@ India Political Economy Assessment, 2004-2026 (UPA + NDA, one methodology).
 
 v2 rebuild goals (vs v1):
   * Capture documented dimensions the first cut MISSED (COVID mortality
-    undercount, the NSSO->NSO merger, the shelved GDP back-series, GST as the
+    undercount, the NSSO and CSO merged into the NSO, the shelved GDP back-series, GST as the
     structural fiscal-centralisation event, V-Dem civil-society collapse).
   * Replace binary on/off triggers with GRADED severity (0..1 per year).
   * Add PERSISTENCE: a suppression that is later "resolved" still leaves a data
@@ -33,7 +33,7 @@ SSI_WEIGHTS = {
     "consumption":   1.5,  # NSSO/HCES consumption survey withheld -> 11-yr gap
     "employment":    1.0,  # PLFS 2017-18 withheld until after 2019 election
     "gdp":           1.5,  # 2011-12 base + shelved 2018 back-series, unreviewed
-    "institutional": 1.5,  # NSC resignations (2019) + NSSO->NSO merger (2019)
+    "institutional": 1.5,  # NSC resignations (2019) + NSSO and CSO merged into the NSO (2019)
     "mortality":     2.0,  # COVID death undercount (official ~0.5M vs 3-5M excess)
 }
 # Graded annual severity (0..1). Absent year => 0. Scar = post-resolution decay.

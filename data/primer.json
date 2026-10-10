@@ -1,0 +1,196 @@
+{
+  "about": "Reading the Indian economy: how the numbers are made, what they say, and who decides what counts. Text for /explore/primer/, built by tools/primer_page.py. Every figure in braces is filled from data.json (or data/compute_indices.py) at build time, so a figure corrected there is corrected here. Figures typed into this file are ones data.json does not hold, and each carries its source in the section's source line. Ported from the 'Reading the Economy' tab of the old dashboard and fact-checked on 10 October 2026.",
+  "title": "Reading the Indian economy",
+  "dek": "How the economy is measured, what the numbers say, and who decides what counts. Fifteen short sections, from what an index is to how to read any official figure. Every number names its source, and a worked example is labelled as one.",
+  "sections": [
+    {
+      "id": "what-is-an-index",
+      "title": "What an index is, and why the definition matters",
+      "paras": [
+        "An index is one number that summarises many prices. It picks a basket of goods, gives each item a weight, and tracks the weighted total against a base year. Two choices decide what it says. The first is what goes in the basket, because an urban professional and a landless labourer buy different things. The second is the base year, because resetting it moves the whole series.",
+        "The table is a worked example with invented weights and prices. It shows the arithmetic and is not data. In it onions carry a weight of 15%, so their {onion_rise}% rise on its own adds about {onion_points} points to the index. In the real CPI no single vegetable carries anything near that weight.",
+        "GDP is the money value of all the final goods and services produced in a year. It can be measured in three ways that should agree. One adds up the value added at each stage of production, one adds up incomes (wages, profits, rents and taxes), and one adds up spending (consumption, investment, government purchases and exports less imports). Nominal GDP is at current prices, and real GDP removes the effect of inflation.",
+        "GDP counts a hospital treating a pollution victim and leaves out the clean river that would have prevented the illness. It counts a soldier's salary and leaves out unpaid domestic work, which {tus_women}% of women and {tus_men}% of men aged 6 and over did on a given day in {tus_year}. The [care explainer](/care/) sets out what that work is worth on the published estimates."
+      ],
+      "table": {"build": "indexExample", "label": "Worked example of a price index, invented figures"},
+      "source": "Worked example: invented for illustration. Time Use Survey 2024: National Statistical Office, Ministry of Statistics and Programme Implementation, press release of 25 February 2025.",
+      "from": ["indexExample", "careEconomy"]
+    },
+    {
+      "id": "gdp-revision",
+      "title": "Why the 2015 GDP revision is still disputed",
+      "paras": [
+        "In January 2015 MoSPI replaced its national accounts series. The table lists the three main changes. The new series raised growth for 2013-14 from {fy14_old}% to {fy14_new}%.",
+        "Arvind Subramanian, a former Chief Economic Adviser, estimated in 2019 that growth from 2011-12 to 2016-17 was about {sub_growth}% a year against the official {off_growth}%, an overstatement of about {overstate} points a year. The Economic Advisory Council to the Prime Minister replied on 19 June 2019 that his analysis had cherry-picked the data.",
+        "The company database behind the new series has its own critics. An NSSO survey of services enterprises drawn from the MCA21 database, released in May 2019, found 38.7% of the sampled companies out of survey because they had closed, could not be traced or were in a different sector from the one recorded. MoSPI said this had no effect on the GDP estimates."
+      ],
+      "table": {"build": "gdpRevision", "label": "What changed in the 2015 national accounts revision"},
+      "source": "MoSPI, new series of national accounts, base 2011-12, 30 January 2015 (as reported by Reuters and Business Standard); A. Subramanian, India's GDP Mis-estimation, Harvard CID Working Paper 354, June 2019; Economic Advisory Council to the Prime Minister, 19 June 2019; Ministry of Finance and MoSPI statements on the NSSO Technical Report on Services Sector Enterprises, May 2019.",
+      "from": ["gdpRevision"]
+    },
+    {
+      "id": "big-picture",
+      "title": "The big picture in five numbers",
+      "paras": [
+        "India is a large economy and a low-income country at the same time. At market exchange rates it is the sixth largest economy in the world, and its income per person ranks about 150th of 190.",
+        "In 1991 India and China had about the same income per person, ${in1991} and ${cn1991}. By 2020 China's was {ratio2020} times India's on World Bank figures, and the IMF projects a ratio of {ratio2026} for 2026."
+      ],
+      "table": {"build": "bigPicture", "label": "India in five numbers"},
+      "table2": {"build": "chinaDivergence", "label": "GDP per person, India and China, current US dollars"},
+      "source": "IMF World Economic Outlook, April 2026; UN World Population Prospects 2024; National Commission on Population, Population Projections 2011-2036; MoSPI Provisional Estimates, 5 June 2026; Budget at a Glance 2026-27; OECD Revenue Statistics 2025; World Bank, GDP per capita in current US$ (NY.GDP.PCAP.CD), retrieved 10 October 2026.",
+      "from": ["bigPicture", "chinaDivergence", "economic"]
+    },
+    {
+      "id": "jobs-and-growth",
+      "title": "Employment has grown far more slowly than output",
+      "paras": [
+        "The employment elasticity of output is the percentage rise in employment that comes with a 1% rise in GDP. An RBI working paper put it at 0.50 for 1999-2000 to 2004-05, 0.01 for 2004-05 to 2009-10 and 0.18 for 2009-10 to 2011-12. An elasticity of 0.01 means that output grew with almost no rise in employment.",
+        "Between 2014-15 and 2021-22, {gov_apps} crore people applied for central government jobs and {gov_jobs} lakh were recommended for appointment by the recruiting agencies, about {gov_rate}.",
+        "Real GDP growth averaged {upa_g}% a year from 2004-05 to 2013-14 and {nda_g}% from 2014-15 to 2025-26, or {nda_g_ex}% leaving out the pandemic year 2020-21. The two periods are measured on different national accounts bases from 2023-24, and the [growth page](/explore/economy/) shows each year."
+      ],
+      "table": {"head": ["Period", "Employment growth, % a year", "GDP growth, % a year", "Employment elasticity"],
+                "rows": [["1999-2000 to 2004-05", "2.8", "5.7", "0.50"], ["2004-05 to 2009-10", "0.1", "8.7", "0.01"], ["2009-10 to 2011-12", "1.4", "7.4", "0.18"]],
+                "label": "Employment elasticity of output, RBI estimates"},
+      "source": "S. Misra and A. K. Suresh, Estimating Employment Elasticity of Growth for the Indian Economy, RBI Working Paper 06/2014, 24 June 2014, Table 4 (compound growth). Central government recruitment, 2014-15 to 2021-22: Lok Sabha written answer, Department of Personnel and Training, 27 July 2022. Growth: World Bank for 2004-05 to 2013-14 and MoSPI from 2014-15, as in data.json.",
+      "from": ["jobsLesson", "eraHistory", "economic"]
+    },
+    {
+      "id": "structure",
+      "title": "Where output is made and where people work",
+      "paras": [
+        "Output and jobs sit in different sectors. Agriculture produces {agri_gva}% of output and holds {agri_emp}% of jobs, on the shares in the table.",
+        "Industries also differ in how many people they employ for each rupee invested. The Economic Survey 2016-17 counted the jobs each industry held for every ₹1 lakh of its yearly fixed investment. Apparel held {apparel_jobs} jobs, autos {autos_jobs} and steel {steel_jobs}. About {apparel_women}% of apparel jobs were held by women.",
+        "The production-linked incentive for large-scale electronics manufacturing, which is mostly mobile phones, had brought ₹{pli_inv} crore of investment and {pli_jobs} additional direct jobs by {pli_asof}. By {pli_inc_asof} the government had released ₹{pli_inc} crore in incentives under it, the most of any of the fourteen incentive schemes."
+      ],
+      "table": {"build": "structure", "label": "Share of output and of jobs, by sector"},
+      "table2": {"build": "jobsPerLakh", "label": "Jobs per one lakh rupees of fixed investment, by industry"},
+      "source": "Sector shares: the structure block of data.json (MoSPI GVA and PLFS employment shares). Jobs per investment: Economic Survey 2016-17, Volume 1, Chapter 7, Table 2, from ASI 2012-13 and the NSSO 68th round. Electronics: Minister of State for Electronics and IT, written reply to the Rajya Sabha, February 2025, as reported by ANI and The Tribune on 9 February 2025; incentives released, DPIIT data as on 30 June 2026, as reported by Deccan Chronicle on 25 September 2026.",
+      "from": ["structure", "jobsLesson"]
+    },
+    {
+      "id": "wages",
+      "title": "GDP climbed and most wages stood still",
+      "paras": [
+        "Real wage rates in rural India grew by less than 1% a year in almost every farm and non-farm occupation between 2014-15 and 2022-23, on the Labour Bureau's Wage Rates in Rural India series. A later analysis that extends the series to 2023-24 finds real wage growth over the ten years close to zero. Real GDP grew by {nda_g}% a year over a similar period. The Labour Bureau's older and newer wage series are not strictly comparable."
+      ],
+      "source": "Das and Usami, Downturn in Wages in Rural India, Review of Agrarian Studies, 2023; Ideas for India, The problem of India's stagnant real wages; growth from data.json.",
+      "from": ["economic"]
+    },
+    {
+      "id": "unemployment",
+      "title": "Unemployment depends on how it is measured",
+      "paras": [
+        "In 2025 the unemployment rate on usual status, which records a person's main activity over the past year, was {u2025}%. On current weekly status, which records the past week, MoSPI's rate for the same year was 5.3%. Among people aged 15 to 29 the usual-status rate in 2025 was {y2025}%, and the monthly bulletins for January to August 2026, on the weekly measure, average 15.4%.",
+        "The ILO and the Institute for Human Development find that nearly 90% of workers are informally employed. Women's labour force participation rose from {flfpr2017}% in 2017-18 to {flfpr2023}% in 2023-24 and was {flfpr2025}% in 2025. The same report finds that nearly two thirds of the employment added after 2019 was self-employment, among whom unpaid women family workers predominate."
+      ],
+      "source": "MoSPI, Periodic Labour Force Survey, annual and monthly bulletins (sources.unemployment and sources.youthUnemployment in data.json); ILO and Institute for Human Development, India Employment Report 2024.",
+      "from": ["economic", "sources"]
+    },
+    {
+      "id": "income-distribution",
+      "title": "Where an income places you",
+      "paras": [
+        "The World Inequality Lab estimates income per adult for 2022-23. Half of adults received less than ₹1,05,413 in the year, about ₹8,800 a month. The top 10% began at ₹2,90,848, about ₹24,200 a month, and the top 1% at ₹20,73,846, about ₹1.73 lakh a month. These are incomes per adult, and a household's income is the sum of its adults' incomes.",
+        "Market research uses wider definitions of the middle class. PRICE, a Delhi research institute, counts households earning ₹5 lakh to ₹30 lakh a year at 2020-21 prices, and on its ICE 360 surveys puts that group at 43.2 crore people in 2020-21.",
+        "The bottom half of adults received ₹{b50avg} a year on average in 2022-23. Household spending per person was ₹{rural_mpce} a month in rural India and ₹{urban_mpce} in urban India in 2023-24, so a rural family of four spends about ₹{rural4} a month on everything.",
+        "In the World Inequality Lab's series the top 1% income share was 13% at independence and fell to 6.1% by 1982, in a period of nationalisation and high marginal tax rates. It has risen since, though not in every year (it fell in {top1_falls}). In 2022-23 the top 1% received {top1}% of national income and the bottom half {b50share}%."
+      ],
+      "table": {"head": ["Group of adults, 2022-23", "Starts at, rupees a year", "About, rupees a month", "Average income, rupees a year", "Share of national income"],
+                "rows": [["Bottom 50%", "0", "0", "71,163", "15.0%"], ["Middle 40%", "1,05,413", "8,800", "1,65,273", "27.3%"], ["Top 10%", "2,90,848", "24,200", "13,52,985", "57.7%"], ["Top 1%", "20,73,846", "1,73,000", "53,00,549", "22.6%"]],
+                "label": "Income thresholds per adult, 2022-23, World Inequality Lab"},
+      "source": "Bharti, Chancel, Piketty and Somanchi, Income and Wealth Inequality in India, 1922-2023, World Inequality Lab Working Paper 2024/09, Table 2 and section 3.1; MoSPI, Household Consumption Expenditure Survey 2023-24 (distribution block); PRICE, ICE 360 surveys, as reported by StratNews Global.",
+      "from": ["distribution", "economic"]
+    },
+    {
+      "id": "inflation",
+      "title": "How the inflation number is built",
+      "paras": [
+        "MoSPI prices {cpi_items} weighted items every month in {cpi_urban} urban markets, {cpi_rural} rural markets and {cpi_online} online marketplaces, against a {cpi_base} base. Food and beverages are the largest block at {cpi_food}%, down from {cpi_food_prev}% under the old 2012 base, so a food-price shock now moves headline CPI less than it used to. Housing, water, electricity and fuel together weigh {cpi_housing}% and transport {cpi_transport}%. The RBI's target is {rbi_target}% inflation.",
+        "Consumer price inflation averaged {upa_cpi}% a year from 2004 to 2013 and {nda_cpi}% from 2014 to 2025. The [inflation explainer](/inflation/) sets out why it fell.",
+        "The headline index is an average, and prices within it moved at different speeds. The table compares the sub-indices of the CPI between {ri_from} and {ri_to}. Over those eleven years the whole index rose {ri_all}%, health {ri_health}% and personal care, which includes gold, {ri_gold}%. Headline inflation on the new 2024 series was {ri_headline}% in August 2026.",
+        "About {rainfed}% of India's net sown area has no irrigation and depends on the rain. A weak monsoon passes through the economy in a chain that runs from {monsoon_chain}."
+      ],
+      "table": {"build": "realInflation", "label": "Consumer price sub-indices, December 2014 and December 2025"},
+      "source": "MoSPI, CPI 2024=100 first release, 12 February 2026; MoSPI CPI 2012=100, All India combined, December 2014 and December 2025 (api.mospi.gov.in); RBI Monetary Policy Committee resolution, 7 October 2026; Land Use Statistics 2018-19 as given in a Rajya Sabha answer of 23 December 2022; inflation averages from data.json.",
+      "from": ["cpiBasket", "realInflation", "monsoonChain", "eraHistory", "economic"]
+    },
+    {
+      "id": "tax",
+      "title": "For every 100 rupees the Union receives",
+      "paras": [
+        "Borrowing is the largest single source, at ₹{borrow} of every ₹100. The taxes shared with the states through the Finance Commission formula bring in ₹{shared_total}.",
+        "In September 2019 the base rate of corporation tax was cut from {corp_before}% to {corp_after}%, at an estimated cost of ₹{corp_lost} lakh crore a year. Personal income tax brought in more than corporation tax in 2020-21 and in every year from 2022-23, and less in 2021-22. The Union's gross tax revenue is {t2gdp}% of GDP in the 2026-27 budget estimate. The OECD average of {oecd}% for 2024 counts the taxes of every level of government, so the two measure different things.",
+        "India abolished its wealth tax in the 2015-16 budget, with effect from April 2016. It had raised ₹{wt_rev} crore in {wt_year}. Bharti, Chancel, Piketty and Somanchi (2024) propose a {wt_rate}% annual tax on net wealth above ₹{wt_thr} crore and a {inh}% tax on estates above ₹{wt_thr} crore. The wealth tax would fall on about 3,70,000 adults (0.04%), and the two taxes together would raise about {pkg}% of GDP.",
+        "GST merged most central and state taxes on goods and services in 2017. The Finance Commission devolves 41% of the divisible pool of Union taxes to the states. Cesses and surcharges sit outside that pool, so the states get no share of them. They were {cess14}% of the Union's gross tax revenue in 2014-15, {cess20}% in 2020-21 and {cess26}% in the 2026-27 budget estimate.",
+        "Alcohol for human consumption is outside GST under the Constitution. Petrol, diesel, crude oil, natural gas and aviation fuel are within it in law, and GST applies to them only from a date the GST Council has yet to recommend."
+      ],
+      "table": {"build": "taxTake", "label": "For every 100 rupees the Union receives, 2026-27"},
+      "source": "Union Budget 2026-27, Budget at a Glance ('rupee comes from'); Taxation Laws (Amendment) Ordinance, 2019; CBDT time series of direct tax collections; OECD Revenue Statistics 2025; Budget speech 2015-16; World Inequality Lab, Proposals for a Wealth Tax Package to Tackle Extreme Inequalities in India, May 2024; cess and surcharge shares from data/compute_indices.py (15th Finance Commission report and Union Receipt Budgets); Constitution (One Hundred and First Amendment) Act, 2016, Articles 366(12A) and 279A(5).",
+      "from": ["taxTake", "taxReversal", "compute_indices.FCI_COMPONENTS"]
+    },
+    {
+      "id": "spending",
+      "title": "For every 100 rupees the Union spends",
+      "paras": [
+        "Interest and the states' share of taxes take ₹{int_states} of every ₹100 before any scheme is paid for. Central sector schemes take ₹{csec} and centrally sponsored schemes, which the states co-fund, ₹{css}. Capital spending is spread across these heads.",
+        "Each budget has three numbers. The budget estimate comes in February, the revised estimate a year later, and the actuals after the year closes. MGNREGA is demand-driven. Its spending exceeded the budget estimate in each year from 2020-21 to 2023-24 and came in just under it in 2024-25, at ₹{mg_act} crore against ₹{mg_be} crore. In December 2025 Parliament replaced it with the VB-G RAM G Act, 2025.",
+        "The National Health Policy 2017 set a target for public health spending of {h_target}% of GDP by 2025. Government health spending was {h_actual}% of GDP in {h_year}. The Kothari Commission recommended {e_target}% of GDP for education in 1966, and the National Policy on Education adopted it in 1968. The Centre and the states together spend about {e_actual}% of GDP on education.",
+        "Tamil Nadu pays ₹{kmut_month} a month to each of about {kmut_women} crore women heads of household under the Kalaignar Magalir Urimai Thogai. The scheme had ₹{kmut_prior} crore in {kmut_prior_year}, and the budget presented on 5 August 2026, after the change of government in May, allocates ₹{kmut_outlay} crore for {kmut_year} in its budget estimate."
+      ],
+      "table": {"build": "spendSplit", "label": "For every 100 rupees the Union spends, 2026-27"},
+      "source": "Union Budget 2026-27, Budget at a Glance ('rupee goes to'); PRS, Demand for Grants 2026-27 Analysis: Rural Development and Education; National Health Policy 2017; National Health Accounts estimates 2021-22 (September 2024); The News Minute on the scheme's coverage; PRS, Tamil Nadu Budget Analysis 2026-27.",
+      "from": ["spendSplit", "budgetArithmetic", "kmut"]
+    },
+    {
+      "id": "deficit-and-states",
+      "title": "The deficit, and how the states share the taxes",
+      "paras": [
+        "The Union's fiscal deficit was {fd2020}% of GDP in 2020-21 and {fd2025}% in 2025-26 (provisional), and the 2026-27 budget estimates {fd_be}%. Gross market borrowing was budgeted at ₹{mb_be} lakh crore for 2026-27. The borrowing calendar of September 2026 lowered it to about ₹{mb_rev} lakh crore, mostly by switching securities due that year. The RBI transferred a record surplus of ₹{rbi_div} lakh crore for 2025-26, and interest takes ₹{int100} of every ₹100 the Union spends.",
+        "Less of the deficit is kept off the budget than before. From 2021-22 the food subsidy has been paid from the budget in place of loans from the National Small Savings Fund to the Food Corporation of India, and the National Highways Authority has not borrowed from the market since 2022-23.",
+        "The Finance Commission divides the states' 41% by a formula. Under the 16th Commission, distance from the income of the richest states carries 42.5% of the weight, population 17.5% and, for the first time, contribution to GDP 10%. Poorer states therefore receive a larger share than their population and richer states a smaller one. The table sets each state's share beside its population and income.",
+        "Lok Sabha seats have been allocated on the 1971 census since 1976, and the freeze ends with the first census after 2026. A reallocation on current population would move seats from the south to the north. One projection gives {delim}. Each MP now represents about {permp_now} million people, against {permp_1951} million in 1951."
+      ],
+      "table": {"build": "stateReturns", "label": "States' shares of devolved taxes, population and income"},
+      "source": "Union Budget 2026-27; Controller General of Accounts, provisional actuals for 2025-26; Ministry of Finance borrowing calendar, as reported by PTI on 25 September 2026; RBI, 22 May 2026; Business Standard, 2 February 2021 (NSSF loans to FCI) and 4 February 2022 (NHAI borrowing); PRS, Demand for Grants 2024-25 Analysis: Road Transport and Highways; Report of the 16th Finance Commission as summarised by PRS, 1 February 2026, Tables 1 and 3; population and income from the states block; delimitation from the delimitation block (Carnegie Endowment, 2019).",
+      "from": ["economic", "deficitFinancing", "stateReturns", "states", "delimitation"]
+    },
+    {
+      "id": "outside-world",
+      "title": "Trade, the rupee and gold",
+      "paras": [
+        "In 2025-26 goods trade was in deficit by ${goods} billion and services in surplus by ${services} billion. The current account deficit was {cad}% of GDP. Foreign exchange reserves were about ${reserves} billion, about {cover} months of imports, and the rupee reached a record low of {low} to the dollar on 20 May 2026.",
+        "On 10 May 2026 in Hyderabad the Prime Minister made {n_asks} requests of citizens, among them to avoid buying gold for a year and to postpone foreign travel. The first tables list the requests and the figures behind them.",
+        "The Delhi price of petrol was ₹{petrol_now} a litre on {petrol_date}. The breakdown in the second table is an illustration at the excise rate in force before April 2025, when the price was about ₹{petrol_then}. Central excise and state VAT took ₹{petrol_tax} of it, about {petrol_taxpct}%. Most of that tax is a fixed amount per litre, so the pump price falls by less than crude does. India imported {crude_dep}% of its crude oil in 2025-26.",
+        "Indian households hold about {gold_t} tonnes of gold, worth about ${gold_tn} trillion at the 2025-26 average import price, close to {gold_gdp}% of GDP. In 2021, {unb21}% of adults had no account at a bank or mobile money provider, and in 2024 the share was {unb24}%. Insurance premiums came to {ins}% of GDP in 2024-25, against {insg}% for the world in 2024."
+      ],
+      "table": {"build": "modiAsks", "label": "Figures behind the Prime Minister's appeal of 10 May 2026"},
+      "table2": {"build": "pumpPrice", "label": "Where the petrol price went, illustration at the pre-April 2025 excise rate"},
+      "source": "External sector: the external block of data.json (RBI balance of payments for 2025-26; DGCI&S; FRED DEXINUS). The appeal: The Quint and Deccan Chronicle, 10 May 2026. Imports: Department of Commerce, merchandise imports by principal commodity group, 2025-26. Travel: RBI Liberalised Remittance Scheme data for 2023-24, as reported by Business Standard; Ministry of Tourism, India Tourism Statistics, December 2024. Petrol: PPAC, PRS and Ministry of Finance notifications; Delhi price as reported by The Hans India. Gold: World Gold Council and Metals Focus, as reported in 2024. Accounts: World Bank Global Findex. Insurance: IRDAI Annual Report 2024-25, citing Swiss Re.",
+      "from": ["external", "modiAsks", "pumpPrice", "gold"]
+    },
+    {
+      "id": "poverty-and-inequality",
+      "title": "Poverty and inequality",
+      "paras": [
+        "Three lines give three different answers about poverty. The last official estimate is the Tendulkar line for 2011-12. The Rangarajan report of 2014 set a higher line and was never adopted. NITI Aayog's multidimensional index measures deprivations in health, education and living standards, and its figure for 2022-23 is projected from the National Family Health Surveys of 2015-16 and 2019-21.",
+        "The richest 10% of adults received {top10}% of national income in 2022-23. The richest 1% held {top1w}% of wealth and the bottom half {b50w}%. The World Inequality Lab finds India's top 1% income share higher than Brazil's, South Africa's and that of the United States.",
+        "{stunt}% of children under five were stunted in 2019-21. Households paid {oop}% of all health spending out of pocket in {health_year}, and government health spending was {ghe}% of GDP."
+      ],
+      "table": {"build": "poverty", "label": "Three poverty lines"},
+      "source": "Planning Commission press note, July 2013; Report of the Expert Group to Review the Methodology for Measurement of Poverty (Rangarajan), June 2014; NITI Aayog, Multidimensional Poverty in India since 2005-06, January 2024; World Inequality Lab Working Paper 2024/09, Tables 2 and 3; NFHS-5, 2019-21, as stated in a Rajya Sabha answer of December 2024; National Health Accounts estimates 2021-22.",
+      "from": ["poverty", "distribution", "bodies"]
+    },
+    {
+      "id": "how-we-know",
+      "title": "How we know any of it",
+      "paras": [
+        "Every number rests on a choice of base year, basket, survey method, poverty line and census date. Each of those choices has people who gain and people who lose by it. The table gives four cases where the choice of method moved the number more than the economy did.",
+        "Seven questions help when reading any official figure, and the second table lists them."
+      ],
+      "table": {"build": "measurement", "label": "Four places where the method moved the number"},
+      "table2": {"build": "readChecklist", "label": "Seven questions for any official number"},
+      "source": "MoSPI, 30 January 2015 and 28 November 2018; MoSPI press release, 15 November 2019; Business Standard, November 2019; Union Cabinet, 12 December 2025; Constitution (Forty-second Amendment) Act, 1976 and (Eighty-fourth Amendment) Act, 2001; Subramanian 2019.",
+      "from": ["measurement", "readChecklist"]
+    }
+  ]
+}

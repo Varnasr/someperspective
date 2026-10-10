@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Updates | Some Perspective</title>
 <meta name="description" content="Dated record of data refreshes, corrections and changes to Some Perspective.">
@@ -33,7 +36,7 @@ a:hover{text-decoration-thickness:2px}
 .top{display:grid;grid-template-columns:var(--seam) 1fr;border-bottom:2px solid var(--ink);align-items:center}
 .top>*{padding:.8rem clamp(.75rem,2.5vw,2rem)}
 .top .l{text-align:right}
-.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
 .top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
 .top nav a{text-decoration:none;padding:.3rem 0}
 .top nav a:hover{text-decoration:underline}
@@ -71,7 +74,8 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 @media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
 /* On a phone the page runs on plain paper; the split stays in the header bar,
    where a bordered panel would only leave two slivers of field at the edges. */
-@media (max-width:700px){body{background:var(--paper)}
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+body{background:var(--paper)}
 .top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
@@ -79,7 +83,7 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 
 </head>
 <body>
-<header class="top"><div class="l"><a class="name" href="/">Some Perspective</a></div>
+<header class="top"><div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
 <nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a></nav></header>
 <main class="wrap">
 <p class="crumb"><a href="./">Some Perspective</a> &rsaquo; Updates</p>
@@ -89,6 +93,11 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 <p class="rel"><a class="btn" href="feed.xml">Subscribe by RSS</a>
 &nbsp; <a href="analysis/">Browse the analysis library &rarr;</a></p>
 <div class="card">
+<span class="kicker">2026-10-10 &nbsp;·&nbsp; v2.54.0</span>
+<h2 style="margin-top:.3rem">The data pages, rebuilt and rechecked</h2>
+<p class="lede">Every page was fact-checked against its sources, the dashboard was rebuilt as generated pages in the site's design, and the scenario trajectory gave way to published forecasts.</p>
+<ul class="list" style="margin-top:.6rem"><li><strong>Changed:</strong> The data pages are rebuilt in the site's design. The 16-tab dashboard is replaced by one page per topic (growth and prices, work, income shares, democracy, official statistics, the Union and the states), a sortable states table, a two-series comparison, a primer and a sources page, all generated from data.json. Old dashboard links forward to the page that now holds the material.</li><li><strong>Changed:</strong> The 2030 trajectory scenarios are replaced by a page of published forecasts for 2026-27 and 2027-28 from the RBI, the World Bank, the OECD, the ADB and the IMF, each quoted from the publication. The site makes no forecast of its own.</li><li><strong>Changed:</strong> Every analysis page now carries charts of its own series and links to the topic page behind it. Analyses whose titles had changed get new addresses that match them; the old addresses forward.</li><li><strong>Changed:</strong> The site has a logo and a favicon: the page split drawn as a mark.</li><li><strong>Removed:</strong> The dashboard's three worker stories, which quoted named people with no interview record, and two methodology charts drawn from figures the indices do not compute.</li><li><strong>Fixed:</strong> GDP growth for 2023-24, 2024-25 and 2025-26 is 7.2, 7.1 and 7.7%, as MoSPI's releases of 27 February and 5 June 2026 give them. The site had 7.3, 7.2 and 7.8, the values MoSPI's data API returns. The NDA-period average is 6.20% (7.29% without 2020-21).</li><li><strong>Fixed:</strong> CPI inflation for 2025 is 2.4%, the change in the annual average index, the convention used for every other year. The NDA-period average is 4.82%.</li><li><strong>Fixed:</strong> The 2026-27 fiscal deficit (4.3%) and NITI's 2020-21 gig-worker figure (7.7 million) are a Budget Estimate and a projection. They are now drawn as hollow markers beside the observed series and left out of every average.</li><li><strong>Fixed:</strong> The paper: the 2026-27 deficit is below the earlier era's average; the current-account deficit was 0.6% of GDP in 2025-26; the services surplus about $217 billion; the CPI weights are MoSPI's (housing and utilities 17.67%, transport 8.80%, health 6.10%); the recruitment figures cover central government, 2014-15 to 2021-22; the April 2026 delimitation amendment that failed is recorded; the 2013-14 growth figure was later revised to 6.4%; and a robustness check on the RSF country count is added.</li><li><strong>Fixed:</strong> Sector shares use the 2022-23 national accounts base and PLFS 2025; the goods deficit and FPI outflow use the RBI balance of payments; states are grouped by zonal council.</li><li><strong>Fixed:</strong> The front page: the growth series joins two national-accounts bases (it had said three); RSF ranked 167 to 179 countries in the UPA years; the fiscal index is higher after 2014 because of GST and the 2020 borrowing conditions, while the measured ratios were slightly more centralised before.</li><li><strong>Fixed:</strong> The downloads: the share of workers in regular jobs with social security (10.1%) replaces a residual presented as a count of workers without cover; worked examples are labelled as made up; the policy brief no longer sets deadlines it did not model; the licence notice states that CC BY allows commercial use; the research package lists what its files contain and now includes the index code and the master dataset.</li><li><strong>Fixed:</strong> The care valuations name their sources, and the EPW range, which could not be traced to the article, is labelled as reported.</li></ul>
+</div><div class="card">
 <span class="kicker">2026-10-10 &nbsp;·&nbsp; v2.53.2</span>
 <h2 style="margin-top:.3rem">One rounding error and one old title</h2>
 <p class="lede">A check of every index average quoted across the site found one figure rounded the wrong way, and three pages still used an earlier title for the paper.</p>

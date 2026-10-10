@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
+<title>Sources and method: Some Perspective</title>
+<meta name="description" content="The publisher and table behind every series on the site, and how the three indices are built.">
+<meta name="author" content="Dr. Varna Sri Raman">
+<link rel="canonical" href="https://someperspective.info/explore/methods/">
+<meta property="og:title" content="Sources and method: Some Perspective">
+<meta property="og:description" content="The publisher and table behind every series on the site, and how the three indices are built.">
+<meta property="og:url" content="https://someperspective.info/explore/methods/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://someperspective.info/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+:root{--seam:43.4783%;
+--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;--muted:#50545e;
+--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--on-accent-2:#ffffff;
+--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#15171c;--surface-2:#1c1f25;
+--ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#a9adb8;--line:rgba(242,242,239,.16);
+--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--on-accent-2:#0c0d10;
+--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;color:var(--ink);
+background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
+var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%);
+font-variant-numeric:tabular-nums;overflow-x:clip}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:.5rem 1rem;z-index:10}
+.split{display:grid;grid-template-columns:var(--seam) 1fr}
+.split>.l{padding-right:clamp(.75rem,2.5vw,2rem);text-align:right}
+.split>.r{padding-left:clamp(.75rem,2.5vw,2rem)}
+.split>*{padding-left:clamp(.75rem,3vw,2.5rem);padding-right:clamp(.75rem,3vw,2.5rem)}
+.wide{font-stretch:125%}.narrow{font-stretch:75%}
+.top{border-bottom:2px solid var(--ink);align-items:center}
+.top .l,.top .r{padding-top:.8rem;padding-bottom:.8rem}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
+.top nav a{text-decoration:none;padding:.3rem 0}
+.top nav a:hover{text-decoration:underline}
+.eras .l,.eras .r{padding-top:clamp(2.5rem,7vw,5.5rem);padding-bottom:1.25rem}
+.yr{font-weight:900;font-stretch:75%;font-size:clamp(2.6rem,10vw,8.5rem);line-height:.86;letter-spacing:-.02em}
+.yr span{display:block}
+.who{margin-top:.9rem;font-size:clamp(.8rem,1.6vw,1rem);font-weight:600;line-height:1.3}
+.who b{display:block;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.06em;font-size:1.05em}
+.slab{background:var(--paper);border:2px solid var(--ink);width:min(46rem,calc(100% - 1.5rem));
+margin:2rem 0 2rem clamp(.75rem,calc(var(--seam) - 23rem),100%);padding:clamp(1.1rem,3vw,2rem)}
+.slab.flush{margin-top:0;margin-bottom:0}
+.kicker{font-size:.72rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase}
+h1{font-weight:850;font-stretch:87.5%;font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.02;letter-spacing:-.015em;margin:.6rem 0 1rem}
+h2{font-weight:800;font-stretch:87.5%;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.08;margin:.45rem 0 .8rem}
+h3{font-weight:800;font-stretch:87.5%;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.12;margin:.35rem 0 .7rem}
+p+p{margin-top:.9rem}
+.dek{font-size:1.1rem;color:var(--ink-soft)}
+.byline{margin-top:1.1rem;font-size:.85rem;color:var(--muted)}
+.count{display:flex;align-items:baseline;gap:.5rem;font-weight:900;font-stretch:75%;font-size:clamp(3.5rem,9vw,6rem);line-height:.9}
+.count small{font-size:.28em;font-weight:700;font-stretch:100%;line-height:1.2}
+.legend{font-size:.85rem;margin-top:.8rem;color:var(--ink-soft)}
+.sw{display:inline-block;width:1.6em;height:.7em;border:1.5px solid var(--ink);vertical-align:-.05em;margin-right:.35em}
+.sw.upa{background:var(--field-upa)}.sw.nda{background:var(--field-nda)}
+.m{border-top:2px solid var(--ink)}
+.m:last-child{border-bottom:2px solid var(--ink)}
+.m .split .l,.m .split .r{padding-top:.75rem}
+.m .lab{font-size:.78rem;font-weight:800;font-stretch:112.5%;text-transform:uppercase;letter-spacing:.06em;line-height:1.25}
+.m .v{font-weight:900;font-stretch:75%;font-size:clamp(2rem,6.4vw,4.6rem);line-height:.95;letter-spacing:-.01em;padding-bottom:.35rem}
+.m .v small{font-size:.38em;font-weight:700;margin-left:.08em}
+.tag{display:inline-block;font-size:.72rem;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.1em;
+border:2px solid var(--ink);padding:.12rem .45rem}
+.tag.worse{background:var(--ink);color:var(--paper)}
+.chart{position:relative;height:52px;margin:0}
+.chart.tall{height:clamp(190px,30vw,300px);margin:1.25rem 0 2.4rem}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart polyline,.chart .pt{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.chart:not(.tall) polyline{stroke-width:2.2}
+.chart .s-upa{stroke:var(--upa)}.chart .s-nda{stroke:var(--nda)}
+.chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
+.chart .m-upa{stroke:var(--upa)}.chart .m-nda{stroke:var(--nda)}
+.chart .s-est{stroke:var(--nda);stroke-width:2;stroke-dasharray:2 4;vector-effect:non-scaling-stroke}
+.chart .est{position:absolute;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border:2.5px solid var(--nda);background:var(--paper);border-radius:50%;box-sizing:border-box}
+.labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}
+.yt{position:absolute;left:.4rem;transform:translateY(-120%)}
+.xt{position:absolute;bottom:-1.5rem;transform:translateX(-50%)}.xt.first{transform:translateX(.4rem)}.xt.end{transform:translateX(calc(-100% - .4rem))}
+.src{font-size:.78rem;color:var(--muted);padding:0 clamp(.75rem,3vw,2.5rem) 0;margin-top:0;margin-bottom:2.5rem;
+width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
+.idx{display:grid;gap:1.25rem;grid-template-columns:1fr;margin-top:1rem}
+@media (min-width:760px){.idx{grid-template-columns:repeat(3,1fr)}}
+.idx .big{font-weight:900;font-stretch:75%;font-size:2.6rem;line-height:1}
+.idx .big small{font-size:.35em;font-weight:700;font-stretch:100%;margin-left:.2em}
+.idx p{font-size:.95rem}
+.more{display:grid;grid-template-columns:1fr;margin-top:1rem;border-top:2px solid var(--ink)}
+@media (min-width:640px){.more{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+.more a{display:block;padding:.8rem 0;border-bottom:1px solid var(--line);text-decoration:none}
+.more a strong{display:block;font-weight:800;font-stretch:112.5%}
+.more a span{display:block;font-size:.85rem;color:var(--muted)}
+.more a:hover strong{text-decoration:underline}
+.interest{border-left:6px solid var(--ink);padding-left:1rem;margin-top:.6rem}
+.foot{border-top:2px solid var(--ink);font-size:.8rem}
+.foot .l,.foot .r{padding-top:1.1rem;padding-bottom:2.5rem}
+.foot .note{margin-top:.6rem;color:var(--muted);max-width:40rem}
+@media (max-width:600px){body{font-size:1rem}.top nav{gap:.1rem .8rem;font-size:.8rem}.m .lab{font-size:.7rem}
+.src{width:auto;text-align:left}}
+/* On a phone the split stays only where it carries data (the era header, the
+   scorecard rows, the charts). Text runs on plain paper, edge to edge, because
+   a bordered panel at full width left two 12px slivers of field that meant
+   nothing. */
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+
+body{background:var(--paper)}
+.top,.eras,.m,.chart.tall{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.slab{border:0;border-top:2px solid var(--ink);width:auto;margin:0;padding:1.6rem 1rem 1.4rem}
+.chart.tall{height:220px;margin:0 0 1.9rem;border-top:2px solid var(--ink)}
+.src{background:var(--paper);margin:0;padding:.2rem 1rem 1.6rem;text-align:left;width:auto}
+.rows{border-bottom:2px solid var(--ink)}
+.idx{gap:0;border-top:2px solid var(--ink);margin-top:1.2rem}
+.idx>div{display:grid;grid-template-columns:5.6rem 1fr;column-gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.idx>div>.kicker,.idx>div>.big{grid-column:1}
+.idx>div>p:last-child{grid-column:2;grid-row:1/span 2;font-size:.9rem;line-height:1.45}
+.idx .big{font-size:1.9rem}
+.idx .big small{display:block;margin:.2rem 0 0;font-size:.62rem}
+.count{font-size:3.4rem}
+h1{font-size:1.85rem}
+.foot{background:var(--paper)}
+}
+@media print{.top nav,.more{display:none}body{background:none}.slab{border-width:1px}}
+
+.cards{display:grid;grid-template-columns:1fr;border-top:2px solid var(--ink);margin-top:1rem}
+@media (min-width:700px){.cards{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+.cards a{display:block;padding:.9rem 0 1rem;border-bottom:1px solid var(--line);text-decoration:none}
+.cards a strong{display:block;font-weight:800;font-stretch:112.5%;font-size:1.05rem}
+.cards a span{display:block;font-size:.88rem;color:var(--muted);margin-top:.15rem}
+.cards a:hover strong{text-decoration:underline}
+.series h2{font-size:clamp(1.25rem,2.6vw,1.6rem)}
+.stat{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin:.6rem 0 .2rem;font-size:.92rem}
+.stat b{font-weight:900;font-stretch:75%;font-size:1.9rem;line-height:1;display:block}
+.stat div{min-width:7rem}
+details.about{margin-top:.8rem;font-size:.86rem;color:var(--ink-soft)}
+details.about summary{cursor:pointer;font-weight:700;color:var(--ink)}
+details.about p{margin-top:.5rem}
+.tw{overflow-x:auto;margin-top:1rem}
+table.data{border-collapse:collapse;width:100%;font-size:.86rem;font-variant-numeric:tabular-nums}
+table.data th,table.data td{text-align:right;padding:.4rem .5rem;border-bottom:1px solid var(--line);white-space:nowrap}
+table.data th:first-child,table.data td:first-child{text-align:left;white-space:normal;min-width:11rem}
+table.data thead button{all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:.2em}
+table.data thead th{font-size:.7rem;font-weight:800;font-stretch:112.5%;letter-spacing:.06em;text-transform:uppercase;
+border-bottom:2px solid var(--ink);color:var(--ink)}
+table.data td.na{color:var(--muted)}
+.crumb{font-size:.8rem;color:var(--muted);margin-bottom:.8rem}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:800;font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(--ink)}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.nav{font-size:.88rem;display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+.note{font-size:.85rem;color:var(--muted)}
+.crumb a{color:var(--ink-soft);font-weight:700}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top split">
+<div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
+<nav class="r" aria-label="Site" data-dyslexia-slot>
+<a href="/">Overview</a><a href="/explore/">Data</a><a href="/analysis/">Analyses</a>
+<a href="/downloads/paper.html">Paper</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a>
+</nav>
+</header>
+<main id="main">
+<style>.src h3{margin-top:1.2rem}.src p{font-size:.92rem;color:var(--ink-soft)}</style><div class="slab" id="cite-download"><p class="crumb"><a href="/explore/">Data</a> &rsaquo; Sources and method</p><p class="kicker">Sources and method</p><h1>Where every number comes from</h1><p class="dek">Each series names its publisher and the table it was read from. The three indices are computed by one script, data/compute_indices.py, for every year from 2004 to 2026, and the replication code reproduces the scorecard from the published dataset.</p><p><strong>Cite this work.</strong> Raman, V.S. (2026). Some Perspective: India's Political Economy, 2004-2026. someperspective.info. Data and analysis CC BY 4.0.</p><div class="cards"><a href="/downloads/methodology.html"><strong>Methodology</strong><span>How each series and index is built.</span></a><a href="/downloads/technical-appendix.html"><strong>Technical appendix</strong><span>Index construction, robustness tests and full result tables.</span></a><a href="/downloads/paper.html"><strong>The working paper</strong><span>Growth Without Accountability, with a PDF.</span></a><a href="/downloads/research-package.html"><strong>Research package</strong><span>The dataset as CSV and Excel, the replication code and the briefs.</span></a><a href="/data.json"><strong>data.json</strong><span>The site&#x27;s source of truth, every series and every source note.</span></a><a href="/data/SP_masterdataset.csv"><strong>Master dataset</strong><span>One row per year, every column the scorecard and the indices use.</span></a></div></div><div class="slab"><h2>The source of each series</h2><div class="src"><h3>Real GDP growth</h3><p>Real GDP growth, MoSPI national accounts. Year Y is the fiscal year that starts in April of Y (2014 = 2014-15), the same convention as the World Bank series used for 2004-2013. 2014-2022: the latest MoSPI estimates on the 2011-12 base (2017-18 6.8, 2018-19 6.5, 2019-20 3.9, 2020-21 -5.8, 2021-22 9.7, 2022-23 7.6). 2023-2025: the new series on base 2022-23. MoSPI&#x27;s release of 27 February 2026 gives 2023-24 7.2 and 2024-25 7.1; the Provisional Estimates of 5 June 2026 give 2025-26 7.7 (7.8% was the fourth quarter alone). MoSPI&#x27;s API returned 7.3, 7.2 and 7.8 for the same years and is not used; on the old base 2023-24 had been 9.2 and 2024-25 6.5. BASIS BREAK at 2023. 2026 (2026-27) is empty: the first annual estimate is due in January 2027. Quarterly growth for April to June 2026 was 7.8%. The World Bank series for 2004-2013 is on the 2011-12 base.</p></div><div class="src"><h3>Consumer price inflation</h3><p>MoSPI CPI (Combined), calendar-year change in the average index, the World Bank convention (FP.CPI.TOTL.ZG) used for 2004-2013. 2014-2025 on base 2012=100; 2025 is 2.4 on this convention (the mean of the twelve monthly year-on-year prints is 2.2). 2026: the average of the monthly year-on-year prints, because no annual index exists yet published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from the years before it. RBI target band 2-6%.</p></div><div class="src"><h3>Union fiscal deficit, share of GDP</h3><p>Union Budget documents; central government fiscal deficit as % of GDP, for the fiscal year starting in the year shown (2014 = 2014-15). 2025 is the provisional actual for 2025-26 released by the Controller General of Accounts on 1 June 2026 (Rs 15,19,169 crore, 4.4% of GDP); 2026 has no outturn yet. The Budget Estimate for 2026-27 (4.3, Union Budget of 1 February 2026) is held in the estimates block and drawn as a hollow marker; no average uses it.</p></div><div class="src"><h3>Rupees per US dollar</h3><p>Calendar-year average rupees per US dollar: the mean of the monthly averages in the Federal Reserve&#x27;s H.10 release (FRED series EXINUS), rounded to the nearest rupee. 2026 is January to September (93.9, shown as 94); 2025 averages 87.2. The record low of 96.8 is the Fed&#x27;s daily rate for 20 May 2026 (DEXINUS 96.82).</p></div><div class="src"><h3>Unemployment rate, ages 15 and over</h3><p>2015: Labour Bureau, Fifth Annual Employment-Unemployment Survey (2015-16), usual principal status, 5.0. 2014 and 2016 are empty: the Labour Bureau published no survey for 2014-15 or 2016-17, and its 2013-14 survey (4.9) belongs to an earlier year. The Labour Bureau series is a different survey from PLFS. 2017-2025: annual rates on usual status (ps+ss). From 2017 a year is the PLFS survey year that starts in July of it (2017 = 2017-18), through 2023 (2023-24); 2024 and 2025 are MoSPI&#x27;s calendar-year rates. 2026: the average of the 8 PLFS Monthly Bulletins published for 2026 (January to August 2026: January 5, February 4.9, March 5.1, April 5.2, May 5.5, June 5.5, July 5.1, August 5), all-India, persons 15+, rural + urban. BASIS BREAK: the monthly bulletins report current weekly status (CWS), which counts a person as unemployed on the past week&#x27;s activity and runs well above usual status. The 2026 value is therefore a different measure from the years before it, and most of the rise from 3.1 per cent in 2025 is the change of measure. On the same weekly measure MoSPI&#x27;s calendar-year rate for 2025 was 5.3 per cent.</p></div><div class="src"><h3>Youth unemployment rate, ages 15 to 29</h3><p>MoSPI PLFS, usual status (ps+ss), persons aged 15-29, all-India, rural + urban, from api.mospi.gov.in (retrieved 10 October 2026). 2017-2023 are the PLFS survey years starting in July of the year shown (2017 = 2017-18); 2024 and 2025 are MoSPI&#x27;s calendar-year rates. 2014-2016 are left empty because PLFS began in 2017-18 and no comparable published figure exists. 2026 is left empty until an annual figure is published: the 2026 monthly bulletins average 15.4% for January to August, but they report current weekly status, which runs well above usual status.</p></div><div class="src"><h3>Unemployment among graduates</h3><p>MoSPI PLFS, usual status (ps+ss), persons aged 15 and over with a graduate degree, all-India, rural + urban, from api.mospi.gov.in (retrieved 10 October 2026). 2017-2023 are the PLFS survey years starting in July of the year shown (2017 = 2017-18). MoSPI publishes no figure for graduates for 2014-2016 (before PLFS) or for 2024 onward yet, so those years are left empty.</p></div><div class="src"><h3>Women&#x27;s labour force participation, ages 15 and over</h3><p>MoSPI PLFS, labour force participation rate, usual status (ps+ss), women aged 15 and over, all-India, rural + urban, from api.mospi.gov.in (retrieved 10 October 2026). 2017-2023 are the PLFS survey years starting in July of the year shown (2017 = 2017-18); 2024 and 2025 are MoSPI&#x27;s calendar-year rates. 2014-2016 are left empty because PLFS began in 2017-18, and 2026 until an annual figure is published. PLFS counts a woman who helps without pay in a household enterprise as a worker.</p></div><div class="src"><h3>Workers in regular jobs with social security</h3><p>Derived from MoSPI PLFS published tables (api.mospi.gov.in, retrieved 10 October 2026), usual status (ps+ss), all-India, persons: the share of regular wage/salaried workers among all workers, multiplied by the share of regular wage/salaried employees with any social security benefit (100 minus the published share without any). 2017-18: 22.8% x 50.4% = 11.5; 2018-19: 23.8 x 48.1 = 11.4; 2019-20: 22.9 x 45.8 = 10.5; 2020-21: 21.1 x 46.2 = 9.7; 2021-22: 21.5 x 47.0 = 10.1; 2022-23: 20.9 x 46.1 = 9.6; 2023-24: 21.7 x 46.6 = 10.1. The social security table covers regular wage/salaried employees in the non-agricultural sector; regular wage work in agriculture is about 1% of workers. Years are PLFS survey years starting in July of the year shown. 2014-2016 (before PLFS) and 2024 onward (no annual table yet) are left empty.</p></div><div class="src"><h3>Workers without a regular job and social security</h3><p>100 minus formalEmployment, for the years formalEmployment has a value.</p></div><div class="src"><h3>Gig and platform workers, millions</h3><p>NITI Aayog, India&#x27;s Booming Gig and Platform Economy (June 2022), Table 14, gig workers in millions, usual principal and subsidiary status. 2017-2019 are NITI&#x27;s actual estimates for the PLFS survey years starting in July of the year shown (2017-18 5.3, 2018-19 5.4, 2019-20 6.8). NITI&#x27;s table labels 2020-21 (7.7 million) a projection, though the Ministry of Labour cites it as the current estimate, so it is held in the estimates block with the 2025-26 projection (14.3 million) and drawn as hollow markers. 23.5 million for 2029-30 is outside the site&#x27;s range. NITI gives no figure for 2014-2016. NITI&#x27;s 2011-12 estimate is 2.5 million.</p></div><div class="src"><h3>Income share of the top 1%</h3><p>World Inequality Lab: Bharti, Chancel, Piketty and Somanchi (2024), &#x27;Income and Wealth Inequality in India, 1922-2023&#x27;, WIL Working Paper 2024/09, Statistical Appendix, table of per-adult pre-tax national income shares, 1951-2022. The series ends at 2022 (2022-23); 2023-2026 are empty because no annual figure has been published for them. Top 1% share.</p></div><div class="src"><h3>Income share of the bottom 50%</h3><p>World Inequality Lab: Bharti, Chancel, Piketty and Somanchi (2024), &#x27;Income and Wealth Inequality in India, 1922-2023&#x27;, WIL Working Paper 2024/09, Statistical Appendix, table of per-adult pre-tax national income shares, 1951-2022. The series ends at 2022 (2022-23); 2023-2026 are empty because no annual figure has been published for them. Bottom 50% share. The share fell to 13.9 in 2017, rose to 15.5 in 2020 and stood at 15.0 in 2022.</p></div><div class="src"><h3>Real growth in rural household income</h3><p>NABARD All India Rural Financial Inclusion Survey (NAFIS), average monthly income of rural households: Rs 8,059 in 2016-17 and Rs 12,698 in 2021-22, a nominal rise of 57.6%. Deflated by MoSPI&#x27;s CPI-Rural (base 2012=100; fiscal-year averages 132.43 and 164.53, a rise of 24.2%), the real rise is 26.8%, about 4.9% a year. Indexed 2016-17 = 100, so 2016 = 100 and 2021 = 126.8. NAFIS has two rounds only; every other year is left empty. The same survey found the share of rural households with outstanding debt rose from 47.4% to 52%.</p></div><div class="src"><h3>Press freedom rank, of 180 (1 is best)</h3><p>Reporters Without Borders, World Press Freedom Index (annual). RSF published a single 2011-12 index; its rank (131) is shown for both 2011 and 2012. RSF ranked 167 to 179 countries in 2004-2013 and 180 since.</p></div><div class="src"><h3>Statistical Suppression Index, 0 to 10</h3><p>Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py</p></div><div class="src"><h3>Fiscal Centralisation Index, 0 to 1</h3><p>Constructed: mean of six components on a relative 0-1 scale. Four are published fiscal ratios, min-max normalised over the years each is published: the cess and surcharge share of gross tax revenue (15th Finance Commission Table 3.8 for 2011-2018; Union Receipt Budgets for 2019-2026), tax devolution as a share of gross tax revenue (16th Finance Commission Annexure 7.1; Budget at a Glance 2026-27), states&#x27; own revenue as a share of their revenue receipts (RBI Handbook 2025-26 Table 94) and non-Finance-Commission grants as a share of Union transfers (16th Finance Commission Annexure 7.1). Two are coded: GST from 2017 and the reform-linked borrowing conditions of 2020-21. Rebuilt from these published figures on 10 October 2026; see data/compute_indices.py</p></div><div class="src"><h3>Democratic Quality Index, 0 to 1</h3><p>Constructed: geometric mean of V-Dem Liberal Democracy Index (v2x_libdem) × (Freedom House/100) × ((180-RSF rank)/180) × V-Dem Core Civil Society Index (v2xcs_ccsi); see data/compute_indices.py. The two V-Dem columns are the published series verbatim; earlier approximations that overstated the pre-2014 baseline were corrected on 15 August 2026.</p></div></div>
+</main>
+<footer class="foot split">
+<div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
+<div class="r"><p><a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
+<p class="note">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
+</footer>
+<script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
+</body>
+</html>

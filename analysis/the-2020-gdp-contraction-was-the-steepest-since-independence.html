@@ -2,100 +2,189 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The 2020 GDP contraction was the steepest since independence | Some Perspective</title>
-<meta name="description" content="The recovery showed up in GDP and did not show up in employment.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
+<title>The 2020 GDP contraction was the steepest since independence: Some Perspective</title>
+<meta name="description" content="The recovery added jobs, and most of them were self-employment and unpaid family work. The share of workers in formal jobs did not return to its 2017-18 level.">
+<meta name="author" content="Dr. Varna Sri Raman">
 <link rel="canonical" href="https://someperspective.info/analysis/the-2020-gdp-contraction-was-the-steepest-since-independence.html">
-<meta property="og:title" content="The 2020 GDP contraction was the steepest since independence | Some Perspective">
-<meta property="og:description" content="The recovery showed up in GDP and did not show up in employment.">
+<meta property="og:title" content="The 2020 GDP contraction was the steepest since independence: Some Perspective">
+<meta property="og:description" content="The recovery added jobs, and most of them were self-employment and unpaid family work. The share of workers in formal jobs did not return to its 2017-18 level.">
 <meta property="og:url" content="https://someperspective.info/analysis/the-2020-gdp-contraction-was-the-steepest-since-independence.html">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:image" content="https://someperspective.info/og-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="https://someperspective.info/feed.xml">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;
---muted:#50545e;--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef;}
+:root{--seam:43.4783%;
+--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;--muted:#50545e;
+--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--on-accent-2:#ffffff;
+--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef}
 @media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#15171c;--surface-2:#1c1f25;
 --ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#a9adb8;--line:rgba(242,242,239,.16);
---accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630;}}
+--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--on-accent-2:#0c0d10;
+--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630}}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--seam:43.4783%}
 html{-webkit-text-size-adjust:100%}
-body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;color:var(--ink);line-height:1.6;font-size:1.0625rem;
+body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;color:var(--ink);
 background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
 var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%);
-padding:0 0 4rem;overflow-x:clip}
-a{color:var(--ink);text-underline-offset:.18em;text-decoration-thickness:1px}
+font-variant-numeric:tabular-nums;overflow-x:clip}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.top{display:grid;grid-template-columns:var(--seam) 1fr;border-bottom:2px solid var(--ink);align-items:center}
-.top>*{padding:.8rem clamp(.75rem,2.5vw,2rem)}
-.top .l{text-align:right}
-.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:.5rem 1rem;z-index:10}
+.split{display:grid;grid-template-columns:var(--seam) 1fr}
+.split>.l{padding-right:clamp(.75rem,2.5vw,2rem);text-align:right}
+.split>.r{padding-left:clamp(.75rem,2.5vw,2rem)}
+.split>*{padding-left:clamp(.75rem,3vw,2.5rem);padding-right:clamp(.75rem,3vw,2.5rem)}
+.wide{font-stretch:125%}.narrow{font-stretch:75%}
+.top{border-bottom:2px solid var(--ink);align-items:center}
+.top .l,.top .r{padding-top:.8rem;padding-bottom:.8rem}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
 .top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
 .top nav a{text-decoration:none;padding:.3rem 0}
 .top nav a:hover{text-decoration:underline}
-.wrap{background:var(--paper);border:2px solid var(--ink);width:min(48rem,calc(100% - 1.5rem));
-margin:2.5rem 0 0 clamp(.75rem,calc(var(--seam) - 24rem),100%);padding:clamp(1.2rem,3.5vw,2.4rem)}
-.crumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem}
-.crumb a{font-weight:700;color:var(--ink-soft)}
-.kicker{font-size:.72rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-h1{font-weight:850;font-stretch:87.5%;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.04;letter-spacing:-.01em;margin:.5rem 0 1rem}
-h2{font-weight:800;font-stretch:87.5%;font-size:1.45rem;line-height:1.12;margin:2.2rem 0 .7rem}
-h3{font-weight:800;font-stretch:87.5%;font-size:1.15rem;margin:1.5rem 0 .5rem}
-p+p{margin-top:.85rem}
-.card{background:var(--surface);border:2px solid var(--ink);padding:1.3rem;margin:1.3rem 0}
-.lede{font-size:1.1rem;color:var(--ink-soft)}
-.takeaway{border-left:6px solid var(--ink);background:var(--surface-2);padding:1rem 1.2rem;margin:1.4rem 0;font-weight:700;color:var(--ink)}
-.meta{font-size:.8rem;color:var(--muted);margin-top:2rem;border-top:2px solid var(--ink);padding-top:1rem}
-.meta a{color:var(--ink-soft)}
-.tag{display:inline-block;font-size:.7rem;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.08em;
-background:var(--surface);border:2px solid var(--ink);color:var(--ink);padding:.15rem .5rem}
-.tag a{text-decoration:none}
-/* A tag that wraps a link is a navigation control, so on touch it needs a real
-   target rather than the 13px the pill height gives it. */
-@media (pointer:coarse){.tag:has(a){padding:0}.tag a{display:block;min-height:44px;line-height:44px;padding:0 .55rem}}
-ul.list{list-style:none;margin:1rem 0;border-top:2px solid var(--ink)}
-ul.list li{border-bottom:1px solid var(--line);padding:.9rem 0}
-ul.list a{font-weight:800;font-stretch:112.5%;text-decoration:none;font-size:1.02rem}
-ul.list a:hover{text-decoration:underline}
-ul.list p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
-.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:800;
-font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(--ink)}
+.eras .l,.eras .r{padding-top:clamp(2.5rem,7vw,5.5rem);padding-bottom:1.25rem}
+.yr{font-weight:900;font-stretch:75%;font-size:clamp(2.6rem,10vw,8.5rem);line-height:.86;letter-spacing:-.02em}
+.yr span{display:block}
+.who{margin-top:.9rem;font-size:clamp(.8rem,1.6vw,1rem);font-weight:600;line-height:1.3}
+.who b{display:block;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.06em;font-size:1.05em}
+.slab{background:var(--paper);border:2px solid var(--ink);width:min(46rem,calc(100% - 1.5rem));
+margin:2rem 0 2rem clamp(.75rem,calc(var(--seam) - 23rem),100%);padding:clamp(1.1rem,3vw,2rem)}
+.slab.flush{margin-top:0;margin-bottom:0}
+.kicker{font-size:.72rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase}
+h1{font-weight:850;font-stretch:87.5%;font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.02;letter-spacing:-.015em;margin:.6rem 0 1rem}
+h2{font-weight:800;font-stretch:87.5%;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.08;margin:.45rem 0 .8rem}
+h3{font-weight:800;font-stretch:87.5%;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.12;margin:.35rem 0 .7rem}
+p+p{margin-top:.9rem}
+.dek{font-size:1.1rem;color:var(--ink-soft)}
+.byline{margin-top:1.1rem;font-size:.85rem;color:var(--muted)}
+.count{display:flex;align-items:baseline;gap:.5rem;font-weight:900;font-stretch:75%;font-size:clamp(3.5rem,9vw,6rem);line-height:.9}
+.count small{font-size:.28em;font-weight:700;font-stretch:100%;line-height:1.2}
+.legend{font-size:.85rem;margin-top:.8rem;color:var(--ink-soft)}
+.sw{display:inline-block;width:1.6em;height:.7em;border:1.5px solid var(--ink);vertical-align:-.05em;margin-right:.35em}
+.sw.upa{background:var(--field-upa)}.sw.nda{background:var(--field-nda)}
+.m{border-top:2px solid var(--ink)}
+.m:last-child{border-bottom:2px solid var(--ink)}
+.m .split .l,.m .split .r{padding-top:.75rem}
+.m .lab{font-size:.78rem;font-weight:800;font-stretch:112.5%;text-transform:uppercase;letter-spacing:.06em;line-height:1.25}
+.m .v{font-weight:900;font-stretch:75%;font-size:clamp(2rem,6.4vw,4.6rem);line-height:.95;letter-spacing:-.01em;padding-bottom:.35rem}
+.m .v small{font-size:.38em;font-weight:700;margin-left:.08em}
+.tag{display:inline-block;font-size:.72rem;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.1em;
+border:2px solid var(--ink);padding:.12rem .45rem}
+.tag.worse{background:var(--ink);color:var(--paper)}
+.chart{position:relative;height:52px;margin:0}
+.chart.tall{height:clamp(190px,30vw,300px);margin:1.25rem 0 2.4rem}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart polyline,.chart .pt{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.chart:not(.tall) polyline{stroke-width:2.2}
+.chart .s-upa{stroke:var(--upa)}.chart .s-nda{stroke:var(--nda)}
+.chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
+.chart .m-upa{stroke:var(--upa)}.chart .m-nda{stroke:var(--nda)}
+.chart .s-est{stroke:var(--nda);stroke-width:2;stroke-dasharray:2 4;vector-effect:non-scaling-stroke}
+.chart .est{position:absolute;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border:2.5px solid var(--nda);background:var(--paper);border-radius:50%;box-sizing:border-box}
+.labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}
+.yt{position:absolute;left:.4rem;transform:translateY(-120%)}
+.xt{position:absolute;bottom:-1.5rem;transform:translateX(-50%)}.xt.first{transform:translateX(.4rem)}.xt.end{transform:translateX(calc(-100% - .4rem))}
+.src{font-size:.78rem;color:var(--muted);padding:0 clamp(.75rem,3vw,2.5rem) 0;margin-top:0;margin-bottom:2.5rem;
+width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
+.idx{display:grid;gap:1.25rem;grid-template-columns:1fr;margin-top:1rem}
+@media (min-width:760px){.idx{grid-template-columns:repeat(3,1fr)}}
+.idx .big{font-weight:900;font-stretch:75%;font-size:2.6rem;line-height:1}
+.idx .big small{font-size:.35em;font-weight:700;font-stretch:100%;margin-left:.2em}
+.idx p{font-size:.95rem}
+.more{display:grid;grid-template-columns:1fr;margin-top:1rem;border-top:2px solid var(--ink)}
+@media (min-width:640px){.more{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+.more a{display:block;padding:.8rem 0;border-bottom:1px solid var(--line);text-decoration:none}
+.more a strong{display:block;font-weight:800;font-stretch:112.5%}
+.more a span{display:block;font-size:.85rem;color:var(--muted)}
+.more a:hover strong{text-decoration:underline}
+.interest{border-left:6px solid var(--ink);padding-left:1rem;margin-top:.6rem}
+.foot{border-top:2px solid var(--ink);font-size:.8rem}
+.foot .l,.foot .r{padding-top:1.1rem;padding-bottom:2.5rem}
+.foot .note{margin-top:.6rem;color:var(--muted);max-width:40rem}
+@media (max-width:600px){body{font-size:1rem}.top nav{gap:.1rem .8rem;font-size:.8rem}.m .lab{font-size:.7rem}
+.src{width:auto;text-align:left}}
+/* On a phone the split stays only where it carries data (the era header, the
+   scorecard rows, the charts). Text runs on plain paper, edge to edge, because
+   a bordered panel at full width left two 12px slivers of field that meant
+   nothing. */
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+
+body{background:var(--paper)}
+.top,.eras,.m,.chart.tall{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.slab{border:0;border-top:2px solid var(--ink);width:auto;margin:0;padding:1.6rem 1rem 1.4rem}
+.chart.tall{height:220px;margin:0 0 1.9rem;border-top:2px solid var(--ink)}
+.src{background:var(--paper);margin:0;padding:.2rem 1rem 1.6rem;text-align:left;width:auto}
+.rows{border-bottom:2px solid var(--ink)}
+.idx{gap:0;border-top:2px solid var(--ink);margin-top:1.2rem}
+.idx>div{display:grid;grid-template-columns:5.6rem 1fr;column-gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.idx>div>.kicker,.idx>div>.big{grid-column:1}
+.idx>div>p:last-child{grid-column:2;grid-row:1/span 2;font-size:.9rem;line-height:1.45}
+.idx .big{font-size:1.9rem}
+.idx .big small{display:block;margin:.2rem 0 0;font-size:.62rem}
+.count{font-size:3.4rem}
+h1{font-size:1.85rem}
+.foot{background:var(--paper)}
+}
+@media print{.top nav,.more{display:none}body{background:none}.slab{border-width:1px}}
+
+.cards{display:grid;grid-template-columns:1fr;border-top:2px solid var(--ink);margin-top:1rem}
+@media (min-width:700px){.cards{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+.cards a{display:block;padding:.9rem 0 1rem;border-bottom:1px solid var(--line);text-decoration:none}
+.cards a strong{display:block;font-weight:800;font-stretch:112.5%;font-size:1.05rem}
+.cards a span{display:block;font-size:.88rem;color:var(--muted);margin-top:.15rem}
+.cards a:hover strong{text-decoration:underline}
+.series h2{font-size:clamp(1.25rem,2.6vw,1.6rem)}
+.stat{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin:.6rem 0 .2rem;font-size:.92rem}
+.stat b{font-weight:900;font-stretch:75%;font-size:1.9rem;line-height:1;display:block}
+.stat div{min-width:7rem}
+details.about{margin-top:.8rem;font-size:.86rem;color:var(--ink-soft)}
+details.about summary{cursor:pointer;font-weight:700;color:var(--ink)}
+details.about p{margin-top:.5rem}
+.tw{overflow-x:auto;margin-top:1rem}
+table.data{border-collapse:collapse;width:100%;font-size:.86rem;font-variant-numeric:tabular-nums}
+table.data th,table.data td{text-align:right;padding:.4rem .5rem;border-bottom:1px solid var(--line);white-space:nowrap}
+table.data th:first-child,table.data td:first-child{text-align:left;white-space:normal;min-width:11rem}
+table.data thead button{all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:.2em}
+table.data thead th{font-size:.7rem;font-weight:800;font-stretch:112.5%;letter-spacing:.06em;text-transform:uppercase;
+border-bottom:2px solid var(--ink);color:var(--ink)}
+table.data td.na{color:var(--muted)}
+.crumb{font-size:.8rem;color:var(--muted);margin-bottom:.8rem}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:800;font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(--ink)}
 .btn:hover{background:var(--paper);color:var(--ink)}
-.rel{font-size:.85rem}
-table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
-th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
-@media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
-/* On a phone the page runs on plain paper; the split stays in the header bar,
-   where a bordered panel would only leave two slivers of field at the edges. */
-@media (max-width:700px){body{background:var(--paper)}
-.top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
-.wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
-@media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
+.nav{font-size:.88rem;display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+.note{font-size:.85rem;color:var(--muted)}
+.crumb a{color:var(--ink-soft);font-weight:700}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The 2020 GDP contraction was the steepest since independence", "description": "The recovery showed up in GDP and did not show up in employment.", "author": {"@type": "Person", "name": "Dr. Varna Sri Raman"}, "isPartOf": {"@type": "Dataset", "name": "Some Perspective dataset", "url": "https://someperspective.info/data.json"}, "url": "https://someperspective.info/analysis/the-2020-gdp-contraction-was-the-steepest-since-independence.html", "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The 2020 GDP contraction was the steepest since independence", "description": "The recovery added jobs, and most of them were self-employment and unpaid family work. The share of workers in formal jobs did not return to its 2017-18 level.", "author": {"@type": "Person", "name": "Dr. Varna Sri Raman"}, "isPartOf": {"@type": "Dataset", "name": "Some Perspective dataset", "url": "https://someperspective.info/data.json"}, "url": "https://someperspective.info/analysis/the-2020-gdp-contraction-was-the-steepest-since-independence.html", "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
 </head>
 <body>
-<header class="top"><div class="l"><a class="name" href="/">Some Perspective</a></div>
-<nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a></nav></header>
-<main class="wrap">
-<p class="crumb"><a href="../">Some Perspective</a> &rsaquo; <a href="./">Analysis</a></p>
-<span class="kicker">Growth</span>
-<h1>The 2020 GDP contraction was the steepest since independence</h1>
-<p class="lede">GDP shrank 5.8% in 2020-21 (April 2020 to March 2021, MoSPI's latest estimate on the 2011-12 base), the largest annual contraction since independence. The previous largest was 5.2% in 1979-80. Growth rebounded to 9.7% in 2021-22, and formal employment did not follow it. The ILO-IHD India Employment Report 2024 finds that nearly two thirds of the incremental employment after 2019 comprised self-employed workers, most of them unpaid family workers, who are mainly women. NITI Aayog puts the number of gig workers at 7.7 million in 2020-21.</p>
-<div class="takeaway">The recovery showed up in GDP and did not show up in employment.</div>
-<p><a class="btn" href="../explore/#interactive-data">Explore this in the live data &rarr;</a></p>
-<h2>About this reading</h2>
-<p class="rel">This is one of 37 standing analyses drawn from the Some Perspective dataset.
-It carries no date. It describes a relationship in the data that holds across the series, and it
-is regenerated whenever the underlying dataset is refreshed. The figures quoted here reflect the
-<strong>2026-10-10</strong> data vintage.</p>
-<p class="meta"><a href="informal-employment-share-crossed-89.html">&larr; Nine in ten Indian workers have no social-securi&hellip;</a> &nbsp;·&nbsp; <a href="india-is-now-the-worst-ranked-of-its-peer.html">India and Turkey rank lowest of the peer democra&hellip; &rarr;</a><br><br>
-Raman, V.S. Some Perspective: India's Political Economy, 2004-2026. someperspective.info · CC BY 4.0 ·
-data vintage 2026-10-10. <a href="../explore/#cite-download">Cite &amp; download</a> ·
-<a href="./">All analyses</a></p></main>
-<script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
-</body></html>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top split">
+<div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
+<nav class="r" aria-label="Site" data-dyslexia-slot>
+<a href="/">Overview</a><a href="/explore/">Data</a><a href="/analysis/">Analyses</a>
+<a href="/downloads/paper.html">Paper</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a>
+</nav>
+</header>
+<main id="main">
+<div class="slab"><p class="crumb"><a href="/analysis/">Analyses</a> &rsaquo; Growth</p><p class="kicker">Growth</p><h1>The 2020 GDP contraction was the steepest since independence</h1><p class="dek">GDP shrank 5.8% in 2020-21 (April 2020 to March 2021, MoSPI&#x27;s latest estimate on the 2011-12 base), the largest annual contraction since independence. The previous largest was 5.2% in 1979-80. Growth rebounded to 9.7% in 2021-22, and the share of formal jobs did not follow it. The ILO-IHD India Employment Report 2024 finds that nearly two thirds of the incremental employment after 2019 comprised self-employed workers, most of them unpaid family workers, who are mainly women. NITI Aayog puts the number of gig workers at 7.7 million in 2020-21.</p><p><strong>What follows.</strong> The recovery added jobs, and most of them were self-employment and unpaid family work. The share of workers in formal jobs did not return to its 2017-18 level.</p><p><a class="btn" href="/explore/economy/">The data behind this reading</a></p></div><section class="series"><div class="slab"><h2>Real GDP growth</h2><p>2004-2013 average 6.8%; 2014-2026 average 6.2%; latest 7.7% in 2025. <a href="/explore/economy/#gdpGrowth">Source, method and every year</a>.</p></div><div class="chart tall" role="img" aria-label="Real GDP growth. 2004-2013 average 6.8%; 2014-2026 average 6.2%; latest 7.7% in 2025."><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><line x1="0" x2="100" y1="100.00" y2="100.00" class="grid"/><line x1="0" x2="100" y1="75.00" y2="75.00" class="grid"/><line x1="0" x2="100" y1="50.00" y2="50.00" class="grid"/><line x1="0" x2="100" y1="25.00" y2="25.00" class="grid"/><line x1="0" x2="100" y1="0.00" y2="0.00" class="grid"/><polyline points="2.17,10.50 6.52,10.50 10.87,9.50 15.22,11.50 19.57,34.50 23.91,10.50 28.26,7.50 32.61,24.00 36.96,22.50 41.30,18.00" class="s-upa"/><polyline points="45.65,13.00 50.00,10.00 54.35,8.50 58.70,16.00 63.04,17.50 67.39,30.50 71.74,79.00 76.09,1.50 80.43,12.00 84.78,14.00 89.13,14.50 93.48,11.50" class="s-nda"/><line x1="0" x2="43.48" y1="15.90" y2="15.90" class="m-upa"/><line x1="43.48" x2="100" y1="19.00" y2="19.00" class="m-nda"/></svg><div class="labels" aria-hidden="true"><span class="yt" style="top:100.00%">−10</span><span class="yt" style="top:75.00%">−5</span><span class="yt" style="top:50.00%">0</span><span class="yt" style="top:25.00%">5</span><span class="yt" style="top:0.00%">10</span><span class="xt first" style="left:0.00%">2004</span><span class="xt" style="left:19.57%">2008</span><span class="xt end" style="left:43.48%">2013</span><span class="xt first" style="left:43.48%">2014</span><span class="xt" style="left:71.74%">2020</span><span class="xt end" style="left:100.00%">2026</span></div></div></section><div class="slab"><p class="note">One of 37 readings of the dataset, rebuilt whenever the data are refreshed. Data vintage 2026-10-10. Cite as Raman, V.S., Some Perspective: India's Political Economy, 2004-2026, someperspective.info, CC BY 4.0.</p><p class="nav"><a href="nine-in-ten-workers-outside-regular-jobs-with-social-security.html">&larr; Nine in ten Indian workers are outside regular jobs with social security</a> &middot; <a href="india-and-turkey-rank-lowest-of-five-peers-on-press-freedom.html">India and Turkey rank lowest of the five peer countries on press freedom &rarr;</a></p></div>
+</main>
+<footer class="foot split">
+<div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
+<div class="r"><p><a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
+<p class="note">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
+</footer>
+<script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
+</body>
+</html>

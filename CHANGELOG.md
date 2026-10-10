@@ -10,6 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.54.0] - 2026-10-10
+
+### Changed
+- The data pages are rebuilt in the site's design. The 16-tab dashboard is replaced by one page per topic (growth and prices, work, income shares, democracy, official statistics, the Union and the states), a sortable states table, a two-series comparison, a primer and a sources page, all generated from data.json. Old dashboard links forward to the page that now holds the material.
+- The 2030 trajectory scenarios are replaced by a page of published forecasts for 2026-27 and 2027-28 from the RBI, the World Bank, the OECD, the ADB and the IMF, each quoted from the publication. The site makes no forecast of its own.
+- Every analysis page now carries charts of its own series and links to the topic page behind it. Analyses whose titles had changed get new addresses that match them; the old addresses forward.
+- The site has a logo and a favicon: the page split drawn as a mark.
+
+### Removed
+- The dashboard's three worker stories, which quoted named people with no interview record, and two methodology charts drawn from figures the indices do not compute.
+
+### Fixed
+- GDP growth for 2023-24, 2024-25 and 2025-26 is 7.2, 7.1 and 7.7%, as MoSPI's releases of 27 February and 5 June 2026 give them. The site had 7.3, 7.2 and 7.8, the values MoSPI's data API returns. The NDA-period average is 6.20% (7.29% without 2020-21).
+- CPI inflation for 2025 is 2.4%, the change in the annual average index, the convention used for every other year. The NDA-period average is 4.82%.
+- The 2026-27 fiscal deficit (4.3%) and NITI's 2020-21 gig-worker figure (7.7 million) are a Budget Estimate and a projection. They are now drawn as hollow markers beside the observed series and left out of every average.
+- The paper: the 2026-27 deficit is below the earlier era's average; the current-account deficit was 0.6% of GDP in 2025-26; the services surplus about $217 billion; the CPI weights are MoSPI's (housing and utilities 17.67%, transport 8.80%, health 6.10%); the recruitment figures cover central government, 2014-15 to 2021-22; the April 2026 delimitation amendment that failed is recorded; the 2013-14 growth figure was later revised to 6.4%; and a robustness check on the RSF country count is added.
+- Sector shares use the 2022-23 national accounts base and PLFS 2025; the goods deficit and FPI outflow use the RBI balance of payments; states are grouped by zonal council.
+- The front page: the growth series joins two national-accounts bases (it had said three); RSF ranked 167 to 179 countries in the UPA years; the fiscal index is higher after 2014 because of GST and the 2020 borrowing conditions, while the measured ratios were slightly more centralised before.
+- The downloads: the share of workers in regular jobs with social security (10.1%) replaces a residual presented as a count of workers without cover; worked examples are labelled as made up; the policy brief no longer sets deadlines it did not model; the licence notice states that CC BY allows commercial use; the research package lists what its files contain and now includes the index code and the master dataset.
+- The care valuations name their sources, and the EPW range, which could not be traced to the article, is labelled as reported.
+
 ## [2.53.2] - 2026-10-10
 
 ### Fixed

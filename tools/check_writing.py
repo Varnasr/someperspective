@@ -47,18 +47,7 @@ BANNED = re.compile(r"\b(" + "|".join([
 ]) + r")\b", re.I)
 
 # (file, exact text, reason). Keep each one a verbatim quotation or a title.
-EXEMPT = [
-    ("explore/index.html", "Algorithm decides everything—one bad rating and income drops 40%.",
-     "Data story quotation from the owner's primary research, attributed on the page. "
-     "Quotations stay verbatim."),
-    ("explore/index.html", "My son will never farm—I'll sell the land first.",
-     "Data story quotation, as above."),
-    ("explore/index.html", "It's not a choice—it's survival.",
-     "Data story quotation, as above."),
-    ("explore/index.html", "To read any number honestly is to ask who chose it",
-     "Pull-quote from the owner's published primer, Reading the Indian Economy "
-     "(16 June 2026), quoted as printed."),
-]
+EXEMPT = []
 
 
 def files():

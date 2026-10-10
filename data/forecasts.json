@@ -1,0 +1,70 @@
+{
+  "retrieved": "2026-10-10",
+  "about": "Forecasts published by other institutions for India's real GDP growth and CPI inflation. The site makes no forecast of its own. India's fiscal year runs April to March, and every row is on that basis unless its note says otherwise.",
+  "outturn": {
+    "text": "MoSPI's Provisional Estimates of 5 June 2026 put real GDP growth for 2025-26 at 7.7 per cent; growth in April to June 2026, the first quarter of 2026-27, was 7.8 per cent (NSO, 31 August 2026).",
+    "url": "https://newsonair.gov.in/indias-real-gdp-grows-by-7-7-in-2025-26/"
+  },
+  "budget": {
+    "text": "The Union Budget for 2026-27 assumes nominal GDP growth of 10 per cent and sets a fiscal deficit of 4.3 per cent of GDP.",
+    "url": "https://www.indiabudget.gov.in/doc/Budget_at_Glance/budget_at_a_glance.pdf",
+    "quote": "The GDP for FY 2026-27 is estimated at ₹393,00,393 crore, which is 10% over the Advance Estimates for FY 2025-26"
+  },
+  "rows": [
+    {
+      "who": "Reserve Bank of India, Monetary Policy Committee",
+      "pub": "MPC resolution, 5 to 7 October 2026",
+      "date": "2026-10-07",
+      "g27": 7.1,
+      "g28": null,
+      "i27": 5.2,
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63742",
+      "quote": "real GDP growth for 2026-27 is projected at 7.1 per cent ... CPI inflation is projected to be 5.2 per cent for 2026-27",
+      "note": "Q1 2027-28 growth projected at 7.1 per cent; the RBI publishes no full-year figure for 2027-28."
+    },
+    {
+      "who": "World Bank",
+      "pub": "South Asia Economic Update, October 2026",
+      "date": "2026-10-06",
+      "g27": 7.1,
+      "g28": 7.2,
+      "i27": null,
+      "url": "https://openknowledge.worldbank.org/bitstreams/5ca2aa2c-7c0f-463e-bbc5-b6dea6e591b9/download",
+      "quote": "In India, growth is expected to slow to 7.1 percent in FY2026/27, 0.5 percentage points higher than previously expected.",
+      "note": "Takes 2025-26 as 7.8 per cent, against MoSPI's Provisional Estimate of 7.7."
+    },
+    {
+      "who": "OECD",
+      "pub": "Economic Outlook, Interim Report, September 2026",
+      "date": "2026-09-23",
+      "g27": 7.1,
+      "g28": 6.5,
+      "i27": 4.7,
+      "url": "https://www.oecd.org/en/publications/oecd-economic-outlook-interim-report-september-2026_f751d02b-en/full-report.html",
+      "quote": "growth is projected to fall from 7.8% in fiscal year (FY) 2025-26 to 7.1% in FY 2026-27 and 6.5% in FY 2027-28.",
+      "note": "Inflation is for calendar 2026 (4.2 per cent for 2027). Takes 2025-26 as 7.8 per cent."
+    },
+    {
+      "who": "Asian Development Bank",
+      "pub": "Asian Development Outlook, September 2026",
+      "date": "2026-09-23",
+      "g27": 7.0,
+      "g28": 7.1,
+      "i27": 5.0,
+      "url": "https://www.adb.org/outlook/editions/september-2026",
+      "quote": "India's growth is projected at 7.0% in FY2026 (ending 31 March 2027)",
+      "note": "ADB calls 2026-27 'FY2026'. The 2027-28 growth figure is from DD News's report of the release (23 September 2026); ADB's page states 4.0 per cent inflation for 2027-28."
+    },
+    {
+      "who": "IMF",
+      "pub": "World Economic Outlook Update, July 2026, Table 1",
+      "date": "2026-07-08",
+      "g27": 6.4,
+      "g28": 6.7,
+      "i27": 4.7,
+      "url": "https://www.imf.org/-/media/files/publications/weo/2026/update/july/english/text.pdf",
+      "quote": "India 5/ 7.1 7.7 6.4 6.7",
+      "note": "The July Update carries no inflation projection; the 4.7 per cent is the April 2026 WEO. The October 2026 WEO is due in mid-October and replaces this row."
+    }
+  ]
+}

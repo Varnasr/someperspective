@@ -75,7 +75,7 @@ a:hover{text-decoration-thickness:2px}
 .top{display:grid;grid-template-columns:var(--seam) 1fr;border-bottom:2px solid var(--ink);align-items:center}
 .top>*{padding:.8rem clamp(.75rem,2.5vw,2rem)}
 .top .l{text-align:right}
-.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
 .top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
 .top nav a{text-decoration:none;padding:.3rem 0}
 .top nav a:hover{text-decoration:underline}
@@ -113,7 +113,8 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 @media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
 /* On a phone the page runs on plain paper; the split stays in the header bar,
    where a bordered panel would only leave two slivers of field at the edges. */
-@media (max-width:700px){body{background:var(--paper)}
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+body{background:var(--paper)}
 .top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
@@ -123,6 +124,9 @@ HEAD = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content="{desc}">
@@ -139,7 +143,7 @@ HEAD = """<!DOCTYPE html>
 {ld}
 </head>
 <body>
-<header class="top"><div class="l"><a class="name" href="/">Some Perspective</a></div>
+<header class="top"><div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
 <nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a></nav></header>
 <main class="wrap">
 """
@@ -162,77 +166,72 @@ def page(title, desc, canonical, body, ld=""):
 # Analysis library
 # --------------------------------------------------------------------------
 def build_analysis(features, vintage):
+    import html as _h
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    import build_explore as be
+    data = read_json("data.json")
+    he = _h.escape
     written = []
     for i, f in enumerate(features):
         prev_f = features[i - 1] if i > 0 else None
         next_f = features[i + 1] if i < len(features) - 1 else None
         nav = []
         if prev_f:
-            nav.append(f'<a href="{prev_f["slug"]}.html">&larr; {escape(prev_f["title"][:48])}&hellip;</a>')
+            nav.append(f'<a href="{prev_f["slug"]}.html">&larr; {he(prev_f["title"])}</a>')
         if next_f:
-            nav.append(f'<a href="{next_f["slug"]}.html">{escape(next_f["title"][:48])}&hellip; &rarr;</a>')
-
+            nav.append(f'<a href="{next_f["slug"]}.html">{he(next_f["title"])} &rarr;</a>')
+        spec = f.get("chart") or {}
+        keys = [k for k in spec.get("series", []) if k in be.SERIES]
+        charts = "".join(be.chart_block(data, k) for k in keys)
+        topic = next((be.topic_of(k) for k in keys if be.topic_of(k)), None)
+        if not topic and spec.get("type") == "intl":
+            topic = "democracy"
+        more = f"/explore/{topic}/" if topic else "/explore/"
         ld = json.dumps({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": f["title"],
-            "description": f["takeaway"],
-            "author": {"@type": "Person", "name": "Dr. Varna Sri Raman"},
+            "@context": "https://schema.org", "@type": "Article", "headline": f["title"],
+            "description": f["takeaway"], "author": {"@type": "Person", "name": "Dr. Varna Sri Raman"},
             "isPartOf": {"@type": "Dataset", "name": "Some Perspective dataset", "url": f"{SITE}/data.json"},
             "url": f"{SITE}/analysis/{f['slug']}.html",
             "license": "https://creativecommons.org/licenses/by/4.0/",
         }, ensure_ascii=False)
-
-        body = f"""<p class="crumb"><a href="../">Some Perspective</a> &rsaquo; <a href="./">Analysis</a></p>
-<span class="kicker">{escape(f['category'])}</span>
-<h1>{escape(f['title'])}</h1>
-<p class="lede">{escape(f['body'])}</p>
-<div class="takeaway">{escape(f['takeaway'])}</div>
-<p><a class="btn" href="../explore/#{tab_hash(f['tab'])}">Explore this in the live data &rarr;</a></p>
-<h2>About this reading</h2>
-<p class="rel">This is one of {len(features)} standing analyses drawn from the Some Perspective dataset.
-It carries no date. It describes a relationship in the data that holds across the series, and it
-is regenerated whenever the underlying dataset is refreshed. The figures quoted here reflect the
-<strong>{escape(vintage)}</strong> data vintage.</p>
-<p class="meta">{' &nbsp;·&nbsp; '.join(nav) if nav else ''}<br><br>
-Raman, V.S. Some Perspective: India's Political Economy, 2004-2026. someperspective.info · CC BY 4.0 ·
-data vintage {escape(vintage)}. <a href="../explore/#cite-download">Cite &amp; download</a> ·
-<a href="./">All analyses</a></p>"""
-
+        body = (f'<div class="slab"><p class="crumb"><a href="/analysis/">Analyses</a> &rsaquo; {he(f["category"])}</p>'
+                f'<p class="kicker">{he(f["category"])}</p><h1>{he(f["title"])}</h1>'
+                f'<p class="dek">{he(f["body"])}</p>'
+                f'<p><strong>What follows.</strong> {he(f["takeaway"])}</p>'
+                f'<p><a class="btn" href="{more}">The data behind this reading</a></p></div>'
+                f'{charts}'
+                f'<div class="slab"><p class="note">One of {len(features)} readings of the dataset, rebuilt whenever the '
+                f'data are refreshed. Data vintage {he(vintage)}. Cite as Raman, V.S., Some Perspective: India\'s '
+                f'Political Economy, 2004-2026, someperspective.info, CC BY 4.0.</p>'
+                f'<p class="nav">{" &middot; ".join(nav)}</p></div>')
         rel = os.path.join("analysis", f["slug"] + ".html")
-        write(rel, page(f["title"] + " | Some Perspective", f["takeaway"],
-                        f"{SITE}/analysis/{f['slug']}.html", body,
-                        f'<script type="application/ld+json">{ld}</script>'))
+        write(rel, be.shell(f["title"] + ": Some Perspective", f["takeaway"],
+                            f"{SITE}/analysis/{f['slug']}.html", body,
+                            head=f'<script type="application/ld+json">{ld}</script>\n'))
         written.append(rel)
+        for old in f.get("redirectFrom", []):
+            url = f"/analysis/{f['slug']}.html"
+            write(os.path.join("analysis", old + ".html"),
+                  f'<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8"><title>{he(f["title"])}</title>'
+                  f'<meta name="robots" content="noindex"><link rel="canonical" href="{SITE}{url}">'
+                  f'<meta http-equiv="refresh" content="0; url={url}"></head><body><p>This reading has moved to '
+                  f'<a href="{url}">{he(f["title"])}</a>.</p></body></html>\n')
 
-    # Index, grouped by category
     by_cat = {}
     for f in features:
         by_cat.setdefault(f["category"], []).append(f)
     blocks = []
     for cat in sorted(by_cat):
-        items = "".join(
-            f'<li><a href="{f["slug"]}.html">{escape(f["title"])}</a>'
-            f'<p>{escape(f["takeaway"])}</p></li>'
-            for f in by_cat[cat]
-        )
-        blocks.append(f'<h2>{escape(cat)}</h2><ul class="list">{items}</ul>')
-
-    body = f"""<p class="crumb"><a href="../">Some Perspective</a> &rsaquo; Analysis</p>
-<span class="kicker">Analysis library</span>
-<h1>{len(features)} readings of the data</h1>
-<p class="lede">Each entry takes one relationship in the dataset and states what it shows and what
-follows from it. These are standing analyses and carry no date. They are rebuilt from the
-dataset on every refresh, so they always reflect the current figures. Data vintage:
-<strong>{escape(vintage)}</strong>.</p>
-<p class="rel"><span class="tag">CC BY 4.0</span> <span class="tag">{len(by_cat)} categories</span>
-<span class="tag"><a href="../updates.html" style="text-decoration:none">Dated changes &rarr; Updates</a></span></p>
-{''.join(blocks)}
-<p class="meta">Looking for what changed and when? That lives in
-<a href="../updates.html">Updates</a>, which also has an <a href="../feed.xml">RSS feed</a>.</p>"""
-
-    write("analysis/index.html", page(
-        "Analysis library | Some Perspective",
+        items = "".join(f'<a href="{f["slug"]}.html"><strong>{he(f["title"])}</strong>'
+                        f'<span>{he(f["takeaway"])}</span></a>' for f in by_cat[cat])
+        blocks.append(f'<div class="slab"><h2>{he(cat)}</h2><div class="cards">{items}</div></div>')
+    body = (f'<div class="slab"><p class="kicker">Analyses</p><h1>{len(features)} readings of the data</h1>'
+            f'<p class="dek">Each takes one relationship in the dataset and states what it shows and what follows '
+            f'from it. They carry no date and are rebuilt from the data on every refresh. Data vintage '
+            f'{he(vintage)}. Dated changes are listed on the <a href="/updates.html">updates page</a>.</p></div>'
+            + "".join(blocks))
+    write("analysis/index.html", be.shell(
+        "Analyses: Some Perspective",
         f"{len(features)} standing analyses of India's political economy, drawn from the Some Perspective dataset.",
         f"{SITE}/analysis/", body))
     written.append("analysis/index.html")
@@ -423,7 +422,7 @@ table above and are the work of other researchers.</p>"""
           page("What GDP does not count | Some Perspective",
                "GDP imputes a rent for the house you own but records nothing for the care performed "
                "inside it. India measures the hours through its Time Use Survey and declines to value "
-               "them. Published estimates of what they are worth range from 7.5% to 36% of GDP.",
+               "them. Published estimates of what they are worth range from 7.5% to 32.4% of GDP, and one reported estimate reaches 36%.",
                f"{SITE}/care/", body))
 
 
@@ -607,6 +606,10 @@ def build_package(data):
                 parts.append((f"someperspective/{rel}", fh.read()))
     with open(os.path.join(ROOT, "downloads", "dataset.csv"), encoding="utf-8") as fh:
         parts.append(("someperspective/dataset.csv", fh.read()))
+    for rel, dst in (("data/compute_indices.py", "compute_indices.py"),
+                     ("data/SP_masterdataset.csv", "SP_masterdataset.csv")):
+        with open(os.path.join(ROOT, rel), encoding="utf-8") as fh:
+            parts.append((f"someperspective/{dst}", fh.read()))
     # The paper: Markdown source plus the generated PDF. The PDF is binary, which
     # writestr handles fine as bytes — everything else here is text.
     src = os.path.join(ROOT, "paper", "paper.md")
@@ -625,8 +628,10 @@ def build_package(data):
                   "paper/       the full research paper: Markdown source and PDF\n"
                   "documents/   the full document set as standalone HTML\n"
                   "data.json    source of record for every figure on the site\n"
-                  "dataset.csv  the same indicators as a flat table\n"
-                  "replication_code.{py,R}  index construction (SSI / FCI / DQI)\n"))
+                  "dataset.csv  the published series and the three indices as a flat table\n"
+                  "SP_masterdataset.csv  one row per year with every index input\n"
+                  "compute_indices.py  how the SSI, FCI and DQI are computed, with sources\n"
+                  "replication_code.{py,R}  reproduce the scorecard from the master dataset\n"))
     write_zip("downloads/someperspective-research-package.zip", parts)
 
 
@@ -651,6 +656,10 @@ def build_sitemap(features, vintage):
     urls = [(f"{SITE}/", "1.0"), (f"{SITE}/explore/", "0.9"), (f"{SITE}/walkthrough/", "0.9"),
             (f"{SITE}/inflation/", "0.9"), (f"{SITE}/care/", "0.9"),
             (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
+    for slug in ("economy", "jobs", "inequality", "democracy", "statistics", "federalism",
+                 "states", "compare", "forecasts", "primer", "methods"):
+        if os.path.exists(os.path.join(ROOT, "explore", slug, "index.html")):
+            urls.append((f"{SITE}/explore/{slug}/", "0.8"))
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):
         if rel.endswith(".html") and rel not in RETIRED:
             urls.append((f"{SITE}/downloads/{rel}", "0.6"))

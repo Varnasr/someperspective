@@ -22,20 +22,23 @@ import re
 import os
 import sys
 from html import escape
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
+import compute_indices as ci  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "index.html")
 SITE = "https://someperspective.info"
 YEARS = list(range(2004, 2027))
+# The site mark: an ink square with the two fields split at 10/23.
+MARK = ('<svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg>')
 
 
 def load():
     d = json.load(open(os.path.join(ROOT, "data.json"), encoding="utf-8"))
     meta = d.get("meta", {})
     version = None
-    explore = open(os.path.join(ROOT, "explore", "index.html"), encoding="utf-8").read()
-    import re
-    m = re.search(r'<meta name="version" content="([^"]+)"', explore)
+    cff = open(os.path.join(ROOT, "CITATION.cff"), encoding="utf-8").read()
+    m = re.search(r'^version: *(\S+)', cff, re.M)
     version = m.group(1) if m else ""
     return d, meta, version
 
@@ -54,6 +57,15 @@ def series(d, key):
 def mean(vals):
     v = [x for x in vals if isinstance(x, (int, float))]
     return sum(v) / len(v) if v else None
+
+
+def estimates(d, key):
+    """Estimates and projections for a series, keyed by year index."""
+    out = {}
+    for y, e in (d.get("estimates", {}).get(key) or {}).items():
+        if int(y) in YEARS:
+            out[YEARS.index(int(y))] = e
+    return out
 
 
 def era_means(vals):
@@ -87,13 +99,14 @@ def fmt(v, dp):
     return s.replace("-", "−")
 
 
-def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=True):
+def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=True, est=None):
     """A full-bleed chart whose x-axis is the page: each of the 23 years gets an
     equal slice, so the 2013/2014 boundary falls exactly on the page seam at
     10/23 of the width. The SVG stretches (preserveAspectRatio none, strokes
     that do not scale), and every label is HTML positioned in per cent, so the
     text never stretches with it."""
-    have = [v for v in vals if v is not None]
+    est = est or {}
+    have = [v for v in vals if v is not None] + [e["value"] for e in est.values()]
     vmin = min(have) if lo is None else lo
     vmax = max(have) if hi is None else hi
     if lo is None and vmin >= 0 and vmin < (vmax - vmin) * 0.6:
@@ -135,6 +148,13 @@ def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=Tru
         svg.append(f'<line x1="{seam:.2f}" x2="100" y1="{Y(mn):.2f}" y2="{Y(mn):.2f}" class="m-nda"/>')
     svg.append("</svg>")
     lab = []
+    # Estimates and projections: a hollow marker joined by a dotted line to
+    # the nearest observed year. They are never part of a period average.
+    for i, e in sorted(est.items()):
+        j = max((k for k in range(i) if vals[k] is not None), default=None)
+        if j is not None:
+            svg.insert(-1, f'<line x1="{X(j):.2f}" x2="{X(i):.2f}" y1="{Y(vals[j]):.2f}" y2="{Y(e["value"]):.2f}" class="s-est"/>')
+        lab.append(f'<span class="est" style="left:{X(i):.2f}%;top:{Y(e["value"]):.2f}%"></span>')
     if tall:
         tdp = 0 if step >= 1 else (1 if step >= 0.1 else 2)
         for t in ticks:
@@ -148,7 +168,8 @@ def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=Tru
                 pos = {2014: 1000 / n, 2026: 100}.get(y, X(i))
                 cls = " first" if y == 2014 else (" end" if y == 2026 else "")
                 lab.append(f'<span class="xt{cls}" style="left:{pos:.2f}%">{y}</span>')
-    label = f"{title}. {desc}"
+    label = f"{title}. {desc}" + "".join(
+        f" {YEARS[i]}: {fmt(e['value'], dp)}, {e['label']}, not an outturn." for i, e in sorted(est.items()))
     return (f'<div class="chart{" tall" if tall else ""}" role="img" aria-label="{escape(label)}">'
             f'{"".join(svg)}<div class="labels" aria-hidden="true">{"".join(lab)}</div></div>')
 
@@ -183,7 +204,7 @@ a:hover{text-decoration-thickness:2px}
 .wide{font-stretch:125%}.narrow{font-stretch:75%}
 .top{border-bottom:2px solid var(--ink);align-items:center}
 .top .l,.top .r{padding-top:.8rem;padding-bottom:.8rem}
-.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
 .top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
 .top nav a{text-decoration:none;padding:.3rem 0}
 .top nav a:hover{text-decoration:underline}
@@ -225,6 +246,8 @@ border:2px solid var(--ink);padding:.12rem .45rem}
 .chart .s-upa{stroke:var(--upa)}.chart .s-nda{stroke:var(--nda)}
 .chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
 .chart .m-upa{stroke:var(--upa)}.chart .m-nda{stroke:var(--nda)}
+.chart .s-est{stroke:var(--nda);stroke-width:2;stroke-dasharray:2 4;vector-effect:non-scaling-stroke}
+.chart .est{position:absolute;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border:2.5px solid var(--nda);background:var(--paper);border-radius:50%;box-sizing:border-box}
 .labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}
 .yt{position:absolute;left:.4rem;transform:translateY(-120%)}
 .xt{position:absolute;bottom:-1.5rem;transform:translateX(-50%)}.xt.first{transform:translateX(.4rem)}.xt.end{transform:translateX(calc(-100% - .4rem))}
@@ -251,7 +274,8 @@ width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
    scorecard rows, the charts). Text runs on plain paper, edge to edge, because
    a bordered panel at full width left two 12px slivers of field that meant
    nothing. */
-@media (max-width:700px){
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+
 body{background:var(--paper)}
 .top,.eras,.m,.chart.tall{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .slab{border:0;border-top:2px solid var(--ink);width:auto;margin:0;padding:1.6rem 1rem 1.4rem}
@@ -327,13 +351,19 @@ def build():
         return vals[i], YEARS[i]
 
     updated = meta.get("updated", "")
+    _c = list(zip(*[ci.FCI_COMPONENTS[y] for y in ci.YEARS]))
+    _r4 = [ci._minmax(_c[0]), ci._minmax(_c[1], invert=True), ci._minmax(_c[2], invert=True), ci._minmax(_c[3])]
+    _r4y = [[c[i] for c in _r4 if c[i] is not None] for i in range(len(ci.YEARS))]
+    _r4y = [sum(v) / len(v) if v else None for v in _r4y]
+    r4u, r4n = era_means(_r4y)
     findings = [
         ("Growth was lower over the whole period, and higher once the pandemic year is left out",
          f"The economy grew {fmt(gn,1)}% a year on average from 2014-15 to 2025-26, against {fmt(gu,1)}% from 2004-05 "
          f"to 2013-14. The difference comes from 2020-21, when output fell 5.8%. Without that year the later period "
          f"averaged {fmt(g_nda_ex,1)}%, above the earlier decade's {fmt(gu,1)}% ({fmt(g_upa_ex,1)}% without the 2008-09 "
-         f"crisis year). The series is spliced from three bases (2004-05, 2011-12 and 2022-23), and the 2015 "
-         f"rebasing alone moved 2013-14 from 4.7% to 6.9%, so a gap of under one point is smaller than past revisions.",
+         f"crisis year). The series joins two bases, 2011-12 (with its back-series for the earlier years) and 2022-23 "
+         f"from 2023-24, and the 2015 rebasing first moved 2013-14 from 4.7% to 6.9%, so a gap of under one point is "
+         f"smaller than past revisions.",
          seam_chart(g, "Real GDP growth, per cent, 2004-05 to 2025-26",
                     f"UPA average {fmt(gu,1)}%, NDA average {fmt(gn,1)}%; the lowest year is 2020-21 at -5.8%.", dp=1),
          "MoSPI national accounts; World Bank for 2004-2013. Year shown is the fiscal year that starts in it."),
@@ -354,8 +384,8 @@ def build():
                     f"From {fmt(t1[0],1)}% in 2004 to {fmt(t1[last_t1],1)}% in 2022.", dp=1),
          "Bharti, Chancel, Piketty and Somanchi (2024), World Inequality Lab Working Paper 2024/09."),
         ("Press freedom and democratic quality fell furthest",
-         f"India ranked {int(pf[-1])} of 180 on the RSF index in 2026, against an average of about "
-         f"{int(round(mean(pf[:10])))} in the UPA decade. The Democratic Quality Index, which combines V-Dem, Freedom "
+         f"India ranked {int(pf[-1])} of 180 on the RSF index in 2026, against an average rank of about "
+         f"{int(round(mean(pf[:10])))} in the UPA decade, when RSF ranked between 167 and 179 countries. The Democratic Quality Index, which combines V-Dem, Freedom "
          f"House and RSF scores, fell from {fmt(dq[10],2)} in 2014 to {fmt(dq[-1],2)} in 2026. V-Dem first classified "
          f"India as an electoral autocracy in its March 2021 Democracy Report.",
          seam_chart(pf, "RSF World Press Freedom Index rank, 2004-2026 (1 is best)",
@@ -370,12 +400,13 @@ def build():
          seam_chart(ss, "Statistical Suppression Index, 0-10, 2004-2026",
                     f"Zero for 2004-2014, peak {fmt(ss_peak,1)} in 2021-22, {fmt(ss[-1],2)} in 2026.", dp=1, lo=0),
          "Author's coding of dated events, data/compute_indices.py."),
-        ("Fiscal power moved to the Union, mostly through GST",
+        ("The fiscal index is higher after 2014 because of GST and the 2020 borrowing conditions",
          f"The Fiscal Centralisation Index averaged {fmt(fcu,2)} in the UPA decade and {fmt(fcn,2)} after 2014, with a "
-         f"peak of {fmt(max(v for v in fc if v is not None),2)} in 2020. The measured flows tell a narrower story: "
-         f"states' share of gross tax revenue rose after the 14th Finance Commission, and on the four fiscal ratios "
-         f"alone the two periods are close. The higher score after 2014 comes from GST, which ended separate state "
-         f"indirect taxes, and the borrowing conditions of 2020-21.",
+         f"peak of {fmt(max(v for v in fc if v is not None),2)} in 2020. On the four measured fiscal ratios alone the "
+         f"earlier period was slightly more centralised ({fmt(r4u,2)} against {fmt(r4n,2)}), and states' share of gross "
+         f"tax revenue rose after the 14th Finance Commission. The higher score after 2014 comes from the two coded "
+         f"components: GST, which folded most state indirect taxes into a shared tax (states still levy VAT on "
+         f"petroleum and alcohol, stamp duty and electricity duty), and the borrowing conditions of 2020-21.",
          seam_chart(fc, "Fiscal Centralisation Index, 0-1, 2004-2026",
                     f"UPA average {fmt(fcu,2)}, NDA average {fmt(fcn,2)}, peak in 2020.", dp=2, lo=0, hi=1),
          "Finance Commission reports, Union Receipt Budgets, RBI Handbook Table 94; GST and borrowing coded."),
@@ -412,6 +443,9 @@ def build():
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self';">
 <meta name="version" content="{escape(version)}">
@@ -443,7 +477,7 @@ def build():
 <body>
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top split">
-<div class="l"><a class="name" href="/">Some Perspective</a></div>
+<div class="l"><a class="name" href="/">{MARK}<span>Some Perspective</span></a></div>
 <nav class="r" aria-label="Site" data-dyslexia-slot>
 <a href="#scorecard">Scorecard</a><a href="#findings">Findings</a><a href="explore/">Explore the data</a>
 <a href="downloads/paper.html">Paper</a><a href="analysis/">Analyses</a><a href="walkthrough/">Walkthrough</a>
