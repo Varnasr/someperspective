@@ -132,7 +132,7 @@ That suggests a refinement to the competitive-authoritarianism framework: the us
 
 The instruments are ordinary and individually unremarkable: cesses levied outside the divisible pool, conditional transfers that constrain state expenditure discretion, borrowing restrictions, and a consumption-tax regime that removes independent state rate-setting. None requires constitutional amendment, and none reads on its own as a transfer of political authority. Together they shift the practical balance of the federation while every formal guarantee remains in place.
 
-We offer *fiscal authoritarianism* as the name for this: revenue instruments functioning as control mechanisms, conditional transfers as political tools, and the subversion of fiscal federalism through means that never require the constitution to be touched. Whether the term proves useful beyond India is an empirical question we cannot settle here. The phenomenon it names is measurable, and Section 6.5 measures it.
+We offer *fiscal authoritarianism* as the name for this: revenue instruments functioning as control mechanisms, conditional transfers as political tools, and the subversion of fiscal federalism through means that never require the constitution to be touched. Whether the term proves useful beyond India is an empirical question we cannot settle here. The phenomenon it names is measurable, and Section 6.5 measures it. On the published fiscal ratios the change after 2014 is small, and most of the measured shift comes from the GST.
 
 **Measurement as contribution.** The final contribution is instrumental. Arguments about statistical suppression are usually conducted anecdotally, one episode at a time, which makes them easy to answer one episode at a time. Rendering the phenomenon as a weighted, graded, reproducible index makes it something that can be plotted against other series, compared across political eras, and disputed on the record. A critic who thinks the SSI is wrong can say precisely where, and recompute.
 
@@ -772,7 +772,7 @@ Democratic quality and fiscal centralisation are measurable degradations of inst
 
 This has a self-reinforcing character. A government that suppresses unfavourable statistics faces a weaker evidentiary challenge at the next election, which lowers the cost of further suppression. The SSI's persistence term is a formal acknowledgement of this: the damage does not reverse when the acute episode ends, because the willingness to suppress has been shown and remains on the record.
 
-It is also why we would emphasise the 2026 value of 6.40 over the 9.00 peak: the acute phase passed, and the structural change remains.
+It is also why we would emphasise the 2026 value of 4.65 over the 9.00 peak. The acute phase passed and the census is now on a schedule, but the merger of the statistical office and the unreviewed back-series remain, and they alone hold the index well above the UPA decade's zero.
 
 ## 10.3 Counting as an allocation of power
 

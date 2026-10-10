@@ -398,7 +398,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Census delay</td><td>2.5</td><td>2021 census postponed beyond constitutional mandate</td></tr>
+                <tr><td>Census delay</td><td>2.5</td><td>2021 census postponed in 2020 with no date (severity 1.0 for 2020-2025); houselisting April-September 2026 and enumeration notified for February 2027, so 2026 is scored 0.3 as a delay</td></tr>
                 <tr><td>Consumption survey</td><td>1.5</td><td>2017-18 survey withheld; 11-year data gap</td></tr>
                 <tr><td>Employment data</td><td>1.0</td><td>PLFS 2017-18 withheld until after 2019 election</td></tr>
                 <tr><td>GDP back-series</td><td>1.5</td><td>2011-12 base + shelved 2018 back-series, unreviewed</td></tr>
@@ -409,20 +409,26 @@
 
         <h3>3.2 Fiscal Centralisation Index (FCI)</h3>
 
-        <p>The FCI measures the erosion of fiscal federalism. It has six components, each min-max normalised over the full 2004-2026 sample and then averaged:</p>
+        <p>The FCI measures the shift of fiscal authority from the states to the Union. It averages the components published for each year. Four are published fiscal ratios, each min-max normalised over the years in which it is published; two are coded:</p>
 
         <div class="equation-box">
-            FCI_t = (1/6) × Σ[C_jt]
+            FCI_t = mean of the C_jt published for year t
 
             Components:
-            C1: Cess/Surcharge share (normalized)
-            C2: Effective devolution (inverted)
-            C3: States' own revenue capacity (inverted)
-            C4: CSS conditionality
-            C5: Borrowing restrictions
+            C1: Cess and surcharge share of the Union's gross tax revenue
+                (15th FC Table 3.8, 2011-2018; Union Receipt Budgets, 2019-2026)
+            C2: Tax devolution as % of gross tax revenue, inverted
+                (16th FC Annexure 7.1; Budget at a Glance 2026-27)
+            C3: States' own revenue as % of their revenue receipts, inverted
+                (RBI Handbook 2025-26, Table 94)
+            C4: Non-Finance-Commission grants as % of Union transfers
+                (16th FC Annexure 7.1)
+            C5: Borrowing restrictions, coded (1 in 2020-21, 0.5 in 2021-22)
             C6: GST structural centralisation (0 pre-2017; full once GST
-                compensation ended mid-2022)
+                compensation ended on 30 June 2022)
         </div>
+
+        <p>The FCI averages 0.30 under UPA and 0.43 under NDA, peaks at 0.87 in 2020 and is 0.35 in 2026. On the four measured ratios alone the UPA years average 0.49 and the NDA years 0.45, so the higher NDA score comes from the GST and the 2020 borrowing conditions. The index was rebuilt from these published figures on 10 October 2026.</p>
 
         <h3>3.3 Democratic Quality Index (DQI)</h3>
 
@@ -433,8 +439,8 @@
 
             where:
             V_t = V-Dem Liberal Democracy Index
-            F_t = Freedom House Score (normalized)
-            R_t = RSF Press Freedom (inverted rank)
+            F_t = Freedom House aggregate score / 100
+            R_t = (180 - RSF press-freedom rank) / 180
             C_t = V-Dem Core Civil Society Index
         </div>
     </div>
@@ -516,7 +522,7 @@
         
         <ul>
             <li><strong>Consumption Survey 2017-18:</strong> reconstructed using CMIE household data and state consumption patterns</li>
-            <li><strong>Census 2021:</strong> projected using NFHS-5, voter rolls, and Aadhaar statistics</li>
+            <li><strong>Census 2021:</strong> postponed in 2020; enumeration is notified for February 2027. Until then population figures are projected using NFHS-5, voter rolls, and Aadhaar statistics</li>
             <li><strong>Caste data:</strong> extrapolated from state surveys (Bihar, Karnataka)</li>
         </ul>
     </div>
@@ -527,7 +533,7 @@
         <div class="limitation-box">
             <h3>Main limitations</h3>
             <ul>
-                <li><strong>Census gap:</strong> there has been no census since 2011, which limits demographic analysis</li>
+                <li><strong>Census gap:</strong> there has been no census since 2011, and the next enumeration is notified for February 2027, which limits demographic analysis</li>
                 <li><strong>Consumption data:</strong> the 2017-18 survey was suppressed, so imputations are used</li>
                 <li><strong>State variation:</strong> national aggregates mask large differences between states</li>
                 <li><strong>Informal economy:</strong> it remains hard to measure despite improvements in method</li>
@@ -592,11 +598,6 @@
                     <td>Employment crisis</td>
                     <td>ILO estimates</td>
                     <td>0.85</td>
-                </tr>
-                <tr>
-                    <td>Fiscal centralization</td>
-                    <td>Finance Commission</td>
-                    <td>0.94</td>
                 </tr>
             </tbody>
         </table></div>

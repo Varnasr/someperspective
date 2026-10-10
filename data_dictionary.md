@@ -69,8 +69,8 @@ in `data.json`.
 - **Unit:** Ratio (dimensionless)
 - **Source:** No source and no computation for this column exist in the repository. The site does not use it and reports published estimates instead (technical appendix A5: RBI Working Paper 06/2014; Ghosh and Roy Bardhan, ORF, 2024)
 - **Methodology:** ε = (% Δ Employment) / (% Δ GDP)
-- **Coverage:** 2004-2025
-- **Notes:** The yearly values in data/SP_masterdataset.csv should not be quoted. Published estimates are 0.01 for 2004-05 to 2009-10 (RBI) and 0.01 for 2011-16 and 1.11 for 2017-23 (ORF)
+- **Coverage:** None. The `Employment_Elasticity` column in data/SP_masterdataset.csv is empty, because its earlier yearly values had no source and nothing computed them
+- **Notes:** The replication scripts quote the ORF figures as published estimates and do not compute them. Published estimates are 0.01 for 2004-05 to 2009-10 (RBI) and 0.01 for 2011-16 and 1.11 for 2017-23 (ORF)
 
 ### Inequality
 
@@ -124,10 +124,10 @@ in `data.json`.
 #### `cess_surcharge_share`
 - **Definition:** Cesses and surcharges as percentage of gross tax revenue
 - **Unit:** Percentage (%)
-- **Source:** Union Budget, Finance Commission Reports
+- **Source:** 15th Finance Commission report, Vol I Table 3.8 (2011-12 to 2018-19, GST compensation cess included from 2017-18); Union Receipt Budgets (2019-20 to 2026-27, every cess and surcharge line summed; 2025-26 RE, 2026-27 BE). File: `data/state_finances_cess_share.csv`
 - **Methodology:** (Cesses + Surcharges) / Gross Tax Revenue × 100
-- **Coverage:** 2004-2024
-- **Notes:** Cesses and surcharges not shared with states per Constitutional design
+- **Coverage:** 2011-2026. No figure is published on this definition before 2011-12, so 2004-2010 are empty
+- **Notes:** Cesses and surcharges are not shared with states under the Finance Commission formula. 13.5% in 2014-15, a peak of 24.4% in 2020-21 (20.2% without the GST compensation cess), 18.0% in 2024-25
 
 #### `devolution_percentage`
 - **Definition:** Percentage of divisible pool transferred to states
@@ -135,7 +135,7 @@ in `data.json`.
 - **Source:** Finance Commission recommendations, actual transfers
 - **Methodology:** As recommended by Finance Commission; actual may differ
 - **Coverage:** 2004-2024
-- **Notes:** 13th FC (32%), 14th FC (42%), 15th FC (41%)
+- **Notes:** 11th FC (29.5%), 12th FC (30.5%), 13th FC (32%), 14th FC (42%), 15th FC (41%), 16th FC (41%). The FCI uses realised devolution as a share of gross tax revenue (16th FC Vol II Annexure 7.1): 25.8% in 2004-05, 27.1% in 2014-15, 33.9% in 2024-25
 
 #### `state_fiscal_autonomy`
 - **Definition:** States' effective fiscal resources as % of total government resources
@@ -176,21 +176,21 @@ All three indices are computed identically for both eras by `data/compute_indice
 - **Definition:** Weighted count of datable government-interference events in official statistics
 - **Unit:** Index score 0–10 (higher = more suppression)
 - **Source:** Constructed for this research (`data/compute_indices.py`)
-- **Methodology:** SSI = Σ(weight × graded severity) with persistence; six streams (census, consumption, employment, GDP back-series, institutional, COVID-mortality undercount), weights 2.5/1.5/1.0/1.5/1.5/2.0. UPA = 0; peak 9.0 (2021-22); 6.4 (2026)
+- **Methodology:** SSI = Σ(weight × graded severity) with persistence; six streams (census, consumption, employment, GDP back-series, institutional, COVID-mortality undercount), weights 2.5/1.5/1.0/1.5/1.5/2.0. UPA = 0; peak 9.0 (2021-22); 4.65 (2026), when the census is scored 0.3 as a scheduled delay; NDA mean 4.95
 - **Coverage:** 2004-2026
 
 #### `fiscal_centralization_index`
 - **Definition:** Composite index of fiscal centralization
-- **Unit:** Index 0–1, relative (0 = least-centralised year in sample, 1 = most)
-- **Source:** Constructed for this research (`data/compute_indices.py`)
-- **Methodology:** Mean of 6 min-max-normalised components (cess, devolution, own-revenue, CSS, borrowing, GST centralisation) over 2004-2026
+- **Unit:** Index 0–1, relative to the 2004-2026 sample
+- **Source:** Constructed for this research (`data/compute_indices.py`) from 15th and 16th Finance Commission reports, Union Receipt Budgets, Budget at a Glance and the RBI Handbook (Table 94)
+- **Methodology:** Mean of the components published for each year: cess and surcharge share of gross tax revenue, devolution share of gross tax revenue (inverted), states' own revenue share of their revenue receipts (inverted), non-Finance-Commission grants share of Union transfers (each min-max normalised over the years it is published), plus coded borrowing conditions (2020-21) and coded GST centralisation. UPA mean 0.30, NDA mean 0.43, peak 0.87 (2020), 0.35 (2026)
 - **Coverage:** 2004-2026
 
 #### `democratic_quality_index`
 - **Definition:** Composite index of democratic quality
 - **Unit:** Index from 0 (autocracy) to 1 (democracy)
 - **Source:** Constructed for this research (`data/compute_indices.py`)
-- **Methodology:** DQI = (V-Dem × FH/100 × (180−RSF)/180 × Civil-Society-Index)^(1/4)
+- **Methodology:** DQI = (V-Dem × FH/100 × (180−RSF)/180 × Civil-Society-Index)^(1/4). UPA mean 0.57, NDA mean 0.38, 0.28 (2026)
 - **Coverage:** 2004-2026
 
 ## Data Quality Flags

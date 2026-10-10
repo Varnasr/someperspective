@@ -47,26 +47,16 @@ data = load_and_prepare_data()
 # SECTION 2: KEY ECONOMIC INDICATORS
 ################################################################################
 
-def calculate_employment_elasticity(data, start_year, end_year):
-    """Calculate employment elasticity of growth"""
-    start_data = data[data['year'] == start_year].iloc[0]
-    end_data = data[data['year'] == end_year].iloc[0]
-    
-    emp_growth = ((end_data['employment'] - start_data['employment']) / 
-                  start_data['employment'] * 100)
-    gdp_growth = ((end_data['gdp'] - start_data['gdp']) / 
-                  start_data['gdp'] * 100)
-    
-    elasticity = emp_growth / gdp_growth if gdp_growth != 0 else 0
-    return round(elasticity, 2)
+# Employment elasticity is NOT computed here. The master dataset holds no sourced
+# employment-elasticity series (its Employment_Elasticity column is empty), so the two
+# figures below are ORF's published estimates, quoted with their source:
+#   Ghosh and Roy Bardhan, ORF Expert Speak, 2 October 2024:
+#   0.01 for 2011-16 and 1.11 for 2017-23.
+ORF_ELASTICITY = {'2011-2016': 0.01, '2017-2023': 1.11}
 
-# Calculate for two periods
-elasticity_2011_2016 = calculate_employment_elasticity(data, 2011, 2016)  # Result: 0.01
-elasticity_2017_2023 = calculate_employment_elasticity(data, 2017, 2023)  # Result: 1.11
-
-print(f"\nEmployment Elasticity:")
-print(f"2011-2016: {elasticity_2011_2016}")
-print(f"2017-2023: {elasticity_2017_2023}")
+print("\nEmployment elasticity (ORF published estimates, not computed here):")
+for period, value in ORF_ELASTICITY.items():
+    print(f"{period}: {value}")
 
 ################################################################################
 # SECTION 3: THREE NOVEL INDICES
@@ -75,9 +65,11 @@ print(f"2017-2023: {elasticity_2017_2023}")
 # The three indices are defined ONCE, canonically, in data/compute_indices.py and
 # computed identically for both eras (2004-2026). This script delegates to it so
 # there is a single source of truth. See that file for component inputs and formulas:
-#   SSI = sum(weight * binary trigger)                         [0-10 scale]
-#   FCI = mean of 5 min-max-normalised centralisation comps    [0-1, relative]
-#   DQI = (V-Dem * FreedomHouse/100 * (180-RSF)/180)^(1/3)      [0-1]
+#   SSI = sum(weight * graded severity), 6 streams            [0-10 scale]
+#   FCI = mean of 4 published fiscal ratios (min-max normalised)
+#         and 2 coded components (GST, 2020 borrowing)          [0-1, relative]
+#   DQI = (V-Dem LDI * FreedomHouse/100 * (180-RSF)/180
+#          * V-Dem Core Civil Society)^(1/4)                    [0-1]
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data'))
 import compute_indices as ci
@@ -192,9 +184,9 @@ def create_indices_plot(data):
     plt.show()
 
 def create_employment_elasticity_plot():
-    """Create employment elasticity comparison"""
-    periods = ['2011-2016', '2017-2023']
-    elasticity = [0.01, 1.11]
+    """Plot ORF's published employment elasticity estimates (not computed here)."""
+    periods = list(ORF_ELASTICITY.keys())
+    elasticity = list(ORF_ELASTICITY.values())
     colors = ['#ef4444', '#10b981']
     
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -207,8 +199,9 @@ def create_employment_elasticity_plot():
                 f'{val}', ha='center', va='bottom', fontsize=14, fontweight='bold')
     
     ax.set_ylabel('Employment Elasticity of Growth', fontsize=12)
-    ax.set_title('Employment Elasticity: The Jobs Recovery Paradox', fontsize=14, fontweight='bold')
-    ax.set_subtitle('Higher elasticity post-2017 driven by informal employment', fontsize=10)
+    ax.set_title('Employment elasticity of growth, two periods', fontsize=14, fontweight='bold')
+    fig.text(0.5, 0.01, 'Source: Ghosh and Roy Bardhan, ORF Expert Speak, 2 October 2024 (published estimates)',
+             ha='center', fontsize=9)
     ax.set_ylim(0, 1.3)
     ax.grid(True, alpha=0.3, axis='y')
     
@@ -323,9 +316,10 @@ def export_results(data):
         }
     }
     
-    with open('data.json', 'w') as f:
+    # Written to its own file: data.json is the project's source of record.
+    with open('replication_output.json', 'w') as f:
         json.dump(json_data, f, indent=2)
-    print("JSON data saved to 'data.json'")
+    print("JSON data saved to 'replication_output.json'")
 
 export_results(data)
 
@@ -391,7 +385,7 @@ print("  - three_indices.png")
 print("  - employment_elasticity.png")
 print("  - summary_statistics.csv")
 print("  - three_indices.csv")
-print("  - data.json")
+print("  - replication_output.json")
 print("  - employment_analysis.csv")
 print("  - inequality_analysis.csv")
 print("  - fiscal_federalism.csv")

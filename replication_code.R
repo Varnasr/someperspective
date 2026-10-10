@@ -30,22 +30,12 @@ summary(data)
 # SECTION 2: KEY ECONOMIC INDICATORS
 ################################################################################
 
-# Calculate employment elasticity
-employment_elasticity <- function(data, start_year, end_year) {
-  emp_growth <- (data$employment[data$year == end_year] - 
-                 data$employment[data$year == start_year]) / 
-                 data$employment[data$year == start_year] * 100
-  
-  gdp_growth <- (data$gdp[data$year == end_year] - 
-                 data$gdp[data$year == start_year]) / 
-                 data$gdp[data$year == start_year] * 100
-  
-  return(emp_growth / gdp_growth)
-}
-
 # Calculate for two periods
-elasticity_2011_2016 <- employment_elasticity(data, 2011, 2016)  # Result: 0.01
-elasticity_2017_2023 <- employment_elasticity(data, 2017, 2023)  # Result: 1.11
+# Employment elasticity is NOT computed here: the master dataset holds no sourced
+# series (its Employment_Elasticity column is empty). These are ORF's published
+# estimates (Ghosh and Roy Bardhan, ORF Expert Speak, 2 October 2024):
+# 0.01 for 2011-16 and 1.11 for 2017-23.
+orf_elasticity <- c("2011-2016" = 0.01, "2017-2023" = 1.11)
 
 ################################################################################
 # SECTION 3: THREE NOVEL INDICES
@@ -66,7 +56,8 @@ ssi_weights <- c(census = 2.5, consumption = 1.5, employment = 1.0,
 ssi_sev <- matrix(0, nrow = 6, ncol = length(idx_years),
                   dimnames = list(names(ssi_weights), idx_years))
 yr <- function(y) which(idx_years == y)
-ssi_sev["census", as.character(2020:2026)] <- 1.0
+ssi_sev["census", as.character(2020:2025)] <- 1.0
+ssi_sev["census", "2026"] <- 0.3   # scheduled delay: houselisting Apr-Sep 2026, enumeration Feb 2027 (MHA)
 ssi_sev["consumption", as.character(2018:2023)] <- 1.0
 ssi_sev["consumption", c("2024","2025","2026")] <- c(0.5, 0.3, 0.2)   # scar
 ssi_sev["employment", c("2017","2018","2019")] <- c(1.0, 1.0, 0.3)
@@ -78,34 +69,70 @@ calculate_ssi <- function(year) {
   round(sum(ssi_weights * ssi_sev[, as.character(year)]), 2)
 }
 
-# FCI: mean of 6 min-max-normalised centralisation components over 2004-2026
-# columns: cess, devolution, states_own_rev, css_share, borrowing, gst
+# FCI: mean of the components published for each year. C1-C4 are published fiscal
+# ratios, min-max normalised over the years each is published (NA = not published);
+# C5 (borrowing) and C6 (GST) are coded. Rebuilt from published figures 2026-10-10.
+# columns: cess_share, devolution, states_own_rev, non_fc_grants, borrowing, gst
 fci_comp <- matrix(c(
-  6.5,36.5,45.0,22.0,0.0,0.0, 7.0,36.3,44.8,22.8,0.0,0.0, 7.5,36.1,44.5,23.5,0.0,0.0,
-  8.0,35.9,44.2,24.2,0.0,0.0, 8.5,35.8,44.0,24.8,0.0,0.0, 9.0,35.7,43.7,25.4,0.0,0.0,
-  9.3,35.6,43.4,26.0,0.0,0.0, 9.6,35.5,43.1,26.6,0.0,0.0, 9.9,35.4,42.9,27.2,0.0,0.0,
-  10.1,35.3,42.7,27.7,0.0,0.0, 10.4,35.0,42.5,28.3,0.0,0.0, 11.5,35.6,41.8,29.5,0.0,0.0,
-  13.5,36.2,40.2,31.2,0.0,0.0, 15.3,36.6,38.5,33.8,0.0,0.60, 17.8,35.5,37.2,36.5,0.0,0.70,
-  19.0,34.0,36.1,38.9,0.0,0.80, 20.2,33.0,34.5,42.3,1.0,0.85, 18.3,32.7,35.2,41.5,0.5,0.90,
-  16.3,32.4,36.8,40.2,0.0,1.00, 14.8,32.1,37.5,39.8,0.0,1.00, 14.8,31.8,37.9,39.5,0.0,1.00,
-  14.6,31.6,38.0,39.2,0.0,1.00, 14.5,31.4,38.1,39.0,0.0,1.00),
+  NA,25.8,62.9,32.8,0.0,0.0,
+  NA,25.7,60.4,30.2,0.0,0.0,
+  NA,25.4,59.5,30.7,0.0,0.0,
+  NA,25.5,58.3,31.6,0.0,0.0,
+  NA,26.6,58.1,35.3,0.0,0.0,
+  NA,26.4,58.9,38.4,0.0,0.0,
+  NA,27.7,59.1,34.5,0.0,0.0,
+  10.4,28.8,59.8,32.2,0.0,0.0,
+  11.7,28.1,61.6,29.9,0.0,0.0,
+  12.4,27.9,61.7,29.0,0.0,0.0,
+  13.5,27.1,58.0,40.0,0.0,0.0,
+  12.2,34.8,54.6,29.0,0.0,0.0,
+  13.5,35.4,52.9,27.0,0.0,0.0,
+  13.9,31.5,56.4,31.0,0.0,0.6,
+  19.9,35.9,54.7,29.2,0.0,0.7,
+  17.5,32.4,55.6,34.7,0.0,0.8,
+  24.4,29.4,52.1,37.1,1.0,0.85,
+  21.8,32.6,53.3,27.6,0.5,0.9,
+  20.4,31.1,55.9,30.3,0.0,1.0,
+  18.6,32.6,57.8,31.6,0.0,1.0,
+  18.0,33.9,56.9,31.4,0.0,1.0,
+  16.4,34.2,58.2,32.6,0.0,1.0,
+  14.3,34.7,NA,NA,0.0,1.0),
   ncol = 6, byrow = TRUE)
-mm <- function(x) { r <- max(x) - min(x); if (r == 0) rep(0, length(x)) else (x - min(x)) / r }
+mm <- function(x) { r <- max(x, na.rm = TRUE) - min(x, na.rm = TRUE)
+  if (r == 0) ifelse(is.na(x), NA, 0) else (x - min(x, na.rm = TRUE)) / r }
 fci_series <- {
   c1 <- mm(fci_comp[,1]); c2 <- 1 - mm(fci_comp[,2]); c3 <- 1 - mm(fci_comp[,3])
   c4 <- mm(fci_comp[,4]); c5 <- fci_comp[,5]; c6 <- mm(fci_comp[,6])
-  round((c1 + c2 + c3 + c4 + c5 + c6) / 6, 2)
+  round(rowMeans(cbind(c1, c2, c3, c4, c5, c6), na.rm = TRUE), 2)
 }
 names(fci_series) <- idx_years
 
 # DQI: geometric mean of V-Dem LDI, FreedomHouse/100, (180-RSF)/180, V-Dem Civil Society
 # columns: vdem_ldi, freedom_house, rsf_rank, civil_society
 dqi_comp <- matrix(c(
-  0.553,78,120,0.86, 0.560,78,106,0.86, 0.562,78,105,0.86, 0.567,78,120,0.87, 0.566,78,118,0.87,
-  0.567,79,105,0.88, 0.566,79,122,0.88, 0.560,79,131,0.87, 0.557,79,140,0.87, 0.554,78,140,0.87,
-  0.555,78,140,0.87, 0.529,77,136,0.83, 0.501,77,133,0.78, 0.462,77,136,0.70, 0.422,75,138,0.62,
-  0.389,71,140,0.55, 0.365,67,142,0.48, 0.357,66,142,0.42, 0.290,66,150,0.36, 0.275,66,161,0.33,
-  0.271,66,159,0.32, 0.270,66,151,0.32, 0.270,66,157,0.31),
+  0.578,76,120,0.826,
+  0.573,76,106,0.76,
+  0.569,76,105,0.76,
+  0.569,76,120,0.76,
+  0.569,76,118,0.76,
+  0.539,76,105,0.76,
+  0.532,76,122,0.744,
+  0.532,77,131,0.744,
+  0.525,76,131,0.743,
+  0.522,77,140,0.735,
+  0.488,78,140,0.669,
+  0.417,77,136,0.576,
+  0.406,77,133,0.555,
+  0.371,77,136,0.523,
+  0.363,75,138,0.471,
+  0.324,71,140,0.454,
+  0.292,67,142,0.404,
+  0.307,66,142,0.421,
+  0.291,66,150,0.421,
+  0.273,66,161,0.346,
+  0.281,63,159,0.302,
+  0.26,62,151,0.302,
+  0.26,62,157,0.302),
   ncol = 4, byrow = TRUE)
 calculate_dqi <- function(year) {
   i <- which(idx_years == year)
@@ -192,16 +219,16 @@ ggsave("three_indices.png", p2, width = 12, height = 4, dpi = 300)
 
 # 3. Employment Elasticity Comparison
 elasticity_data <- data.frame(
-  Period = c("2011-2016", "2017-2023"),
-  Elasticity = c(0.01, 1.11)
+  Period = names(orf_elasticity),
+  Elasticity = unname(orf_elasticity)
 )
 
 p3 <- ggplot(elasticity_data, aes(x = Period, y = Elasticity, fill = Period)) +
   geom_bar(stat = "identity", width = 0.6) +
   geom_text(aes(label = Elasticity), vjust = -0.5, size = 5, fontface = "bold") +
   scale_fill_manual(values = c("#ef4444", "#10b981")) +
-  labs(title = "Employment Elasticity: The Jobs Recovery Paradox",
-       subtitle = "Higher elasticity post-2017 driven by informal employment",
+  labs(title = "Employment elasticity of growth, two periods",
+       subtitle = "Published estimates: Ghosh and Roy Bardhan, ORF Expert Speak, 2 October 2024",
        y = "Employment Elasticity of Growth") +
   theme_india +
   theme(legend.position = "none")
@@ -270,7 +297,7 @@ json_data <- list(
   )
 )
 
-write_json(json_data, "data.json", pretty = TRUE)
+write_json(json_data, "replication_output.json", pretty = TRUE)  # data.json is the source of record
 
 ################################################################################
 # SECTION 8: GENERATE CUSTOM DATASETS
