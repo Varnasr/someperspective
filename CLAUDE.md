@@ -108,9 +108,16 @@ fall to 21%, PLFS shows a rise to 40%), `gigWorkers` (NITI Aayog 2022, Table 14)
 from PLFS: regular wage share times the share with social security),
 `fiscalDeficit` (Union Budget), `top1Share` and `bottom50Share` (World
 Inequality Lab WP 2024/09, statistical appendix; the table ends at 2022).
-`rupeeUSD` 2026 is from X-Rates monthly averages, a secondary source. Not yet
-checked against a publisher: the inputs to the three indices. Check those
-before quoting them as findings.
+`rupeeUSD` (Federal Reserve H.10 monthly averages), and every input to the
+three indices: V-Dem v16, Freedom House, RSF, and the fiscal ratios behind the
+FCI (16th and 15th Finance Commission reports, Union Receipt Budgets, Budget at
+a Glance, RBI Handbook Table 94). The SSI severities are the author's coding
+against the rubric in `data/compute_indices.py`; the events behind them are
+dated and sourced.
+
+`data/SP_masterdataset.csv` is written by `tools/build_master.py` from
+`data.json` and `data/compute_indices.py`. Do not edit it by hand; CI runs
+`--check`, and `replication_code.py` must reproduce the scorecard from it.
 
 MoSPI's PLFS API (`api.mospi.gov.in/api/plfs/getData`) answers with
 `frequency_code=1` for annual rates; pass `religion_code=1&social_category_code=1`

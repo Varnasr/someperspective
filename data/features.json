@@ -109,7 +109,7 @@
     "slug": "the-democratic-quality-index-is-the-lowest-it-has",
     "category": "Democracy",
     "title": "The Democratic Quality Index is the lowest it has been",
-    "body": "DQI combines the V-Dem Liberal Democracy Index, Freedom House, the RSF rank and the V-Dem Core Civil Society Index through a geometric mean, so weakness in any single dimension pulls the composite down. It has fallen from 0.49 (2014) to 0.29 (2026), against a UPA-decade average of 0.57. The steepest single-year falls come after 2019.",
+    "body": "DQI combines the V-Dem Liberal Democracy Index, Freedom House, the RSF rank and the V-Dem Core Civil Society Index through a geometric mean, so weakness in any single dimension pulls the composite down. It has fallen from 0.49 (2014) to 0.28 (2026), against a UPA-decade average of 0.57. The steepest single-year falls come after 2019.",
     "takeaway": "No single index tells the whole story, and every credible index points the same direction.",
     "tab": "Three Indices",
     "chart": {
@@ -129,9 +129,9 @@
   {
     "slug": "statistical-suppression-spiked-to-a-peak-then-stayed-high",
     "category": "Statistics",
-    "title": "Statistical suppression spiked to a peak, then stayed high",
-    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams, including suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years. It peaked at 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent merger of the NSSO into the NSO. It remains at 6.4 in 2026, and the 2021 Census is still incomplete.",
-    "takeaway": "A democratic state is being audited with less independent data than before. The acute events eased. The institutional damage is permanent.",
+    "title": "Statistical suppression spiked to a peak and has eased since",
+    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams, including suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years. It peaked at 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent merger of the NSSO into the NSO. It was 4.65 in 2026. The largest single change that year is the census, which now has a schedule. Houselisting runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs). Under the rubric that is a delay, scored 0.3.",
+    "takeaway": "The acute events have eased and the census is back on a schedule. The shelved GDP back-series and the NSSO-NSO merger still count at full weight.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -150,9 +150,9 @@
   {
     "slug": "fiscal-centralisation-is-at-its-highest-in-the-modern",
     "category": "Federalism",
-    "title": "Fiscal centralisation is at its highest in the modern era",
-    "body": "The Fiscal Centralisation Index (FCI) is the mean of six normalised components: cess share, devolution shortfall, conditional transfers, states' own-tax revenue, conditional borrowing, and the structural one, GST, which in 2017 stripped states of independent indirect taxation. On a relative 0-1 scale, FCI rose from 0.19 (2014) to 0.68 (2026), peaking at 0.92 in 2020. UPA-era values averaged ~0.09.",
-    "takeaway": "GST plus cesses mean states retain less of the divisible pool than at any point since the 14th Finance Commission framework.",
+    "title": "Fiscal centralisation peaked in 2020 and has fallen since",
+    "body": "The Fiscal Centralisation Index (FCI) is the mean of six components. Four are published fiscal ratios: the cess and surcharge share of gross tax revenue, tax devolution as a share of gross tax revenue, states' own revenue as a share of their revenue receipts, and non-Finance-Commission grants as a share of Union transfers. Two are coded: GST, which from 2017 took most independent indirect taxation away from the states, and the reform conditions on extra borrowing in 2020-21. On a relative 0-1 scale the FCI averaged 0.30 under UPA and 0.43 under NDA. It peaked at 0.87 in 2020, when the cess share reached 24.4%, states' own revenue fell to 52.1% of their receipts and borrowing came with conditions. It was 0.35 in 2026, as devolution rose and the cess share fell. The 2014 value of 0.42 reflects an accounting change, when centrally sponsored scheme funds began to flow through state budgets.",
+    "takeaway": "The NDA's higher average rests on GST and the 2020 borrowing conditions. On the four measured fiscal ratios alone the two eras are close, 0.49 under UPA and 0.45 under NDA.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -171,9 +171,9 @@
   {
     "slug": "central-cess-and-surcharge-share-of-tax-revenue-tripled",
     "category": "Federalism",
-    "title": "Central cess and surcharge share of tax revenue tripled",
-    "body": "Cesses and surcharges are not shared with states under the Finance Commission formula. Their share of gross central tax revenue rose from roughly 8% in 2004 to ~29% by 2024. This is a direct mechanism of fiscal centralisation, separate from changes in nominal devolution rates.",
-    "takeaway": "A nominally federal tax structure has been redirected by changing the labels on the revenue itself.",
+    "title": "Cesses and surcharges reached a quarter of Union tax revenue in 2020-21",
+    "body": "Cesses and surcharges are not shared with states under the Finance Commission formula. Their share of the Union's gross tax revenue was 10.4% in 2011-12 and 13.5% in 2014-15 (15th Finance Commission, Table 3.8). It rose to 19.9% in 2018-19, with the GST compensation cess included from 2017-18, and peaked at 24.4% in 2020-21 (20.2% without the compensation cess). It has fallen since, to 18.0% in 2024-25 and 14.3% in the 2026-27 budget estimate (Union Receipt Budgets).",
+    "takeaway": "Revenue raised as a cess stays with the Union, so the cess share measures how much of the tax take sits outside the pool that states share in.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "csv-line",
@@ -326,7 +326,7 @@
     "slug": "the-2020-gdp-contraction-was-the-steepest-since-independence",
     "category": "Growth",
     "title": "The 2020 GDP contraction was the steepest since independence",
-    "body": "GDP shrank 7.3% in calendar 2020, the largest annual contraction in India's recorded history. The headline V-shape (8.7% in 2021) masked a structural break. Formal employment never recovered its pre-COVID trajectory, and gig work absorbed much of the displaced workforce.",
+    "body": "GDP shrank 7.3% in calendar 2020, the largest annual contraction in India's recorded history. The headline V-shape (8.7% in 2021) masked a structural break. Formal employment never recovered its pre-COVID trajectory. The ILO-IHD India Employment Report 2024 finds that nearly two thirds of the employment added after 2019 was self-employment. NITI Aayog puts the number of gig workers at 7.7 million in 2020-21.",
     "takeaway": "The recovery showed up in GDP and did not show up in employment.",
     "tab": "Interactive Data",
     "chart": {
@@ -384,8 +384,8 @@
     "slug": "all-three-constructed-indices-point-the-same-direction",
     "category": "Indices",
     "title": "All three constructed indices point the same direction",
-    "body": "SSI (statistical suppression) and FCI (fiscal centralisation) have risen sharply since 2014. DQI (democratic quality) has fallen by an equivalent amount. The three are constructed from independent data sources but co-move because they measure related institutional erosion.",
-    "takeaway": "The three indices are correlated because the underlying processes are correlated. The construction does not force it.",
+    "body": "SSI (statistical suppression) rose sharply after 2014 and DQI (democratic quality) fell. FCI (fiscal centralisation) moved differently. Its NDA average of 0.43 is above the UPA average of 0.30, mostly because of GST and the 2020 borrowing conditions, but it peaked in 2020 and was 0.35 in 2026, below its 2014 value of 0.42. The three are built from separate data sources.",
+    "takeaway": "On era averages all three indices are worse under NDA. The FCI gap is the smallest of the three and rests on its two coded components.",
     "tab": "Three Indices",
     "chart": {
       "type": "multi",
@@ -413,9 +413,9 @@
   {
     "slug": "the-census-is-15-years-overdue-and-counting",
     "category": "Statistics",
-    "title": "The Census is 15 years overdue and counting",
-    "body": "The last Indian Census was 2011. The 2021 Census has been postponed indefinitely. Every population estimate published since 2021, for ration cards, electoral rolls, sample frames and everything else, is now an interpolation. The compounding error grows every year.",
-    "takeaway": "India is the world's most populous country and has not formally counted itself in 15 years.",
+    "title": "India has not counted its population since 2011",
+    "body": "The last Indian census was taken in 2011. The 2021 census was postponed in 2020 with no new date. Houselisting now runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs). Until that count is published, population figures used for ration cards, electoral rolls and survey sample frames rest on the 2011 count and projections from it.",
+    "takeaway": "By the time the 2027 enumeration is complete, sixteen years will have passed between counts.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -476,9 +476,9 @@
   {
     "slug": "press-freedom-and-statistical-suppression-move-in-lockstep",
     "category": "Correlation",
-    "title": "Press freedom and statistical suppression move in lockstep",
-    "body": "The Pearson correlation between India's annual SSI and inverse press freedom rank is ~0.92 over 2014-2026. Both worsen together. The mechanism is plausible, since pressure on independent statistics and pressure on an independent press serve a similar function.",
-    "takeaway": "The decline in two ostensibly separate institutions is empirically a single phenomenon.",
+    "title": "Press freedom and statistical suppression worsened together after 2014",
+    "body": "The Pearson correlation between India's annual SSI and its RSF press-freedom rank is about 0.64 over 2014-2026, so years with more statistical suppression tend to be years with a worse press-freedom rank. Pressure on independent statistics and pressure on an independent press can serve a similar purpose, which would explain the link, but thirteen annual observations cannot establish it.",
+    "takeaway": "The two series move in the same direction. The correlation is moderate and does not by itself show a common cause.",
     "tab": "Correlation Explorer",
     "chart": {
       "type": "multi",
@@ -504,7 +504,7 @@
     "slug": "what-goes-into-the-statistical-suppression-index",
     "category": "Methodology",
     "title": "What goes into the Statistical Suppression Index",
-    "body": "SSI = Σ(severity × salience) / n. Severity scales: withheld (1.0), delayed (0.5), revised (0.3). Salience scales: census (1.0), Consumption Expenditure Survey (0.8), PLFS (0.7), other (0.6). The index is event-based, so a single year's score is the weighted average of that year's statistical incidents.",
+    "body": "SSI is a weighted sum of six documented streams on a 0-10 scale: the census (weight 2.5), COVID mortality (2.0), the consumption survey (1.5), GDP methodology (1.5), statistical institutions (1.5) and the employment survey (1.0). Each stream carries a graded severity for each year: about 1.0 for a withheld or postponed release, 0.7 for a live methodology dispute and 0.3 for a release on a published schedule that is late. A resolved event keeps a smaller severity for a few years afterwards.",
     "takeaway": "The index is transparent enough that anyone can replicate it from the public record of statistical events.",
     "tab": "Methodology",
     "chart": {
@@ -525,7 +525,7 @@
     "slug": "why-the-democratic-quality-index-uses-a-geometric-mean",
     "category": "Methodology",
     "title": "Why the Democratic Quality Index uses a geometric mean",
-    "body": "DQI = (V-Dem × Freedom House × RSF)^(1/3). A geometric mean is used so that a collapse in any single dimension drags the whole index down, and a country with strong elections but no press freedom is correctly penalised. An arithmetic mean would hide this.",
+    "body": "DQI = (V-Dem Liberal Democracy Index × Freedom House score/100 × (180 - RSF rank)/180 × V-Dem Core Civil Society Index)^(1/4). A geometric mean is used so that a collapse in any single dimension drags the whole index down, and a country with strong elections but no press freedom is correctly penalised. An arithmetic mean would hide this.",
     "takeaway": "Democratic quality is multiplicative. One weak pillar undermines the rest.",
     "tab": "Methodology",
     "chart": {
@@ -546,8 +546,8 @@
     "slug": "what-goes-into-the-fiscal-centralisation-index",
     "category": "Methodology",
     "title": "What goes into the Fiscal Centralisation Index",
-    "body": "FCI averages five normalised components: share of cesses and surcharges in gross central tax, gap between recommended and actual devolution to states, share of conditional transfers, states' own tax revenue as % of GDP, and overall state dependency on central transfers.",
-    "takeaway": "The FCI is a snapshot of how much fiscal autonomy states have lost in measurable, audited terms.",
+    "body": "FCI averages six components. Four are published fiscal ratios, each min-max normalised over the years it is published: the cess and surcharge share of the Union's gross tax revenue, tax devolution as a share of gross tax revenue (inverted), states' own revenue as a share of their revenue receipts (inverted), and non-Finance-Commission grants as a share of total Union transfers. Two are coded: the reform conditions on extra borrowing in 2020-21 and the GST, phased in from 2017 to full weight when compensation ended in 2022. The sources are the 15th and 16th Finance Commission reports, the Union Receipt Budgets and the RBI Handbook.",
+    "takeaway": "The four measured ratios come from audited public accounts. The two coded components are judgements, and the method page sets them out.",
     "tab": "Methodology",
     "chart": {
       "type": "line",

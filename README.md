@@ -23,9 +23,9 @@ The author is a Manmohan Singh Fellow of the All India Professionals' Congress (
 
 ## Abstract
 
-Official accounts of the period emphasise high GDP growth and improved global rankings. This research documents five changes between 2004 and 2026 that those accounts leave out: (1) a collapse in employment elasticity followed by a recovery built on precarious gig work, (2) inequality reaching levels above those of the colonial era, (3) the erosion of fiscal federalism through constitutional workarounds, (4) unprecedented suppression of official statistics, and (5) a measurable deterioration in democratic quality as assessed by several international indices.
+Official accounts of the period emphasise high GDP growth and improved global rankings. This research documents five changes between 2004 and 2026 that those accounts leave out: (1) a fall in the share of workers in regular jobs with social security after 2017-18, while most of the employment added after 2019 was self-employment, (2) inequality reaching levels above those of the colonial era, (3) the erosion of fiscal federalism through constitutional workarounds, (4) unprecedented suppression of official statistics, and (5) a measurable deterioration in democratic quality as assessed by several international indices.
 
-We construct three new indices to measure these changes: a Statistical Suppression Index (SSI) measuring government interference in data production, a Fiscal Centralization Index (FCI) measuring the erosion of federalism, and a Democratic Quality Index (DQI) aggregating several assessments of institutional health. All three worsen over the period, and the deterioration accelerates after 2019.
+We construct three new indices to measure these changes: a Statistical Suppression Index (SSI) measuring government interference in data production, a Fiscal Centralization Index (FCI) measuring the erosion of federalism, and a Democratic Quality Index (DQI) aggregating several assessments of institutional health. All three are worse on average under NDA than under UPA. The SSI and DQI deteriorate sharply after 2019; the FCI peaks in 2020 and has fallen since, and its higher NDA average comes from GST and the 2020 borrowing conditions.
 
 The central finding is that India's post-2014 growth model decoupled economic expansion from employment generation, concentrated wealth at unprecedented levels, and centralized political power, while suppressing the statistical infrastructure needed for democratic accountability.
 
@@ -47,7 +47,7 @@ The gap between official accounts and what households experience has widened. Th
 
 This study addresses four questions.
 
-1. **Employment:** Why did employment elasticity collapse to 0.01 (2011-2016) and then recover through informal gig work while formal job creation stalled?
+1. **Employment:** Why did the share of workers in regular jobs with social security fall after 2017-18, and why was most of the employment added after 2019 self-employment?
 
 2. **Inequality:** What mechanisms drove the top 1% income share from 18.4% in 2004 to 22.6% in 2022-23, its highest level since 1922, while the bottom 50% share fell from 18.8% to a low of 13.9% in 2017 before recovering to 15.0%?
 
@@ -119,12 +119,12 @@ two periods being handled differently.
 
 ### 1. Employment: growth without jobs
 
-- **2011-2016:** Employment elasticity collapsed to 0.01, the lowest in India's post-independence history
+- Published estimates of employment elasticity depend on the period and the method. Misra and Suresh (RBI Working Paper 06/2014) put it at 0.01 for 2004-05 to 2009-10 and at 0.18 to 0.20 for 1993-94 to 2011-12. Ghosh and Roy Bardhan (ORF, 2024) put it at 0.01 for 2011-16 and 1.11 for 2017-23, and use the second figure to argue that growth since 2017 has created jobs.
 - **Formal employment** (regular wage or salaried work with any social security, PLFS) fell from 11.5% of all workers in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24, so roughly nine in ten workers have no social-security cover
 - **Youth unemployment** (ages 15-29) was 17.8% in 2017-18 and 9.9% in 2025; graduate unemployment was 13.0% in 2023-24, four times the overall rate
-- **Recovery (2017-2023):** Elasticity increased to 1.11, driven by precarious gig work
+- Nearly two thirds of the employment added after 2019 was self-employment, mostly unpaid family work by women, and about 90% of workers are informally employed (ILO and IHD, India Employment Report 2024).
 
-Economic growth came apart from employment generation, which runs against what standard development theory expects.
+The share of workers in regular jobs with social security fell while GDP grew.
 
 ### 2. Inequality: concentration at colonial-era levels
 
@@ -135,18 +135,19 @@ Economic growth came apart from employment generation, which runs against what s
 
 India saw the highest concentration of economic resources in its independent history, and wealth inequality exceeds income inequality.
 
-### 3. Fiscal centralization: the Constitution worked around
+### 3. Fiscal centralization
 
-- **State fiscal autonomy** reduced from 42% (2014) to 29.8% (2024) of total government resources
-- **Cesses and surcharges** (not shared with states) rose from 10.4% to 20.2% of gross tax revenue
-- **Amount bypassed:** ₹4.3 lakh crore in FY2023-24 alone
+- **Cesses and surcharges** (not shared with states) were 13.5% of the Union's gross tax revenue in 2014-15, peaked at 24.4% in 2020-21 and were 18.0% in 2024-25 (15th Finance Commission, Table 3.8; Union Receipt Budgets)
+- **Tax devolution** rose from 27.1% of gross tax revenue in 2014-15 to 33.9% in 2024-25, after the 14th Finance Commission raised the states' share of the divisible pool from 32% to 42% (16th Finance Commission, Annexure 7.1)
+- **GST** took most independent indirect taxation away from the states in 2017, and GST compensation ended in June 2022
+- **Borrowing:** extra borrowing in 2020-21 was tied in part to reforms
 
-The Centre achieved de facto centralization through cesses, the design of GST and conditional transfers, without amending the Constitution.
+On the published fiscal ratios the UPA and NDA years are close. The NDA's higher Fiscal Centralisation Index (0.43 against 0.30) comes from GST and the 2020 borrowing conditions.
 
 ### 4. Statistical Suppression Index (SSI)
 
-- **SSI score:** 0 across the UPA decade. It peaked at 9.0 (2021-22, driven by the COVID-mortality undercount) and now holds at 6.4 (0-10 scale)
-- **Major suppressions:** COVID-mortality undercount (~0.5M official vs 3-5M excess), 2021 census (postponed), 2017-18 consumption survey, NSSO→NSO merger, shelved GDP back-series
+- **SSI score:** 0 across the UPA decade. It peaked at 9.0 (2021-22, driven by the COVID-mortality undercount) and was 4.65 in 2026 (0-10 scale), when the census, now scheduled for enumeration in February 2027, counts as a delay
+- **Major suppressions:** COVID-mortality undercount (~0.5M official vs 3-5M excess), 2021 census (postponed in 2020, enumeration now notified for February 2027), 2017-18 consumption survey, NSSO→NSO merger, shelved GDP back-series
 - **Pattern:** The events form a systematic pattern of interference
 
 The statistical infrastructure that democratic accountability depends on was systematically undermined.
@@ -155,7 +156,7 @@ The statistical infrastructure that democratic accountability depends on was sys
 
 - **Freedom House:** Downgraded from "Free" to "Partly Free" (2021)
 - **Press freedom:** Fell from rank 140 (2014) to 157 (2026, RSF World Press Freedom Index)
-- **Democratic Quality Index:** Fell from a UPA-era average of 0.57 to 0.29 by 2026 (0.49 → 0.29 within the NDA period). Civil-society space collapsed from 0.669 to 0.302
+- **Democratic Quality Index:** Fell from a UPA-era average of 0.57 to 0.28 in 2026 (0.49 → 0.28 within the NDA period). Civil-society space collapsed from 0.669 to 0.302
 
 Several independent international assessments record the same institutional deterioration.
 
@@ -185,15 +186,18 @@ Independent sources:
 #### 1. Statistical Suppression Index (SSI)
 
 \`\`\`
-SSI_t = Σ(weight_i × trigger_it)     [0-10 scale]
+SSI_t = Σ(weight_i × severity_it)     [0-10 scale]
 
-Where trigger is binary (1 = active that year) and weights are:
-- Census delay: 3.0
-- Consumption-survey suppression: 2.5
-- Employment-data delay: 2.0
-- GDP-methodology dispute: 1.5
-- Statistical-body resignation: 1.0
-UPA years (2004-2013): no trigger fired -> SSI = 0
+Where severity is graded from 0 to 1 (about 1.0 for a withheld or postponed release,
+0.7 for a live methodology dispute, 0.3 for a delay, with decay after resolution)
+and the weights are:
+- Census delay: 2.5
+- COVID-mortality undercount: 2.0
+- Consumption-survey suppression: 1.5
+- GDP back-series dispute: 1.5
+- Institutional independence (NSC resignations, NSSO-NSO merger): 1.5
+- Employment-data delay: 1.0
+UPA years (2004-2013): no event qualified -> SSI = 0
 \`\`\`
 
 The SSI measures government interference in statistical production by coding datable events.
@@ -201,15 +205,15 @@ The SSI measures government interference in statistical production by coding dat
 #### 2. Fiscal Centralization Index (FCI)
 
 Components:
-- Share of cesses/surcharges in gross tax revenue
-- Actual devolution to states (%)
-- States' own tax revenue as % of GDP
-- Conditional borrowing requirements
-- Centrally Sponsored Schemes (CSS) share of social spending
-- GST structural centralisation (states' loss of independent indirect taxation, 2017)
+- Cess and surcharge share of the Union's gross tax revenue (15th Finance Commission; Union Receipt Budgets)
+- Tax devolution as % of gross tax revenue, inverted (16th Finance Commission; Budget at a Glance)
+- States' own revenue as % of their revenue receipts, inverted (RBI Handbook, Table 94)
+- Non-Finance-Commission grants as % of Union transfers (16th Finance Commission)
+- Borrowing conditions, coded (2020-21)
+- GST structural centralisation, coded (states' loss of independent indirect taxation, 2017)
 
-The six components are min-max normalized over the full 2004-2026 sample, aligned in direction, and averaged. The scale is relative, with 0 the least-centralised year and 1 the most.  
-Current score: 0.68 (2026), up from 0.19 (2014), with a peak of 0.92 (2020) and a UPA average of ~0.09.
+The four measured components are min-max normalized over the years each is published, aligned in direction, and averaged with the two coded components. The scale is relative to the sample.  
+Current score: 0.35 (2026), against 0.42 in 2014, a peak of 0.87 (2020), a UPA average of 0.30 and an NDA average of 0.43. On the four measured components alone the UPA years average 0.49 and the NDA years 0.45.
 
 #### 3. Democratic Quality Index (DQI)
 
@@ -224,11 +228,11 @@ Where:
 \`\`\`
 
 A geometric mean is used so that weakness in any dimension reduces the overall score.  
-Current score: 0.29 (2026), down from 0.49 (2014), against a UPA average of 0.57.
+Current score: 0.28 (2026), down from 0.49 (2014), against a UPA average of 0.57.
 
 ### Analytical approaches
 
-1. **Employment elasticity:** Calculated as ε = (%ΔEmployment) / (%ΔGDP) across three distinct periods
+1. **Employment elasticity:** Defined as ε = (%ΔEmployment) / (%ΔGDP). The project does not estimate it and reports published estimates with their source, period and method (technical appendix A5)
 2. **Inequality measurement:** Combined income tax data with wealth surveys, adjusted for underreporting using Pareto interpolation
 3. **Cross-validation:** All major findings verified across multiple independent datasets (CMIE-PLFS correlation: r=0.89)
 4. **Robustness:** Trends tested across different base years, deflators, and time periods

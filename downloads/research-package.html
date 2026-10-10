@@ -735,21 +735,19 @@
             </div>
 
             <div class="code-block">
-# Sample Code: Calculate Statistical Suppression Index (SSI)
-import pandas as pd
-import numpy as np
+# Sample code: regenerate the three indices from data/compute_indices.py
+import sys
+sys.path.insert(0, 'data')
+import compute_indices as ci
 
-def calculate_ssi(data):
-    """Calculate Statistical Suppression Index from components"""
-    components = ['surveys_withheld', 'delays', 'revisions', 'resignations']
-    z_scores = (data[components] - data[components].mean()) / data[components].std()
-    ssi = z_scores.mean(axis=1)
-    return (ssi - ssi.min()) / (ssi.max() - ssi.min()) * 10
+idx = ci.build()            # years, ssi, fci, dqi for 2004-2026
+for y, s, f, d in zip(idx['years'], idx['ssi'], idx['fci'], idx['dqi']):
+    print(y, s, f, d)
 
-# Load data and calculate
-data = pd.read_csv('india_stats.csv')
-data['SSI'] = calculate_ssi(data)
-print(f"SSI increased from {data['SSI'].iloc[0]:.1f} to {data['SSI'].iloc[-1]:.1f}")
+# SSI = sum of weight x graded severity over six documented streams (0-10)
+# FCI = mean of four published fiscal ratios (min-max normalised) and two
+#       coded components, the GST and the 2020 borrowing conditions (0-1, relative)
+# DQI = (V-Dem LDI x FH/100 x (180 - RSF rank)/180 x V-Dem civil society)^(1/4)
             </div>
         </div>
 

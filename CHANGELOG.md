@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.51.0] - 2026-10-10
+
+### Fixed
+- FCI rebuilt from published inputs: C1 cess+surcharge % GTR (15th FC Table 3.8; Receipt Budgets), C2 devolution % GTR (16th FC Annexure 7.1; Budget at a Glance), C3 states' own revenue % revenue receipts (RBI Handbook Table 94), C4 non-FC grants % transfers (16th FC Annexure 7.1). Missing years empty; FCI averages available components. UPA 0.30, NDA 0.43 (C1-C4 alone 0.49 vs 0.45).
+- `data/state_finances_cess_share.csv` replaced with published values (2011-2026); CSV charts handle empty years.
+- DQI inputs: Freedom House (UPA years, 2024-2025) and RSF 2012 corrected; V-Dem verified against v16.
+- Employment elasticity claims corrected to RBI WP 06/2014 and ORF; appendix A5 rebuilt; unsourced 80% and 45% figures replaced with ILO-IHD IER 2024.
+- `downloads/methodology.html` sections 1, 4, 5, 7, 8 rewritten to what the project does.
+- `data/SP_masterdataset.csv` written by `tools/build_master.py` (CI `--check`); unsourced columns dropped. `replication_code.py` and `.R` rewritten to run against it; the Python script runs in CI.
+- `rupeeUSD` 2023 82 to 83 (Fed H.10).
+
+### Changed
+- SSI 2026 census severity 1.0 to 0.3 (scheduled delay): SSI 2026 6.4 to 4.65.
+
 ## [2.50.0] - 2026-10-10
 
 ### Fixed
