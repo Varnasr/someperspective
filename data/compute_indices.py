@@ -61,63 +61,98 @@ def compute_ssi(year):
 
 # ---------------------------------------------------------------------------
 # 2. FISCAL CENTRALISATION INDEX (FCI), scale 0-1 (relative)
-#    FCI_t = mean(C1..C6), each component min-max-normalised over 2004-2026:
-#      C1 = minmax(cess share)              (higher cess  -> more central)
-#      C2 = 1 - minmax(devolution)          (lower devolution -> more central)
-#      C3 = 1 - minmax(states_own_revenue)  (lower own-revenue -> more central)
-#      C4 = minmax(css_share)               (more conditional transfers -> central)
-#      C5 = borrowing_restriction in {0,0.5,1}
-#      C6 = gst_centralisation in [0,1]     (NEW: structural loss of state taxing
-#           power; phases in 2017 -> full once GST compensation ended mid-2022)
-#    NDA component values (2014-2024) are budget/Finance-Commission anchors; UPA
-#    values interpolate official anchors (12th-15th FC devolution; Receipt-Budget
-#    cess & CSS shares). GST component is 0 before the 2017 rollout.
+#    FCI_t = mean of the components published for year t, each min-max
+#    normalised over the years it is published:
+#      C1 = minmax(cess and surcharge share of the Union's gross tax revenue)
+#      C2 = 1 - minmax(tax devolution to states as % of gross tax revenue)
+#      C3 = 1 - minmax(states' own revenue as % of their revenue receipts)
+#      C4 = minmax(non-Finance-Commission grants as % of total Union transfers)
+#      C5 = borrowing_restriction in {0, 0.5, 1}            (coded)
+#      C6 = gst_centralisation in [0, 1]                    (coded; phases in
+#           from the 2017 rollout to full once GST compensation ended in 2022)
+#
+# REBUILT 2026-10-10 FROM PUBLISHED FIGURES. The earlier table described C1-C4
+# as "budget/Finance-Commission anchors" but matched no published series:
+# devolution ran 31-37% of gross tax revenue and fell under NDA, where the
+# published share rose from 25.8% (2004-05) to 33.9% (2024-25); states' own
+# revenue was 15-20 points too low; conditional transfers rose steadily to 42%,
+# where the published share moves between 27% and 40% with no trend.
+# Sources (year Y = fiscal year starting April Y):
+#   C1  2011-2018: 15th Finance Commission report, Vol I Table 3.8 (published;
+#       GST compensation cess included from 2017-18). 2019-2026: summed from
+#       every cess and surcharge line of the Union Receipt Budgets (actuals;
+#       2025 RE, 2026 BE); the same rule reproduces the 15th FC's 2018-19 figure.
+#       2004-2010: no published figure on this definition, so empty.
+#   C2  16th Finance Commission report, Vol II Annexure 7.1 (2004-2023);
+#       Budget at a Glance 2026-27 (2024 actual, 2025 RE, 2026 BE).
+#   C3  RBI Handbook of Statistics on the Indian Economy 2025-26, Table 94:
+#       (revenue receipts - share in central taxes - grants from the Centre) /
+#       revenue receipts, all states (2024 RE, 2025 BE). 2026 not yet compiled.
+#   C4  16th FC Vol II Annexure 7.1: non-FC grants / (devolution + FC grants +
+#       non-FC grants). Non-FC grants are mostly centrally sponsored schemes,
+#       plus the GST compensation grants of 2017-22. The 2014 value (40.0) is an
+#       accounting break: CSS funds began to flow through state budgets that
+#       year. 2026 not yet published.
+#   C5  2020: additional borrowing of up to 2% of GSDP tied to reforms (15th FC
+#       para 10.100); 2021: 0.5 (partial continuation).
+#   C6  GST in force from 1 July 2017; compensation ended 30 June 2022 (16th FC
+#       paras 5.7, 7.63).
+# A year with a component missing averages the components it has. C1 is
+# missing for 2004-2010 and C3 and C4 for 2026.
 # ---------------------------------------------------------------------------
-# year: [cess, devolution, states_own_rev, css, borrowing, gst]
+# year: [cess, devolution, states_own_rev, non_fc_grants, borrowing, gst]
 FCI_COMPONENTS = {
-    2004: [6.5, 36.5, 45.0, 22.0, 0.0, 0.0],
-    2005: [7.0, 36.3, 44.8, 22.8, 0.0, 0.0],
-    2006: [7.5, 36.1, 44.5, 23.5, 0.0, 0.0],
-    2007: [8.0, 35.9, 44.2, 24.2, 0.0, 0.0],
-    2008: [8.5, 35.8, 44.0, 24.8, 0.0, 0.0],
-    2009: [9.0, 35.7, 43.7, 25.4, 0.0, 0.0],
-    2010: [9.3, 35.6, 43.4, 26.0, 0.0, 0.0],
-    2011: [9.6, 35.5, 43.1, 26.6, 0.0, 0.0],
-    2012: [9.9, 35.4, 42.9, 27.2, 0.0, 0.0],
-    2013: [10.1, 35.3, 42.7, 27.7, 0.0, 0.0],
-    2014: [10.4, 35.0, 42.5, 28.3, 0.0, 0.0],
-    2015: [11.5, 35.6, 41.8, 29.5, 0.0, 0.0],
-    2016: [13.5, 36.2, 40.2, 31.2, 0.0, 0.0],
-    2017: [15.3, 36.6, 38.5, 33.8, 0.0, 0.60],
-    2018: [17.8, 35.5, 37.2, 36.5, 0.0, 0.70],
-    2019: [19.0, 34.0, 36.1, 38.9, 0.0, 0.80],
-    2020: [20.2, 33.0, 34.5, 42.3, 1.0, 0.85],
-    2021: [18.3, 32.7, 35.2, 41.5, 0.5, 0.90],
-    2022: [16.3, 32.4, 36.8, 40.2, 0.0, 1.00],  # GST compensation ended Jun 2022
-    2023: [14.8, 32.1, 37.5, 39.8, 0.0, 1.00],
-    2024: [14.8, 31.8, 37.9, 39.5, 0.0, 1.00],
-    2025: [14.6, 31.6, 38.0, 39.2, 0.0, 1.00],
-    2026: [14.5, 31.4, 38.1, 39.0, 0.0, 1.00],
+    2004: [None, 25.8, 62.9, 32.8, 0.0, 0.0],
+    2005: [None, 25.7, 60.4, 30.2, 0.0, 0.0],
+    2006: [None, 25.4, 59.5, 30.7, 0.0, 0.0],
+    2007: [None, 25.5, 58.3, 31.6, 0.0, 0.0],
+    2008: [None, 26.6, 58.1, 35.3, 0.0, 0.0],
+    2009: [None, 26.4, 58.9, 38.4, 0.0, 0.0],
+    2010: [None, 27.7, 59.1, 34.5, 0.0, 0.0],
+    2011: [10.4, 28.8, 59.8, 32.2, 0.0, 0.0],
+    2012: [11.7, 28.1, 61.6, 29.9, 0.0, 0.0],
+    2013: [12.4, 27.9, 61.7, 29.0, 0.0, 0.0],
+    2014: [13.5, 27.1, 58.0, 40.0, 0.0, 0.0],
+    2015: [12.2, 34.8, 54.6, 29.0, 0.0, 0.0],
+    2016: [13.5, 35.4, 52.9, 27.0, 0.0, 0.0],
+    2017: [13.9, 31.5, 56.4, 31.0, 0.0, 0.6],
+    2018: [19.9, 35.9, 54.7, 29.2, 0.0, 0.7],
+    2019: [17.5, 32.4, 55.6, 34.7, 0.0, 0.8],
+    2020: [24.4, 29.4, 52.1, 37.1, 1.0, 0.85],
+    2021: [21.8, 32.6, 53.3, 27.6, 0.5, 0.9],
+    2022: [20.4, 31.1, 55.9, 30.3, 0.0, 1.0],  # GST compensation ended 30 Jun 2022
+    2023: [18.6, 32.6, 57.8, 31.6, 0.0, 1.0],
+    2024: [18.0, 33.9, 56.9, 31.4, 0.0, 1.0],
+    2025: [16.4, 34.2, 58.2, 32.6, 0.0, 1.0],
+    2026: [14.3, 34.7, None, None, 0.0, 1.0],
 }
 
 
-def _minmax(values):
-    lo, hi = min(values), max(values)
+def _minmax(values, invert=False):
+    have = [v for v in values if v is not None]
+    lo, hi = min(have), max(have)
     rng = hi - lo
-    return [(v - lo) / rng if rng else 0.0 for v in values]
+    out = []
+    for v in values:
+        if v is None:
+            out.append(None)
+        elif not rng:
+            out.append(0.0)
+        else:
+            out.append(((hi - v) if invert else (v - lo)) / rng)
+    return out
 
 
 def compute_fci_series():
     cols = list(zip(*[FCI_COMPONENTS[y] for y in YEARS]))
-    cess, devo, own, css, borr, gst = cols
-    c1 = _minmax(cess)
-    c2 = [1 - x for x in _minmax(devo)]
-    c3 = [1 - x for x in _minmax(own)]
-    c4 = _minmax(css)
-    c5 = list(borr)
-    c6 = _minmax(gst)
-    return [round((c1[i] + c2[i] + c3[i] + c4[i] + c5[i] + c6[i]) / 6, 2)
-            for i in range(len(YEARS))]
+    cess, devo, own, grants, borr, gst = cols
+    comps = [_minmax(cess), _minmax(devo, invert=True), _minmax(own, invert=True),
+             _minmax(grants), list(borr), _minmax(gst)]
+    out = []
+    for i in range(len(YEARS)):
+        have = [c[i] for c in comps if c[i] is not None]
+        out.append(round(sum(have) / len(have), 2))
+    return out
 
 
 # ---------------------------------------------------------------------------

@@ -2480,7 +2480,7 @@ reduces overall score</pre>
                 <!-- State Cess Share -->
                 <div class="card-inner mb-6">
                     <div class="flex justify-between items-center mb-2">
-                        <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">State Cess/Surcharge Share of Revenue (2004-2025)</h4>
+                        <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">Cess and surcharge share of the Union's gross tax revenue (2011-2026)</h4>
                         <button @click="exportCSV('cess')" class="text-xs px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">Export CSV</button>
                     </div>
                     <div id="csvCessChart" class="chart-container"></div>
@@ -3322,7 +3322,7 @@ reduces overall score</pre>
             cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,3.8],
             rupeeUSD:            [61,64,67,65,68,70,74,74,79,83,84,87,94],
             ssi:                 [0.0,1.05,1.05,2.05,4.0,4.8,7.0,9.0,9.0,8.2,7.05,6.55,4.65],
-            fci:                 [0.19,0.21,0.25,0.41,0.53,0.65,0.92,0.82,0.7,0.68,0.68,0.68,0.68],
+            fci:                 [0.42,0.19,0.2,0.36,0.38,0.48,0.87,0.58,0.51,0.45,0.44,0.41,0.35],
             dqi:                 [0.49,0.46,0.46,0.44,0.42,0.39,0.36,0.37,0.34,0.28,0.28,0.3,0.28],
             gigWorkers:          [null,null,null,5.3,5.4,6.8,7.7,null,null,null,null,null,null],
             ruralIncome:         [null,null,100,null,null,null,null,126.8,null,null,null,null,null],
@@ -3605,7 +3605,7 @@ reduces overall score</pre>
             correlationR: 0,
             eraIndicator: 'gdpGrowth',
             scenarioInputs: { formalEmp: 10.1, pressFreedom: 157, cessShare: 20.5, statsReleased: 40 },
-            scenarioOutputs: { ssi: 4.65, fci: 0.68, dqi: 0.28 },
+            scenarioOutputs: { ssi: 4.65, fci: 0.35, dqi: 0.28 },
 
             // ===== ECONOMIC TRAJECTORY (forecast) state =====
             forecastSpec: FORECAST_FALLBACK,
@@ -3624,7 +3624,7 @@ reduces overall score</pre>
                 bottom50Share: [18.8,18.4,17.9,17.5,17.0,16.5,16.0,15.3,15.1,15.0],
                 pressFreedom: [120,106,105,120,118,105,122,131,131,140],
                 ssi: [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
-                fci: [0.0,0.03,0.05,0.07,0.09,0.11,0.12,0.14,0.16,0.17],
+                fci: [0.28,0.29,0.32,0.35,0.39,0.43,0.34,0.23,0.2,0.19],
                 dqi: [0.59,0.61,0.61,0.58,0.58,0.6,0.56,0.54,0.53,0.51]
             },
             // ===== STATE EXPLORER =====
@@ -4076,7 +4076,7 @@ reduces overall score</pre>
                 csvIncarcerationChart: 'Documented opposition-incarceration cases',
                 csvEducationChart: 'Documented exam-disruption events',
                 csvSanitationChart: 'ODF verified coverage (logistic estimate)',
-                csvCessChart: 'Union Budget; PRS (cess share of gross tax)',
+                csvCessChart: '15th Finance Commission Table 3.8 (2011-2018); Union Receipt Budgets (2019-2026)',
                 trajGaugeChart: 'Some Perspective forecast model (data.json → forecast)',
                 trajFanChart: 'Some Perspective forecast model (data.json → forecast)',
                 trajScenarioChart: 'Some Perspective forecast model (data.json → forecast)',
@@ -5837,14 +5837,16 @@ reduces overall score</pre>
                         const resp = await fetch(path);
                         if (!resp.ok) continue;
                         const text = await resp.text();
+                        // An empty cell is a year with no published figure: keep it null.
+                        const num = s => (s === undefined || s.trim() === '') ? null : parseFloat(s);
                         const rows = text.trim().split('\n').slice(1).map(line => {
                             const cols = line.split(',');
                             return {
                                 year: parseInt(cols[0]),
                                 raw: cols[1] ? parseFloat(cols[1]) : null,
-                                estimate: parseFloat(cols[2]),
-                                lo: parseFloat(cols[3]),
-                                hi: parseFloat(cols[4]),
+                                estimate: num(cols[2]),
+                                lo: num(cols[3]),
+                                hi: num(cols[4]),
                                 method: cols[5] || '',
                                 notes: cols.slice(6).join(',') || ''
                             };
@@ -5906,7 +5908,9 @@ reduces overall score</pre>
                                 const p = params.find(x => x.seriesName === cfg.title);
                                 if (!p) return '';
                                 const r = rows[p.dataIndex];
-                                return `<b>${r.year}</b><br/>${cfg.title}: <b>${r.estimate}</b> ${cfg.unit}<br/>Range: ${r.lo} – ${r.hi}`;
+                                if (r.estimate == null) return `<b>${r.year}</b><br/>No published figure`;
+                                const range = (r.lo != null && r.hi != null) ? `<br/>Range: ${r.lo} to ${r.hi}` : '';
+                                return `<b>${r.year}</b><br/>${cfg.title}: <b>${r.estimate}</b> ${cfg.unit}${range}`;
                             }
                         },
                         xAxis: { type: 'category', data: years, axisLabel: { fontSize: isMobile() ? 10 : 12 } },
@@ -5920,7 +5924,7 @@ reduces overall score</pre>
                 if (!rows || !rows.length) { alert('Data not loaded yet.'); return; }
                 let csv = 'year,raw_value,estimate,lo,hi,method,notes\n';
                 for (const r of rows) {
-                    csv += `${r.year},${r.raw ?? ''},${r.estimate},${r.lo},${r.hi},"${r.method}","${r.notes}"\n`;
+                    csv += `${r.year},${r.raw ?? ''},${r.estimate ?? ''},${r.lo ?? ''},${r.hi ?? ''},"${r.method}","${r.notes}"\n`;
                 }
                 const blob = new Blob([csv], { type: 'text/csv' });
                 const url = URL.createObjectURL(blob);
