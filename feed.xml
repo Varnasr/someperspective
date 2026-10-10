@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>The new design, fixed for phones</title>
+    <link>https://someperspective.info/updates.html#v2.53.1</link>
+    <guid isPermaLink="false">someperspective-v2.53.1</guid>
+    <pubDate>Sat, 10 Oct 2026 12:00:00 +0000</pubDate>
+    <description>On a phone the new design put every block of text in a bordered panel the width of the screen, which left two thin strips of colour at the edges and nothing else of the split. Text now runs on a plain page, and the two colours appear only where they mark the two periods: the opening years, the scorecard and the charts. Fixed: Phone layout on every page: text runs edge to edge on plain paper, the split stays in the era header, the scorecard rows and the charts, and the three indices sit as a number beside its description.</description>
+  </item>
+  <item>
     <title>A new design, split where the governments changed</title>
     <link>https://someperspective.info/updates.html#v2.53.0</link>
     <guid isPermaLink="false">someperspective-v2.53.0</guid>

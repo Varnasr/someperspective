@@ -69,6 +69,11 @@ font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(-
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 @media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
+/* On a phone the page runs on plain paper; the split stays in the header bar,
+   where a bordered panel would only leave two slivers of field at the edges. */
+@media (max-width:700px){body{background:var(--paper)}
+.top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
 </style>
 
@@ -84,6 +89,11 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 <p class="rel"><a class="btn" href="feed.xml">Subscribe by RSS</a>
 &nbsp; <a href="analysis/">Browse the analysis library &rarr;</a></p>
 <div class="card">
+<span class="kicker">2026-10-10 &nbsp;·&nbsp; v2.53.1</span>
+<h2 style="margin-top:.3rem">The new design, fixed for phones</h2>
+<p class="lede">On a phone the new design put every block of text in a bordered panel the width of the screen, which left two thin strips of colour at the edges and nothing else of the split. Text now runs on a plain page, and the two colours appear only where they mark the two periods: the opening years, the scorecard and the charts.</p>
+<ul class="list" style="margin-top:.6rem"><li><strong>Fixed:</strong> Phone layout on every page: text runs edge to edge on plain paper, the split stays in the era header, the scorecard rows and the charts, and the three indices sit as a number beside its description.</li></ul>
+</div><div class="card">
 <span class="kicker">2026-10-10 &nbsp;·&nbsp; v2.53.0</span>
 <h2 style="margin-top:.3rem">A new design, split where the governments changed</h2>
 <p class="lede">The site has a new design. Every page is divided where the UPA decade ends and the NDA period begins, at the share of the page width that each period holds in years, so a chart's 2013/2014 boundary falls on the dividing line. The front page is now a short reading page built from the data, and the interactive dashboard has moved to its own address. No figure changed.</p>
