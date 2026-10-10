@@ -21,7 +21,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SOURCES = [
-    "index.html", "data.json", "paper/paper.md", "data/METHODOLOGY.md",
+    "index.html", "explore/index.html", "data.json", "paper/paper.md", "data/METHODOLOGY.md",
     "data/updates.json", "data/features.json", "data/walkthrough.json",
     "data/inflation.json", "data/care.json", "tools/walkthrough_shell.html",
 ]
@@ -48,14 +48,14 @@ BANNED = re.compile(r"\b(" + "|".join([
 
 # (file, exact text, reason). Keep each one a verbatim quotation or a title.
 EXEMPT = [
-    ("index.html", "Algorithm decides everything—one bad rating and income drops 40%.",
+    ("explore/index.html", "Algorithm decides everything—one bad rating and income drops 40%.",
      "Data story quotation from the owner's primary research, attributed on the page. "
      "Quotations stay verbatim."),
-    ("index.html", "My son will never farm—I'll sell the land first.",
+    ("explore/index.html", "My son will never farm—I'll sell the land first.",
      "Data story quotation, as above."),
-    ("index.html", "It's not a choice—it's survival.",
+    ("explore/index.html", "It's not a choice—it's survival.",
      "Data story quotation, as above."),
-    ("index.html", "To read any number honestly is to ask who chose it",
+    ("explore/index.html", "To read any number honestly is to ask who chose it",
      "Pull-quote from the owner's published primer, Reading the Indian Economy "
      "(16 June 2026), quoted as printed."),
 ]

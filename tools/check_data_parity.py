@@ -55,7 +55,7 @@ def main():
     errors = []
 
     data = json.load(open(os.path.join(ROOT, 'data.json'), encoding='utf-8'))
-    html = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
+    html = open(os.path.join(ROOT, 'explore', 'index.html'), encoding='utf-8').read()
 
     # 1 + 2: inline economic/eraHistory must equal data.json.
     # (economic lives in FALLBACK_DATA; eraHistory lives in the Alpine app state —

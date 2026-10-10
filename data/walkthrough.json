@@ -206,11 +206,11 @@
         },
         {
           "label": "Explore the interactive data yourself",
-          "href": "../#interactive-data"
+          "href": "../explore/#interactive-data"
         },
         {
           "label": "How the indices are built",
-          "href": "../#methodology"
+          "href": "../explore/#methodology"
         },
         {
           "label": "The dataset, CSV and Excel",

@@ -158,7 +158,7 @@ def build_analysis(features, vintage):
 <h1>{escape(f['title'])}</h1>
 <p class="lede">{escape(f['body'])}</p>
 <div class="takeaway">{escape(f['takeaway'])}</div>
-<p><a class="btn" href="../#{tab_hash(f['tab'])}">Explore this in the live data &rarr;</a></p>
+<p><a class="btn" href="../explore/#{tab_hash(f['tab'])}">Explore this in the live data &rarr;</a></p>
 <h2>About this reading</h2>
 <p class="rel">This is one of {len(features)} standing analyses drawn from the Some Perspective dataset.
 It carries no date. It describes a relationship in the data that holds across the series, and it
@@ -166,7 +166,7 @@ is regenerated whenever the underlying dataset is refreshed. The figures quoted 
 <strong>{escape(vintage)}</strong> data vintage.</p>
 <p class="meta">{' &nbsp;·&nbsp; '.join(nav) if nav else ''}<br><br>
 Raman, V.S. Some Perspective: India's Political Economy, 2004-2026. someperspective.info · CC BY 4.0 ·
-data vintage {escape(vintage)}. <a href="../#cite-download">Cite &amp; download</a> ·
+data vintage {escape(vintage)}. <a href="../explore/#cite-download">Cite &amp; download</a> ·
 <a href="./">All analyses</a></p>"""
 
         rel = os.path.join("analysis", f["slug"] + ".html")
@@ -288,7 +288,7 @@ cross-era measure on which the later period performs better.</p>
 </div>
 
 <p class="rel"><a class="btn" href="../downloads/paper.html#s-6-10-the-inflation-exception-in-full">Read this in the paper &rarr;</a>
-&nbsp; <a href="../#era-comparison">See the cross-era scorecard</a>
+&nbsp; <a href="../explore/#era-comparison">See the cross-era scorecard</a>
 &nbsp; <a href="../walkthrough/#s-11">The walkthrough version</a></p>
 <p class="meta">Every figure above is either in
 <a href="../data.json">data.json</a> or carries its citation in the text.
@@ -383,7 +383,7 @@ range and does not pick a number.</p>
 <p class="rel"><a class="btn" href="../downloads/paper.html#s-6-11-what-gdp-does-not-count">Read this in the paper &rarr;</a>
 &nbsp; <a href="../inflation/">Why inflation looks better after 2014</a>
 &nbsp; <a href="../walkthrough/#s-12">The walkthrough version</a>
-&nbsp; <a href="../#reading-the-economy">How GDP is built</a></p>
+&nbsp; <a href="../explore/#reading-the-economy">How GDP is built</a></p>
 <p class="meta">Time use figures: {escape(c['source'])} Ages 15&ndash;59; minutes are the daily average
 among participants only. Held in
 <a href="../data.json">data.json</a> under <code>careEconomy</code>. Valuation estimates are cited in the
@@ -618,7 +618,7 @@ def build_walkthrough():
 
 
 def build_sitemap(features, vintage):
-    urls = [(f"{SITE}/", "1.0"), (f"{SITE}/walkthrough/", "0.9"),
+    urls = [(f"{SITE}/", "1.0"), (f"{SITE}/explore/", "0.9"), (f"{SITE}/walkthrough/", "0.9"),
             (f"{SITE}/inflation/", "0.9"), (f"{SITE}/care/", "0.9"),
             (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):

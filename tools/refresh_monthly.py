@@ -162,7 +162,7 @@ def main():
         print("\nDry run. Pass --write to apply.")
         return
 
-    html_path = os.path.join(ROOT, "index.html")
+    html_path = os.path.join(ROOT, "explore", "index.html")
     html = open(html_path, encoding="utf-8").read()
     for key, (old, new, note, _) in changes.items():
         eco[key][-1] = new

@@ -8,8 +8,8 @@
    is gone; everything it held is below. */
 @import "tailwindcss";
 
-/* What to scan for class names. index.html is the whole site's markup. */
-@source "../index.html";
+/* What to scan for class names. The dashboard at explore/index.html is the only page built with Tailwind. */
+@source "../explore/index.html";
 
 /* v3 had darkMode: "class". v4 defaults to the prefers-color-scheme media
    query, so the class behaviour has to be restated or every dark: utility
