@@ -241,9 +241,9 @@
   {
     "slug": "womens-labour-force-participation-has-fallen-since-2014",
     "category": "Jobs",
-    "title": "Women's labour force participation has fallen since 2014",
-    "body": "Female LFPR (15+, usual status) was 22.5% in 2014. It declined steadily to 20.3% by 2022 before recovering modestly to 21.0% in 2026. Even at the recovered level it sits among the lowest in the G20, and lower than during the early 2000s.",
-    "takeaway": "Indian women's formal participation in the labour market regressed during a growth boom.",
+    "title": "Women's labour force participation has risen sharply since 2017-18",
+    "body": "On MoSPI's usual-status series, the labour force participation rate of women aged 15 and over rose from 23.3% in 2017-18 to 41.7% in 2023-24, and was 40.0% in 2025. PLFS counts a woman who helps without pay in a household enterprise as a worker, so the rate measures participation in work the survey recognises. It does not measure paid employment.",
+    "takeaway": "The headline rate does not show what kind of work the rise is made of.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -262,8 +262,8 @@
   {
     "slug": "gig-and-platform-workers-grew-eleven-fold-in-twelve",
     "category": "Jobs",
-    "title": "Gig and platform workers grew eleven-fold in twelve years",
-    "body": "Estimated gig and platform workers rose from 0.8M (2014) to 8.8M (2026), an 11x expansion. Median platform earnings sit around ₹15,000/month with no social security. This is where employment 'growth' showed up while the formal share was falling.",
+    "title": "Gig and platform workers nearly tripled between 2011-12 and 2019-20",
+    "body": "NITI Aayog estimates 2.5 million gig and platform workers in 2011-12 and 6.8 million in 2019-20, 2.7 times as many. It puts 2020-21 at 7.7 million and projects 23.5 million by 2029-30. This is where employment growth showed up while the formal share was falling.",
     "takeaway": "The jobs that replaced shrinking formal employment carry none of formal employment's protections.",
     "tab": "Interactive Data",
     "chart": {
@@ -283,9 +283,9 @@
   {
     "slug": "rural-household-income-has-been-flat-for-twelve-years",
     "category": "Growth",
-    "title": "Rural household income has been flat for twelve years",
-    "body": "Indexed to 2014 = 100, rural household income (real terms, NABARD survey) reached 97 in 2026, essentially flat across the entire NDA period. The 2020-2021 trough hit 93. Growth has been an urban story.",
-    "takeaway": "Despite GDP up 90% cumulatively, the rural household is no better off in real terms than in 2014.",
+    "title": "Rural household income rose 27% in real terms between 2016-17 and 2021-22",
+    "body": "NABARD's two rural financial inclusion surveys put average monthly household income at Rs 8,059 in 2016-17 and Rs 12,698 in 2021-22, a nominal rise of 57.6%. Rural consumer prices rose 24.2% over the same years, so the real rise is about 27%, close to 5% a year. Borrowing rose too: the share of rural households with outstanding debt went from 47.4% to 52%.",
+    "takeaway": "Rural incomes grew in real terms between the two surveys, and rural debt grew alongside them.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -635,7 +635,7 @@
     "slug": "twelve-consecutive-years-of-formal-employment-decline",
     "category": "Jobs",
     "title": "Formal employment fell in ten of twelve years",
-    "body": "The formal employment share fell in ten of the twelve years since 2014. It rose once, in 2021, and held level from 2023 to 2024. The cumulative drop is from 13.0% to 10.9%, a 16% decline in the share. India added ~8 million gig workers and lost relative formal jobs in the same period.",
+    "body": "The formal employment share fell in ten of the twelve years since 2014. It rose once, in 2021, and held level from 2023 to 2024. The cumulative drop is from 13.0% to 10.9%, a 16% decline in the share. Over most of the same period, NITI Aayog estimates the gig workforce grew from 2.5 million (2011-12) to 6.8 million (2019-20).",
     "takeaway": "This is the most consistent multi-year trend in the entire labour-market dataset.",
     "tab": "Key Findings",
     "chart": {
