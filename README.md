@@ -23,7 +23,7 @@ The author is a Manmohan Singh Fellow of the All India Professionals' Congress (
 
 ## Abstract
 
-Official accounts of the period emphasise high GDP growth and improved global rankings. This research documents five changes between 2004 and 2026 that those accounts leave out: (1) a collapse in employment elasticity followed by a recovery built on precarious gig work, (2) inequality reaching levels above those of the colonial era, (3) the erosion of fiscal federalism through constitutional workarounds, (4) unprecedented suppression of official statistics, and (5) a measurable deterioration in democratic quality as assessed by several international indices.
+Official accounts of the period emphasise high GDP growth and improved global rankings. This research documents five changes between 2004 and 2026 that those accounts leave out: (1) a fall in the share of workers in regular jobs with social security after 2017-18, while most of the employment added after 2019 was self-employment, (2) inequality reaching levels above those of the colonial era, (3) the erosion of fiscal federalism through constitutional workarounds, (4) unprecedented suppression of official statistics, and (5) a measurable deterioration in democratic quality as assessed by several international indices.
 
 We construct three new indices to measure these changes: a Statistical Suppression Index (SSI) measuring government interference in data production, a Fiscal Centralization Index (FCI) measuring the erosion of federalism, and a Democratic Quality Index (DQI) aggregating several assessments of institutional health. All three worsen over the period, and the deterioration accelerates after 2019.
 
@@ -47,7 +47,7 @@ The gap between official accounts and what households experience has widened. Th
 
 This study addresses four questions.
 
-1. **Employment:** Why did employment elasticity collapse to 0.01 (2011-2016) and then recover through informal gig work while formal job creation stalled?
+1. **Employment:** Why did the share of workers in regular jobs with social security fall after 2017-18, and why was most of the employment added after 2019 self-employment?
 
 2. **Inequality:** What mechanisms drove the top 1% income share from 18.4% in 2004 to 22.6% in 2022-23, its highest level since 1922, while the bottom 50% share fell from 18.8% to a low of 13.9% in 2017 before recovering to 15.0%?
 
@@ -119,12 +119,12 @@ two periods being handled differently.
 
 ### 1. Employment: growth without jobs
 
-- **2011-2016:** Employment elasticity collapsed to 0.01, the lowest in India's post-independence history
+- Published estimates of employment elasticity depend on the period and the method. Misra and Suresh (RBI Working Paper 06/2014) put it at 0.01 for 2004-05 to 2009-10 and at 0.18 to 0.20 for 1993-94 to 2011-12. Ghosh and Roy Bardhan (ORF, 2024) put it at 0.01 for 2011-16 and 1.11 for 2017-23, and use the second figure to argue that growth since 2017 has created jobs.
 - **Formal employment** (regular wage or salaried work with any social security, PLFS) fell from 11.5% of all workers in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24, so roughly nine in ten workers have no social-security cover
 - **Youth unemployment** (ages 15-29) was 17.8% in 2017-18 and 9.9% in 2025; graduate unemployment was 13.0% in 2023-24, four times the overall rate
-- **Recovery (2017-2023):** Elasticity increased to 1.11, driven by precarious gig work
+- Nearly two thirds of the employment added after 2019 was self-employment, mostly unpaid family work by women, and about 90% of workers are informally employed (ILO and IHD, India Employment Report 2024).
 
-Economic growth came apart from employment generation, which runs against what standard development theory expects.
+The share of workers in regular jobs with social security fell while GDP grew.
 
 ### 2. Inequality: concentration at colonial-era levels
 
@@ -228,7 +228,7 @@ Current score: 0.29 (2026), down from 0.49 (2014), against a UPA average of 0.57
 
 ### Analytical approaches
 
-1. **Employment elasticity:** Calculated as ε = (%ΔEmployment) / (%ΔGDP) across three distinct periods
+1. **Employment elasticity:** Defined as ε = (%ΔEmployment) / (%ΔGDP). The project does not estimate it and reports published estimates with their source, period and method (technical appendix A5)
 2. **Inequality measurement:** Combined income tax data with wealth surveys, adjusted for underreporting using Pareto interpolation
 3. **Cross-validation:** All major findings verified across multiple independent datasets (CMIE-PLFS correlation: r=0.89)
 4. **Robustness:** Trends tested across different base years, deflators, and time periods

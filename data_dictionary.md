@@ -67,10 +67,10 @@ in `data.json`.
 #### `employment_elasticity`
 - **Definition:** Employment elasticity of GDP growth
 - **Unit:** Ratio (dimensionless)
-- **Source:** Calculated from employment_growth and gdp_growth
+- **Source:** No source and no computation for this column exist in the repository. The site does not use it and reports published estimates instead (technical appendix A5: RBI Working Paper 06/2014; Ghosh and Roy Bardhan, ORF, 2024)
 - **Methodology:** ε = (% Δ Employment) / (% Δ GDP)
 - **Coverage:** 2004-2025
-- **Notes:** Three distinct periods identified: 2004-2011, 2011-2016, 2017-2023
+- **Notes:** The yearly values in data/SP_masterdataset.csv should not be quoted. Published estimates are 0.01 for 2004-05 to 2009-10 (RBI) and 0.01 for 2011-16 and 1.11 for 2017-23 (ORF)
 
 ### Inequality
 

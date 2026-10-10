@@ -236,7 +236,7 @@
             <li><a href="#a3">A3. Fiscal Centralisation Index (FCI) components</a></li>
             <li><a href="#a4">A4. Democratic Quality Index (DQI) calculations</a></li>
             <li><a href="#a4b">A4b. Unpaid household work in the Time Use Survey</a></li>
-                <li><a href="#a5">A5. Estimating employment elasticity</a></li>
+                <li><a href="#a5">A5. Published estimates of employment elasticity</a></li>
             <li><a href="#a6">A6. Measuring inequality</a></li>
             <li><a href="#a7">A7. Robustness tests</a></li>
             <li><a href="#a8">A8. Complete results tables</a></li>
@@ -484,9 +484,9 @@
     </div>
 
     <div class="section" id="a5">
-        <h2>A5. Estimating employment elasticity</h2>
+        <h2>A5. Published estimates of employment elasticity</h2>
         
-        <h3>Methodology</h3>
+        <h3>Definition</h3>
         
         <div class="formula-box">
             Employment Elasticity = (%ΔEmployment) / (%ΔGDP)
@@ -501,64 +501,74 @@
             β = Employment elasticity
         </div>
         
+        <p>This project does not estimate employment elasticity itself. The table lists published estimates for India with their source, period and method. They use different employment data and different methods, so figures from different rows are not directly comparable.</p>
+
         <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table class="data-table">
             <thead>
                 <tr>
+                    <th>Source</th>
                     <th>Period</th>
-                    <th>GDP Growth %</th>
-                    <th>Employment Growth %</th>
-                    <th>Elasticity</th>
-                    <th>95% CI</th>
-                    <th>R²</th>
+                    <th>Estimate</th>
+                    <th>Method</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>2004-2009</td>
-                    <td>8.4</td>
-                    <td>0.8</td>
-                    <td>0.10</td>
-                    <td>[0.08, 0.12]</td>
-                    <td>0.72</td>
+                    <td>Planning Commission, Twelfth Five Year Plan, as cited by Misra and Suresh (2014) and Goswami (Carnegie, 2014)</td>
+                    <td>1999-2000 to 2004-05</td>
+                    <td>0.44</td>
+                    <td>Plan sub-group estimate from NSSO employment data</td>
                 </tr>
                 <tr>
-                    <td>2009-2011</td>
-                    <td>8.5</td>
-                    <td>0.4</td>
-                    <td>0.05</td>
-                    <td>[0.02, 0.08]</td>
-                    <td>0.65</td>
-                </tr>
-                <tr>
-                    <td>2011-2016</td>
-                    <td>6.7</td>
-                    <td>0.1</td>
+                    <td>Planning Commission, Twelfth Five Year Plan, as cited by Misra and Suresh (2014) and Goswami (Carnegie, 2014)</td>
+                    <td>2004-05 to 2009-10</td>
                     <td>0.01</td>
-                    <td>[-0.02, 0.04]</td>
-                    <td>0.58</td>
+                    <td>Plan sub-group estimate from NSSO employment data</td>
                 </tr>
                 <tr>
-                    <td>2016-2020</td>
-                    <td>5.2</td>
-                    <td>-1.2</td>
-                    <td>-0.23</td>
-                    <td>[-0.28, -0.18]</td>
-                    <td>0.81</td>
+                    <td>Misra and Suresh, RBI Working Paper 06/2014, Table 4</td>
+                    <td>1999-2000 to 2004-05</td>
+                    <td>0.50</td>
+                    <td>Ratio of compound annual growth rates of employment (NSSO) and GDP</td>
                 </tr>
                 <tr>
-                    <td>2020-2023</td>
-                    <td>7.8</td>
-                    <td>8.6</td>
+                    <td>Misra and Suresh, RBI Working Paper 06/2014, Table 4</td>
+                    <td>2004-05 to 2009-10</td>
+                    <td>0.01</td>
+                    <td>Ratio of compound annual growth rates of employment (NSSO) and GDP</td>
+                </tr>
+                <tr>
+                    <td>Misra and Suresh, RBI Working Paper 06/2014, Table 4</td>
+                    <td>2009-10 to 2011-12</td>
+                    <td>0.18</td>
+                    <td>Ratio of compound annual growth rates of employment (NSSO) and GDP</td>
+                </tr>
+                <tr>
+                    <td>Misra and Suresh, RBI Working Paper 06/2014</td>
+                    <td>1993-94 to 2011-12</td>
+                    <td>0.18 to 0.20</td>
+                    <td>0.18 as arc elasticity (growth rates) and 0.20 as point elasticity (regression)</td>
+                </tr>
+                <tr>
+                    <td>Ghosh and Roy Bardhan, ORF Expert Speak, 2 October 2024</td>
+                    <td>2011-16</td>
+                    <td>0.01</td>
+                    <td>The authors' linear econometric model of employment on value added</td>
+                </tr>
+                <tr>
+                    <td>Ghosh and Roy Bardhan, ORF Expert Speak, 2 October 2024</td>
+                    <td>2017-23</td>
                     <td>1.11</td>
-                    <td>[0.95, 1.27]</td>
-                    <td>0.69</td>
+                    <td>The authors' linear econometric model of employment on value added</td>
                 </tr>
             </tbody>
         </table></div>
         
         <div class="methodology-box">
-            <strong>Note:</strong> The 2020-2023 elasticity of 1.11 reflects distress employment in the informal sector after the pandemic. It does not reflect the creation of good jobs.
+            <strong>Note:</strong> Ghosh and Roy Bardhan use employment from the RBI KLEMS database and PLFS, and use the 2017-23 estimate to argue that growth in that period created jobs. They note that the KLEMS job estimates have been questioned because, with no census since 2011, the population projections behind them may be too high. The ILO and IHD India Employment Report 2024 finds that nearly two thirds of the employment added after 2019 was self-employment, mostly unpaid family work by women, and that nearly 90% of workers are informally employed.
         </div>
+        
+        <p style="font-size:0.85rem;">Sources: Misra, S. and Suresh, A. K. (2014), Estimating Employment Elasticity of Growth for the Indian Economy, RBI Working Paper Series 06/2014, https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=15763. Goswami, O. (2014), India's Quest for Jobs, Carnegie Endowment, 6 May 2014, https://carnegieendowment.org/posts/2014/05/indias-quest-for-jobs. Ghosh, N. and Roy Bardhan, A. (2024), Busting the myth of jobless growth, ORF Expert Speak, https://www.orfonline.org/expert-speak/busting-the-myth-of-jobless-growth-insights-from-data-theory-and-logic. ILO and IHD (2024), India Employment Report 2024, https://www.ilo.org/publications/india-employment-report-2024-youth-employment-education-and-skills.</p>
     </div>
     
     <div class="section" id="a6">
@@ -719,13 +729,6 @@
                     <td>0.34</td>
                     <td>+17%</td>
                     <td>Yes*</td>
-                </tr>
-                <tr>
-                    <td>Employment elasticity (quarterly)</td>
-                    <td>0.01</td>
-                    <td>0.03</td>
-                    <td>+200%</td>
-                    <td>No</td>
                 </tr>
             </tbody>
         </table></div>
