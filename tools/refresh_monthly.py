@@ -61,14 +61,18 @@ QUERIES = {
 
 NOTES = {
     "unemployment": (
-        "2014-2025: annual rates on usual status (ps+ss), from the PLFS Annual "
-        "Reports for the PLFS years. {year}: the average of the {n} PLFS "
+        "2014-2025: annual rates on usual status (ps+ss). From 2017 a year is "
+        "the PLFS survey year that starts in July of it (2017 = 2017-18), "
+        "through 2023 (2023-24); 2024 and 2025 are MoSPI's calendar-year rates. "
+        "{year}: the average of the {n} PLFS "
         "Monthly Bulletins published for {year} ({span}: {months}), all-India, "
         "persons 15+, rural + urban. BASIS BREAK: the monthly bulletins report "
         "current weekly status (CWS), which counts a person as unemployed on the "
         "past week's activity and runs well above usual status. The {year} value "
         "is therefore a different measure from the years before it, and most of "
-        "the rise from {prev} per cent in {prevyear} is the change of measure."),
+        "the rise from {prev} per cent in {prevyear} is the change of measure. On "
+        "the same weekly measure MoSPI's calendar-year rate for {prevyear} was "
+        "{prev_cws} per cent."),
     "cpiInflation": (
         "MoSPI CPI (Combined), year-on-year. {year}: the average of the {n} monthly "
         "prints published for {year} ({span}: {months}). BASIS BREAK: from the "
@@ -120,6 +124,24 @@ def main():
         sys.exit(f"data.json ends at {eco['years'][-1]}, not {a.year}: add the year first")
     saved = json.load(open(a.src)) if a.src else {}
 
+    # The previous year's calendar-year rate on the weekly (CWS) measure, so the
+    # note can say what the monthly average compares with on the same basis.
+    if "prev_cws" in saved:
+        prev_cws = saved["prev_cws"]
+    else:
+        rows = fetch("plfs/getData", {
+            "indicator_code": 3, "frequency_code": 1, "state_code": 99,
+            "gender_code": 3, "age_code": 1, "sector_code": 3,
+            "weekly_status_code": 2, "year_type_code": 2, "limit": 50,
+            "Format": "JSON"}, a.year - 1)
+        vals = [r["value"] for r in rows if r.get("weekly_status") == "CWS"
+                and r.get("religion", "all") == "all"
+                and r.get("socialGroup", "all") == "all"
+                and r.get("General_Education", "all") == "all"]
+        if len(vals) != 1:
+            sys.exit(f"expected one {a.year - 1} CWS rate, got {vals}")
+        prev_cws = fmt(float(vals[0]))
+
     changes = {}
     for key, (path, params, field) in QUERIES.items():
         rows = saved[key] if key in saved else fetch(path, params, a.year)
@@ -132,7 +154,7 @@ def main():
         note = NOTES[key].format(
             year=a.year, n=len(months), span=span,
             months=", ".join(f"{m} {fmt(v)}" for m, v in months),
-            prev=fmt(eco[key][-2]), prevyear=a.year - 1)
+            prev=fmt(eco[key][-2]), prevyear=a.year - 1, prev_cws=prev_cws)
         changes[key] = (eco[key][-1], mean, note, months)
         print(f"{key}: {eco[key][-1]} -> {mean}  ({span}, {len(months)} months)")
 

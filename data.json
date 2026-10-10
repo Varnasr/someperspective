@@ -8,7 +8,7 @@
   },
   "sources": {
     "gdpGrowth": "2014-2025: MoSPI national accounts and the Economic Survey, 2011-12 base. 2026 (FY 2025-26): 7.8%, MoSPI Provisional Estimates on the new 2022-23 base, which replaced the 2011-12 base. The last estimate for 2025-26 on the 2011-12 base was the First Advance Estimate of 7.4%. BASIS BREAK: the 2022-23 base covers 2023-24 onward only, so 2026 is on a different base from the years before it.",
-    "unemployment": "2014-2025: annual rates on usual status (ps+ss), from the PLFS Annual Reports for the PLFS years. 2026: the average of the 8 PLFS Monthly Bulletins published for 2026 (January to August 2026: January 5, February 4.9, March 5.1, April 5.2, May 5.5, June 5.5, July 5.1, August 5), all-India, persons 15+, rural + urban. BASIS BREAK: the monthly bulletins report current weekly status (CWS), which counts a person as unemployed on the past week's activity and runs well above usual status. The 2026 value is therefore a different measure from the years before it, and most of the rise from 3.1 per cent in 2025 is the change of measure.",
+    "unemployment": "2014-2025: annual rates on usual status (ps+ss). From 2017 a year is the PLFS survey year that starts in July of it (2017 = 2017-18), through 2023 (2023-24); 2024 and 2025 are MoSPI's calendar-year rates. 2026: the average of the 8 PLFS Monthly Bulletins published for 2026 (January to August 2026: January 5, February 4.9, March 5.1, April 5.2, May 5.5, June 5.5, July 5.1, August 5), all-India, persons 15+, rural + urban. BASIS BREAK: the monthly bulletins report current weekly status (CWS), which counts a person as unemployed on the past week's activity and runs well above usual status. The 2026 value is therefore a different measure from the years before it, and most of the rise from 3.1 per cent in 2025 is the change of measure. On the same weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent.",
     "youthUnemployment": "PLFS Annual + ILOSTAT youth (15-29) series",
     "graduateUnemployment": "PLFS unit-level tabulation (graduate degree holders)",
     "top1Share": "World Inequality Database (WID.world) India series; WIR 2026",
@@ -80,11 +80,11 @@
       5.0,
       5.0,
       6.0,
-      6.1,
       5.8,
-      7.1,
+      4.8,
       4.2,
       4.1,
+      3.2,
       3.2,
       3.2,
       3.1,
@@ -544,7 +544,7 @@
       {
         "value": "7.4%",
         "label": "Real growth FY26",
-        "sub": "Economic Survey estimate"
+        "sub": "Economic Survey, old 2011-12 base"
       },
       {
         "value": "11.2%",

@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `npm audit --audit-level=high` in CI. Overrides for `@parcel/watcher` 2.6.0 (drops the vulnerable `braces`) and `source-map-js` 1.2.2 take the audit from 5 high to 0; `styles.css` rebuilds byte-identical.
 
 ### Fixed
+- Unemployment 2017-2020 re-mapped to MoSPI's published usual-status rates (agricultural year starting July of the year shown): 6.0, 5.8, 4.8, 4.2. The old series counted 2017-18 twice (6.0, 6.1), dropped 2019-20 (4.8) and carried an unsourced 7.1 for 2020. 2024 and 2025 are calendar-year rates. The source note also gives the 2025 CWS rate (5.3), the like-for-like comparison for 2026.
+- "India's 5.1% unemployment rate is unusually low for the income level" claimed 6-10% for middle-income countries. ILO modelled estimates (WDI SL.UEM.TOTL.ZS) give India 4.2, lower-middle 4.5, middle 4.9 for 2025. Rewritten from that source; slug unchanged.
 - Formal employment did not fall every year: it rose 11.4 to 11.5 in 2021 and held at 11.2 from 2023 to 2024. The paper and two analyses now say ten of twelve years.
 - Stale pre-correction figures in the downloads: appendix table A6 (the crossed top 1% series from 2.33.0, now rebuilt from `data.json` with the unsourced decile, Gini and Palma columns removed), table A8 and the methodology DQI values (pre-2.39.0), the citizen guide's income table, the media kit's era GDP, the executive summary's press-freedom rank, the research package's MIT licence line, the README citation title and its "None declared" conflict line.
 - The paper's structure paragraph pointed at Section 2 for the measurement problem (Section 3) and at 6.9 for inflation (6.10), and said a gap "narrows" from 0.18 to 0.19.

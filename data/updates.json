@@ -9,7 +9,7 @@
       "changes": [
         {
           "kind": "Data",
-          "text": "Unemployment for 2026 is now 5.2%, the average of the eight PLFS monthly bulletins from January to August 2026. It was the June figure of 5.5%. The monthly bulletins report current weekly status, which runs well above the usual-status rate of the annual reports used for 2014 to 2025. Most of the rise from 3.1% in 2025 is that change of measure, and the source note had wrongly called the 2026 figure usual status."
+          "text": "Unemployment for 2026 is now 5.2%, the average of the eight PLFS monthly bulletins from January to August 2026. It was the June figure of 5.5%. The monthly bulletins report current weekly status, which runs well above the usual-status rate of the annual reports used for 2014 to 2025. Most of the rise from 3.1% in 2025 is that change of measure, and the source note had wrongly called the 2026 figure usual status. On the same weekly measure MoSPI's calendar-year rate for 2025 was 5.3%, so like for like the 2026 figure is close to level."
         },
         {
           "kind": "Data",
@@ -18,6 +18,14 @@
         {
           "kind": "Data",
           "text": "GDP growth for 2026 (2025-26) is now 7.8%, MoSPI's Provisional Estimate on the new 2022-23 base. It was the First Advance Estimate of 7.4% on the old 2011-12 base, which MoSPI has replaced. The 2014-2026 average moves from 6.08% to 6.11% and still rounds to 6.1%."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The unemployment series for 2017 to 2020 did not match MoSPI's published rates. The 2017-18 survey was counted twice (6.0% and 6.1%), the 2019-20 rate of 4.8% was missing, and the 7.1% shown for 2020 matched no usual-status figure. Each year from 2017 is now the survey year starting in July of it, so 2017 to 2020 read 6.0%, 5.8%, 4.8% and 4.2%."
+        },
+        {
+          "kind": "Fixed",
+          "text": "An analysis said India's unemployment rate was unusually low for its income level and that most middle-income countries record 6-10%. On the ILO's modelled estimates India was at 4.2% in 2025, against 4.5% for lower-middle-income countries and 4.9% for middle-income countries. The analysis now says India is close to its peers."
         },
         {
           "kind": "Added",
