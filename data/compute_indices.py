@@ -38,7 +38,9 @@ SSI_WEIGHTS = {
 }
 # Graded annual severity (0..1). Absent year => 0. Scar = post-resolution decay.
 SSI_SEVERITY = {
-    "census":        {y: 1.0 for y in range(2020, 2027)},
+    "census":        {**{y: 1.0 for y in range(2020, 2026)},          # postponed, no date
+                      2026: 0.3},                                     # on a notified schedule: houselisting
+                                                                      # Apr-Sep 2026, enumeration Feb 2027 (MHA)
     "consumption":   {**{y: 1.0 for y in range(2018, 2024)},          # active gap
                       2024: 0.5, 2025: 0.3, 2026: 0.2},               # scar: gap is permanent
     "employment":    {2017: 1.0, 2018: 1.0, 2019: 0.3},               # resolved; small scar
