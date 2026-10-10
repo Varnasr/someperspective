@@ -45,7 +45,8 @@ five published figures and leaves every other year empty.
 
 The MIS figures are administrative counts of toilets built. The Census figure uses a different
 definition. Parliamentary replies made before 2018 put coverage at the launch at 42.01% on an
-earlier baseline, which was later revised to 38.7%, so their figures for 2015-2017 are left out.
+earlier baseline, which was later revised to 38.7%, so their figures for 2015, 2016 and early 2017
+are left out.
 The independent NSS 76th round (July to December 2018) found 71.3% of rural households with access
 to a latrine, well below the MIS figure for the same months. The file name is kept for the
 site's code. The series is rural toilet coverage, and no published series measures verified

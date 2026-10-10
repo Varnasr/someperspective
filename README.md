@@ -11,10 +11,10 @@ This repository is the complete replication package for **Some Perspective: Indi
 Everything the site publishes is generated from `data.json` by scripts in this repository. The site is a static build with no server, so what is committed here is what ships.
 
 **Research initiated:** March 2024
-**Current version:** v2.47.0 (15 August 2026)
+**Current version:** v2.51.0 (10 October 2026)
 **Interactive site:** [someperspective.info](https://someperspective.info)
 **Guided walkthrough:** [someperspective.info/walkthrough](https://someperspective.info/walkthrough/), 18 slides, ~10 minutes
-**Working paper:** [Growth Without Accountability](https://someperspective.info/downloads/paper.html) (~17,500 words) · [PDF](https://someperspective.info/downloads/paper.pdf)
+**Working paper:** [Growth Without Accountability](https://someperspective.info/downloads/paper.html) · [PDF](https://someperspective.info/downloads/paper.pdf)
 **What changed, and when:** [Updates & corrections](https://someperspective.info/updates.html) · [RSS](https://someperspective.info/feed.xml)
 
 ### Declaration of interests
@@ -23,11 +23,11 @@ The author is a Manmohan Singh Fellow of the All India Professionals' Congress (
 
 ## Abstract
 
-Official accounts of the period emphasise high GDP growth and improved global rankings. This research documents five changes between 2004 and 2026 that those accounts leave out: (1) a fall in the share of workers in regular jobs with social security after 2017-18, while most of the employment added after 2019 was self-employment, (2) inequality reaching levels above those of the colonial era, (3) the erosion of fiscal federalism through constitutional workarounds, (4) unprecedented suppression of official statistics, and (5) a measurable deterioration in democratic quality as assessed by several international indices.
+Official accounts of the period emphasise high GDP growth and improved global rankings. This research documents five changes between 2004 and 2026 that those accounts leave out: (1) a fall in the share of workers in regular jobs with social security after 2017-18, while most of the employment added after 2019 was self-employment, (2) income inequality reaching levels above those of the colonial era, (3) a larger share of Union tax revenue raised as cesses and surcharges, which are not shared with the states, alongside GST and the conditions attached to extra state borrowing in 2020-21, (4) unprecedented suppression of official statistics, and (5) a measurable deterioration in democratic quality as assessed by several international indices.
 
-We construct three new indices to measure these changes: a Statistical Suppression Index (SSI) measuring government interference in data production, a Fiscal Centralization Index (FCI) measuring the erosion of federalism, and a Democratic Quality Index (DQI) aggregating several assessments of institutional health. All three are worse on average under NDA than under UPA. The SSI and DQI deteriorate sharply after 2019; the FCI peaks in 2020 and has fallen since, and its higher NDA average comes from GST and the 2020 borrowing conditions.
+We construct three new indices to measure these changes: a Statistical Suppression Index (SSI) measuring government interference in data production, a Fiscal Centralization Index (FCI) measuring the Union's control over fiscal resources relative to the states, and a Democratic Quality Index (DQI) aggregating several assessments of institutional health. All three are worse on average under NDA than under UPA. The SSI and DQI deteriorate sharply after 2019; the FCI peaks in 2020 and has fallen since, and its higher NDA average comes from GST and the 2020 borrowing conditions.
 
-The central finding is that India's post-2014 growth model decoupled economic expansion from employment generation, concentrated wealth at unprecedented levels, and centralized political power, while suppressing the statistical infrastructure needed for democratic accountability.
+The central finding is that India's post-2014 growth model decoupled economic expansion from employment generation, concentrated income and wealth at the highest levels in their published series, and centralized political power, while suppressing the statistical infrastructure needed for democratic accountability.
 
 ## Why this research matters
 
@@ -51,7 +51,7 @@ This study addresses four questions.
 
 2. **Inequality:** What mechanisms drove the top 1% income share from 18.4% in 2004 to 22.6% in 2022-23, its highest level since 1922, while the bottom 50% share fell from 18.8% to a low of 13.9% in 2017 before recovering to 15.0%?
 
-3. **Federalism:** How was the constitutional guarantee of fiscal devolution undermined despite the recommendations of the 14th and 15th Finance Commissions?
+3. **Federalism:** Tax devolution rose after the 14th Finance Commission, from 27.1% of gross tax revenue in 2014-15 to 33.9% in 2024-25. How did cesses and surcharges, GST and the 2020 borrowing conditions change the states' fiscal position over the same years?
 
 4. **Statistics:** What explains the systematic pattern of data suppression, delayed releases, and methodological revisions?
 
@@ -79,7 +79,7 @@ someperspective/
 │
 ├── downloads/                 # Public documents, dataset exports, research package ZIP
 ├── paper/paper.md             # Working paper source (built to HTML + PDF)
-├── analysis/                  # 36 generated standing analyses, one permalink each
+├── analysis/                  # 37 generated standing analyses, one permalink each
 ├── walkthrough/               # Generated guided deck (source: tools/walkthrough_shell.html)
 ├── tools/                     # Build + guard scripts (see below)
 ├── sitemap.xml, robots.txt    # Search/crawler metadata
@@ -130,7 +130,7 @@ The share of workers in regular jobs with social security fell while GDP grew.
 
 - **Top 1% income share:** 22.6% (2022-23), the highest since 1922 and higher than during the inter-war colonial period (Bharti, Chancel, Piketty and Somanchi, World Inequality Lab, 2024)
 - **Bottom 50% income share:** 15.0% (2022-23), down from 18.8% in 2004, after a low of 13.9% in 2017
-- **Top 1% wealth share:** 40.1% (2022-23)
+- **Top 1% wealth share:** 40.1% (2022-23), the highest since the wealth series begins in 1961
 - **Bottom 50% wealth share:** 6.4% (2022-23)
 
 India saw the highest concentration of economic resources in its independent history, and wealth inequality exceeds income inequality.
@@ -174,7 +174,6 @@ Government sources:
 - Census of India (when available)
 
 Independent sources:
-- Centre for Monitoring Indian Economy (CMIE) Consumer Pyramids
 - World Inequality Lab (Bharti, Chancel, Piketty and Somanchi 2024, Working Paper 2024/09)
 - V-Dem Institute democracy indices
 - Freedom House assessments
@@ -233,9 +232,8 @@ Current score: 0.28 (2026), down from 0.49 (2014), against a UPA average of 0.57
 ### Analytical approaches
 
 1. **Employment elasticity:** Defined as ε = (%ΔEmployment) / (%ΔGDP). The project does not estimate it and reports published estimates with their source, period and method (technical appendix A5)
-2. **Inequality measurement:** Combined income tax data with wealth surveys, adjusted for underreporting using Pareto interpolation
-3. **Cross-validation:** All major findings verified across multiple independent datasets (CMIE-PLFS correlation: r=0.89)
-4. **Robustness:** Trends tested across different base years, deflators, and time periods
+2. **Inequality measurement:** Income and wealth shares are taken as published by the World Inequality Lab (Bharti, Chancel, Piketty and Somanchi 2024, Working Paper 2024/09), which combines tax data, surveys and national accounts. The project does not re-estimate them
+3. **Robustness:** Trends tested across different base years, deflators, and time periods
 
 ## Replication instructions
 
@@ -278,7 +276,7 @@ This research has six main limitations.
 
 1. **Census gap:** No census has been conducted since 2011, which limits demographic analysis and population projections.
 
-2. **Suppressed data:** The 2017-18 consumption survey was never released. We use multiple imputation techniques validated against the partial data that is available.
+2. **Suppressed data:** The 2017-18 consumption survey was never released. The project does not impute it. Years with no published figure are left empty.
 
 3. **State-level variation:** National aggregates mask large differences across Indian states. Detailed state-level analysis is planned for forthcoming work.
 
@@ -325,7 +323,7 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 
 **Conflicts of interest:** See the Declaration of interests above.
 
-**Data transparency:** All data sources are documented in `data/METHODOLOGY.md` and `data/README_ESTIMATES.txt` with URLs, access dates, and retrieval methods.
+**Data transparency:** Sources are named in the `sources` block of `data.json`, in `data/METHODOLOGY.md` and in the notes column of each supplementary CSV.
 
 **Code transparency:** All analysis code is provided for full replication. No proprietary software is required.
 
@@ -351,7 +349,6 @@ For questions, corrections, or collaboration inquiries:
 This research builds on decades of work by India's statistical system, civil society organizations, independent researchers, and international monitoring bodies. Particular thanks go to:
 
 - The National Statistical Office for maintaining data infrastructure under difficult circumstances
-- CMIE for providing independent employment data
 - The World Inequality Database team for its work on measuring inequality
 - V-Dem Institute, Freedom House, and RSF for democracy monitoring
 - Journalists and researchers who continue to document the changes in India under difficult conditions
@@ -368,8 +365,7 @@ See `CHANGELOG.md` for detailed version history.
 
 ---
 
-Site last updated: 2026-06-17
+Site last updated: 2026-10-10
 Latest annual data point: 2026 (forecasts extend to 2030, clearly flagged as scenario projections)
-Next scheduled refresh: September 2026
 
 For the latest data and interactive visualizations, visit [someperspective.info](https://someperspective.info)
