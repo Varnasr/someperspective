@@ -2,13 +2,13 @@
   "meta": {
     "title": "India Economic Indicators 2014-2030",
     "author": "Dr. Varna Sri Raman",
-    "updated": "2026-08-15",
+    "updated": "2026-10-10",
     "license": "CC BY 4.0",
-    "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of August 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin June 2026, Union Budget 2026-27, CPI July 2026, WIR 2026). One caveat carries across the whole CPI series: MoSPI replaced the 2012=100 index with a 2024=100 index from the January 2026 print, reweighted on HCES 2023-24, so the 2026 inflation figure is not on the same basis as 2014-2025 — see sources.cpiInflation. All values in the 'economic' block are observed (2014-2026); there is no projected year in this block. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, NOT predictions — every assumption is a choice and is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
+    "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of August 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin June 2026, Union Budget 2026-27, CPI July 2026, WIR 2026). One caveat carries across the whole CPI series: MoSPI replaced the 2012=100 index with a 2024=100 index from the January 2026 print, reweighted on HCES 2023-24, so the 2026 inflation figure is not on the same basis as 2014-2025 (see sources.cpiInflation). All values in the 'economic' block are observed (2014-2026); there is no projected year in this block. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, and none of them is a prediction. Every assumption is a choice, and every one is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
   },
   "sources": {
-    "gdpGrowth": "MOSPI First Advance Estimates of National Income 2025-26 + Economic Survey 2025-26 (2011-12 base)",
-    "unemployment": "PLFS Annual Report 2024-25 + PLFS Monthly Bulletin (June 2026: 5.5% overall, 5.0% rural, 6.6% urban; LFPR 54.4%, WPR 51.4%), Usual Status",
+    "gdpGrowth": "2014-2025: MoSPI national accounts and the Economic Survey, 2011-12 base. 2026 (FY 2025-26): 7.8%, MoSPI Provisional Estimates on the new 2022-23 base, which replaced the 2011-12 base. The last estimate for 2025-26 on the 2011-12 base was the First Advance Estimate of 7.4%. BASIS BREAK: the 2022-23 base covers 2023-24 onward only, so 2026 is on a different base from the years before it.",
+    "unemployment": "2014-2025: annual rates on usual status (ps+ss). From 2017 a year is the PLFS survey year that starts in July of it (2017 = 2017-18), through 2023 (2023-24); 2024 and 2025 are MoSPI's calendar-year rates. 2026: the average of the 8 PLFS Monthly Bulletins published for 2026 (January to August 2026: January 5, February 4.9, March 5.1, April 5.2, May 5.5, June 5.5, July 5.1, August 5), all-India, persons 15+, rural + urban. BASIS BREAK: the monthly bulletins report current weekly status (CWS), which counts a person as unemployed on the past week's activity and runs well above usual status. The 2026 value is therefore a different measure from the years before it, and most of the rise from 3.1 per cent in 2025 is the change of measure. On the same weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent.",
     "youthUnemployment": "PLFS Annual + ILOSTAT youth (15-29) series",
     "graduateUnemployment": "PLFS unit-level tabulation (graduate degree holders)",
     "top1Share": "World Inequality Database (WID.world) India series; WIR 2026",
@@ -17,7 +17,7 @@
     "informalEmployment": "100 - formalEmployment by construction",
     "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual)",
     "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP (FY ending)",
-    "cpiInflation": "MoSPI CPI (Combined); latest print July 2026 = 4.45% (June 4.38%; food 5.52%). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and COICOP 2018 classification, replacing 2012=100. The 2026 value is therefore on a different basis from 2014-2025 and the two are not strictly comparable. RBI target band 2-6%",
+    "cpiInflation": "MoSPI CPI (Combined), year-on-year. 2026: the average of the 8 monthly prints published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from 2014-2025 and the two are not strictly comparable. RBI target band 2-6%.",
     "rupeeUSD": "RBI reference rates, annual average INR per USD",
     "ssi": "Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py",
     "fci": "Constructed: mean of 6 min-max-normalised centralisation components incl. GST structural centralisation (2004-2026 sample); see data/compute_indices.py",
@@ -27,7 +27,7 @@
     "femaleLFPR": "PLFS, Usual Status (ps+ss), women 15+",
     "international": "V-Dem Liberal Democracy Index (v2x_libdem), latest release (data through 2025; the 2026 column carries the 2025 observation forward) + RSF World Press Freedom Index 2026. Both V-Dem columns are on the SAME index: an earlier version of this table had the 2014 column on the Electoral Democracy Index and the 2026 column on the Liberal Democracy Index, which overstated India's decline. Corrected 15 August 2026.",
     "primer": "Reading the Indian Economy: A Citizen's Primer (Varna Sri Raman, 16 June 2026). Figures latest available as of June 2026; several provisional, estimated, or illustrative as noted.",
-    "syntheticControl": "Grier & Grier (2026), 'Promises, Promises' — figures transcribed from the authors' published summary (rgrier88.github.io/modi-promises). Underlying data: V-Dem (governance), Penn World Table 11.0 (income). External study, not produced by this project."
+    "syntheticControl": "Grier & Grier (2026), 'Promises, Promises'. Figures are transcribed from the authors' published summary (rgrier88.github.io/modi-promises). Underlying data: V-Dem (governance), Penn World Table 11.0 (income). This is an external study that this project did not produce."
   },
   "economic": {
     "years": [
@@ -73,22 +73,22 @@
       7.6,
       7.8,
       6.5,
-      7.4
+      7.8
     ],
     "unemployment": [
       4.9,
       5.0,
       5.0,
       6.0,
-      6.1,
       5.8,
-      7.1,
+      4.8,
       4.2,
       4.1,
       3.2,
       3.2,
+      3.2,
       3.1,
-      5.5
+      5.2
     ],
     "youthUnemployment": [
       13.5,
@@ -223,7 +223,7 @@
       5.4,
       4.6,
       4.0,
-      4.45
+      3.8
     ],
     "rupeeUSD": [
       61,
@@ -385,7 +385,7 @@
   "forecast": {
     "horizonYear": 2030,
     "baseYear": 2026,
-    "disclaimer": "These are scenario projections, not predictions. Each path extends the recent trend of an observed series and then applies an explicit annual adjustment for one of three scenarios. Uncertainty bands widen with the horizon because the further out you look, the more the assumption — not the economy — decides the number. Read every projection by asking: whose assumption is this, and what would break it?",
+    "disclaimer": "These are scenario projections, and none of them is a prediction. Each path extends the recent trend of an observed series and then applies an explicit annual adjustment for one of three scenarios. Uncertainty bands widen with the horizon because the further out you look, the more the number depends on the assumption and the less it depends on the economy. Read every projection by asking whose assumption it is and what would break it.",
     "scenarios": {
       "reform": {
         "label": "Reform push",
@@ -428,7 +428,7 @@
         "min": 6,
         "max": 25,
         "decimals": 1,
-        "drivers": "Twelve straight years of informalisation; capital-intensive PLI adds output, not payroll.",
+        "drivers": "Twelve straight years of informalisation; capital-intensive PLI adds output without adding much payroll.",
         "breaks": "A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it."
       },
       {
@@ -444,7 +444,7 @@
         "max": 15,
         "decimals": 1,
         "drivers": "The headline is held low by self-employment and discouraged workers; graduate joblessness runs ~26%.",
-        "breaks": "A genuine youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up."
+        "breaks": "A serious youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up."
       },
       {
         "key": "top1Share",
@@ -518,13 +518,13 @@
         "min": 0,
         "max": 1,
         "decimals": 2,
-        "drivers": "Geometric mean of V-Dem, Freedom House and RSF — all trending down since 2014.",
+        "drivers": "Geometric mean of V-Dem, Freedom House and RSF, all three of which have trended down since 2014.",
         "breaks": "Restored statistical and press independence would lift it; continued pressure pushes it lower."
       }
     ]
   },
   "bigPicture": {
-    "note": "India in five numbers (Economic Survey 2025-26; IMF WEO; NSO). Large in total, modest per person.",
+    "note": "India in five numbers (Economic Survey 2025-26; IMF WEO; NSO). The economy is large in total and modest per person.",
     "items": [
       {
         "value": "~$4.0 tn",
@@ -544,7 +544,7 @@
       {
         "value": "7.4%",
         "label": "Real growth FY26",
-        "sub": "Economic Survey estimate"
+        "sub": "Economic Survey, old 2011-12 base"
       },
       {
         "value": "11.2%",
@@ -583,7 +583,7 @@
       {
         "label": "Borrowings",
         "value": 24,
-        "sub": "not earned — borrowed",
+        "sub": "debt the government must repay",
         "shared": false
       },
       {
@@ -660,7 +660,7 @@
     ]
   },
   "stateReturns": {
-    "note": "Approximate return per ₹100 of taxes paid to the Union, by state (Finance Commission devolution; Praveen Chakravarty / AIPC). Direction is the point; exact ratios vary by year. Rich states finance poorer states — that is the design.",
+    "note": "Approximate return per ₹100 of taxes paid to the Union, by state (Finance Commission devolution; Praveen Chakravarty / AIPC). The direction is what matters, and exact ratios vary by year. Rich states finance poorer states, and the system is designed to work that way.",
     "items": [
       {
         "state": "Maharashtra",
@@ -727,7 +727,7 @@
     ]
   },
   "external": {
-    "note": "External sector FY26 (RBI Balance of Payments & Annual Report 2025-26; DGCI&S; IMF WEO 2026). Goods in deficit, services to the rescue.",
+    "note": "External sector FY26 (RBI Balance of Payments & Annual Report 2025-26; DGCI&S; IMF WEO 2026). Goods trade is in deficit, and the services surplus offsets much of it.",
     "goodsDeficitBn": -333,
     "servicesSurplusBn": 190,
     "cadPctGDP": 1.0,
@@ -740,7 +740,7 @@
     "fpiOutflowBn": -16.5
   },
   "distribution": {
-    "note": "Monthly income and where it places you (WIR 2022/2026; HCES 2022-23; PLFS; NCAER). Thresholds approximate. The salaried, tax-paying middle is ~80-120 million, not the 300-400 million quoted by market research.",
+    "note": "Monthly income and where it places you (WIR 2022/2026; HCES 2022-23; PLFS; NCAER). Thresholds approximate. The salaried, tax-paying middle is ~80-120 million, against the 300-400 million quoted by market research.",
     "thresholds": [
       {
         "income": 5000,
@@ -776,7 +776,7 @@
     "bottom50WealthShare": 4
   },
   "structure": {
-    "note": "The central mismatch: output here, jobs there (MoSPI/NSO GVA shares FY25; PLFS employment shares). Agriculture makes under a fifth of output but holds over two-fifths of jobs.",
+    "note": "Output and jobs sit in different sectors (MoSPI/NSO GVA shares FY25; PLFS employment shares). Agriculture makes under a fifth of output but holds over two-fifths of jobs.",
     "sectors": [
       {
         "sector": "Agriculture",
@@ -801,7 +801,7 @@
     ]
   },
   "jobsLesson": {
-    "note": "Same investment, vastly different jobs (Praveen Chakravarty / AIPC; Planning Commission 2011-12; garment export-to-jobs ratio industry standard).",
+    "note": "The same investment creates very different numbers of jobs in different sectors (Praveen Chakravarty / AIPC; Planning Commission 2011-12; garment export-to-jobs ratio industry standard).",
     "electronicsCrPerJob": 1.5,
     "electronicsJobsLakh": 1,
     "garmentsJobsCrore": 3,
@@ -837,7 +837,7 @@
     "note": "The 2015 GDP revision is still disputed (NSO/MoSPI; A. Subramanian, Harvard CID 2019; EAC-PM rebuttal June 2019).",
     "changes": [
       "Base year shifted from 2004-05 to 2011-12.",
-      "Manufacturing measured via the MCA21 corporate-filings database, not the production survey.",
+      "Manufacturing measured via the MCA21 corporate-filings database instead of the production survey.",
       "Output valued at market prices instead of factor cost."
     ],
     "officialGrowth": 7.0,
@@ -904,7 +904,7 @@
     "perMPNowMillions": 2.5
   },
   "monsoonChain": {
-    "note": "Why half of India's inflation starts in the sky (IMD; RBI; NSSO; IPCC). ~50% of cultivated area is unirrigated.",
+    "note": "Why about half of India's inflation depends on the monsoon (IMD; RBI; NSSO; IPCC). ~50% of cultivated area is unirrigated.",
     "rainfedSharePct": 50,
     "steps": [
       "Deficient monsoon",
@@ -916,7 +916,7 @@
     ]
   },
   "cpiBasket": {
-    "note": "How the CPI number is built. Updated to the CPI 2024=100 series (first published 12 Feb 2026), whose weights come from HCES 2023-24 and which adopts the COICOP 2018 classification in place of the old six-group structure. Food's weight fell from 45.86% under 2012=100 to 36.75% here — the single biggest change, and the reason headline CPI now moves less on a food-price shock than the pre-2026 series did.",
+    "note": "How the CPI number is built. Updated to the CPI 2024=100 series (first published 12 Feb 2026), whose weights come from HCES 2023-24 and which adopts the COICOP 2018 classification in place of the old six-group structure. Food's weight fell from 45.86% under 2012=100 to 36.75% here. This is the single biggest change, and it is the reason headline CPI now moves less on a food-price shock than the pre-2026 series did.",
     "itemsWeighted": 358,
     "urbanMarkets": 1395,
     "urbanTowns": 434,
@@ -931,7 +931,7 @@
     "healthSharePct": 6.83
   },
   "pumpPrice": {
-    "note": "Where every rupee of the petrol price goes — about half is tax (Petroleum Planning & Analysis Cell; PRS; illustrative for Delhi 2026).",
+    "note": "Where every rupee of the petrol price goes. About half of it is tax (Petroleum Planning & Analysis Cell; PRS; illustrative for Delhi 2026).",
     "parts": [
       {
         "label": "Crude + refining + OMC margin",
@@ -954,7 +954,7 @@
     "crudeImportDependence": 86
   },
   "modiAsks": {
-    "note": "When a PM asks citizens not to buy gold, the balance of payments is speaking (PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S).",
+    "note": "A prime minister asking citizens not to buy gold is a sign of pressure on the balance of payments (PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S).",
     "asks": [
       "Avoid buying gold for one year",
       "Postpone non-essential foreign travel",
@@ -997,7 +997,7 @@
     "equityParticipationPct": 3.5
   },
   "poverty": {
-    "note": "Poverty is a contested number: three official lines, three answers. India has had no officially accepted poverty line since 2014.",
+    "note": "Poverty is a contested number. Three official lines give three different answers. India has had no officially accepted poverty line since 2014.",
     "lines": [
       {
         "name": "Tendulkar (2011-12)",
@@ -1009,18 +1009,18 @@
         "name": "Rangarajan (2014)",
         "detail": "₹30/day rural, ₹47/day urban",
         "headcount": "29.5%",
-        "status": "shelved, not adopted"
+        "status": "shelved and never adopted"
       },
       {
         "name": "NITI MPI (2022-23)",
-        "detail": "multidimensional, not income",
+        "detail": "multidimensional, with no income line",
         "headcount": "11.3%",
         "status": "current official"
       }
     ]
   },
   "bodies": {
-    "note": "The economy shows up in bodies and classrooms (NFHS-5 2019-21; National Health Accounts; Economic Survey).",
+    "note": "The economy's effects show in health and education outcomes (NFHS-5 2019-21; National Health Accounts; Economic Survey).",
     "stuntedPct": 35,
     "outOfPocketPct": 40,
     "publicHealthPctGDP": 1.9
@@ -1038,7 +1038,7 @@
     ]
   },
   "measurement": {
-    "note": "How do we know? Five places where the choice, not the economy, moved the number (NSO; HCES 2022-23; Census of India; Carnegie Endowment).",
+    "note": "How we know: five places where a choice of method moved the number more than the economy did (NSO; HCES 2022-23; Census of India; Carnegie Endowment).",
     "items": [
       {
         "title": "The GDP back-series",
@@ -1046,7 +1046,7 @@
       },
       {
         "title": "The surveys that went missing",
-        "body": "The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable."
+        "body": "The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). That left an 11-year data gap until HCES 2022-23, which changed methodology and is not cleanly comparable."
       },
       {
         "title": "A census a decade late",
@@ -1218,13 +1218,13 @@
         "delim": 10
       }
     ],
-    "retNote": "Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is the design of the system, not a malfunction.",
+    "retNote": "Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is how the system is designed to work.",
     "delimNote": "Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them.",
-    "popNote": "Representation here is computed on the official 2026 projection, not the 2011 census, because 2011 is fifteen years stale and would understate how unequal representation has become. The projection is the government's own and is the best available number — but it is a projection precisely because the 2021 census was never held. A census would replace it with a count. That is this project's argument arriving in the one place it cannot be avoided: even measuring the fairness of a vote now depends on an estimate.",
+    "popNote": "Representation here is computed on the official 2026 projection. The 2011 census is fifteen years stale and would understate how unequal representation has become. The projection is the government's own and is the best available number, but it is a projection because the 2021 census was never held. A census would replace it with a count. This project's argument applies here as well, because even measuring the fairness of a vote now depends on an estimate.",
     "indiaPop2026": 142.34
   },
   "syntheticControl": {
-    "note": "Independent corroboration from outside this project. Grier & Grier (2026) build a 'Synthetic India' — a weighted blend of comparator countries fitted to India's pre-2014 path — and measure the gap that opens after 2014. Different method, different data vintage, different authors; convergent conclusion. All values below are transcribed from the authors' published summary, not recomputed here.",
+    "note": "Independent corroboration from outside this project. Grier & Grier (2026) build a 'Synthetic India', a weighted blend of comparator countries fitted to India's pre-2014 path, and measure the gap that opens after 2014. They are different authors using a different method and a different data vintage, and they reach a convergent conclusion. All values below are transcribed from the authors' published summary; none is recomputed here.",
     "study": {
       "title": "Promises, Promises: Modi's India in Comparative Perspective",
       "authors": "Kevin Grier & Robin Grier",
@@ -1311,7 +1311,7 @@
       "finalGapUSD": -1000,
       "preTreatmentRMSPE": 59,
       "rmspeAsPctOf2013Income": 1,
-      "note": "The authors publish the first-year and final-year gaps and the pre-treatment fit statistic, not a machine-readable annual series. Only those published anchor values are stored here; no intermediate years are interpolated or reconstructed."
+      "note": "The authors publish the first-year and final-year gaps and the pre-treatment fit statistic. They do not publish a machine-readable annual series. Only those published anchor values are stored here; no intermediate years are interpolated or reconstructed."
     },
     "incomeDonors": [
       {
@@ -1371,10 +1371,10 @@
         "sp": "Not separately indexed; SSI covers statistical opacity"
       }
     ],
-    "divergence": "The two projects disagree on scope, not direction. Grier & Grier make an absolute income claim — India ended roughly $1,000 per person per year below its counterfactual — which this project does not test. Some Perspective documents the decoupling of growth from employment and the concentration of its gains, but makes no claim that aggregate income would have been higher under a different government. Their income donor pool is also heavily weighted to Ethiopia (38%) and Bangladesh (25%), a defensible fit to India's pre-2014 trajectory but the part of the design most exposed to challenge. Treat the governance findings as the strongly corroborated result and the income finding as a separate, contestable claim."
+    "divergence": "The two projects agree on direction and differ on scope. Grier & Grier make an absolute income claim, that India ended roughly $1,000 per person per year below its counterfactual, which this project does not test. Some Perspective documents the decoupling of growth from employment and the concentration of its gains, but makes no claim that aggregate income would have been higher under a different government. Their income donor pool is also heavily weighted to Ethiopia (38%) and Bangladesh (25%), a defensible fit to India's pre-2014 trajectory but the part of the design most exposed to challenge. Treat the governance findings as the strongly corroborated result and the income finding as a separate, contestable claim."
   },
   "eraHistory": {
-    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. GDP growth & CPI inflation — World Bank (the same continuous World Bank series used for 2014+); fiscal deficit — Union Budget/RBI (centre, % GDP); top 1% & bottom 50% income share — WID.world (harmonised across 2004-2026); press-freedom rank — RSF. SSI, FCI and DQI before 2014 are the author's back-cast reconstruction of these constructed indices (from the documented record: survey timeliness, states' tax share/cesses, and the V-Dem/Freedom House/RSF scores) — see Methodology. Unemployment and formal/informal employment are NOT extended before 2014: no annual series on the PLFS basis exists for the UPA decade, so they are shown from 2014 only.",
+    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. Sources: GDP growth and CPI inflation from the World Bank (the same continuous World Bank series used for 2014+); fiscal deficit from the Union Budget/RBI (centre, % GDP); top 1% and bottom 50% income share from WID.world (harmonised across 2004-2026); press-freedom rank from RSF. SSI, FCI and DQI before 2014 are the author's back-cast reconstruction of these constructed indices (from the documented record: survey timeliness, states' tax share/cesses, and the V-Dem/Freedom House/RSF scores). See Methodology. Unemployment and formal/informal employment are not extended before 2014, because no annual series on the PLFS basis exists for the UPA decade. They are shown from 2014 only.",
     "years": [
       2004,
       2005,
@@ -1497,7 +1497,7 @@
     ]
   },
   "careEconomy": {
-    "note": "India's two Time Use Surveys, conducted by the National Statistical Office over Jan-Dec 2019 and Jan-Dec 2024. The 2024 round covered about 4.5 lakh people in 1.3 lakh households. Ages 15-59. 'Minutes' are the daily average among those who participated in the activity, not across everyone.",
+    "note": "India's two Time Use Surveys, conducted by the National Statistical Office over Jan-Dec 2019 and Jan-Dec 2024. The 2024 round covered about 4.5 lakh people in 1.3 lakh households. Ages 15-59. 'Minutes' are the daily average among those who participated in the activity. They are not averages across everyone.",
     "source": "NSO Time Use Survey 2019 and 2024, Ministry of Statistics and Programme Implementation.",
     "years": [
       2019,

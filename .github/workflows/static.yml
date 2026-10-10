@@ -33,14 +33,22 @@ jobs:
         uses: actions/checkout@v7
       - name: Setup Pages
         uses: actions/configure-pages@v6
+      - name: Stage the published files
+        # The deploy used to upload the whole checkout, so CLAUDE.md, .claude/,
+        # the git hooks, the Tailwind source, the build tools and the image
+        # prompt notes were all served at guessable URLs, linked from nothing.
+        # tools/ also held the walkthrough shell, which renders an empty deck.
+        # Everything a page links to (data/, downloads/, the replication code,
+        # data.json, manifest.json) is still staged; tools/check_publish.py
+        # asserts both halves.
+        run: python3 tools/check_publish.py --stage _site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          # Upload entire repository, including the committed compiled styles.css.
-          # styles.css is built/committed locally (npm run build:css) and kept
-          # fresh by the staleness guard in validate.yml — so the deploy path
-          # itself stays a pure static upload with no build dependencies.
-          path: '.'
+          # styles.css is built and committed locally (npm run build:css) and
+          # kept fresh by the staleness guard in validate.yml, so the deploy
+          # stays a static upload with no build dependencies.
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

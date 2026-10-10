@@ -10,6 +10,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.48.0] - 2026-10-10
+
+### Data
+- Unemployment 2026: 5.5 to 5.2, the average of the January to August 2026 PLFS monthly bulletins. These report current weekly status (CWS); 2014-2025 are usual status (ps+ss). The source note said "Usual Status" for the monthly figure, and `data_dictionary.md` said CWS for the whole series. Both are corrected, and the paper no longer reads the change of measure as a rise.
+- CPI 2026: 4.45 (July print) to 3.8, the January to August 2026 average on base 2024=100. NDA-era mean 4.98 to 4.93.
+- GDP 2026 (2025-26): 7.4 (First Advance Estimate, 2011-12 base) to 7.8 (Provisional Estimate, 2022-23 base). MoSPI no longer publishes the old base. NDA-era mean 6.08 to 6.11.
+- The interactive explorer circles the 2026 point of all three and says which measure changed.
+
+### Added
+- `tools/refresh_monthly.py`: pulls the current year's PLFS monthly unemployment and CPI prints from api.mospi.gov.in, averages the months published, and writes `data.json`, the inline fallback in `index.html` and the source notes. Dry run by default; `--from FILE` replays saved responses. GDP is left out on purpose, because choosing between named estimates is a judgement and not an average.
+- `tools/check_publish.py`: the Pages deploy now uploads only the site. It used to upload the whole checkout, which served `CLAUDE.md`, `.claude/`, the git hooks, `src/`, `tools/` and `ai-image-prompts.md`.
+- `tools/check_writing.py`: fails on em dashes, "not only" and the stock vocabulary in every published page and its sources.
+- `npm audit --audit-level=high` in CI. Overrides for `@parcel/watcher` 2.6.0 (drops the vulnerable `braces`) and `source-map-js` 1.2.2 take the audit from 5 high to 0; `styles.css` rebuilds byte-identical.
+
+### Fixed
+- Unemployment 2017-2020 re-mapped to MoSPI's published usual-status rates (agricultural year starting July of the year shown): 6.0, 5.8, 4.8, 4.2. The old series counted 2017-18 twice (6.0, 6.1), dropped 2019-20 (4.8) and carried an unsourced 7.1 for 2020. 2024 and 2025 are calendar-year rates. The source note also gives the 2025 CWS rate (5.3), the like-for-like comparison for 2026.
+- "India's 5.1% unemployment rate is unusually low for the income level" claimed 6-10% for middle-income countries. ILO modelled estimates (WDI SL.UEM.TOTL.ZS) give India 4.2, lower-middle 4.5, middle 4.9 for 2025. Rewritten from that source; slug unchanged.
+- Formal employment did not fall every year: it rose 11.4 to 11.5 in 2021 and held at 11.2 from 2023 to 2024. The paper and two analyses now say ten of twelve years.
+- Stale pre-correction figures in the downloads: appendix table A6 (the crossed top 1% series from 2.33.0, now rebuilt from `data.json` with the unsourced decile, Gini and Palma columns removed), table A8 and the methodology DQI values (pre-2.39.0), the citizen guide's income table, the media kit's era GDP, the executive summary's press-freedom rank, the research package's MIT licence line, the README citation title and its "None declared" conflict line.
+- The paper's structure paragraph pointed at Section 2 for the measurement problem (Section 3) and at 6.9 for inflation (6.10), and said a gap "narrows" from 0.18 to 0.19.
+- The explorer caption repeated its first sentence and claimed GDP and inflation ran on a consistent basis through 2026.
+
+### Changed
+- The paper, the homepage, `data.json`, the analyses, the walkthrough, the explainers, the updates log, the methodology, the README and the downloads were rewritten to the owner's writing rules. About 550 em dashes, about 175 "X, not Y" turns and the stock vocabulary are gone. No figure changed in the rewrite.
+
 ## [2.47.0] - 2026-08-15
 
 ### Fixed — both explainers were buried

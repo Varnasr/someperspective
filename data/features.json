@@ -3,7 +3,7 @@
     "slug": "the-top-1-income-share-is-at-colonial-era",
     "category": "Inequality",
     "title": "The top 1% income share is at colonial-era levels",
-    "body": "India's top 1% income share crossed 23% in 2026 — the highest since 1922, when the colonial economy was at its most extractive. The bottom 50% share has slid from 15.0% (2014) to 12.9% over the same period.",
+    "body": "India's top 1% income share crossed 23% in 2026, the highest since 1922, when the colonial economy was at its most extractive. The bottom 50% share has slid from 15.0% (2014) to 12.9% over the same period.",
     "takeaway": "A growing economy has redistributed upward for twelve straight years.",
     "tab": "Key Findings",
     "chart": {
@@ -27,8 +27,8 @@
     "slug": "growth-and-formal-jobs-have-moved-in-opposite-directions",
     "category": "Growth vs jobs",
     "title": "Growth and formal jobs have moved in opposite directions for a decade",
-    "body": "GDP grew 7.4% in FY26 (advance estimates). Over the same twelve years, formal employment fell from 13.0% to 10.9% of the workforce. Cumulatively, real GDP is up roughly 90%; the formal employment share is down 16%.",
-    "takeaway": "Headline GDP growth and labour market quality are decoupled — not just unrelated, but opposed.",
+    "body": "GDP grew 7.8% in FY26 (MoSPI Provisional Estimates, new 2022-23 base). Over the same twelve years, formal employment fell from 13.0% to 10.9% of the workforce. Cumulatively, real GDP is up roughly 90% and the formal employment share is down 16%.",
+    "takeaway": "Headline GDP growth and labour market quality have come apart, and they now move in opposite directions.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "dual",
@@ -51,7 +51,7 @@
     "slug": "graduate-unemployment-is-five-times-the-headline-rate",
     "category": "Jobs",
     "title": "Graduate unemployment is five times the headline rate",
-    "body": "The PLFS reports overall unemployment at 5.1% (March 2026). For graduate-degree holders specifically, it's 26.5% — more than one in four. The gap reflects an economy that has expanded low-skill informal work while shedding formal salaried positions.",
+    "body": "The PLFS monthly bulletins put overall unemployment at 5.2% on average from January to August 2026. For graduate-degree holders it is 26.5%, more than one in four. The gap reflects an economy that has expanded low-skill informal work while shedding formal salaried positions.",
     "takeaway": "Aggregate labour data masks the structural mismatch facing the educated workforce.",
     "tab": "Key Findings",
     "chart": {
@@ -96,7 +96,7 @@
     "slug": "indias-v-dem-score-has-fallen-further-than-any",
     "category": "Democracy",
     "title": "India's V-Dem score has fallen furthest in absolute terms",
-    "body": "V-Dem Liberal Democracy Index: India 0.488 (2014) → 0.260 (2026), a 47% decline and a fall of 0.228 points. Brazil 0.783 → 0.704 (-10%). Turkey 0.252 → 0.110 (-56%). Hungary 0.521 → 0.315 (-40%). South Africa 0.641 → 0.633 (-1%). Turkey falls further in percentage terms, but from a base already near the floor; India's is the largest absolute fall in the cohort.",
+    "body": "V-Dem Liberal Democracy Index: India 0.488 (2014) → 0.260 (2026), a 47% decline and a fall of 0.228 points. Brazil 0.783 → 0.704 (-10%). Turkey 0.252 → 0.110 (-56%). Hungary 0.521 → 0.315 (-40%). South Africa 0.641 → 0.633 (-1%). Turkey falls further in percentage terms, but from a base already near the floor. India's is the largest absolute fall in the cohort.",
     "takeaway": "On the most-cited cross-country democracy index, India has erased four decades of liberalisation in one.",
     "tab": "Deep Analysis",
     "chart": {
@@ -109,8 +109,8 @@
     "slug": "the-democratic-quality-index-is-the-lowest-it-has",
     "category": "Democracy",
     "title": "The Democratic Quality Index is the lowest it has been",
-    "body": "DQI combines the V-Dem Liberal Democracy Index, Freedom House, the RSF rank and the V-Dem Core Civil Society Index via a geometric mean — so weakness in any single dimension pulls the composite down. It has fallen from 0.49 (2014) to 0.29 (2026), against a UPA-decade average of 0.57. The steepest single-year falls come after 2019.",
-    "takeaway": "No single index tells the whole story, but every credible index points the same direction.",
+    "body": "DQI combines the V-Dem Liberal Democracy Index, Freedom House, the RSF rank and the V-Dem Core Civil Society Index through a geometric mean, so weakness in any single dimension pulls the composite down. It has fallen from 0.49 (2014) to 0.29 (2026), against a UPA-decade average of 0.57. The steepest single-year falls come after 2019.",
+    "takeaway": "No single index tells the whole story, and every credible index points the same direction.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -130,8 +130,8 @@
     "slug": "statistical-suppression-spiked-to-a-peak-then-stayed-high",
     "category": "Statistics",
     "title": "Statistical suppression spiked to a peak, then stayed high",
-    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams — suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years, then peaked at 9.0 in 2021-22 as the COVID-mortality undercount (official ~0.5M deaths vs 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent merger of the NSSO into the NSO, and remains at 6.4 in 2026 — even as the 2021 Census stayed incomplete.",
-    "takeaway": "A democratic state is being audited with less independent data than before — the acute events eased, but the institutional damage is permanent.",
+    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams, including suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years. It peaked at 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent merger of the NSSO into the NSO. It remains at 6.4 in 2026, and the 2021 Census is still incomplete.",
+    "takeaway": "A democratic state is being audited with less independent data than before. The acute events eased. The institutional damage is permanent.",
     "tab": "Three Indices",
     "chart": {
       "type": "line",
@@ -151,7 +151,7 @@
     "slug": "fiscal-centralisation-is-at-its-highest-in-the-modern",
     "category": "Federalism",
     "title": "Fiscal centralisation is at its highest in the modern era",
-    "body": "The Fiscal Centralisation Index (FCI) is the mean of six normalised components: cess share, devolution shortfall, conditional transfers, states' own-tax revenue, conditional borrowing, and the structural one — GST, which in 2017 stripped states of independent indirect taxation. On a relative 0-1 scale, FCI rose from 0.19 (2014) to 0.68 (2026), peaking at 0.92 in 2020; UPA-era values averaged ~0.09.",
+    "body": "The Fiscal Centralisation Index (FCI) is the mean of six normalised components: cess share, devolution shortfall, conditional transfers, states' own-tax revenue, conditional borrowing, and the structural one, GST, which in 2017 stripped states of independent indirect taxation. On a relative 0-1 scale, FCI rose from 0.19 (2014) to 0.68 (2026), peaking at 0.92 in 2020. UPA-era values averaged ~0.09.",
     "takeaway": "GST plus cesses mean states retain less of the divisible pool than at any point since the 14th Finance Commission framework.",
     "tab": "Three Indices",
     "chart": {
@@ -172,7 +172,7 @@
     "slug": "central-cess-and-surcharge-share-of-tax-revenue-tripled",
     "category": "Federalism",
     "title": "Central cess and surcharge share of tax revenue tripled",
-    "body": "Cesses and surcharges aren't shared with states under the Finance Commission formula. Their share of gross central tax revenue rose from roughly 8% in 2004 to ~29% by 2024. This is a direct mechanism of fiscal centralisation, separate from changes in nominal devolution rates.",
+    "body": "Cesses and surcharges are not shared with states under the Finance Commission formula. Their share of gross central tax revenue rose from roughly 8% in 2004 to ~29% by 2024. This is a direct mechanism of fiscal centralisation, separate from changes in nominal devolution rates.",
     "takeaway": "A nominally federal tax structure has been redirected by changing the labels on the revenue itself.",
     "tab": "Deep Analysis",
     "chart": {
@@ -186,8 +186,8 @@
     "slug": "reported-communal-incidents-are-40-above-their-2004-baseline",
     "category": "Society",
     "title": "Reported communal incidents are 40% above their 2004 baseline",
-    "body": "MHA-reported and independently verified communal incidents rose from 640 (2004) to ~923 (2025). The trend isn't monotonic — there's a peak in 2013, a dip in 2016, and steady acceleration since 2017. The series carries a wide confidence band given documented underreporting.",
-    "takeaway": "Even with conservative counting, the floor of communal violence has risen substantially.",
+    "body": "MHA-reported and independently verified communal incidents rose from 640 (2004) to ~923 (2025). The trend is not monotonic. There is a peak in 2013, a dip in 2016, and steady acceleration since 2017. The series carries a wide confidence band given documented underreporting.",
+    "takeaway": "Even with conservative counting, the floor of communal violence has risen considerably.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "csv-line",
@@ -199,7 +199,7 @@
   {
     "slug": "opposition-incarceration-cases-were-near-zero-until-they-werent",
     "category": "Democracy",
-    "title": "Opposition incarceration cases were near-zero — until they weren't",
+    "title": "Opposition incarceration cases were near zero until 2014, then rose",
     "body": "Documented cases of high-profile opposition political figures being formally incarcerated (charged or held in pre-trial detention) were essentially zero from 2004 through 2014. They rose moderately in 2015-2018 and accelerated sharply from 2019, with 9-11 cases per year in 2023-2025.",
     "takeaway": "A specific tool of political pressure shifted from rare to routine within a single decade.",
     "tab": "Deep Analysis",
@@ -228,7 +228,7 @@
     "slug": "open-defecation-free-coverage-is-a-textbook-logistic-curve",
     "category": "Public services",
     "title": "Open Defecation Free coverage is a textbook logistic curve",
-    "body": "Verified ODF coverage went from <0.2% (2004) to 98.5% (2024). The growth is the cleanest S-curve in the entire dataset — slow climb 2004-2011, steep adoption 2011-2018, saturation thereafter. It is a case study in a state programme that delivered.",
+    "body": "Verified ODF coverage went from <0.2% (2004) to 98.5% (2024). The growth is the cleanest S-curve in the entire dataset, with a slow climb in 2004-2011, steep adoption in 2011-2018, and saturation thereafter. It is a case study in a state programme that delivered.",
     "takeaway": "Where there is sustained political will and clear measurement, India's state can move very fast.",
     "tab": "Deep Analysis",
     "chart": {
@@ -242,7 +242,7 @@
     "slug": "womens-labour-force-participation-has-fallen-since-2014",
     "category": "Jobs",
     "title": "Women's labour force participation has fallen since 2014",
-    "body": "Female LFPR (15+, usual status) was 22.5% in 2014. It declined steadily to 20.3% by 2022 before recovering modestly to 21.0% in 2026. Even at the recovered level it sits among the lowest in the G20 — lower than during the early 2000s.",
+    "body": "Female LFPR (15+, usual status) was 22.5% in 2014. It declined steadily to 20.3% by 2022 before recovering modestly to 21.0% in 2026. Even at the recovered level it sits among the lowest in the G20, and lower than during the early 2000s.",
     "takeaway": "Indian women's formal participation in the labour market regressed during a growth boom.",
     "tab": "Interactive Data",
     "chart": {
@@ -263,7 +263,7 @@
     "slug": "gig-and-platform-workers-grew-eleven-fold-in-twelve",
     "category": "Jobs",
     "title": "Gig and platform workers grew eleven-fold in twelve years",
-    "body": "Estimated gig and platform workers rose from 0.8M (2014) to 8.8M (2026) — an 11x expansion. Median platform earnings sit around ₹15,000/month with no social security. This is where employment 'growth' showed up while the formal share was falling.",
+    "body": "Estimated gig and platform workers rose from 0.8M (2014) to 8.8M (2026), an 11x expansion. Median platform earnings sit around ₹15,000/month with no social security. This is where employment 'growth' showed up while the formal share was falling.",
     "takeaway": "The jobs that replaced shrinking formal employment carry none of formal employment's protections.",
     "tab": "Interactive Data",
     "chart": {
@@ -284,7 +284,7 @@
     "slug": "rural-household-income-has-been-flat-for-twelve-years",
     "category": "Growth",
     "title": "Rural household income has been flat for twelve years",
-    "body": "Indexed to 2014 = 100, rural household income (real terms, NABARD survey) reached 97 in 2026 — essentially flat across the entire NDA period. The 2020-2021 trough hit 93. Growth has been an urban story.",
+    "body": "Indexed to 2014 = 100, rural household income (real terms, NABARD survey) reached 97 in 2026, essentially flat across the entire NDA period. The 2020-2021 trough hit 93. Growth has been an urban story.",
     "takeaway": "Despite GDP up 90% cumulatively, the rural household is no better off in real terms than in 2014.",
     "tab": "Interactive Data",
     "chart": {
@@ -305,7 +305,7 @@
     "slug": "informal-employment-share-crossed-89",
     "category": "Jobs",
     "title": "Informal employment share crossed 89%",
-    "body": "The share of workers without any social security cover (PLFS definition) rose from 87.0% (2014) to 89.1% (2026). Informalisation has been monotonic — every single year since 2014, the formal share fell or held.",
+    "body": "The share of workers without any social security cover (PLFS definition) rose from 87.0% (2014) to 89.1% (2026). The formal share fell in ten of the twelve years. It rose once, from 11.4% to 11.5% in 2021, and held at 11.2% from 2023 to 2024.",
     "takeaway": "Nine in ten Indian workers have no statutory pension, EPF, ESI, or written contract.",
     "tab": "Key Findings",
     "chart": {
@@ -326,8 +326,8 @@
     "slug": "the-2020-gdp-contraction-was-the-steepest-since-independence",
     "category": "Growth",
     "title": "The 2020 GDP contraction was the steepest since independence",
-    "body": "GDP shrank 7.3% in calendar 2020 — the largest annual contraction in India's recorded history. The headline V-shape (8.7% in 2021) masked a structural break: formal employment never recovered its pre-COVID trajectory and gig work absorbed much of the displaced workforce.",
-    "takeaway": "The recovery was reported in GDP terms but not lived in employment terms.",
+    "body": "GDP shrank 7.3% in calendar 2020, the largest annual contraction in India's recorded history. The headline V-shape (8.7% in 2021) masked a structural break. Formal employment never recovered its pre-COVID trajectory, and gig work absorbed much of the displaced workforce.",
+    "takeaway": "The recovery showed up in GDP and did not show up in employment.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -347,8 +347,8 @@
     "slug": "india-is-now-the-worst-ranked-of-its-peer",
     "category": "Comparative",
     "title": "India is now the worst-ranked of its peer democracies on press freedom",
-    "body": "2026 RSF ranks: India 157, Turkey 159 (essentially tied), Hungary 70, Brazil 80, South Africa 38. India and Turkey have moved together; the others have stayed roughly stable or improved. South Africa is the only peer that improved materially over the period.",
-    "takeaway": "The relevant comparison set for Indian press freedom is now Turkey, not Brazil or South Africa.",
+    "body": "2026 RSF ranks: India 157, Turkey 159 (essentially tied), Hungary 70, Brazil 80, South Africa 38. India and Turkey have moved together. The others have stayed roughly stable or improved. South Africa is the only peer that improved materially over the period.",
+    "takeaway": "The relevant comparison set for Indian press freedom is now Turkey. Brazil and South Africa no longer belong in it.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "intl",
@@ -360,7 +360,7 @@
     "slug": "youth-unemployment-peaked-at-18-during-covid",
     "category": "Jobs",
     "title": "Youth unemployment peaked at 18% during COVID",
-    "body": "Youth (15-29) unemployment ran 13-16% from 2014-2019, hit 17.8% in the 2020 lockdown year, and remains around 12% — consistently above the all-age rate. The structural mismatch isn't pandemic-driven; it predates it.",
+    "body": "Youth (15-29) unemployment ran 13-16% from 2014-2019, hit 17.8% in the 2020 lockdown year, and remains around 12%, consistently above the all-age rate. The structural mismatch predates the pandemic.",
     "takeaway": "The cohort that should be powering growth is the one most excluded from formal work.",
     "tab": "Interactive Data",
     "chart": {
@@ -385,7 +385,7 @@
     "category": "Indices",
     "title": "All three constructed indices point the same direction",
     "body": "SSI (statistical suppression) and FCI (fiscal centralisation) have risen sharply since 2014. DQI (democratic quality) has fallen by an equivalent amount. The three are constructed from independent data sources but co-move because they measure related institutional erosion.",
-    "takeaway": "The three indices are correlated because the underlying processes are correlated — not by construction.",
+    "takeaway": "The three indices are correlated because the underlying processes are correlated. The construction does not force it.",
     "tab": "Three Indices",
     "chart": {
       "type": "multi",
@@ -414,7 +414,7 @@
     "slug": "the-census-is-15-years-overdue-and-counting",
     "category": "Statistics",
     "title": "The Census is 15 years overdue and counting",
-    "body": "The last Indian Census was 2011. The 2021 Census has been postponed indefinitely. Every population estimate published since 2021 — for ration cards, electoral rolls, sample frames, all of it — is now an interpolation. The compounding error grows every year.",
+    "body": "The last Indian Census was 2011. The 2021 Census has been postponed indefinitely. Every population estimate published since 2021, for ration cards, electoral rolls, sample frames and everything else, is now an interpolation. The compounding error grows every year.",
     "takeaway": "India is the world's most populous country and has not formally counted itself in 15 years.",
     "tab": "Three Indices",
     "chart": {
@@ -435,7 +435,7 @@
     "slug": "the-top-1-holds-40-of-the-countrys-wealth",
     "category": "Inequality",
     "title": "The top 1% holds 40% of the country's wealth",
-    "body": "Income concentration is the top 1%'s 23% share. Wealth concentration is starker still — at ~40% (WID estimates), exceeding the income concentration by a factor of nearly two. The bottom 50%'s wealth share is below 7%.",
+    "body": "Income concentration is the top 1%'s 23% share. Wealth concentration is higher, at ~40% (WID estimates), nearly twice the income concentration. The bottom 50%'s wealth share is below 7%.",
     "takeaway": "Within India's already-high inequality, wealth inequality is meaningfully higher than income inequality.",
     "tab": "Key Findings",
     "chart": {
@@ -456,8 +456,8 @@
     "slug": "a-regime-comparison-computed-live-from-the-data",
     "category": "Comparative",
     "title": "A regime comparison, computed live from the data",
-    "body": "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, ~20.2% top 1% share, and a press-freedom rank around 121; NDA's same averages are computed live from the loaded series. (UPA-era unemployment and formal-employment figures use a different statistical basis — World Bank/ILO and NSSO — so those two are flagged as not strictly comparable.)",
-    "takeaway": "The regime comparison is mechanical — averaging, not interpretation. It does not flatter either side.",
+    "body": "Averaging the data over each regime period: UPA averaged ~7.1% GDP growth, ~20.2% top 1% share, and a press-freedom rank around 121. NDA's same averages are computed live from the loaded series. (UPA-era unemployment and formal-employment figures use a different statistical basis, World Bank/ILO and NSSO, so those two are flagged as not strictly comparable.)",
+    "takeaway": "The regime comparison is mechanical. It averages the data and interprets nothing, and it does not flatter either side.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "line",
@@ -477,7 +477,7 @@
     "slug": "press-freedom-and-statistical-suppression-move-in-lockstep",
     "category": "Correlation",
     "title": "Press freedom and statistical suppression move in lockstep",
-    "body": "The Pearson correlation between India's annual SSI and inverse press freedom rank is ~0.92 over 2014-2026. Both worsen together. The mechanism is plausible — pressure on independent statistics and pressure on independent press serve a similar function.",
+    "body": "The Pearson correlation between India's annual SSI and inverse press freedom rank is ~0.92 over 2014-2026. Both worsen together. The mechanism is plausible, since pressure on independent statistics and pressure on an independent press serve a similar function.",
     "takeaway": "The decline in two ostensibly separate institutions is empirically a single phenomenon.",
     "tab": "Correlation Explorer",
     "chart": {
@@ -525,8 +525,8 @@
     "slug": "why-the-democratic-quality-index-uses-a-geometric-mean",
     "category": "Methodology",
     "title": "Why the Democratic Quality Index uses a geometric mean",
-    "body": "DQI = (V-Dem × Freedom House × RSF)^(1/3). A geometric mean is used so that a collapse in any single dimension drags the whole index down — a country with strong elections but no press freedom is correctly penalised. Arithmetic means would obscure this.",
-    "takeaway": "Democratic quality is multiplicative, not additive — one weak pillar undermines the rest.",
+    "body": "DQI = (V-Dem × Freedom House × RSF)^(1/3). A geometric mean is used so that a collapse in any single dimension drags the whole index down, and a country with strong elections but no press freedom is correctly penalised. An arithmetic mean would hide this.",
+    "takeaway": "Democratic quality is multiplicative. One weak pillar undermines the rest.",
     "tab": "Methodology",
     "chart": {
       "type": "line",
@@ -567,8 +567,8 @@
     "slug": "india-and-hungary-are-now-travelling-the-same-road",
     "category": "Comparative",
     "title": "India and Hungary are now travelling the same road",
-    "body": "On the V-Dem Liberal Democracy Index: Hungary 0.521 (2014) → 0.315 (2026). India 0.488 → 0.260. The two began the period within 0.04 of each other and both ended near 0.3; India's slide started later and travelled slightly further. The Hungary 2010-2024 trajectory has become the most-cited template for understanding India's path.",
-    "takeaway": "A democracy can fall this far while remaining electorally competitive — Hungary showed it first.",
+    "body": "On the V-Dem Liberal Democracy Index: Hungary 0.521 (2014) → 0.315 (2026). India 0.488 → 0.260. The two began the period within 0.04 of each other and both ended near 0.3. India's slide started later and travelled slightly further. The Hungary 2010-2024 trajectory has become the most-cited template for understanding India's path.",
+    "takeaway": "A democracy can fall this far while remaining electorally competitive. Hungary showed it first.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "intl",
@@ -581,7 +581,7 @@
     "category": "Comparative",
     "title": "South Africa is the only peer that recovered on press freedom",
     "body": "2014→2026 RSF rank: South Africa 42→38 (improved), Brazil 99→80 (improved). Turkey 154→159 (worsened slightly). Hungary 64→70 (worsened slightly). India 140→157 (worsened sharply). The recovery cases share institutional reform processes that the decline cases lack.",
-    "takeaway": "Decline isn't inevitable — peer countries have demonstrably reversed it.",
+    "takeaway": "Decline can be reversed. Peer countries have done it.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "intl",
@@ -592,9 +592,9 @@
   {
     "slug": "gdp-growth-volatility-has-risen-the-boom-and-bust",
     "category": "Growth",
-    "title": "GDP growth volatility has risen — the boom and bust are both larger",
-    "body": "Headline GDP growth 2014-2026 has ranged from -7.3% (2020) to +8.7% (2021). The 2017-2019 demonetisation-and-GST window also showed a clear deceleration (8.2→6.1→4.2). The level is high on average but the year-to-year variance exceeds the pre-2014 period.",
-    "takeaway": "Average GDP growth is a useful number — but for India today, the spread around the average is the story.",
+    "title": "GDP growth volatility has risen, with larger booms and larger busts",
+    "body": "Headline GDP growth 2014-2026 has ranged from -7.3% (2020) to +8.7% (2021). The 2017-2019 demonetisation-and-GST window also showed a clear deceleration (8.2→6.1→4.2). The level is high on average, and the year-to-year variance exceeds the pre-2014 period.",
+    "takeaway": "Average GDP growth is a useful number. For India today, the spread around the average tells you more.",
     "tab": "Interactive Data",
     "chart": {
       "type": "line",
@@ -614,7 +614,7 @@
     "slug": "the-post-2017-formal-employment-drop-is-visible-in",
     "category": "Jobs",
     "title": "The post-2017 formal employment drop is visible in the data",
-    "body": "Formal employment share: 12.5% (2016) → 12.2% (2017) → 11.9% (2018) → 11.6% (2019). The 2016-2019 window — demonetisation, GST, the 2017-18 PLFS leak — coincides with the steepest sustained decline in formal employment share in the modern series.",
+    "body": "Formal employment share: 12.5% (2016) → 12.2% (2017) → 11.9% (2018) → 11.6% (2019). The 2016-2019 window (demonetisation, GST, the 2017-18 PLFS leak) coincides with the steepest sustained decline in formal employment share in the modern series.",
     "takeaway": "A policy regime can be visible in a labour market series even before the headline reports catch up.",
     "tab": "Interactive Data",
     "chart": {
@@ -634,9 +634,9 @@
   {
     "slug": "twelve-consecutive-years-of-formal-employment-decline",
     "category": "Jobs",
-    "title": "Twelve consecutive years of formal employment decline",
-    "body": "Every single year since 2014 has seen the formal employment share fall or stay flat. The cumulative drop is from 13.0% to 10.9% — a 16% decline in the share. India added ~8 million gig workers and lost relative formal jobs in the same period.",
-    "takeaway": "This is the most-consistent multi-year trend in the entire labour-market dataset.",
+    "title": "Formal employment fell in ten of twelve years",
+    "body": "The formal employment share fell in ten of the twelve years since 2014. It rose once, in 2021, and held level from 2023 to 2024. The cumulative drop is from 13.0% to 10.9%, a 16% decline in the share. India added ~8 million gig workers and lost relative formal jobs in the same period.",
+    "takeaway": "This is the most consistent multi-year trend in the entire labour-market dataset.",
     "tab": "Key Findings",
     "chart": {
       "type": "line",
@@ -655,8 +655,8 @@
   {
     "slug": "indias-5-1-unemployment-rate-is-unusually-low-for",
     "category": "Statistics",
-    "title": "India's 5.1% unemployment rate is unusually low for the income level",
-    "body": "The PLFS Monthly Bulletin reports 5.1% (March 2026). Most middle-income countries with comparable labour market dynamics record 6-10%. The discrepancy reflects the very high share of self-employed and casual workers (counted as employed) and the discouraged-worker effect at the margins.",
+    "title": "India's unemployment rate is close to other lower-middle-income countries'",
+    "body": "The PLFS monthly bulletins average 5.2% from January to August 2026, on the current weekly status measure. On the ILO's modelled estimates, which put every country on one definition, India's rate was 4.2% in 2025, against 4.5% for lower-middle-income countries and 4.9% for middle-income countries as a whole (World Bank, World Development Indicators, SL.UEM.TOTL.ZS). The headline rate is low because most Indian workers are self-employed or casual and count as employed however little they earn, and because people who have stopped looking for work drop out of the labour force.",
     "takeaway": "The headline unemployment rate is a misleading benchmark for India because of the definition of 'employed'.",
     "tab": "Three Indices",
     "chart": {
@@ -677,7 +677,7 @@
     "slug": "v-dem-score-is-at-1976-emergency-levels",
     "category": "Democracy",
     "title": "V-Dem score is at 1976-emergency levels",
-    "body": "India's V-Dem Liberal Democracy score in 2026 (~0.26) is comparable to the score recorded during the 1975-1977 Emergency — when civil liberties were formally suspended. The current score has been reached without a formal Emergency declaration.",
+    "body": "India's V-Dem Liberal Democracy score in 2026 (~0.26) is comparable to the score recorded during the 1975-1977 Emergency, when civil liberties were formally suspended. The current score has been reached without a formal Emergency declaration.",
     "takeaway": "A democracy can be functionally undone without ever being formally suspended.",
     "tab": "Three Indices",
     "chart": {
@@ -698,8 +698,8 @@
     "slug": "the-bottom-50-income-share-has-been-falling-since",
     "category": "Inequality",
     "title": "The bottom 50% income share has been falling since 2018",
-    "body": "Bottom 50% income share: 15.0% (2014) → 14.7% (2018) → 13.1% (2021) → 12.9% (2026). The decline accelerated post-2018. Together with the rising top 1% share, this is a direct measure of the redistribution that growth has produced.",
-    "takeaway": "A literal majority of Indians has a smaller slice of national income today than they had in 2014.",
+    "body": "Bottom 50% income share: 15.0% (2014) → 14.7% (2018) → 13.1% (2021) → 12.9% (2026). The decline accelerated after 2018. Together with the rising top 1% share, this is a direct measure of the redistribution that growth has produced.",
+    "takeaway": "A majority of Indians have a smaller share of national income today than they had in 2014.",
     "tab": "Key Findings",
     "chart": {
       "type": "line",
@@ -716,11 +716,11 @@
     }
   },
   {
-    "title": "GDP counts the rent on your flat, not the cooking",
+    "title": "GDP counts the rent on your flat and nothing for the cooking",
     "slug": "gdp-counts-the-rent-on-your-flat-not-the-cooking",
     "category": "Statistics",
     "tab": "Reading the Economy",
-    "body": "Own the flat you live in and the national accounts estimate a rent for it and add that to GDP. Cook the meal inside it and nothing is added. India's Time Use Survey found women aged 15-59 who do unpaid domestic work spending 289 minutes a day on it in 2024, against 88 minutes for men. About 1,758 hours a year for a woman, in no employment figure and no output series. Published valuations of that work run from 7.5% to 36% of GDP, the spread coming from the price put on an hour rather than from any doubt about the hours.",
+    "body": "Own the flat you live in and the national accounts estimate a rent for it and add that to GDP. Cook the meal inside it and nothing is added. India's Time Use Survey found women aged 15-59 who do unpaid domestic work spending 289 minutes a day on it in 2024, against 88 minutes for men. That is about 1,758 hours a year for a woman, in no employment figure and no output series. Published valuations of that work run from 7.5% to 36% of GDP. The spread comes from the price put on an hour, and there is little doubt about the hours themselves.",
     "takeaway": "The production boundary is a convention. India collects the hours needed to price what falls outside it and does not do so."
   }
 ]

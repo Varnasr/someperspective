@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Appendix - Statistical Methods and Detailed Results</title>
+    <title>Technical appendix: statistical methods and detailed results | Some Perspective</title>
     <meta name="description" content="Index specifications, component tables, robustness tests and complete results for the Statistical Suppression, Fiscal Centralisation and Democratic Quality indices.">
     <link rel="canonical" href="https://someperspective.info/downloads/technical-appendix.html">
     <meta property="og:type" content="article">
@@ -224,29 +224,29 @@
     <button class="print-button" onclick="window.print()"><img src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Article.svg" alt="" aria-hidden="true" style="height:1em;width:1em;vertical-align:-0.15em;display:inline-block"> Save as PDF</button>
     
     <div class="header">
-        <h1>Technical Appendix</h1>
-        <p class="subtitle">Statistical Methods, Robustness Tests, and Detailed Results<br>Some Perspective: India&rsquo;s Political Economy 2004&ndash;2026</p>
+        <h1>Technical appendix</h1>
+        <p class="subtitle">Statistical methods, robustness tests and detailed results<br>Some Perspective: India&rsquo;s Political Economy, 2004-2026</p>
     </div>
     
     <div class="toc">
         <h2>Contents</h2>
         <ul>
-            <li><a href="#a1">A1. Index Construction Methodology</a></li>
-            <li><a href="#a2">A2. Statistical Suppression Index (SSI) Details</a></li>
-            <li><a href="#a3">A3. Fiscal Centralisation Index (FCI) Components</a></li>
-            <li><a href="#a4">A4. Democratic Quality Index (DQI) Calculations</a></li>
-            <li><a href="#a4b">A4b. Unpaid Household Work: Time Use Survey Data</a></li>
-                <li><a href="#a5">A5. Employment Elasticity Estimation</a></li>
-            <li><a href="#a6">A6. Inequality Measurement Methods</a></li>
-            <li><a href="#a7">A7. Robustness Tests</a></li>
-            <li><a href="#a8">A8. Complete Results Tables</a></li>
+            <li><a href="#a1">A1. How the indices are constructed</a></li>
+            <li><a href="#a2">A2. Statistical Suppression Index (SSI) in detail</a></li>
+            <li><a href="#a3">A3. Fiscal Centralisation Index (FCI) components</a></li>
+            <li><a href="#a4">A4. Democratic Quality Index (DQI) calculations</a></li>
+            <li><a href="#a4b">A4b. Unpaid household work in the Time Use Survey</a></li>
+                <li><a href="#a5">A5. Estimating employment elasticity</a></li>
+            <li><a href="#a6">A6. Measuring inequality</a></li>
+            <li><a href="#a7">A7. Robustness tests</a></li>
+            <li><a href="#a8">A8. Complete results tables</a></li>
         </ul>
     </div>
     
     <div class="section" id="a1">
-        <h2>A1. Index Construction Methodology</h2>
+        <h2>A1. How the indices are constructed</h2>
         
-        <h3>General Principles</h3>
+        <h3>General principles</h3>
         <p>All indices follow a standardized construction methodology:</p>
         
         <div class="formula-box">
@@ -258,7 +258,7 @@
             normalize() = Min-max normalization to [0,1]
         </div>
         
-        <h3>Normalization Formula</h3>
+        <h3>Normalization formula</h3>
         <div class="formula-box">
             normalize(X) = (X - X_min) / (X_max - X_min)
             
@@ -268,10 +268,10 @@
     </div>
     
     <div class="section" id="a2">
-        <h2>A2. Statistical Suppression Index (SSI) Details</h2>
+        <h2>A2. Statistical Suppression Index (SSI) in detail</h2>
         
-        <h3>Component Weights and Graded Severity</h3>
-        <p>SSI is a 0-10 weighted sum of graded suppression severities: SSI<sub>t</sub> = &Sigma;(weight<sub>i</sub> &times; severity<sub>it</sub>), severity &isin; [0,1] (1.0 = full suppression / discontinuation, ~0.7 = methodology dispute, ~0.3 = delay or post-resolution <em>scar</em>). Six documented streams; weights sum to 10. The UPA years (2004-2013, shaded) record nothing, so SSI = 0. Both eras are computed identically in <code>data/compute_indices.py</code>. Cell values are the annual severity; published third-party data is not involved &mdash; these are author-coded severities anchored to datable events (see notes).</p>
+        <h3>Component weights and graded severity</h3>
+        <p>SSI is a 0-10 weighted sum of graded suppression severities: SSI<sub>t</sub> = &Sigma;(weight<sub>i</sub> &times; severity<sub>it</sub>), severity &isin; [0,1] (1.0 = full suppression / discontinuation, ~0.7 = methodology dispute, ~0.3 = delay or post-resolution <em>scar</em>). There are six documented streams, and the weights sum to 10. The UPA years (2004-2013, shaded) record nothing, so SSI = 0. Both eras are computed identically in <code>data/compute_indices.py</code>. Cell values are the annual severity. No published third-party data is involved. These are severities coded by the author and anchored to datable events (see notes).</p>
         <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table class="data-table">
             <thead>
                 <tr>
@@ -313,14 +313,14 @@
         </table></div>
         
         <div class="result-highlight">
-            <strong>Key Finding:</strong> SSI was 0 across the UPA decade, then climbed to a peak of <strong>9.0 in 2021-2022</strong> &mdash; the COVID-mortality undercount (official ~0.5M deaths vs 3-5M excess) stacking on top of the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent NSSO&rarr;NSO merger. It remains elevated at <strong>6.4 in 2026</strong>: the acute events eased, but the institutional damage (merger, unresolved back-series) is permanent and the data scars persist.
+            <strong>Key finding:</strong> SSI was 0 across the UPA decade, then climbed to a peak of 9.0 in 2021-2022, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on top of the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent NSSO&rarr;NSO merger. It remains elevated at 6.4 in 2026. The acute events eased. The institutional damage (the merger and the unresolved back-series) is permanent, and the data scars persist.
         </div>
     </div>
     
     <div class="section" id="a3">
-        <h2>A3. Fiscal Centralisation Index (FCI) Components</h2>
+        <h2>A3. Fiscal Centralisation Index (FCI) components</h2>
         
-        <h3>Detailed Component Calculation</h3>
+        <h3>Component calculation</h3>
         
         <div class="formula-box">
             FCI_t = (1/6) × [C1_t + C2_t + C3_t + C4_t + C5_t + C6_t]
@@ -374,14 +374,14 @@
             </tbody>
         </table></div>
         <div class="methodology-box">
-            <strong>Note:</strong> Six components, each min-max normalised over the full 2004-2026 sample, so FCI is relative: 0.00 = least-centralised year (2004), ~0.92 = most (2020). UPA average 0.09 vs 0.57 under NDA. The new <strong>GST</strong> component captures the structural loss of independent state taxation in 2017 (cesses and CSS are symptoms; GST is the regime shift), phasing to full weight once GST compensation ended in June 2022. NDA component values (2014-2024) are budget / Finance-Commission anchors; UPA values interpolate official anchors (12th-15th FC devolution; Receipt-Budget cess and CSS shares).
+            <strong>Note:</strong> Six components, each min-max normalised over the full 2004-2026 sample, so FCI is relative: 0.00 = least-centralised year (2004), ~0.92 = most (2020). UPA average 0.09 vs 0.57 under NDA. The new GST component records the structural loss of independent state taxation in 2017 (cesses and CSS are symptoms, and GST is the regime shift), phasing to full weight once GST compensation ended in June 2022. NDA component values (2014-2024) are budget / Finance-Commission anchors; UPA values interpolate official anchors (12th-15th FC devolution; Receipt-Budget cess and CSS shares).
         </div>
     </div>
     
     <div class="section" id="a4">
-        <h2>A4. Democratic Quality Index (DQI) Calculations</h2>
+        <h2>A4. Democratic Quality Index (DQI) calculations</h2>
         
-        <h3>Four-Component Geometric Mean</h3>
+        <h3>Four-component geometric mean</h3>
         
         <div class="formula-box">
             DQI_t = (V_t × F_t × R_t × C_t)^(1/4)
@@ -392,7 +392,7 @@
             R_t = (180 - RSF_rank_t) / 180
             C_t = V-Dem Core Civil Society Index (0-1)
         </div>
-        <p>All four are published third-party measures. The <strong>Civil Society Index</strong> is added because press-freedom rank barely separates the eras (India was mediocre throughout), whereas civil-society space collapsed from 0.669 to 0.302 under NDA &mdash; the dimension a headline democracy score flattens. (V-Dem also reclassified India from electoral democracy to <em>electoral autocracy</em> in 2019.)</p>
+        <p>All four are published third-party measures. The Civil Society Index is added because press-freedom rank barely separates the eras (India was mediocre throughout), while civil-society space collapsed from 0.669 to 0.302 under the NDA. A headline democracy score flattens that dimension. (V-Dem also reclassified India from electoral democracy to <em>electoral autocracy</em> in 2019.)</p>
         
         <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table class="data-table">
             <thead>
@@ -433,17 +433,17 @@
         </table></div>
         
         <div class="result-highlight">
-            <strong>Key Finding:</strong> DQI fell from a UPA-era average of 0.57 (peak 0.61) to <strong>0.29 by 2026</strong>, and from 0.49 in 2014 &mdash; with the steepest drop after 2019, the year V-Dem reclassified India as an electoral autocracy. The geometric mean is now pulled hardest by the collapse in civil-society space (0.669 &rarr; 0.302), not just press freedom.<br><br><strong>Correction, 15 August 2026.</strong> The two V-Dem columns above previously held approximated values whose pre-2014 entries were too high (Liberal Democracy Index 0.555 for 2014 against a published 0.488; Core Civil Society Index 0.87 against a published 0.669). That inflated the baseline and therefore exaggerated the measured decline &mdash; an error running in this project&rsquo;s own favour. Both columns are now the published V-Dem series verbatim (v2x_libdem and v2xcs_ccsi). The UPA-decade mean falls from 0.59 to 0.57 and the 2014 value from 0.54 to 0.49; the 2026 value is unchanged at 0.29.</div>
+            <strong>Key finding:</strong> DQI fell from a UPA-era average of 0.57 (peak 0.61) to 0.29 by 2026, and from 0.49 in 2014. The steepest drop came after 2019, the year V-Dem reclassified India as an electoral autocracy. The geometric mean is now pulled down hardest by the collapse in civil-society space (0.669 &rarr; 0.302), more than by press freedom.<br><br><strong>Correction, 15 August 2026.</strong> The two V-Dem columns above previously held approximated values whose pre-2014 entries were too high (Liberal Democracy Index 0.555 for 2014 against a published 0.488; Core Civil Society Index 0.87 against a published 0.669). That inflated the baseline and therefore exaggerated the measured decline, an error running in this project&rsquo;s own favour. Both columns are now the published V-Dem series verbatim (v2x_libdem and v2xcs_ccsi). The UPA-decade mean falls from 0.59 to 0.57 and the 2014 value from 0.54 to 0.49. The 2026 value is unchanged at 0.29.</div>
     </div>
     
     <div class="section" id="a4b">
-        <h2>A4b. Unpaid Household Work: Time Use Survey Data</h2>
+        <h2>A4b. Unpaid household work in the Time Use Survey</h2>
 
         <p>National accounts place own-account household services outside the production boundary, so none of the GDP
         figures in this appendix include them. The hours are nonetheless measured. Source: NSO Time Use Survey,
-        January&ndash;December 2019 and January&ndash;December 2024; the later round covered about 4.5 lakh persons in
-        1.3 lakh households. Ages 15&ndash;59. Minutes are the daily average <em>among participants</em>, not across
-        the whole population.</p>
+        January to December 2019 and January to December 2024. The later round covered about 4.5 lakh persons in
+        1.3 lakh households. Ages 15-59. Minutes are the daily average among participants only, and are not
+        averaged across the whole population.</p>
 
         <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table class="data-table">
             <thead><tr><th>Indicator</th><th>Women 2019</th><th>Women 2024</th><th>Men 2019</th><th>Men 2024</th></tr></thead>
@@ -451,39 +451,40 @@
                 <tr><td>Unpaid domestic services, minutes/day</td><td>299</td><td><strong>289</strong></td><td>97</td><td><strong>88</strong></td></tr>
                 <tr><td>Participation in unpaid domestic services, %</td><td>81.2</td><td><strong>83.9</strong></td><td>26.1</td><td><strong>45.8</strong></td></tr>
                 <tr><td>Participation in employment, %</td><td>21.8</td><td><strong>25</strong></td><td>70.9</td><td><strong>75</strong></td></tr>
-                <tr style="background:#f8fafc;"><td>Caregiving, minutes/day (2024)</td><td>&mdash;</td><td><strong>140</strong></td><td>&mdash;</td><td><strong>74</strong></td></tr>
-                <tr style="background:#f8fafc;"><td>Caregiving participation, % (2024)</td><td>&mdash;</td><td><strong>41</strong></td><td>&mdash;</td><td><strong>21.4</strong></td></tr>
+                <tr style="background:#f8fafc;"><td>Caregiving, minutes/day (2024)</td><td>n/a</td><td><strong>140</strong></td><td>n/a</td><td><strong>74</strong></td></tr>
+                <tr style="background:#f8fafc;"><td>Caregiving participation, % (2024)</td><td>n/a</td><td><strong>41</strong></td><td>n/a</td><td><strong>21.4</strong></td></tr>
             </tbody>
         </table></div>
 
         <div class="result-highlight">
             <strong>Derived result:</strong> the participant gap in unpaid domestic services was
-            299&nbsp;&minus;&nbsp;97 = <strong>202 minutes</strong> in 2019 and
-            289&nbsp;&minus;&nbsp;88 = <strong>201 minutes</strong> in 2024. Male participation rose from
+            299&nbsp;&minus;&nbsp;97 = 202 minutes in 2019 and
+            289&nbsp;&minus;&nbsp;88 = 201 minutes in 2024. Male participation rose from
             26.1% to 45.8% over the same period while minutes among participants fell for both sexes, so the
-            gap closed by <strong>1 minute</strong> in five years. Female employment
-            participation rose 21.8% &rarr; 25%.
+            gap closed by 1 minute in five years. Female employment
+            participation rose from 21.8% to 25%.
         </div>
 
         <h3>A4b.1 Published valuations</h3>
 
-        <p>Estimates of what this work would be worth, as a share of GDP. The spread reflects valuation method, not
-        uncertainty in the hours. This project publishes the range and adopts none of them; no GDP figure anywhere in
-        this assessment is adjusted.</p>
+        <p>These are estimates of what this work would be worth, as a share of GDP. The spread reflects the valuation
+        method, and there is little uncertainty in the hours. This project publishes the range and adopts none of the
+        estimates. No GDP figure anywhere in this assessment is adjusted.</p>
 
         <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table class="data-table">
             <thead><tr><th>Estimate</th><th>Method</th><th style="text-align:right">% of GDP</th></tr></thead>
-            <tbody><tr><td>SBI Ecowrap (2023)</td><td>minimum-wage valuation</td><td style='text-align:right'><strong>7.5%</strong></td></tr><tr><td>Ministry of Women and Child Development (2024 submission)</td><td>not fully specified</td><td style='text-align:right'><strong>15&ndash;17%</strong></td></tr><tr><td>Generalised opportunity cost, 2019-20</td><td>opportunity cost</td><td style='text-align:right'><strong>24.6%</strong></td></tr><tr><td>Economic and Political Weekly (2024), 2022-23</td><td>replacement and opportunity cost</td><td style='text-align:right'><strong>26&ndash;36%</strong></td></tr><tr><td>Replacement cost method, 2019-20</td><td>replacement cost</td><td style='text-align:right'><strong>32.4%</strong></td></tr></tbody>
+            <tbody><tr><td>SBI Ecowrap (2023)</td><td>minimum-wage valuation</td><td style='text-align:right'><strong>7.5%</strong></td></tr><tr><td>Ministry of Women and Child Development (2024 submission)</td><td>not fully specified</td><td style='text-align:right'><strong>15-17%</strong></td></tr><tr><td>Generalised opportunity cost, 2019-20</td><td>opportunity cost</td><td style='text-align:right'><strong>24.6%</strong></td></tr><tr><td>Economic and Political Weekly (2024), 2022-23</td><td>replacement and opportunity cost</td><td style='text-align:right'><strong>26-36%</strong></td></tr><tr><td>Replacement cost method, 2019-20</td><td>replacement cost</td><td style='text-align:right'><strong>32.4%</strong></td></tr></tbody>
         </table></div>
 
         <p><strong>Bearing on the employment series:</strong> female labour force participation of ~21% in the main
         tables is customarily read as an absence of work, while the Time Use Survey records 83.9% of women aged
-        15&ndash;59 in unpaid domestic work on the reference day. The participation figure measures the absence of work
-        the accounts recognise. How much of the gap is behavioural rather than definitional is unresolved here.</p>
+        15-59 in unpaid domestic work on the reference day. The participation figure measures the absence of work
+        the accounts recognise. This appendix does not resolve how much of the gap is behavioural and how much is
+        definitional.</p>
     </div>
 
     <div class="section" id="a5">
-        <h2>A5. Employment Elasticity Estimation</h2>
+        <h2>A5. Estimating employment elasticity</h2>
         
         <h3>Methodology</h3>
         
@@ -556,14 +557,14 @@
         </table></div>
         
         <div class="methodology-box">
-            <strong>Note:</strong> The 2020-2023 elasticity of 1.11 reflects distress employment in informal sector post-pandemic, not quality job creation.
+            <strong>Note:</strong> The 2020-2023 elasticity of 1.11 reflects distress employment in the informal sector after the pandemic. It does not reflect the creation of good jobs.
         </div>
     </div>
     
     <div class="section" id="a6">
-        <h2>A6. Inequality Measurement Methods</h2>
+        <h2>A6. Measuring inequality</h2>
         
-        <h3>Income Share Calculation</h3>
+        <h3>Income share calculation</h3>
         
         <div class="formula-box">
             Top 1% Share = Σ(Y_i) / Y_total for i ∈ top percentile
@@ -578,112 +579,69 @@
                 <tr>
                     <th>Year</th>
                     <th>Top 1%</th>
-                    <th>Top 10%</th>
-                    <th>Middle 40%</th>
                     <th>Bottom 50%</th>
-                    <th>Gini</th>
-                    <th>Palma</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>2014</td>
+                    <td>21.3%</td>
                     <td>15.0%</td>
-                    <td>52.9%</td>
-                    <td>32.1%</td>
-                    <td>15.0%</td>
-                    <td>0.812</td>
-                    <td>3.5</td>
                 </tr>
                 <tr>
                     <td>2015</td>
-                    <td>16.2%</td>
-                    <td>54.1%</td>
-                    <td>31.5%</td>
-                    <td>14.4%</td>
-                    <td>0.821</td>
-                    <td>3.8</td>
+                    <td>21.7%</td>
+                    <td>14.7%</td>
                 </tr>
                 <tr>
                     <td>2016</td>
-                    <td>17.5%</td>
-                    <td>55.3%</td>
-                    <td>30.9%</td>
-                    <td>13.8%</td>
-                    <td>0.830</td>
-                    <td>4.0</td>
+                    <td>21.5%</td>
+                    <td>14.9%</td>
                 </tr>
                 <tr>
                     <td>2017</td>
-                    <td>18.9%</td>
-                    <td>56.4%</td>
-                    <td>30.3%</td>
-                    <td>13.3%</td>
-                    <td>0.838</td>
-                    <td>4.2</td>
+                    <td>21.5%</td>
+                    <td>14.9%</td>
                 </tr>
                 <tr>
                     <td>2018</td>
-                    <td>19.8%</td>
-                    <td>57.1%</td>
-                    <td>29.9%</td>
-                    <td>13.0%</td>
-                    <td>0.843</td>
-                    <td>4.4</td>
+                    <td>21.7%</td>
+                    <td>14.7%</td>
                 </tr>
                 <tr>
                     <td>2019</td>
-                    <td>20.6%</td>
-                    <td>57.8%</td>
-                    <td>29.5%</td>
-                    <td>12.7%</td>
-                    <td>0.847</td>
-                    <td>4.6</td>
+                    <td>22.1%</td>
+                    <td>13.5%</td>
                 </tr>
                 <tr>
                     <td>2020</td>
-                    <td>21.0%</td>
-                    <td>58.2%</td>
-                    <td>29.3%</td>
-                    <td>12.5%</td>
-                    <td>0.850</td>
-                    <td>4.7</td>
+                    <td>22.3%</td>
+                    <td>13.3%</td>
                 </tr>
                 <tr>
                     <td>2021</td>
-                    <td>21.7%</td>
-                    <td>58.9%</td>
-                    <td>28.9%</td>
-                    <td>12.2%</td>
-                    <td>0.854</td>
-                    <td>4.8</td>
+                    <td>22.5%</td>
+                    <td>13.1%</td>
                 </tr>
                 <tr>
                     <td>2022</td>
-                    <td>22.2%</td>
-                    <td>59.4%</td>
-                    <td>28.6%</td>
-                    <td>12.0%</td>
-                    <td>0.857</td>
-                    <td>5.0</td>
+                    <td>22.6%</td>
+                    <td>13.1%</td>
                 </tr>
                 <tr>
                     <td>2023</td>
                     <td>22.6%</td>
-                    <td>59.8%</td>
-                    <td>28.4%</td>
-                    <td>11.8%</td>
-                    <td>0.860</td>
-                    <td>5.1</td>
+                    <td>13.1%</td>
                 </tr>
             </tbody>
         </table></div>
+        <p>Pre-tax national income shares from the World Inequality Database India series (WIR 2026), as carried in <code>data.json</code>. The dataset does not carry the top 10% or middle 40% shares, the Gini or the Palma ratio, so this table does not report them.</p>
     </div>
     
     <div class="section" id="a7">
-        <h2>A7. Robustness Tests</h2>
+        <h2>A7. Robustness tests</h2>
         
-        <h3>Sensitivity Analysis Results</h3>
+        <h3>Sensitivity analysis results</h3>
         
         <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table class="data-table">
             <thead>
@@ -735,14 +693,14 @@
         </table></div>
         
         <div class="methodology-box">
-            <strong>*Note:</strong> Geometric mean penalizes weak dimensions more heavily, making DQI more sensitive to democratic erosion.
+            <strong>*Note:</strong> A geometric mean penalizes weak dimensions more heavily, which makes the DQI more sensitive to democratic erosion.
         </div>
     </div>
     
     <div class="section" id="a8">
-        <h2>A8. Complete Results Tables</h2>
+        <h2>A8. Complete results tables</h2>
         
-        <h3>Master Results Table 2014-2024</h3>
+        <h3>Master results table, 2014-2024</h3>
         
         <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table class="data-table" style="font-size: 0.8rem;">
             <thead>
@@ -766,7 +724,7 @@
                     <td>21.3%</td>
                     <td>0.00</td>
                     <td>0.19</td>
-                    <td>0.54</td>
+                    <td>0.49</td>
                     <td>140</td>
                     <td>35.0%</td>
                 </tr>
@@ -777,7 +735,7 @@
                     <td>21.7%</td>
                     <td>1.05</td>
                     <td>0.21</td>
-                    <td>0.54</td>
+                    <td>0.46</td>
                     <td>136</td>
                     <td>35.6%</td>
                 </tr>
@@ -788,7 +746,7 @@
                     <td>21.5%</td>
                     <td>1.05</td>
                     <td>0.25</td>
-                    <td>0.53</td>
+                    <td>0.46</td>
                     <td>133</td>
                     <td>36.2%</td>
                 </tr>
@@ -799,62 +757,62 @@
                     <td>21.5%</td>
                     <td>2.05</td>
                     <td>0.41</td>
-                    <td>0.50</td>
+                    <td>0.44</td>
                     <td>136</td>
                     <td>36.6%</td>
                 </tr>
                 <tr>
                     <td>2018</td>
                     <td>6.1%</td>
-                    <td>6.1%</td>
+                    <td>5.8%</td>
                     <td>21.7%</td>
                     <td>4.00</td>
                     <td>0.53</td>
-                    <td>0.46</td>
+                    <td>0.42</td>
                     <td>138</td>
                     <td>35.5%</td>
                 </tr>
                 <tr>
                     <td>2019</td>
                     <td>4.2%</td>
-                    <td>5.8%</td>
+                    <td>4.8%</td>
                     <td>22.1%</td>
                     <td>4.80</td>
                     <td>0.65</td>
-                    <td>0.43</td>
+                    <td>0.39</td>
                     <td>140</td>
                     <td>34.0%</td>
                 </tr>
                 <tr>
                     <td>2020</td>
                     <td>-7.3%</td>
-                    <td>7.1%</td>
+                    <td>4.2%</td>
                     <td>22.3%</td>
                     <td>7.00</td>
                     <td>0.92</td>
-                    <td>0.40</td>
+                    <td>0.36</td>
                     <td>142</td>
                     <td>33.0%</td>
                 </tr>
                 <tr>
                     <td>2021</td>
                     <td>8.7%</td>
-                    <td>4.2%</td>
+                    <td>4.1%</td>
                     <td>22.5%</td>
                     <td>9.00</td>
                     <td>0.82</td>
-                    <td>0.38</td>
+                    <td>0.37</td>
                     <td>142</td>
                     <td>32.7%</td>
                 </tr>
                 <tr>
                     <td>2022</td>
                     <td>7.2%</td>
-                    <td>4.1%</td>
+                    <td>3.2%</td>
                     <td>22.6%</td>
                     <td>9.00</td>
                     <td>0.70</td>
-                    <td>0.33</td>
+                    <td>0.34</td>
                     <td>150</td>
                     <td>32.4%</td>
                 </tr>
@@ -876,7 +834,7 @@
                     <td>22.6%</td>
                     <td>7.05</td>
                     <td>0.68</td>
-                    <td>0.29</td>
+                    <td>0.28</td>
                     <td>159</td>
                     <td>31.8%</td>
                 </tr>
@@ -884,15 +842,15 @@
         </table></div>
         
         <div class="result-highlight">
-            <h3>Summary Statistics</h3>
+            <h3>Summary statistics</h3>
             <ul>
-                <li>GDP Growth (2014&ndash;2026): Mean = 6.08%, SD = 4.01%</li>
-                <li>Unemployment: Mean = 5.4%, SD = 0.78%</li>
+                <li>GDP growth (2014-2026): mean = 6.11%, SD = 4.02%</li>
+                <li>Unemployment (2014-2026): mean = 4.44%, SD = 0.98%. The 2026 value is on the monthly current-weekly-status measure and the earlier years on usual status</li>
                 <li>Top 1% Share: 21.3% (2014) → 22.6% (2023), +1.3pp; the level is the highest recorded since 1922. Bottom 50% Share: 15.0% → 13.1%, −1.9pp (a 12.7% relative decline)</li>
                 <li>SSI: 0 across UPA; peaked 9.0 (2021-22, COVID undercount); sustained 6.4 (2026)</li>
                 <li>FCI: rose from 0.19 (2014) to 0.68 (2024); peak 0.92 (2020); UPA avg 0.09 (incl. GST component)</li>
                 <li>DQI: fell from 0.49 (2014) to 0.29 (2026); UPA avg 0.57 (incl. civil-society index)</li>
-                <li>Press Freedom: Fell 21 ranks (140 → 161)</li>
+                <li>Press freedom: fell 17 places, from 140 (2014) to 157 (2026)</li>
                 <li>Devolution: Decreased 9.3% (35% → 31.8%)</li>
             </ul>
         </div>
@@ -900,7 +858,7 @@
     
     <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
         <p style="text-align: center; color: #6b7280; font-size: 0.9rem;">
-            Technical Appendix | Some Perspective: India&rsquo;s Political Economy 2004&ndash;2026<br>
+            Technical Appendix | Some Perspective: India&rsquo;s Political Economy, 2004-2026<br>
             Complete data and code: <strong>github.com/Varnasr/someperspective</strong><br>
             May 2026
         </p>

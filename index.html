@@ -7,10 +7,10 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.47.0">
+    <meta name="version" content="2.48.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
-    <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability — democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality — India is measurably worse under NDA (2014-26) than under UPA (2004-14); inflation is the honest exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
+    <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability (democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality), India is measurably worse under NDA (2014-26) than under UPA (2004-14). Inflation is the one exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
     <meta name="keywords" content="India economy analysis, India GDP growth employment, India income inequality, India unemployment data, India democratic backsliding, fiscal federalism India, Statistical Suppression Index, India wealth inequality 2026, India press freedom, informal employment India, gig economy India, India economic data, political economy India, V-Dem India score, India census postponed">
     <meta name="author" content="Dr. Varna Sri Raman">
     <link rel="canonical" href="https://someperspective.info/">
@@ -20,7 +20,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Some Perspective | India's Economy, Inequality & Democracy 2004-2026">
-    <meta property="og:description" content="Where narratives meet numbers. Across democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality, India is measurably worse under NDA (2014-26) than UPA (2004-14) — shown honestly, with inflation the one exception. Three novel indices, interactive data, downloadable with citations.">
+    <meta property="og:description" content="Across democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality, India is measurably worse under NDA (2014-26) than under UPA (2004-14). Inflation is the one exception, and the site reports it. Three novel indices, interactive data, downloadable with citations.">
     <meta property="og:url" content="https://someperspective.info">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Some Perspective">
@@ -36,7 +36,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="India's Economy, Inequality & Democracy 2004-2026 | Some Perspective">
-    <meta name="twitter:description" content="On nearly every cross-era measure — democratic quality, statistics, fiscal federalism, press freedom, inequality — India is worse under NDA than UPA; inflation the honest exception. Three novel indices, interactive data, computed live.">
+    <meta name="twitter:description" content="On nearly every cross-era measure (democratic quality, statistics, fiscal federalism, press freedom and inequality), India is worse under NDA than under UPA. Inflation is the one exception. Three novel indices, interactive data, computed live.">
     <meta name="twitter:image" content="https://someperspective.info/og-preview.png">
     <meta name="twitter:image:alt" content="Some Perspective: India's Growth Paradox - GDP Up, Jobs Down, Inequality Soaring (2004-2026)">
 
@@ -188,7 +188,7 @@
                 "name": "What is the Statistical Suppression Index (SSI)?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The Statistical Suppression Index (SSI) is a novel 0-10 index measuring government interference in data production. It is a weighted count of datable suppression events — suppressed surveys, delayed reports, methodology disputes, and statistical-body resignations. India's SSI was 0 across the UPA decade, then rose to a peak of 9.0 in 2021-22 — the COVID-mortality undercount (official ~0.5M deaths vs 3-5M excess) stacking on the census delay, the withheld 2017-18 consumption survey, the shelved GDP back-series and the permanent NSSO→NSO merger — and remains elevated at 6.4 in 2026 because the institutional damage is permanent."
+                    "text": "The Statistical Suppression Index (SSI) is a novel 0-10 index measuring government interference in data production. It is a weighted count of datable suppression events: suppressed surveys, delayed reports, methodology disputes, and statistical-body resignations. India's SSI was 0 across the UPA decade and rose to a peak of 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths vs 3-5M excess) added to the census delay, the withheld 2017-18 consumption survey, the shelved GDP back-series and the permanent NSSO→NSO merger. It remains high at 6.4 in 2026 because the institutional damage is permanent."
                 }
             },
             {
@@ -203,14 +203,14 @@
     }
     </script>
     
-    <!-- Tailwind CSS — precompiled & purged from index.html into /styles.css
+    <!-- Tailwind CSS, precompiled & purged from index.html into /styles.css
          via `npm run build:css` (config in tailwind.config.js). validate.yml
          rebuilds and fails CI if this committed file is stale. -->
     <!-- Version-stamped so a new index.html can never pair with a cached old
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.47.0">
+    <link rel="stylesheet" href="/styles.css?v=2.48.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -222,7 +222,7 @@
             integrity="sha384-x6MR287ZDHWauvRTQIBc3b1F++s/03J/rBHbpRGwBoYbrqIN+3wRx4EXbU1u9NGO"
             crossorigin="anonymous"></script>
 
-    <!-- ECharts for visualizations (deferred — not needed for initial paint) -->
+    <!-- ECharts for visualizations (deferred, not needed for initial paint) -->
     <script defer src="https://cdn.jsdelivr.net/npm/echarts@6.1.0/dist/echarts.min.js"
             integrity="sha384-C2iskrW/uPW46KzOjrvJIQo4YkV8lkD+QS0CrDN18IIPIpT/g2USu8bTP3nvmIAD"
             crossorigin="anonymous"></script>
@@ -246,7 +246,7 @@
             }
         }
         /* ============================================================
-           DESIGN SYSTEM v2.9 — "Reading the Numbers" editorial redesign
+           DESIGN SYSTEM v2.9, "Reading the Numbers" editorial redesign
            Warm paper canvas · serif display type · burnt-amber + teal accent
            ============================================================ */
         :root {
@@ -381,7 +381,7 @@
         /* Trajectory verdict chip */
         .verdict { font-family: 'Fraunces', Georgia, serif; }
 
-        /* Mobile overflow hardening — prevent stat numbers / long tokens spilling
+        /* Mobile overflow hardening, prevent stat numbers / long tokens spilling
            out of tight grid cells, and stop any element forcing a horizontal scroll.
            overflow-x:clip (not hidden) keeps position:sticky working. */
         html { overflow-x: clip; }
@@ -400,7 +400,7 @@
         }
         .chart-dl-btn:hover { color: var(--on-accent); background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
 
-        /* Prominent WhatsApp share — floating action button */
+        /* Prominent WhatsApp share, floating action button */
         .wa-fab {
             position: fixed; z-index: 90;
             right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
@@ -475,7 +475,7 @@
             body::before { display: none; }
         }
 
-        /* Responsive chart heights — mobile-first */
+        /* Responsive chart heights, mobile-first */
         .chart-responsive { height: 260px; }
         .chart-responsive-sm { height: 220px; }
         .chart-responsive-tall { height: 320px; }
@@ -526,7 +526,7 @@
             a[class*="rounded-full"] {
                 min-height: 44px;
             }
-            /* Footer link lists were 14px tall — the single worst target on the
+            /* Footer link lists were 14px tall, the single worst target on the
                site, and there are ~18 of them. In a vertical list, giving each a
                44px row costs nothing and makes them reliably tappable. */
             footer nav ul li a {
@@ -546,7 +546,7 @@
                So the whole scale moves up one step on phones. 16px for body copy
                is the ordinary baseline (and the size below which iOS zooms form
                fields). Sizes are raised, never lowered, and the classes that carry
-               structural width — chart labels, table cells, chips — are exempted
+               structural width (chart labels, table cells, chips) are exempted
                below so nothing is pushed out of its container. */
             /* 320px is the narrowest phone still in use, and the header row
                (title + theme switcher + script toggle) was 24px too wide for it.
@@ -602,7 +602,7 @@
             input[type="checkbox"] { width: 20px; height: 20px; }
             label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-items: center; }
 
-            /* Range inputs were a 4px-tall box — the worst target on the page.
+            /* Range inputs were a 4px-tall box, the worst target on the page.
                The element becomes 44px of touch area while the visible track
                stays thin, drawn by the track pseudo-elements. */
             /* .traj-weight carries its own `height: 4px` at higher specificity,
@@ -630,7 +630,7 @@
 
             /* Inline links inside a sentence, and the dotted glossary terms, are
                left alone deliberately. WCAG 2.5.5 exempts targets whose position
-               is determined by the flow of text — padding them to 44px would break
+               is determined by the flow of text, padding them to 44px would break
                the line spacing of every paragraph that contains one. */
         }
     </style>
@@ -648,8 +648,8 @@
     // Boot watchdog. index.html is a single ~420KB file: if the transfer is cut
     // part-way through the inline application script (a dropped mobile connection,
     // an intermediary that truncates), siteApp() is never defined. Alpine then
-    // fails every expression on the page, which renders as silent blanks — an empty
-    // scorecard, "On [nothing] cross-era measures" — with no indication that
+    // fails every expression on the page, which renders as silent blanks, an empty
+    // scorecard, "On [nothing] cross-era measures", with no indication that
     // anything went wrong. This detects that state and says so.
     (function () {
         var FLAG = '__spBooted';
@@ -686,7 +686,7 @@
     <!-- Hidden Google Translate element -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- Loading skeleton — shows instantly, removed when Alpine hydrates -->
+    <!-- Loading skeleton, shows instantly, removed when Alpine hydrates -->
     <script>
     // Apply dark class early to prevent flash
     (function() {
@@ -732,7 +732,7 @@
                         <span class="gradient-text">Some Perspective</span>
                     </h1>
                     <p class="text-xs sm:text-sm mt-1 font-medium tracking-wide" style="color:var(--muted);">
-                        Reading the Indian Economy &mdash; <span class="italic">how the numbers are made, and who decides what counts</span>
+                        Reading the Indian Economy: <span class="italic">how the numbers are made, and who decides what counts</span>
                     </p>
                 </div>
 
@@ -824,7 +824,7 @@
     </header>
     
     <!-- Navigation: 4 grouped dropdowns + 1 featured standalone tab -->
-    <!-- IMPORTANT: no overflow-x-auto on the inner container — it would clip the dropdowns vertically. -->
+    <!-- IMPORTANT: no overflow-x-auto on the inner container, it would clip the dropdowns vertically. -->
     <nav class="backdrop-blur-lg sticky top-0 z-40 border-b"
          style="background:color-mix(in srgb, var(--surface) 92%, transparent); border-color:var(--line);"
          @click.outside="openGroup = null">
@@ -895,7 +895,7 @@
                     </div>
                 </div>
 
-                <!-- The guided walkthrough is a separate page, so it cannot be a tab — but it
+                <!-- The guided walkthrough is a separate page, so it cannot be a tab, but it
                      is the best entry point for a first-time reader and was previously reachable
                      only from a card buried in the last tab and one footer link. It belongs in
                      the navigation. -->
@@ -924,7 +924,7 @@
         <div x-show="dataLoadError" x-cloak role="alert"
              class="mb-4 rounded-lg border border-amber-300 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-700 p-3 text-sm text-amber-900 dark:text-amber-200">
             <strong>Heads up:</strong> the live dataset could not be reached, so the charts are drawing from the copy bundled with this page.
-            That copy is published in step with the dataset, so the figures are almost certainly the same &mdash; but they are not guaranteed to be.
+            That copy is published in step with the dataset, so the figures are very likely the same, but they are not guaranteed to be.
             <button type="button" @click="retryDataLoad()" :disabled="dataRetrying"
                     class="ml-1 underline font-semibold min-h-[44px] sm:min-h-0 disabled:opacity-60"
                     x-text="dataRetrying ? 'Retrying…' : 'Try again'"></button>
@@ -936,7 +936,7 @@
             <!-- The thesis, in one line (live-computed, consistent across the site) -->
             <div class="card p-4 sm:p-5" style="border-left:4px solid var(--accent);">
                 <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The thesis, in one line</div>
-                <p class="text-sm" style="color:var(--ink-soft);">High headline growth has masked a measurable decline in the <strong>institutions of accountability</strong> and the <strong>income share of ordinary Indians</strong>. On <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14) — democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated; the one honest exception is inflation &mdash; <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
+                <p class="text-sm" style="color:var(--ink-soft);">High headline growth has masked a measurable decline in the <strong>institutions of accountability</strong> and the <strong>income share of ordinary Indians</strong>. On <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14). Democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated. The one exception is inflation, <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
             </div>
 
             <!-- Primary entry point for a first-time reader. The walkthrough answers the
@@ -978,7 +978,7 @@
                 <h2 class="text-lg sm:text-xl font-bold mb-1" style="color:var(--ink);">Two numbers that need more than a footnote</h2>
                 <p class="text-sm mb-4" style="color:var(--ink-soft);">
                     One measure on this site moves in the government's favour, and one measure leaves out
-                    most of the work women do. Neither is honestly handled in a sentence, so each gets a page.
+                    most of the work women do. Neither can be explained fairly in a sentence, so each gets a page.
                 </p>
                 <div class="grid sm:grid-cols-2 gap-3">
                     <template x-for="e in explainers" :key="'card-' + e.href">
@@ -1020,7 +1020,7 @@
                         <a href="analysis/" class="hover:underline" style="color:var(--muted);" x-text="'All ' + dailyFeatures.length + ' analyses'">All 37 analyses</a>
                     </span>
                     <div class="flex items-center gap-2">
-                        <button @click="shareFinding(todaysFeature.title + ' — ' + todaysFeature.takeaway, todaysFeature.tab)"
+                        <button @click="shareFinding(todaysFeature.title + ': ' + todaysFeature.takeaway, todaysFeature.tab)"
                             class="px-3 py-1 rounded-lg font-semibold text-white" style="background:#075E54;">Share</button>
                         <button @click="copyLink(todaysFeature.tab)"
                             class="px-3 py-1 rounded-lg font-semibold border" style="border-color:var(--line);color:var(--ink-soft);">Copy link</button>
@@ -1035,7 +1035,7 @@
 
                 <div class="bg-amber-50 dark:bg-amber-900/15 border border-amber-200/60 dark:border-amber-700/30 p-5 rounded-xl mb-8">
                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                        India's GDP averaged 6.1% a year since 2014 &mdash; 7.2% if you set the pandemic year aside, against 7.1% in the decade before &mdash; yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This unfunded, data-driven research examines <strong>what the headline numbers hide</strong> — with interactive charts, downloadable datasets, and three novel indices you won't find anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
+                        India's GDP averaged 6.1% a year since 2014 (7.2% if you set the pandemic year aside, against 7.1% in the decade before), yet formal employment <em>declined</em>, the top 1% now holds more wealth than during British colonial rule, and democratic institutions have eroded by every international measure. This unfunded, data-driven research examines <strong>what the headline numbers hide</strong>, with interactive charts, downloadable datasets, and three new indices that are not published anywhere else. <span class="font-semibold text-gray-900 dark:text-gray-100">Data updated through August 2026.</span>
                     </p>
                 </div>
 
@@ -1066,7 +1066,7 @@
                 <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mb-8">
                     <div class="card p-5 sm:p-6">
                         <h3 class="text-lg font-bold mb-3 gradient-text">Why This Research Matters</h3>
-                        <p class="mb-3 text-sm">India is the world's fastest-growing large economy — but growth alone doesn't tell the story. This research connects the dots between macro numbers and lived reality.</p>
+                        <p class="mb-3 text-sm">India is the world's fastest-growing large economy, but growth alone does not show how people are living. This research links the macro numbers to household and labour-market data.</p>
                         <ul class="space-y-2 text-sm">
                             <li>• Employment elasticity collapsed to near-zero despite GDP growth</li>
                             <li>• Inequality now exceeds every comparable democracy</li>
@@ -1079,7 +1079,7 @@
                         <h3 class="text-lg font-bold mb-3 text-emerald-800 dark:text-emerald-400">What You'll Find Here</h3>
                         <ul class="space-y-2 text-sm">
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Interactive charts comparing 20+ economic indicators (2004-2026)</li>
-                            <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Three novel indices: SSI, FCI, DQI — quantifying what others describe qualitatively</li>
+                            <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Three novel indices (SSI, FCI, DQI) that put numbers on changes others describe only in words</li>
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> International comparisons with Brazil, Turkey, Hungary, South Africa</li>
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Human stories behind the statistics</li>
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Downloadable data (CSV, JSON) and replication code (R, Python)</li>
@@ -1118,11 +1118,11 @@
                             <div class="text-xl font-bold text-purple-600 dark:text-purple-400" x-text="economicData.dqi[timelineIndex].toFixed(2)"></div>
                         </div>
                     </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);">The SSI reads <strong>0.0 for 2014</strong> and for the whole UPA decade before it. That is a result, not a missing value: the index counts documented suppression episodes, and none of the six it tracks had begun by 2014. It is also the most contestable number in this project, and it is argued out at length in the <a href="downloads/paper.html" class="underline" style="color:var(--accent);">paper</a>.</p>
+                    <p class="text-xs mt-3" style="color:var(--muted);">The SSI reads <strong>0.0 for 2014</strong> and for the whole UPA decade before it. That zero is a measured result. The index counts documented suppression episodes, and none of the six it tracks had begun by 2014. It is also the most contestable number in this project, and it is argued out at length in the <a href="downloads/paper.html" class="underline" style="color:var(--accent);">paper</a>.</p>
                 </div>
 
                 <div class="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl">
-                    <h3 class="font-bold mb-3 text-lg">Three Novel Indices — Measuring What Others Only Describe</h3>
+                    <h3 class="font-bold mb-3 text-lg">Three Novel Indices That Measure What Others Only Describe</h3>
                     <p class="text-sm mb-4 text-gray-600 dark:text-gray-400">Original research contributions that quantify institutional deterioration empirically:</p>
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="text-center p-4 bg-white dark:bg-gray-800/80 rounded-xl border border-gray-100 dark:border-gray-700/50 shadow-sm">
@@ -1152,14 +1152,14 @@
         <div x-show="activeTab === 'Executive Summary'" x-transition class="space-y-6">
             <div class="card p-4 sm:p-5" style="border-left:4px solid var(--accent);">
                 <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The thesis, in one line</div>
-                <p class="text-sm" style="color:var(--ink-soft);">High headline growth has masked a measurable decline in the <strong>institutions of accountability</strong> and the <strong>income share of ordinary Indians</strong>. On <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14) — democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated; the one honest exception is inflation &mdash; <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
+                <p class="text-sm" style="color:var(--ink-soft);">High headline growth has masked a measurable decline in the <strong>institutions of accountability</strong> and the <strong>income share of ordinary Indians</strong>. On <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14). Democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated. The one exception is inflation, <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
             </div>
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-white">Executive Summary: India's Growth Paradox (2004-2026)</h2>
 
                 <div class="prose prose-sm dark:prose-invert max-w-none">
                     <p class="lead text-lg mb-4">
-                        India grew at 6.1% a year on average from 2014 to 2026 — 7.2% excluding the pandemic year, against 7.1% under UPA — yet formal employment <em>declined</em>, inequality reached levels unseen since 1922, and every major international index recorded democratic deterioration. This isn't a story of failure; it's a story of <strong>growth that bypassed the majority</strong>.
+                        India grew at 6.1% a year on average from 2014 to 2026 (7.2% excluding the pandemic year, against 7.1% under UPA), yet formal employment <em>declined</em>, inequality reached levels unseen since 1922, and every major international index recorded democratic deterioration. The record is one of <strong>growth that bypassed the majority</strong>.
                     </p>
                     
                     <h3 class="text-xl font-bold mt-6 mb-3">Core Findings</h3>
@@ -1209,7 +1209,7 @@
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mt-6">
                         <h3 class="font-bold mb-2">The Bottom Line</h3>
                         <p class="text-sm">
-                            India achieved "populist growth without accountability"—high aggregate growth that enriched elites 
+                            India achieved "populist growth without accountability": high aggregate growth that enriched elites 
                             while employment stagnated, inequality soared, and institutional checks weakened. The three indices 
                             (SSI, FCI, DQI) quantify this democratic backsliding empirically through August 2026.
                         </p>
@@ -1222,7 +1222,7 @@
         <div x-show="activeTab === 'Key Findings'" x-transition class="space-y-6">
             <div class="card p-4 sm:p-5" style="border-left:4px solid var(--accent);">
                 <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The thesis, in one line</div>
-                <p class="text-sm" style="color:var(--ink-soft);">These findings build one case: on <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14) — democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated; the one honest exception is inflation &mdash; <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
+                <p class="text-sm" style="color:var(--ink-soft);">These findings build one case: on <strong x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14). Democratic quality, statistical integrity, fiscal centralisation, press freedom and inequality all deteriorated. The one exception is inflation, <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>. <a @click.prevent="activeTab='Era Comparison'" href="#" class="underline font-semibold" style="color:var(--accent);">See the computed verdict →</a></p>
             </div>
             <div class="card p-5 sm:p-8">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Key Findings</h2>
@@ -1313,7 +1313,7 @@
                     vote is not worth the same everywhere: seats were frozen on the 1971 census, so on the
                     government&rsquo;s own 2026 population projection the number of people behind each MP varies by
                     <strong x-text="stateRepSpread.ratio + '&times;'"></strong> between the best- and worst-represented
-                    states here &mdash; wider than the <strong x-text="stateRepSpread2011 + '&times;'"></strong> gap the
+                    states here, wider than the <strong x-text="stateRepSpread2011 + '&times;'"></strong> gap the
                     2011 census showed, because a frozen allocation keeps compounding. Pick a state.
                 </p>
 
@@ -1351,12 +1351,12 @@
                             </div>
                             <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
                                 <div class="text-xs font-semibold mb-1" style="color:var(--muted);">Back per ₹100 of tax</div>
-                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.ret != null ? '₹' + currentState.ret : '—'"></div>
+                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.ret != null ? '₹' + currentState.ret : 'n/a'"></div>
                                 <div class="text-xs mt-1" style="color:var(--muted);" x-text="currentState.ret != null ? (currentState.ret < 100 ? 'net contributor' : 'net recipient') : 'not published for this state'"></div>
                             </div>
                             <div class="p-3 rounded-xl" style="background:var(--surface-2);border:1px solid var(--line);">
                                 <div class="text-xs font-semibold mb-1" style="color:var(--muted);">If seats are redrawn</div>
-                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.delim != null ? (currentState.delim > 0 ? '+' + currentState.delim : String(currentState.delim)) : '—'"></div>
+                                <div class="text-xl font-extrabold" style="color:var(--ink);" x-text="currentState.delim != null ? (currentState.delim > 0 ? '+' + currentState.delim : String(currentState.delim)) : 'n/a'"></div>
                                 <div class="text-xs mt-1" style="color:var(--muted);" x-text="currentState.delim != null ? 'projected seat change' : 'no published projection'"></div>
                             </div>
                         </div>
@@ -1376,7 +1376,7 @@
 
                         <div class="mt-5">
                             <h3 class="text-sm font-bold mb-1" style="color:var(--ink);">Paying in and getting back</h3>
-                            <p class="text-xs mb-2" style="color:var(--muted);">Per-capita income against the rupees returned for every ₹100 of Union tax paid. The pattern is the design of the system working, not failing: richer states finance poorer ones. What is argued about is the rate.</p>
+                            <p class="text-xs mb-2" style="color:var(--muted);">Per-capita income against the rupees returned for every ₹100 of Union tax paid. The pattern shows the system working as designed, with richer states financing poorer ones. The dispute is over the rate.</p>
                             <div id="stateFiscalChart" style="width:100%;height:340px;"></div>
                         </div>
 
@@ -1404,7 +1404,7 @@
                 
                 <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl mb-6">
                     <p class="text-sm">
-                        Explore 11 years of economic data. Select up to 3 indicators to compare trends. 
+                        Explore 23 years of economic data, 2004 to 2026. Select up to 3 indicators to compare trends. 
                         Export data as CSV or save charts as images.
                     </p>
                 </div>
@@ -1478,7 +1478,7 @@
                         Overlay policy events on the chart
                     </label>
                     <div id="interactiveChart" class="chart-responsive" style="width:100%;"></div>
-                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. Shaded bands mark the <strong>UPA era (2004–14)</strong> and <strong>NDA era (2014–26)</strong>, split at the 2014 divider. GDP, inflation, fiscal deficit, inequality and press freedom run the full 2004→2026 on a consistent single-source basis. Unemployment and formal employment are shown from 2014 (PLFS era); SSI/FCI/DQI before 2014 are the author's back-cast (see Methodology).</p>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Shaded bands mark the UPA era (2004-14) and the NDA era (2014-26), split at the 2014 divider. GDP, inflation, fiscal deficit, inequality and press freedom run from 2004 to 2026. Unemployment and formal employment start in 2014, and SSI, FCI and DQI before 2014 are the author's back-cast (see Methodology). A circled 2026 point marks a change of measure. Unemployment for 2026 is the average of the monthly bulletins, which use current weekly status, while earlier years use usual status. Inflation for 2026 is on the 2024=100 CPI base, and GDP growth for 2026 is on the 2022-23 national accounts base.</p>
                 </div>
 
                 <!-- Export Controls -->
@@ -1619,7 +1619,7 @@
                     <h3 class="text-lg font-bold mb-4">All Three Indices (Normalized 0-10)</h3>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="indicesChart" class="chart-responsive" style="width:100%;"></div>
-                        <p class="text-xs mt-2" style="color:var(--muted);">All three indices are computed for both eras (2004-2026) from one documented methodology — see <code class="text-xs">data/compute_indices.py</code>. SSI is a 0-10 weighted count of datable suppression events; FCI is the mean of five min-max-normalised centralisation components; DQI is the geometric mean of V-Dem, Freedom House and RSF scores. See Methodology.</p>
+                        <p class="text-xs mt-2" style="color:var(--muted);">All three indices are computed for both eras (2004-2026) from one documented methodology (see <code class="text-xs">data/compute_indices.py</code>). SSI is a 0-10 weighted count of datable suppression events; FCI is the mean of five min-max-normalised centralisation components; DQI is the geometric mean of V-Dem, Freedom House and RSF scores. See Methodology.</p>
                     </div>
                     <button @click="exportChart('indicesChart', 'three-indices')" 
                             class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm rounded-xl font-medium shadow-sm shadow-blue-500/20 transition-all">
@@ -1676,7 +1676,7 @@
                 <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-xl mb-6">
                     <p class="font-semibold">The People Behind the Data</p>
                     <p class="text-sm mt-2">
-                        Statistics describe trends; stories reveal impact. These four data narratives connect economic indicators to lived experiences — with charts, verified data points, and representative accounts drawn from field reporting.
+                        Statistics describe trends, and individual accounts show what those trends mean for people. These four data narratives connect economic indicators to lived experience, with charts, verified data points, and representative accounts drawn from field reporting.
                     </p>
                 </div>
                 
@@ -1689,7 +1689,7 @@
                         <div>
                             <p class="text-sm mb-3">
                                 <strong>Lead:</strong> Rajesh, 28, has an engineering degree from a reputed college. 
-                                Today, he delivers food for 12 hours a day, earning ₹15,000/month—less than a security guard.
+                                Today, he delivers food for 12 hours a day, earning ₹15,000/month, which is less than a security guard earns.
                             </p>
                             <p class="text-sm mb-3">
                                 <strong>The Numbers:</strong> India has 8.2 million gig workers (Mar 2026), up from 1.2 million in 2016. 
@@ -1701,7 +1701,7 @@
                             </p>
                             <p class="text-sm">
                                 <strong>Impact:</strong> Graduate unemployment at 26.5% forces educated youth into precarious work. 
-                                The "world's fastest-growing economy" runs on exploitation of its brightest minds.
+                                The "world's fastest-growing economy" depends on educated young people working in precarious jobs.
                             </p>
                         </div>
                         <div class="bg-white dark:bg-gray-800 p-4 rounded-xl">
@@ -1730,7 +1730,7 @@
                                 while drowning us in debt. My son will never farm—I'll sell the land first."
                             </p>
                             <p class="text-sm">
-                                <strong>Impact:</strong> Direct transfers mask structural crisis. 45% of rural households in debt. 
+                                <strong>Impact:</strong> Direct transfers mask a structural crisis. 45% of rural households are in debt. 
                                 Average debt: ₹1.3 lakh. Agriculture employs 45% but contributes only 15% to GDP.
                             </p>
                         </div>
@@ -1789,8 +1789,8 @@
                             behind GDP headlines. When governments fear data, citizens should fear government."
                         </p>
                         <p class="text-sm">
-                            <strong>Impact:</strong> Policy made blind. ₹3 lakh crore allocated without poverty data. 
-                            International agencies downgraded India's statistical credibility. Democracy needs transparency.
+                            <strong>Impact:</strong> Policy is made without current data. ₹3 lakh crore has been allocated without poverty data. 
+                            International agencies downgraded India's statistical credibility.
                         </p>
                     </div>
                 </div>
@@ -1813,13 +1813,13 @@
                     left for someone else to discover.
                 </p>
                 <p class="text-sm mb-3" style="color:var(--ink-soft);">
-                    Two things are also true. This research receives no funding &mdash; not from any institution,
+                    Two things are also true. This research receives no funding from any institution,
                     government, political party, foundation or commercial entity. And it is not party work: no party
                     body commissioned it, reviewed it, approved it or saw it before publication. It was written at the
                     author's own cost and is published under the author's own name.
                 </p>
                 <p class="text-sm mb-3" style="color:var(--ink-soft);">
-                    The honest response to a declared interest is not a claim of neutrality. Nobody who has spent two
+                    A declared interest cannot be answered with a claim of neutrality. Nobody who has spent two
                     decades arguing about Indian politics is neutral, and a site that claimed otherwise would be lying
                     to you in its first sentence. The response offered instead is that every step between the raw data
                     and the conclusion is open to inspection:
@@ -1830,7 +1830,7 @@
                         <a href="downloads/dataset.xlsx" class="underline" style="color:var(--accent);">Excel</a>, with every series
                         traced to a named public source.</li>
                     <li>The three constructed indices are built by a single published script, and the same script computes both
-                        eras &mdash; so no part of the gap between them can come from the two periods being measured differently.</li>
+                        eras, so no part of the gap between them can come from the two periods being measured differently.</li>
                     <li>Where the evidence cuts against the argument it is reported anyway: inflation is lower in the second
                         period, and the site says so and declines to explain it away.</li>
                     <li>Corrections are published rather than made quietly, including
@@ -1880,7 +1880,7 @@
                 <div class="card-inner mb-4"><div id="grierGovChart" class="chart-container"></div></div>
                 <p class="text-xs mb-4" style="color:var(--muted);">
                     Final-year gap between India and Synthetic India, as a percentage of India's own 2013 level. Bars run rightward in the direction of
-                    <em>worse</em> governance — so political corruption, where the raw gap is positive (+0.272), appears on the same side as the freedoms that fell.
+                    <em>worse</em> governance, so political corruption, where the raw gap is positive (+0.272), appears on the same side as the freedoms that fell.
                     Freedom of religion is measured on an interval scale rather than 0–1, which is why its percentage exceeds 100.
                 </p>
 
@@ -1907,7 +1907,7 @@
                 </div>
                 <p class="text-xs mb-4" style="color:var(--muted);">
                     Note that these are not the same quantity. Their figures are gaps against a counterfactual; this project's are observed changes over time.
-                    That two different questions produce numbers this close is the point — not that the numbers are interchangeable.
+                    What matters is that two different questions produce numbers this close. The numbers themselves are not interchangeable.
                 </p>
 
                 <h4 class="font-bold text-base mb-2" style="color:var(--ink);">Where they part company</h4>
@@ -2136,7 +2136,7 @@ reduces overall score</pre>
                 <!-- Democratic Decline Timeline -->
                 <div class="mb-8">
                     <h3 class="text-lg font-bold mb-4">Democratic decline: multi-country comparison</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">This chart uses the <strong>published V-Dem Liberal Democracy Index</strong>, not this project's DQI. The DQI is constructed for India alone, so it cannot be plotted for other countries; the comparison has to run on a measure that exists for all of them.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">This chart uses the <strong>published V-Dem Liberal Democracy Index</strong>. This project's DQI is constructed for India alone, so it cannot be plotted for other countries; the comparison has to run on a measure that exists for all of them.</p>
                     <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                         <div id="democraticDeclineChart" class="chart-responsive" style="width:100%;"></div>
                     </div>
@@ -2215,9 +2215,9 @@ reduces overall score</pre>
                 <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Era Comparison: UPA vs NDA</h2>
 
                 <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl mb-6" style="border-left:4px solid var(--accent);">
-                    <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The verdict — computed live from the data</div>
+                    <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">The verdict, computed live from the data</div>
                     <p class="text-sm" style="color:var(--ink-soft);">
-                        On <span class="font-bold" x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></span> comparable measures, India is <strong>worse under NDA (2014–26) than under UPA (2004–14)</strong> — including <strong>every measure of democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality</strong>. The honest exception is <strong x-text="eraVerdict().better || 'none'"></strong>: inflation was markedly <em>higher</em> under UPA-2 (double digits, 2009–13), so NDA looks better there. The site's claim is precise — the decline is concentrated in the <strong>institutions of accountability and the distribution of income</strong>, not in every macro headline. Data speaks louder than slogans.
+                        On <span class="font-bold" x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></span> comparable measures, India is <strong>worse under NDA (2014–26) than under UPA (2004–14)</strong>, including <strong>every measure of democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality</strong>. The one exception is <strong x-text="eraVerdict().better || 'none'"></strong>: inflation was markedly <em>higher</em> under UPA-2 (double digits, 2009–13), so NDA looks better there. The site's claim is precise. The decline is concentrated in the <strong>institutions of accountability and the distribution of income</strong>, and it does not appear in every macro headline.
                     </p>
                 </div>
 
@@ -2225,7 +2225,7 @@ reduces overall score</pre>
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-2">
                     <div id="eraComparisonChart" style="width:100%;height:300px;" class="chart-h-sm-450"></div>
                 </div>
-                <p class="text-xs mb-6" style="color:var(--muted);">Both columns are period averages computed live from the data — only consistent single-source series (no definitional breaks) are compared here. Unemployment and formal employment have no comparable UPA-era series; see the scorecard below.</p>
+                <p class="text-xs mb-6" style="color:var(--muted);">Both columns are period averages computed live from the data. Only consistent single-source series (no definitional breaks) are compared here. Unemployment and formal employment have no comparable UPA-era series; see the scorecard below.</p>
 
                 <!-- Delta cards (period averages, computed live) -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
@@ -2341,7 +2341,7 @@ reduces overall score</pre>
                 </div>
 
                 <!-- Scenario visualization (Sankey: levers -> indices) -->
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Move the sliders above. The Sankey shows how each lever flows into the three indices — band width = scenario contribution.</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Move the sliders above. The Sankey shows how each lever flows into the three indices. Band width shows each lever's scenario contribution.</p>
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-4">
                     <div id="scenarioChart" style="width:100%;height:340px;" class="chart-h-sm-420"></div>
                 </div>
@@ -2365,7 +2365,7 @@ reduces overall score</pre>
             <div id="state-explorer" class="card p-5 sm:p-6" style="scroll-margin-top:90px;">
                 <div class="kicker mb-1">Federalism &amp; delimitation</div>
                 <h2 class="text-2xl sm:text-3xl font-bold mb-1" style="color:var(--ink);">State Explorer</h2>
-                <p class="text-sm mb-3" style="color:var(--ink-soft);">India's states are diverging — in income, in representation, and in demographics. Pick a metric; states are ranked and coloured by region.</p>
+                <p class="text-sm mb-3" style="color:var(--ink-soft);">India's states are diverging in income, in representation, and in demographics. Pick a metric; states are ranked and coloured by region.</p>
                 <div class="flex flex-wrap gap-2 mb-3">
                     <template x-for="m in [{k:'perCapita',l:'Per-capita income'},{k:'perMP',l:'People per MP'},{k:'tfr',l:'Fertility rate'},{k:'seats',l:'Lok Sabha seats'}]" :key="m.k">
                         <button @click="setStatesMetric(m.k)"
@@ -2543,7 +2543,7 @@ reduces overall score</pre>
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Look beyond GDP headlines to employment and inequality data</li>
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Support independent media and fact-checking</li>
                             <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Engage in democratic processes with informed perspectives</li>
-                            <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Share verified information, not forwards</li>
+                            <li><img loading="lazy" src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Check.svg" alt="" aria-hidden="true" class="si-icon inline-block h-[1em] w-[1em] align-[-0.15em] dark:invert opacity-80"> Share verified information and check forwards before passing them on</li>
                         </ul>
                         <a href="downloads/citizen-guide.html" class="block mt-4 text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-violet-600 text-white rounded-xl font-medium hover:from-purple-700 hover:to-violet-700 shadow-sm transition-all">
                             Download Citizen Guide
@@ -2578,12 +2578,12 @@ reduces overall score</pre>
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl border border-gray-100 dark:border-gray-700/50 mt-6">
                     <h3 class="font-bold mb-3 text-center">A Call for Truth and Transparency</h3>
                     <p class="text-sm text-center mb-4">
-                        Democracy thrives on information, debate, and accountability. When data is suppressed, 
-                        institutions captured, and dissent silenced, democracy withers. India's future depends 
-                        on citizens demanding transparency and holding power accountable.
+                        Democracy depends on information, debate, and accountability. When data is suppressed, 
+                        institutions are captured and dissent is silenced, democracy weakens. India's future depends 
+                        on citizens demanding transparency and holding power to account.
                     </p>
                     <div class="text-center">
-                        <p class="font-bold text-lg">Share this research. Ask questions. Demand answers.</p>
+                        <p class="font-bold text-lg">Share this research, ask questions and demand answers.</p>
                         <p class="text-sm mt-2 text-gray-600 dark:text-gray-400">
                             #SomePerspective #DataForDemocracy #IndiaEconomy
                         </p>
@@ -2595,12 +2595,12 @@ reduces overall score</pre>
         <!-- Economic Trajectory Tab (NEW · forecast) -->
         <div x-show="activeTab === 'Economic Trajectory'" x-transition class="space-y-6">
             <div class="card p-5 sm:p-8">
-                <div class="kicker mb-2">Forecast · scenario projections, not predictions</div>
+                <div class="kicker mb-2">Forecast · scenario projections</div>
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-3" style="color:var(--ink);">Where is India's economy heading?</h2>
                 <p class="text-sm sm:text-base leading-relaxed" style="color:var(--ink-soft);">
-                    Not just where the numbers <em>have</em> been, but where they are <em>going</em>. Each indicator below is projected from 2026 to
+                    This tab shows where the numbers have been and where they are heading. Each indicator below is projected from 2026 to
                     <strong>2030</strong> by extending its recent trend, then applying one of three explicit scenarios. The further out the line, the wider the
-                    band — because beyond the near term, the <em>assumption</em>, not the economy, decides the number.
+                    band, because beyond the near term the number depends more on the <em>assumption</em> than on the economy.
                 </p>
             </div>
 
@@ -2663,7 +2663,7 @@ reduces overall score</pre>
                             <h3 class="font-bold text-lg" style="color:var(--ink);">Weight the indicators</h3>
                             <button @click="resetTrajWeights()" x-show="trajWeightsAreCustom" class="text-xs font-semibold px-3 py-1 rounded-lg border no-print" style="border-color:var(--line);color:var(--ink-soft);">Reset</button>
                         </div>
-                        <p class="text-xs mb-3" style="color:var(--muted);">The index is your call. Drag a slider to weight what you think matters — the gauge and verdict update live. A weight of 0 drops an indicator entirely. <span x-show="trajWeightsAreCustom" style="color:var(--accent-2);font-weight:600;">Custom weighting active.</span></p>
+                        <p class="text-xs mb-3" style="color:var(--muted);">The index is your call. Drag a slider to weight what you think matters, and the gauge and verdict update live. A weight of 0 drops an indicator entirely. <span x-show="trajWeightsAreCustom" style="color:var(--accent-2);font-weight:600;">Custom weighting active.</span></p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 min-w-0">
                             <template x-for="ind in forecastSpec.indicators" :key="ind.key">
                                 <label class="flex items-center gap-2 min-w-0">
@@ -2693,11 +2693,11 @@ reduces overall score</pre>
                 <div class="grid sm:grid-cols-2 gap-3 mt-4">
                     <div class="card-inner" style="border-left:3px solid var(--accent-2);">
                         <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent-2);">What drives this</div>
-                        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="trajCurrentSpec.drivers || '—'"></p>
+                        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="trajCurrentSpec.drivers || 'n/a'"></p>
                     </div>
                     <div class="card-inner" style="border-left:3px solid var(--accent);">
                         <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:var(--accent);">What would break the trend</div>
-                        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="trajCurrentSpec.breaks || '—'"></p>
+                        <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="trajCurrentSpec.breaks || 'n/a'"></p>
                     </div>
                 </div>
             </div>
@@ -2725,10 +2725,10 @@ reduces overall score</pre>
                 <h3 class="font-bold text-lg mb-2" style="color:var(--ink);">How to read a forecast (and why we resist calling it a prediction)</h3>
                 <p class="text-sm leading-relaxed" style="color:var(--ink-soft);" x-text="forecastSpec.disclaimer"></p>
                 <ul class="text-sm mt-3 space-y-1.5" style="color:var(--ink-soft);">
-                    <li>• <strong>Trend, not destiny.</strong> Each central path extends the recent OLS trend of an observed series. Trends break.</li>
-                    <li>• <strong>Scenarios are assumptions.</strong> The reform/stress adjustments are deliberate, documented choices — change them in <code class="text-xs">data.json</code> and the future changes with them.</li>
-                    <li>• <strong>The band is the honesty.</strong> It widens with the square root of the horizon: 2030 is far less certain than 2027.</li>
-                    <li>• <strong>The index is a lens, not a verdict.</strong> It averages eight indicators with transparent good/bad anchors; weight them differently and the headline moves.</li>
+                    <li>• <strong>A trend can break.</strong> Each central path extends the recent OLS trend of an observed series. Trends break.</li>
+                    <li>• <strong>Scenarios are assumptions.</strong> The reform/stress adjustments are deliberate, documented choices. Change them in <code class="text-xs">data.json</code> and the future changes with them.</li>
+                    <li>• <strong>The band shows the uncertainty.</strong> It widens with the square root of the horizon: 2030 is far less certain than 2027.</li>
+                    <li>• <strong>The index depends on its weights.</strong> It averages eight indicators with transparent good/bad anchors; weight them differently and the headline moves.</li>
                 </ul>
             </div>
         </div>
@@ -2783,14 +2783,14 @@ reduces overall score</pre>
                 </div>
 
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">What GDP counts — and what it silently ignores</h3>
-                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">GDP is the money value of all final goods and services produced in a year. Three routes to the same room — they should match:</p>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">What GDP counts and what it leaves out</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">GDP is the money value of all final goods and services produced in a year. There are three ways to measure it, and they should match:</p>
                     <div class="grid sm:grid-cols-3 gap-3 mb-4">
                         <div class="card-inner"><div class="font-semibold text-sm" style="color:var(--accent);">Production</div><div class="text-xs mt-1" style="color:var(--muted);">value added at each stage</div></div>
                         <div class="card-inner"><div class="font-semibold text-sm" style="color:var(--accent);">Income</div><div class="text-xs mt-1" style="color:var(--muted);">wages + profits + rents + taxes</div></div>
                         <div class="card-inner"><div class="font-semibold text-sm" style="color:var(--accent);">Expenditure</div><div class="text-xs mt-1" style="color:var(--muted);">C + I + G + (X − M)</div></div>
                     </div>
-                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">GDP counts a hospital treating a pollution victim, not the clean river that would have prevented the illness. It counts a soldier&rsquo;s salary, not the unpaid care work of 200 million women &mdash; <a href="care/" style="color:var(--accent);" class="underline font-semibold">which India measures and then declines to value</a>. <strong>Nominal</strong> GDP uses today's prices; <strong>real</strong> GDP strips out inflation — and the difference is who gets to claim the growth.</p>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">GDP counts a hospital treating a pollution victim and leaves out the clean river that would have prevented the illness. It counts a soldier&rsquo;s salary and leaves out the unpaid care work of 200 million women, <a href="care/" style="color:var(--accent);" class="underline font-semibold">which India measures and then declines to value</a>. <strong>Nominal</strong> GDP uses today's prices; <strong>real</strong> GDP strips out inflation, and the gap between the two decides who can claim the growth.</p>
                 </div>
 
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
@@ -2823,13 +2823,13 @@ reduces overall score</pre>
                             </div>
                         </template>
                     </div>
-                    <p class="text-sm mt-4 italic" style="color:var(--ink-soft);">A big economy and a poor country at the same time. Most arguments about India start by stressing one and forgetting the other.</p>
+                    <p class="text-sm mt-4 italic" style="color:var(--ink-soft);">India is a big economy and a poor country at the same time. Most arguments about India start by stressing one and forgetting the other.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Same start in 1991. Very different destinations.</h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">India and China started at the same income in 1991 and have diverged since</h3>
                     <div class="card-inner"><div id="primerChinaChart" class="chart-container"></div></div>
                     <p class="text-xs mt-2" style="color:var(--muted);" x-text="primer.chinaDivergence.note"></p>
-                    <p class="text-sm mt-2 italic" style="color:var(--ink-soft);">China ran labour-intensive manufacturing and built a consuming middle class. India ran services — which export dollars but don't employ at scale.</p>
+                    <p class="text-sm mt-2 italic" style="color:var(--ink-soft);">China ran labour-intensive manufacturing and built a consuming middle class. India ran services, which export dollars but do not employ people at scale.</p>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Jobless growth: GDP grows, formal jobs per rupee collapse</h3>
@@ -2839,7 +2839,7 @@ reduces overall score</pre>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.jobsLesson.govJobsGivenLakh"></span> lakh</div><div class="text-xs mt-1" style="color:var(--muted);">jobs actually given</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);" x-text="primer.jobsLesson.govJobSuccessRate"></div><div class="text-xs mt-1" style="color:var(--muted);">success rate</div></div>
                     </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);">A massive young population and a tiny formal job market. The two eras compared: UPA averaged ~7.1% growth, NDA ~6.1% — see <a @click.prevent="activeTab='Era Comparison'" href="#" style="color:var(--accent);" class="underline font-semibold">Era Comparison</a>.</p>
+                    <p class="text-xs mt-3" style="color:var(--muted);">A massive young population and a tiny formal job market. The two eras compared: UPA averaged ~7.1% growth and NDA ~6.1% (see <a @click.prevent="activeTab='Era Comparison'" href="#" style="color:var(--accent);" class="underline font-semibold">Era Comparison</a>).</p>
                 </div>
             </div>
 
@@ -2847,12 +2847,12 @@ reduces overall score</pre>
             <div x-show="primerSection==='C'" x-transition class="space-y-6">
                 <div class="card p-5 sm:p-6">
                     <div class="kicker mb-1">Section C</div>
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Output here, jobs there</h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Share of output and share of jobs, by sector</h3>
                     <div class="card-inner"><div id="primerStructureChart" class="chart-container"></div></div>
                     <p class="text-xs mt-2" style="color:var(--muted);" x-text="primer.structure.note"></p>
                 </div>
                 <div class="card p-5 sm:p-6">
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Same investment. Vastly different jobs.</h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The same investment creates very different numbers of jobs</h3>
                     <div class="grid sm:grid-cols-2 gap-3">
                         <div class="card-inner">
                             <div class="font-semibold text-sm mb-1" style="color:var(--ink);">₹1.5 lakh cr into electronics PLI</div>
@@ -2865,7 +2865,7 @@ reduces overall score</pre>
                             <div class="text-xs mt-1" style="color:var(--muted);">~<span x-text="primer.jobsLesson.garmentsWomenSharePct"></span>% would be women</div>
                         </div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Choosing electronics over garments favours output-per-worker over employment scale. The statistics look better; the person who needed the job loses.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Choosing electronics over garments favours output-per-worker over employment scale. The statistics look better, and the person who needed the job does not get one.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">GDP climbs. Most wages stand still.</h3>
@@ -2880,7 +2880,7 @@ reduces overall score</pre>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">&gt;10%</div><div class="text-xs mt-1" style="color:var(--muted);">young urban</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">90%</div><div class="text-xs mt-1" style="color:var(--muted);">workers with no written contract</div></div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Female labour-force participation has risen on paper — but much of it is distress work; the salaried urban number has barely moved and is among Asia's lowest.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Female labour-force participation has risen on paper, but much of it is distress work; the salaried urban number has barely moved and is among Asia's lowest.</p>
                 </div>
             </div>
 
@@ -2901,7 +2901,7 @@ reduces overall score</pre>
                             </div>
                         </template>
                     </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);">The "300–400 million middle class" of market research includes everyone above subsistence. By any serious income threshold, the consuming, salaried, tax-paying middle is 80–120 million — about one-seventh of what gets quoted.</p>
+                    <p class="text-xs mt-3" style="color:var(--muted);">The "300–400 million middle class" of market research includes everyone above subsistence. By any serious income threshold, the consuming, salaried, tax-paying middle is 80–120 million, about one-seventh of the figure usually quoted.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">What the bottom half actually earns</h3>
@@ -2910,11 +2910,11 @@ reduces overall score</pre>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.distribution.ruralMPCE.toLocaleString('en-IN')"></span></div><div class="text-xs mt-1" style="color:var(--muted);">rural spend/person/month</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.distribution.urbanMPCE.toLocaleString('en-IN')"></span></div><div class="text-xs mt-1" style="color:var(--muted);">urban spend/person/month</div></div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">A rural family of four spends ~₹15,000 a month on everything. That is the median Indian's world — not the newspaper lifestyle section.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">A rural family of four spends ~₹15,000 a month on everything. That is the median Indian household's world, and it is far from the one in the newspaper lifestyle section.</p>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The long view: India was most equal in 1981</h3>
-                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">Banerjee &amp; Piketty: the top 1% income share fell from 12% (1951) to a historic low of <strong>4.4% in 1981</strong> — driven down by high marginal taxes and nationalisation. The 1981 IMF loan came with conditions; Indira Gandhi began the pro-business reversal. Inequality has risen in every decade since. Today the top 1% takes ~23%; the bottom 50% takes ~13%.</p>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">Banerjee &amp; Piketty: the top 1% income share fell from 12% (1951) to a historic low of <strong>4.4% in 1981</strong>, driven down by high marginal taxes and nationalisation. The 1981 IMF loan came with conditions; Indira Gandhi began the pro-business reversal. Inequality has risen in every decade since. Today the top 1% takes ~23%; the bottom 50% takes ~13%.</p>
                 </div>
             </div>
 
@@ -2923,13 +2923,13 @@ reduces overall score</pre>
                 <div class="card p-5 sm:p-6">
                     <div class="kicker mb-1">Section E</div>
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">How the inflation number is built</h3>
-                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">The government prices <strong x-text="primer.cpiBasket.itemsWeighted"></strong> weighted items every month from <strong x-text="primer.cpiBasket.urbanMarkets.toLocaleString('en-IN')"></strong> urban markets across <strong x-text="primer.cpiBasket.urbanTowns"></strong> towns and <strong x-text="primer.cpiBasket.villages.toLocaleString('en-IN')"></strong> rural markets, against a <strong x-text="primer.cpiBasket.baseYear"></strong> base. Food is the largest single block at <span x-text="primer.cpiBasket.foodSharePct"></span>% — but note that it was <span x-text="primer.cpiBasket.foodSharePctPrev"></span>% under the old 2012 base, so the same monsoon shock now moves headline CPI by noticeably less than it used to. Housing is <span x-text="primer.cpiBasket.housingSharePct"></span>%, transport <span x-text="primer.cpiBasket.transportSharePct"></span>%. The RBI targets CPI at <span x-text="primer.cpiBasket.rbiTarget"></span>%.</p>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">The government prices <strong x-text="primer.cpiBasket.itemsWeighted"></strong> weighted items every month from <strong x-text="primer.cpiBasket.urbanMarkets.toLocaleString('en-IN')"></strong> urban markets across <strong x-text="primer.cpiBasket.urbanTowns"></strong> towns and <strong x-text="primer.cpiBasket.villages.toLocaleString('en-IN')"></strong> rural markets, against a <strong x-text="primer.cpiBasket.baseYear"></strong> base. Food is the largest single block at <span x-text="primer.cpiBasket.foodSharePct"></span>%, down from <span x-text="primer.cpiBasket.foodSharePctPrev"></span>% under the old 2012 base, so the same monsoon shock now moves headline CPI by noticeably less than it used to. Housing is <span x-text="primer.cpiBasket.housingSharePct"></span>%, transport <span x-text="primer.cpiBasket.transportSharePct"></span>%. The RBI targets CPI at <span x-text="primer.cpiBasket.rbiTarget"></span>%.</p>
                     <div class="card-inner"><div id="primerInflationChart" class="chart-container"></div></div>
-                    <p class="text-xs mt-2" style="color:var(--muted);">Inflation fell and mostly stayed inside the RBI band under NDA — partly because farm-gate food prices fell. Relief for the consumer; distress for the farmer.</p>
+                    <p class="text-xs mt-2" style="color:var(--muted);">Inflation fell and mostly stayed inside the RBI band under NDA, partly because farm-gate food prices fell. That was relief for the consumer and distress for the farmer.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
                     <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Your real inflation index</h3>
-                    <p class="text-xs mb-3" style="color:var(--muted);">The headline says <span class="font-semibold" x-text="primer.realInflation.headlineCPI + '%'"></span>. The thali disagrees.</p>
+                    <p class="text-xs mb-3" style="color:var(--muted);">The headline says <span class="font-semibold" x-text="primer.realInflation.headlineCPI + '%'"></span>, and the cost of a thali has risen faster.</p>
                     <div class="space-y-3">
                         <template x-for="it in primer.realInflation.items" :key="it.item">
                             <div class="flex items-center justify-between gap-3">
@@ -2954,7 +2954,7 @@ reduces overall score</pre>
                             </div>
                         </template>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Climate change is making the monsoon more erratic. The economic vulnerability is rising, not falling.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Climate change is making the monsoon more erratic. The economic vulnerability is rising.</p>
                 </div>
             </div>
 
@@ -2988,12 +2988,12 @@ reduces overall score</pre>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.taxReversal.taxToGDP"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">India tax-to-GDP</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.taxReversal.oecdAvg"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">OECD average</div></div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">The shortfall was covered by GST, fuel excise, and new cesses — paid by ordinary people. The individual now contributes more direct tax than the corporation.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">The shortfall was covered by GST, fuel excise, and new cesses, which ordinary people pay. The individual now contributes more direct tax than the corporation.</p>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The tax we abolished, and how GST works</h3>
-                    <p class="text-sm leading-relaxed mb-3" style="color:var(--ink-soft);">India abolished its <strong>wealth tax in <span x-text="primer.taxReversal.wealthTaxAbolished"></span></strong> (it raised only ~₹<span x-text="primer.taxReversal.wealthTaxRevenueCr"></span> cr — poorly designed). Piketty's proposal: a <span x-text="primer.taxReversal.pikettyRate"></span>% annual tax on net wealth above ₹<span x-text="primer.taxReversal.pikettyThresholdCr"></span> crore (~150,000 people) could raise 0.5–1% of GDP without touching ordinary savings.</p>
-                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">GST (2017) merged central and state taxes into one. <strong>41%</strong> of the divisible pool is devolved to states by formula — but <strong>cesses and surcharges sit outside the pool</strong> and have grown sharply, so states get nothing from them. Petrol, diesel and alcohol stay outside GST: a political choice, not a technical one.</p>
+                    <p class="text-sm leading-relaxed mb-3" style="color:var(--ink-soft);">India abolished its <strong>wealth tax in <span x-text="primer.taxReversal.wealthTaxAbolished"></span></strong> (it raised only ~₹<span x-text="primer.taxReversal.wealthTaxRevenueCr"></span> cr, because it was poorly designed). Piketty's proposal: a <span x-text="primer.taxReversal.pikettyRate"></span>% annual tax on net wealth above ₹<span x-text="primer.taxReversal.pikettyThresholdCr"></span> crore (~150,000 people) could raise 0.5–1% of GDP without touching ordinary savings.</p>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">GST (2017) merged central and state taxes into one. <strong>41%</strong> of the divisible pool is devolved to states by formula, but <strong>cesses and surcharges sit outside the pool</strong> and have grown sharply, so states get nothing from them. Petrol, diesel and alcohol stay outside GST by political choice. No technical reason requires it.</p>
                 </div>
             </div>
 
@@ -3017,7 +3017,7 @@ reduces overall score</pre>
                             </div>
                         </template>
                     </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);">Interest + states' share take 42 paise before a single scheme is funded. More goes to buildings (₹22) than to people (₹11).</p>
+                    <p class="text-xs mt-3" style="color:var(--muted);">Interest + states' share take 42 paise before a single scheme is funded. More goes to capital expenditure (₹22) than to welfare (₹11).</p>
                 </div>
                 <div class="card p-5 sm:p-6">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">BE, RE, and why the welfare budget shrinks twice</h3>
@@ -3028,13 +3028,13 @@ reduces overall score</pre>
                         <span style="color:var(--accent);">→</span>
                         <span class="px-3 py-1.5 rounded-lg text-xs font-medium" style="background:var(--surface-2);color:var(--ink);">Actuals (next year)</span>
                     </div>
-                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">Social-sector spending is routinely cut at the RE stage because capex and interest are stickier. ₹<span x-text="primer.budgetArithmetic.mgnregaBE"></span> announced for MGNREGA at BE often reaches only ₹<span x-text="primer.budgetArithmetic.mgnregaActualsLo"></span>–<span x-text="primer.budgetArithmetic.mgnregaActualsHi"></span> by actuals. The family that needed the work was not consulted on the revision.</p>
+                    <p class="text-sm leading-relaxed" style="color:var(--ink-soft);">Social-sector spending is routinely cut at the RE stage because capex and interest are stickier. ₹<span x-text="primer.budgetArithmetic.mgnregaBE"></span> announced for MGNREGA at BE often reaches only ₹<span x-text="primer.budgetArithmetic.mgnregaActualsLo"></span>–<span x-text="primer.budgetArithmetic.mgnregaActualsHi"></span> by actuals. Households that depend on the work have no say in the revision.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Below our own targets, for decades</h3>
                     <div class="grid grid-cols-2 gap-3">
-                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.budgetArithmetic.healthTarget"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">health spending target (NHP 2017) — never met</div></div>
-                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.budgetArithmetic.educationTarget"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">education target (since Kothari, 1968) — never met</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.budgetArithmetic.healthTarget"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">health spending target (NHP 2017), never met</div></div>
+                        <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.budgetArithmetic.educationTarget"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">education target (since Kothari, 1968), never met</div></div>
                     </div>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
@@ -3044,7 +3044,7 @@ reduces overall score</pre>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.kmut.womenCoveredCrore"></span> cr</div><div class="text-xs mt-1" style="color:var(--muted);">women covered</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.kmut.annualOutlayCr.toLocaleString('en-IN')"></span> cr</div><div class="text-xs mt-1" style="color:var(--muted);">annual outlay</div></div>
                     </div>
-                    <p class="text-xs italic" style="color:var(--muted);">The case: recognises unpaid labour, boosts bottom-end consumption (largest multipliers), no significant inflation spike post-launch. The concern: fiscal space — if all states match, national arithmetic breaks; cash is supply-neutral.</p>
+                    <p class="text-xs italic" style="color:var(--muted);">The case: recognises unpaid labour, boosts bottom-end consumption (largest multipliers), no significant inflation spike post-launch. The concern is fiscal space. If all states match, national arithmetic breaks; cash is supply-neutral.</p>
                 </div>
             </div>
 
@@ -3052,14 +3052,14 @@ reduces overall score</pre>
             <div x-show="primerSection==='H'" x-transition class="space-y-6">
                 <div class="card p-5 sm:p-6">
                     <div class="kicker mb-1">Section H</div>
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The deficit fell — with borrowed help</h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The deficit fell, with help from borrowing</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);"><span x-text="primer.deficitFinancing.deficitPctGDP"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">fiscal deficit (FY27 BE), down from 9.2%</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.deficitFinancing.marketBorrowingLakhCr"></span>L cr</div><div class="text-xs mt-1" style="color:var(--muted);">gross market borrowing</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">₹<span x-text="primer.deficitFinancing.rbiDividendLakhCr"></span>L cr</div><div class="text-xs mt-1" style="color:var(--muted);">record RBI dividend</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">₹<span x-text="primer.deficitFinancing.interestPer100"></span></div><div class="text-xs mt-1" style="color:var(--muted);">of every ₹100 spent goes to interest</div></div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">The direction is right — but a record RBI dividend and off-budget borrowing (FCI, NHAI) prop up the arithmetic. Add those in and the true deficit is higher.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">The direction is right, but a record RBI dividend and off-budget borrowing (FCI, NHAI) prop up the arithmetic. Add those in and the true deficit is higher.</p>
                 </div>
                 <div class="card p-5 sm:p-6">
                     <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Rich states finance poor states</h3>
@@ -3076,7 +3076,7 @@ reduces overall score</pre>
                             </div>
                         </template>
                     </div>
-                    <p class="text-xs mt-3" style="color:var(--muted);">Return per ₹100 paid to the Union. Redistribution is the design — but it creates a tension: the states that run services well and grew slowly get less back.</p>
+                    <p class="text-xs mt-3" style="color:var(--muted);">Return per ₹100 paid to the Union. Redistribution is the design, and it creates a tension: the states that run services well and grew slowly get less back.</p>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The double punishment: delimitation</h3>
@@ -3089,7 +3089,7 @@ reduces overall score</pre>
                             </div>
                         </template>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Less money back from the Centre AND fewer MPs to fight for more. Each MP already represents ~<span x-text="primer.delimitation.perMPNowMillions"></span> million people, up from <span x-text="primer.delimitation.perMP1951Millions"></span> million in 1951.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Southern states get less money back from the Centre and would have fewer MPs to argue for more. Each MP already represents ~<span x-text="primer.delimitation.perMPNowMillions"></span> million people, up from <span x-text="primer.delimitation.perMP1951Millions"></span> million in 1951.</p>
                 </div>
             </div>
 
@@ -3097,7 +3097,7 @@ reduces overall score</pre>
             <div x-show="primerSection==='I'" x-transition class="space-y-6">
                 <div class="card p-5 sm:p-6">
                     <div class="kicker mb-1">Section I</div>
-                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Goods in deficit, services to the rescue</h3>
+                    <h3 class="font-bold text-xl mb-1" style="color:var(--ink);">Goods trade is in deficit, and services offset much of it</h3>
                     <p class="text-xs mb-4" style="color:var(--muted);" x-text="primer.external.note"></p>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">−$<span x-text="Math.abs(primer.external.goodsDeficitBn)"></span>bn</div><div class="text-xs mt-1" style="color:var(--muted);">Goods trade deficit (FY26)</div></div>
@@ -3121,10 +3121,10 @@ reduces overall score</pre>
                             <div class="text-xs flex justify-between" style="color:var(--muted);"><span x-text="pt.label"></span><span class="tabular-nums">₹<span x-text="pt.value"></span></span></div>
                         </template>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">More than a third of the ₹<span x-text="primer.pumpPrice.total"></span> pump price is tax — excise + VAT (<span style="color:var(--accent);">■</span>). Most tax is fixed per litre, so the pump price doesn't fall one-for-one when global crude falls. India imports <span x-text="primer.pumpPrice.crudeImportDependence"></span>% of its crude.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">More than a third of the ₹<span x-text="primer.pumpPrice.total"></span> pump price is tax, excise plus VAT (<span style="color:var(--accent);">■</span>). Most tax is fixed per litre, so the pump price doesn't fall one-for-one when global crude falls. India imports <span x-text="primer.pumpPrice.crudeImportDependence"></span>% of its crude.</p>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">When a PM asks citizens not to buy gold, the balance of payments is speaking</h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">A prime minister asking citizens not to buy gold signals pressure on the balance of payments</h3>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <div>
                             <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:var(--muted);">The seven asks (12 May 2026)</div>
@@ -3141,7 +3141,7 @@ reduces overall score</pre>
                             </template>
                         </div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Indians hold 25,000+ tonnes of gold (~$<span x-text="primer.gold.stockValueTn"></span> tn — larger than GDP). They buy it because the formal system left them no better option: ~<span x-text="primer.gold.excludedAdultsMn"></span> mn adults excluded from banking, insurance penetration just <span x-text="primer.gold.insurancePenetration"></span>% vs <span x-text="primer.gold.insuranceGlobal"></span>% globally.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">Indians hold 25,000+ tonnes of gold (~$<span x-text="primer.gold.stockValueTn"></span> tn, larger than GDP). They buy it because the formal system left them no better option: ~<span x-text="primer.gold.excludedAdultsMn"></span> mn adults excluded from banking, insurance penetration just <span x-text="primer.gold.insurancePenetration"></span>% vs <span x-text="primer.gold.insuranceGlobal"></span>% globally.</p>
                 </div>
             </div>
 
@@ -3174,13 +3174,13 @@ reduces overall score</pre>
                     <p class="text-xs mt-3 italic" style="color:var(--muted);">More unequal than Brazil on income; among the most concentrated on wealth of any comparable economy.</p>
                 </div>
                 <div class="card p-5 sm:p-6" style="border-left:4px solid var(--accent);">
-                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The economy shows up in bodies and classrooms</h3>
+                    <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">The economy's effects on health and education</h3>
                     <div class="grid grid-cols-3 gap-3">
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--accent);">~<span x-text="primer.bodies.stuntedPct"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">children stunted (NFHS-5)</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);">~<span x-text="primer.bodies.outOfPocketPct"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">health bills paid out of pocket</div></div>
                         <div class="card-inner text-center"><div class="text-2xl font-bold font-display" style="color:var(--ink);"><span x-text="primer.bodies.publicHealthPctGDP"></span>%</div><div class="text-xs mt-1" style="color:var(--muted);">public health spending / GDP</div></div>
                     </div>
-                    <p class="text-xs mt-3 italic" style="color:var(--muted);">A single hospitalisation can push a household below the poverty line — the medical poverty trap, not measured in GDP.</p>
+                    <p class="text-xs mt-3 italic" style="color:var(--muted);">A single hospitalisation can push a household below the poverty line. This medical poverty trap does not show up in GDP.</p>
                 </div>
             </div>
 
@@ -3189,7 +3189,7 @@ reduces overall score</pre>
                 <div class="card p-5 sm:p-6">
                     <div class="kicker mb-1">Section K</div>
                     <h3 class="font-bold text-xl mb-2" style="color:var(--ink);">Every number rests on a choice</h3>
-                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">Which base year, which basket, which survey methodology, which poverty line, when to hold the census. Those decisions are technical — and political, because each has winners and losers. Five places where the choice, not the economy, moved the number:</p>
+                    <p class="text-sm leading-relaxed mb-4" style="color:var(--ink-soft);">Which base year, which basket, which survey methodology, which poverty line, when to hold the census. Those decisions are technical and political, because each has winners and losers. Five places where a choice of method moved the number more than the economy did:</p>
                     <div class="grid sm:grid-cols-2 gap-3">
                         <template x-for="m in primer.measurement.items" :key="m.title">
                             <div class="card-inner">
@@ -3224,7 +3224,7 @@ reduces overall score</pre>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-8 pb-8 border-b border-slate-800">
                 <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:#fb923c;">The thesis</div>
-                <p class="text-sm leading-relaxed text-gray-300">High headline growth has masked a measurable decline in the <strong class="text-white">institutions of accountability</strong> and the <strong class="text-white">income share of ordinary Indians</strong>. On <strong class="text-white" x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14); the one honest exception is inflation &mdash; <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>.</p>
+                <p class="text-sm leading-relaxed text-gray-300">High headline growth has masked a measurable decline in the <strong class="text-white">institutions of accountability</strong> and the <strong class="text-white">income share of ordinary Indians</strong>. On <strong class="text-white" x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14). The one exception is inflation, <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>.</p>
             </div>
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
@@ -3273,7 +3273,7 @@ reduces overall score</pre>
                 <div>
                     <h3 class="font-bold text-white mb-3 text-sm uppercase tracking-wider">Disclaimer</h3>
                     <p class="text-xs sm:text-sm leading-relaxed text-gray-400">
-                        Analysis based on publicly available data through August 2026.
+                        Analysis based on publicly available data as of October 2026.
                         Views are personal. Errors are mine alone.
                         Users should verify all data independently.
                     </p>
@@ -3295,7 +3295,7 @@ reduces overall score</pre>
                 <!-- End year is written by Alpine so it cannot go stale on 1 January;
                      the static 2026 is the fallback if Alpine never initialises. -->
                 <p class="text-gray-400">&copy; 2025&ndash;<span x-text="new Date().getFullYear()">2026</span>
-                    Some Perspective | Dr. Varna Sri Raman | Data through <span x-text="dataUpdatedLong">August 2026</span></p>
+                    Some Perspective | Dr. Varna Sri Raman | Data through <span x-text="dataUpdatedLong">October 2026</span></p>
                 <p class="mt-1.5 text-gray-400">Self-funded research for democratic accountability. Interests declared. All data openly available for verification and reuse.</p>
             </div>
         </div>
@@ -3311,8 +3311,8 @@ reduces overall score</pre>
         economic: {
             years:               [2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],
             yearLabels:          ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
-            gdpGrowth:           [7.4,8.0,8.2,7.2,6.1,4.2,-7.3,8.7,7.2,7.6,7.8,6.5,7.4],
-            unemployment:        [4.9,5.0,5.0,6.0,6.1,5.8,7.1,4.2,4.1,3.2,3.2,3.1,5.5],
+            gdpGrowth:           [7.4,8.0,8.2,7.2,6.1,4.2,-7.3,8.7,7.2,7.6,7.8,6.5,7.8],
+            unemployment:        [4.9,5.0,5.0,6.0,5.8,4.8,4.2,4.1,3.2,3.2,3.2,3.1,5.2],
             youthUnemployment:   [13.5,13.8,14.2,15.6,16.1,14.8,17.8,13.2,12.9,12.9,12.8,12.5,12.3],
             graduateUnemployment:[18.5,19.2,21.0,23.5,25.0,23.0,31.0,25.0,22.0,29.1,28.5,27.0,26.5],
             top1Share:           [21.3,21.7,21.5,21.5,21.7,22.1,22.3,22.5,22.6,22.6,22.6,22.8,23.0],
@@ -3321,7 +3321,7 @@ reduces overall score</pre>
             informalEmployment:  [87.0,87.2,87.5,87.8,88.1,88.4,88.6,88.5,88.7,88.8,88.8,89.0,89.1],
             pressFreedom:        [140,136,133,136,138,140,142,142,150,161,159,151,157],
             fiscalDeficit:       [4.1,3.9,3.5,3.5,3.4,4.6,9.2,6.7,6.4,5.6,4.8,4.4,4.4],
-            cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,4.45],
+            cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,3.8],
             rupeeUSD:            [61,64,67,65,68,70,74,74,79,82,84,87,95],
             ssi:                 [0.0,1.05,1.05,2.05,4.0,4.8,7.0,9.0,9.0,8.2,7.05,6.55,6.4],
             fci:                 [0.19,0.21,0.25,0.41,0.53,0.65,0.92,0.82,0.7,0.68,0.68,0.68,0.68],
@@ -3343,7 +3343,7 @@ reduces overall score</pre>
     const FORECAST_FALLBACK = {
         horizonYear: 2030,
         baseYear: 2026,
-        disclaimer: "These are scenario projections, not predictions. Each path extends the recent trend of an observed series, then applies an explicit annual adjustment for one of three scenarios. Bands widen with the horizon because the further out you look, the more the assumption — not the economy — decides the number.",
+        disclaimer: "These are scenario projections, and none of them is a prediction. Each path extends the recent trend of an observed series and then applies an explicit annual adjustment for one of three scenarios. Uncertainty bands widen with the horizon because the further out you look, the more the number depends on the assumption and the less it depends on the economy. Read every projection by asking whose assumption it is and what would break it.",
         scenarios: {
             reform:   { label: 'Reform push',          desc: 'Statistical independence restored, labour-intensive manufacturing prioritised, fiscal federalism rebalanced, formalisation incentives.' },
             baseline: { label: 'Current trajectory',   desc: 'Recent-trend continuation: the policy mix and institutional direction of 2019–2026 persist.' },
@@ -3351,13 +3351,13 @@ reduces overall score</pre>
         },
         indicators: [
             { key:'gdpGrowth',        label:'GDP growth',              unit:'%',     goodHigh:true,  trendYears:5, reform:0.55, stress:-1.6,  uncertainty:1.1,  min:-10, max:12,  decimals:1, drivers:'Post-COVID base-effect rebounds are fading; the level itself is contested after the 2015 MCA21 revision.', breaks:'An external oil/rupee shock, a weak monsoon, or investment that keeps growing output without jobs or consumption.' },
-            { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1, drivers:'Twelve straight years of informalisation; capital-intensive PLI adds output, not payroll.', breaks:'A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it.' },
-            { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1, drivers:'The headline is held low by self-employment and discouraged workers; graduate joblessness runs ~26%.', breaks:'A genuine youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up.' },
+            { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1, drivers:'Twelve straight years of informalisation; capital-intensive PLI adds output without adding much payroll.', breaks:'A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it.' },
+            { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1, drivers:'The headline is held low by self-employment and discouraged workers; graduate joblessness runs ~26%.', breaks:'A serious youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up.' },
             { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1, drivers:'Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.', breaks:'A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing.' },
             { key:'cpiInflation',     label:'CPI inflation',           unit:'%',     goodHigh:false, trendYears:5, reform:-0.3, stress:2.2,   uncertainty:1.0,  min:0,   max:14,  decimals:1, drivers:'Food is ~half the CPI basket and ~50% of farmland is rainfed, so inflation tracks the monsoon.', breaks:'A deficient monsoon or an oil spike pushes CPI above the RBI\'s 6% ceiling.' },
             { key:'fiscalDeficit',    label:'Fiscal deficit',          unit:'% GDP', goodHigh:false, trendYears:5, reform:-0.3, stress:1.3,   uncertainty:0.7,  min:0,   max:12,  decimals:1, drivers:'Consolidation leans on a record RBI dividend and off-budget borrowing.', breaks:'A growth slowdown, a smaller RBI surplus, or new cash-transfer commitments widen it.' },
             { key:'rupeeUSD',         label:'Rupee (INR per USD)',     unit:'₹/$',   goodHigh:false, trendYears:6, reform:-2,   stress:9,     uncertainty:4.5,  min:50,  max:130, decimals:0, drivers:'A $333bn goods deficit is offset by services; FPI outflows and a $123bn oil bill pressure the rupee.', breaks:'An oil shock or sustained FPI exit accelerates depreciation; reserves can only slow it.' },
-            { key:'dqi',              label:'Democratic Quality Index',unit:'',      goodHigh:true,  trendYears:6, reform:0.04, stress:-0.03, uncertainty:0.04, min:0,   max:1,   decimals:2, drivers:'Geometric mean of V-Dem, Freedom House and RSF — all trending down since 2014.', breaks:'Restored statistical and press independence would lift it; continued pressure pushes it lower.' }
+            { key:'dqi',              label:'Democratic Quality Index',unit:'',      goodHigh:true,  trendYears:6, reform:0.04, stress:-0.03, uncertainty:0.04, min:0,   max:1,   decimals:2, drivers:'Geometric mean of V-Dem, Freedom House and RSF, all three of which have trended down since 2014.', breaks:'Restored statistical and press independence would lift it; continued pressure pushes it lower.' }
         ]
     };
 
@@ -3367,12 +3367,12 @@ reduces overall score</pre>
             { value:'~$4.0 tn', label:'Size of economy', sub:'4th largest nominal GDP' },
             { value:'~$2,900',  label:'Per person',      sub:'~109th in the world' },
             { value:'1.46 bn',  label:'People',          sub:'most populous nation' },
-            { value:'7.4%',     label:'Real growth FY26',sub:'Economic Survey estimate' },
+            { value:'7.4%',     label:'Real growth FY26',sub:'Economic Survey, old 2011-12 base' },
             { value:'11.2%',    label:'Tax-to-GDP',      sub:'OECD average ~34%' }
         ]},
         chinaDivergence: { note:'Nominal USD per capita. Both near $330 in 1991. Approximate.', years:[1991,2000,2010,2020,2026], india:[330,460,1350,1910,2900], china:[330,960,4550,10500,13000] },
         // External corroboration: Grier & Grier (2026) synthetic-control study.
-        // Minimal fallback — the full block (donor pools, convergence table) lives in data.json.
+        // Minimal fallback, the full block (donor pools, convergence table) lives in data.json.
         syntheticControl: { note:'Grier & Grier (2026), "Promises, Promises". Gaps vs a synthetic counterfactual fitted to India 1984-2013.',
             study:{ title:'Promises, Promises: Modi’s India in Comparative Perspective', authors:'Kevin Grier & Robin Grier', affiliation:'Texas Tech University', year:2026, method:'Synthetic control with randomization inference', site:'https://rgrier88.github.io/modi-promises/', paper:'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7248338', replication:'https://github.com/rgrier88/modi-promises-replication', governanceSource:'Varieties of Democracy (V-Dem)', incomeSource:'Penn World Table 11.0' },
             window:{ preStart:1984, preEnd:2013, postStart:2014, postEnd:2024 },
@@ -3397,10 +3397,10 @@ reduces overall score</pre>
                 { measure:'Press & expression', grier:'Freedom of expression -56.2%', sp:'RSF rank 140 (2014) → 157 (2026)' },
                 { measure:'Corruption', grier:'Political corruption +46.8% (worse)', sp:'Not separately indexed; SSI covers statistical opacity' }
             ],
-            divergence:'The two projects disagree on scope, not direction. Grier & Grier make an absolute income claim this project does not test; their income donor pool is also heavily weighted to Ethiopia and Bangladesh. Treat governance as strongly corroborated and income as a separate, contestable claim.'
+            divergence:'The two projects agree on direction and differ on scope. Grier & Grier make an absolute income claim this project does not test; their income donor pool is also heavily weighted to Ethiopia and Bangladesh. Treat governance as strongly corroborated and income as a separate, contestable claim.'
         },
         taxTake: { note:'For every ₹100 the Union collects (Union Budget 2026-27).', items:[
-            { label:'Borrowings', value:24, sub:'not earned — borrowed', shared:false },
+            { label:'Borrowings', value:24, sub:'debt the government must repay', shared:false },
             { label:'Individual income tax', value:19, sub:'salaried & professional', shared:true },
             { label:'GST (indirect)', value:18, sub:'falls on everyone equally', shared:true },
             { label:'Corporation tax', value:17, sub:'cut 30%→22% in 2019', shared:true },
@@ -3416,7 +3416,7 @@ reduces overall score</pre>
             { label:'Welfare', value:11, sub:'MGNREGA, PDS, schemes' },
             { label:'Defence', value:11, sub:'armed forces' }
         ]},
-        stateReturns: { note:'Approximate return per ₹100 paid to the Union, by state (AIPC; Finance Commission). Direction is the point.', items:[
+        stateReturns: { note:'Approximate return per ₹100 paid to the Union, by state (AIPC; Finance Commission). The direction is what matters.', items:[
             { state:'Maharashtra', ret:30 }, { state:'Gujarat', ret:50 }, { state:'Karnataka', ret:60 },
             { state:'Tamil Nadu', ret:60 }, { state:'West Bengal', ret:120 }, { state:'Uttar Pradesh', ret:200 },
             { state:'Madhya Pradesh', ret:244 }, { state:'Bihar', ret:510 }
@@ -3435,34 +3435,34 @@ reduces overall score</pre>
             { income:50000, label:'Top 3-5%', sub:'aspirational middle class' },
             { income:100000, label:'Top 1-2%', sub:"what politics calls 'affluent'" }
         ], bottom50AvgAnnual:71000, ruralMPCE:3773, urbanMPCE:6459, top10IncomeShare:58, top1WealthShare:40, bottom50WealthShare:4 },
-        structure: { note:'Output here, jobs there (MoSPI/NSO GVA FY25; PLFS).', sectors:[
+        structure: { note:'Output and jobs sit in different sectors (MoSPI/NSO GVA FY25; PLFS).', sectors:[
             { sector:'Agriculture', gva:18, emp:42 }, { sector:'Manufacturing', gva:17, emp:11 },
             { sector:'Services', gva:53, emp:33 }, { sector:'Other', gva:12, emp:14 }
         ]},
-        jobsLesson: { note:'Same investment, different jobs (AIPC; Planning Commission).', electronicsCrPerJob:1.5, electronicsJobsLakh:1, garmentsJobsCrore:3, garmentsWomenSharePct:70, govJobApplicationsCrore:22, govJobsGivenLakh:7.22, govJobSuccessRate:'1 in 305' },
+        jobsLesson: { note:'The same investment creates very different numbers of jobs in different sectors (AIPC; Planning Commission).', electronicsCrPerJob:1.5, electronicsJobsLakh:1, garmentsJobsCrore:3, garmentsWomenSharePct:70, govJobApplicationsCrore:22, govJobsGivenLakh:7.22, govJobSuccessRate:'1 in 305' },
         indexExample: { note:'A worked example (MoSPI methodology).', items:[{item:'Onions',weight:15,then:30,now:50},{item:'Petrol',weight:12,then:90,now:94},{item:'School fees',weight:8,then:800,now:1200}] },
-        gdpRevision: { note:'The 2015 GDP revision (Subramanian, Harvard CID 2019; EAC-PM).', changes:['Base year shifted 2004-05 → 2011-12.','Manufacturing measured via the MCA21 corporate database, not the production survey.','Output valued at market prices instead of factor cost.'], officialGrowth:7.0, subramanianGrowth:4.5, overstatePoints:2.5 },
+        gdpRevision: { note:'The 2015 GDP revision (Subramanian, Harvard CID 2019; EAC-PM).', changes:['Base year shifted 2004-05 → 2011-12.','Manufacturing measured via the MCA21 corporate database instead of the production survey.','Output valued at market prices instead of factor cost.'], officialGrowth:7.0, subramanianGrowth:4.5, overstatePoints:2.5 },
         taxReversal: { note:'The tax reversal (Budget documents; PRS).', corpRateBefore:30, corpRateAfter:22, yearCut:2019, revenueLostLakhCr:1.45, wealthTaxAbolished:2015, wealthTaxRevenueCr:1000, pikettyRate:2, pikettyThresholdCr:50, taxToGDP:11.2, oecdAvg:34 },
         budgetArithmetic: { note:'BE → RE → Actuals (PRS).', mgnregaBE:100, mgnregaActualsLo:78, mgnregaActualsHi:82, healthTarget:2.5, educationTarget:6 },
         kmut: { note:"Tamil Nadu's KMUT (TN Civil Supplies; 2026).", perMonth:1000, womenCoveredCrore:1.30, annualOutlayCr:13000, priorOutlayCr:7000 },
         deficitFinancing: { note:'How the deficit is financed (Budget 2026-27; RBI).', deficitPctGDP:4.3, marketBorrowingLakhCr:17.2, rbiDividendLakhCr:2.87, interestPer100:20 },
         delimitation: { note:'Projected Lok Sabha seat change after the first census post-2026 (Carnegie; ISAS; India Forum).', items:[{state:'Uttar Pradesh',change:11},{state:'Bihar',change:10},{state:'Tamil Nadu',change:-8},{state:'Kerala',change:-8}], frozenSince:1971, perMP1951Millions:0.7, perMPNowMillions:2.5 },
-        monsoonChain: { note:'Why half of India’s inflation starts in the sky (IMD; RBI; IPCC).', rainfedSharePct:50, steps:['Deficient monsoon','Farm output falls','Food prices spike','CPI breaches 6%','RBI raises rates','Rural incomes squeezed'] },
+        monsoonChain: { note:'Why about half of India’s inflation depends on the monsoon (IMD; RBI; IPCC).', rainfedSharePct:50, steps:['Deficient monsoon','Farm output falls','Food prices spike','CPI breaches 6%','RBI raises rates','Rural incomes squeezed'] },
         cpiBasket: { note:'How CPI is built (MoSPI, 2024=100 series, weights from HCES 2023-24).', itemsWeighted:358, urbanMarkets:1395, urbanTowns:434, villages:1465, onlineMarkets:12, baseYear:2024, rbiTarget:4, foodSharePct:36.75, foodSharePctPrev:45.86, housingSharePct:16.48, transportSharePct:9.43, healthSharePct:6.83 },
         pumpPrice: { note:'Where every rupee of the petrol price goes (PPAC; PRS; Delhi 2026 illustrative).', parts:[{label:'Crude + refining + OMC margin',value:55.3},{label:'Central excise',value:19.9},{label:'State VAT',value:15.0},{label:'Dealer margin',value:3.8}], total:94.0, crudeImportDependence:86 },
         modiAsks: { note:'PM speech, Delhi 12 May 2026; IMF WEO 2026; RBI/DGCI&S.', asks:['Avoid buying gold for one year','Postpone non-essential foreign travel','Work from home where possible','Use public transport and carpooling','Reduce edible-oil consumption','Reduce chemical fertiliser use (farmers)','Buy Swadeshi, prefer Indian-made goods'], numbers:[{label:'Gold imports FY26',value:'$72 bn',sub:'2nd-largest import after crude'},{label:'Tourist spend abroad',value:'$31.7 bn',sub:'~30 mn Indians travelled out'},{label:'Crude oil imports',value:'$123 bn',sub:'85%+ of crude imported'},{label:'Rupee (crisis week)',value:'95.2/$',sub:'record low, May 2026'}] },
         gold: { note:'Indians buy gold because the formal system left no better option (WGC 2024; AMFI; RBI; IRDAI; SEBI).', privateTonnes:25000, stockValueTn:1.8, insurancePenetration:3.2, insuranceGlobal:7, excludedAdultsMn:190, equityParticipationPct:3.5 },
-        poverty: { note:'Three official lines, three answers. No accepted poverty line since 2014.', lines:[{name:'Tendulkar (2011-12)',detail:'₹27/day rural, ₹33/day urban',headcount:'21.9%',status:'never updated'},{name:'Rangarajan (2014)',detail:'₹30/day rural, ₹47/day urban',headcount:'29.5%',status:'shelved, not adopted'},{name:'NITI MPI (2022-23)',detail:'multidimensional, not income',headcount:'11.3%',status:'current official'}] },
-        bodies: { note:'The economy in bodies and classrooms (NFHS-5; National Health Accounts).', stuntedPct:35, outOfPocketPct:40, publicHealthPctGDP:1.9 },
+        poverty: { note:'Three official lines give three different answers. India has had no accepted poverty line since 2014.', lines:[{name:'Tendulkar (2011-12)',detail:'₹27/day rural, ₹33/day urban',headcount:'21.9%',status:'never updated'},{name:'Rangarajan (2014)',detail:'₹30/day rural, ₹47/day urban',headcount:'29.5%',status:'shelved and never adopted'},{name:'NITI MPI (2022-23)',detail:'multidimensional, with no income line',headcount:'11.3%',status:'current official'}] },
+        bodies: { note:'The economy’s effects on health and education (NFHS-5; National Health Accounts).', stuntedPct:35, outOfPocketPct:40, publicHealthPctGDP:1.9 },
         readChecklist: { note:'How to read any official number.', questions:['Which definition is being used, and who set it?','What does the number leave out?','When was the underlying data collected?','Who gains if the number looks good?','Has the method changed?','Did the inconvenient survey get published?','How does it compare with independent estimates?'] },
-        measurement: { note:'Five places where the choice, not the economy, moved the number.', items:[{title:'The GDP back-series',body:'2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed.'},{title:'The surveys that went missing',body:'The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). An 11-year data gap, until HCES 2022-23 — which changed methodology and is not cleanly comparable.'},{title:'A census a decade late',body:'Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers.'},{title:'Counting = allocating power',body:'Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose.'}] },
+        measurement: { note:'Five places where a choice of method moved the number more than the economy did.', items:[{title:'The GDP back-series',body:'2015 base-year shift + MCA21 made UPA-era growth look lower and NDA-era higher. Subramanian: 2011-17 overstated ~2.5 points. Never independently reviewed.'},{title:'The surveys that went missing',body:'The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). That left an 11-year data gap until HCES 2022-23, which changed methodology and is not cleanly comparable.'},{title:'A census a decade late',body:'Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers.'},{title:'Counting = allocating power',body:'Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose.'}] },
         // Full 16-state table, mirrored from data.json: the state view is a headline
         // feature, so it must still work when the live dataset cannot be reached.
         // Full 16-state table, mirrored from data.json: the state view is a headline
         // feature, so it must still work when the live dataset cannot be reached.
         states: { note:"Per-capita NSDP 2023-24 at current prices (MoSPI / RBI Handbook of Statistics on Indian States); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); population as on 1 March 2026 from the National Commission on Population, 'Population Projections for India and States 2011-2036' (Report of the Technical Group on Population Projections, Registrar General of India), Table 21, converted from thousands to crore; 2011 Census population shown alongside for the comparison; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of India's projected 2026 population and 477 of 543 Lok Sabha seats.",
-            popNote:"Representation here is computed on the official 2026 projection, not the 2011 census, because 2011 is fifteen years stale and would understate how unequal representation has become. The projection is the government's own and is the best available number — but it is a projection precisely because the 2021 census was never held. A census would replace it with a count. That is this project's argument arriving in the one place it cannot be avoided: even measuring the fairness of a vote now depends on an estimate.",
-            retNote:"Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is the design of the system, not a malfunction.",
+            popNote:"Representation here is computed on the official 2026 projection. The 2011 census is fifteen years stale and would understate how unequal representation has become. The projection is the government's own and is the best available number, but it is a projection because the 2021 census was never held. A census would replace it with a count. This project's argument applies here as well, because even measuring the fairness of a vote now depends on an estimate.",
+            retNote:"Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author holds an AIPC fellowship, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as contestable. Rich states financing poorer ones is how the system is designed to work.",
             delimNote:"Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them.",
             indiaPop2026:142.34,
             items:[
@@ -3522,7 +3522,7 @@ reduces overall score</pre>
     // Mobile detection helper
     function isMobile() { return window.innerWidth < 640; }
 
-    // Common ECharts options — responsive
+    // Common ECharts options, responsive
     const REDUCED_MOTION = typeof window !== 'undefined' && window.matchMedia
         && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function baseOpts(darkMode) {
@@ -3637,13 +3637,13 @@ reduces overall score</pre>
             showEvents: true,
             policyEvents: [
                 { year: 2016, short: 'Demon.', label: 'Demonetisation', desc: '86% of cash voided overnight; informal economy and small business hit hardest.' },
-                { year: 2017, short: 'GST', label: 'GST rollout', desc: 'A single nationwide indirect tax — and a structural shift of revenue power toward the centre.' },
+                { year: 2017, short: 'GST', label: 'GST rollout', desc: 'A single nationwide indirect tax, and a structural shift of revenue power toward the centre.' },
                 { year: 2019, short: 'Tax cut', label: 'Corporate tax cut', desc: '₹1.45 lakh crore corporate tax cut; the effective rate fell, widening the inequality gap.' },
                 { year: 2020, short: 'COVID', label: 'COVID lockdown', desc: 'Steepest GDP contraction since independence (−7.3%); formal jobs never regained trend.' },
                 { year: 2021, short: 'Census', label: 'Census postponed', desc: 'The decennial Census was indefinitely postponed; every population figure since is an interpolation.' },
                 { year: 2024, short: 'Election', label: '2024 general election', desc: 'NDA returned to power with a reduced majority, now reliant on coalition partners.' }
             ],
-            trajOut: { index2026: 50, index2030: 50, verdict: '—', verdictClass: 'text-gray-600' },
+            trajOut: { index2026: 50, index2030: 50, verdict: 'n/a', verdictClass: 'text-gray-600' },
             primer: PRIMER_FALLBACK,
             sourcesData: {},
             dataMeta: {},
@@ -3652,27 +3652,27 @@ reduces overall score</pre>
             glossQuery: '',
             glossary: {
                 mca21: { term: 'MCA21', def: 'The corporate-filings database MoSPI began using in 2015 to estimate company output. Critics argue it counted dormant/shell firms as active, raising the measured GDP level.' },
-                mpce: { term: 'MPCE', def: 'Monthly Per Capita Consumption Expenditure — the household-spending measure used to gauge living standards and poverty.' },
+                mpce: { term: 'MPCE', def: 'Monthly Per Capita Consumption Expenditure: the household-spending measure used to gauge living standards and poverty.' },
                 cess: { term: 'Cess', def: 'A tax surcharge earmarked for a purpose (health, education, roads). Unlike normal taxes it is NOT shared with states, so a rising cess share centralises revenue.' },
                 elasticity: { term: 'Employment elasticity', def: 'How much employment grows for each 1% of GDP growth. A value near zero means "jobless growth".' },
                 informalisation: { term: 'Informalisation', def: 'A rising share of workers without a written contract, social security, or job protection.' },
                 fiscalDeficit: { term: 'Fiscal deficit', def: 'The gap between government spending and revenue in a year, financed by borrowing; shown as % of GDP.' },
                 formalEmployment: { term: 'Formal employment', def: 'Jobs with a written contract and access to social security (EPF/ESI).' },
                 plfs: { term: 'PLFS', def: "India's official Periodic Labour Force Survey of employment and unemployment, run since 2017-18." },
-                pli: { term: 'PLI', def: 'Production-Linked Incentive — subsidies tied to output in chosen sectors. Capital-intensive, so it lifts output more than payroll.' },
+                pli: { term: 'PLI', def: 'Production-Linked Incentive: subsidies tied to output in chosen sectors. Capital-intensive, so it lifts output more than payroll.' },
                 top1: { term: 'Top 1% share', def: 'The slice of national income going to the richest 1% of adults (World Inequality Database).' },
-                gva: { term: 'GVA', def: 'Gross Value Added — output measured at the sector level before taxes/subsidies; the building block of GDP.' },
+                gva: { term: 'GVA', def: 'Gross Value Added: output measured at the sector level before taxes/subsidies; the building block of GDP.' },
                 devolution: { term: 'Devolution', def: 'The share of central tax revenue transferred to states under the Finance Commission formula.' },
                 delimitation: { term: 'Delimitation', def: 'Redrawing Lok Sabha seats by population. Frozen since 1976; if redone, slower-growing southern states lose seats relative to the north.' },
-                vdem: { term: 'V-Dem', def: 'Varieties of Democracy — a Gothenburg-based project scoring democratic quality from expert surveys.' },
+                vdem: { term: 'V-Dem', def: 'Varieties of Democracy, a Gothenburg-based project scoring democratic quality from expert surveys.' },
                 rsf: { term: 'RSF', def: 'Reporters Without Borders, which publishes the annual World Press Freedom Index.' },
-                ssi: { term: 'SSI', def: 'Statistical Suppression Index (constructed) — tracks delayed, withheld, or discontinued official statistics.' },
-                fci: { term: 'FCI', def: 'Fiscal Centralisation Index (constructed) — a 5-component measure of how much fiscal power has shifted to the centre.' },
-                dqi: { term: 'DQI', def: 'Democratic Quality Index (constructed) — geometric mean of normalised V-Dem, Freedom House and RSF scores.' },
+                ssi: { term: 'SSI', def: 'Statistical Suppression Index (constructed). It tracks delayed, withheld, or discontinued official statistics.' },
+                fci: { term: 'FCI', def: 'Fiscal Centralisation Index (constructed), a 5-component measure of how much fiscal power has shifted to the centre.' },
+                dqi: { term: 'DQI', def: 'Democratic Quality Index (constructed), the geometric mean of normalised V-Dem, Freedom House and RSF scores.' },
                 rainfed: { term: 'Rainfed agriculture', def: 'Cropland watered only by rain (~50% of India’s farmland), so a weak monsoon raises food prices and rural distress.' },
                 synthcontrol: { term: 'Synthetic control', def: 'A method that builds a "counterfactual" version of a country from a weighted blend of comparable countries, fitted to match its path before some event. The gap that opens afterwards is the estimated effect. Used by Grier & Grier (2026) to construct "Synthetic India".' },
-                donorpool: { term: 'Donor pool', def: 'The set of countries a synthetic control draws on, each with a weight. The choice of pool is the most consequential — and most contested — design decision in the method.' },
-                rmspe: { term: 'RMSPE', def: 'Root Mean Squared Prediction Error — how closely the synthetic counterfactual tracked the real country before the event. A small pre-treatment RMSPE means the match was tight, so the post-event gap is more credible.' },
+                donorpool: { term: 'Donor pool', def: 'The set of countries a synthetic control draws on, each with a weight. The choice of pool is the most consequential and most contested design decision in the method.' },
+                rmspe: { term: 'RMSPE', def: 'Root Mean Squared Prediction Error: how closely the synthetic counterfactual tracked the real country before the event. A small pre-treatment RMSPE means the match was tight, so the post-event gap is more credible.' },
                 placebo: { term: 'Placebo test', def: 'Re-running an analysis where no real effect should exist (a fake treatment year, or treating other countries as if treated). If the method still produces a large "effect", the original result is suspect.' }
             },
             // Reading the Economy: active section (A..K), mirrors the deck's 11 sections
@@ -3779,9 +3779,9 @@ reduces overall score</pre>
             // Daily-rotating highlight panel on the home tab.
             // Each entry surfaces an interesting finding and points at the relevant tab.
             // Loaded from data/features.json at runtime (see loadFeatures). These two are a
-            // minimal fallback so "Today's Analysis" still renders if that fetch fails —
+            // minimal fallback so "Today's Analysis" still renders if that fetch fails,
             // the full set lives in the JSON so the analysis pages and this list cannot drift.
-            dailyFeatures: [{"slug": "the-top-1-income-share-is-at-colonial-era", "category": "Inequality", "title": "The top 1% income share is at colonial-era levels", "body": "India's top 1% income share crossed 23% in 2026 — the highest since 1922, when the colonial economy was at its most extractive. The bottom 50% share has slid from 15.0% (2014) to 12.9% over the same period.", "takeaway": "A growing economy has redistributed upward for twelve straight years.", "tab": "Key Findings", "chart": {"type": "pair", "series": ["top1Share", "bottom50Share"], "labels": ["Top 1%", "Bottom 50%"], "colors": ["#ef4444", "#3b82f6"], "unit": "%"}}, {"slug": "india-ranks-157th-of-180-on-press-freedom", "category": "Democracy", "title": "India ranks 157th of 180 on press freedom", "body": "The RSF 2026 World Press Freedom Index, released 30 April, dropped India six places from 151 in 2025. India now sits below Pakistan (153), Bangladesh (152), and Nepal (87). RSF cites concentrated ownership, violence against journalists, and overt political alignment of outlets.", "takeaway": "India's press environment is now judged worse than that of every immediate neighbour except Afghanistan.", "tab": "Deep Analysis", "chart": {"type": "bar-inv", "series": ["pressFreedom"], "labels": ["World rank (lower = better)"], "colors": ["#a855f7"], "unit": ""}}],
+            dailyFeatures: [{"slug": "the-top-1-income-share-is-at-colonial-era", "category": "Inequality", "title": "The top 1% income share is at colonial-era levels", "body": "India's top 1% income share crossed 23% in 2026, the highest since 1922, when the colonial economy was at its most extractive. The bottom 50% share has slid from 15.0% (2014) to 12.9% over the same period.", "takeaway": "A growing economy has redistributed upward for twelve straight years.", "tab": "Key Findings", "chart": {"type": "pair", "series": ["top1Share", "bottom50Share"], "labels": ["Top 1%", "Bottom 50%"], "colors": ["#ef4444", "#3b82f6"], "unit": "%"}}, {"slug": "india-ranks-157th-of-180-on-press-freedom", "category": "Democracy", "title": "India ranks 157th of 180 on press freedom", "body": "The RSF 2026 World Press Freedom Index, released 30 April, dropped India six places from 151 in 2025. India now sits below Pakistan (153), Bangladesh (152), and Nepal (87). RSF cites concentrated ownership, violence against journalists, and overt political alignment of outlets.", "takeaway": "India's press environment is now judged worse than that of every immediate neighbour except Afghanistan.", "tab": "Deep Analysis", "chart": {"type": "bar-inv", "series": ["pressFreedom"], "labels": ["World rank (lower = better)"], "colors": ["#a855f7"], "unit": ""}}],
             get todaysFeature() {
                 // Deterministic daily rotation: same day -> same feature globally.
                 const day = Math.floor(Date.now() / 86400000);
@@ -3822,7 +3822,7 @@ reduces overall score</pre>
                     suggested: ['Human Stories', 'Key Findings', 'Three Indices', 'Interactive Data']
                 },
                 'Citizen': {
-                    intro: '<strong>For Citizens:</strong> Plain-language explanations of what the data shows about jobs, inequality, federalism, and democratic erosion — and what each finding means for everyday life.',
+                    intro: '<strong>For Citizens:</strong> Plain-language explanations of what the data shows about jobs, inequality, federalism, and democratic erosion, and what each finding means for everyday life.',
                     cta: 'Start with What is This?, then read the Executive Summary and Human Stories.',
                     suggested: ['What is This?', 'Executive Summary', 'Human Stories', 'What Next?']
                 }
@@ -4062,17 +4062,17 @@ reduces overall score</pre>
                 inequalityChart: 'World Inequality Database (WID.world); WIR 2026',
                 interactiveChart: 'Some Perspective dataset (data.json)',
                 scatterChart: 'Some Perspective dataset (data.json)',
-                indicesChart: 'Constructed SSI/FCI/DQI — see Methodology',
+                indicesChart: 'Constructed SSI/FCI/DQI (see Methodology)',
                 gigEconomyChart: 'NITI Aayog gig & platform economy estimates',
                 farmerIncomeChart: 'NABARD All-India Rural Financial Inclusion Survey',
-                dataCoverageChart: 'Some Perspective — Methodology',
-                indexRadarChart: 'Constructed SSI/FCI/DQI — see Methodology',
+                dataCoverageChart: 'Some Perspective | Methodology',
+                indexRadarChart: 'Constructed SSI/FCI/DQI (see Methodology)',
                 internationalChart: 'V-Dem v15 (2026); RSF 2026',
                 democraticDeclineChart: 'V-Dem Liberal Democracy Index (v2x_libdem), published series',
                 stateDisparitiesChart: 'Finance Commission; AIPC',
                 eraComparisonChart: 'MoSPI/NSO national accounts',
                 eraChart: 'MoSPI/NSO national accounts',
-                scenarioChart: 'Illustrative scenario model — see Scenario Lab',
+                scenarioChart: 'Illustrative scenario model (see Scenario Lab)',
                 deepDecouplingChart: 'MoSPI/NSO; PLFS',
                 csvCommunalChart: 'MHA-reported + independently verified incidents',
                 csvIncarcerationChart: 'Documented opposition-incarceration cases',
@@ -4086,8 +4086,8 @@ reduces overall score</pre>
                 primerStructureChart: 'MoSPI/NSO GVA (FY25); PLFS employment shares',
                 primerWagesChart: 'NABARD rural income, indexed (2014=100)',
                 primerInflationChart: 'MoSPI CPI (Combined), 2012 base',
-                grierGovChart: 'Grier & Grier (2026) synthetic control, V-Dem — external study',
-                grierDonorChart: 'Grier & Grier (2026) synthetic control, Penn World Table 11.0 — external study'
+                grierGovChart: 'Grier & Grier (2026) synthetic control, V-Dem (external study)',
+                grierDonorChart: 'Grier & Grier (2026) synthetic control, Penn World Table 11.0 (external study)'
             },
             chartTitleFallback: {
                 gdpEmploymentChart: 'GDP growth vs unemployment',
@@ -4164,11 +4164,11 @@ reduces overall score</pre>
                 if (!d || !d.years) return;
                 const keys = Object.keys(d).filter(k => k !== 'years' && k !== 'yearLabels' && Array.isArray(d[k]));
                 const lines = [];
-                lines.push('# Some Perspective — India economic indicators');
+                lines.push('# Some Perspective | India economic indicators');
                 lines.push('# Citation: ' + this.citationText());
                 lines.push('# License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)');
                 lines.push('# Source detail per series: someperspective.info/data.json (sources block) and the Methodology tab');
-                lines.push('# All values are observed (2014–2026); scenario projections live in the forecast block, not here');
+                lines.push('# All values are observed (2014–2026); scenario projections are in the forecast block');
                 lines.push(['year', ...keys].join(','));
                 d.years.forEach((yr, i) => {
                     lines.push([yr, ...keys.map(k => (d[k][i] !== undefined ? d[k][i] : ''))].join(','));
@@ -4505,6 +4505,16 @@ reduces overall score</pre>
                         lineStyle: i > 0 ? { type: 'dashed' } : {}
                     };
                     if (i === 0) { if (markLine) s.markLine = markLine; if (markArea) s.markArea = markArea; }
+                    // 2026 is on a different measure from the years before it for these
+                    // three series (see sources in data.json); circle the point and say so.
+                    const brk = { unemployment: 'New measure', cpiInflation: 'New CPI base', gdpGrowth: 'New GDP base' }[key];
+                    const last = m.data[m.data.length - 1];
+                    if (brk && last != null) s.markPoint = {
+                        symbol: 'circle', symbolSize: 11, silent: true,
+                        itemStyle: { color: 'transparent', borderColor: m.color, borderWidth: 2 },
+                        label: { show: true, position: 'top', formatter: brk, color: m.color, fontSize: 9 },
+                        data: [{ coord: ['2026', last] }]
+                    };
                     series.push(s);
                 });
 
@@ -4879,7 +4889,7 @@ reduces overall score</pre>
                 // the 2018 point so the line stays continuous across the join.
                 // This replaces a `visualMap` piecewise colour split that silently broke the
                 // chart: none of the points matched its pieces, so every point took the default
-                // outOfRange colour rgba(0,0,0,0) — the whole series rendered invisible, and the
+                // outOfRange colour rgba(0,0,0,0), the whole series rendered invisible, and the
                 // NDA-II markLine then had no resolvable point and threw on every render.
                 const splitIdx = (d.years || []).indexOf(2019);
                 const cut = splitIdx > 0 ? splitIdx : 5;
@@ -4893,7 +4903,7 @@ reduces overall score</pre>
                     tooltip: { trigger: 'axis' },
                     // yearLabels (strings) rather than years (numbers): the markLine below
                     // references the category by the string '2019', which never matched a
-                    // numeric category — ECharts threw on the unresolved coord and the
+                    // numeric category, ECharts threw on the unresolved coord and the
                     // NDA-II divider never drew.
                     xAxis: { type: 'category', data: d.yearLabels || (d.years || []).map(String), axisLabel: { fontSize: mobile ? 10 : 12, rotate: mobile ? 45 : 0 } },
                     yAxis: { type: 'value', name: mobile ? '' : labels[indicator], axisLabel: { fontSize: mobile ? 10 : 12 } },
@@ -4999,12 +5009,12 @@ reduces overall score</pre>
             currentIndex(key, dp) {
                 const a = this.economicData[key] || [];
                 const v = a[this.latestObservedIndex()];
-                return (typeof v === 'number') ? v.toFixed(dp) : '—';
+                return (typeof v === 'number') ? v.toFixed(dp) : 'n/a';
             },
             idxRange(key, dp) {
                 const a = this.economicData[key] || [];
                 const i = this.latestObservedIndex();
-                if (!a.length) return '—';
+                if (!a.length) return 'n/a';
                 const yrs = this.economicData.years || [];
                 const obs = a.slice(0, i + 1);
                 const peak = Math.max(...obs);
@@ -5074,12 +5084,12 @@ reduces overall score</pre>
             },
             eraDeltaTxt(key, dp, suffix) {
                 const u = this.upaAverage(key), n = this.ndaAverage(key);
-                if (u == null || n == null) return '—';
+                if (u == null || n == null) return 'n/a';
                 const d = n - u;
                 return (d >= 0 ? '+' : '') + this.fmt(d, dp) + (suffix || '');
             },
             fmt(v, dp) {
-                if (v === null || v === undefined || Number.isNaN(v)) return '—';
+                if (v === null || v === undefined || Number.isNaN(v)) return 'n/a';
                 const f = (typeof dp === 'number') ? v.toFixed(dp) : Math.round(v);
                 return f;
             },
@@ -5119,7 +5129,7 @@ reduces overall score</pre>
                                    improved ? 'text-emerald-800 dark:text-emerald-400' : 'text-red-700 dark:text-red-400';
                     const sign = (change > 0) ? '+' : '';
                     const upaStr = (upa === null) ? '<span class="text-gray-600 dark:text-gray-400">n/a</span>' : this.fmt(upa, r.dp) + r.suffix;
-                    const changeStr = (change === null) ? '—' : sign + this.fmt(change, r.dp) + r.suffix;
+                    const changeStr = (change === null) ? 'n/a' : sign + this.fmt(change, r.dp) + r.suffix;
                     html += `<tr class="border-b border-gray-100 dark:border-gray-800">
                         <td class="py-2 text-gray-700 dark:text-gray-300">${r.label}</td>
                         <td class="py-2 text-right tabular-nums">${upaStr}</td>
@@ -5127,7 +5137,7 @@ reduces overall score</pre>
                         <td class="py-2 text-right tabular-nums font-semibold ${colour}">${changeStr}</td>
                     </tr>`;
                 }
-                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-600 dark:text-gray-400">Period averages from the same data the charts use. CPI inflation is the one measure that was <em>worse</em> under UPA (UPA-2 ran double digits) — shown honestly, not hidden. Unemployment and formal employment have no comparable UPA-era series (n/a); SSI/FCI/DQI before 2014 are the author's back-cast.</td></tr>`;
+                html += `<tr><td colspan="4" class="pt-3 text-xs text-gray-600 dark:text-gray-400">Period averages from the same data the charts use. CPI inflation is the one measure that was <em>worse</em> under UPA (UPA-2 ran double digits), and the table shows it. Unemployment and formal employment have no comparable UPA-era series (n/a); SSI/FCI/DQI before 2014 are the author's back-cast.</td></tr>`;
                 return html;
             },
             renderInternationalTable() {
@@ -5365,17 +5375,17 @@ reduces overall score</pre>
             },
             get stateSpread() {
                 const v = this.statesAll.map(st => st.perCapita).filter(Number.isFinite);
-                if (v.length < 2) return { ratio: '—' };
+                if (v.length < 2) return { ratio: 'n/a' };
                 return { ratio: (Math.max(...v) / Math.min(...v)).toFixed(1) };
             },
             get stateRepSpread() {
                 const v = this.statesAll.map(st => st.perMP).filter(Number.isFinite);
-                if (v.length < 2) return { ratio: '—' };
+                if (v.length < 2) return { ratio: 'n/a' };
                 return { ratio: (Math.max(...v) / Math.min(...v)).toFixed(2) };
             },
             get stateRepSpread2011() {
                 const v = this.statesAll.map(st => st.perMP2011).filter(Number.isFinite);
-                if (v.length < 2) return '—';
+                if (v.length < 2) return 'n/a';
                 return (Math.max(...v) / Math.min(...v)).toFixed(2);
             },
             stateRank(key) {
@@ -5496,8 +5506,8 @@ reduces overall score</pre>
             get statesMetricMeta() {
                 return ({
                     perCapita: { label: 'Per-capita income', goodHigh: true, fmt: v => '₹' + Math.round(v / 1000) + 'k', takeaway: 'Southern and western states lead; Bihar’s per-capita income is roughly a sixth of Telangana’s.' },
-                    seats: { label: 'Lok Sabha seats', goodHigh: null, fmt: v => String(v), takeaway: 'Seat counts are frozen on the 1971 census — they reflect 1971 population, not today’s.' },
-                    perMP: { label: 'People per MP (millions)', goodHigh: false, fmt: v => v.toFixed(2) + 'M', takeaway: 'Northern states pack more people per seat, so a population-based delimitation would shift seats north — away from the south.' },
+                    seats: { label: 'Lok Sabha seats', goodHigh: null, fmt: v => String(v), takeaway: 'Seat counts are frozen on the 1971 census, so they reflect the 1971 population and ignore growth since.' },
+                    perMP: { label: 'People per MP (millions)', goodHigh: false, fmt: v => v.toFixed(2) + 'M', takeaway: 'Northern states pack more people per seat, so a population-based delimitation would shift seats north and away from the south.' },
                     tfr: { label: 'Fertility rate (NFHS-5)', goodHigh: null, fmt: v => v.toFixed(1), takeaway: 'The south is below replacement (~2.1); the north is higher. The states set to lose seats are exactly those that slowed population growth fastest.' }
                 })[this.statesMetric];
             },
@@ -5661,7 +5671,7 @@ reduces overall score</pre>
             createPrimerCharts() {
                 const p = this.primer || {};
                 const d = this.economicData;
-                // Rural household income index (section C) — proxy for the stagnant-wages story
+                // Rural household income index (section C), proxy for the stagnant-wages story
                 const wc = this.getChart('primerWagesChart');
                 if (wc && d.ruralIncome) {
                     wc.setOption({
@@ -5695,7 +5705,7 @@ reduces overall score</pre>
                     const cd = p.chinaDivergence;
                     cc.setOption({
                         ...baseOpts(this.darkMode),
-                        title: chartTitle('Same start in 1991. Very different destinations.', this.darkMode),
+                        title: chartTitle('India and China started at the same income in 1991 and have diverged since', this.darkMode),
                         tooltip: { trigger: 'axis', valueFormatter: v => '$' + (+v).toLocaleString() },
                         legend: chartLegend(['India', 'China']),
                         xAxis: { type: 'category', data: cd.years },
@@ -5712,7 +5722,7 @@ reduces overall score</pre>
                     const sectors = p.structure.sectors;
                     sc.setOption({
                         ...baseOpts(this.darkMode),
-                        title: chartTitle('Output here, jobs there', this.darkMode),
+                        title: chartTitle('Share of output and share of jobs, by sector', this.darkMode),
                         tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: v => v + '%' },
                         legend: chartLegend(['Share of output (GVA)', 'Share of jobs']),
                         xAxis: { type: 'category', data: sectors.map(s => s.sector) },
@@ -5727,7 +5737,7 @@ reduces overall score</pre>
 
             // ===== EXTERNAL CORROBORATION (Grier & Grier synthetic control) =====
             // Two charts on the Methodology tab. All values are transcribed from the
-            // authors' published summary — nothing here is recomputed by this project.
+            // authors' published summary, nothing here is recomputed by this project.
             createSyntheticControlCharts() {
                 const sc = this.sc;
                 if (!sc) return;
@@ -5772,7 +5782,7 @@ reduces overall score</pre>
                     }, true);
                 }
 
-                // 2. Donor pool for the income counterfactual — the weights that decide
+                // 2. Donor pool for the income counterfactual, the weights that decide
                 //    what "Synthetic India" actually is, and the main line of attack on it.
                 const dc = this.getChart('grierDonorChart');
                 if (dc && Array.isArray(sc.incomeDonors)) {
@@ -5960,7 +5970,7 @@ reduces overall score</pre>
             shareWhatsApp(customText, tab) {
                 const url = this.deepLink(tab);
                 const v = this.eraVerdict();
-                const text = customText || ('Some Perspective: on ' + v.worse + ' of ' + v.total + ' cross-era measures India is worse under NDA than UPA — democracy, statistics, fiscal federalism, press freedom and inequality. Data, not slogans:');
+                const text = customText || ('Some Perspective: on ' + v.worse + ' of ' + v.total + ' cross-era measures India is worse under NDA than UPA, across democracy, statistics, fiscal federalism, press freedom and inequality. The data:');
                 window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
             },
             // Per-finding share: native share sheet on mobile (incl. WhatsApp), else WhatsApp intent.

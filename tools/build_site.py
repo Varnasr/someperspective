@@ -161,11 +161,11 @@ def build_analysis(features, vintage):
 <p><a class="btn" href="../#{tab_hash(f['tab'])}">Explore this in the live data &rarr;</a></p>
 <h2>About this reading</h2>
 <p class="rel">This is one of {len(features)} standing analyses drawn from the Some Perspective dataset.
-It is not dated commentary: it describes a relationship in the data that holds across the series, and it
+It carries no date. It describes a relationship in the data that holds across the series, and it
 is regenerated whenever the underlying dataset is refreshed. The figures quoted here reflect the
 <strong>{escape(vintage)}</strong> data vintage.</p>
 <p class="meta">{' &nbsp;·&nbsp; '.join(nav) if nav else ''}<br><br>
-Raman, V.S. Some Perspective: India's Economic Transformation. someperspective.info · CC BY 4.0 ·
+Raman, V.S. Some Perspective: India's Political Economy, 2004-2026. someperspective.info · CC BY 4.0 ·
 data vintage {escape(vintage)}. <a href="../#cite-download">Cite &amp; download</a> ·
 <a href="./">All analyses</a></p>"""
 
@@ -192,7 +192,7 @@ data vintage {escape(vintage)}. <a href="../#cite-download">Cite &amp; download<
 <span class="kicker">Analysis library</span>
 <h1>{len(features)} readings of the data</h1>
 <p class="lede">Each entry takes one relationship in the dataset and states what it shows and what
-follows from it. These are standing analyses rather than dated posts — they are rebuilt from the
+follows from it. These are standing analyses and carry no date. They are rebuilt from the
 dataset on every refresh, so they always reflect the current figures. Data vintage:
 <strong>{escape(vintage)}</strong>.</p>
 <p class="rel"><span class="tag">CC BY 4.0</span> <span class="tag">{len(by_cat)} categories</span>
@@ -362,7 +362,7 @@ do it at all. Time Use Survey {c['years'][0]} against {c['years'][1]}. The gap c
 <thead><tr><th>Estimate</th><th>Method</th><th style="text-align:right">% of GDP</th></tr></thead>
 <tbody>{val_rows}</tbody>
 </table></div>
-<p class="meta">Range {lo:g}% to {hi:g}% &mdash; a factor of {hi / lo:.1f}. This project publishes the
+<p class="meta">Range {lo:g}% to {hi:g}%, a factor of {hi / lo:.1f}. This project publishes the
 range and does not pick a number.</p>
 </div>
 
@@ -385,15 +385,15 @@ range and does not pick a number.</p>
 &nbsp; <a href="../walkthrough/#s-12">The walkthrough version</a>
 &nbsp; <a href="../#reading-the-economy">How GDP is built</a></p>
 <p class="meta">Time use figures: {escape(c['source'])} Ages 15&ndash;59; minutes are the daily average
-among participants, not across everyone. Held in
+among participants only. Held in
 <a href="../data.json">data.json</a> under <code>careEconomy</code>. Valuation estimates are cited in the
-table above and are other people&rsquo;s work, not this project&rsquo;s.</p>"""
+table above and are the work of other researchers.</p>"""
 
     write("care/index.html",
           page("What GDP does not count | Some Perspective",
                "GDP imputes a rent for the house you own but records nothing for the care performed "
                "inside it. India measures the hours through its Time Use Survey and declines to value "
-               "them; published estimates of what they are worth range from 7.5% to 36% of GDP.",
+               "them. Published estimates of what they are worth range from 7.5% to 36% of GDP.",
                f"{SITE}/care/", body))
 
 
@@ -404,7 +404,7 @@ def build_updates(updates):
     entries = []
     for u in updates["releases"]:
         changes = "".join(
-            f'<li><strong>{escape(c["kind"])}</strong> — {escape(c["text"])}</li>'
+            f'<li><strong>{escape(c["kind"])}:</strong> {escape(c["text"])}</li>'
             for c in u["changes"])
         entries.append(f"""<div class="card">
 <span class="kicker">{escape(u['date'])} &nbsp;·&nbsp; v{escape(u['version'])}</span>
@@ -444,7 +444,7 @@ is in <a href="https://github.com/Varnasr/someperspective/blob/main/CHANGELOG.md
     feed = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Some Perspective — Updates</title>
+  <title>Updates | Some Perspective</title>
   <link>{SITE}/updates.html</link>
   <atom:link href="{SITE}/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
@@ -488,7 +488,7 @@ def build_dataset(data):
     rows = indicator_table(data)
     buf = io.StringIO()
     w = csv.writer(buf, lineterminator="\n")
-    w.writerow([f"# Some Perspective dataset — data vintage {data['meta']['updated']} — CC BY 4.0"])
+    w.writerow([f"# Some Perspective dataset | data vintage {data['meta']['updated']} | CC BY 4.0"])
     w.writerow([f"# Source of record: {SITE}/data.json"])
     w.writerows(rows)
     write("downloads/dataset.csv", buf.getvalue())
@@ -588,7 +588,7 @@ def build_package(data):
         with open(pdf, "rb") as fh:
             parts.append(("someperspective/paper/paper.pdf", fh.read()))
     parts.append(("someperspective/README-PACKAGE.txt",
-                  "Some Perspective — research package\n"
+                  "Some Perspective | research package\n"
                   f"Data vintage: {data['meta']['updated']}\n"
                   f"Site: {SITE}\nRepository: https://github.com/Varnasr/someperspective\n"
                   "Licence: CC BY 4.0 (see LICENSE)\n\n"

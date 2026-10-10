@@ -1,21 +1,21 @@
 {
   "note": "Slide content for the guided walkthrough at /walkthrough/. Figures are NOT written in here as literals: {{path}} tokens are resolved against data.json in the browser at load time, so the deck cannot drift from the dataset the way the hand-maintained presentation documents did. Chart slides name a renderer implemented in the walkthrough shell.",
-  "title": "Some Perspective — the guided walkthrough",
+  "title": "Some Perspective | The guided walkthrough",
   "slides": [
     {
       "id": "open",
       "kicker": "A guided tour · about 10 minutes",
       "title": "India grew. Did that growth buy what it was supposed to?",
-      "body": "Between 2014 and 2026 India became the world's most populous country and its fourth-largest economy. Over the same years, every available measure of democratic quality fell. This walkthrough sets out what the data shows about whether those two facts were a trade — and concludes that they were not.",
+      "body": "Between 2014 and 2026 India became the world's most populous country and its fourth-largest economy. Over the same years, every available measure of democratic quality fell. This walkthrough sets out what the data shows about whether those two facts were a trade, and concludes that they were not.",
       "note": "Use the arrow keys, or swipe. Every figure here is read live from the site's dataset."
     },
     {
       "id": "bargain",
       "kicker": "The claim being tested",
       "title": "The bargain: constraint traded for prosperity",
-      "body": "The strongest case for the period runs like this. A decisive executive, unencumbered by coalition bargaining, judicial review and federal veto points, can do things a constrained one cannot. Institutional constraint is the price; material progress is what it buys.",
+      "body": "The strongest case for the period runs like this. A decisive executive, unencumbered by coalition bargaining, judicial review and federal veto points, can do things a constrained one cannot. Institutional constraint is the price, and material progress is what it buys.",
       "points": [
-        "That is a serious argument, and this project tests it rather than dismissing it.",
+        "That is a serious argument, and this project tests it.",
         "A bargain requires both halves to be measured: what was given up, and what was received.",
         "Most accounts measure only one half."
       ]
@@ -24,25 +24,25 @@
       "id": "problem",
       "kicker": "The obstacle",
       "title": "The instruments needed to check also degraded",
-      "body": "Assessing performance after 2014 runs into a specific difficulty: the statistical apparatus that would register the answer was itself weakened during the period.",
+      "body": "Assessing performance after 2014 runs into a specific difficulty. The statistical apparatus that would register the answer was itself weakened during the period.",
       "points": [
         "The 2021 census was postponed and still has not been conducted.",
         "The 2017-18 consumption survey was completed, then withheld after it showed rural consumption falling.",
-        "The national accounts were rebased in 2015 in a way that lowered earlier growth and raised later growth — never independently reviewed.",
-        "Two statistical commissioners resigned; the NSSO was merged into the NSO.",
+        "The national accounts were rebased in 2015 in a way that lowered earlier growth and raised later growth, and the revision was never independently reviewed.",
+        "Two statistical commissioners resigned, and the NSSO was merged into the NSO.",
         "Official COVID mortality was ~0.5 million against independent excess-mortality estimates of 3-5 million."
       ],
-      "note": "Each is individually documented. What makes the pattern notable is that the withheld numbers were, with high consistency, the unfavourable ones."
+      "note": "Each is individually documented. The pattern matters because the withheld numbers were, with high consistency, the unfavourable ones."
     },
     {
       "id": "indices-intro",
       "kicker": "The method",
       "title": "Three indices, one script, both eras",
-      "body": "To compare the UPA decade (2004-2013) with the NDA period (2014-2026) fairly, both are measured by the same instrument — a single deterministic script applied across the whole period. Any difference is a difference in inputs, not in method.",
+      "body": "To compare the UPA decade (2004-2013) with the NDA period (2014-2026) fairly, both are measured by the same instrument, a single deterministic script applied across the whole period. Any difference comes from the inputs, and none from the method.",
       "points": [
-        "SSI — Statistical Suppression Index, 0-10. Interference with official statistics.",
-        "FCI — Fiscal Centralisation Index, 0-1. Fiscal authority shifting from states to the union.",
-        "DQI — Democratic Quality Index, 0-1. Four published third-party democracy measures combined."
+        "SSI: Statistical Suppression Index, 0-10. Interference with official statistics.",
+        "FCI: Fiscal Centralisation Index, 0-1. Fiscal authority shifting from states to the union.",
+        "DQI: Democratic Quality Index, 0-1. Four published third-party democracy measures combined."
       ]
     },
     {
@@ -58,11 +58,11 @@
       "id": "ssi",
       "kicker": "Statistical suppression",
       "title": "From zero to nine, and it has not returned to zero",
-      "body": "The SSI weights six documented streams by how much each damages the public's ability to evaluate the government: the census delay carries the most weight, then the mortality undercount, then the withheld consumption survey, the disputed GDP revision, the loss of institutional independence, and the employment-data delay.",
+      "body": "The SSI weights six documented streams by how much each damages the public's ability to evaluate the government. The census delay carries the most weight, followed by the mortality undercount, the withheld consumption survey, the disputed GDP revision, the loss of institutional independence, and the employment-data delay.",
       "points": [
         "No qualifying event occurred in 2004-2013, so that decade scores zero.",
-        "The 2021-22 peak of {{max:economic.ssi}} is these streams stacking, not one event.",
-        "It settles at {{last:economic.ssi}} because the damage is structural: the census is still outstanding and the NSO merger was never reversed."
+        "The 2021-22 peak of {{max:economic.ssi}} comes from these streams stacking up over several years.",
+        "It settles at {{last:economic.ssi}} because the damage is structural. The census is still outstanding and the NSO merger was never reversed."
       ]
     },
     {
@@ -72,7 +72,7 @@
       "body": "Real GDP growth averaged {{avg:eraHistory.gdpGrowth}}% across 2004-2013 and {{avg:economic.gdpGrowth}}% across 2014-2026.",
       "points": [
         "The later figure includes the 2020 pandemic contraction, which accounts for much of the gap.",
-        "But the two periods are not cleanly comparable at all: the 2015 rebasing moved measured growth in the government's favour, and was never independently reviewed.",
+        "The two periods are also not cleanly comparable. The 2015 rebasing moved measured growth in the government's favour, and it was never independently reviewed.",
         "Even taking the official numbers at face value, no acceleration is visible."
       ]
     },
@@ -81,7 +81,7 @@
       "kicker": "Growth and jobs",
       "title": "Twelve straight years of falling formal employment",
       "chart": "decoupling",
-      "body": "The share of workers with any social-security cover fell from {{first:economic.formalEmployment}}% in 2014 to {{last:economic.formalEmployment}}% in 2026 — down or flat in every single year, while GDP grew throughout.",
+      "body": "The share of workers with any social-security cover fell from {{first:economic.formalEmployment}}% in 2014 to {{last:economic.formalEmployment}}% in 2026. It was down or flat in every single year, while GDP grew throughout.",
       "note": "This is the most consistent multi-year pattern in the dataset, and it does not depend on the disputed national accounts.",
       "chartAlt": "Combination chart, 2004 to 2026. Bars show annual GDP growth against the left axis; a line shows formal employment as a percentage of all employment against the right axis. Growth continues while the line declines."
     },
@@ -90,7 +90,7 @@
       "kicker": "Why jobs did not follow",
       "title": "The growth happened where the jobs are not",
       "chart": "structure",
-      "body": "Agriculture holds 42% of employment while producing 18% of output. Manufacturing — the sector that in the standard development sequence absorbs that labour — holds only 11% of jobs.",
+      "body": "Agriculture holds 42% of employment while producing 18% of output. Manufacturing, the sector that in the standard development sequence absorbs that labour, holds only 11% of jobs.",
       "note": "Industrial policy weighted toward capital-intensive sectors raises output more than payroll. Electronics generates roughly one job per ₹1.5 crore invested; garments, at comparable investment, generate vastly more.",
       "chartAlt": "Grouped bar chart by sector, comparing each sector’s share of output with its share of jobs. The sectors holding most of the jobs hold much less of the output."
     },
@@ -100,32 +100,32 @@
       "title": "The bottom half lost about an eighth of its share",
       "chart": "distribution",
       "body": "The top 1% share rose from {{first:economic.top1Share}}% to {{last:economic.top1Share}}%. The bottom 50% share fell from {{first:economic.bottom50Share}}% to {{last:economic.bottom50Share}}%.",
-      "note": "The top-end level matters more than its movement: at {{last:economic.top1Share}}%, it is the highest recorded since 1922. The sharper decade change is at the bottom.",
+      "note": "The top-end level matters more than its movement. At {{last:economic.top1Share}}%, it is the highest recorded since 1922. The larger change over the decade is at the bottom.",
       "chartAlt": "Line chart, 2004 to 2026, of income shares. The top 1 per cent share rises; the bottom 50 per cent share falls."
     },
     {
       "id": "inflation",
-      "kicker": "The honest exception",
-      "title": "The one exception, and why it isn't a win",
-      "body": "Consumer price inflation averaged {{avg:eraHistory.cpiInflation}}% in 2004-2013 against {{avg:economic.cpiInflation}}% in 2014-2026. It is the only measure moving the other way — and it is mostly not about Indian policy at all.",
+      "kicker": "The exception",
+      "title": "The one exception, and why it does not count as a win",
+      "body": "Consumer price inflation averaged {{avg:eraHistory.cpiInflation}}% in 2004-2013 against {{avg:economic.cpiInflation}}% in 2014-2026. It is the only measure moving the other way, and most of the movement has little to do with Indian policy.",
       "points": [
         "The comparison straddles a global commodity cycle. Brent crude fell from about $115 a barrel in mid-2014 to under $30 by early 2016, driven by US shale supply and OPEC defending market share. India imports about 86% of its crude.",
         "An external shock that size, landing exactly at the boundary between the two periods, explains more of the gap than any change of government does.",
-        "Where domestic policy did help, it was inflation targeting — a rule that binds the executive's hands. That is delegation, not concentration.",
-        "And the 2026 figure sits on a new CPI basket where food's weight fell from 45.9% to 36.8%, so it prints lower for the same price movements."
+        "Where domestic policy did help, it was inflation targeting, a rule that binds the executive's hands. That is a delegation of power away from the executive.",
+        "The 2026 figure also sits on a new CPI basket where food's weight fell from 45.9% to 36.8%, so it prints lower for the same price movements."
       ],
-      "note": "The full argument — six factors, the strongest case against us, and what would change our reading — is at someperspective.info/inflation."
+      "note": "The full argument, with six factors, the strongest case against us, and what would change our reading, is at someperspective.info/inflation."
     },
     {
       "id": "boundary",
       "kicker": "What the headline leaves out",
-      "title": "GDP counts the rent, not the cooking",
+      "title": "GDP counts the rent and leaves out the cooking",
       "body": "Every growth figure in this deck is a GDP figure. GDP counts work inside a boundary somebody drew. Own the flat you live in and the accounts work out a rent you never paid and add it to output. Cook the evening meal in that flat and nothing is added.",
       "points": [
         "India already counts the hours. The Time Use Survey found women aged 15-59 who do unpaid domestic work spending 289 minutes a day on it in 2024. Men spent 88.",
         "For a woman that is about 1,758 hours a year, in no employment figure and no output series.",
-        "Two survey rounds, five years apart: far more men now do some of this work, 26.1% to 45.8%. But the minutes fell for both sexes, so the gap between a woman who does it and a man who does it went from 202 minutes to 201. One minute in five years.",
-        "Published estimates of what the work is worth run from 7.5% to 36% of GDP. That spread is disagreement about the price of an hour, not doubt about the hours.",
+        "Two survey rounds, five years apart, show far more men now doing some of this work, up from 26.1% to 45.8%. The minutes fell for both sexes, however, so the gap between a woman who does it and a man who does it went from 202 minutes to 201, a change of one minute in five years.",
+        "Published estimates of what the work is worth run from 7.5% to 36% of GDP. That spread is a disagreement about the price of an hour. There is little doubt about the hours.",
         "It changes how to read one of our own numbers. Female workforce participation of about 21% is discussed as women not working. The same surveys found 83.9% of them doing unpaid work at home."
       ],
       "note": "Nothing in this deck is adjusted for any of it. These are the official figures on the official boundary. The full argument is at someperspective.info/care."
@@ -133,10 +133,10 @@
     {
       "id": "scorecard",
       "kicker": "The verdict",
-      "title": "Eight of nine measures worse; one better",
+      "title": "Eight of nine measures are worse, and one is better",
       "chart": "scorecard",
       "body": "Comparing period averages across every directly comparable measure, the later period performs worse on eight and better on one.",
-      "note": "If the later period's statistics are biased in the government's favour — as the SSI argues — then this comparison understates the deterioration rather than overstating it.",
+      "note": "If the later period's statistics are biased in the government's favour, as the SSI argues, then this comparison understates the deterioration.",
       "chartAlt": "Dumbbell chart of nine measures. For each, one marker is the UPA 2004-13 average and the other the NDA 2014-26 average, both placed within that measure’s own 2004-2026 range. Eight markers move towards the worse end."
     },
     {
@@ -144,8 +144,8 @@
       "kicker": "Against comparable countries",
       "title": "A decline comparable to Turkey's, from a higher base",
       "chart": "international",
-      "body": "India's V-Dem Liberal Democracy Index fell from 0.488 to 0.260 over the period, a fall of 0.228 points. Turkey fell from 0.252 to 0.110; Hungary from 0.521 to 0.315. Turkey's proportional fall is steeper, from a base already near the floor; India's is the largest absolute fall of the three.",
-      "note": "Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking everyone down.",
+      "body": "India's V-Dem Liberal Democracy Index fell from 0.488 to 0.260 over the period, a fall of 0.228 points. Turkey fell from 0.252 to 0.110, and Hungary from 0.521 to 0.315. Turkey's proportional fall is steeper, from a base already near the floor. India's is the largest absolute fall of the three.",
+      "note": "Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking every country down.",
       "chartAlt": "Grouped bar chart comparing V-Dem liberal democracy scores in 2014 and 2026 for India and its peer countries."
     },
     {
@@ -153,35 +153,35 @@
       "kicker": "An independent check",
       "title": "A different method reaches the same conclusion",
       "chart": "grier",
-      "body": "Kevin and Robin Grier (Texas Tech) build a synthetic counterfactual — a weighted blend of comparator countries fitted to India's path over 1984-2013 — and measure the gap that opens after 2014. All ten governance indicators they test deteriorate, every one at a joint p-value of 0.00.",
-      "note": "Different method, different data, different authors, no shared machinery with this project. Their electoral-democracy gap of -60.2% sits close to the -63.4% raw decline measured here — though the two are not the same quantity.",
+      "body": "Kevin and Robin Grier (Texas Tech) build a synthetic counterfactual, a weighted blend of comparator countries fitted to India's path over 1984-2013, and measure the gap that opens after 2014. All ten governance indicators they test deteriorate, every one at a joint p-value of 0.00.",
+      "note": "The method, the data and the authors are all different, and there is no shared machinery with this project. Their electoral-democracy gap of -60.2% sits close to the -63.4% raw decline measured here, though the two are not the same quantity.",
       "chartAlt": "Horizontal bar chart. For each indicator, the percentage deterioration against the synthetic-control counterfactual."
     },
     {
       "id": "limits",
       "kicker": "What this does not show",
       "title": "The limits, stated plainly",
-      "body": "This project is descriptive. It establishes what happened on both dimensions; it does not identify a causal effect of governance on growth.",
+      "body": "This project is descriptive. It establishes what happened on both dimensions. It does not identify a causal effect of governance on growth.",
       "points": [
-        "The author is a Manmohan Singh Fellow of the All India Professionals' Congress, a department of the Indian National Congress, and this comparison runs in that party's favour. The interest is declared in full on the site; what is offered against it is that every input, every weighting and every step is published and can be recomputed.",
-        "The SSI's zero for the UPA decade is the most contestable number here — though the conclusion survives even a generous re-coding of that era.",
+        "The author is a Manmohan Singh Fellow of the All India Professionals' Congress, a department of the Indian National Congress, and this comparison runs in that party's favour. The interest is declared in full on the site. What is offered against it is that every input, every weighting and every step is published and can be recomputed.",
+        "The SSI's zero for the UPA decade is the most contestable number here, though the conclusion survives even a generous re-coding of that era.",
         "The DQI inherits whatever biases exist in V-Dem, Freedom House and RSF.",
         "The FCI is relative to its own sample and means nothing outside it.",
-        "The three indices are not independent evidence of one another — they plausibly measure one underlying process.",
+        "The three indices are not independent evidence of one another. They plausibly measure one underlying process.",
         "The window contains a pandemic, which supplies a legitimate reason for some of what the indices register."
       ],
-      "note": "An error in this project's own documents — one that ran in its favour — was found and corrected in August 2026. It is reported in the paper rather than quietly fixed."
+      "note": "An error in this project's own documents, one that ran in its favour, was found and corrected in August 2026. It is reported in the paper."
     },
     {
       "id": "sowhat",
       "kicker": "What follows",
-      "title": "Statistical independence is the first reform, not the fifth",
-      "body": "Every other question — whether growth accelerated, whether poverty fell, whether welfare reached anyone — can only be settled against evidence produced by institutions willing to publish unfavourable findings.",
+      "title": "Statistical independence is the first reform",
+      "body": "Every other question (whether growth accelerated, whether poverty fell, whether welfare reached anyone) can only be settled against evidence produced by institutions willing to publish unfavourable findings.",
       "points": [
         "Conduct the census. Publish consumption surveys on a fixed cycle regardless of what they show.",
         "Restore the separation between the statistical office and the ministry it evaluates.",
         "Refer the disputed GDP back-series to independent review.",
-        "Then: formalisation of employment, an industrial policy weighted toward labour absorption, and an explicit settlement on fiscal federalism."
+        "After that come formalisation of employment, an industrial policy weighted toward labour absorption, and an explicit settlement on fiscal federalism."
       ],
       "note": "A government that did everything else on this list while leaving the statistical system alone would leave the public unable to tell whether any of it worked."
     },
@@ -200,7 +200,7 @@
           "href": "../downloads/paper.pdf"
         },
         {
-          "label": "36 standing analyses of the data",
+          "label": "37 standing analyses of the data",
           "href": "../analysis/"
         },
         {
