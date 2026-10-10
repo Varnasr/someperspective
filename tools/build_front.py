@@ -27,15 +27,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "index.html")
 SITE = "https://someperspective.info"
 YEARS = list(range(2004, 2027))
+# The site mark: an ink square with the two fields split at 10/23.
+MARK = ('<svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg>')
 
 
 def load():
     d = json.load(open(os.path.join(ROOT, "data.json"), encoding="utf-8"))
     meta = d.get("meta", {})
     version = None
-    explore = open(os.path.join(ROOT, "explore", "index.html"), encoding="utf-8").read()
-    import re
-    m = re.search(r'<meta name="version" content="([^"]+)"', explore)
+    cff = open(os.path.join(ROOT, "CITATION.cff"), encoding="utf-8").read()
+    m = re.search(r'^version: *(\S+)', cff, re.M)
     version = m.group(1) if m else ""
     return d, meta, version
 
@@ -447,7 +448,7 @@ def build():
 <body>
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top split">
-<div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
+<div class="l"><a class="name" href="/">{MARK}<span>Some Perspective</span></a></div>
 <nav class="r" aria-label="Site" data-dyslexia-slot>
 <a href="#scorecard">Scorecard</a><a href="#findings">Findings</a><a href="explore/">Explore the data</a>
 <a href="downloads/paper.html">Paper</a><a href="analysis/">Analyses</a><a href="walkthrough/">Walkthrough</a>

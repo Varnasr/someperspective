@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
+<title>The states: Some Perspective</title>
+<meta name="description" content="Income, population, representation and fiscal transfers for India&#x27;s sixteen largest states.">
+<meta name="author" content="Dr. Varna Sri Raman">
+<link rel="canonical" href="https://someperspective.info/explore/states/">
+<meta property="og:title" content="The states: Some Perspective">
+<meta property="og:description" content="Income, population, representation and fiscal transfers for India&#x27;s sixteen largest states.">
+<meta property="og:url" content="https://someperspective.info/explore/states/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://someperspective.info/og-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+:root{--seam:43.4783%;
+--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;--muted:#50545e;
+--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--on-accent-2:#ffffff;
+--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#15171c;--surface-2:#1c1f25;
+--ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#a9adb8;--line:rgba(242,242,239,.16);
+--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--on-accent-2:#0c0d10;
+--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;color:var(--ink);
+background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
+var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%);
+font-variant-numeric:tabular-nums;overflow-x:clip}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:.5rem 1rem;z-index:10}
+.split{display:grid;grid-template-columns:var(--seam) 1fr}
+.split>.l{padding-right:clamp(.75rem,2.5vw,2rem);text-align:right}
+.split>.r{padding-left:clamp(.75rem,2.5vw,2rem)}
+.split>*{padding-left:clamp(.75rem,3vw,2.5rem);padding-right:clamp(.75rem,3vw,2.5rem)}
+.wide{font-stretch:125%}.narrow{font-stretch:75%}
+.top{border-bottom:2px solid var(--ink);align-items:center}
+.top .l,.top .r{padding-top:.8rem;padding-bottom:.8rem}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
+.top nav a{text-decoration:none;padding:.3rem 0}
+.top nav a:hover{text-decoration:underline}
+.eras .l,.eras .r{padding-top:clamp(2.5rem,7vw,5.5rem);padding-bottom:1.25rem}
+.yr{font-weight:900;font-stretch:75%;font-size:clamp(2.6rem,10vw,8.5rem);line-height:.86;letter-spacing:-.02em}
+.yr span{display:block}
+.who{margin-top:.9rem;font-size:clamp(.8rem,1.6vw,1rem);font-weight:600;line-height:1.3}
+.who b{display:block;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.06em;font-size:1.05em}
+.slab{background:var(--paper);border:2px solid var(--ink);width:min(46rem,calc(100% - 1.5rem));
+margin:2rem 0 2rem clamp(.75rem,calc(var(--seam) - 23rem),100%);padding:clamp(1.1rem,3vw,2rem)}
+.slab.flush{margin-top:0;margin-bottom:0}
+.kicker{font-size:.72rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase}
+h1{font-weight:850;font-stretch:87.5%;font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.02;letter-spacing:-.015em;margin:.6rem 0 1rem}
+h2{font-weight:800;font-stretch:87.5%;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.08;margin:.45rem 0 .8rem}
+h3{font-weight:800;font-stretch:87.5%;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.12;margin:.35rem 0 .7rem}
+p+p{margin-top:.9rem}
+.dek{font-size:1.1rem;color:var(--ink-soft)}
+.byline{margin-top:1.1rem;font-size:.85rem;color:var(--muted)}
+.count{display:flex;align-items:baseline;gap:.5rem;font-weight:900;font-stretch:75%;font-size:clamp(3.5rem,9vw,6rem);line-height:.9}
+.count small{font-size:.28em;font-weight:700;font-stretch:100%;line-height:1.2}
+.legend{font-size:.85rem;margin-top:.8rem;color:var(--ink-soft)}
+.sw{display:inline-block;width:1.6em;height:.7em;border:1.5px solid var(--ink);vertical-align:-.05em;margin-right:.35em}
+.sw.upa{background:var(--field-upa)}.sw.nda{background:var(--field-nda)}
+.m{border-top:2px solid var(--ink)}
+.m:last-child{border-bottom:2px solid var(--ink)}
+.m .split .l,.m .split .r{padding-top:.75rem}
+.m .lab{font-size:.78rem;font-weight:800;font-stretch:112.5%;text-transform:uppercase;letter-spacing:.06em;line-height:1.25}
+.m .v{font-weight:900;font-stretch:75%;font-size:clamp(2rem,6.4vw,4.6rem);line-height:.95;letter-spacing:-.01em;padding-bottom:.35rem}
+.m .v small{font-size:.38em;font-weight:700;margin-left:.08em}
+.tag{display:inline-block;font-size:.72rem;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.1em;
+border:2px solid var(--ink);padding:.12rem .45rem}
+.tag.worse{background:var(--ink);color:var(--paper)}
+.chart{position:relative;height:52px;margin:0}
+.chart.tall{height:clamp(190px,30vw,300px);margin:1.25rem 0 2.4rem}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart polyline,.chart .pt{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.chart:not(.tall) polyline{stroke-width:2.2}
+.chart .s-upa{stroke:var(--upa)}.chart .s-nda{stroke:var(--nda)}
+.chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
+.chart .m-upa{stroke:var(--upa)}.chart .m-nda{stroke:var(--nda)}
+.labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}
+.yt{position:absolute;left:.4rem;transform:translateY(-120%)}
+.xt{position:absolute;bottom:-1.5rem;transform:translateX(-50%)}.xt.first{transform:translateX(.4rem)}.xt.end{transform:translateX(calc(-100% - .4rem))}
+.src{font-size:.78rem;color:var(--muted);padding:0 clamp(.75rem,3vw,2.5rem) 0;margin-top:0;margin-bottom:2.5rem;
+width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
+.idx{display:grid;gap:1.25rem;grid-template-columns:1fr;margin-top:1rem}
+@media (min-width:760px){.idx{grid-template-columns:repeat(3,1fr)}}
+.idx .big{font-weight:900;font-stretch:75%;font-size:2.6rem;line-height:1}
+.idx .big small{font-size:.35em;font-weight:700;font-stretch:100%;margin-left:.2em}
+.idx p{font-size:.95rem}
+.more{display:grid;grid-template-columns:1fr;margin-top:1rem;border-top:2px solid var(--ink)}
+@media (min-width:640px){.more{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+.more a{display:block;padding:.8rem 0;border-bottom:1px solid var(--line);text-decoration:none}
+.more a strong{display:block;font-weight:800;font-stretch:112.5%}
+.more a span{display:block;font-size:.85rem;color:var(--muted)}
+.more a:hover strong{text-decoration:underline}
+.interest{border-left:6px solid var(--ink);padding-left:1rem;margin-top:.6rem}
+.foot{border-top:2px solid var(--ink);font-size:.8rem}
+.foot .l,.foot .r{padding-top:1.1rem;padding-bottom:2.5rem}
+.foot .note{margin-top:.6rem;color:var(--muted);max-width:40rem}
+@media (max-width:600px){body{font-size:1rem}.top nav{gap:.1rem .8rem;font-size:.8rem}.m .lab{font-size:.7rem}
+.src{width:auto;text-align:left}}
+/* On a phone the split stays only where it carries data (the era header, the
+   scorecard rows, the charts). Text runs on plain paper, edge to edge, because
+   a bordered panel at full width left two 12px slivers of field that meant
+   nothing. */
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+
+body{background:var(--paper)}
+.top,.eras,.m,.chart.tall{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.slab{border:0;border-top:2px solid var(--ink);width:auto;margin:0;padding:1.6rem 1rem 1.4rem}
+.chart.tall{height:220px;margin:0 0 1.9rem;border-top:2px solid var(--ink)}
+.src{background:var(--paper);margin:0;padding:.2rem 1rem 1.6rem;text-align:left;width:auto}
+.rows{border-bottom:2px solid var(--ink)}
+.idx{gap:0;border-top:2px solid var(--ink);margin-top:1.2rem}
+.idx>div{display:grid;grid-template-columns:5.6rem 1fr;column-gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.idx>div>.kicker,.idx>div>.big{grid-column:1}
+.idx>div>p:last-child{grid-column:2;grid-row:1/span 2;font-size:.9rem;line-height:1.45}
+.idx .big{font-size:1.9rem}
+.idx .big small{display:block;margin:.2rem 0 0;font-size:.62rem}
+.count{font-size:3.4rem}
+h1{font-size:1.85rem}
+.foot{background:var(--paper)}
+}
+@media print{.top nav,.more{display:none}body{background:none}.slab{border-width:1px}}
+
+.cards{display:grid;grid-template-columns:1fr;border-top:2px solid var(--ink);margin-top:1rem}
+@media (min-width:700px){.cards{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+.cards a{display:block;padding:.9rem 0 1rem;border-bottom:1px solid var(--line);text-decoration:none}
+.cards a strong{display:block;font-weight:800;font-stretch:112.5%;font-size:1.05rem}
+.cards a span{display:block;font-size:.88rem;color:var(--muted);margin-top:.15rem}
+.cards a:hover strong{text-decoration:underline}
+.series h2{font-size:clamp(1.25rem,2.6vw,1.6rem)}
+.stat{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin:.6rem 0 .2rem;font-size:.92rem}
+.stat b{font-weight:900;font-stretch:75%;font-size:1.9rem;line-height:1;display:block}
+.stat div{min-width:7rem}
+details.about{margin-top:.8rem;font-size:.86rem;color:var(--ink-soft)}
+details.about summary{cursor:pointer;font-weight:700;color:var(--ink)}
+details.about p{margin-top:.5rem}
+.tw{overflow-x:auto;margin-top:1rem}
+table.data{border-collapse:collapse;width:100%;font-size:.86rem;font-variant-numeric:tabular-nums}
+table.data th,table.data td{text-align:right;padding:.4rem .5rem;border-bottom:1px solid var(--line);white-space:nowrap}
+table.data th:first-child,table.data td:first-child{text-align:left;white-space:normal;min-width:11rem}
+table.data thead button{all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:.2em}
+table.data thead th{font-size:.7rem;font-weight:800;font-stretch:112.5%;letter-spacing:.06em;text-transform:uppercase;
+border-bottom:2px solid var(--ink);color:var(--ink)}
+table.data td.na{color:var(--muted)}
+.crumb{font-size:.8rem;color:var(--muted);margin-bottom:.8rem}
+.crumb a{color:var(--ink-soft);font-weight:700}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top split">
+<div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
+<nav class="r" aria-label="Site" data-dyslexia-slot>
+<a href="/">Overview</a><a href="/explore/">Data</a><a href="/analysis/">Analyses</a>
+<a href="/downloads/paper.html">Paper</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a>
+</nav>
+</header>
+<main id="main">
+<div class="slab"><p class="crumb"><a href="/explore/">Data</a> &rsaquo; The states</p><p class="kicker">Sixteen states</p><h1>The states</h1><p class="dek">Income, population, representation and fiscal transfers for the sixteen largest states, which hold about 90% of India's projected 2026 population and 477 of the 543 Lok Sabha seats. Select a column heading to sort by it.</p></div><div class="slab"><div class="tw" tabindex="0" role="region" aria-label="State table, scrolls sideways"><table class="data sortable" id="states"><thead><tr><th scope="col"><button type="button" data-col="0">State</button></th><th scope="col"><button type="button" data-col="1">Region</button></th><th scope="col"><button type="button" data-col="2">Income per person, ₹ (2023-24)</button></th><th scope="col"><button type="button" data-col="3">Lok Sabha seats</button></th><th scope="col"><button type="button" data-col="4">Population 2026, crore</button></th><th scope="col"><button type="button" data-col="5">People per seat, millions</button></th><th scope="col"><button type="button" data-col="6">Fertility rate</button></th><th scope="col"><button type="button" data-col="7">Return per ₹100 of Union taxes</button></th><th scope="col"><button type="button" data-col="8">Projected seat change</button></th></tr></thead><tbody><tr><th scope="row">Karnataka</th><td>South</td><td data-v="346737">346,737</td><td data-v="28">28</td><td data-v="6.9">6.90</td><td data-v="2.464">2.46</td><td data-v="1.7">1.7</td><td data-v="60">60</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Telangana</th><td>South</td><td data-v="346165">346,165</td><td data-v="17">17</td><td data-v="3.86">3.86</td><td data-v="2.271">2.27</td><td data-v="1.8">1.8</td><td class="na" data-v="">.</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Haryana</th><td>North</td><td data-v="325759">325,759</td><td data-v="10">10</td><td data-v="3.13">3.13</td><td data-v="3.130">3.13</td><td data-v="1.9">1.9</td><td class="na" data-v="">.</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Tamil Nadu</th><td>South</td><td data-v="313329">313,329</td><td data-v="39">39</td><td data-v="7.75">7.75</td><td data-v="1.987">1.99</td><td data-v="1.8">1.8</td><td data-v="60">60</td><td data-v="-8">-8</td></tr><tr><th scope="row">Gujarat</th><td>West</td><td data-v="299861">299,861</td><td data-v="26">26</td><td data-v="7.41">7.41</td><td data-v="2.850">2.85</td><td data-v="1.9">1.9</td><td data-v="50">50</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Maharashtra</th><td>West</td><td data-v="285290">285,290</td><td data-v="48">48</td><td data-v="12.93">12.93</td><td data-v="2.694">2.69</td><td data-v="1.7">1.7</td><td data-v="30">30</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Kerala</th><td>South</td><td data-v="281269">281,269</td><td data-v="20">20</td><td data-v="3.62">3.62</td><td data-v="1.810">1.81</td><td data-v="1.8">1.8</td><td class="na" data-v="">.</td><td data-v="-8">-8</td></tr><tr><th scope="row">Andhra Pradesh</th><td>South</td><td data-v="239311">239,311</td><td data-v="25">25</td><td data-v="5.37">5.37</td><td data-v="2.148">2.15</td><td data-v="1.7">1.7</td><td class="na" data-v="">.</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Punjab</th><td>North</td><td data-v="201062">201,062</td><td data-v="13">13</td><td data-v="3.13">3.13</td><td data-v="2.408">2.41</td><td data-v="1.6">1.6</td><td class="na" data-v="">.</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Rajasthan</th><td>North</td><td data-v="167027">167,027</td><td data-v="25">25</td><td data-v="8.36">8.36</td><td data-v="3.344">3.34</td><td data-v="2.0">2.0</td><td class="na" data-v="">.</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Odisha</th><td>East</td><td data-v="155125">155,125</td><td data-v="21">21</td><td data-v="4.47">4.47</td><td data-v="2.129">2.13</td><td data-v="1.8">1.8</td><td class="na" data-v="">.</td><td class="na" data-v="">.</td></tr><tr><th scope="row">West Bengal</th><td>East</td><td data-v="150221">150,221</td><td data-v="42">42</td><td data-v="10.05">10.05</td><td data-v="2.393">2.39</td><td data-v="1.6">1.6</td><td data-v="120">120</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Madhya Pradesh</th><td>North</td><td data-v="141756">141,756</td><td data-v="29">29</td><td data-v="8.97">8.97</td><td data-v="3.093">3.09</td><td data-v="2.0">2.0</td><td data-v="244">244</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Jharkhand</th><td>North</td><td data-v="106529">106,529</td><td data-v="14">14</td><td data-v="4.1">4.10</td><td data-v="2.929">2.93</td><td data-v="2.3">2.3</td><td class="na" data-v="">.</td><td class="na" data-v="">.</td></tr><tr><th scope="row">Uttar Pradesh</th><td>North</td><td data-v="98048">98,048</td><td data-v="80">80</td><td data-v="24.29">24.29</td><td data-v="3.036">3.04</td><td data-v="2.4">2.4</td><td data-v="200">200</td><td data-v="11">+11</td></tr><tr><th scope="row">Bihar</th><td>North</td><td data-v="62204">62,204</td><td data-v="40">40</td><td data-v="13.23">13.23</td><td data-v="3.308">3.31</td><td data-v="3.0">3.0</td><td data-v="510">510</td><td data-v="10">+10</td></tr></tbody></table></div><h2 style="margin-top:1.6rem">What each column is</h2><p>Per-capita NSDP 2023-24 at current prices, 2011-12 series (MoSPI state accounts via api.mospi.gov.in, retrieved 10 October 2026; Haryana, which that table does not carry, from the Economic Survey 2023-24 Statistical Appendix Table 1.11A, as on 15 March 2024); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); population as on 1 March 2026 from the National Commission on Population, &#x27;Population Projections for India and States 2011-2036&#x27; (Report of the Technical Group on Population Projections, Registrar General of India), Table 21, converted from thousands to crore; 2011 Census population shown alongside for the comparison; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of India&#x27;s projected 2026 population and 477 of 543 Lok Sabha seats.</p><p>Representation here is computed on the official 2026 projection. The 2011 census is fifteen years stale and would understate how unequal representation has become. The projection is the government&#x27;s own and is the best available number, but it is a projection because the 2021 census was postponed and the next enumeration is not due until February 2027. A census would replace it with a count. This project&#x27;s argument applies here as well, because even measuring the fairness of a vote now depends on an estimate.</p><p><strong>Return per ₹100 of Union taxes.</strong> Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals&#x27; Congress. Available for 8 of the 16 states. This project&#x27;s author is a former Manmohan Singh Fellow of the AIPC, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as the AIPC&#x27;s own estimates, which this project has not been able to trace to a published table. Rich states financing poorer ones is how the system is designed to work.</p><p><strong>Projected seat change.</strong> Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them.</p></div><script>(function(){var t=document.getElementById('states');var b=t.tBodies[0];var dir={};
+t.querySelectorAll('thead button').forEach(function(btn){btn.addEventListener('click',function(){
+var c=+btn.dataset.col;dir[c]=!dir[c];var rows=[].slice.call(b.rows);rows.sort(function(x,y){
+var a=x.cells[c],z=y.cells[c];var va=a.dataset.v!==undefined?a.dataset.v:a.textContent,vb=z.dataset.v!==undefined?z.dataset.v:z.textContent;
+if(va===''&&vb!=='')return 1;if(vb===''&&va!=='')return -1;var na=parseFloat(va),nb=parseFloat(vb);
+var r=(!isNaN(na)&&!isNaN(nb))?na-nb:String(va).localeCompare(String(vb));return dir[c]?r:-r;});
+rows.forEach(function(r){b.appendChild(r);});t.querySelectorAll('thead th').forEach(function(th,i){
+th.setAttribute('aria-sort',i===c?(dir[c]?'ascending':'descending'):'none');});});});})();</script>
+</main>
+<footer class="foot split">
+<div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
+<div class="r"><p><a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
+<p class="note">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
+</footer>
+<script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
+</body>
+</html>
