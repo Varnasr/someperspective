@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CANONICAL INDEX COMPUTATION (v2) — single source of truth for SSI, FCI, DQI.
+CANONICAL INDEX COMPUTATION (v2): single source of truth for SSI, FCI, DQI.
 India Political Economy Assessment, 2004-2026 (UPA + NDA, one methodology).
 
 v2 rebuild goals (vs v1):
@@ -21,7 +21,7 @@ YEARS = list(range(2004, 2027))  # 2004..2026 inclusive
 
 
 # ---------------------------------------------------------------------------
-# 1. STATISTICAL SUPPRESSION INDEX (SSI) — scale 0-10
+# 1. STATISTICAL SUPPRESSION INDEX (SSI), scale 0-10
 #    SSI_t = sum_i ( weight_i * severity_it ),  severity in [0,1].
 #    Severity is graded (full suppression/discontinuation -> 1.0; delay -> ~0.3;
 #    methodology dispute -> ~0.7) and carries a persistence "scar" after an
@@ -58,7 +58,7 @@ def compute_ssi(year):
 
 
 # ---------------------------------------------------------------------------
-# 2. FISCAL CENTRALISATION INDEX (FCI) — scale 0-1 (relative)
+# 2. FISCAL CENTRALISATION INDEX (FCI), scale 0-1 (relative)
 #    FCI_t = mean(C1..C6), each component min-max-normalised over 2004-2026:
 #      C1 = minmax(cess share)              (higher cess  -> more central)
 #      C2 = 1 - minmax(devolution)          (lower devolution -> more central)
@@ -119,7 +119,7 @@ def compute_fci_series():
 
 
 # ---------------------------------------------------------------------------
-# 3. DEMOCRATIC QUALITY INDEX (DQI) — scale 0-1
+# 3. DEMOCRATIC QUALITY INDEX (DQI), scale 0-1
 #    DQI_t = (V * (FH/100) * ((180-RSF)/180) * CSI)^(1/4)
 #    Geometric mean of four PUBLISHED third-party measures:
 #      V   = V-Dem Liberal Democracy Index (0-1)
@@ -128,7 +128,7 @@ def compute_fci_series():
 #      CSI = V-Dem Core Civil Society Index (0-1)   <- NEW
 #    CSI is added because press-freedom rank barely differentiates the eras
 #    (India was mediocre throughout), whereas civil-society space collapsed
-#    sharply under NDA — the dimension a headline LDI flattens. (V-Dem also
+#    sharply under NDA, the dimension a headline LDI flattens. (V-Dem also
 #    reclassified India from electoral democracy to electoral autocracy in 2019.)
 # ---------------------------------------------------------------------------
 # year: [vdem_ldi, freedom_house_100, rsf_rank, vdem_civil_society]
