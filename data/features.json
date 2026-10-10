@@ -76,7 +76,7 @@
     "category": "Democracy",
     "title": "India ranks 157th of 180 on press freedom",
     "body": "The RSF 2026 World Press Freedom Index, released 30 April, dropped India six places from 151 in 2025. India now sits below Pakistan (153), Bangladesh (152), and Nepal (87). RSF cites concentrated ownership, violence against journalists, and overt political alignment of outlets.",
-    "takeaway": "India's press environment is now judged worse than that of every immediate neighbour except Afghanistan.",
+    "takeaway": "India ranks below Pakistan, Bangladesh, Bhutan, Nepal, Sri Lanka and the Maldives. Of its neighbours, only Myanmar (166), Afghanistan (175) and China (178) rank lower in 2026.",
     "tab": "Deep Analysis",
     "chart": {
       "type": "bar-inv",
@@ -203,12 +203,7 @@
     "body": "The Central Bureau of Investigation arrested Manish Sisodia, then Delhi's deputy chief minister, in February 2023. The Enforcement Directorate arrested Hemant Soren in January 2024, on the day he resigned as chief minister of Jharkhand, and Arvind Kejriwal in March 2024 while he was chief minister of Delhi. No government agency publishes a count of arrests of opposition politicians, and this project holds no case-by-case register, so it states no annual number.",
     "takeaway": "The arrest of a sitting chief minister in 2024 had no precedent. A yearly count would need a published case list, which does not yet exist.",
     "tab": "Deep Analysis",
-    "chart": {
-      "type": "csv-line",
-      "csv": "incarceration",
-      "color": "#a855f7",
-      "unit": "cases"
-    }
+    "chart": null
   },
   {
     "slug": "exam-disruption-events-have-multiplied",
@@ -217,12 +212,7 @@
     "body": "Parliament passed the Public Examinations (Prevention of Unfair Means) Act in February 2024, and it came into force in June 2024. That month the Ministry of Education cancelled the June 2024 UGC-NET a day after it was held, on information that its integrity had been compromised, and the CBI took up the alleged leak of the NEET-UG paper. In July 2024 the Supreme Court declined to order a NEET-UG re-test, finding no evidence of a systemic breach. No agency publishes an annual count of exam leaks or cancellations, so this card states no yearly number.",
     "takeaway": "The 2024 law and the cancellations show that leaks reached national examinations. Measuring how often they happen would need a published list of events.",
     "tab": "Deep Analysis",
-    "chart": {
-      "type": "csv-line",
-      "csv": "education",
-      "color": "#f97316",
-      "unit": "events"
-    }
+    "chart": null
   },
   {
     "slug": "open-defecation-free-coverage-is-a-textbook-logistic-curve",

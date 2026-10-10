@@ -11,7 +11,7 @@ This repository is the complete replication package for **Some Perspective: Indi
 Everything the site publishes is generated from `data.json` by scripts in this repository. The site is a static build with no server, so what is committed here is what ships.
 
 **Research initiated:** March 2024
-**Current version:** v2.51.0 (10 October 2026)
+**Current version:** v2.52.0 (10 October 2026)
 **Interactive site:** [someperspective.info](https://someperspective.info)
 **Guided walkthrough:** [someperspective.info/walkthrough](https://someperspective.info/walkthrough/), 18 slides, ~10 minutes
 **Working paper:** [Growth Without Accountability](https://someperspective.info/downloads/paper.html) · [PDF](https://someperspective.info/downloads/paper.pdf)
@@ -233,7 +233,7 @@ Current score: 0.28 (2026), down from 0.49 (2014), against a UPA average of 0.57
 
 1. **Employment elasticity:** Defined as ε = (%ΔEmployment) / (%ΔGDP). The project does not estimate it and reports published estimates with their source, period and method (technical appendix A5)
 2. **Inequality measurement:** Income and wealth shares are taken as published by the World Inequality Lab (Bharti, Chancel, Piketty and Somanchi 2024, Working Paper 2024/09), which combines tax data, surveys and national accounts. The project does not re-estimate them
-3. **Robustness:** Trends tested across different base years, deflators, and time periods
+3. **Robustness:** The three indices are recomputed with alternative weights and specifications (technical appendix A7)
 
 ## Replication instructions
 
