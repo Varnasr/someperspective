@@ -6,11 +6,11 @@
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#b4530e" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.52.0">
+    <meta name="version" content="2.53.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability (democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality), India is measurably worse under NDA (2014-26) than under UPA (2004-14). Inflation is the one exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -213,7 +213,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.52.0">
+    <link rel="stylesheet" href="/styles.css?v=2.53.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -233,8 +233,8 @@
     <!-- Google Fonts (preconnect + swap for non-blocking load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <style>
         /* Respect users who ask for less motion: disable smooth scroll,
@@ -253,48 +253,46 @@
            Warm paper canvas · serif display type · burnt-amber + teal accent
            ============================================================ */
         :root {
-            --paper:    #f4f1ea;
-            --paper-2:  #ece7dc;
+            --paper:    #f5f5f2;
+            --paper-2:  #e9e9e5;
             --surface:  #ffffff;
-            --surface-2:#faf7f1;
-            --ink:      #1b1b22;
-            --ink-soft: #34343f;
-            --muted:    #6b6b78;
-            --line:     rgba(27,27,34,.10);
-            --line-2:   rgba(27,27,34,0.06);
-            --accent:   #a34a0c;   /* burnt amber */
-            --accent-2: #155e75;   /* deep teal */
+            --surface-2:#ededea;
+            --ink:      #0d0e12;
+            --ink-soft: #26282f;
+            --muted:    #50545e;
+            --line:     rgba(13,14,18,.14);
+            --line-2:   rgba(13,14,18,.07);
+            --accent:   #0d0e12;   /* ink: controls and emphasis */
+            --accent-2: #0b5a50;   /* UPA teal */
             /* Ink for text painted ON the accents. An accent that is dark on a
                light page and light on a dark one cannot carry one ink: white on
                the dark-theme amber measures 2.26:1. */
             --on-accent:   #ffffff;
             --on-accent-2: #ffffff;
             --gold:     #c79a3a;
-            --brand-grad: linear-gradient(115deg, #b4530e 0%, #d97706 48%, #0e7490 100%);
-            --shadow-sm: 0 1px 2px rgba(20,20,30,0.05);
-            --shadow:    0 1px 2px rgba(20,20,30,0.05), 0 14px 32px -18px rgba(20,20,30,0.28);
-            --shadow-lg: 0 24px 60px -28px rgba(20,20,30,0.40);
-        }
+            --brand-grad: linear-gradient(90deg, #0b5a50 0 43.48%, #5a2a8c 43.48% 100%);
+            --shadow-sm: none;
+            --shadow:    none;
+            --shadow-lg: none;--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef;}
         .dark {
-            --paper:    #0b0c11;
-            --paper-2:  #11131a;
-            --surface:  #161922;
-            --surface-2:#1c2029;
-            --ink:      #edeff5;
-            --ink-soft: #d3d7e0;
-            --muted:    #99a0b1;
-            --line:     rgba(255,255,255,0.09);
-            --line-2:   rgba(255,255,255,0.05);
-            --accent:   #fb923c;
-            --accent-2: #22d3ee;
-            --on-accent:   #1b1b22;
-            --on-accent-2: #1b1b22;
+            --paper:    #0c0d10;
+            --paper-2:  #121419;
+            --surface:  #15171c;
+            --surface-2:#1c1f25;
+            --ink:      #f2f2ef;
+            --ink-soft: #d5d7dd;
+            --muted:    #a9adb8;
+            --line:     rgba(242,242,239,.16);
+            --line-2:   rgba(242,242,239,.07);
+            --accent:   #f2f2ef;
+            --accent-2: #86d8ca;
+            --on-accent:   #0c0d10;
+            --on-accent-2: #0c0d10;
             --gold:     #e3c068;
-            --brand-grad: linear-gradient(115deg, #fb923c 0%, #fbbf24 48%, #22d3ee 100%);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-            --shadow:    0 1px 2px rgba(0,0,0,0.4), 0 16px 36px -18px rgba(0,0,0,0.7);
-            --shadow-lg: 0 28px 70px -28px rgba(0,0,0,0.8);
-        }
+            --brand-grad: linear-gradient(90deg, #86d8ca 0 43.48%, #c9adf3 43.48% 100%);
+            --shadow-sm: none;
+            --shadow:    none;
+            --shadow-lg: none;--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630;}
 
         [x-cloak] { display: none !important; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -427,7 +425,7 @@
            accent is ink there and measures 3.55:1 on #0f172b, so the band takes
            the dark-theme values. A token that must be dark on light and light on
            dark cannot be one value. */
-        footer.bg-slate-900 { --accent: #fb923c; --accent-2: #22d3ee; }
+        footer.bg-slate-900 { --accent: #f2f2ef; --accent-2: #86d8ca; }
         /* The same trap one level down: each chip is its own hue as ink on an
            18% tint of itself, so an ink chosen for a white page lands on a
            near-black card at ~2.1:1. The dark theme takes the light steps. */
@@ -636,6 +634,61 @@
                is determined by the flow of text, padding them to 44px would break
                the line spacing of every paragraph that contains one. */
         }
+
+        /* ============================================================
+           SPLIT REDESIGN (v2.53). The site is divided where the governments
+           changed: the UPA field left of the seam at 10/23 of the width, the
+           NDA field right of it. This layer flattens the older card system
+           into slabs (no radius, no shadow, one type family) without
+           touching the dashboard's markup or behaviour.
+           ============================================================ */
+        :root { --seam: 43.4783%; }
+        body {
+            font-family: Archivo, "Helvetica Neue", Arial, system-ui, sans-serif !important;
+            background: linear-gradient(90deg, var(--field-upa) 0, var(--field-upa) calc(var(--seam) - 1px),
+                var(--ink) calc(var(--seam) - 1px), var(--ink) calc(var(--seam) + 1px),
+                var(--field-nda) calc(var(--seam) + 1px), var(--field-nda) 100%) fixed !important;
+        }
+        h1, h2, h3, h4, .font-display, .verdict, .stat-card .text-2xl, .stat-card .text-3xl,
+        [class*="font-serif"] {
+            font-family: Archivo, "Helvetica Neue", Arial, system-ui, sans-serif !important;
+            font-stretch: 87.5%; letter-spacing: -0.01em;
+        }
+        *, *::before, *::after { border-radius: 0 !important; }
+        .rounded-full, .rounded-full::before, .rounded-full::after { border-radius: 9999px !important; }
+        input[type="range"]::-webkit-slider-thumb { border-radius: 50% !important; }
+        input[type="range"]::-moz-range-thumb { border-radius: 50% !important; }
+        [class*="shadow"] { box-shadow: none !important; }
+        .bg-white, .dark .dark\:bg-gray-800, .dark .dark\:bg-gray-900 { background-color: var(--surface) !important; }
+        .bg-white\/80, .dark .dark\:bg-gray-800\/80, .dark .dark\:bg-gray-800\/50,
+        .bg-gray-50, .bg-gray-100,
+        .bg-blue-50, .bg-purple-50, .bg-red-50, .bg-orange-50, .bg-yellow-50, .bg-green-50, .bg-amber-50,
+        .bg-red-100, .bg-blue-100,
+        .dark .dark\:bg-blue-900\/20, .dark .dark\:bg-purple-900\/20, .dark .dark\:bg-red-900\/20,
+        .dark .dark\:bg-orange-900\/20, .dark .dark\:bg-yellow-900\/20, .dark .dark\:bg-green-900\/20,
+        .dark .dark\:bg-amber-900\/20, .dark .dark\:bg-red-900\/30, .dark .dark\:bg-blue-900\/30 {
+            background-color: var(--surface-2) !important;
+        }
+        [class*="from-"][class*="-50"], .dark [class*="dark:from-"] {
+            background-image: none !important; background-color: var(--surface-2) !important;
+        }
+        [class*="bg-gradient"][class*="from-"][class*="-600"] {
+            background-image: none !important; background-color: var(--accent) !important; color: var(--on-accent) !important;
+        }
+        [class*="bg-gradient"][class*="from-"][class*="-600"] * { color: inherit !important; }
+        .border-gray-100, .border-gray-200, .dark .dark\:border-gray-700, .dark .dark\:border-gray-700\/50,
+        .dark .dark\:border-gray-600, .dark .dark\:border-gray-800 { border-color: var(--line) !important; }
+        .bg-white.border, .bg-white[class*="border-gray"] { border: 2px solid var(--ink) !important; }
+        /* Tailwind inks that clear 4.5:1 on white and fall just short on the
+           grey panels above, measured with axe tab by tab. Light theme only;
+           the dark variants already clear. */
+        html:not(.dark) .text-blue-600 { color: #1d4ed8; }
+        html:not(.dark) .text-orange-700 { color: #9f2d00; }
+        html:not(.dark) .text-yellow-700 { color: #894b00; }
+        html:not(.dark) .text-green-700 { color: #016630; }
+        /* A grey with no dark variant was 2.37:1 on the dark card. */
+        .dark .text-gray-600:not([class*="dark:text-"]) { color: var(--muted); }
+        body > nav.sticky { background: var(--paper) !important; border-bottom: 2px solid var(--ink) !important; }
     </style>
 </head>
 
@@ -726,13 +779,13 @@
     </noscript>
     
     <!-- Header (not sticky: on mobile its full height would hide the nav below it) -->
-    <header class="relative z-30 border-b" style="background:color-mix(in srgb, var(--surface) 84%, transparent); border-color:var(--line);">
+    <header class="relative z-30 border-b" style="background:var(--paper); border-color:var(--ink); border-bottom-width:2px;">
         <div class="brand-strip"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0">
                 <div class="flex-1 min-w-0">
                     <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-none">
-                        <span class="gradient-text">Some Perspective</span>
+                        <a href="/" style="text-decoration:none"><span class="gradient-text">Some Perspective</span></a>
                     </h1>
                     <p class="text-xs sm:text-sm mt-1 font-medium tracking-wide" style="color:var(--muted);">
                         Reading the Indian Economy: <span class="italic">how the numbers are made, and who decides what counts</span>
@@ -1968,7 +2021,7 @@
                     <span class="src-key q-derived">Derived</span>
                     <span class="src-key q-compiled">Compiled</span>
                 </div>
-                <div class="overflow-x-auto">
+                <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Source freshness table, scrolls sideways">
                     <table class="w-full text-sm" style="border-collapse:collapse;">
                         <thead>
                             <tr style="border-bottom:1px solid var(--line); color:var(--muted);" class="text-left text-xs uppercase tracking-wider">
@@ -2088,7 +2141,7 @@
                     <div class="space-y-4">
                         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50">
                             <h4 class="font-bold mb-2">Statistical Suppression Index (SSI)</h4>
-                            <pre class="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
+                            <pre tabindex="0" aria-label="SSI formula, scrolls sideways" class="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
 SSI_t = Σ weight_i × severity_it   (0-10)
 
 Weights: census 2.5, mortality 2.0, consumption 1.5,
@@ -2099,7 +2152,7 @@ scheduled delay 0.3, with decay after resolution</pre>
                         
                         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50">
                             <h4 class="font-bold mb-2">Fiscal Centralization Index (FCI)</h4>
-                            <pre class="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
+                            <pre tabindex="0" aria-label="FCI formula, scrolls sideways" class="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
 FCI_t = mean of the components published for year t
 
 C1: Cess and surcharge share of gross tax revenue
@@ -2113,7 +2166,7 @@ C1-C4 are min-max normalised over the years published.</pre>
                         
                         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700/50">
                             <h4 class="font-bold mb-2">Democratic Quality Index (DQI)</h4>
-                            <pre class="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
+                            <pre tabindex="0" aria-label="DQI formula, scrolls sideways" class="text-xs bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
 DQI_t = (LDI × FH/100 × (180-RSF)/180 × CSI)^(1/4)
 
 LDI: V-Dem Liberal Democracy Index
@@ -3214,7 +3267,7 @@ A low value on any input pulls the score down.</pre>
     <footer class="bg-slate-900 text-gray-300 py-10 mt-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-8 pb-8 border-b border-slate-800">
-                <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:#fb923c;">The thesis</div>
+                <div class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:#86d8ca;">The thesis</div>
                 <p class="text-sm leading-relaxed text-gray-300">High headline growth has masked a measurable decline in the <strong class="text-white">institutions of accountability</strong> and the <strong class="text-white">income share of ordinary Indians</strong>. On <strong class="text-white" x-text="eraVerdict().worse + ' of ' + eraVerdict().total"></strong> cross-era measures India is worse under NDA (2014–26) than under UPA (2004–14). The one exception is inflation, <a href="inflation/" style="color:var(--accent);" class="underline font-semibold">and here is why that is not a policy result</a>.</p>
             </div>
             <div class="grid md:grid-cols-4 gap-8">
@@ -4051,7 +4104,7 @@ A low value on any input pulls the score down.</pre>
                     ctx.fillText('Worse under NDA than UPA on ' + v.worse + ' of ' + v.total + ' cross-era measures (inflation the exception).', 28, y); y += 28;
                     ctx.fillStyle = muted; ctx.font = '400 19px Inter, system-ui, sans-serif';
                     ctx.fillText('Source: ' + source, 28, y); y += 27;
-                    ctx.fillStyle = '#b4530e'; ctx.font = '600 18px Inter, system-ui, sans-serif';
+                    ctx.fillStyle = '#5a2a8c'; ctx.font = '700 18px Archivo, Helvetica Neue, Arial, sans-serif';
                     ctx.fillText(this.citationText(), 28, y);
                     const a = document.createElement('a');
                     a.href = cv.toDataURL('image/png');
@@ -4349,7 +4402,7 @@ A low value on any input pulls the score down.</pre>
                     ssi: { label: 'SSI', data: d.ssi, color: '#ec4899' },
                     fci: { label: 'FCI ×10', data: d.fci.map(v => v*10), color: '#06b6d4' },
                     dqi: { label: 'DQI ×10', data: d.dqi.map(v => v*10), color: '#f97316' },
-                    fiscalDeficit: { label: 'Fiscal Deficit (% GDP)', data: d.fiscalDeficit, color: '#0e7490' },
+                    fiscalDeficit: { label: 'Fiscal Deficit (% GDP)', data: d.fiscalDeficit, color: '#13857a' },
                     cpiInflation: { label: 'CPI Inflation (%)', data: d.cpiInflation, color: '#d97706' },
                     rupeeUSD: { label: 'Rupee (INR/USD)', data: d.rupeeUSD, color: '#9333ea' }
                 };
@@ -5398,11 +5451,11 @@ A low value on any input pulls the score down.</pre>
                     xAxis: { type: 'value', axisLabel: { fontSize: 10 } },
                     yAxis: { type: 'category', data: rows.map(r => r.state),
                         axisLabel: { fontSize: 10, formatter: v => v === sel ? '{sel|' + v + '}' : v,
-                            rich: { sel: { fontWeight: 'bold', color: '#b4530e' } } } },
+                            rich: { sel: { fontWeight: 'bold', color: '#7a4bb8' } } } },
                     series: [{
                         type: 'bar', barWidth: '64%',
                         data: rows.map(r => ({ value: r[key],
-                            itemStyle: { color: r.state === sel ? '#b4530e' : (this.darkMode ? '#475569' : '#cbd5e1') } })),
+                            itemStyle: { color: r.state === sel ? '#7a4bb8' : (this.darkMode ? '#475569' : '#cbd5e1') } })),
                         label: { show: true, position: 'right', fontSize: 9, formatter: p => fmt(p.value),
                             color: this.darkMode ? '#94a3b8' : '#64748b' }
                     }]
@@ -5432,7 +5485,7 @@ A low value on any input pulls the score down.</pre>
                         type: 'scatter',
                         symbolSize: d => d[2] === sel ? 22 : 13,
                         data: rows.map(r => [r.perCapita, r.ret, r.state]),
-                        itemStyle: { color: p => p.data[2] === sel ? '#b4530e' : (p.data[1] < 100 ? '#0e7490' : '#f59e0b') },
+                        itemStyle: { color: p => p.data[2] === sel ? '#7a4bb8' : (p.data[1] < 100 ? '#13857a' : '#f59e0b') },
                         label: { show: true, position: 'top', fontSize: 9, formatter: p => p.data[2],
                             color: this.darkMode ? '#cbd5e1' : '#475569' }
                     }],
@@ -5560,9 +5613,9 @@ A low value on any input pulls the score down.</pre>
                     yAxis: { type: 'value', name: spec.unit, scale: true, axisLabel: { fontSize: isMobile() ? 10 : 12 } },
                     series: [
                         { name: 'lo', type: 'line', data: loBand, stack: 'band', lineStyle: { opacity: 0 }, symbol: 'none', tooltip: { show: false }, silent: true },
-                        { name: 'Uncertainty band', type: 'line', data: hiDelta, stack: 'band', lineStyle: { opacity: 0 }, symbol: 'none', areaStyle: { color: '#0e7490', opacity: 0.15 }, tooltip: { show: false }, silent: true },
+                        { name: 'Uncertainty band', type: 'line', data: hiDelta, stack: 'band', lineStyle: { opacity: 0 }, symbol: 'none', areaStyle: { color: '#13857a', opacity: 0.15 }, tooltip: { show: false }, silent: true },
                         { name: 'Observed', type: 'line', data: obsLine, smooth: true, symbol: 'circle', symbolSize: 5, lineStyle: { width: 2.5, color: this.darkMode ? '#e2e8f0' : '#1f2937' }, itemStyle: { color: this.darkMode ? '#e2e8f0' : '#1f2937' } },
-                        { name: 'Projected (central)', type: 'line', data: centralLine, smooth: true, symbol: 'emptyCircle', symbolSize: 5, lineStyle: { width: 2.5, type: 'dashed', color: '#b4530e' }, itemStyle: { color: '#b4530e' } }
+                        { name: 'Projected (central)', type: 'line', data: centralLine, smooth: true, symbol: 'emptyCircle', symbolSize: 5, lineStyle: { width: 2.5, type: 'dashed', color: '#7a4bb8' }, itemStyle: { color: '#7a4bb8' } }
                     ]
                 }, true);
             },
@@ -5575,7 +5628,7 @@ A low value on any input pulls the score down.</pre>
                 const baseYear = d.years[li];
                 const horizon = this.forecastSpec.horizonYear || 2030;
                 const fyears = []; for (let y = baseYear; y <= horizon; y++) fyears.push(y);
-                const colors = { reform: '#22c55e', baseline: '#0e7490', stress: '#ef4444' };
+                const colors = { reform: '#22c55e', baseline: '#13857a', stress: '#ef4444' };
                 const series = [];
                 for (const scen of ['reform','baseline','stress']) {
                     // Precompute each indicator's path once for this scenario.
@@ -5623,7 +5676,7 @@ A low value on any input pulls the score down.</pre>
                         yAxis: { type: 'value', name: '%', min: 0,
                             axisLine: { show: false },
                             splitLine: { lineStyle: { color: this.darkMode ? '#1e293b' : '#f1f5f9' } } },
-                        visualMap: { show: false, dimension: 1, pieces: [{ gt: 6, color: '#ef4444' }, { gt: 2, lte: 6, color: '#22c55e' }, { lte: 2, color: '#f59e0b' }], outOfRange: { color: '#0e7490' } },
+                        visualMap: { show: false, dimension: 1, pieces: [{ gt: 6, color: '#ef4444' }, { gt: 2, lte: 6, color: '#22c55e' }, { lte: 2, color: '#f59e0b' }], outOfRange: { color: '#13857a' } },
                         series: [{ name: 'CPI inflation', type: 'line', data: d.cpiInflation, smooth: true, symbol: 'circle', symbolSize: 5, lineStyle: { width: 3 },
                             markArea: { silent: true, itemStyle: { color: 'rgba(34,197,94,0.08)' }, data: [[{ yAxis: 2 }, { yAxis: 6 }]] } }]
                     }, true);
@@ -5640,8 +5693,8 @@ A low value on any input pulls the score down.</pre>
                         xAxis: { type: 'category', data: cd.years },
                         yAxis: { type: 'value', name: 'GDP per capita (USD)' },
                         series: [
-                            { name: 'India', type: 'line', data: cd.india, smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { width: 3, color: '#b4530e' }, itemStyle: { color: '#b4530e' }, areaStyle: { color: '#b4530e', opacity: 0.08 } },
-                            { name: 'China', type: 'line', data: cd.china, smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { width: 3, color: '#0e7490' }, itemStyle: { color: '#0e7490' }, areaStyle: { color: '#0e7490', opacity: 0.08 } }
+                            { name: 'India', type: 'line', data: cd.india, smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { width: 3, color: '#7a4bb8' }, itemStyle: { color: '#7a4bb8' }, areaStyle: { color: '#7a4bb8', opacity: 0.08 } },
+                            { name: 'China', type: 'line', data: cd.china, smooth: true, symbol: 'circle', symbolSize: 6, lineStyle: { width: 3, color: '#13857a' }, itemStyle: { color: '#13857a' }, areaStyle: { color: '#13857a', opacity: 0.08 } }
                         ]
                     }, true);
                 }
@@ -5657,8 +5710,8 @@ A low value on any input pulls the score down.</pre>
                         xAxis: { type: 'category', data: sectors.map(s => s.sector) },
                         yAxis: { type: 'value', name: '%', max: 60 },
                         series: [
-                            { name: 'Share of output (GVA)', type: 'bar', data: sectors.map(s => s.gva), itemStyle: { color: '#0e7490', borderRadius: [4,4,0,0] }, barGap: '10%' },
-                            { name: 'Share of jobs', type: 'bar', data: sectors.map(s => s.emp), itemStyle: { color: '#b4530e', borderRadius: [4,4,0,0] } }
+                            { name: 'Share of output (GVA)', type: 'bar', data: sectors.map(s => s.gva), itemStyle: { color: '#13857a', borderRadius: [4,4,0,0] }, barGap: '10%' },
+                            { name: 'Share of jobs', type: 'bar', data: sectors.map(s => s.emp), itemStyle: { color: '#7a4bb8', borderRadius: [4,4,0,0] } }
                         ]
                     }, true);
                 }
@@ -5715,7 +5768,7 @@ A low value on any input pulls the score down.</pre>
                 //    what "Synthetic India" actually is, and the main line of attack on it.
                 const dc = this.getChart('grierDonorChart');
                 if (dc && Array.isArray(sc.incomeDonors)) {
-                    const palette = ['#b4530e', '#0e7490', '#a16207', '#6d28d9', '#15803d'];
+                    const palette = ['#7a4bb8', '#13857a', '#a16207', '#6d28d9', '#15803d'];
                     dc.setOption({
                         ...baseOpts(this.darkMode),
                         title: chartTitle('What "Synthetic India" is made of (income test)', this.darkMode),

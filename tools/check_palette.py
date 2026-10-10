@@ -29,10 +29,6 @@ EXEMPT = {
     "downloads/research-package.html":
         "its own red/white print scheme, pinned light on purpose (it is written to be "
         "printed), so it has no dark block; its light pairs are still measured",
-    "index.html":
-        "the front page carries the split-page redesign (UPA field, NDA field) ahead of the "
-        "other pages; its pairs are measured with --surface as the UPA field and --surface-2 "
-        "as the NDA field. Remove this exemption when the rest of the site moves over",
     "downloads/paper.html":
         "the paper view is deliberately white rather than cream; everything else matches",
 }
@@ -44,6 +40,16 @@ INKS = [
     ("--muted", "--paper"), ("--muted", "--surface"), ("--muted", "--surface-2"),
     ("--accent", "--paper"), ("--accent", "--surface"), ("--accent", "--surface-2"),
     ("--accent-2", "--paper"), ("--accent-2", "--surface"),
+    # The split pages: each side's ink on its own field, and the text inks on
+    # both fields, because body text and labels sit directly on them.
+    ("--ink", "--field-upa"), ("--ink", "--field-nda"),
+    ("--ink-soft", "--field-upa"), ("--ink-soft", "--field-nda"),
+    ("--muted", "--field-upa"), ("--muted", "--field-nda"),
+    ("--upa", "--field-upa"), ("--nda", "--field-nda"),
+    ("--upa", "--paper"), ("--nda", "--paper"), ("--upa", "--surface"), ("--nda", "--surface"),
+    # Status inks on the downloads pages.
+    ("--good", "--paper"), ("--good", "--surface"), ("--good", "--surface-2"),
+    ("--bad", "--paper"), ("--bad", "--surface"), ("--bad", "--surface-2"),
 ]
 # (ink, fill) — the accent used the other way round.
 FILLS = [("--on-accent", "--accent"), ("--on-accent-2", "--accent-2")]

@@ -57,39 +57,61 @@ def read_json(rel):
 # as part of the site rather than as the differently-styled downloads/ docs.
 # --------------------------------------------------------------------------
 CSS = """
-:root{--paper:#f4f1ea;--surface:#ffffff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
---muted:#6b6b78;--line:rgba(27,27,34,.10);--accent:#a34a0c;--on-accent:#ffffff;--accent-2:#155e75}
-@media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--surface:#161922;--surface-2:#1c2029;
---ink:#edeff5;--ink-soft:#d3d7e0;--muted:#99a0b1;--line:rgba(255,255,255,.09);
---accent:#fb923c;--on-accent:#1b1b22;--accent-2:#22d3ee}}
+:root{--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;
+--muted:#50545e;--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef;}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#15171c;--surface-2:#1c1f25;
+--ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#a9adb8;--line:rgba(242,242,239,.16);
+--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630;}}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
-line-height:1.65;padding:2rem 1.25rem 4rem}
-.wrap{max-width:760px;margin:0 auto}
-a{color:var(--accent)}
+:root{--seam:43.4783%}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;color:var(--ink);line-height:1.6;font-size:1.0625rem;
+background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
+var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%);
+padding:0 0 4rem;overflow-x:clip}
+a{color:var(--ink);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.top{display:grid;grid-template-columns:var(--seam) 1fr;border-bottom:2px solid var(--ink);align-items:center}
+.top>*{padding:.8rem clamp(.75rem,2.5vw,2rem)}
+.top .l{text-align:right}
+.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
+.top nav a{text-decoration:none;padding:.3rem 0}
+.top nav a:hover{text-decoration:underline}
+.wrap{background:var(--paper);border:2px solid var(--ink);width:min(48rem,calc(100% - 1.5rem));
+margin:2.5rem 0 0 clamp(.75rem,calc(var(--seam) - 24rem),100%);padding:clamp(1.2rem,3.5vw,2.4rem)}
 .crumb{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem}
-.crumb a{text-decoration:none;font-weight:600}
-.kicker{font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
-h1{font-family:Fraunces,Georgia,serif;font-size:2rem;line-height:1.2;margin:.4rem 0 .9rem;color:var(--ink)}
-h2{font-family:Fraunces,Georgia,serif;font-size:1.25rem;margin:2rem 0 .6rem}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin:1.2rem 0}
-.lede{font-size:1.05rem;color:var(--ink-soft)}
-.takeaway{border-left:4px solid var(--accent);background:var(--surface-2);padding:1rem 1.2rem;
-border-radius:0 12px 12px 0;margin:1.4rem 0;font-weight:600;color:var(--ink)}
-.meta{font-size:.8rem;color:var(--muted);margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem}
-.tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
-background:var(--surface-2);border:1px solid var(--line);color:var(--muted);padding:.2rem .55rem;border-radius:999px}
+.crumb a{font-weight:700;color:var(--ink-soft)}
+.kicker{font-size:.72rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+h1{font-weight:850;font-stretch:87.5%;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.04;letter-spacing:-.01em;margin:.5rem 0 1rem}
+h2{font-weight:800;font-stretch:87.5%;font-size:1.45rem;line-height:1.12;margin:2.2rem 0 .7rem}
+h3{font-weight:800;font-stretch:87.5%;font-size:1.15rem;margin:1.5rem 0 .5rem}
+p+p{margin-top:.85rem}
+.card{background:var(--surface);border:2px solid var(--ink);padding:1.3rem;margin:1.3rem 0}
+.lede{font-size:1.1rem;color:var(--ink-soft)}
+.takeaway{border-left:6px solid var(--ink);background:var(--surface-2);padding:1rem 1.2rem;margin:1.4rem 0;font-weight:700;color:var(--ink)}
+.meta{font-size:.8rem;color:var(--muted);margin-top:2rem;border-top:2px solid var(--ink);padding-top:1rem}
+.meta a{color:var(--ink-soft)}
+.tag{display:inline-block;font-size:.7rem;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.08em;
+background:var(--surface);border:2px solid var(--ink);color:var(--ink);padding:.15rem .5rem}
+.tag a{text-decoration:none}
 /* A tag that wraps a link is a navigation control, so on touch it needs a real
    target rather than the 13px the pill height gives it. */
 @media (pointer:coarse){.tag:has(a){padding:0}.tag a{display:block;min-height:44px;line-height:44px;padding:0 .55rem}}
-ul.list{list-style:none;margin:1rem 0}
+ul.list{list-style:none;margin:1rem 0;border-top:2px solid var(--ink)}
 ul.list li{border-bottom:1px solid var(--line);padding:.9rem 0}
-ul.list li:last-child{border-bottom:0}
-ul.list a{font-weight:700;text-decoration:none;font-size:1.02rem}
+ul.list a{font-weight:800;font-stretch:112.5%;text-decoration:none;font-size:1.02rem}
+ul.list a:hover{text-decoration:underline}
 ul.list p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
-.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:700;
-padding:.6rem 1rem;border-radius:12px;font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:800;
+font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(--ink)}
+.btn:hover{background:var(--paper);color:var(--ink)}
 .rel{font-size:.85rem}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
+@media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
+@media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
 """
 
 HEAD = """<!DOCTYPE html>
@@ -107,15 +129,18 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:image" content="{site}/og-preview.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="{site}/feed.xml">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>{css}</style>
 {ld}
 </head>
-<body><div class="wrap">
+<body>
+<header class="top"><div class="l"><a class="name" href="/">Some Perspective</a></div>
+<nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a></nav></header>
+<main class="wrap">
 """
 
-FOOT = """</div>
-<script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0.75rem" defer></script>
+FOOT = """</main>
+<script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body></html>
 """
 

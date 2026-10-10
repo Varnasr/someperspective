@@ -186,50 +186,50 @@ def render(md):
 
 
 CSS = """
-:root{--paper:#fff;--ink:#1b1b22;--ink-soft:#34343f;--muted:#6b6b78;--line:rgba(27,27,34,.10);
---accent:#a34a0c;--on-accent:#ffffff;--accent-2:#155e75;--surface-2:#faf7f1}
-@media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--ink:#edeff5;--ink-soft:#d3d7e0;
---muted:#99a0b1;--line:rgba(255,255,255,.12);--accent:#fb923c;--on-accent:#1b1b22;--accent-2:#22d3ee;--surface-2:#161922}}
+:root{--paper:#fff;--ink:#0d0e12;--ink-soft:#26282f;--muted:#50545e;--line:rgba(13,14,18,.14);
+--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--surface-2:#ededea;--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef;}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--ink:#f2f2ef;--ink-soft:#d5d7dd;
+--muted:#a9adb8;--line:rgba(242,242,239,.16);--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--surface-2:#1c1f25;--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630;}}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);
+body{background-image:linear-gradient(90deg,var(--field-upa) 0 43.48%,var(--field-nda) 43.48% 100%);background-size:100% 10px;background-repeat:no-repeat;font-family:Archivo,'Helvetica Neue',Arial,system-ui,sans-serif;background-color:var(--paper);color:var(--ink);
 line-height:1.62;font-size:17px;padding:2.5rem 1.25rem 5rem}
 .wrap{max-width:46rem;margin:0 auto}
-.hdr{border-bottom:3px solid var(--accent);padding-bottom:1.4rem;margin-bottom:2rem}
-.kicker{font-family:Inter,system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.1em;
+.hdr{border-bottom:2px solid var(--ink);padding-bottom:1.4rem;margin-bottom:2rem}
+.kicker{font-size:.7rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;
 text-transform:uppercase;color:var(--accent)}
-h1{font-family:Inter,system-ui,sans-serif;font-size:2rem;line-height:1.18;margin:.5rem 0 .7rem;font-weight:800}
-.byline{font-family:Inter,system-ui,sans-serif;color:var(--ink-soft);font-size:.95rem}
-.sub{font-family:Inter,system-ui,sans-serif;color:var(--muted);font-size:.8rem;margin-top:.5rem}
-h2{font-family:Inter,system-ui,sans-serif;font-size:1.45rem;font-weight:800;margin:2.6rem 0 .8rem;
-padding-top:.6rem;border-top:1px solid var(--line)}
-h3{font-family:Inter,system-ui,sans-serif;font-size:1.12rem;font-weight:700;margin:1.9rem 0 .5rem}
-h4{font-family:Inter,system-ui,sans-serif;font-size:1rem;font-weight:700;margin:1.4rem 0 .4rem;color:var(--ink-soft)}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.04;margin:.5rem 0 .8rem;font-weight:850;font-stretch:87.5%}
+.byline{color:var(--ink-soft);font-size:.95rem}
+.sub{color:var(--muted);font-size:.8rem;margin-top:.5rem}
+h2{font-size:1.45rem;font-weight:800;font-stretch:87.5%;margin:2.6rem 0 .8rem;
+padding-top:.6rem;border-top:2px solid var(--ink)}
+h3{font-size:1.12rem;font-weight:700;margin:1.9rem 0 .5rem}
+h4{font-size:1rem;font-weight:700;margin:1.4rem 0 .4rem;color:var(--ink-soft)}
 p{margin:0 0 1rem}
 a{color:var(--accent)}
 ul,ol{margin:0 0 1rem 1.3rem}
 li{margin:.3rem 0}
 code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.87em;background:var(--surface-2);
-padding:.1em .35em;border-radius:4px;overflow-wrap:anywhere}
+padding:.1em .35em;overflow-wrap:anywhere}
 td,th{overflow-wrap:anywhere}
-pre{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:.9rem 1.1rem;
+pre{background:var(--surface-2);border:1px solid var(--line);padding:.9rem 1.1rem;
 overflow-x:auto;margin:0 0 1.2rem}
 pre code{background:none;padding:0}
 .tw{overflow-x:auto;margin:0 0 1.4rem}
-table{border-collapse:collapse;width:100%;font-family:Inter,system-ui,sans-serif;font-size:.85rem}
+table{border-collapse:collapse;width:100%;font-size:.85rem}
 th{text-align:left;border-bottom:2px solid var(--line);padding:.5rem .6rem;font-weight:700;
 text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;color:var(--muted)}
 td{border-bottom:1px solid var(--line);padding:.5rem .6rem;vertical-align:top}
 .math{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.88rem;background:var(--surface-2);
-border-left:3px solid var(--accent-2);padding:.85rem 1.1rem;margin:0 0 1.2rem;overflow-x:auto;white-space:pre-wrap}
+border-left:6px solid var(--upa);padding:.85rem 1.1rem;margin:0 0 1.2rem;overflow-x:auto;white-space:pre-wrap}
 .m{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.9em}
 hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
-.toc{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.4rem;
-margin:0 0 2.4rem;font-family:Inter,system-ui,sans-serif;font-size:.85rem}
+.toc{background:var(--surface-2);border:2px solid var(--ink);padding:1.1rem 1.4rem;
+margin:0 0 2.4rem;font-size:.85rem}
 .toc div{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.7rem;color:var(--muted);margin-bottom:.5rem}
 .toc a{display:block;text-decoration:none;padding:.16rem 0;color:var(--ink-soft)}
 .toc a.l2{padding-left:1rem;font-size:.8rem;color:var(--muted)}
 .toc a:hover{color:var(--accent)}
-.back{font-family:Inter,system-ui,sans-serif;font-size:.85rem;margin-bottom:1.5rem}
+.back{font-size:.85rem;margin-bottom:1.5rem}
 .back a{text-decoration:none;font-weight:600}
 @media print{
   body{font-size:10.5pt;padding:0;background:#fff;color:#000}
@@ -262,7 +262,7 @@ def build_html(meta, body, toc):
 <meta property="og:url" content="https://someperspective.info/downloads/paper.html">
 <meta property="og:image" content="https://someperspective.info/og-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>{CSS}</style>
 </head>
 <body><div class="wrap">
@@ -278,7 +278,7 @@ def build_html(meta, body, toc):
 <nav class="toc"><div>Contents</div>{toc_html}</nav>
 {body}
 </div>
-<script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0.75rem" defer></script>
+<script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body></html>
 """
 

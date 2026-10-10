@@ -16,24 +16,25 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f4f1ea;--surface:#ffffff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
---muted:#6b6b78;--line:rgba(27,27,34,.10);--accent:#a34a0c;--on-accent:#ffffff;--accent-2:#155e75;--bad:#ef4444}
-@media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--surface:#161922;--surface-2:#1c2029;
---ink:#edeff5;--ink-soft:#d3d7e0;--muted:#99a0b1;--line:rgba(255,255,255,.12);
---accent:#fb923c;--on-accent:#1b1b22;--accent-2:#22d3ee}}
+:root{--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;
+--muted:#50545e;--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--bad:#b42318;--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef;}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#15171c;--surface-2:#1c1f25;
+--ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#a9adb8;--line:rgba(242,242,239,.16);
+--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--bad:#ff8a80;--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630;}}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
+body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;color:var(--ink);
+background:linear-gradient(90deg,var(--field-upa) 0 43.48%,var(--field-nda) 43.48% 100%);
 line-height:1.6;overflow:hidden;-webkit-text-size-adjust:100%}
 /* progress */
 .bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:60;transition:width .3s ease}
 /* top chrome */
 .top{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
 gap:.75rem;padding:.85rem 1rem;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);
-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.home{font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;
+backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
+.home{font-size:.82rem;font-weight:800;font-stretch:112.5%;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);text-decoration:none;
 min-height:44px;display:inline-flex;align-items:center;padding:0 .4rem}
 .count{font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 /* deck */
@@ -41,38 +42,37 @@ min-height:44px;display:inline-flex;align-items:center;padding:0 .4rem}
 .slide{min-height:100%;display:flex;align-items:center;justify-content:center;
 padding:5rem 1.15rem 6.5rem;scroll-snap-align:start}
 .deck{scroll-snap-type:y mandatory}
-.inner{width:100%;max-width:52rem}
-.kicker{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+.inner{width:100%;max-width:52rem;background:var(--paper);border:2px solid var(--ink);padding:clamp(1.1rem,3vw,2rem)}
+.kicker{font-size:.7rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
 display:block;margin-bottom:.6rem}
-h1{font-family:Fraunces,Georgia,serif;font-size:clamp(1.6rem,5.2vw,2.9rem);line-height:1.12;
-font-weight:800;margin-bottom:1rem;letter-spacing:-.01em}
+h1{font-stretch:87.5%;font-size:clamp(1.6rem,5.2vw,2.9rem);line-height:1.05;
+font-weight:850;margin-bottom:1rem;letter-spacing:-.01em}
 .body{font-size:clamp(.98rem,2.4vw,1.16rem);color:var(--ink-soft);margin-bottom:1.1rem;max-width:44rem}
 ul.pts{list-style:none;margin:1.1rem 0;display:grid;gap:.6rem;max-width:44rem}
 ul.pts li{position:relative;padding-left:1.5rem;font-size:clamp(.9rem,2.2vw,1.02rem);color:var(--ink-soft)}
 ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:.5rem;height:.5rem;
-border-radius:50%;background:var(--accent)}
-.note{margin-top:1.1rem;padding:.85rem 1rem;background:var(--surface-2);border-left:3px solid var(--accent-2);
-border-radius:0 10px 10px 0;font-size:.87rem;color:var(--muted);max-width:44rem}
+background:var(--accent)}
+.note{margin-top:1.1rem;padding:.85rem 1rem;background:var(--surface-2);border-left:6px solid var(--ink);font-size:.87rem;color:var(--muted);max-width:44rem}
 .chart{width:100%;height:min(52vh,420px);min-height:260px;margin:1.2rem 0;
-background:var(--surface);border:1px solid var(--line);border-radius:14px}
+background:var(--surface);border:2px solid var(--ink)}
 .links{display:grid;gap:.5rem;margin-top:1.2rem;max-width:36rem}
 .links a{display:flex;align-items:center;min-height:48px;padding:.7rem 1rem;background:var(--surface);
-border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;
+border:2px solid var(--ink);text-decoration:none;color:var(--ink);font-weight:700;
 font-size:.93rem;transition:border-color .15s,transform .15s}
-.links a:hover{border-color:var(--accent);transform:translateX(3px)}
-.links a::after{content:"→";margin-left:auto;color:var(--accent)}
+.links a:hover{background:var(--ink);color:var(--paper)}
+.links a::after{content:"→";margin-left:auto}
 /* bottom chrome */
 .nav{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
 gap:.6rem;padding:.8rem 1rem calc(.8rem + env(safe-area-inset-bottom));z-index:50;
 background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);
-border-top:1px solid var(--line)}
-.btn{min-height:44px;min-width:44px;padding:.55rem 1rem;border-radius:12px;border:1px solid var(--line);
+border-top:2px solid var(--ink)}
+.btn{min-height:44px;min-width:44px;padding:.55rem 1rem;border:2px solid var(--ink);
 background:var(--surface);color:var(--ink);font-weight:700;font-size:.88rem;cursor:pointer;
 display:inline-flex;align-items:center;gap:.35rem}
 .btn:disabled{opacity:.35;cursor:default}
-.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.pri{background:var(--accent);border-color:var(--ink);color:var(--on-accent)}
 .dots{display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;flex:1 1 auto;max-width:60%}
-.dot{width:9px;height:9px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0}
+.dot{width:9px;height:9px;border:0;background:var(--line);cursor:pointer;padding:0}
 .dot[aria-current="true"]{background:var(--accent);transform:scale(1.35)}
 /* a dot alone is too small to tap; give it an invisible 44px hit area */
 .dotwrap{width:24px;height:44px;display:inline-flex;align-items:center;justify-content:center;
@@ -82,13 +82,13 @@ background:none;border:0;padding:0;cursor:pointer}
 @media (max-width:520px){.dots{max-width:52%}}
 @media (prefers-reduced-motion:reduce){.deck{scroll-behavior:auto}.bar{transition:none}
 .links a{transition:none}}
-.err{max-width:34rem;margin:25vh auto;padding:1.2rem;background:var(--surface);border:1px solid var(--line);
-border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
+.err{max-width:34rem;margin:25vh auto;padding:1.2rem;background:var(--surface);border:2px solid var(--ink);
+font-size:.95rem;color:var(--ink-soft)}
 </style>
 </head>
 <body>
 <div class="bar" id="bar" style="width:0"></div>
-<header class="top">
+<header class="top" data-dyslexia-slot>
   <a class="home" href="../">← Some Perspective</a>
   <span class="count" id="count"></span>
 </header>
@@ -113,10 +113,10 @@ border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
   var dark = function () { return matchMedia('(prefers-color-scheme: dark)').matches; };
   var C = function () {
     return dark()
-      ? { ink: '#edeff5', muted: '#99a0b1', line: 'rgba(255,255,255,.14)', bg: '#161922' }
-      : { ink: '#1b1b22', muted: '#6b6b78', line: 'rgba(27,27,34,.12)', bg: '#ffffff' };
+      ? { ink: '#f2f2ef', muted: '#a9adb8', line: 'rgba(242,242,239,.16)', bg: '#15171c' }
+      : { ink: '#0d0e12', muted: '#50545e', line: 'rgba(13,14,18,.14)', bg: '#ffffff' };
   };
-  var ACCENT = '#b4530e', TEAL = '#0e7490', RED = '#ef4444', BLUE = '#3b82f6', AMBER = '#a16207';
+  var ACCENT = '#7a4bb8', TEAL = '#13857a', RED = '#ef4444', BLUE = '#3b82f6', AMBER = '#a16207';
 
   // ---- {{token}} resolution against data.json -----------------------------
   // Figures are never written into walkthrough.json as literals; they are read
@@ -152,7 +152,7 @@ border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
     var c = C();
     return {
       backgroundColor: 'transparent',
-      textStyle: { fontFamily: 'Inter, system-ui, sans-serif', color: c.ink, fontSize: 11 },
+      textStyle: { fontFamily: 'Archivo, Helvetica Neue, Arial, sans-serif', color: c.ink, fontSize: 11 },
       animationDuration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 700,
       grid: { left: 8, right: 14, top: 46, bottom: 30, containLabel: true },
       aria: { enabled: true }
@@ -171,7 +171,7 @@ border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
   var ndaBand = function () {
     return {
       silent: true,
-      itemStyle: { color: dark() ? 'rgba(239,68,68,.09)' : 'rgba(180,83,14,.07)' },
+      itemStyle: { color: dark() ? 'rgba(201,173,243,.10)' : 'rgba(90,42,140,.07)' },
       data: [[{ xAxis: '2014' }, { xAxis: String((get('economic.years') || []).slice(-1)[0]) }]]
     };
   };
@@ -505,6 +505,6 @@ border-radius:14px;font-size:.95rem;color:var(--ink-soft)}
   }).catch(function (e) { fail(e.message); });
 })();
 </script>
-<script src="../js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0.75rem" defer></script>
+<script src="../js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body>
 </html>

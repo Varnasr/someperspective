@@ -158,16 +158,18 @@ def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=Tru
 # --------------------------------------------------------------------------
 CSS = """
 :root{--seam:43.4783%;
---paper:#f5f5f2;--surface:#d6e6e1;--surface-2:#e4dcef;--ink:#0d0e12;--ink-soft:#26282f;--muted:#3f434d;
---line:rgba(13,14,18,.16);--accent:#0b5a50;--on-accent:#ffffff;--accent-2:#5a2a8c;--on-accent-2:#ffffff}
-@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#0f2621;--surface-2:#1e1630;
---ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#b0b4bf;--line:rgba(242,242,239,.18);
---accent:#86d8ca;--on-accent:#0c0d10;--accent-2:#c9adf3;--on-accent-2:#0c0d10}}
+--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;--muted:#50545e;
+--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--on-accent-2:#ffffff;
+--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#15171c;--surface-2:#1c1f25;
+--ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#a9adb8;--line:rgba(242,242,239,.16);
+--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--on-accent-2:#0c0d10;
+--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;color:var(--ink);
-background:linear-gradient(90deg,var(--surface) 0,var(--surface) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
-var(--ink) calc(var(--seam) + 1px),var(--surface-2) calc(var(--seam) + 1px),var(--surface-2) 100%);
+background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
+var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%);
 font-variant-numeric:tabular-nums;overflow-x:clip}
 a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
@@ -204,7 +206,7 @@ p+p{margin-top:.9rem}
 .count small{font-size:.28em;font-weight:700;font-stretch:100%;line-height:1.2}
 .legend{font-size:.85rem;margin-top:.8rem;color:var(--ink-soft)}
 .sw{display:inline-block;width:1.6em;height:.7em;border:1.5px solid var(--ink);vertical-align:-.05em;margin-right:.35em}
-.sw.upa{background:var(--surface)}.sw.nda{background:var(--surface-2)}
+.sw.upa{background:var(--field-upa)}.sw.nda{background:var(--field-nda)}
 .m{border-top:2px solid var(--ink)}
 .m:last-child{border-bottom:2px solid var(--ink)}
 .m .split .l,.m .split .r{padding-top:.75rem}
@@ -220,9 +222,9 @@ border:2px solid var(--ink);padding:.12rem .45rem}
 .chart .grid{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
 .chart polyline,.chart .pt{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
 .chart:not(.tall) polyline{stroke-width:2.2}
-.chart .s-upa{stroke:var(--accent)}.chart .s-nda{stroke:var(--accent-2)}
+.chart .s-upa{stroke:var(--upa)}.chart .s-nda{stroke:var(--nda)}
 .chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
-.chart .m-upa{stroke:var(--accent)}.chart .m-nda{stroke:var(--accent-2)}
+.chart .m-upa{stroke:var(--upa)}.chart .m-nda{stroke:var(--nda)}
 .labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}
 .yt{position:absolute;left:.4rem;transform:translateY(-120%)}
 .xt{position:absolute;bottom:-1.5rem;transform:translateX(-50%)}.xt.first{transform:translateX(.4rem)}.xt.end{transform:translateX(calc(-100% - .4rem))}
@@ -420,7 +422,7 @@ def build():
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top split">
 <div class="l"><a class="name" href="/">Some Perspective</a></div>
-<nav class="r" aria-label="Site">
+<nav class="r" aria-label="Site" data-dyslexia-slot>
 <a href="#scorecard">Scorecard</a><a href="#findings">Findings</a><a href="explore/">Explore the data</a>
 <a href="downloads/paper.html">Paper</a><a href="analysis/">Analyses</a><a href="walkthrough/">Walkthrough</a>
 </nav>

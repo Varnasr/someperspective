@@ -18,211 +18,73 @@
     <meta name="twitter:title" content="Executive Summary | Some Perspective">
     <meta name="twitter:description" content="The headline findings in brief: on eight of nine comparable measures India performs worse in 2014-26 than in 2004-14, with inflation the single exception.">
     <meta name="twitter:image" content="https://someperspective.info/og-preview.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-            background: #ffffff;
-            padding: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 3px solid #6366f1;
-        }
-        
-        h1 {
-            color: #4f46e5;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        
-        .subtitle {
-            color: #6b7280;
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-        
-        .meta {
-            margin-top: 1rem;
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-        
-        .section {
-            margin-bottom: 2rem;
-            page-break-inside: avoid;
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            padding-top: 1rem;
-        }
-        
-        h3 {
-            color: #111827;
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            margin-top: 1.5rem;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-        
-        .key-finding {
-            background: #f0f9ff;
-            border-left: 4px solid #3b82f6;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            page-break-inside: avoid;
-        }
-        
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .metric-box {
-            background: #fafafa;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #e5e7eb;
-        }
-        
-        .metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #4f46e5;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-top: 0.25rem;
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        
-        .comparison-table th {
-            background: #4f46e5;
-            color: white;
-            padding: 0.75rem;
-            text-align: left;
-        }
-        
-        .comparison-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .comparison-table tr:nth-child(even) {
-            background: #f9fafb;
-        }
-        
-        .warning-box {
-            background: #fef2f2;
-            border: 1px solid #dc2626;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .citation {
-            font-size: 0.85rem;
-            color: #6b7280;
-            font-style: italic;
-            margin-top: 0.5rem;
-        }
-        
-        .print-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4f46e5;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .print-button:hover {
-            background: #4338ca;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-        }
-        
-        @media print {
-            body {
-                padding: 0;
-                max-width: 100%;
-            }
-            
-            .print-button {
-                display: none;
-            }
-            
-            .section {
-                page-break-inside: avoid;
-            }
-            
-            h2 {
-                page-break-after: avoid;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    
-        /* Responsive tables: these documents were written for desktop and their
-           tables overflowed the viewport on phones by up to 424px, pushing the whole
-           page sideways. Wrapping each table in a scroll container keeps the table
-           intact and confines the scrolling to it. */
-        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; max-width: 100%; min-width: 0; }
-        .table-scroll table { margin-bottom: 0; }
-        @media (max-width: 640px) {
-            body { padding: 1rem 0.85rem 2.5rem; }
-            .container { padding: 0 1rem; }
-        }
-    </style>
+:root{--paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;--muted:#50545e;--line:rgba(13,14,18,.14);--accent:#0d0e12;--on-accent:#ffffff;--accent-2:#0b5a50;--on-accent-2:#ffffff;--upa:#0b5a50;--nda:#5a2a8c;--field-upa:#d6e6e1;--field-nda:#e4dcef;--good:#1d6b35;--bad:#b42318;}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#15171c;--surface-2:#1c1f25;--ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#a9adb8;--line:rgba(242,242,239,.16);--accent:#f2f2ef;--on-accent:#0c0d10;--accent-2:#86d8ca;--on-accent-2:#0c0d10;--upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630;--good:#7fd99a;--bad:#ff8a80;}}
+*{margin:0;padding:0;box-sizing:border-box}
+/* The split page: UPA years on the left field, NDA years on the right, a 2px
+   ink seam at 10 of 23 years. The document itself is the slab. */
+html{-webkit-text-size-adjust:100%;background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(43.4783% - 1px),var(--ink) calc(43.4783% - 1px),var(--ink) calc(43.4783% + 1px),var(--field-nda) calc(43.4783% + 1px),var(--field-nda) 100%)}
+body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;color:var(--ink);line-height:1.65;font-size:1.0625rem;
+background:var(--paper);border:2px solid var(--ink);width:min(50rem,calc(100% - 1.5rem));
+margin:2.5rem 0 4rem clamp(.75rem,calc(43.4783% - 25rem),100%);padding:clamp(1.2rem,3.5vw,2.4rem);overflow-wrap:break-word}
+a{color:var(--ink);text-decoration:underline;text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+h1{font-weight:850;font-stretch:87.5%;font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.05;letter-spacing:-.01em;margin-bottom:.7rem;color:var(--ink)}
+h2{font-weight:800;font-stretch:87.5%;font-size:clamp(1.35rem,2.6vw,1.62rem);line-height:1.12;margin:2.2rem 0 .9rem;padding:0 0 .45rem;border-bottom:2px solid var(--ink);color:var(--ink)}
+h3{font-weight:800;font-stretch:87.5%;font-size:1.18rem;line-height:1.15;margin:1.5rem 0 .55rem;color:var(--ink)}
+h3.minor{font-size:1.03rem;color:var(--ink-soft);margin:1.2rem 0 .45rem}
+h4{font-weight:800;font-stretch:87.5%;font-size:1.03rem;line-height:1.15;margin-bottom:.45rem;color:var(--ink)}
+p{margin-bottom:1rem}
+ul,ol{margin:0 0 1rem 1.5rem}
+li{margin-bottom:.45rem}
+strong{font-weight:750}
+small{color:var(--muted)}
+.header{background:none;color:var(--ink);text-align:left;padding:0 0 1.4rem;margin-bottom:2.2rem;border:0;border-bottom:2px solid var(--ink)}
+.header h1{color:var(--ink)}
+.subtitle{font-size:1.08rem;line-height:1.45;color:var(--ink-soft);font-style:normal;opacity:1}
+.meta{font-size:.85rem;color:var(--muted);margin-top:.8rem}
+.section{margin-bottom:2.2rem}
+.section > h2:first-child{margin-top:0}
+/* Tables: a 2px ink top rule, hairline rows. */
+table{width:100%;border-collapse:collapse;margin:1.5rem 0;border-top:2px solid var(--ink);font-variant-numeric:tabular-nums}
+th{background:none;font-size:.7rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-align:left;padding:.65rem .5rem;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:.6rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even){background:none}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.88em;background:var(--surface-2);color:var(--ink);padding:.1rem .35rem;border-radius:0;overflow-wrap:anywhere}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1.5rem;max-width:100%;min-width:0}
+.table-scroll table{margin-bottom:0}
+/* Icons are black line drawings; turn them light on a dark page. */
+@media (prefers-color-scheme:dark){img[src*="sargam-icons"]{filter:invert(1)}}
+.print-button{position:fixed;top:1rem;right:1rem;z-index:1000;display:inline-flex;align-items:center;gap:.45rem;
+background:var(--accent);color:var(--on-accent);border:2px solid var(--ink);border-radius:0;box-shadow:none;
+padding:.6rem 1rem;font:inherit;font-size:.85rem;font-weight:800;font-stretch:112.5%;line-height:1.2;cursor:pointer;min-height:44px;transition:none}
+.print-button:hover{background:var(--paper);color:var(--ink);transform:none;box-shadow:none}
+.print-button img{filter:invert(1)}
+.print-button:hover img{filter:none}
+@media (prefers-color-scheme:dark){.print-button img{filter:none}.print-button:hover img{filter:invert(1)}}
+@media (max-width:1100px){.print-button{position:static;margin:0 0 1.4rem auto;display:flex}}
+@media (max-width:640px){body{font-size:1rem}h1{font-size:1.85rem}}
+@media print{
+html{background:none}
+body{background:none;border:0;margin:0;width:auto;max-width:100%;padding:0}
+.print-button{display:none}
+h2{page-break-after:avoid}
+}
+.key-finding{background:var(--surface-2);border:0;border-left:6px solid var(--upa);border-radius:0;padding:1.1rem 1.25rem;margin:1.4rem 0}
+.warning-box{background:var(--surface);border:2px solid var(--bad);border-radius:0;padding:1.2rem;margin:1.4rem 0}
+.metric-box{background:var(--surface);border:2px solid var(--ink);border-radius:0;box-shadow:none;padding:1.3rem;margin:1.4rem 0}
+.metric-box{text-align:center;margin:0}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.metric-value{font-size:2rem;font-weight:850;font-stretch:87.5%;line-height:1.1;color:var(--ink)}
+.metric-label{font-size:.7rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-top:.4rem;line-height:1.35}
+.citation{font-size:.85rem;color:var(--muted);font-style:normal;margin-top:.5rem}
+p{text-align:left}
+@media (max-width:768px){.metrics-grid{grid-template-columns:1fr}}
+@media print{.section{page-break-inside:avoid}}
+</style>
 </head>
 <body>
     <button class="print-button" onclick="window.print()"><img src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Article.svg" alt="" aria-hidden="true" style="height:1em;width:1em;vertical-align:-0.15em;display:inline-block"> Save as PDF</button>
@@ -433,13 +295,13 @@
         </p>
     </div>
     
-    <div class="section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
-        <p style="text-align: center; color: #6b7280; font-size: 0.9rem;">
+    <div class="section" style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--ink);">
+        <p style="text-align: center; color: var(--muted); font-size: 0.9rem;">
             Full research available at <strong>someperspective.info</strong><br>
             © 2025-2026 Dr. Varna Sri Raman | Educational use encouraged with attribution<br>
             Last updated: 10 October 2026
         </p>
     </div>
-<script src="../js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0.75rem" defer></script>
+<script src="../js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body>
 </html>

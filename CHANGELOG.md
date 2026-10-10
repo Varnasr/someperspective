@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.53.0] - 2026-10-10
+
+### Changed
+- Redesign: every page is split at 10/23 of its width, the UPA decade's share of 2004-2026, with a teal field on the left, a violet field on the right and an ink seam. Text sits in flat slabs; one type family, Archivo. The burnt-orange accent and the serif are gone.
+- The front page is a reading page generated from the data by `tools/build_front.py`: the scorecard with a sparkline under each pair, six findings whose charts cross the seam at 2013/2014, the three indices and the declared interest. CI checks it is current.
+- The dashboard moved to `/explore/`; links to `/#tab` forward there. Analysis pages, explainers and the walkthrough link to it directly, and the sitemap lists it.
+- Tokens: `--accent` is now ink; `--upa`, `--nda`, `--field-upa`, `--field-nda` added, plus `--good` and `--bad` on the downloads pages. `tools/check_palette.py` measures the new pairs.
+
+### Fixed
+- Dashboard, found by axe tab by tab: four Tailwind inks under 4.5:1 on grey panels, a grey with no dark value at 2.37:1, and four sideways-scrolling blocks a keyboard could not reach.
+
 ## [2.52.0] - 2026-10-10
 
 ### Fixed
