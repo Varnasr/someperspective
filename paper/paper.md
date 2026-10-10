@@ -455,11 +455,11 @@ In international context, India's V-Dem decline over 2014–2026 (0.488 → 0.26
 
 Two further dimensions bear on the "bargain" question, since a defender of the period might argue that its achievement lies in stability.
 
-**Fiscal.** The central fiscal deficit averaged 4.95 per cent of GDP across 2014–2026 against 4.64 per cent across 2004–2013. The later period contains a real consolidation from 4.1 per cent (2014) to 3.4 per cent (2018), an emergency expansion to 9.2 per cent in 2020, and a partial return to 4.4 per cent by 2025–26, which is above the pre-pandemic trough of 3.4 per cent and slightly below the earlier era's average of 4.64 per cent. The consolidation before 2020 was real; it was not sustained through and beyond the shock.
+**Fiscal.** The central fiscal deficit averaged 5.01 per cent of GDP across 2014–15 to 2025–26 (2026–27 has only a Budget Estimate, 4.3 per cent) against 4.64 per cent across 2004–2013. The later period contains a real consolidation from 4.1 per cent (2014) to 3.4 per cent (2018), an emergency expansion to 9.2 per cent in 2020, and a partial return to 4.4 per cent by 2025–26, which is above the pre-pandemic trough of 3.4 per cent and slightly below the earlier era's average of 4.64 per cent. The consolidation before 2020 was real; it was not sustained through and beyond the shock.
 
-**External.** The external position as of FY26 is mixed and adequately buffered. Foreign-exchange reserves of approximately $691 billion provide around eleven months of import cover, which is comfortable by any conventional standard, and the current-account deficit was 0.6 per cent of GDP in 2025–26 (RBI).
+**External.** The external position as of FY26 is mixed and adequately buffered. Foreign-exchange reserves of about $691 billion at the end of March 2026 provided around eleven months of import cover, which is comfortable by any conventional standard, and the current-account deficit was 0.6 per cent of GDP in 2025–26 (RBI).
 
-The composition beneath that headline is less reassuring. The goods trade deficit runs at approximately $333 billion, offset by a services surplus of about $217 billion, so the external accounts depend heavily on services exports to cover a structural merchandise gap. Crude imports of approximately $123 billion against an import dependence of 88.2 per cent in 2024–25 (Petroleum Planning and Analysis Cell, provisional) leave the position exposed to oil-price movements, and gold imports of approximately $72 billion represent household savings flowing into an unproductive asset, itself a signal about the perceived returns available in formal financial instruments. Portfolio outflows of approximately $16.5 billion were recorded in the period.
+The composition beneath that headline is less reassuring. The goods trade deficit was about $337 billion in 2025–26 (RBI balance of payments), offset by a services surplus of about $217 billion, so the external accounts depend heavily on services exports to cover a structural merchandise gap. Imports of petroleum crude and products of about $174 billion in 2025–26 (Department of Commerce), against an import dependence of 88.7 per cent (Petroleum Planning and Analysis Cell, provisional), leave the position exposed to oil-price movements, and gold imports of approximately $72 billion represent household savings flowing into an unproductive asset, itself a signal about the perceived returns available in formal financial instruments. Net portfolio outflows were about $16.4 billion in 2025–26.
 
 The rupee depreciated from 61 to the dollar in 2014 to a record low of 96.8 on 20 May 2026, a fall of about 37 per cent in the rupee's dollar value. Some depreciation is expected for an economy with an inflation differential against the United States, and a nominal rate is not by itself a welfare measure. But it bears directly on the crude and gold import bills above, and it is not consistent with an account in which the period delivered exceptional macroeconomic management.
 
@@ -497,7 +497,7 @@ Comparing period means across the nine directly comparable measures:
 |---|---|---|---|
 | GDP growth (%) | 6.82 | 6.20 | Worse |
 | CPI inflation (%) | 7.98 | 4.82 | Better |
-| Fiscal deficit (% GDP) | 4.64 | 4.95 | Worse |
+| Fiscal deficit (% GDP) | 4.64 | 5.01 | Worse |
 | Top 1% income share (%) | 20.39 | 21.92 | Worse |
 | Bottom 50% income share (%) | 16.75 | 14.69 | Worse |
 | Press freedom rank | 119.8 | 145.0 | Worse |

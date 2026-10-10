@@ -229,7 +229,8 @@ def topic_extras(d, slug):
                 'the countries actually ranked lowers the 2004-2013 average by about 0.01.</p>'
                 + year_table("Democratic Quality Index inputs", rows)
                 + '<h2 style="margin-top:2rem">India beside four peers</h2>'
-                '<div class="tw"><table class="data"><thead><tr><th scope="col">Country</th>'
+                '<div class="tw" tabindex="0" role="region" aria-label="India beside four peers, scrolls sideways">'
+                '<table class="data"><thead><tr><th scope="col">Country</th>'
                 '<th scope="col">V-Dem 2014</th><th scope="col">V-Dem 2025</th><th scope="col">RSF rank 2014</th>'
                 f'<th scope="col">RSF rank 2026</th></tr></thead><tbody>{trs}</tbody></table></div>'
                 f'<details class="about"><summary>Source</summary><p>{src}</p></details></div>')
@@ -358,21 +359,22 @@ def hub(d, pages):
 
 def states_page(d):
     st = d["states"]
+    fc16 = {r["state"]: r["fc16"] for r in d["stateReturns"]["items"]}
     rows = []
     for it in st["items"]:
         per_seat = it["pop2026"] * 10 / it["seats"]
-        ret = it.get("ret")
+        ret = fc16.get(it["state"])
         delim = it.get("delim")
         rows.append(
             f'<tr><th scope="row">{escape(it["state"])}</th><td>{escape(it["region"])}</td>'
             f'<td data-v="{it["perCapita"]}">{it["perCapita"]:,}</td><td data-v="{it["seats"]}">{it["seats"]}</td>'
             f'<td data-v="{it["pop2026"]}">{it["pop2026"]:.2f}</td><td data-v="{per_seat:.3f}">{per_seat:.2f}</td>'
             f'<td data-v="{it["tfr"]}">{it["tfr"]:.1f}</td>'
-            + (f'<td data-v="{ret}">{ret}</td>' if ret is not None else '<td class="na" data-v="">.</td>')
+            + (f'<td data-v="{ret}">{ret:.2f}</td>' if ret is not None else '<td class="na" data-v="">.</td>')
             + (f'<td data-v="{delim}">{delim:+d}</td>' if delim is not None else '<td class="na" data-v="">.</td>')
             + '</tr>')
     cols = ["State", "Zonal council", "Income per person, ₹ (2023-24)", "Lok Sabha seats", "Population 2026, crore",
-            "People per seat, millions", "Fertility rate (NFHS-5, 2019-21)", "Return per ₹100 of Union taxes", "Projected seat change"]
+            "People per seat, millions", "Fertility rate (NFHS-5, 2019-21)", "Share of devolved taxes, 16th Finance Commission, %", "Projected seat change"]
     ths = "".join(f'<th scope="col"><button type="button" data-col="{i}">{escape(c)}</button></th>'
                   for i, c in enumerate(cols))
     script = """<script>(function(){var t=document.getElementById('states');var b=t.tBodies[0];var dir={};
@@ -394,7 +396,8 @@ th.setAttribute('aria-sort',i===c?(dir[c]?'ascending':'descending'):'none');});}
             f'<table class="data sortable" id="states"><thead><tr>{ths}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
             f'<h2 style="margin-top:1.6rem">What each column is</h2>'
             f'<p>{escape(st["note"])}</p><p>{escape(st["popNote"])}</p>'
-            f'<p><strong>Return per ₹100 of Union taxes.</strong> {escape(st["retNote"])}</p>'
+            f'<p><strong>Share of devolved taxes.</strong> {escape(d["stateReturns"]["note"])} Shown for the nine states '
+            f'the PRS table covers.</p>'
             f'<p><strong>Projected seat change.</strong> {escape(st["delimNote"])}</p></div>{script}')
     return shell("The states: Some Perspective",
                  "Income, population, representation and fiscal transfers for India's sixteen largest states.",
@@ -542,8 +545,11 @@ def build():
     out[os.path.join(OUT, "compare", "index.html")] = correlation_page(d)
     out[os.path.join(OUT, "methods", "index.html")] = methods_page(d)
     out[os.path.join(OUT, "forecasts", "index.html")] = forecasts_page(d)
+    import primer_page
+    out[os.path.join(OUT, "primer", "index.html")] = primer_page.primer_page(d, sys.modules[__name__])
     pages += [("states", "The states", "Income, population, seats and transfers for the sixteen largest states."),
               ("compare", "Compare two series", "Plot any two series against each other, year by year."),
+              ("primer", "Reading the Indian economy", "A primer on what the main numbers measure, how they are built and where they mislead."),
               ("forecasts", "Forecasts", "What the RBI, the World Bank, the OECD, the ADB and the IMF expect for 2026-27 and 2027-28."),
               ("methods", "Sources and method", "The publisher behind every series, and how the indices are built.")]
     out[os.path.join(OUT, "index.html")] = hub(d, pages)
@@ -562,9 +568,6 @@ def main():
         print(f"Explore pages up to date ({len(out)}).")
         return
     for p, html in out.items():
-        if "--no-hub" in sys.argv and p == os.path.join(OUT, "index.html"):
-            open(os.path.join(ROOT, ".hub-preview.html"), "w", encoding="utf-8").write(html)
-            continue
         os.makedirs(os.path.dirname(p), exist_ok=True)
         open(p, "w", encoding="utf-8").write(html)
     print(f"Wrote {len(out)} explore pages.")

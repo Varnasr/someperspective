@@ -81,6 +81,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://someperspective.info/explore/primer/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://someperspective.info/explore/methods/</loc>
     <lastmod>2026-10-10</lastmod>
     <priority>0.8</priority>

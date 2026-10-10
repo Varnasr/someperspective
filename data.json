@@ -15,7 +15,7 @@
     "bottom50Share": "World Inequality Lab: Bharti, Chancel, Piketty and Somanchi (2024), 'Income and Wealth Inequality in India, 1922-2023', WIL Working Paper 2024/09, Statistical Appendix, table of per-adult pre-tax national income shares, 1951-2022. The series ends at 2022 (2022-23); 2023-2026 are empty because no annual figure has been published for them. Bottom 50% share. The share fell to 13.9 in 2017, rose to 15.5 in 2020 and stood at 15.0 in 2022.",
     "formalEmployment": "Derived from MoSPI PLFS published tables (api.mospi.gov.in, retrieved 10 October 2026), usual status (ps+ss), all-India, persons: the share of regular wage/salaried workers among all workers, multiplied by the share of regular wage/salaried employees with any social security benefit (100 minus the published share without any). 2017-18: 22.8% x 50.4% = 11.5; 2018-19: 23.8 x 48.1 = 11.4; 2019-20: 22.9 x 45.8 = 10.5; 2020-21: 21.1 x 46.2 = 9.7; 2021-22: 21.5 x 47.0 = 10.1; 2022-23: 20.9 x 46.1 = 9.6; 2023-24: 21.7 x 46.6 = 10.1. The social security table covers regular wage/salaried employees in the non-agricultural sector; regular wage work in agriculture is about 1% of workers. Years are PLFS survey years starting in July of the year shown. 2014-2016 (before PLFS) and 2024 onward (no annual table yet) are left empty.",
     "informalEmployment": "100 minus formalEmployment, for the years formalEmployment has a value.",
-    "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual)",
+    "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual). RSF published a single 2011-12 index; its rank (131) is shown for both 2011 and 2012. RSF ranked 167 to 179 countries in 2004-2013 and 180 since.",
     "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP, for the fiscal year starting in the year shown (2014 = 2014-15). 2025 is the provisional actual for 2025-26 released by the Controller General of Accounts on 1 June 2026 (Rs 15,19,169 crore, 4.4% of GDP); 2026 has no outturn yet. The Budget Estimate for 2026-27 (4.3, Union Budget of 1 February 2026) is held in the estimates block and drawn as a hollow marker; no average uses it.",
     "cpiInflation": "MoSPI CPI (Combined), calendar-year change in the average index, the World Bank convention (FP.CPI.TOTL.ZG) used for 2004-2013. 2014-2025 on base 2012=100; 2025 is 2.4 on this convention (the mean of the twelve monthly year-on-year prints is 2.2). 2026: the average of the monthly year-on-year prints, because no annual index exists yet published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from the years before it. RBI target band 2-6%.",
     "rupeeUSD": "Calendar-year average rupees per US dollar: the mean of the monthly averages in the Federal Reserve's H.10 release (FRED series EXINUS), rounded to the nearest rupee. 2026 is January to September (93.9, shown as 94); 2025 averages 87.2. The record low of 96.8 is the Fed's daily rate for 20 May 2026 (DEXINUS 96.82).",
@@ -524,37 +524,38 @@
     ]
   },
   "bigPicture": {
-    "note": "India in five numbers (IMF World Economic Outlook, April 2026; MoSPI; UN population estimate). The economy is large in total and modest per person.",
+    "note": "India in five numbers. Size and income per person: IMF World Economic Outlook, April 2026. Population: UN World Population Prospects 2024 estimate for 2025, beside the government's projection for 1 March 2026 (National Commission on Population, Population Projections 2011-2036, Table 21). Growth: MoSPI Provisional Estimates, 5 June 2026, read from the economic block. Tax-to-GDP: Budget at a Glance 2026-27; the OECD average is from OECD Revenue Statistics 2025. The economy is large in total and modest per person.",
     "items": [
       {
         "value": "~$4.15 tn",
         "label": "Size of economy",
-        "sub": "6th largest at market exchange rates, 2026 (IMF)"
+        "sub": "6th largest at market exchange rates, 2026 (IMF projection)"
       },
       {
         "value": "~$2,810",
         "label": "Per person",
-        "sub": "about 150th of 190 economies (IMF)"
+        "sub": "about 150th of 190 economies, 2026 (IMF projection)"
       },
       {
         "value": "1.46 bn",
         "label": "People",
-        "sub": "most populous nation"
+        "sub": "UN estimate for 2025; the government's projection for 1 March 2026 is 1.42 bn"
       },
       {
-        "value": "7.8%",
-        "label": "Real growth FY26",
-        "sub": "MoSPI provisional estimate, new 2022-23 base"
+        "series": "gdpGrowth",
+        "year": 2025,
+        "label": "Real growth 2025-26",
+        "sub": "MoSPI Provisional Estimates, new 2022-23 base"
       },
       {
         "value": "11.2%",
         "label": "Union tax-to-GDP",
-        "sub": "Union gross tax, 2026-27 BE; OECD's ~34% counts all levels of government"
+        "sub": "Union gross tax, 2026-27 BE; the OECD average of 34.1% (2024) counts all levels of government"
       }
     ]
   },
   "chinaDivergence": {
-    "note": "Nominal USD per capita. In 1991 India was at $303 and China at $333 (World Bank). 2026 values are IMF World Economic Outlook (April 2026) projections; 2000-2020 are approximate World Bank values.",
+    "note": "GDP per person in current US dollars. 1991 to 2020 are World Bank values (NY.GDP.PCAP.CD, retrieved 10 October 2026): in 1991 India was at $306 and China at $334. The 2026 values are IMF World Economic Outlook (April 2026) projections.",
     "years": [
       1991,
       2000,
@@ -563,22 +564,29 @@
       2026
     ],
     "india": [
-      303,
-      460,
-      1350,
-      1910,
+      306,
+      443,
+      1348,
+      1907,
       2813
     ],
     "china": [
-      333,
-      960,
-      4550,
-      10500,
+      334,
+      969,
+      4629,
+      10627,
       14874
+    ],
+    "projected": [
+      false,
+      false,
+      false,
+      false,
+      true
     ]
   },
   "taxTake": {
-    "note": "For every ₹100 the Union government receives (Union Budget 2026-27, Budget at a Glance, 'rupee comes from'; rounded). 'shared' flags revenue shared with states via the Finance Commission formula.",
+    "note": "For every ₹100 the Union government receives (Union Budget 2026-27, Budget at a Glance, 'rupee comes from'; rounded). 'shared' flags revenue shared with states through the Finance Commission formula.",
     "items": [
       {
         "label": "Borrowings",
@@ -589,7 +597,7 @@
       {
         "label": "Income tax",
         "value": 21,
-        "sub": "salaried & professional",
+        "sub": "salaried and professional",
         "shared": true
       },
       {
@@ -601,13 +609,13 @@
       {
         "label": "GST and other taxes",
         "value": 15,
-        "sub": "falls on everyone at the same rate",
+        "sub": "paid at the same rate whatever the buyer's income",
         "shared": true
       },
       {
-        "label": "Excise + customs",
+        "label": "Excise and customs",
         "value": 10,
-        "sub": "excise 6, customs 4; much via cess",
+        "sub": "excise 6, customs 4",
         "shared": false
       },
       {
@@ -625,7 +633,7 @@
     ]
   },
   "spendSplit": {
-    "note": "For every ₹100 the Union government spends (Union Budget 2026-27, Budget at a Glance, 'rupee goes to'). Interest + states' share take 42 paise before a single scheme is funded.",
+    "note": "For every ₹100 the Union government spends (Union Budget 2026-27, Budget at a Glance, 'rupee goes to').",
     "items": [
       {
         "label": "States' share of taxes",
@@ -675,74 +683,110 @@
     ]
   },
   "stateReturns": {
-    "note": "Return per ₹100 of taxes paid to the Union, by state, as estimated by Praveen Chakravarty for the All India Professionals' Congress (AIPC). These are the AIPC's own estimates. The Finance Commission publishes no such ratio, and this project has not traced the table behind them, so treat the direction as the finding and the exact ratios as unverified. Rich states finance poorer states, and the system is designed to work that way.",
+    "note": "Each state's share of the taxes the Union devolves, as set by the 15th Finance Commission (2021-26) and the 16th Finance Commission (2026-31), out of 100 (Report of the 16th Finance Commission, as tabulated by PRS Legislative Research, 1 February 2026, Table 3). Population share and income per person are read from the states block. Until 10 October 2026 this block carried a 'return per ₹100 of taxes paid' for eight states, estimated by Praveen Chakravarty for the All India Professionals' Congress; no published table behind those ratios could be found, and no government source publishes taxes paid by state, so they were replaced with the Finance Commission's own shares.",
     "items": [
       {
         "state": "Maharashtra",
-        "ret": 30
+        "fc15": 6.32,
+        "fc16": 6.44
       },
       {
         "state": "Gujarat",
-        "ret": 50
+        "fc15": 3.48,
+        "fc16": 3.76
       },
       {
         "state": "Karnataka",
-        "ret": 60
+        "fc15": 3.65,
+        "fc16": 4.13
       },
       {
         "state": "Tamil Nadu",
-        "ret": 60
+        "fc15": 4.08,
+        "fc16": 4.1
+      },
+      {
+        "state": "Kerala",
+        "fc15": 1.93,
+        "fc16": 2.38
       },
       {
         "state": "West Bengal",
-        "ret": 120
-      },
-      {
-        "state": "Uttar Pradesh",
-        "ret": 200
+        "fc15": 7.52,
+        "fc16": 7.22
       },
       {
         "state": "Madhya Pradesh",
-        "ret": 244
+        "fc15": 7.85,
+        "fc16": 7.35
+      },
+      {
+        "state": "Uttar Pradesh",
+        "fc15": 17.94,
+        "fc16": 17.62
       },
       {
         "state": "Bihar",
-        "ret": 510
+        "fc15": 10.06,
+        "fc16": 9.95
       }
     ]
   },
   "realInflation": {
-    "note": "Your real inflation index: everyday prices over roughly a decade against the 4.8% headline CPI for August 2026 (MoSPI, 2024=100 series). Thali prices: Praveen Chakravarty / AIPC; others illustrative for a mid-market urban household.",
+    "note": "Prices of different parts of the consumer basket, December 2014 against December 2025, on MoSPI's CPI (2012=100), All India, rural and urban combined (api.mospi.gov.in, retrieved 10 October 2026). December 2025 is the last month of the 2012=100 series; from January 2026 MoSPI publishes a 2024=100 index, on which headline inflation was 4.8% in August 2026 (RBI Monetary Policy Committee resolution, 7 October 2026). Until 10 October 2026 this block held a thali price from the All India Professionals' Congress and three prices described as illustrative; those were replaced with the official sub-indices.",
     "headlineCPI": 4.8,
+    "from": "December 2014",
+    "to": "December 2025",
     "items": [
       {
-        "item": "Basic thali",
-        "then": 19,
-        "now": 28.5,
-        "unit": "₹"
+        "item": "All items (the headline index)",
+        "then": 119.4,
+        "now": 198.0
       },
       {
-        "item": "Auto-rickshaw min. fare",
-        "then": 25,
-        "now": 50,
-        "unit": "₹"
+        "item": "Vegetables",
+        "then": 140.5,
+        "now": 210.6
       },
       {
-        "item": "Daily family meals",
-        "then": 200,
-        "now": 300,
-        "unit": "₹/day"
+        "item": "Transport and communication",
+        "then": 110.1,
+        "now": 172.4
       },
       {
-        "item": "School fees (mid-market)",
-        "then": 30000,
-        "now": 70000,
-        "unit": "₹/yr"
+        "item": "Housing",
+        "then": 116.5,
+        "now": 186.9
+      },
+      {
+        "item": "Education",
+        "then": 119.5,
+        "now": 196.1
+      },
+      {
+        "item": "Prepared meals, snacks and sweets",
+        "then": 126.1,
+        "now": 213.3
+      },
+      {
+        "item": "Health",
+        "then": 115.1,
+        "now": 204.8
+      },
+      {
+        "item": "Meat and fish",
+        "then": 123.2,
+        "now": 233.9
+      },
+      {
+        "item": "Personal care and effects (includes gold)",
+        "then": 109.8,
+        "now": 265.3
       }
     ]
   },
   "external": {
-    "note": "External sector FY26 (RBI Balance of Payments releases for 2025-26; DGCI&S; PPAC; IMF WEO 2026). Goods trade is in deficit, and the services surplus offsets much of it. The current account deficit for 2025-26 was 0.6% of GDP. Goods deficit and FPI outflow are the RBI balance-of-payments figures for 2025-26 ($337.3 bn and $16.4 bn). Crude import dependence is 88.7% in 2025-26 (PPAC provisional, as reported).",
+    "note": "External sector FY26 (RBI Balance of Payments releases for 2025-26; DGCI&S; PPAC; IMF WEO 2026). Goods trade is in deficit, and the services surplus offsets much of it. The current account deficit for 2025-26 was 0.6% of GDP. Goods deficit and FPI outflow are the RBI balance-of-payments figures for 2025-26 ($337.3 bn and $16.4 bn). Crude import dependence is 88.7% in 2025-26 (PPAC provisional, as reported). Petroleum crude and products imports were $173.9 bn in 2025-26 (Department of Commerce). Reserves are at end-March 2026; they were about $729 bn by September 2026.",
     "goodsDeficitBn": -337,
     "servicesSurplusBn": 217,
     "cadPctGDP": 0.6,
@@ -750,44 +794,35 @@
     "importCoverMonths": 11,
     "rupeeRecordLow": 96.8,
     "goldImportsBn": 72,
-    "crudeImportsBn": 123,
     "crudeImportDependence": 89,
-    "fpiOutflowBn": -16.4
+    "fpiOutflowBn": -16.4,
+    "petroleumImportsBn": 173.9,
+    "reservesDate": "2026-03-31"
   },
   "distribution": {
-    "note": "Monthly income and where it places you (WIR 2022/2026; HCES 2023-24; PLFS; NCAER). Thresholds approximate. The salaried, tax-paying middle is ~80-120 million, against the 300-400 million quoted by market research. MPCE is HCES 2023-24 without imputation, a mean.",
+    "note": "Pre-tax national income per adult, 2022-23, from Bharti, Chancel, Piketty and Somanchi, World Inequality Lab Working Paper 2024/09, Table 2: the median threshold is ₹1,05,413 a year, the top 10% begins at ₹2,90,848 and the top 1% at ₹20,73,846; monthly figures are those divided by twelve. MPCE is HCES 2023-24 without imputation, a mean. PRICE's ICE 360 survey puts households earning ₹5 lakh to ₹30 lakh a year at 43.2 crore people in 2020-21.",
     "thresholds": [
       {
-        "income": 5000,
-        "label": "Bottom 20-25%",
-        "sub": "below rural minimum wage in most states"
+        "income": 8800,
+        "label": "Median adult",
+        "sub": "half of adults have a pre-tax income below about ₹1.05 lakh a year"
       },
       {
-        "income": 10000,
-        "label": "~40th percentile",
-        "sub": "below urban poverty-adjacent thresholds"
+        "income": 24200,
+        "label": "Top 10%",
+        "sub": "an adult enters the top tenth at about ₹2.91 lakh a year"
       },
       {
-        "income": 25000,
-        "label": "~80-85th percentile",
-        "sub": "most who consider themselves 'middle class'"
-      },
-      {
-        "income": 50000,
-        "label": "Top 3-5%",
-        "sub": "what marketing calls aspirational middle class"
-      },
-      {
-        "income": 100000,
-        "label": "Top 1-2%",
-        "sub": "what politics calls 'affluent'"
+        "income": 172800,
+        "label": "Top 1%",
+        "sub": "an adult enters the top hundredth at about ₹20.7 lakh a year"
       }
     ],
-    "bottom50AvgAnnual": 71000,
+    "bottom50AvgAnnual": 71163,
     "ruralMPCE": 4122,
     "urbanMPCE": 6996,
-    "top10IncomeShare": 58,
-    "top1WealthShare": 40,
+    "top10IncomeShare": 57.7,
+    "top1WealthShare": 40.1,
     "bottom50WealthShare": 6.4
   },
   "structure": {
@@ -816,17 +851,62 @@
     ]
   },
   "jobsLesson": {
-    "note": "The same investment creates very different numbers of jobs in different sectors (Praveen Chakravarty / AIPC; Planning Commission 2011-12; garment export-to-jobs ratio industry standard).",
-    "electronicsCrPerJob": 1.5,
-    "electronicsJobsLakh": 1,
-    "garmentsJobsCrore": 3,
-    "garmentsWomenSharePct": 70,
-    "govJobApplicationsCrore": 22,
-    "govJobsGivenLakh": 7.22,
+    "note": "Jobs per ₹1 lakh of investment by industry: Economic Survey 2016-17, Volume 1, Chapter 7, Table 2 (from ASI 2012-13 and the NSSO 68th round; investment is gross fixed capital formation). Electronics: written reply of the Minister of State for Electronics and IT to the Rajya Sabha, February 2025, as reported by ANI and The Tribune (9 February 2025); incentive released, DPIIT data as on 30 June 2026, as reported by Deccan Chronicle (25 September 2026). Central government recruitment, 2014-15 to 2021-22: Lok Sabha written answer, Department of Personnel and Training, 27 July 2022.",
+    "jobsPerLakh": [
+      {
+        "sector": "Apparel",
+        "jobs": 23.9,
+        "femaleJobs": 8.2,
+        "jobsLakh": 75.4,
+        "femaleJobsLakh": 25.9
+      },
+      {
+        "sector": "Leather and footwear",
+        "jobs": 7.1,
+        "femaleJobs": 3.4,
+        "jobsLakh": 11.6,
+        "femaleJobsLakh": 5.5
+      },
+      {
+        "sector": "Textiles",
+        "jobs": 4.0,
+        "femaleJobs": 1.3,
+        "jobsLakh": 71.3,
+        "femaleJobsLakh": 22.5
+      },
+      {
+        "sector": "Food processing",
+        "jobs": 2.4,
+        "femaleJobs": 1.3,
+        "jobsLakh": 50.2,
+        "femaleJobsLakh": 27.9
+      },
+      {
+        "sector": "Autos",
+        "jobs": 0.3,
+        "femaleJobs": 0.1,
+        "jobsLakh": 7.6,
+        "femaleJobsLakh": 3.0
+      },
+      {
+        "sector": "Steel",
+        "jobs": 0.1,
+        "femaleJobs": 0.05,
+        "jobsLakh": 7.8,
+        "femaleJobsLakh": 3.7
+      }
+    ],
+    "electronicsPLIDirectJobs": 137189,
+    "electronicsPLIInvestmentCr": 10213,
+    "electronicsPLIAsOf": "December 2024",
+    "electronicsPLIIncentiveCr": 19091,
+    "electronicsPLIIncentiveAsOf": "30 June 2026",
+    "govJobApplicationsCrore": 22.06,
+    "govJobsRecommendedLakh": 7.22,
     "govJobSuccessRate": "1 in 305"
   },
   "indexExample": {
-    "note": "A worked example: an index is one number summarising many prices, via a chosen basket and weights. Change the basket or the base year and the headline moves (MoSPI methodology).",
+    "note": "A worked example with invented weights and prices, to show the arithmetic of an index. The weights are not the CPI's: in the real basket no single vegetable carries anything near 15%. Change the basket or the base year and the headline moves.",
     "items": [
       {
         "item": "Onions",
@@ -849,45 +929,59 @@
     ]
   },
   "gdpRevision": {
-    "note": "The 2015 GDP revision is still disputed (NSO/MoSPI; A. Subramanian, Harvard CID 2019; EAC-PM rebuttal June 2019).",
+    "note": "The 2015 GDP revision (MoSPI, January 2015; A. Subramanian, 'India's GDP Mis-estimation', Harvard CID Working Paper 354, June 2019; Economic Advisory Council to the Prime Minister, rebuttal of 19 June 2019).",
     "changes": [
-      "Base year shifted from 2004-05 to 2011-12.",
-      "Manufacturing measured via the MCA21 corporate-filings database instead of the production survey.",
-      "Output valued at market prices instead of factor cost."
+      "Base year moved from 2004-05 to 2011-12.",
+      "Corporate output measured from the MCA21 database of company filings in place of the Annual Survey of Industries alone.",
+      "Sectoral output measured as gross value added at basic prices in place of factor cost, with headline growth reported on GDP at market prices."
     ],
     "officialGrowth": 7.0,
     "subramanianGrowth": 4.5,
-    "overstatePoints": 2.5
+    "overstatePoints": 2.5,
+    "fy14Old": 4.7,
+    "fy14New": 6.9
   },
   "taxReversal": {
-    "note": "The tax reversal (Union Budget documents; Finance Ministry; PRS; Bharti, Chancel, Piketty and Somanchi, 'Proposals for a Wealth Tax Package to Tackle Extreme Inequalities in India', WIL, May 2024). taxToGDP is the Union's gross tax revenue (2026-27 BE); the OECD average covers all levels of government.",
+    "note": "The tax reversal (Taxation Laws (Amendment) Ordinance, September 2019, and the Finance Ministry's estimate of revenue forgone; Budget speech 2015-16 on the wealth tax; Bharti, Chancel, Piketty and Somanchi, 'Proposals for a Wealth Tax Package to Tackle Extreme Inequalities in India', World Inequality Lab, May 2024). taxToGDP is the Union's gross tax revenue (2026-27 BE); the OECD average (OECD Revenue Statistics 2025, for 2024) covers all levels of government.",
     "corpRateBefore": 30,
     "corpRateAfter": 22,
     "yearCut": 2019,
     "revenueLostLakhCr": 1.45,
     "wealthTaxAbolished": 2015,
-    "wealthTaxRevenueCr": 1000,
+    "wealthTaxRevenueCr": 1008,
+    "wealthTaxRevenueYear": "2013-14",
     "pikettyRate": 2,
     "pikettyThresholdCr": 10,
+    "inheritanceTaxPct": 33,
+    "packageYieldPctGDP": 2.73,
+    "adultsCovered": 370000,
     "taxToGDP": 11.2,
-    "oecdAvg": 34
+    "oecdAvg": 34.1
   },
   "budgetArithmetic": {
-    "note": "BE, RE and actuals (PRS; Union Budget documents). MGNREGA is demand-driven, and its spending has exceeded the budget estimate in every year since 2020-21 (PRS).",
+    "note": "BE, RE and actuals (PRS, Demand for Grants 2026-27 Analysis: Rural Development; Union Budget documents). MGNREGA is demand-driven. Its spending exceeded the budget estimate in each year from 2020-21 to 2023-24 and came in just under it in 2024-25 (₹85,834 crore against ₹86,000 crore). In December 2025 Parliament replaced the scheme with the VB-G RAM G Act, 2025; the 2026-27 budget gives MGNREGS ₹30,000 crore and VB-G RAM G ₹95,692 crore. Targets: National Health Policy 2017 (public health spending of 2.5% of GDP by 2025) and the Kothari Commission (1966), adopted in the National Policy on Education 1968 (6% of GDP on education). Outturns: government health expenditure 1.84% of GDP in 2021-22 (National Health Accounts, September 2024); Centre and states together spend about 4% of GDP on education (PRS, Demand for Grants 2026-27 Analysis: Education).",
     "healthTarget": 2.5,
-    "educationTarget": 6
+    "educationTarget": 6,
+    "healthActual": 1.84,
+    "healthActualYear": "2021-22",
+    "educationActual": 4,
+    "mgnregaBE2024": 86000,
+    "mgnregaActual2024": 85834
   },
   "kmut": {
-    "note": "Tamil Nadu's KMUT cash transfer (TN Dept of Civil Supplies; KMUT data 2026).",
+    "note": "Tamil Nadu's Kalaignar Magalir Urimai Thogai, a monthly cash transfer to women heads of household. ₹1,000 a month since September 2023; 1,30,69,831 women after the expansion of December 2024 (The News Minute). Allocation: ₹7,000 crore in 2023-24 and ₹13,000 crore in 2024-25 as reported; ₹14,414 crore in the 2026-27 budget presented on 5 August 2026 by the government formed after the May 2026 election (PRS, Tamil Nadu Budget Analysis 2026-27).",
     "perMonth": 1000,
-    "womenCoveredCrore": 1.3,
-    "annualOutlayCr": 13000,
-    "priorOutlayCr": 7000
+    "womenCoveredCrore": 1.31,
+    "annualOutlayCr": 14414,
+    "annualOutlayYear": "2026-27",
+    "priorOutlayCr": 13000,
+    "priorOutlayYear": "2024-25"
   },
   "deficitFinancing": {
-    "note": "How the deficit is financed (Union Budget 2026-27; RBI Annual Report 2025-26; PRS).",
+    "note": "How the deficit is financed (Union Budget 2026-27; Ministry of Finance borrowing calendar for October 2026 to March 2027, as reported by PTI on 25 September 2026; RBI press release on the surplus transfer for 2025-26, 22 May 2026). The 2026-27 deficit is a Budget Estimate, and no outturn exists yet.",
     "deficitPctGDP": 4.3,
     "marketBorrowingLakhCr": 17.2,
+    "marketBorrowingRevisedLakhCr": 16.0,
     "rbiDividendLakhCr": 2.87,
     "interestPer100": 20
   },
@@ -916,36 +1010,36 @@
     "perMPNowMillions": 2.6
   },
   "monsoonChain": {
-    "note": "Why the monsoon moves inflation (IMD; RBI; NSSO; IPCC). About half of cultivated area is rainfed.",
-    "rainfedSharePct": 50,
+    "note": "Why the monsoon moves inflation. Of a net sown area of 1,39,351 thousand hectares, 71,554 thousand hectares are irrigated, so about 49% is unirrigated (Land Use Statistics 2018-19, Rajya Sabha answer of 23 December 2022). The RBI's target is 4% CPI inflation with a band of 2 to 6%.",
+    "rainfedSharePct": 49,
     "steps": [
-      "Deficient monsoon",
-      "Farm output falls",
-      "Food prices spike",
-      "CPI breaches 6%",
-      "RBI raises rates",
-      "Rural incomes squeezed"
+      "a deficient monsoon",
+      "lower farm output",
+      "higher food prices",
+      "CPI inflation nearer the 6% upper limit",
+      "tighter RBI policy",
+      "squeezed rural incomes"
     ]
   },
   "cpiBasket": {
-    "note": "How the CPI number is built. Updated to the CPI 2024=100 series (first published 12 Feb 2026), whose weights come from HCES 2023-24 and which adopts the COICOP 2018 classification in place of the old six-group structure. Food's weight fell from 45.86% under 2012=100 to 36.75% here. This is the single biggest change, and it is the reason headline CPI now moves less on a food-price shock than the pre-2026 series did.",
+    "note": "How the CPI number is built, on the CPI 2024=100 series first published on 12 February 2026 (MoSPI). Its weights come from HCES 2023-24, and it adopts the COICOP 2018 classification in place of the old six-group structure. Prices are collected from 1,395 urban markets, 1,465 rural markets and 12 online marketplaces. Food and beverages weigh 36.75%, down from 45.86% under 2012=100, so a food-price shock moves headline CPI less than it did on the old series. 'Housing, water, electricity, gas and other fuels' together weigh 17.67% and transport 8.80%.",
     "itemsWeighted": 358,
     "urbanMarkets": 1395,
-    "villages": 1465,
+    "ruralMarkets": 1465,
     "onlineMarkets": 12,
     "baseYear": 2024,
     "rbiTarget": 4,
     "foodSharePct": 36.75,
     "foodSharePctPrev": 45.86,
-    "housingSharePct": 17.67,
+    "housingUtilitiesSharePct": 17.67,
     "transportSharePct": 8.8,
     "healthSharePct": 6.1
   },
   "pumpPrice": {
-    "note": "Where the petrol price goes, as an illustration at the excise rate in force before April 2025 (₹19.90 a litre). Tax took about 37 rupees of every hundred. Excise was raised by ₹2 a litre in April 2025 and cut on 27 March 2026, and the Delhi pump price was ₹98.64 from 19 May 2026, so the current split differs (PPAC; PRS; Ministry of Finance notifications).",
+    "note": "Where the petrol price goes, as an illustration at the excise rate in force before April 2025 (₹19.90 a litre), when the Delhi price was about ₹94. Tax took about 37 rupees of every hundred. Excise was raised by ₹2 a litre in April 2025 and cut on 27 March 2026, and the Delhi pump price was ₹102.12 a litre in early October 2026 (as reported daily by The Hans India, 1 to 7 October 2026), so the current split differs (PPAC; PRS; Ministry of Finance notifications). Crude import dependence was 88.7% in 2025-26 (PPAC provisional, as reported by KNN, 1 August 2026).",
     "parts": [
       {
-        "label": "Crude + refining + OMC margin",
+        "label": "Crude, refining and company margin",
         "value": 55.3
       },
       {
@@ -962,10 +1056,12 @@
       }
     ],
     "total": 94.0,
-    "crudeImportDependence": 88
+    "currentDelhi": 102.12,
+    "currentDelhiDate": "7 October 2026",
+    "crudeImportDependence": 88.7
   },
   "modiAsks": {
-    "note": "A prime minister asking citizens not to buy gold is a sign of pressure on the balance of payments (PM speech, Hyderabad, 10 May 2026; IMF WEO 2026; RBI/DGCI&S; PPAC).",
+    "note": "The Prime Minister's appeal in Hyderabad, 10 May 2026, as reported by The Quint and Deccan Chronicle. Imports: Department of Commerce, merchandise imports by principal commodity group, 2025-26 (published June 2026). Travel: RBI Liberalised Remittance Scheme data for 2023-24, as reported by Business Standard (22 May 2024); departures: Ministry of Tourism, India Tourism Statistics, December 2024 (provisional). Crude dependence: PPAC. Rupee: US Federal Reserve daily rate (FRED DEXINUS).",
     "asks": [
       "Avoid buying gold for one year",
       "Postpone non-essential foreign travel",
@@ -977,64 +1073,66 @@
     ],
     "numbers": [
       {
-        "label": "Gold imports FY26",
-        "value": "$72 bn",
-        "sub": "largest single commodity import after crude"
+        "label": "Gold imports 2025-26",
+        "value": "$72.0 bn",
+        "sub": "up 24.1% on 2024-25 (Department of Commerce)"
       },
       {
-        "label": "Tourist spend abroad",
-        "value": "$31.7 bn",
-        "sub": "~30 mn Indians travelled out"
+        "label": "Travel remittances abroad",
+        "value": "$17 bn",
+        "sub": "under the Liberalised Remittance Scheme, 2023-24 (RBI); 30.2 million departures by Indians in 2024 (Ministry of Tourism)"
       },
       {
-        "label": "Crude oil imports",
-        "value": "$123 bn",
-        "sub": "about 88% of crude imported (PPAC)"
+        "label": "Petroleum imports 2025-26",
+        "value": "$173.9 bn",
+        "sub": "crude and products; about 89% of crude is imported (PPAC)"
       },
       {
         "label": "Rupee (crisis week)",
         "value": "96.8/$",
-        "sub": "record low, 20 May 2026 (reference rate)"
+        "sub": "record low, 20 May 2026 (US Federal Reserve daily rate)"
       }
     ]
   },
   "gold": {
-    "note": "Indians buy gold because the formal system left them no better option (World Gold Council 2024; Commerce Ministry 2025-26 gold import unit value; World Bank Global Findex 2021; IRDAI Annual Report 2024-25; NSE). stockValueTn values 25,000 tonnes at the 2025-26 average import price of about $99,800 a kg. excludedAdultsMn is adults without an account (Findex 2021). equityParticipationPct is NSE's 13.1 crore unique registered investors (May 2026) as a share of population.",
+    "note": "Indian households hold about 25,000 tonnes of gold, the World Gold Council's estimate (23,537 to 25,537 tonnes by September 2024, with Metals Focus, including some temple holdings). stockValueTn values 25,000 tonnes at the 2025-26 average import price of about $99,800 a kg (Department of Commerce). Account ownership: World Bank Global Findex (FX.OWN.TOTL.ZS): 77.5% of adults had an account in 2021 and 89.0% in 2024. Insurance penetration: IRDAI Annual Report 2024-25, which gives the world figure for 2024 from Swiss Re. equityParticipationPct is NSE's 13.1 crore unique registered investors (May 2026) as a share of the 2026 population projection.",
     "privateTonnes": 25000,
     "stockValueTn": 2.5,
     "insurancePenetration": 3.7,
-    "insuranceGlobal": 7,
-    "excludedAdultsMn": 230,
+    "insuranceGlobal": 7.3,
+    "unbankedPct2021": 22.5,
+    "unbankedPct2024": 11.0,
     "equityParticipationPct": 9
   },
   "poverty": {
-    "note": "Poverty is a contested number. Three official lines give three different answers. India has had no officially accepted poverty line since 2014.",
+    "note": "Poverty is a contested number. Three lines give three different answers. The last official estimate is the Tendulkar line for 2011-12, and the Rangarajan report of 2014 was never adopted (Planning Commission press note, July 2013; Rangarajan Expert Group report, June 2014; NITI Aayog, 'Multidimensional Poverty in India since 2005-06', January 2024).",
     "lines": [
       {
         "name": "Tendulkar (2011-12)",
-        "detail": "₹27/day rural, ₹33/day urban",
+        "detail": "₹27 a day rural, ₹33 a day urban",
         "headcount": "21.9%",
-        "status": "never updated"
+        "status": "the last official estimate"
       },
       {
-        "name": "Rangarajan (2014)",
-        "detail": "₹32/day rural, ₹47/day urban",
+        "name": "Rangarajan (2011-12)",
+        "detail": "₹32 a day rural, ₹47 a day urban",
         "headcount": "29.5%",
-        "status": "shelved and never adopted"
+        "status": "reported in 2014 and never adopted"
       },
       {
-        "name": "NITI MPI (2022-23)",
-        "detail": "multidimensional, with no income line",
-        "headcount": "11.3%",
-        "status": "current official"
+        "name": "NITI multidimensional index (2022-23)",
+        "detail": "deprivations in health, education and living standards, with no income line",
+        "headcount": "11.28%",
+        "status": "projected from NFHS-4 and NFHS-5"
       }
     ]
   },
   "bodies": {
-    "note": "The economy's effects show in health and education outcomes (NFHS-5 2019-21; National Health Accounts; Economic Survey).",
-    "stuntedPct": 35,
-    "outOfPocketPct": 40,
-    "publicHealthPctGDP": 1.9
+    "note": "The economy's effects show in health (NFHS-5, 2019-21, as stated in a Rajya Sabha answer of December 2024; National Health Accounts estimates for 2021-22, released September 2024).",
+    "stuntedPct": 35.5,
+    "outOfPocketPct": 39.4,
+    "publicHealthPctGDP": 1.84,
+    "healthYear": "2021-22"
   },
   "readChecklist": {
     "note": "How to read any official number.",
@@ -1044,28 +1142,28 @@
       "When was the underlying data collected?",
       "Who gains if the number looks good?",
       "Has the method changed?",
-      "Did the inconvenient survey get published?",
+      "Was the inconvenient survey published?",
       "How does it compare with independent estimates?"
     ]
   },
   "measurement": {
-    "note": "How we know: four places where a choice of method moved the number more than the economy did (NSO; HCES 2022-23 and 2023-24; Census of India; Carnegie Endowment).",
+    "note": "How we know: four places where a choice of method moved the number more than the economy did (MoSPI, 30 January 2015 and the back-series of 28 November 2018; MoSPI press release of 15 November 2019 on the 2017-18 consumption survey; Union Cabinet, 12 December 2025, on the Census 2027; Constitution (Forty-second Amendment) Act, 1976, and (Eighty-fourth Amendment) Act, 2001).",
     "items": [
       {
         "title": "The GDP back-series",
-        "body": "The 2015 shift to the 2011-12 base and the MCA21 corporate database raised measured growth for the years it covered (2013-14 went from 4.7% to 6.9%). The back-series released in November 2018 then lowered UPA-era growth. Arvind Subramanian (2019) argued that growth in 2011-17 was overstated by about 2.5 points a year."
+        "body": "The 2015 shift to the 2011-12 base and the MCA21 corporate database raised measured growth for the years it covered, and 2013-14 went from 4.7% to 6.9%. The back-series released in November 2018 then lowered growth in the UPA years. Arvind Subramanian (2019) argued that growth in 2011-17 was overstated by about 2.5 points a year."
       },
       {
-        "title": "The surveys that went missing",
-        "body": "The 2017-18 consumption survey was conducted then withheld (it showed rural consumption falling). That left an 11-year data gap until HCES 2022-23, which changed methodology and is not cleanly comparable."
+        "title": "The survey that was not released",
+        "body": "MoSPI decided in November 2019 not to release the 2017-18 consumption survey, citing data quality. Business Standard had reported that it showed real rural consumption falling. The next survey, HCES 2022-23, came eleven years after 2011-12 and uses a changed method, so it is not cleanly comparable."
       },
       {
         "title": "A census a decade late",
-        "body": "Last census 2011; the 2021 census was postponed. Census 2027 budget (₹11,718 cr) approved. Welfare ran for a decade on 2011 population numbers."
+        "body": "The last census was in 2011, and the 2021 census was postponed. The Cabinet approved ₹11,718 crore for Census 2027 in December 2025."
       },
       {
-        "title": "Counting = allocating power",
-        "body": "Seats frozen on 1971 data since 1976; the freeze ends with the first census after 2026. Populous northern states gain seats, southern states lose."
+        "title": "Counting allocates power",
+        "body": "Lok Sabha seats have been frozen on the 1971 census since 1976, and the freeze ends with the first census after 2026. Reapportioned on population, populous northern states would gain seats and southern states would lose them."
       }
     ]
   },
@@ -1079,8 +1177,7 @@
         "seats": 28,
         "pop2011": 6.11,
         "pop2026": 6.9,
-        "tfr": 1.7,
-        "ret": 60
+        "tfr": 1.7
       },
       {
         "state": "Telangana",
@@ -1108,7 +1205,6 @@
         "pop2011": 7.21,
         "pop2026": 7.75,
         "tfr": 1.8,
-        "ret": 60,
         "delim": -8
       },
       {
@@ -1118,8 +1214,7 @@
         "seats": 26,
         "pop2011": 6.04,
         "pop2026": 7.41,
-        "tfr": 1.9,
-        "ret": 50
+        "tfr": 1.9
       },
       {
         "state": "Maharashtra",
@@ -1128,8 +1223,7 @@
         "seats": 48,
         "pop2011": 11.24,
         "pop2026": 12.93,
-        "tfr": 1.7,
-        "ret": 30
+        "tfr": 1.7
       },
       {
         "state": "Kerala",
@@ -1184,8 +1278,7 @@
         "seats": 42,
         "pop2011": 9.13,
         "pop2026": 10.05,
-        "tfr": 1.6,
-        "ret": 120
+        "tfr": 1.6
       },
       {
         "state": "Madhya Pradesh",
@@ -1194,8 +1287,7 @@
         "seats": 29,
         "pop2011": 7.27,
         "pop2026": 8.97,
-        "tfr": 2.0,
-        "ret": 244
+        "tfr": 2.0
       },
       {
         "state": "Jharkhand",
@@ -1214,7 +1306,6 @@
         "pop2011": 19.98,
         "pop2026": 24.29,
         "tfr": 2.4,
-        "ret": 200,
         "delim": 11
       },
       {
@@ -1225,11 +1316,9 @@
         "pop2011": 10.41,
         "pop2026": 13.23,
         "tfr": 3.0,
-        "ret": 510,
         "delim": 10
       }
     ],
-    "retNote": "Return per ₹100 of Union taxes paid, from Finance Commission devolution, as estimated by Praveen Chakravarty for the All India Professionals' Congress. Available for 8 of the 16 states. This project's author is a former Manmohan Singh Fellow of the AIPC, so this is a politically affiliated source on a politically contested question and is flagged as such: treat the direction as well established and the exact ratios as the AIPC's own estimates, which this project has not been able to trace to a published table. Rich states financing poorer ones is how the system is designed to work.",
     "delimNote": "Projected Lok Sabha seat change after the first census held post-2026 (Carnegie Endowment; ISAS; The India Forum). Available for 4 of the 16 states, and estimates vary considerably between them.",
     "popNote": "Representation here is computed on the official 2026 projection. The 2011 census is fifteen years stale and would understate how unequal representation has become. The projection is the government's own and is the best available number, but it is a projection because the 2021 census was postponed and the next enumeration is not due until February 2027. A census would replace it with a count. This project's argument applies here as well, because even measuring the fairness of a vote now depends on an estimate.",
     "indiaPop2026": 142.34
