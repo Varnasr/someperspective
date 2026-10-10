@@ -29,6 +29,10 @@ EXEMPT = {
     "downloads/research-package.html":
         "its own red/white print scheme, pinned light on purpose (it is written to be "
         "printed), so it has no dark block; its light pairs are still measured",
+    "index.html":
+        "the front page carries the split-page redesign (UPA field, NDA field) ahead of the "
+        "other pages; its pairs are measured with --surface as the UPA field and --surface-2 "
+        "as the NDA field. Remove this exemption when the rest of the site moves over",
     "downloads/paper.html":
         "the paper view is deliberately white rather than cream; everything else matches",
 }

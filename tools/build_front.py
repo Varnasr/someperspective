@@ -87,174 +87,164 @@ def fmt(v, dp):
     return s.replace("-", "−")
 
 
-def line_chart(vals, title, desc, unit="", dp=1, invert=False, lo=None, hi=None):
-    """Era-coloured line over 2004-2026. Gaps stay gaps. invert puts low values
-    at the top (press-freedom rank, where 1 is best)."""
+def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=True):
+    """A full-bleed chart whose x-axis is the page: each of the 23 years gets an
+    equal slice, so the 2013/2014 boundary falls exactly on the page seam at
+    10/23 of the width. The SVG stretches (preserveAspectRatio none, strokes
+    that do not scale), and every label is HTML positioned in per cent, so the
+    text never stretches with it."""
     have = [v for v in vals if v is not None]
     vmin = min(have) if lo is None else lo
     vmax = max(have) if hi is None else hi
-    if lo is None:
-        vmin = min(vmin, 0) if vmin >= 0 and vmin < (vmax - vmin) * 0.6 else vmin
+    if lo is None and vmin >= 0 and vmin < (vmax - vmin) * 0.6:
+        vmin = 0
     ticks, step = nice_ticks(vmin, vmax)
     y0, y1 = ticks[0], ticks[-1]
     if y1 <= y0:
         y1 = y0 + step
-    iw, ih = W - PAD_L - PAD_R, H - PAD_T - PAD_B
+    n = len(YEARS)
 
     def X(i):
-        return PAD_L + iw * i / (len(YEARS) - 1)
+        return (i + 0.5) * 100 / n
 
     def Y(v):
         f = (v - y0) / (y1 - y0)
-        if invert:
-            f = 1 - f
-        return PAD_T + ih * (1 - f)
+        return 100 * (f if invert else 1 - f)
 
-    uid = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")[:40]
-    parts = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-labelledby="t-{uid} d-{uid}" '
-             f'preserveAspectRatio="xMidYMid meet">',
-             f'<title id="t-{uid}">{escape(title)}</title>',
-             f'<desc id="d-{uid}">{escape(desc)}</desc>']
-    # era band behind the NDA years
-    xd = (X(9) + X(10)) / 2
-    parts.append(f'<rect x="{xd:.1f}" y="{PAD_T}" width="{X(len(YEARS)-1)-xd:.1f}" height="{ih}" class="band"/>')
-    for t in sorted(set(ticks + ([y1] if y1 not in ticks else []))):
-        if t < y0 - 1e-9 or t > y1 + 1e-9:
-            continue
-        yy = Y(t)
-        parts.append(f'<line x1="{PAD_L}" x2="{W-PAD_R}" y1="{yy:.1f}" y2="{yy:.1f}" class="grid"/>')
-        label = fmt(t, 0 if step >= 1 else (1 if step >= 0.1 else 2))
-        parts.append(f'<text x="{PAD_L-6}" y="{yy+3.5:.1f}" class="tick" text-anchor="end">{label}</text>')
-    for i, y in enumerate(YEARS):
-        if y in (2004, 2009, 2014, 2019, 2026):
-            anchor = "start" if y == 2004 else ("end" if y == 2026 else "middle")
-            parts.append(f'<text x="{X(i):.1f}" y="{H-8}" class="tick" text-anchor="{anchor}">{y}</text>')
-    parts.append(f'<text x="{xd-6:.1f}" y="{PAD_T-7}" class="era" text-anchor="end">UPA</text>')
-    parts.append(f'<text x="{xd+6:.1f}" y="{PAD_T-7}" class="era" text-anchor="start">NDA</text>')
-    # segments, split at gaps and at the era boundary
-    for era, rng, cls in (("upa", range(0, 10), "s-upa"), ("nda", range(10, len(YEARS)), "s-nda")):
+    svg = ['<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">']
+    for t in ticks:
+        svg.append(f'<line x1="0" x2="100" y1="{Y(t):.2f}" y2="{Y(t):.2f}" class="grid"/>')
+    for cls, rng in (("upa", range(0, 10)), ("nda", range(10, n))):
         seg = []
-        for i in rng:
-            v = vals[i]
+        for i in list(rng) + [None]:
+            v = vals[i] if i is not None else None
             if v is None:
                 if len(seg) > 1:
-                    parts.append(f'<polyline points="{" ".join(seg)}" class="{cls}"/>')
+                    svg.append(f'<polyline points="{" ".join(seg)}" class="s-{cls}"/>')
+                elif len(seg) == 1:
+                    x, y = seg[0].split(",")
+                    svg.append(f'<line x1="{x}" x2="{x}" y1="{y}" y2="{y}" class="s-{cls} pt"/>')
                 seg = []
                 continue
-            seg.append(f"{X(i):.1f},{Y(v):.1f}")
-        if len(seg) > 1:
-            parts.append(f'<polyline points="{" ".join(seg)}" class="{cls}"/>')
-        for i in rng:
-            if vals[i] is not None:
-                parts.append(f'<circle cx="{X(i):.1f}" cy="{Y(vals[i]):.1f}" r="2.4" class="{cls}"/>')
-    # era means as dashed lines
+            seg.append(f"{X(i):.2f},{Y(v):.2f}")
     mu, mn = era_means(vals)
+    seam = 10 * 100 / n
     if mu is not None:
-        parts.append(f'<line x1="{X(0):.1f}" x2="{xd:.1f}" y1="{Y(mu):.1f}" y2="{Y(mu):.1f}" class="m-upa"/>')
+        svg.append(f'<line x1="0" x2="{seam:.2f}" y1="{Y(mu):.2f}" y2="{Y(mu):.2f}" class="m-upa"/>')
     if mn is not None:
-        parts.append(f'<line x1="{xd:.1f}" x2="{X(len(YEARS)-1):.1f}" y1="{Y(mn):.1f}" y2="{Y(mn):.1f}" class="m-nda"/>')
-    parts.append("</svg>")
-    return "".join(parts)
-
-
-def dots(u, n, lo, hi, better_low):
-    """Two dots on one scale: the scorecard row's picture."""
-    w, h, p = 160, 22, 8
-
-    def X(v):
-        return p + (w - 2 * p) * (v - lo) / ((hi - lo) or 1)
-    xu, xn = X(u), X(n)
-    return (f'<svg viewBox="0 0 {w} {h}" class="dots" aria-hidden="true" focusable="false">'
-            f'<line x1="{p}" x2="{w-p}" y1="{h/2}" y2="{h/2}" class="grid"/>'
-            f'<line x1="{min(xu,xn):.1f}" x2="{max(xu,xn):.1f}" y1="{h/2}" y2="{h/2}" class="link"/>'
-            f'<circle cx="{xu:.1f}" cy="{h/2}" r="5" class="d-upa"/>'
-            f'<circle cx="{xn:.1f}" cy="{h/2}" r="5" class="d-nda"/></svg>')
+        svg.append(f'<line x1="{seam:.2f}" x2="100" y1="{Y(mn):.2f}" y2="{Y(mn):.2f}" class="m-nda"/>')
+    svg.append("</svg>")
+    lab = []
+    if tall:
+        tdp = 0 if step >= 1 else (1 if step >= 0.1 else 2)
+        for t in ticks:
+            lab.append(f'<span class="yt" style="top:{Y(t):.2f}%">{fmt(t, tdp)}</span>')
+        for i, y in enumerate(YEARS):
+            if y in (2004, 2008, 2013):
+                pos = {2004: 0, 2013: 1000 / n}.get(y, X(i))
+                cls = " first" if y == 2004 else (" end" if y == 2013 else "")
+                lab.append(f'<span class="xt{cls}" style="left:{pos:.2f}%">{y}</span>')
+            if y in (2014, 2020, 2026):
+                pos = {2014: 1000 / n, 2026: 100}.get(y, X(i))
+                cls = " first" if y == 2014 else (" end" if y == 2026 else "")
+                lab.append(f'<span class="xt{cls}" style="left:{pos:.2f}%">{y}</span>')
+    label = f"{title}. {desc}"
+    return (f'<div class="chart{" tall" if tall else ""}" role="img" aria-label="{escape(label)}">'
+            f'{"".join(svg)}<div class="labels" aria-hidden="true">{"".join(lab)}</div></div>')
 
 
 # --------------------------------------------------------------------------
 # Page
 # --------------------------------------------------------------------------
 CSS = """
-:root{--paper:#f4f1ea;--surface:#ffffff;--surface-2:#faf7f1;--ink:#1b1b22;--ink-soft:#34343f;
---muted:#6b6b78;--line:rgba(27,27,34,.10);--accent:#a34a0c;--on-accent:#ffffff;--accent-2:#155e75;
---on-accent-2:#ffffff;--band:rgba(163,74,12,.06)}
-@media (prefers-color-scheme:dark){:root{--paper:#0b0c11;--surface:#161922;--surface-2:#1c2029;
---ink:#edeff5;--ink-soft:#d3d7e0;--muted:#99a0b1;--line:rgba(255,255,255,.12);
---accent:#fb923c;--on-accent:#1b1b22;--accent-2:#22d3ee;--on-accent-2:#1b1b22;--band:rgba(251,146,60,.07)}}
+:root{--seam:43.4783%;
+--paper:#f5f5f2;--surface:#d6e6e1;--surface-2:#e4dcef;--ink:#0d0e12;--ink-soft:#26282f;--muted:#3f434d;
+--line:rgba(13,14,18,.16);--accent:#0b5a50;--on-accent:#ffffff;--accent-2:#5a2a8c;--on-accent-2:#ffffff}
+@media (prefers-color-scheme:dark){:root{--paper:#0c0d10;--surface:#0f2621;--surface-2:#1e1630;
+--ink:#f2f2ef;--ink-soft:#d5d7dd;--muted:#b0b4bf;--line:rgba(242,242,239,.18);
+--accent:#86d8ca;--on-accent:#0c0d10;--accent-2:#c9adf3;--on-accent-2:#0c0d10}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--paper);color:var(--ink);font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
-font-size:1.125rem;line-height:1.6;font-optical-sizing:auto}
-a{color:var(--accent);text-underline-offset:.15em;text-decoration-thickness:1px}
+body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;color:var(--ink);
+background:linear-gradient(90deg,var(--surface) 0,var(--surface) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
+var(--ink) calc(var(--seam) + 1px),var(--surface-2) calc(var(--seam) + 1px),var(--surface-2) 100%);
+font-variant-numeric:tabular-nums;overflow-x:clip}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.sans,.mast,.kicker,.byline,table,.fig figcaption,.more,.foot,.skip,.note{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--surface);padding:.5rem 1rem;z-index:10}
-.mast{border-bottom:1px solid var(--line)}
-.mast .in{max-width:1080px;margin:0 auto;padding:.9rem 1.25rem;display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;align-items:baseline;justify-content:space-between}
-.mast .name{font-family:"Source Serif 4",Georgia,serif;font-weight:700;font-size:1.3rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
-.mast nav{display:flex;flex-wrap:wrap;gap:.25rem 1.1rem;font-size:.85rem}
-.mast nav a{color:var(--ink-soft);text-decoration:none;padding:.35rem 0;display:inline-block}
-.mast nav a:hover{color:var(--accent)}
-main{max-width:1080px;margin:0 auto;padding:0 1.25rem}
-.col{max-width:680px}
-.kicker{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-header.lead{padding:3.5rem 0 2.25rem;border-bottom:1px solid var(--line)}
-h1{font-size:clamp(2rem,4.6vw,3.25rem);line-height:1.08;letter-spacing:-.02em;font-weight:700;margin:.9rem 0 1.1rem;max-width:20ch}
-.dek{font-size:1.25rem;line-height:1.5;color:var(--ink-soft);max-width:36em}
-.byline{margin-top:1.4rem;font-size:.85rem;color:var(--muted)}
-.byline a{color:var(--muted)}
-section{padding:3rem 0;border-bottom:1px solid var(--line)}
-h2{font-size:1.75rem;line-height:1.2;letter-spacing:-.01em;margin:.5rem 0 1rem;max-width:28ch}
-h3{font-size:1.3rem;line-height:1.25;margin:0 0 .6rem}
-p+p{margin-top:1rem}
-.col p{max-width:36em}
-table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:1.5rem;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:.65rem .5rem;border-bottom:1px solid var(--line);vertical-align:middle}
-th{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-td.n{text-align:right;white-space:nowrap}
-td.v{font-weight:600}
-.worse{color:var(--accent)}.better{color:var(--accent-2)}
-.dots{width:160px;height:22px;display:block}
-.k{display:inline-block;width:.7em;height:.7em;border-radius:50%;vertical-align:baseline;margin:0 .3em 0 .1em}
-.k.upa{background:var(--accent-2)}.k.nda{background:var(--accent)}
-.note{font-size:.82rem;color:var(--muted);margin-top:1rem;max-width:44em}
-.findings{display:grid;gap:3rem 3.5rem;grid-template-columns:1fr;margin-top:1rem}
-@media (min-width:900px){.findings{grid-template-columns:1fr 1fr}}
-.finding p{font-size:1.02rem}
-.fig{margin:1rem 0 0}
-.fig svg{width:100%;height:auto;display:block}
-.fig figcaption{font-size:.78rem;color:var(--muted);margin-top:.4rem}
-svg text{font-family:Inter,system-ui,sans-serif}
-svg .tick{font-size:11px;fill:var(--muted)}
-svg .era{font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--muted)}
-@media (max-width:600px){svg .tick,svg .era{font-size:18px}}
-svg .grid{stroke:var(--line);stroke-width:1}
-svg .band{fill:var(--band)}
-svg polyline{fill:none;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
-svg polyline.s-upa,svg circle.s-upa{stroke:var(--accent-2)}
-svg polyline.s-nda,svg circle.s-nda{stroke:var(--accent)}
-svg circle.s-upa{fill:var(--accent-2)}svg circle.s-nda{fill:var(--accent)}
-svg .m-upa{stroke:var(--accent-2);stroke-dasharray:4 3;stroke-width:1.2}
-svg .m-nda{stroke:var(--accent);stroke-dasharray:4 3;stroke-width:1.2}
-svg .d-upa{fill:var(--accent-2)}svg .d-nda{fill:var(--accent)}
-svg .link{stroke:var(--muted);stroke-width:1.5}
-.idx{display:grid;gap:2rem;grid-template-columns:1fr;margin-top:1.5rem}
-@media (min-width:800px){.idx{grid-template-columns:repeat(3,1fr)}}
-.idx .big{font-family:Inter,system-ui,sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.idx .big small{font-size:.9rem;font-weight:500;color:var(--muted);letter-spacing:0}
-.idx p{font-size:.98rem}
-.more{display:grid;gap:0;grid-template-columns:1fr;margin-top:1.5rem;border-top:1px solid var(--line)}
-@media (min-width:700px){.more{grid-template-columns:1fr 1fr}}
-.more a{display:block;padding:1rem .25rem 1rem 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
-.more a strong{display:block;font-size:1rem;color:var(--ink)}
-.more a span{display:block;font-size:.85rem;color:var(--muted);margin-top:.15rem}
-.more a:hover strong{color:var(--accent)}
-.interest{background:var(--surface-2);border-left:3px solid var(--accent);padding:1.25rem 1.4rem;margin-top:1rem}
-.foot{max-width:1080px;margin:0 auto;padding:2rem 1.25rem 3rem;font-size:.82rem;color:var(--muted)}
-.foot a{color:var(--muted)}
-@media (max-width:600px){body{font-size:1.06rem}header.lead{padding-top:2.25rem}th:nth-child(4),td:nth-child(4){display:none}}
-@media print{.mast nav,.more{display:none}section{break-inside:avoid}}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:.5rem 1rem;z-index:10}
+.split{display:grid;grid-template-columns:var(--seam) 1fr}
+.split>.l{padding-right:clamp(.75rem,2.5vw,2rem);text-align:right}
+.split>.r{padding-left:clamp(.75rem,2.5vw,2rem)}
+.split>*{padding-left:clamp(.75rem,3vw,2.5rem);padding-right:clamp(.75rem,3vw,2.5rem)}
+.wide{font-stretch:125%}.narrow{font-stretch:75%}
+.top{border-bottom:2px solid var(--ink);align-items:center}
+.top .l,.top .r{padding-top:.8rem;padding-bottom:.8rem}
+.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
+.top nav a{text-decoration:none;padding:.3rem 0}
+.top nav a:hover{text-decoration:underline}
+.eras .l,.eras .r{padding-top:clamp(2.5rem,7vw,5.5rem);padding-bottom:1.25rem}
+.yr{font-weight:900;font-stretch:75%;font-size:clamp(2.6rem,10vw,8.5rem);line-height:.86;letter-spacing:-.02em}
+.yr span{display:block}
+.who{margin-top:.9rem;font-size:clamp(.8rem,1.6vw,1rem);font-weight:600;line-height:1.3}
+.who b{display:block;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.06em;font-size:1.05em}
+.slab{background:var(--paper);border:2px solid var(--ink);width:min(46rem,calc(100% - 1.5rem));
+margin:2rem 0 2rem clamp(.75rem,calc(var(--seam) - 23rem),100%);padding:clamp(1.1rem,3vw,2rem)}
+.slab.flush{margin-top:0;margin-bottom:0}
+.kicker{font-size:.72rem;font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase}
+h1{font-weight:850;font-stretch:87.5%;font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.02;letter-spacing:-.015em;margin:.6rem 0 1rem}
+h2{font-weight:800;font-stretch:87.5%;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.08;margin:.45rem 0 .8rem}
+h3{font-weight:800;font-stretch:87.5%;font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.12;margin:.35rem 0 .7rem}
+p+p{margin-top:.9rem}
+.dek{font-size:1.1rem;color:var(--ink-soft)}
+.byline{margin-top:1.1rem;font-size:.85rem;color:var(--muted)}
+.count{display:flex;align-items:baseline;gap:.5rem;font-weight:900;font-stretch:75%;font-size:clamp(3.5rem,9vw,6rem);line-height:.9}
+.count small{font-size:.28em;font-weight:700;font-stretch:100%;line-height:1.2}
+.legend{font-size:.85rem;margin-top:.8rem;color:var(--ink-soft)}
+.sw{display:inline-block;width:1.6em;height:.7em;border:1.5px solid var(--ink);vertical-align:-.05em;margin-right:.35em}
+.sw.upa{background:var(--surface)}.sw.nda{background:var(--surface-2)}
+.m{border-top:2px solid var(--ink)}
+.m:last-child{border-bottom:2px solid var(--ink)}
+.m .split .l,.m .split .r{padding-top:.75rem}
+.m .lab{font-size:.78rem;font-weight:800;font-stretch:112.5%;text-transform:uppercase;letter-spacing:.06em;line-height:1.25}
+.m .v{font-weight:900;font-stretch:75%;font-size:clamp(2rem,6.4vw,4.6rem);line-height:.95;letter-spacing:-.01em;padding-bottom:.35rem}
+.m .v small{font-size:.38em;font-weight:700;margin-left:.08em}
+.tag{display:inline-block;font-size:.72rem;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:.1em;
+border:2px solid var(--ink);padding:.12rem .45rem}
+.tag.worse{background:var(--ink);color:var(--paper)}
+.chart{position:relative;height:52px;margin:0}
+.chart.tall{height:clamp(190px,30vw,300px);margin:1.25rem 0 2.4rem}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.chart polyline,.chart .pt{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.chart:not(.tall) polyline{stroke-width:2.2}
+.chart .s-upa{stroke:var(--accent)}.chart .s-nda{stroke:var(--accent-2)}
+.chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
+.chart .m-upa{stroke:var(--accent)}.chart .m-nda{stroke:var(--accent-2)}
+.labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}
+.yt{position:absolute;left:.4rem;transform:translateY(-120%)}
+.xt{position:absolute;bottom:-1.5rem;transform:translateX(-50%)}.xt.first{transform:translateX(.4rem)}.xt.end{transform:translateX(calc(-100% - .4rem))}
+.src{font-size:.78rem;color:var(--muted);padding:0 clamp(.75rem,3vw,2.5rem) 0;margin-top:0;margin-bottom:2.5rem;
+width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
+.idx{display:grid;gap:1.25rem;grid-template-columns:1fr;margin-top:1rem}
+@media (min-width:760px){.idx{grid-template-columns:repeat(3,1fr)}}
+.idx .big{font-weight:900;font-stretch:75%;font-size:2.6rem;line-height:1}
+.idx .big small{font-size:.35em;font-weight:700;font-stretch:100%;margin-left:.2em}
+.idx p{font-size:.95rem}
+.more{display:grid;grid-template-columns:1fr;margin-top:1rem;border-top:2px solid var(--ink)}
+@media (min-width:640px){.more{grid-template-columns:1fr 1fr;column-gap:1.5rem}}
+.more a{display:block;padding:.8rem 0;border-bottom:1px solid var(--line);text-decoration:none}
+.more a strong{display:block;font-weight:800;font-stretch:112.5%}
+.more a span{display:block;font-size:.85rem;color:var(--muted)}
+.more a:hover strong{text-decoration:underline}
+.interest{border-left:6px solid var(--ink);padding-left:1rem;margin-top:.6rem}
+.foot{border-top:2px solid var(--ink);font-size:.8rem}
+.foot .l,.foot .r{padding-top:1.1rem;padding-bottom:2.5rem}
+@media (max-width:600px){body{font-size:1rem}.top nav{gap:.1rem .8rem;font-size:.8rem}.m .lab{font-size:.7rem}
+.src{width:auto;text-align:left}}
+@media print{.top nav,.more{display:none}body{background:none}.slab{border-width:1px}}
 """
 
 # measure key, label, unit, dp, higher is worse
@@ -279,12 +269,16 @@ def build():
         u, n = era_means(S[key])
         is_worse = (n > u) if hi_worse else (n < u)
         worse += is_worse
-        have = [x for x in S[key] if x is not None]
-        lo, hi = min(have + [u, n]), max(have + [u, n])
+        verdict = "worse" if is_worse else "better"
+        spark = seam_chart(S[key], label, f"UPA average {fmt(u, dp)}{unit}, NDA average {fmt(n, dp)}{unit}.",
+                           dp=dp, invert=(key == "pressFreedom"), tall=False)
         rows.append(
-            f'<tr><td>{escape(label)}</td><td class="n">{fmt(u, dp)}{unit}</td>'
-            f'<td class="n v">{fmt(n, dp)}{unit}</td><td>{dots(u, n, lo, hi, not hi_worse)}</td>'
-            f'<td class="{"worse" if is_worse else "better"}">{"Worse" if is_worse else "Better"}</td></tr>')
+            f'<div class="m"><p class="sr">{escape(label)}: UPA average {fmt(u, dp)}{unit}, NDA average '
+            f'{fmt(n, dp)}{unit}. {"Worse" if is_worse else "Better"} after 2014.</p>'
+            f'<div class="split" aria-hidden="true"><div class="l"><p class="lab">{escape(label)}</p>'
+            f'<p class="v">{fmt(u, dp)}<small>{unit}</small></p></div>'
+            f'<div class="r"><p class="lab"><span class="tag {verdict}">{verdict}</span></p>'
+            f'<p class="v">{fmt(n, dp)}<small>{unit}</small></p></div></div>{spark}</div>')
     total = len(SCORECARD)
 
     g = S["gdpGrowth"]
@@ -316,7 +310,7 @@ def build():
          f"averaged {fmt(g_nda_ex,1)}%, above the earlier decade's {fmt(gu,1)}% ({fmt(g_upa_ex,1)}% without the 2008-09 "
          f"crisis year). The series is spliced from three bases (2004-05, 2011-12 and 2022-23), and the 2015 "
          f"rebasing alone moved 2013-14 from 4.7% to 6.9%, so a gap of under one point is smaller than past revisions.",
-         line_chart(g, "Real GDP growth, per cent, 2004-05 to 2025-26",
+         seam_chart(g, "Real GDP growth, per cent, 2004-05 to 2025-26",
                     f"UPA average {fmt(gu,1)}%, NDA average {fmt(gn,1)}%; the lowest year is 2020-21 at -5.8%.", dp=1),
          "MoSPI national accounts; World Bank for 2004-2013. Year shown is the fiscal year that starts in it."),
         ("Inflation is the one measure on which the later period does better",
@@ -324,7 +318,7 @@ def build():
          f"when inflation reached double digits in 2009, 2010 and 2013. Inflation targeting began in 2016, and the "
          f"oil-price collapse of 2014-16 came at the start of the later period. The site's inflation explainer sets out "
          f"how much of the fall each explanation can carry.",
-         line_chart(S["cpiInflation"], "CPI inflation, per cent, 2004-2026",
+         seam_chart(S["cpiInflation"], "CPI inflation, per cent, 2004-2026",
                     f"UPA average {fmt(cu,1)}%, NDA average {fmt(cn,1)}%.", dp=1),
          "World Bank for 2004-2013; MoSPI CPI (Combined) after. Calendar years; 2026 is January to August on the new 2024 base."),
         ("The top 1% took a larger share of income than at any time since 1922",
@@ -332,7 +326,7 @@ def build():
          f"{fmt(t1[0],1)}% in 2004, the highest in the World Inequality Lab's series, which begins in 1922. The bottom "
          f"half's share fell from {fmt(b5[0],1)}% to a low of 13.9% in 2017 and was {fmt(b5[last_t1],1)}% in 2022-23. "
          f"No annual figure has been published after 2022.",
-         line_chart(t1, "Share of national income received by the top 1%, per cent, 2004-2022",
+         seam_chart(t1, "Share of national income received by the top 1%, per cent, 2004-2022",
                     f"From {fmt(t1[0],1)}% in 2004 to {fmt(t1[last_t1],1)}% in 2022.", dp=1),
          "Bharti, Chancel, Piketty and Somanchi (2024), World Inequality Lab Working Paper 2024/09."),
         ("Press freedom and democratic quality fell furthest",
@@ -340,7 +334,7 @@ def build():
          f"{int(round(mean(pf[:10])))} in the UPA decade. The Democratic Quality Index, which combines V-Dem, Freedom "
          f"House and RSF scores, fell from {fmt(dq[10],2)} in 2014 to {fmt(dq[-1],2)} in 2026. V-Dem first classified "
          f"India as an electoral autocracy in its March 2021 Democracy Report.",
-         line_chart(pf, "RSF World Press Freedom Index rank, 2004-2026 (1 is best)",
+         seam_chart(pf, "RSF World Press Freedom Index rank, 2004-2026 (1 is best)",
                     f"From {int(pf[0])} in 2004 to {int(pf[-1])} in 2026.", dp=0, invert=True),
          "Reporters Without Borders, yearly index files. RSF published no separate 2011 index; its 2011-12 rank is used for both years."),
         ("Official statistics were withheld, delayed or disputed in ways they were not before 2014",
@@ -349,7 +343,7 @@ def build():
          f"statistical offices and the COVID death count. It is zero for every UPA year, peaked at {fmt(ss_peak,1)} in "
          f"2021-22 and was {fmt(ss[-1],2)} in 2026, when the census, now on a notified schedule, counts as a delay. "
          f"The severities are the author's coding and the most contestable part of the study.",
-         line_chart(ss, "Statistical Suppression Index, 0-10, 2004-2026",
+         seam_chart(ss, "Statistical Suppression Index, 0-10, 2004-2026",
                     f"Zero for 2004-2014, peak {fmt(ss_peak,1)} in 2021-22, {fmt(ss[-1],2)} in 2026.", dp=1, lo=0),
          "Author's coding of dated events, data/compute_indices.py."),
         ("Fiscal power moved to the Union, mostly through GST",
@@ -358,15 +352,15 @@ def build():
          f"states' share of gross tax revenue rose after the 14th Finance Commission, and on the four fiscal ratios "
          f"alone the two periods are close. The higher score after 2014 comes from GST, which ended separate state "
          f"indirect taxes, and the borrowing conditions of 2020-21.",
-         line_chart(fc, "Fiscal Centralisation Index, 0-1, 2004-2026",
+         seam_chart(fc, "Fiscal Centralisation Index, 0-1, 2004-2026",
                     f"UPA average {fmt(fcu,2)}, NDA average {fmt(fcn,2)}, peak in 2020.", dp=2, lo=0, hi=1),
          "Finance Commission reports, Union Receipt Budgets, RBI Handbook Table 94; GST and borrowing coded."),
     ]
 
     fhtml = []
-    for title, text, svg, src in findings:
-        fhtml.append(f'<article class="finding"><h3>{escape(title)}</h3><p>{escape(text)}</p>'
-                     f'<figure class="fig">{svg}<figcaption>{escape(src)}</figcaption></figure></article>')
+    for k, (title, text, chart, src) in enumerate(findings, 1):
+        fhtml.append(f'<article class="finding" id="f{k}"><div class="slab"><p class="kicker">Finding {k} of {len(findings)}</p>'
+                     f'<h3>{escape(title)}</h3><p>{escape(text)}</p></div>{chart}<p class="src">{escape(src)}</p></article>')
 
     ssv, ssy = last(ss)
     fcv, fcy = last(fc)
@@ -407,13 +401,13 @@ def build():
 <meta property="og:type" content="website">
 <meta property="og:image" content="{SITE}/og-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="/manifest.json">
 <link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <script>
 /* The dashboard lived at / until 10 October 2026, and links to its tabs were
    shared as /#tab-name. Send those to the same tab at its new address. */
@@ -424,65 +418,82 @@ def build():
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
-<div class="mast"><div class="in">
-<a class="name" href="/">Some Perspective</a>
-<nav aria-label="Site">
-<a href="#scorecard">Scorecard</a><a href="#findings">Findings</a><a href="#indices">Indices</a>
-<a href="explore/">Explore the data</a><a href="downloads/paper.html">Paper</a><a href="analysis/">Analyses</a><a href="walkthrough/">Walkthrough</a>
-</nav></div></div>
+<header class="top split">
+<div class="l"><a class="name" href="/">Some Perspective</a></div>
+<nav class="r" aria-label="Site">
+<a href="#scorecard">Scorecard</a><a href="#findings">Findings</a><a href="explore/">Explore the data</a>
+<a href="downloads/paper.html">Paper</a><a href="analysis/">Analyses</a><a href="walkthrough/">Walkthrough</a>
+</nav>
+</header>
 <main id="main">
-<header class="lead col">
+<div class="eras split">
+<div class="l"><p class="yr"><span>2004</span><span>2013</span></p>
+<p class="who"><b>UPA</b>Manmohan Singh, Prime Minister</p></div>
+<div class="r"><p class="yr"><span>2014</span><span>2026</span></p>
+<p class="who"><b>NDA</b>Narendra Modi, Prime Minister</p></div>
+</div>
+<div class="slab">
 <p class="kicker">India's political economy, 2004-2026</p>
 <h1>On {worse} of {total} measures, India's record since 2014 is worse than in the decade before</h1>
-<p class="dek">This site sets the record of the UPA decade (2004-2013) beside the NDA period (2014-2026) on published statistics and three indices built from documented events and third-party scores. Inflation is the one measure that improved. Growth was lower overall and higher once the pandemic year is left out.</p>
+<p class="dek">The page is split where the governments changed. The UPA decade sits on the left and the NDA period on the right, each at its own width in years, so every chart below changes side between 2013 and 2014. Inflation is the one measure that improved. Growth was lower overall and higher once the pandemic year is left out.</p>
 <p class="byline">By Dr. Varna Sri Raman &middot; Updated {escape(updated)} &middot; Version {escape(version)} &middot; <a href="#interest">Declared interest</a></p>
-</header>
+</div>
 
-<section id="scorecard">
-<div class="col"><p class="kicker">The scorecard</p>
-<h2>Nine measures that can be compared across both periods</h2>
-<p>Each row compares the average of the years with a published figure in each period. <span class="k upa" aria-hidden="true"></span>UPA 2004-2013 and <span class="k nda" aria-hidden="true"></span>NDA 2014-2026. Series that begin in 2017-18 with the labour force survey have no earlier counterpart on the same basis and are left out.</p></div>
-<table>
-<thead><tr><th scope="col">Measure</th><th scope="col" class="n">UPA</th><th scope="col" class="n">NDA</th><th scope="col"><span class="sr" style="position:absolute;left:-9999px">Comparison</span></th><th scope="col">NDA period</th></tr></thead>
-<tbody>{"".join(rows)}</tbody>
-</table>
-<p class="note">Averages are computed from data.json each time the site is built; the replication script in the repository reproduces them. Press freedom is a rank, so a higher number is worse.</p>
+<section id="scorecard" aria-labelledby="h-score">
+<div class="slab">
+<p class="kicker">The scorecard</p>
+<h2 id="h-score">Nine measures that can be compared across both periods</h2>
+<p>Each figure is the average of the years with a published value in that period. Under each pair is the series itself, year by year. Dashed lines are the two averages. Press freedom is a rank, drawn so that up is better.</p>
+<p class="legend"><span class="sw upa" aria-hidden="true"></span>UPA 2004-2013 &nbsp; <span class="sw nda" aria-hidden="true"></span>NDA 2014-2026</p>
+</div>
+<div class="rows">{"".join(rows)}</div>
+<div class="slab"><p class="count">{worse}<small>of {total} measures worse after 2014</small></p>
+<p>Series that begin in 2017-18 with the labour force survey have no earlier counterpart on the same basis and are left out. The averages are computed from data.json each time the site is built, and the replication script in the repository reproduces them.</p></div>
 </section>
 
-<section id="findings">
-<div class="col"><p class="kicker">What the numbers show</p>
-<h2>Six findings, each with the series behind it</h2>
-<p>The shaded half of each chart is the NDA period. Dashed lines are the two period averages.</p></div>
-<div class="findings">{"".join(fhtml)}</div>
+<section id="findings" aria-labelledby="h-find">
+<div class="slab">
+<p class="kicker">What the numbers show</p>
+<h2 id="h-find">Six findings, each with the series behind it</h2>
+<p>Every chart runs from 2004 at the left edge of the page to 2026 at the right, and the change of government falls on the dividing line.</p>
+</div>
+{"".join(fhtml)}
 </section>
 
-<section id="indices">
-<div class="col"><p class="kicker">The three indices</p>
-<h2>Built the same way for both periods, from one script</h2>
-<p>All three are computed by data/compute_indices.py for every year from 2004 to 2026. The inputs and their sources are listed in the code and in the methodology.</p></div>
+<section id="indices" aria-labelledby="h-idx">
+<div class="slab">
+<p class="kicker">The three indices</p>
+<h2 id="h-idx">Built the same way for both periods, from one script</h2>
+<p>All three are computed by data/compute_indices.py for every year from 2004 to 2026. The inputs and their sources are listed in the code and in the methodology.</p>
 <div class="idx">
-<div><p class="kicker">SSI</p><p class="big">{fmt(ssv,2)} <small>of 10, {ssy}</small></p><p>Statistical Suppression Index. Graded severities of documented events across six streams, with a decay after an event is resolved. UPA average {fmt(ssu,2)}, NDA average {fmt(ssn,2)}.</p></div>
-<div><p class="kicker">FCI</p><p class="big">{fmt(fcv,2)} <small>of 1, {fcy}</small></p><p>Fiscal Centralisation Index. Four published fiscal ratios and two coded events, GST and the 2020 borrowing conditions. UPA average {fmt(fcu,2)}, NDA average {fmt(fcn,2)}.</p></div>
-<div><p class="kicker">DQI</p><p class="big">{fmt(dqv,2)} <small>of 1, {dqy}</small></p><p>Democratic Quality Index. The geometric mean of V-Dem's liberal democracy and civil society scores, Freedom House and RSF. UPA average {fmt(dqu,2)}, NDA average {fmt(dqn,2)}.</p></div>
+<div><p class="kicker">SSI</p><p class="big">{fmt(ssv,2)}<small>of 10, {ssy}</small></p><p>Statistical Suppression Index. Graded severities of documented events across six streams, with a decay after an event is resolved. UPA average {fmt(ssu,2)}, NDA average {fmt(ssn,2)}.</p></div>
+<div><p class="kicker">FCI</p><p class="big">{fmt(fcv,2)}<small>of 1, {fcy}</small></p><p>Fiscal Centralisation Index. Four published fiscal ratios and two coded events, GST and the 2020 borrowing conditions. UPA average {fmt(fcu,2)}, NDA average {fmt(fcn,2)}.</p></div>
+<div><p class="kicker">DQI</p><p class="big">{fmt(dqv,2)}<small>of 1, {dqy}</small></p><p>Democratic Quality Index. The geometric mean of V-Dem's liberal democracy and civil society scores, Freedom House and RSF. UPA average {fmt(dqu,2)}, NDA average {fmt(dqn,2)}.</p></div>
+</div>
 </div>
 </section>
 
-<section id="interest" class="col">
+<section id="interest" aria-labelledby="h-int">
+<div class="slab">
 <p class="kicker">Declared interest</p>
-<h2>Who wrote this, and what they stand to gain</h2>
+<h2 id="h-int">Who wrote this, and what they stand to gain</h2>
 <div class="interest"><p>The author is a Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This study compares a Congress-led government (UPA, 2004-2014) with its successor (NDA, 2014-2026) and reports against the successor on {worse} of {total} comparable measures. The author therefore holds a political interest in the direction of the finding. For that reason every figure is taken from its publisher, every correction is dated on the updates page, and the data and code are public so that anyone can check the result.</p></div>
+</div>
 </section>
 
-<section id="more">
+<section id="more" aria-labelledby="h-more">
+<div class="slab">
 <p class="kicker">Read further</p>
-<h2>The rest of the site</h2>
+<h2 id="h-more">The rest of the site</h2>
 <div class="more">{mhtml}</div>
+</div>
 </section>
 </main>
-<footer class="foot">
-<p>Some Perspective &middot; Analysis and data CC BY 4.0, code MIT &middot; <a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="feed.xml">Updates feed</a> &middot; Version {escape(version)}</p>
+<footer class="foot split">
+<div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
+<div class="r"><p><a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="feed.xml">Updates feed</a> &middot; Version {escape(version)}</p></div>
 </footer>
-<script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
+<script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
 </body>
 </html>
 """
