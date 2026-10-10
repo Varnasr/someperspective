@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.50.0] - 2026-10-10
+
+### Fixed
+- `formalEmployment` and `informalEmployment` derived from MoSPI PLFS (regular wage share x share with any social security): 2017-18 11.5 to 2022-23 9.6 to 2023-24 10.1; other years null. The old 13.0 to 10.9 series and 'ten of twelve years' are gone from every page, the paper and the downloads.
+- `top1Share` and `bottom50Share` 2014-2022 and `eraHistory` 2004-2013 from Bharti, Chancel, Piketty and Somanchi (2024), WIL WP 2024/09, statistical appendix; 2023-2026 null. Era averages: top 1% 20.39 vs 21.92, bottom 50% 16.75 vs 14.69; the eight-of-nine verdict holds. 'Twelve straight years' withdrawn.
+- Primer 1951/1981 shares corrected to 11.5 (1951) and 6.1 (1982, the low); `bottom50WealthShare` 4 to 6.4; unsourced CMIE vs WID robustness row removed; media-kit timeline corrected.
+- `rupeeUSD` 2026 94, `fiscalDeficit` 2026 4.3 (BE 2026-27), record low 96.8.
+- Null-safe: tables, timeline tile, era bars, CSV export, scatter correlation, `_trendSlope`, `buildForecast`, trajectory charts, change cards, era averages.
+
 ## [2.49.0] - 2026-10-10
 
 ### Fixed

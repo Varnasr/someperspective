@@ -49,7 +49,7 @@ This study addresses four questions.
 
 1. **Employment:** Why did employment elasticity collapse to 0.01 (2011-2016) and then recover through informal gig work while formal job creation stalled?
 
-2. **Inequality:** What mechanisms drove the top 1% income share to 23.0%, its highest level since 1922, while the bottom 50% share fell from 15.0% to 12.9%?
+2. **Inequality:** What mechanisms drove the top 1% income share from 18.4% in 2004 to 22.6% in 2022-23, its highest level since 1922, while the bottom 50% share fell from 18.8% to a low of 13.9% in 2017 before recovering to 15.0%?
 
 3. **Federalism:** How was the constitutional guarantee of fiscal devolution undermined despite the recommendations of the 14th and 15th Finance Commissions?
 
@@ -120,7 +120,7 @@ two periods being handled differently.
 ### 1. Employment: growth without jobs
 
 - **2011-2016:** Employment elasticity collapsed to 0.01, the lowest in India's post-independence history
-- **Formal employment** declined from 13.0% (2014) to 10.9% (2026) of the workforce
+- **Formal employment** (regular wage or salaried work with any social security, PLFS) fell from 11.5% of all workers in 2017-18 to 9.6% in 2022-23 and was 10.1% in 2023-24, so roughly nine in ten workers have no social-security cover
 - **Youth unemployment** (ages 15-29) was 17.8% in 2017-18 and 9.9% in 2025; graduate unemployment was 13.0% in 2023-24, four times the overall rate
 - **Recovery (2017-2023):** Elasticity increased to 1.11, driven by precarious gig work
 
@@ -128,9 +128,10 @@ Economic growth came apart from employment generation, which runs against what s
 
 ### 2. Inequality: concentration at colonial-era levels
 
-- **Top 1% income share:** 22.6% (2022), higher than in any year during British rule
-- **Top 1% wealth share:** 40.1% (₹54.5 lakh crore)
-- **Bottom 50% wealth share:** 6% (₹8.1 lakh crore)
+- **Top 1% income share:** 22.6% (2022-23), the highest since 1922 and higher than during the inter-war colonial period (Bharti, Chancel, Piketty and Somanchi, World Inequality Lab, 2024)
+- **Bottom 50% income share:** 15.0% (2022-23), down from 18.8% in 2004, after a low of 13.9% in 2017
+- **Top 1% wealth share:** 40.1% (2022-23)
+- **Bottom 50% wealth share:** 6.4% (2022-23)
 
 India saw the highest concentration of economic resources in its independent history, and wealth inequality exceeds income inequality.
 
@@ -173,7 +174,7 @@ Government sources:
 
 Independent sources:
 - Centre for Monitoring Indian Economy (CMIE) Consumer Pyramids
-- World Inequality Database (WID.world)
+- World Inequality Lab (Bharti, Chancel, Piketty and Somanchi 2024, Working Paper 2024/09)
 - V-Dem Institute democracy indices
 - Freedom House assessments
 - Reporters Without Borders press freedom rankings

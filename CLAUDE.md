@@ -104,10 +104,13 @@ Checked against the publishers on 2026-10-10, and the series they replaced:
 `unemployment` 2017-2020 (MoSPI PLFS), `youthUnemployment` and
 `graduateUnemployment` (MoSPI PLFS), `femaleLFPR` (MoSPI PLFS; it had shown a
 fall to 21%, PLFS shows a rise to 40%), `gigWorkers` (NITI Aayog 2022, Table 14),
-`ruralIncome` (NABARD NAFIS, two rounds only). Not yet checked against a
-publisher: `formalEmployment`, `rupeeUSD`, `fiscalDeficit`, `top1Share`,
-`bottom50Share` and the inputs to the three indices. Check those before quoting
-them as findings.
+`ruralIncome` (NABARD NAFIS, two rounds only), `formalEmployment` (derived
+from PLFS: regular wage share times the share with social security),
+`fiscalDeficit` (Union Budget), `top1Share` and `bottom50Share` (World
+Inequality Lab WP 2024/09, statistical appendix; the table ends at 2022).
+`rupeeUSD` 2026 is from X-Rates monthly averages, a secondary source. Not yet
+checked against a publisher: the inputs to the three indices. Check those
+before quoting them as findings.
 
 MoSPI's PLFS API (`api.mospi.gov.in/api/plfs/getData`) answers with
 `frequency_code=1` for annual rates; pass `religion_code=1&social_category_code=1`

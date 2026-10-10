@@ -12,7 +12,7 @@ site: "https://someperspective.info"
 
 # Abstract
 
-India's economy grew at an average of 6.1 per cent a year between 2014 and 2026. Over the same period the share of national income accruing to the bottom half of the population fell from 15.0 to 12.9 per cent, the share of workers holding jobs with any social-security cover fell from 13.0 to 10.9 per cent, and every available third-party measure of democratic quality deteriorated. This paper asks whether these facts are separable, that is, whether India experienced a familiar and possibly tolerable trade of political openness for material progress, and concludes that it did not.
+India's economy grew at an average of 6.1 per cent a year between 2014 and 2026. Over the same period the share of national income going to the top 1 per cent reached 22.6 per cent in 2022-23, its highest level since 1922, the share of workers holding regular jobs with any social-security cover fell from 11.5 per cent in 2017-18, the first year the Periodic Labour Force Survey measures it, to 10.1 per cent in 2023-24, and every available third-party measure of democratic quality deteriorated. This paper asks whether these facts are separable, that is, whether India experienced a familiar and possibly tolerable trade of political openness for material progress, and concludes that it did not.
 
 The difficulty in answering the question is that the instruments needed to answer it have themselves degraded. A decennial census was postponed indefinitely; a national consumption survey was conducted and then withheld; the national accounts were rebased in a manner that remains disputed and has never been independently reviewed; and the statistical system's institutional independence was reduced by merger and resignation. Any assessment of Indian economic performance after 2014 must therefore treat measurement capacity as an endogenous variable, one that moved during the period under study.
 
@@ -184,9 +184,9 @@ We distinguish four provenance classes, and label every series accordingly, beca
 | Unemployment | PLFS Annual Reports, usual status, for 2014–2025; average of the PLFS Monthly Bulletins for January to August 2026, current weekly status, for 2026 |
 | Youth unemployment | MoSPI PLFS, usual status, ages 15–29 (2017–2025) |
 | Graduate unemployment | MoSPI PLFS, usual status, graduates aged 15 and over (2017-18 to 2023-24) |
-| Top 1% income share | World Inequality Database (WID.world) India series; WIR 2026 |
-| Bottom 50% income share | World Inequality Database (WID.world) India series; WIR 2026 |
-| Formal employment | PLFS workers with social-security cover; EPFO net additions cross-check |
+| Top 1% income share | World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Statistical Appendix, per-adult pre-tax national income shares (2004–2022; no published figure for 2023–2026) |
+| Bottom 50% income share | World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Statistical Appendix, per-adult pre-tax national income shares (2004–2022; no published figure for 2023–2026) |
+| Formal employment | MoSPI PLFS published tables, usual status: regular wage/salaried share of all workers times the share of those employees with any social security (2017-18 to 2023-24) |
 | Press freedom rank | Reporters Without Borders, World Press Freedom Index |
 | Fiscal deficit | Union Budget documents, central government, % of GDP |
 | CPI inflation | MoSPI CPI (Combined); 2026 is the average of the January to August 2026 prints on base 2024=100 |
@@ -376,15 +376,17 @@ What can be said without relying on the disputed revision is that the later peri
 
 ## 6.2 Employment
 
-The employment result is the clearest in the dataset, because it does not depend on the disputed national accounts at all.
+The employment result does not depend on the disputed national accounts at all, although it covers fewer years than the other series.
 
-The formal employment share (workers with any social-security cover) falls from 13.0 per cent in 2014 to 10.9 per cent in 2026. This is a decline in the share itself. The share fell in ten of the twelve year-on-year changes, held level from 2023 to 2024, and rose once, from 11.4 to 11.5 per cent, in 2021. Informal employment correspondingly rises from 87.0 to 89.1 per cent.
+The formal employment share is the share of all workers who are regular wage or salaried employees with any social-security benefit, derived from the published tables of the Periodic Labour Force Survey (PLFS). The survey begins in 2017-18, so the series covers the survey years 2017-18 to 2023-24 and has no value for 2014 to 2016 or for 2024 onward. The share was 11.5 per cent in 2017-18 and 11.4 per cent in 2018-19. It fell to 10.5 per cent in 2019-20 and 9.7 per cent in the pandemic year 2020-21, rose to 10.1 per cent in 2021-22, reached its low of 9.6 per cent in 2022-23 and was 10.1 per cent in 2023-24. That is a fall of 1.4 points, about 12 per cent of the share, over six years, with a dip in the pandemic year and a partial recovery. It did not fall in every year. Informal employment, which is 100 minus the formal share, correspondingly rises from 88.5 to 89.9 per cent, so roughly nine in ten Indian workers have no social-security cover.
+
+Two movements lie underneath the share. Regular wage and salaried work fell from 22.8 to 21.7 per cent of all workers between 2017-18 and 2023-24. Among those employees, the share without any social security rose from 49.6 per cent to 53.4 per cent, after a peak of 54.2 per cent in 2019-20. By 2023-24 more than half of India's regular salaried employees had no social security, so most of the jobs that look formal by their pay arrangement lacked the protection the word implies.
 
 Headline unemployment is 4.9 per cent in 2014 and 3.1 per cent in 2025 on the usual-status measure of the annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment, on MoSPI's published usual-status series, was 13.0 per cent in 2023-24, down from 17.2 per cent in 2017-18. MoSPI publishes no figure for graduates before PLFS began or after 2023-24.
 
 An unemployment rate of 13.0 per cent among degree-holders, four times the 3.2 per cent for all workers on the same measure in the same year, cannot be explained by weak aggregate labour demand. The graduate rate has fallen since 2017-18, and the ratio to the overall rate has stayed at about three to four. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
 
-The conjunction of positive aggregate growth with a formal-employment share that fell in ten of twelve years is the single most consistent multi-year pattern in the dataset. It is difficult to reconcile with any account in which the period's institutional changes purchased broad-based material progress.
+Aggregate GDP grew in every year from 2017-18 to 2022-23 except the pandemic year, and over the same years the formal employment share fell from 11.5 to 9.6 per cent. Its recovery to 10.1 per cent in 2023-24 left it below where the survey began. That conjunction is difficult to reconcile with any account in which the period's institutional changes purchased broad-based material progress.
 
 ### 6.2.1 The capital intensity of the growth that occurred
 
@@ -413,11 +415,11 @@ The implication is that India's growth has been concentrated in sectors that do 
 
 ## 6.3 Distribution
 
-The top 1 per cent income share rises from 21.3 per cent in 2014 to 23.0 per cent in 2026. The bottom 50 per cent share falls from 15.0 to 12.9 per cent over the same period.
+The top 1 per cent income share rises from 18.4 per cent in 2004 to 21.3 per cent in 2014 and 22.6 per cent in 2022-23, the last year published. It dips in 2019 and 2020 and does not rise in every year. The bottom 50 per cent share falls from 18.8 per cent in 2004 to 14.7 per cent in 2014 and a low of 13.9 per cent in 2017. It then rises to 15.5 per cent in 2020 and stands at 15.0 per cent in 2022-23. No annual figure has been published for 2023 to 2026, and the dataset leaves those years empty.
 
-Both movements are drawn from the World Inequality Database's India series. We flag a correction here that materially affects how this result should be read, and that we found in our own earlier public materials during preparation of this paper: three of the project's summary documents had stated the 2014 top 1 per cent share as 15 per cent, yielding an apparent rise of 7.6 percentage points. That figure was wrong. The figure of 15.0 per cent is the 2014 bottom 50 per cent share, and the two series had been crossed. The correct rise in the top 1 per cent share is 1.3 percentage points to 2023, or 1.7 to 2026.
+Both series are taken from the Statistical Appendix of Bharti, Chancel, Piketty and Somanchi (2024), the World Inequality Lab's table of per-adult pre-tax national income shares for 1951 to 2022. An earlier version of this dataset carried values that did not match that table, including figures for 2023 to 2026, years for which nothing has been published. Those values have been replaced with the published series. We flag a correction here that materially affects how this result should be read, and that we found in our own earlier public materials during preparation of this paper: three of the project's summary documents had stated the 2014 top 1 per cent share as 15 per cent, yielding an apparent rise of 7.6 percentage points. That figure was wrong. The figure of 15.0 per cent is the 2014 bottom 50 per cent share, and the two series had been crossed. The correct rise in the top 1 per cent share between 2014 and 2022-23 is 1.3 percentage points.
 
-We report this because the error inflated a headline claim in the project's favour, and because correcting it changes which fact carries the argument. The defensible statements are these. First, the level of the top 1 per cent share is the highest recorded in the WID series since 1922, a period which includes the peak of the colonial extraction the comparison invokes. Second, the movement at the bottom is considerably larger in relative terms than the movement at the top: the bottom half lost roughly an eighth of its share of national income in twelve years. The distributional story is better told from the bottom of the distribution than from the top, and the corrected figures tell it accurately.
+We report this because the error inflated a headline claim in the project's favour, and because correcting it changes which fact carries the argument. The defensible statements are these. First, the top 1 per cent share of 22.6 per cent in 2022-23 is the highest in the series since 1922, higher than during the inter-war colonial period, and Bharti et al. (2024) find it among the highest in the world, above South Africa, Brazil and the US. Second, the bottom of the distribution moved in two phases. The bottom half lost about a fifth of its share between 2004 and 2017, falling from 18.8 to 13.9 per cent, and then regained part of it, which the authors describe as a temporary marginal rise in the years 2018 to 2020. Within the later period the bottom share was 14.7 per cent in 2014 and 15.0 per cent in 2022-23. The cross-era result for the bottom half therefore rests on the period averages, 16.75 per cent in 2004–2013 against 14.69 per cent in 2014–2022. Third, the same authors find that from 2014 to 2022 the middle 40 per cent seem to have grown slower than the bottom 50 per cent. The top of the distribution carries the clearer finding for the later period.
 
 ## 6.4 Statistical suppression
 
@@ -498,14 +500,14 @@ Comparing period means across the nine directly comparable measures:
 | GDP growth (%) | 7.08 | 6.11 | Worse |
 | CPI inflation (%) | 8.05 | 4.93 | Better |
 | Fiscal deficit (% GDP) | 4.64 | 4.96 | Worse |
-| Top 1% income share (%) | 20.23 | 22.17 | Worse |
-| Bottom 50% income share (%) | 15.67 | 13.79 | Worse |
+| Top 1% income share (%) | 20.39 | 21.92 | Worse |
+| Bottom 50% income share (%) | 16.75 | 14.69 | Worse |
 | Press freedom rank | 120.7 | 145.0 | Worse |
 | Statistical Suppression Index | 0.00 | 5.09 | Worse |
 | Fiscal Centralisation Index | 0.09 | 0.57 | Worse |
 | Democratic Quality Index | 0.57 | 0.38 | Worse |
 
-Eight of the nine measures deteriorate and one improves.
+Eight of the nine measures deteriorate and one improves. The two income shares average the years with a published figure, 2004–2013 and 2014–2022.
 
 The exception is real as a measurement: average CPI inflation of 4.93 per cent against 8.05 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
 
@@ -684,7 +686,7 @@ COVID-19 affected both halves of the paper's argument simultaneously. On the eco
 
 We take three steps in response, and concede that none fully resolves it.
 
-First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises the mean growth rate materially, but the direction of every other measure is unchanged: the formal employment share falls monotonically in the years on either side of the pandemic, the income-share movements are continuous through it, and the SSI, FCI and DQI are all substantially higher in both 2018–19 and 2023–26 than in any UPA year. The pandemic made a pattern already present on either side of it larger.
+First, the arithmetic. Excluding 2020 and 2021 entirely from the NDA period raises the mean growth rate materially, but the direction of every other measure is unchanged: the formal employment share fell in each PLFS year before the pandemic, from 11.5 to 10.5 per cent, and in the three years after it stayed between 9.6 and 10.1 per cent, below its 2019-20 level, the income-share movements are continuous through it, and the SSI, FCI and DQI are all substantially higher in both 2018–19 and 2023–26 than in any UPA year. The pandemic made a pattern already present on either side of it larger.
 
 Second, the timing. The DQI's steepest decline begins in 2019, before the pandemic, and V-Dem's reclassification of India as an electoral autocracy is a 2019 event. The consumption-survey suppression is 2019, the PLFS withholding 2019, the NSC resignations January 2019, and the GDP revision 2015. Four of the six SSI streams pre-date the pandemic entirely.
 
@@ -716,7 +718,7 @@ Our mitigations are procedural: every weight and component is published; the con
 
 ## 9.7 Scope
 
-This paper is about aggregate national indicators. It does not address state-level variation, which is substantial and in several respects runs counter to the national picture. It does not address caste, gender, or religious disaggregation of the distributional results, all of which are material to any full account of who bore the costs described here. And its coverage of the informal economy is limited to what the PLFS measures, which is a real constraint given that the informal sector accounts for approximately 89 per cent of Indian employment.
+This paper is about aggregate national indicators. It does not address state-level variation, which is substantial and in several respects runs counter to the national picture. It does not address caste, gender, or religious disaggregation of the distributional results, all of which are material to any full account of who bore the costs described here. And its coverage of the informal economy is limited to what the PLFS measures, which is a real constraint given that roughly nine in ten Indian workers have no social-security cover (89.9 per cent in 2023-24 on PLFS).
 
 ## 9.8 An error corrected in preparation
 
@@ -744,7 +746,7 @@ Neither error was caught by the consistency check introduced after Section 9.8, 
 
 The strongest case for the period under study is that a decisive executive, unencumbered by the veto points that had constrained earlier Indian governments, could deliver material progress that a more constrained government could not. This is a serious argument with real intellectual lineage, and it deserves a test.
 
-Tested, it fails, because the gains are not visible in the data. The question of whether the institutional costs were too high relative to the gains does not arise. Growth did not accelerate. The formal employment share fell from 13.0 to 10.9 per cent, and it fell in ten of the twelve years. The bottom half's income share fell by roughly an eighth. The one measure moving the other way, inflation, is largely a world oil price: Brent fell roughly 75 per cent across 2014–16 in an economy importing 86 per cent of its crude. Whatever domestic policy contributed came from a rules-based framework that binds the executive.
+Tested, it fails, because the gains are not visible in the data. The question of whether the institutional costs were too high relative to the gains does not arise. Growth did not accelerate. The share of workers in regular jobs with social-security cover fell from 11.5 per cent in 2017-18 to 9.6 per cent in 2022-23 while GDP grew, and at 10.1 per cent in 2023-24 it remained below where the survey began. The top 1 per cent's income share reached its highest level since 1922, and the bottom half's share averaged about two points less than in the decade before. The one measure moving the other way, inflation, is largely a world oil price: Brent fell roughly 75 per cent across 2014–16 in an economy importing 86 per cent of its crude. Whatever domestic policy contributed came from a rules-based framework that binds the executive.
 
 The finding is that there was no trade to evaluate.
 
@@ -786,7 +788,7 @@ We are wary of appending policy prescriptions to a descriptive paper, since the 
 
 The ordering follows from a practical point. A government that implemented every other reform below, while leaving the statistical system as it is, would leave the public unable to determine whether any of them had worked.
 
-**Formalisation is where the employment result points.** The finding concerns the quality of jobs, which increasingly lack social-security cover, written contracts, and the protections that make employment a basis for planning. The instruments are conventional: extension of EPF/ESI coverage, enforcement of written contracts, and a social-security floor for platform and gig work, where NITI Aayog estimates the workforce grew from 2.5 million in 2011-12 to 6.8 million in 2019-20, with substantially no coverage.
+**Formalisation is where the employment result points.** The finding concerns the quality of jobs, which increasingly lack social-security cover and the protections that make employment a basis for planning. Among regular salaried employees, the share without any social security rose from 49.6 per cent in 2017-18 to 53.4 per cent in 2023-24. The instruments are conventional: extension of EPF/ESI coverage, enforcement of written contracts, and a social-security floor for platform and gig work, where NITI Aayog estimates the workforce grew from 2.5 million in 2011-12 to 6.8 million in 2019-20, with substantially no coverage.
 
 **Industrial policy weighting bears re-examination.** Section 6.2.1 does not argue against capital-intensive manufacturing. Its point is the employment arithmetic. A strategy seeking employment absorption at scale would weight labour-intensive sectors (garments, food processing, construction and care) considerably more heavily than the current allocation does.
 
@@ -824,9 +826,9 @@ We set out here what evidence would overturn the paper's conclusions.
 
 The cross-era institutional finding would be substantially weakened by documented UPA-era events meeting the SSI's coding threshold in sufficient number to lift that era's mean materially above zero. It would be weakened by a demonstration that the V-Dem, Freedom House and RSF movements are artefacts of instrument drift, though such a demonstration would need to account for the synthetic-control corroboration.
 
-The distributional finding would be weakened by a revision to the WID India series, which is itself estimated from combined survey, fiscal and national-accounts sources and is not beyond revision.
+The distributional finding would be weakened by a revision to the World Inequality Lab series, which is itself estimated from combined survey, fiscal and national-accounts sources and is not beyond revision.
 
-The employment finding is the most secure, because it does not depend on the disputed national accounts, on any index we constructed, or on any expert survey: it is a direct survey measure of the share of workers with social-security cover, and it fell from 13.0 to 10.9 per cent across the period.
+The employment finding does not depend on the disputed national accounts, on any index we constructed, or on any expert survey. It is a direct survey measure of the share of workers in regular jobs with social-security cover, which fell from 11.5 per cent in 2017-18 to 10.1 per cent in 2023-24, with a low of 9.6 per cent in 2022-23. It would be weakened if later PLFS rounds showed coverage back above its 2017-18 level, and it is limited by the survey beginning in 2017-18, three years into the period.
 
 ---
 
@@ -858,7 +860,7 @@ The author makes no claim of neutrality. Such a claim would be false, and a pape
 
 ## Data and code availability
 
-All data, construction code, and the source of this paper are published under CC BY 4.0 at github.com/Varnasr/someperspective and someperspective.info. No data used in this paper is restricted, proprietary, or unavailable to a replicating researcher. Third-party series (V-Dem, Freedom House, RSF, WID, Penn World Table) are obtainable directly from their publishers under those publishers' own terms.
+All data, construction code, and the source of this paper are published under CC BY 4.0 at github.com/Varnasr/someperspective and someperspective.info. No data used in this paper is restricted, proprietary, or unavailable to a replicating researcher. Third-party series (V-Dem, Freedom House, RSF, the World Inequality Lab, Penn World Table) are obtainable directly from their publishers under those publishers' own terms.
 
 ## Use of generative AI
 
@@ -908,7 +910,6 @@ Reserve Bank of India. *State Finances: A Study of Budgets*, 2021 and 2023 editi
 
 Subramanian, A. (2019). *India's GDP Mis-estimation: Likelihood, Magnitudes, Mechanisms, and Implications*. Harvard Center for International Development Faculty Working Paper No. 354.
 
-World Inequality Database (WID.world). India series, accessed 2026. *World Inequality Report 2026*.
 
 Raman, V.S. (2026). *Some Perspective: India's Economic Transformation*. Dataset and replication code. someperspective.info; github.com/Varnasr/someperspective. CC BY 4.0.
 
@@ -942,33 +943,33 @@ $V$ = V-Dem Liberal Democracy Index; $F$ = Freedom House aggregate score; $R$ = 
 
 # Appendix B: Principal series, 2004–2026
 
-Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`.
+Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`. The income shares are from Bharti, Chancel, Piketty and Somanchi (2024); n/a marks a year with no published figure.
 
 | Year | GDP growth | Top 1% | Bottom 50% | Press rank | SSI | FCI | DQI |
 |---|---|---|---|---|---|---|---|
-| 2004 | 7.9 | 18.2 | 16.5 | 120 | 0.00 | 0.00 | 0.59 |
-| 2005 | 9.3 | 18.8 | 16.3 | 106 | 0.00 | 0.03 | 0.61 |
-| 2006 | 9.3 | 19.6 | 16.0 | 105 | 0.00 | 0.05 | 0.61 |
-| 2007 | 7.7 | 20.1 | 15.8 | 120 | 0.00 | 0.07 | 0.58 |
-| 2008 | 3.1 | 20.5 | 15.6 | 118 | 0.00 | 0.09 | 0.58 |
-| 2009 | 7.9 | 20.6 | 15.5 | 105 | 0.00 | 0.11 | 0.61 |
-| 2010 | 8.5 | 21.0 | 15.4 | 122 | 0.00 | 0.12 | 0.56 |
-| 2011 | 5.2 | 21.3 | 15.3 | 131 | 0.00 | 0.14 | 0.54 |
-| 2012 | 5.5 | 21.0 | 15.2 | 140 | 0.00 | 0.16 | 0.51 |
-| 2013 | 6.4 | 21.2 | 15.1 | 140 | 0.00 | 0.17 | 0.51 |
-| 2014 | 7.4 | 21.3 | 15.0 | 140 | 0.00 | 0.19 | 0.49 |
-| 2015 | 8.0 | 21.7 | 14.7 | 136 | 1.05 | 0.21 | 0.46 |
-| 2016 | 8.2 | 21.5 | 14.9 | 133 | 1.05 | 0.25 | 0.46 |
-| 2017 | 7.2 | 21.5 | 14.9 | 136 | 2.05 | 0.41 | 0.44 |
-| 2018 | 6.1 | 21.7 | 14.7 | 138 | 4.00 | 0.53 | 0.42 |
-| 2019 | 4.2 | 22.1 | 13.5 | 140 | 4.80 | 0.65 | 0.39 |
-| 2020 | −7.3 | 22.3 | 13.3 | 142 | 7.00 | 0.92 | 0.36 |
-| 2021 | 8.7 | 22.5 | 13.1 | 142 | 9.00 | 0.82 | 0.37 |
-| 2022 | 7.2 | 22.6 | 13.1 | 150 | 9.00 | 0.70 | 0.34 |
-| 2023 | 7.6 | 22.6 | 13.1 | 161 | 8.20 | 0.68 | 0.28 |
-| 2024 | 7.8 | 22.6 | 13.1 | 159 | 7.05 | 0.68 | 0.28 |
-| 2025 | 6.5 | 22.8 | 13.0 | 151 | 6.55 | 0.68 | 0.30 |
-| 2026 | 7.8 | 23.0 | 12.9 | 157 | 6.40 | 0.68 | 0.29 |
+| 2004 | 7.9 | 18.4 | 18.8 | 120 | 0.00 | 0.00 | 0.59 |
+| 2005 | 9.3 | 19.3 | 18.4 | 106 | 0.00 | 0.03 | 0.61 |
+| 2006 | 9.3 | 19.7 | 17.9 | 105 | 0.00 | 0.05 | 0.61 |
+| 2007 | 7.7 | 20.1 | 17.5 | 120 | 0.00 | 0.07 | 0.58 |
+| 2008 | 3.1 | 20.4 | 17.0 | 118 | 0.00 | 0.09 | 0.58 |
+| 2009 | 7.9 | 20.8 | 16.5 | 105 | 0.00 | 0.11 | 0.61 |
+| 2010 | 8.5 | 21.2 | 16.0 | 122 | 0.00 | 0.12 | 0.56 |
+| 2011 | 5.2 | 21.1 | 15.3 | 131 | 0.00 | 0.14 | 0.54 |
+| 2012 | 5.5 | 21.3 | 15.1 | 140 | 0.00 | 0.16 | 0.51 |
+| 2013 | 6.4 | 21.6 | 15.0 | 140 | 0.00 | 0.17 | 0.51 |
+| 2014 | 7.4 | 21.3 | 14.7 | 140 | 0.00 | 0.19 | 0.49 |
+| 2015 | 8.0 | 21.7 | 14.5 | 136 | 1.05 | 0.21 | 0.46 |
+| 2016 | 8.2 | 22.2 | 14.1 | 133 | 1.05 | 0.25 | 0.46 |
+| 2017 | 7.2 | 22.3 | 13.9 | 136 | 2.05 | 0.41 | 0.44 |
+| 2018 | 6.1 | 22.4 | 14.4 | 138 | 4.00 | 0.53 | 0.42 |
+| 2019 | 4.2 | 21.6 | 14.7 | 140 | 4.80 | 0.65 | 0.39 |
+| 2020 | −7.3 | 21.5 | 15.5 | 142 | 7.00 | 0.92 | 0.36 |
+| 2021 | 8.7 | 21.7 | 15.4 | 142 | 9.00 | 0.82 | 0.37 |
+| 2022 | 7.2 | 22.6 | 15.0 | 150 | 9.00 | 0.70 | 0.34 |
+| 2023 | 7.6 | n/a | n/a | 161 | 8.20 | 0.68 | 0.28 |
+| 2024 | 7.8 | n/a | n/a | 159 | 7.05 | 0.68 | 0.28 |
+| 2025 | 6.5 | n/a | n/a | 151 | 6.55 | 0.68 | 0.30 |
+| 2026 | 7.8 | n/a | n/a | 157 | 6.40 | 0.68 | 0.29 |
 
 ---
 

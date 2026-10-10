@@ -57,12 +57,12 @@ in `data.json`.
 - **Notes:** Represents percentage seeking but unable to find work
 
 #### `formal_employment_share`
-- **Definition:** Share of workers in formal sector with social security benefits
+- **Definition:** Regular wage or salaried employees with any social security benefit, as a share of all workers (usual status, ps+ss)
 - **Unit:** Percentage (%)
-- **Source:** EPFO, ESIC, PLFS
-- **Methodology:** (Workers with EPF/ESI / Total Employment) × 100
-- **Coverage:** 2004-2024
-- **Notes:** Formal sector defined as workers with at least one social security benefit
+- **Source:** MoSPI, Periodic Labour Force Survey (PLFS) published tables
+- **Methodology:** (Regular wage/salaried share of all workers) × (share of those employees with any social security benefit, which is 100 minus the published share without any) / 100
+- **Coverage:** PLFS survey years 2017-18 to 2023-24, stored at the year each survey starts. 2014-2016 (before PLFS) and 2024 onward are empty
+- **Notes:** Informal employment is 100 minus this share. The social security table covers regular wage/salaried employees in the non-agricultural sector
 
 #### `employment_elasticity`
 - **Definition:** Employment elasticity of GDP growth
@@ -75,12 +75,19 @@ in `data.json`.
 ### Inequality
 
 #### `top1_income_share`
-- **Definition:** Share of national income accruing to top 1% of earners
+- **Definition:** Share of pre-tax national income received by the top 1% of adults
 - **Unit:** Percentage (%)
-- **Source:** World Inequality Database, Income Tax Department
+- **Source:** World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Working Paper 2024/09, Statistical Appendix
 - **Methodology:** Pareto interpolation of income tax data with adjustments for underreporting
 - **Coverage:** 2004-2022
-- **Notes:** Based on tax units, not individuals; includes capital income
+- **Notes:** Per-adult shares; includes capital income. No annual figure is published for 2023-2026, so those years are null. The 2022 value (22.6%) is the paper's 2022-23 figure.
+
+#### `bottom50_income_share`
+- **Definition:** Share of pre-tax national income received by the bottom 50% of adults
+- **Unit:** Percentage (%)
+- **Source:** World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Working Paper 2024/09, Statistical Appendix
+- **Coverage:** 2004-2022
+- **Notes:** Per-adult shares. The share fell from 18.8% in 2004 to 13.9% in 2017, rose to 15.5% in 2020 and was 15.0% in 2022-23. No annual figure is published for 2023-2026.
 
 #### `top1_wealth_share`
 - **Definition:** Share of national wealth owned by top 1%
@@ -192,7 +199,7 @@ All three indices are computed identically for both eras by `data/compute_indice
 
 - `null` values indicate data not available
 - Years with missing values are explicitly documented in sources.bib
-- Imputed values (post-2017 inequality) are flagged in notes
+- Income shares after 2022 are null; no value is imputed for them
 
 ### Breaks in Series
 
