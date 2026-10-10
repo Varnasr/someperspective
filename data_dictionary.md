@@ -50,9 +50,10 @@ in `data.json`.
 #### `unemployment_rate`
 - **Definition:** Unemployment rate as percentage of labor force
 - **Unit:** Percentage (%)
-- **Source:** PLFS (Current Weekly Status)
+- **Source:** PLFS Annual Reports, usual status (ps+ss), for 2014-2025; the average of the 2026 PLFS Monthly Bulletins, current weekly status (CWS), for 2026
 - **Methodology:** (Unemployed / Labor Force) × 100
-- **Coverage:** 2004-2025
+- **Coverage:** 2014-2026
+- **Basis break:** CWS counts a person as unemployed on the past week's activity and runs well above usual status, so 2026 is a different measure from the years before it
 - **Notes:** Represents percentage seeking but unable to find work
 
 #### `formal_employment_share`

@@ -41,6 +41,12 @@ jobs:
       - name: Only the site is published, and every page link resolves
         run: python3 tools/check_publish.py
 
+      - name: The writing rules hold on every page
+        # No em dashes, no "not only", none of the stock vocabulary, in every
+        # published page and the files it is built from. Verbatim quotations
+        # are exempted one by one in the script, with a reason.
+        run: python3 tools/check_writing.py
+
       - name: Every page is indexed on purpose or excluded on purpose
         run: python3 tools/check_indexability.py
 

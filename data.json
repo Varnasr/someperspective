@@ -2,13 +2,13 @@
   "meta": {
     "title": "India Economic Indicators 2014-2030",
     "author": "Dr. Varna Sri Raman",
-    "updated": "2026-08-15",
+    "updated": "2026-10-10",
     "license": "CC BY 4.0",
     "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official release available as of August 2026 (Economic Survey 2025-26, PLFS Monthly Bulletin June 2026, Union Budget 2026-27, CPI July 2026, WIR 2026). One caveat carries across the whole CPI series: MoSPI replaced the 2012=100 index with a 2024=100 index from the January 2026 print, reweighted on HCES 2023-24, so the 2026 inflation figure is not on the same basis as 2014-2025 (see sources.cpiInflation). All values in the 'economic' block are observed (2014-2026); there is no projected year in this block. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, and none of them is a prediction. Every assumption is a choice, and every one is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
   },
   "sources": {
-    "gdpGrowth": "MOSPI First Advance Estimates of National Income 2025-26 + Economic Survey 2025-26 (2011-12 base)",
-    "unemployment": "PLFS Annual Report 2024-25 + PLFS Monthly Bulletin (June 2026: 5.5% overall, 5.0% rural, 6.6% urban; LFPR 54.4%, WPR 51.4%), Usual Status",
+    "gdpGrowth": "2014-2025: MoSPI national accounts and the Economic Survey, 2011-12 base. 2026 (FY 2025-26): 7.8%, MoSPI Provisional Estimates on the new 2022-23 base, which replaced the 2011-12 base. The last estimate for 2025-26 on the 2011-12 base was the First Advance Estimate of 7.4%. BASIS BREAK: the 2022-23 base covers 2023-24 onward only, so 2026 is on a different base from the years before it.",
+    "unemployment": "2014-2025: annual rates on usual status (ps+ss), from the PLFS Annual Reports for the PLFS years. 2026: the average of the 8 PLFS Monthly Bulletins published for 2026 (January to August 2026: January 5, February 4.9, March 5.1, April 5.2, May 5.5, June 5.5, July 5.1, August 5), all-India, persons 15+, rural + urban. BASIS BREAK: the monthly bulletins report current weekly status (CWS), which counts a person as unemployed on the past week's activity and runs well above usual status. The 2026 value is therefore a different measure from the years before it, and most of the rise from 3.1 per cent in 2025 is the change of measure.",
     "youthUnemployment": "PLFS Annual + ILOSTAT youth (15-29) series",
     "graduateUnemployment": "PLFS unit-level tabulation (graduate degree holders)",
     "top1Share": "World Inequality Database (WID.world) India series; WIR 2026",
@@ -17,7 +17,7 @@
     "informalEmployment": "100 - formalEmployment by construction",
     "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual)",
     "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP (FY ending)",
-    "cpiInflation": "MoSPI CPI (Combined); latest print July 2026 = 4.45% (June 4.38%; food 5.52%). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and COICOP 2018 classification, replacing 2012=100. The 2026 value is therefore on a different basis from 2014-2025 and the two are not strictly comparable. RBI target band 2-6%",
+    "cpiInflation": "MoSPI CPI (Combined), year-on-year. 2026: the average of the 8 monthly prints published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from 2014-2025 and the two are not strictly comparable. RBI target band 2-6%.",
     "rupeeUSD": "RBI reference rates, annual average INR per USD",
     "ssi": "Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py",
     "fci": "Constructed: mean of 6 min-max-normalised centralisation components incl. GST structural centralisation (2004-2026 sample); see data/compute_indices.py",
@@ -73,7 +73,7 @@
       7.6,
       7.8,
       6.5,
-      7.4
+      7.8
     ],
     "unemployment": [
       4.9,
@@ -88,7 +88,7 @@
       3.2,
       3.2,
       3.1,
-      5.5
+      5.2
     ],
     "youthUnemployment": [
       13.5,
@@ -223,7 +223,7 @@
       5.4,
       4.6,
       4.0,
-      4.45
+      3.8
     ],
     "rupeeUSD": [
       61,

@@ -45,16 +45,16 @@ An independent, data-driven research site examining India's political economy
 
 Not committed to a version, in rough priority order.
 
-- **Monthly data cadence.** PLFS Monthly Bulletin, CPI, RBI reference rates
-  are released monthly; the site could auto-refresh the tail of each series
-  by scraping / mirroring the PIB or MoSPI feed. Currently a manual pass.
+- **Monthly data cadence.** `tools/refresh_monthly.py` (v2.48.0) pulls the PLFS
+  monthly unemployment and CPI prints from MoSPI and rewrites the 2026 averages.
+  It is run by hand. Running it on a schedule would need the API to be reachable
+  from GitHub Actions, which has not been tested.
 - **State-level breakdowns.** Add a state dropdown on the headline indicators
   where PLFS reports state-level series (unemployment, LFPR).
-- **Dependabot / npm audit.** The build now has a Node dependency
-  (`tailwindcss`); wire Dependabot to raise version PRs and `npm audit` in CI.
-- **Content Security Policy tightening.** `'unsafe-eval'` in `script-src`
-  is a leftover from the runtime Tailwind era; audit whether it can be
-  dropped now that the CDN script is gone.
+- **Content Security Policy.** `'unsafe-eval'` cannot be dropped while the page
+  uses the standard Alpine.js build, which evaluates its attribute expressions at
+  runtime. The Alpine CSP build would allow it, at the cost of rewriting every
+  inline expression.
 - **`dailyFeatures` extraction.** The 34-entry array is ~40 KB inline in
   `index.html`; split to `data/features.json` and lazy-fetch. Would shrink
   the initial HTML meaningfully.

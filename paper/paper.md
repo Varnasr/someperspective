@@ -168,7 +168,7 @@ This logic does not apply symmetrically to the single measure on which the later
 
 ## 4.1 Coverage and structure
 
-The dataset covers calendar years 2004 to 2026 inclusive. Observed series run through 2026 and reflect the latest official release available as of 15 August 2026. The 2004–2013 period corresponds to the two United Progressive Alliance governments; 2014–2026 spans the three National Democratic Alliance governments under the same Prime Minister.
+The dataset covers calendar years 2004 to 2026 inclusive. Observed series run through 2026 and reflect the latest official release available as of 10 October 2026. The 2004–2013 period corresponds to the two United Progressive Alliance governments; 2014–2026 spans the three National Democratic Alliance governments under the same Prime Minister.
 
 The full machine-readable dataset is published as `data.json`, with a flat tabular export as `dataset.csv`. Every series carries a source string, and every constructed series carries a pointer to the script that generates it.
 
@@ -180,8 +180,8 @@ We distinguish four provenance classes, and label every series accordingly, beca
 
 | Series | Source |
 |---|---|
-| GDP growth | MoSPI First Advance Estimates 2025–26; Economic Survey 2025–26 (2011–12 base) |
-| Unemployment | PLFS Annual Report 2024–25; PLFS Monthly Bulletin (June 2026) |
+| GDP growth | MoSPI national accounts and Economic Survey 2025–26 (2011–12 base) for 2014–2025; MoSPI Provisional Estimates 2025–26 (2022–23 base) for 2026 |
+| Unemployment | PLFS Annual Reports, usual status, for 2014–2025; average of the PLFS Monthly Bulletins for January to August 2026, current weekly status, for 2026 |
 | Youth unemployment | PLFS Annual; ILOSTAT youth (15–29) |
 | Graduate unemployment | PLFS unit-level tabulation |
 | Top 1% income share | World Inequality Database (WID.world) India series; WIR 2026 |
@@ -189,7 +189,7 @@ We distinguish four provenance classes, and label every series accordingly, beca
 | Formal employment | PLFS workers with social-security cover; EPFO net additions cross-check |
 | Press freedom rank | Reporters Without Borders, World Press Freedom Index |
 | Fiscal deficit | Union Budget documents, central government, % of GDP |
-| CPI inflation | MoSPI CPI (Combined) |
+| CPI inflation | MoSPI CPI (Combined); 2026 is the average of the January to August 2026 prints on base 2024=100 |
 | Rupee / USD | RBI reference rates, annual average |
 
 **Derived.** Computed from an official series by an explicit rule. An example is the informal employment share, which is 100 minus the formal employment share by construction.
@@ -208,7 +208,9 @@ The consequential change is the weight on food and beverages, which falls from 4
 
 This is a defensible and overdue revision: food's share of household expenditure does fall as incomes rise, and a basket fixed in 2012 had become unrepresentative. But it has a direct analytical consequence. Headline CPI computed on the new basket responds substantially less to a food-price shock than the old series did. A monsoon failure that would have moved the old index by a given amount moves the new one by roughly four-fifths as much, through the weighting change alone.
 
-Our 2026 inflation figure (4.45 per cent, the July 2026 print) is therefore not on the same basis as the 2014–2025 values, and we flag it as such in the dataset. Readers comparing 2026 inflation to earlier years should treat the comparison as approximate. This is the class of methodological change that the SSI is designed to make visible: legitimate in itself, consequential for comparison, and easy to miss.
+Our 2026 inflation figure (3.8 per cent, the average of the eight monthly prints from January to August 2026) is therefore not on the same basis as the 2014–2025 values, and we flag it as such in the dataset. Readers comparing 2026 inflation to earlier years should treat the comparison as approximate. This is the class of methodological change that the SSI is designed to make visible: legitimate in itself, consequential for comparison, and easy to miss.
+
+Two other series change basis in 2026. Unemployment for 2014 to 2025 is the usual-status rate of the PLFS annual reports, while the 2026 value is the average of the 2026 monthly bulletins, which report current weekly status and run well above usual status. GDP growth for 2014 to 2025 is on the 2011–12 national accounts base, while the 2026 value (7.8 per cent for 2025–26) is MoSPI's Provisional Estimate on the new 2022–23 base, which covers 2023–24 onward only. The last estimate for 2025–26 on the old base was the First Advance Estimate of 7.4 per cent. Both breaks are flagged in the dataset and marked on the site's charts, and the cross-era comparisons in Section 6.9 are not changed by either, because one year moves a thirteen-year mean by a few hundredths.
 
 ## 4.4 The pre-2014 reconstruction
 
@@ -366,7 +368,7 @@ We note the risk in this choice: including the component that moves most is a de
 
 ## 6.1 Growth
 
-Real GDP growth averaged 7.08 per cent across 2004–2013 and 6.08 per cent across 2014–2026. The later period contains the pandemic contraction of −7.3 per cent in 2020, which accounts for a substantial part of the gap; excluding 2020, the later-period average is materially higher, though still not above the earlier one.
+Real GDP growth averaged 7.08 per cent across 2004–2013 and 6.11 per cent across 2014–2026. The later period contains the pandemic contraction of −7.3 per cent in 2020, which accounts for a substantial part of the gap; excluding 2020, the later-period average is materially higher, though still not above the earlier one.
 
 The more important observation is that the growth figures for the two periods are not straightforwardly comparable, for the reason set out in Section 2: the 2015 rebasing altered the measurement of manufacturing output in a manner that lowered measured UPA-era growth and raised measured NDA-era growth, and the resulting back-series was never independently reviewed. Subramanian's (2019) estimate of a 2.5-percentage-point overstatement for 2011–17, if accepted, would place NDA-era growth materially below the UPA average. We do not adopt that correction, since it is contested and the EAC-PM rebuttal is on record. We also decline to present the two periods' growth rates as a clean comparison, because they are not one.
 
@@ -378,9 +380,9 @@ The employment result is the clearest in the dataset, because it does not depend
 
 The formal employment share (workers with any social-security cover) falls from 13.0 per cent in 2014 to 10.9 per cent in 2026. This is a decline in the share itself. The share fell in ten of the twelve year-on-year changes, held level from 2023 to 2024, and rose once, from 11.4 to 11.5 per cent, in 2021. Informal employment correspondingly rises from 87.0 to 89.1 per cent.
 
-Headline unemployment moves from 4.9 per cent in 2014 to 5.5 per cent in 2026, having recorded 3.1 per cent as recently as 2025. Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment stands at 26.5 per cent in 2026, against 18.5 per cent in 2014.
+Headline unemployment is 4.9 per cent in 2014 and 3.1 per cent in 2025 on the usual-status measure of the annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure, and the series cannot show whether unemployment itself rose (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment stands at 26.5 per cent in 2026, against 18.5 per cent in 2014.
 
-An unemployment rate above one in four among degree-holders, in an economy whose headline unemployment rate is 5.5 per cent, cannot be explained by weak aggregate labour demand. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
+An unemployment rate above one in four among degree-holders, in an economy whose headline unemployment rate is 3.1 per cent on usual status (2025) and 5.2 per cent on the weekly measure (2026), cannot be explained by weak aggregate labour demand. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
 
 The conjunction of positive aggregate growth with a formal-employment share that fell in ten of twelve years is the single most consistent multi-year pattern in the dataset. It is difficult to reconcile with any account in which the period's institutional changes purchased broad-based material progress.
 
@@ -493,8 +495,8 @@ Comparing period means across the nine directly comparable measures:
 
 | Measure | UPA (2004–13) | NDA (2014–26) | Direction |
 |---|---|---|---|
-| GDP growth (%) | 7.08 | 6.08 | Worse |
-| CPI inflation (%) | 8.05 | 4.98 | Better |
+| GDP growth (%) | 7.08 | 6.11 | Worse |
+| CPI inflation (%) | 8.05 | 4.93 | Better |
 | Fiscal deficit (% GDP) | 4.64 | 4.96 | Worse |
 | Top 1% income share (%) | 20.23 | 22.17 | Worse |
 | Bottom 50% income share (%) | 15.67 | 13.79 | Worse |
@@ -505,7 +507,7 @@ Comparing period means across the nine directly comparable measures:
 
 Eight of the nine measures deteriorate and one improves.
 
-The exception is real as a measurement: average CPI inflation of 4.98 per cent against 8.05 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
+The exception is real as a measurement: average CPI inflation of 4.93 per cent against 8.05 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
 
 ## 6.10 The inflation exception, in full
 
@@ -864,7 +866,7 @@ Drafting, code generation for the site's analysis tooling, and consistency check
 
 ## Version
 
-Version 1.0, data vintage 15 August 2026. Subsequent revisions, including any corrections, are recorded at someperspective.info/updates.html and in the repository's changelog.
+Version 1.1, data vintage 10 October 2026. Subsequent revisions, including any corrections, are recorded at someperspective.info/updates.html and in the repository's changelog.
 
 ---
 
@@ -966,7 +968,7 @@ Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`.
 | 2023 | 7.6 | 22.6 | 13.1 | 161 | 8.20 | 0.68 | 0.28 |
 | 2024 | 7.8 | 22.6 | 13.1 | 159 | 7.05 | 0.68 | 0.28 |
 | 2025 | 6.5 | 22.8 | 13.0 | 151 | 6.55 | 0.68 | 0.30 |
-| 2026 | 7.4 | 23.0 | 12.9 | 157 | 6.40 | 0.68 | 0.29 |
+| 2026 | 7.8 | 23.0 | 12.9 | 157 | 6.40 | 0.68 | 0.29 |
 
 ---
 
@@ -995,4 +997,4 @@ To verify that the published data matches the construction:
 python3 tools/check_data_parity.py
 ```
 
-*Data vintage: 15 August 2026. This paper is generated from `paper/paper.md`; the HTML and PDF editions are built by `tools/build_paper.py` and regenerated whenever the source or the dataset changes.*
+*Data vintage: 10 October 2026. This paper is generated from `paper/paper.md`; the HTML and PDF editions are built by `tools/build_paper.py` and regenerated whenever the source or the dataset changes.*
