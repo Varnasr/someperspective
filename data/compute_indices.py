@@ -148,17 +148,31 @@ def compute_fci_series():
 # published values are used below. The direction of the DQI result survives:
 # the UPA mean falls 0.59 -> 0.57 and 2014 falls 0.54 -> 0.49, while the 2026
 # value is unchanged at 0.29.
+#
+# CORRECTION (2026-10-10): the Freedom House and RSF columns were checked
+# against the publishers.
+#   freedom_house_100 = Freedom in the World aggregate score, assigned to the
+#     year it covers (the 2026 edition covers 2025). The UPA-decade entries were
+#     78-79 against published scores of 76-77, and 2024-2025 carried 66 against
+#     63 and 62. 2026 carries the 2025 score forward, as V-Dem does. Sources:
+#     freedomhouse.org country pages (2017-2026 editions) and Freedom House data
+#     as processed by Our World in Data (earlier years).
+#   rsf_rank = RSF World Press Freedom Index rank, from RSF's own yearly files
+#     (rsf.org/sites/default/files/import_classement/<year>.csv). RSF published
+#     no 2011 index; its 2011-12 index (rank 131) is used for 2011 and 2012.
+#     2012 had carried 140, the 2013 rank.
+# Effect: DQI 2009 0.61 -> 0.60, 2012 0.51 -> 0.53, 2026 0.29 -> 0.28.
 DQI_COMPONENTS = {
-    2004: [0.578, 78, 120, 0.826],
-    2005: [0.573, 78, 106, 0.760],
-    2006: [0.569, 78, 105, 0.760],
-    2007: [0.569, 78, 120, 0.760],
-    2008: [0.569, 78, 118, 0.760],
-    2009: [0.539, 79, 105, 0.760],
-    2010: [0.532, 79, 122, 0.744],
-    2011: [0.532, 79, 131, 0.744],
-    2012: [0.525, 79, 140, 0.743],
-    2013: [0.522, 78, 140, 0.735],
+    2004: [0.578, 76, 120, 0.826],
+    2005: [0.573, 76, 106, 0.760],
+    2006: [0.569, 76, 105, 0.760],
+    2007: [0.569, 76, 120, 0.760],
+    2008: [0.569, 76, 118, 0.760],
+    2009: [0.539, 76, 105, 0.760],
+    2010: [0.532, 76, 122, 0.744],
+    2011: [0.532, 77, 131, 0.744],
+    2012: [0.525, 76, 131, 0.743],
+    2013: [0.522, 77, 140, 0.735],
     2014: [0.488, 78, 140, 0.669],
     2015: [0.417, 77, 136, 0.576],
     2016: [0.406, 77, 133, 0.555],
@@ -169,9 +183,9 @@ DQI_COMPONENTS = {
     2021: [0.307, 66, 142, 0.421],
     2022: [0.291, 66, 150, 0.421],
     2023: [0.273, 66, 161, 0.346],
-    2024: [0.281, 66, 159, 0.302],
-    2025: [0.260, 66, 151, 0.302],
-    2026: [0.260, 66, 157, 0.302],
+    2024: [0.281, 63, 159, 0.302],
+    2025: [0.260, 62, 151, 0.302],
+    2026: [0.260, 62, 157, 0.302],
 }
 
 
