@@ -3318,8 +3318,8 @@ A low value on any input pulls the score down.</pre>
         economic: {
             years:               [2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],
             yearLabels:          ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
-            gdpGrowth:           [7.4,8.0,8.2,7.2,6.1,4.2,-7.3,8.7,7.2,7.6,7.8,6.5,7.8],
-            unemployment:        [4.9,5.0,5.0,6.0,5.8,4.8,4.2,4.1,3.2,3.2,3.2,3.1,5.2],
+            gdpGrowth:           [7.4,8.0,8.3,6.8,6.5,3.9,-5.8,9.7,7.6,7.3,7.2,7.8,null],
+            unemployment:        [null,5.0,null,6.0,5.8,4.8,4.2,4.1,3.2,3.2,3.2,3.1,5.2],
             youthUnemployment:   [null,null,null,17.8,17.3,15.0,12.9,12.4,10.0,10.2,10.3,9.9,null],
             graduateUnemployment:[null,null,null,17.2,16.9,17.2,15.5,14.9,13.4,13.0,null,null,null],
             top1Share:           [21.3,21.7,22.2,22.3,22.4,21.6,21.5,21.7,22.6,null,null,null,null],
@@ -3328,7 +3328,7 @@ A low value on any input pulls the score down.</pre>
             informalEmployment:  [null,null,null,88.5,88.6,89.5,90.3,89.9,90.4,89.9,null,null,null],
             pressFreedom:        [140,136,133,136,138,140,142,142,150,161,159,151,157],
             fiscalDeficit:       [4.1,3.9,3.5,3.5,3.4,4.6,9.2,6.7,6.4,5.6,4.8,4.4,4.3],
-            cpiInflation:        [6.7,4.9,4.5,3.6,3.4,4.8,6.2,5.5,6.7,5.4,4.6,4.0,3.8],
+            cpiInflation:        [6.7,4.9,5.0,3.3,3.9,3.7,6.6,5.1,6.7,5.6,4.9,2.2,3.8],
             rupeeUSD:            [61,64,67,65,68,70,74,74,79,83,84,87,94],
             ssi:                 [0.0,1.05,1.05,2.05,4.0,4.8,7.0,9.0,9.0,8.2,7.05,6.55,4.65],
             fci:                 [0.42,0.19,0.2,0.36,0.38,0.48,0.87,0.58,0.51,0.45,0.44,0.41,0.35],
@@ -3626,8 +3626,8 @@ A low value on any input pulls the score down.</pre>
             eraHistory: {
                 note: 'UPA decade (2004-2013) on the same basis as the 2014+ series: World Bank (GDP, CPI), Union Budget/RBI (fiscal deficit), World Inequality Lab, Bharti, Chancel, Piketty and Somanchi 2024 (top 1%/bottom 50%), RSF (press freedom). SSI/FCI/DQI before 2014 are computed by the same method as the later years. Unemployment is shown from 2014 and formal/informal employment for the PLFS years 2017-18 to 2023-24 (no comparable annual UPA series).',
                 years: [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013],
-                gdpGrowth: [7.9,9.3,9.3,7.7,3.1,7.9,8.5,5.2,5.5,6.4],
-                cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.3,10.9],
+                gdpGrowth: [7.9,7.9,8.1,7.7,3.1,7.9,8.5,5.2,5.5,6.4],
+                cpiInflation: [3.8,4.2,5.8,6.4,8.3,10.9,12.0,8.9,9.5,10.0],
                 fiscalDeficit: [4.0,4.0,3.3,2.5,6.0,6.5,4.8,5.9,4.9,4.5],
                 top1Share: [18.4,19.3,19.7,20.1,20.4,20.8,21.2,21.1,21.3,21.6],
                 bottom50Share: [18.8,18.4,17.9,17.5,17.0,16.5,16.0,15.3,15.1,15.0],
@@ -4511,15 +4511,16 @@ A low value on any input pulls the score down.</pre>
                         lineStyle: i > 0 ? { type: 'dashed' } : {}
                     };
                     if (i === 0) { if (markLine) s.markLine = markLine; if (markArea) s.markArea = markArea; }
-                    // 2026 is on a different measure from the years before it for these
-                    // three series (see sources in data.json); circle the point and say so.
-                    const brk = { unemployment: 'New measure', cpiInflation: 'New CPI base', gdpGrowth: 'New GDP base' }[key];
-                    const last = m.data[m.data.length - 1];
+                    // These three series change measure (GDP base from 2023, CPI base and the
+                    // unemployment measure in 2026; see sources in data.json). Circle the point and say so.
+                    const brk = { unemployment: ['New measure', 2026], cpiInflation: ['New CPI base', 2026], gdpGrowth: ['New GDP base', 2023] }[key];
+                    const yi = brk ? this.economicData.years.indexOf(brk[1]) : -1;
+                    const last = yi >= 0 ? m.data[yi] : null;
                     if (brk && last != null) s.markPoint = {
                         symbol: 'circle', symbolSize: 11, silent: true,
                         itemStyle: { color: 'transparent', borderColor: m.color, borderWidth: 2 },
-                        label: { show: true, position: 'top', formatter: brk, color: m.color, fontSize: 9 },
-                        data: [{ coord: ['2026', last] }]
+                        label: { show: true, position: 'top', formatter: brk[0], color: m.color, fontSize: 9 },
+                        data: [{ coord: [String(brk[1]), last] }]
                     };
                     series.push(s);
                 });
