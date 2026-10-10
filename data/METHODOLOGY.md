@@ -139,7 +139,7 @@ rank, C = V-Dem Core Civil Society Index. CSI is included because press-freedom 
 separates the eras (India was mediocre throughout), while civil-society space collapsed from
 0.669 in 2014 to 0.302 in 2026. A headline democracy score flattens that dimension. DQI falls from a
 UPA-era average of 0.57 (peak 0.61, in 2005 and 2006) to 0.28 in 2026 (0.49 → 0.28 within the NDA
-period, a fall of 42.9%; NDA-era mean 0.38),
+period, a fall of 42.9%; NDA-era mean 0.37),
 with the steepest drop after 2019, the year V-Dem reclassified India as an electoral autocracy.
 The Freedom House and RSF columns were checked against the publishers on 10 October 2026. The
 Freedom House scores for the UPA years had been 78-79 against published scores of 76-77, and 2024-2025

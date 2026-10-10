@@ -128,6 +128,8 @@ jobs:
         run: |
           python3 tools/build_paper.py --check
           python3 tools/build_site.py --check
+          python3 tools/build_master.py --check
+          python3 replication_code.py
 
       - name: Check downloads/ docs agree with data.json
         run: python3 tools/check_docs_consistency.py

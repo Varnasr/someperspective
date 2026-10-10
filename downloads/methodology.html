@@ -287,9 +287,9 @@
             <li><a href="#data-sources">2. Data sources</a></li>
             <li><a href="#indices">3. Constructing the indices</a></li>
             <li><a href="#analytical">4. Analytical methods</a></li>
-            <li><a href="#triangulation">5. Triangulation strategy</a></li>
+            <li><a href="#triangulation">5. Sources and suppressed data</a></li>
             <li><a href="#limitations">6. Limitations and caveats</a></li>
-            <li><a href="#validation">7. Validation and robustness</a></li>
+            <li><a href="#validation">7. Robustness</a></li>
             <li><a href="#replication">8. Replication guide</a></li>
         </ul>
     </div>
@@ -298,16 +298,16 @@
         <h2>1. Methodological overview</h2>
         
         <p>
-            This study employs a mixed-methods approach combining quantitative analysis of official statistics, independent surveys, and international assessments with qualitative analysis of policy documents and institutional changes. The method is designed for an economy in which the reliability of official data is itself a research question.
+            This study is descriptive. It sets the record of the UPA decade (2004-2013) beside that of the NDA period (2014-2026) on published statistics, and adds three indices built from documented events and published third-party series. It identifies no causal effects. The method is designed for an economy in which the reliability of official data is itself a research question.
         </p>
         
         <div class="method-box">
             <h3>Core principles</h3>
             <ul>
-                <li><strong>Triangulation:</strong> no single data source is treated as definitive, and findings rest on evidence from several sources that agree</li>
-                <li><strong>Transparency:</strong> all data sources, transformations, and code are publicly available</li>
-                <li><strong>Conservatism:</strong> when data conflict, we report ranges and note uncertainties</li>
-                <li><strong>Replicability:</strong> all analyses can be reproduced using the code and data provided</li>
+                <li>Every figure is taken from the publisher of that statistic, and the source is named beside it in the data files.</li>
+                <li>A year with no published figure is left empty. Nothing is interpolated or projected into an observed series.</li>
+                <li>Where a figure on the site was found to disagree with its publisher, the site was changed to the published figure, and the correction is recorded in the paper and the technical appendix.</li>
+                <li>All data, the index code and the paper source are public, and the indices can be recomputed with one command.</li>
             </ul>
         </div>
     </div>
@@ -363,7 +363,7 @@
             <h4>International databases</h4>
             <ul>
                 <li>World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Working Paper 2024/09</li>
-                <li>V-Dem Institute Dataset v14</li>
+                <li>V-Dem Institute dataset, version 16 (March 2026)</li>
                 <li>Freedom House Annual Reports</li>
                 <li>Reporters Without Borders Press Freedom Index</li>
                 <li>IMF Article IV Consultations</li>
@@ -448,82 +448,33 @@
     <div class="section" id="analytical">
         <h2>4. Analytical methods</h2>
         
-        <h3>4.1 Difference-in-differences analysis</h3>
-        
-        <div class="method-box">
-            <p>For policy impact assessment:</p>
-            <div class="formula">
-                Y_it = α + β(Period_t × Treatment_i) + γX_it + δ_i + θ_t + ε_it
-            </div>
-            <p>Applied to GST implementation, demonetization, and pandemic policies</p>
-        </div>
-        
-        <h3>4.2 Synthetic control method</h3>
-        
         <p>
-            Used for counterfactual analysis comparing India's trajectory with weighted combination of similar economies. Control units selected based on pre-2014 characteristics:
+            The comparison is between period averages. For each measure the study takes the mean of the UPA years and the mean of the NDA years that have a published figure, and reports which is better. Nine measures are compared on a consistent basis across both periods: GDP growth, CPI inflation, the fiscal deficit, the top 1% and bottom 50% income shares, the press-freedom rank and the three indices. The NDA period is worse on eight of the nine; inflation is the exception.
         </p>
-        
-        <ul>
-            <li>GDP per capita</li>
-            <li>Democratic institutions</li>
-            <li>Population size</li>
-            <li>Economic structure</li>
-        </ul>
-        
-        <h3>4.3 Structural break tests</h3>
-        
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table>
-            <thead>
-                <tr>
-                    <th>Test</th>
-                    <th>Application</th>
-                    <th>Break Points Identified</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Chow Test</td>
-                    <td>GDP series</td>
-                    <td>2015 Q1, 2020 Q2</td>
-                </tr>
-                <tr>
-                    <td>Bai-Perron</td>
-                    <td>Employment</td>
-                    <td>2016 Q4, 2020 Q1</td>
-                </tr>
-                <tr>
-                    <td>Andrews-Ploberger</td>
-                    <td>Inequality</td>
-                    <td>2014 Q3</td>
-                </tr>
-            </tbody>
-        </table></div>
+        <p>
+            Series that begin with the Periodic Labour Force Survey in 2017-18 (unemployment on the PLFS basis, youth and graduate unemployment, women's labour force participation, formal employment) have no UPA-period counterpart on the same basis. They are reported for the NDA years and left out of the cross-era comparison.
+        </p>
+        <p>
+            Employment elasticity is not estimated here. Appendix A5 of the technical appendix reports the published estimates with their sources and periods.
+        </p>
+        <p>
+            The study runs no difference-in-differences, synthetic-control or structural-break analysis. An earlier version of this page said it did; that was wrong, and the description has been removed.
+        </p>
     </div>
     
     <div class="section" id="triangulation">
-        <h2>5. Triangulation strategy</h2>
+        <h2>5. Sources and suppressed data</h2>
         
-        <h3>5.1 Cross-validation matrix</h3>
-        
-        <p>Each finding must be supported by at least three independent sources:</p>
-        
-        <div class="method-box">
-            <h4>Example: checking the unemployment rate</h4>
-            <ol>
-                <li><strong>PLFS:</strong> 6.1% (2017-18)</li>
-                <li><strong>CMIE:</strong> 7.4% (2017-18)</li>
-                <li><strong>Labour Bureau:</strong> 5.0% (2015-16)</li>
-                <li><strong>Converged estimate:</strong> 5.5-7.0% range</li>
-            </ol>
-        </div>
+        <h3>5.1 One publisher per figure</h3>
+        <p>
+            Each series uses the publisher of that statistic: MoSPI for the labour force surveys, prices and national accounts; the Union Budget documents, the Finance Commission reports and the RBI for fiscal data; the World Inequality Lab for income shares; V-Dem, Freedom House and RSF for the democracy measures. Where two official sources differ, the data file says which one is used and why.
+        </p>
         
         <h3>5.2 Dealing with suppressed data</h3>
-        
         <ul>
-            <li><strong>Consumption Survey 2017-18:</strong> reconstructed using CMIE household data and state consumption patterns</li>
-            <li><strong>Census 2021:</strong> postponed in 2020; enumeration is notified for February 2027. Until then population figures are projected using NFHS-5, voter rolls, and Aadhaar statistics</li>
-            <li><strong>Caste data:</strong> extrapolated from state surveys (Bihar, Karnataka)</li>
+            <li><strong>Consumption survey 2017-18:</strong> withheld in November 2019. No substitute is constructed; the years without a published consumption survey stay empty.</li>
+            <li><strong>Census:</strong> postponed in 2020 with no date. Houselisting runs April to September 2026 and population enumeration is notified for February 2027. No population figure is projected here.</li>
+            <li><strong>GDP back-series:</strong> the new series on base 2022-23 was released on 27 February 2026 without a back-series; GDP growth before 2023 is on the earlier base.</li>
         </ul>
     </div>
     
@@ -534,7 +485,7 @@
             <h3>Main limitations</h3>
             <ul>
                 <li><strong>Census gap:</strong> there has been no census since 2011, and the next enumeration is notified for February 2027, which limits demographic analysis</li>
-                <li><strong>Consumption data:</strong> the 2017-18 survey was suppressed, so imputations are used</li>
+                <li><strong>Consumption data:</strong> the 2017-18 survey was withheld, and no substitute is constructed</li>
                 <li><strong>State variation:</strong> national aggregates mask large differences between states</li>
                 <li><strong>Informal economy:</strong> it remains hard to measure despite improvements in method</li>
                 <li><strong>COVID:</strong> the pandemic complicates comparisons involving 2020-2021</li>
@@ -562,80 +513,37 @@
     </div>
     
     <div class="section" id="validation">
-        <h2>7. Validation and robustness</h2>
+        <h2>7. Robustness</h2>
         
-        <h3>7.1 Sensitivity analysis</h3>
-        
-        <ul>
-            <li>All indices recalculated with alternative weights (±20%)</li>
-            <li>Results robust to exclusion of any single data source</li>
-            <li>Bootstrap confidence intervals for all estimates</li>
-            <li>Monte Carlo simulations for projection uncertainty</li>
-        </ul>
-        
-        <h3>7.2 External validation</h3>
-        
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Table, scrolls horizontally"><table>
-            <thead>
-                <tr>
-                    <th>Finding</th>
-                    <th>External Validation</th>
-                    <th>Correlation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Democratic erosion</td>
-                    <td>V-Dem, Freedom House</td>
-                    <td>0.89</td>
-                </tr>
-                <tr>
-                    <td>Inequality rise</td>
-                    <td>World Inequality Lab (2024)</td>
-                    <td>0.92</td>
-                </tr>
-                <tr>
-                    <td>Employment crisis</td>
-                    <td>ILO estimates</td>
-                    <td>0.85</td>
-                </tr>
-            </tbody>
-        </table></div>
+        <p>
+            Three checks are reported in the technical appendix (section A7). The SSI is recomputed with every weight moved by 20% either way. The FCI is recomputed without the coded borrowing component, which moves the 2024 value from 0.44 to 0.53. The DQI is recomputed as an arithmetic mean, which moves the 2024 value from 0.28 to 0.33. None of the three changes the direction of the cross-era comparison.
+        </p>
+        <p>
+            The study reports no bootstrap intervals, Monte Carlo simulations or external-validation correlations. An earlier version of this page listed them, with correlation figures that nothing in the repository computed, and they have been removed.
+        </p>
     </div>
     
     <div class="section" id="replication">
         <h2>8. Replication guide</h2>
         
-        <h3>8.1 Data access</h3>
-        
+        <h3>8.1 What the repository holds</h3>
         <div class="method-box">
             <p><strong>Repository:</strong> github.com/Varnasr/someperspective</p>
-            <p><strong>Contents:</strong></p>
             <ul>
-                <li><code>/data/raw/</code> - Original datasets</li>
-                <li><code>/data/processed/</code> - Cleaned data</li>
-                <li><code>/code/</code> - Analysis scripts (R, Python, Stata)</li>
-                <li><code>/docs/</code> - Codebooks and documentation</li>
+                <li><code>data.json</code>: every series shown on the site, with a source note for each.</li>
+                <li><code>data/compute_indices.py</code>: the SSI, FCI and DQI, their inputs and the sources of those inputs.</li>
+                <li><code>data/SP_masterdataset.csv</code>: the year-by-year dataset, written from the two files above by <code>tools/build_master.py</code>.</li>
+                <li><code>replication_code.py</code> and <code>replication_code.R</code>: recompute the cross-era comparison from the dataset.</li>
+                <li><code>paper/paper.md</code>: the source of the working paper.</li>
             </ul>
         </div>
         
-        <h3>8.2 Software requirements</h3>
-        
-        <ul>
-            <li>R (v4.3+): Main statistical analysis</li>
-            <li>Python (v3.9+): Data processing and visualization</li>
-            <li>Stata (v17): Robustness checks</li>
-            <li>PostgreSQL: Database management</li>
-        </ul>
-        
-        <h3>8.3 Reproduction steps</h3>
-        
+        <h3>8.2 Reproduction steps</h3>
         <ol>
-            <li>Clone repository: <code>git clone https://github.com/Varnasr/someperspective</code></li>
-            <li>Install dependencies: <code>pip install -r requirements.txt</code></li>
-            <li>Run data processing: <code>python process_data.py</code></li>
-            <li>Execute analysis: <code>Rscript main_analysis.R</code></li>
-            <li>Generate figures: <code>python create_figures.py</code></li>
+            <li>Clone the repository: <code>git clone https://github.com/Varnasr/someperspective</code></li>
+            <li>Recompute the indices: <code>python3 data/compute_indices.py</code></li>
+            <li>Rebuild the dataset: <code>python3 tools/build_master.py</code></li>
+            <li>Reproduce the comparison: <code>python3 replication_code.py</code> (standard library only; matplotlib is optional) or <code>Rscript replication_code.R</code> (base R)</li>
         </ol>
     </div>
     

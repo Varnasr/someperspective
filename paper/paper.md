@@ -447,7 +447,7 @@ The era comparison therefore rests on the two coded components. On the four meas
 
 The DQI averages 0.57 across 2004–2013, peaking at 0.61 in 2005 and 2006, and standing at 0.51 in 2013.
 
-Within the NDA period it falls from 0.49 (2014) to 0.28 (2026), with the steepest single-year declines after 2019, the year V-Dem reclassified India from "electoral democracy" to "electoral autocracy". The era means are 0.57 against 0.38; the endpoint comparison is 0.49 against 0.28, a decline of 42.9 per cent within the later period alone.
+Within the NDA period it falls from 0.49 (2014) to 0.28 (2026), with the steepest single-year declines after 2019, the year V-Dem reclassified India from "electoral democracy" to "electoral autocracy". The era means are 0.57 against 0.37; the endpoint comparison is 0.49 against 0.28, a decline of 42.9 per cent within the later period alone.
 
 The component behaviour is instructive. India's V-Dem Liberal Democracy Index falls from 0.488 to 0.260, a 46.7 per cent decline. The press-freedom rank moves from 140 to 157, a modest deterioration against an already-poor base. Freedom House's aggregate score falls from 78 to 62, with the reclassification from "Free" to "Partly Free" in 2021. The V-Dem Core Civil Society Index falls from 0.669 to 0.302, a fall of 54.9 per cent and the steepest of the four components.
 
@@ -505,7 +505,7 @@ Comparing period means across the nine directly comparable measures:
 | Press freedom rank | 119.8 | 145.0 | Worse |
 | Statistical Suppression Index | 0.00 | 4.95 | Worse |
 | Fiscal Centralisation Index | 0.30 | 0.43 | Worse |
-| Democratic Quality Index | 0.57 | 0.38 | Worse |
+| Democratic Quality Index | 0.57 | 0.37 | Worse |
 
 Eight of the nine measures deteriorate and one improves. The two income shares average the years with a published figure, 2004–2013 and 2014–2022. The FCI is the narrowest of the eight. Its gap of 0.13 comes from the two coded components, GST and the 2020 borrowing conditions; on the four measured fiscal ratios alone the UPA years average 0.49 and the NDA years 0.45 (Section 6.5).
 

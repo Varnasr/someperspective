@@ -67,3 +67,6 @@ yarn-error.log*
 .serverless/
 .firebase/
 node_modules/
+replication_output.json
+replication_indices.png
+replication_indices_R.png

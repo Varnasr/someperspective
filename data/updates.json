@@ -2,6 +2,46 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.51.0",
+      "date": "2026-10-10",
+      "title": "The three indices and the fiscal and jobs claims checked against their publishers",
+      "summary": "Every input to the three indices was checked against its publisher. The fiscal index was rebuilt from Finance Commission, Budget and RBI figures and now tells a narrower story: the NDA period still scores as more centralised, but because of GST and the 2020 borrowing conditions, while devolution to states rose after 2015. The NDA period remains worse than the UPA decade on eight of nine comparable measures.",
+      "changes": [
+        {
+          "kind": "Fixed",
+          "text": "The Fiscal Centralisation Index used inputs that matched no published series. Devolution was shown near 35% of gross tax revenue under UPA and falling under NDA. The 16th Finance Commission's figures are 25.8% in 2004-05 and 27.9% in 2013-14, rising to 34.8% in 2015-16 after the 14th Finance Commission and 33.9% in 2024-25. States' own revenue was shown 15 to 20 points too low, and conditional grants were shown rising steadily to 42% of transfers, where the published share moves between 27% and 40%. The index now uses the published figures and leaves empty the years with none. It averages 0.30 under UPA and 0.43 under NDA, peaks at 0.87 in 2020 and is 0.35 in 2026. On the four measured fiscal ratios alone the eras are close (0.49 and 0.45), so the higher NDA score comes from GST and the 2020 borrowing conditions."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The cess and surcharge share of gross tax revenue was described as rising from 8% to 29%. The 15th Finance Commission and the Union Receipt Budgets put it at 10.4% in 2011-12, a peak of 24.4% in 2020-21 and 18.0% in 2024-25. The cess chart and its data file now use these figures."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Freedom House scores in the Democratic Quality Index were too high for the UPA years (78-79 against published 76-77) and for 2024-2025 (66 against 63 and 62). RSF's 2012 rank was the 2013 rank repeated; RSF's 2011-12 index gives 131. V-Dem's two series match its March 2026 release exactly. The DQI for 2026 is 0.28 and the NDA average 0.37."
+        },
+        {
+          "kind": "Changed",
+          "text": "The census is scored as a scheduled delay in 2026 (houselisting from April 2026, enumeration notified for February 2027), so the Statistical Suppression Index for 2026 is 4.65 in place of 6.4."
+        },
+        {
+          "kind": "Fixed",
+          "text": "Employment elasticity of 0.01 was attributed to 2014-17 and called the lowest since independence. RBI puts 0.01 at 2004-05 to 2009-10, and ORF puts it at 2011-16 with 1.11 for 2017-23. The technical appendix's elasticity table, whose confidence intervals and R-squared values nothing had computed, is replaced by the published estimates. Two unsourced figures, '80% of new jobs are precarious' and '45% of youth underemployed', are replaced by the ILO and IHD India Employment Report 2024."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The methodology document described analyses the project never ran (difference-in-differences, synthetic control, structural-break tests, bootstrap intervals, external-validation correlations) and a replication guide for files that do not exist. It now describes what the project does."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The downloadable master dataset was a separate hand-kept copy that disagreed with the site and carried columns with no source. It is now written from the site's data by a script and checked in CI, and the replication scripts in Python and R run against it and reproduce the eight-of-nine comparison."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The rupee series was checked against the Federal Reserve's H.10 monthly averages; 2023 is 83 in place of 82."
+        }
+      ]
+    },
+    {
       "version": "2.50.0",
       "date": "2026-10-10",
       "title": "Formal employment and income shares corrected to the published figures",
