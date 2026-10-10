@@ -12,32 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Setup Node
-        uses: actions/setup-node@v7
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Check committed styles.css is up to date
-        # Rebuild Tailwind and fail if the committed styles.css is stale —
-        # the same drift guard the data-parity check applies to data.json.
-        run: |
-          npm ci
-          npm run build:css
-          if ! git diff --quiet -- styles.css; then
-            echo "ERROR: styles.css is out of date. Run 'npm run build:css' and commit the result."
-            git diff --stat -- styles.css
-            exit 1
-          fi
-          echo "styles.css is up to date"
-
-      - name: npm audit (build dependencies)
-        # Tailwind is the only Node dependency and runs at build time over our
-        # own CSS, so the exposure is small; the advisories were still real
-        # (braces via @parcel/watcher, source-map-js) and package.json carries
-        # overrides for both. This keeps them from coming back unnoticed.
-        run: npm audit --audit-level=high
-
       - name: Only the site is published, and every page link resolves
         run: python3 tools/check_publish.py
 
@@ -68,25 +42,29 @@ jobs:
           "
 
       - name: Check for broken internal links
+        # Every generated page, not only the front page: the data pages, the
+        # analyses and the explainers are where most links live now.
         run: |
           python3 -c "
-          import re, os, sys
-          html = open('index.html').read() + open('explore/index.html').read()
-          # Negative lookbehind skips Alpine bindings (:href=\"expr\", x-bind:href=\"expr\"),
-          # whose values are JS expressions rather than URLs and are not files on disk.
-          hrefs = set(re.findall(r'(?<![:\w-])href=\"([^\"#][^\"]*?)\"', html))
-          local = [h for h in hrefs if not h.startswith('http') and not h.startswith('data:') and not h.startswith('mailto:')]
-          # A URL is not a filename: strip the query string and fragment before testing
-          # existence. /styles.css?v=2.42.0 is a request for styles.css, and treating the
-          # cache-buster as part of the path made this step fail for eight consecutive runs.
-          # Root-relative URLs (e.g. /manifest.json) are served from the repo root, so check them relative to the repo.
-          def as_path(h):
-              return h.split('#')[0].split('?')[0].lstrip('/')
-          missing = [h for h in local if as_path(h) and not os.path.exists(as_path(h))]
+          import re, os, sys, glob
+          pages = ['index.html'] + glob.glob('explore/**/index.html', recursive=True) + glob.glob('analysis/*.html') \\
+                  + ['inflation/index.html', 'care/index.html', 'walkthrough/index.html', 'updates.html']
+          missing = []
+          n = 0
+          for p in pages:
+              html = open(p, encoding='utf-8').read()
+              for h in set(re.findall(r'(?<![:\\w-])href=\"([^\"#][^\"]*?)\"', html)):
+                  if h.startswith(('http', 'data:', 'mailto:')) or '+' in h:  # '+' marks a JS-built href
+                      continue
+                  n += 1
+                  path = h.split('#')[0].split('?')[0]
+                  path = os.path.normpath(os.path.join(os.path.dirname(p), path)) if not path.startswith('/') else path.lstrip('/')
+                  if path and not os.path.exists(path):
+                      missing.append((p, h))
           if missing:
               print('Broken local links:', missing)
               sys.exit(1)
-          print(f'All {len(local)} local links valid')
+          print(f'All {n} local links valid across {len(pages)} pages')
           "
 
       - name: Check for stale date references
@@ -96,7 +74,7 @@ jobs:
         # press release of 25 February 2025") is a fact, not a vintage, and passes.
         run: |
           ! grep -rEi '(through|as of|updated|last updated|data to|current to) (January|February|March|April|May|June|July|August|September|October|November|December) 2025\b' \
-              index.html explore/index.html downloads/ --include='*.html' || {
+              index.html explore/ analysis/ downloads/ --include='*.html' || {
             echo "ERROR: Stale <Month> 2025 references found (see hits above)"
             exit 1
           }
@@ -105,18 +83,19 @@ jobs:
       - name: Validate sitemap
         run: python3 -c "import xml.etree.ElementTree as ET; ET.parse('sitemap.xml'); print('sitemap.xml OK')"
 
-      - name: Check JS brace balance in index.html
+      - name: Check JS brace balance in every page's inline scripts
         run: |
           python3 -c "
-          import re
-          html = open('index.html').read() + open('explore/index.html').read()
-          s = ''.join(re.findall(r'<script[^>]*>(.*?)</script>', html, re.DOTALL))
-          o, c = s.count('{'), s.count('}')
-          print(f'inline JS braces: {o} open, {c} close')
-          assert o == c, f'Brace mismatch: {o} != {c}'
+          import re, glob
+          pages = ['index.html'] + glob.glob('explore/**/index.html', recursive=True)
+          for p in pages:
+              s = ''.join(re.findall(r'<script[^>]*>(.*?)</script>', open(p, encoding='utf-8').read(), re.DOTALL))
+              o, c = s.count('{'), s.count('}')
+              assert o == c, f'{p}: brace mismatch {o} != {c}'
+          print(f'inline JS braces balance in {len(pages)} pages')
           "
 
-      - name: Check data parity (inline fallback == data.json == index engine)
+      - name: Check data parity (estimates do not overlap outturns, data.json == index engine)
         run: python3 tools/check_data_parity.py
 
       - name: Check generated artifacts are up to date
@@ -125,9 +104,11 @@ jobs:
         # so the committed copies are what ship — same contract as styles.css.
         #
         # Order matters: build_site.py packages the paper's HTML and PDF into the
-        # research-package ZIP, so the paper has to be built first or the ZIP is stale.
+        # research-package ZIP, so the paper has to be built first or the ZIP is stale,
+        # and the sitemap lists the /explore/ pages, so those come before build_site.
         run: |
           python3 tools/build_paper.py --check
+          python3 tools/build_explore.py --check
           python3 tools/build_site.py --check
           python3 tools/build_master.py --check
           python3 tools/build_front.py --check
@@ -138,19 +119,3 @@ jobs:
 
       - name: Check every published V-Dem figure is on one index
         run: python3 tools/check_vdem_basis.py
-
-      - name: Check the stylesheet cache-buster matches the page version
-        # index.html links /styles.css?v=<version>. If the two drift, a returning
-        # visitor can pair new markup with a 10-minute-old stylesheet (GitHub Pages
-        # serves everything with max-age=600).
-        run: |
-          python3 -c "
-          import re, sys
-          h = open('explore/index.html').read()
-          ver = re.search(r'<meta name=\"version\" content=\"([^\"]+)\"', h).group(1)
-          css = re.search(r'href=\"/styles\.css\?v=([^\"]+)\"', h)
-          assert css, 'styles.css link is missing its ?v= cache-buster'
-          assert css.group(1) == ver, f'styles.css?v={css.group(1)} != version meta {ver}'
-          print(f'styles.css cache-buster matches version {ver}')
-          "
-

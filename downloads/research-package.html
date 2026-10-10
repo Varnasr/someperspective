@@ -180,12 +180,12 @@ body > header, body > .nav-tabs, body > .container, body > footer{border:0;borde
                     <div class="stat-label">States in the state comparison</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">27</div>
-                    <div class="stat-label">Indicators in the dataset</div>
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">Series in the dataset, with the three indices</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">475</div>
-                    <div class="stat-label">Published values in the dataset</div>
+                    <div class="stat-value">265</div>
+                    <div class="stat-label">Values in the dataset</div>
                 </div>
             </div>
 
@@ -274,7 +274,7 @@ body > header, body > .nav-tabs, body > .container, body > footer{border:0;borde
                     <span class="resource-type">Dataset</span>
                     <h3 class="resource-title">Master Dataset</h3>
                     <p class="resource-description">
-                        The year-by-year dataset for 2004-2026: 23 rows, 27 indicators and the three indices. A year with no published figure is left empty. The source of every series is named in data.json.
+                        The year-by-year dataset for 2004-2026: 18 series, including the three indices, with 265 values. The master dataset in the package adds every index input, one row per year. A year with no published figure is left empty. The source of every series is named in data.json.
                     </p>
                     <div class="resource-meta">
                         <span><img src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" style="height:1em;width:1em;vertical-align:-0.15em;display:inline-block"> CSV and Excel</span>
@@ -306,7 +306,7 @@ body > header, body > .nav-tabs, body > .container, body > footer{border:0;borde
                     <span class="resource-type">Indices</span>
                     <h3 class="resource-title">SSI, FCI, DQI Data</h3>
                     <p class="resource-description">
-                        Detailed calculations and components for the three new indices introduced in the paper.
+                        The yearly values of the three indices are in the dataset. Their inputs, sources and severity coding are in data/compute_indices.py and the master dataset, both in the package.
                     </p>
                     <div class="resource-meta">
                         <span><img src="https://cdn.jsdelivr.net/npm/sargam-icons@1.6.7/Icons/Line/si_Bar_chart.svg" alt="" aria-hidden="true" style="height:1em;width:1em;vertical-align:-0.15em;display:inline-block"> 3 indices</span>
@@ -336,7 +336,7 @@ for y, s, f, d in zip(idx['years'], idx['ssi'], idx['fci'], idx['dqi']):
             </div>
             
             <h3>Files</h3>
-            <p>In the <code>downloads/</code> folder: <code>paper.pdf</code> and <code>paper.html</code> (the working paper), <code>dataset.csv</code> and <code>dataset.xlsx</code> (the year-by-year dataset), <code>someperspective-research-package.zip</code> (the documents, data and code in one archive), and the six guides listed on this page (executive summary, methodology, technical appendix, policy brief, citizen guide and media kit).</p>
+            <p>In the <code>downloads/</code> folder: <code>paper.pdf</code> and <code>paper.html</code> (the working paper), <code>dataset.csv</code> and <code>dataset.xlsx</code> (the year-by-year dataset), <code>someperspective-research-package.zip</code> (the documents, data.json, the dataset, the master dataset with every index input, the index code and the replication scripts), and the six guides listed on this page (executive summary, methodology, technical appendix, policy brief, citizen guide and media kit).</p>
             <p style="margin-top: 0.75rem;">In the repository: <code>data.json</code> (every series on the site, with its source note), <code>data/SP_masterdataset.csv</code> (the dataset, written by <code>tools/build_master.py</code>), <code>data/compute_indices.py</code> (the SSI, FCI and DQI with their inputs and sources), <code>data/METHODOLOGY.md</code>, <code>data_dictionary.md</code>, <code>replication_code.py</code>, <code>replication_code.R</code> and <code>paper/paper.md</code> (the source of the paper).</p>
         </div>
 
@@ -447,8 +447,8 @@ for y, s, f, d in zip(idx['years'], idx['ssi'], idx['fci'], idx['dqi']):
             <div class="citation-box">
                 <h3>License</h3>
                 <p>
-                    All materials are released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). You are free to use, copy, modify, and distribute 
-                    with attribution. For commercial use or reproduction in academic journals, please contact the author.
+                    All materials are released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0), which allows any use,
+                    including commercial use and adaptation, with attribution.
                 </p>
                 <p style="margin-top: 1rem;">
                     <strong>Contact:</strong> research@someperspective.info

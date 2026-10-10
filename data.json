@@ -7,7 +7,7 @@
     "notes": "Series are annual unless stated. Observed values run through 2026 and reflect the latest official releases retrieved by 10 October 2026 (MoSPI national accounts with the 2025-26 Provisional Estimate, PLFS Monthly Bulletin August 2026, Union Budget 2026-27, CPI August 2026, World Inequality Lab Working Paper 2024/09). One caveat carries across the whole CPI series: MoSPI replaced the 2012=100 index with a 2024=100 index from the January 2026 print, reweighted on HCES 2023-24, so the 2026 inflation figure is not on the same basis as 2014-2025 (see sources.cpiInflation). All values in the 'economic' block are observed (2014-2026); there is no projected year in this block. The 'forecast' block drives the Economic Trajectory tab: these are scenario projections to 2030, and none of them is a prediction. Every assumption is a choice, and every one is documented. Primer datasets (bigPicture, taxTake, spendSplit, stateReturns, realInflation, external, distribution, structure, chinaDivergence, jobsLesson) are drawn from the 'Reading the Indian Economy' citizen primer (16 June 2026)."
   },
   "sources": {
-    "gdpGrowth": "Real GDP growth, MoSPI national accounts. Year Y is the fiscal year that starts in April of Y (2014 = 2014-15), the same convention as the World Bank series used for 2004-2013. 2014-2022: the latest MoSPI estimates on the 2011-12 base (2017-18 6.8, 2018-19 6.5, 2019-20 3.9, 2020-21 -5.8, 2021-22 9.7, 2022-23 7.6). 2023-2025: the new series on base 2022-23 released on 27 February 2026 (2023-24 7.3 final, 2024-25 7.2 first revised, 2025-26 7.8 provisional); on the old base 2023-24 had been 9.2 and 2024-25 6.5. BASIS BREAK at 2023. 2026 (2026-27) is empty: the first annual estimate is due in January 2027. Quarterly growth for April to June 2026 was 7.8%. The World Bank series for 2004-2013 is on the 2011-12 base.",
+    "gdpGrowth": "Real GDP growth, MoSPI national accounts. Year Y is the fiscal year that starts in April of Y (2014 = 2014-15), the same convention as the World Bank series used for 2004-2013. 2014-2022: the latest MoSPI estimates on the 2011-12 base (2017-18 6.8, 2018-19 6.5, 2019-20 3.9, 2020-21 -5.8, 2021-22 9.7, 2022-23 7.6). 2023-2025: the new series on base 2022-23. MoSPI's release of 27 February 2026 gives 2023-24 7.2 and 2024-25 7.1; the Provisional Estimates of 5 June 2026 give 2025-26 7.7 (7.8% was the fourth quarter alone). MoSPI's API returned 7.3, 7.2 and 7.8 for the same years and is not used; on the old base 2023-24 had been 9.2 and 2024-25 6.5. BASIS BREAK at 2023. 2026 (2026-27) is empty: the first annual estimate is due in January 2027. Quarterly growth for April to June 2026 was 7.8%. The World Bank series for 2004-2013 is on the 2011-12 base.",
     "unemployment": "2015: Labour Bureau, Fifth Annual Employment-Unemployment Survey (2015-16), usual principal status, 5.0. 2014 and 2016 are empty: the Labour Bureau published no survey for 2014-15 or 2016-17, and its 2013-14 survey (4.9) belongs to an earlier year. The Labour Bureau series is a different survey from PLFS. 2017-2025: annual rates on usual status (ps+ss). From 2017 a year is the PLFS survey year that starts in July of it (2017 = 2017-18), through 2023 (2023-24); 2024 and 2025 are MoSPI's calendar-year rates. 2026: the average of the 8 PLFS Monthly Bulletins published for 2026 (January to August 2026: January 5, February 4.9, March 5.1, April 5.2, May 5.5, June 5.5, July 5.1, August 5), all-India, persons 15+, rural + urban. BASIS BREAK: the monthly bulletins report current weekly status (CWS), which counts a person as unemployed on the past week's activity and runs well above usual status. The 2026 value is therefore a different measure from the years before it, and most of the rise from 3.1 per cent in 2025 is the change of measure. On the same weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent.",
     "youthUnemployment": "MoSPI PLFS, usual status (ps+ss), persons aged 15-29, all-India, rural + urban, from api.mospi.gov.in (retrieved 10 October 2026). 2017-2023 are the PLFS survey years starting in July of the year shown (2017 = 2017-18); 2024 and 2025 are MoSPI's calendar-year rates. 2014-2016 are left empty because PLFS began in 2017-18 and no comparable published figure exists. 2026 is left empty until an annual figure is published: the 2026 monthly bulletins average 15.4% for January to August, but they report current weekly status, which runs well above usual status.",
     "graduateUnemployment": "MoSPI PLFS, usual status (ps+ss), persons aged 15 and over with a graduate degree, all-India, rural + urban, from api.mospi.gov.in (retrieved 10 October 2026). 2017-2023 are the PLFS survey years starting in July of the year shown (2017 = 2017-18). MoSPI publishes no figure for graduates for 2014-2016 (before PLFS) or for 2024 onward yet, so those years are left empty.",
@@ -16,13 +16,13 @@
     "formalEmployment": "Derived from MoSPI PLFS published tables (api.mospi.gov.in, retrieved 10 October 2026), usual status (ps+ss), all-India, persons: the share of regular wage/salaried workers among all workers, multiplied by the share of regular wage/salaried employees with any social security benefit (100 minus the published share without any). 2017-18: 22.8% x 50.4% = 11.5; 2018-19: 23.8 x 48.1 = 11.4; 2019-20: 22.9 x 45.8 = 10.5; 2020-21: 21.1 x 46.2 = 9.7; 2021-22: 21.5 x 47.0 = 10.1; 2022-23: 20.9 x 46.1 = 9.6; 2023-24: 21.7 x 46.6 = 10.1. The social security table covers regular wage/salaried employees in the non-agricultural sector; regular wage work in agriculture is about 1% of workers. Years are PLFS survey years starting in July of the year shown. 2014-2016 (before PLFS) and 2024 onward (no annual table yet) are left empty.",
     "informalEmployment": "100 minus formalEmployment, for the years formalEmployment has a value.",
     "pressFreedom": "Reporters Without Borders, World Press Freedom Index (annual)",
-    "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP, for the fiscal year starting in the year shown (2014 = 2014-15). 2025 is the provisional actual for 2025-26 released by the Controller General of Accounts on 1 June 2026 (Rs 15,19,169 crore, 4.4% of GDP); 2026 is the Budget Estimate for 2026-27 (4.3), from the Union Budget of 1 February 2026.",
-    "cpiInflation": "MoSPI CPI (Combined), year-on-year, calendar-year averages, the same convention as the World Bank series used for 2004-2013. 2014-2025 on base 2012=100. 2026: the average of the monthly prints published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from the years before it. RBI target band 2-6%.",
+    "fiscalDeficit": "Union Budget documents; central government fiscal deficit as % of GDP, for the fiscal year starting in the year shown (2014 = 2014-15). 2025 is the provisional actual for 2025-26 released by the Controller General of Accounts on 1 June 2026 (Rs 15,19,169 crore, 4.4% of GDP); 2026 has no outturn yet. The Budget Estimate for 2026-27 (4.3, Union Budget of 1 February 2026) is held in the estimates block and drawn as a hollow marker; no average uses it.",
+    "cpiInflation": "MoSPI CPI (Combined), calendar-year change in the average index, the World Bank convention (FP.CPI.TOTL.ZG) used for 2004-2013. 2014-2025 on base 2012=100; 2025 is 2.4 on this convention (the mean of the twelve monthly year-on-year prints is 2.2). 2026: the average of the monthly year-on-year prints, because no annual index exists yet published for 2026 (January to August 2026: January 2.74, February 3.21, March 3.4, April 3.48, May 3.93, June 4.38, July 4.45, August 4.82). BASIS BREAK: from the January 2026 print (published 12 Feb 2026) MoSPI moved to a new CPI series on base 2024=100, with weights from HCES 2023-24 and the COICOP 2018 classification, replacing base 2012=100. The 2026 value is on a different basis from the years before it. RBI target band 2-6%.",
     "rupeeUSD": "Calendar-year average rupees per US dollar: the mean of the monthly averages in the Federal Reserve's H.10 release (FRED series EXINUS), rounded to the nearest rupee. 2026 is January to September (93.9, shown as 94); 2025 averages 87.2. The record low of 96.8 is the Fed's daily rate for 20 May 2026 (DEXINUS 96.82).",
     "ssi": "Constructed: SSI = sum(weight × graded severity) on a 0-10 scale, with persistence; 6 documented suppression streams incl. COVID-mortality undercount and the NSO merger. See data/compute_indices.py",
     "fci": "Constructed: mean of six components on a relative 0-1 scale. Four are published fiscal ratios, min-max normalised over the years each is published: the cess and surcharge share of gross tax revenue (15th Finance Commission Table 3.8 for 2011-2018; Union Receipt Budgets for 2019-2026), tax devolution as a share of gross tax revenue (16th Finance Commission Annexure 7.1; Budget at a Glance 2026-27), states' own revenue as a share of their revenue receipts (RBI Handbook 2025-26 Table 94) and non-Finance-Commission grants as a share of Union transfers (16th Finance Commission Annexure 7.1). Two are coded: GST from 2017 and the reform-linked borrowing conditions of 2020-21. Rebuilt from these published figures on 10 October 2026; see data/compute_indices.py",
     "dqi": "Constructed: geometric mean of V-Dem Liberal Democracy Index (v2x_libdem) × (Freedom House/100) × ((180-RSF rank)/180) × V-Dem Core Civil Society Index (v2xcs_ccsi); see data/compute_indices.py. The two V-Dem columns are the published series verbatim; earlier approximations that overstated the pre-2014 baseline were corrected on 15 August 2026.",
-    "gigWorkers": "NITI Aayog, India's Booming Gig and Platform Economy (June 2022), Table 14, gig workers in millions, usual principal and subsidiary status. 2017-2019 are NITI's actual estimates for the PLFS survey years starting in July of the year shown (2017-18 5.3, 2018-19 5.4, 2019-20 6.8). 2020 is NITI's figure for 2020-21 (7.7 million), which the Ministry of Labour cites as the current estimate; NITI's table labels it a projection. Later years are NITI projections (14.3 million for 2025-26, 23.5 million for 2029-30) and are left empty here, as are 2014-2016, for which NITI gives no figure. NITI's 2011-12 estimate is 2.5 million.",
+    "gigWorkers": "NITI Aayog, India's Booming Gig and Platform Economy (June 2022), Table 14, gig workers in millions, usual principal and subsidiary status. 2017-2019 are NITI's actual estimates for the PLFS survey years starting in July of the year shown (2017-18 5.3, 2018-19 5.4, 2019-20 6.8). NITI's table labels 2020-21 (7.7 million) a projection, though the Ministry of Labour cites it as the current estimate, so it is held in the estimates block with the 2025-26 projection (14.3 million) and drawn as hollow markers. 23.5 million for 2029-30 is outside the site's range. NITI gives no figure for 2014-2016. NITI's 2011-12 estimate is 2.5 million.",
     "ruralIncome": "NABARD All India Rural Financial Inclusion Survey (NAFIS), average monthly income of rural households: Rs 8,059 in 2016-17 and Rs 12,698 in 2021-22, a nominal rise of 57.6%. Deflated by MoSPI's CPI-Rural (base 2012=100; fiscal-year averages 132.43 and 164.53, a rise of 24.2%), the real rise is 26.8%, about 4.9% a year. Indexed 2016-17 = 100, so 2016 = 100 and 2021 = 126.8. NAFIS has two rounds only; every other year is left empty. The same survey found the share of rural households with outstanding debt rose from 47.4% to 52%.",
     "femaleLFPR": "MoSPI PLFS, labour force participation rate, usual status (ps+ss), women aged 15 and over, all-India, rural + urban, from api.mospi.gov.in (retrieved 10 October 2026). 2017-2023 are the PLFS survey years starting in July of the year shown (2017 = 2017-18); 2024 and 2025 are MoSPI's calendar-year rates. 2014-2016 are left empty because PLFS began in 2017-18, and 2026 until an annual figure is published. PLFS counts a woman who helps without pay in a household enterprise as a worker.",
     "international": "V-Dem Liberal Democracy Index (v2x_libdem), latest release (data through 2025; the 2026 column carries the 2025 observation forward) + RSF World Press Freedom Index 2026. Both V-Dem columns are on the SAME index: an earlier version of this table had the 2014 column on the Electoral Democracy Index and the 2026 column on the Liberal Democracy Index, which overstated India's decline. Corrected 15 August 2026.",
@@ -70,9 +70,9 @@
       -5.8,
       9.7,
       7.6,
-      7.3,
       7.2,
-      7.8,
+      7.1,
+      7.7,
       null
     ],
     "unemployment": [
@@ -208,7 +208,7 @@
       5.6,
       4.8,
       4.4,
-      4.3
+      null
     ],
     "cpiInflation": [
       6.7,
@@ -222,7 +222,7 @@
       6.7,
       5.6,
       4.9,
-      2.2,
+      2.4,
       3.8
     ],
     "rupeeUSD": [
@@ -292,7 +292,7 @@
       5.3,
       5.4,
       6.8,
-      7.7,
+      null,
       null,
       null,
       null,
@@ -458,7 +458,7 @@
         "min": 10,
         "max": 30,
         "decimals": 1,
-        "drivers": "On the World Inequality Lab series the share rose from 18.4% in 2004 to 22.6% in 2022-23, its highest since 1922, with a dip in 2019 and 2020. No annual figure is published after 2022-23.",
+        "drivers": "On the World Inequality Lab series the share rose from 18.4% in 2004 to 22.6% in 2022-23, the highest in a series that begins in 1922, with a dip in 2019 and 2020. No annual figure is published after 2022-23.",
         "breaks": "A wealth tax or a more progressive income tax would lower it. Without either, the trend since 2004 points upward."
       },
       {
@@ -742,8 +742,8 @@
     ]
   },
   "external": {
-    "note": "External sector FY26 (RBI Balance of Payments releases for 2025-26; DGCI&S; PPAC; IMF WEO 2026). Goods trade is in deficit, and the services surplus offsets much of it. The current account deficit for 2025-26 was 0.6% of GDP.",
-    "goodsDeficitBn": -333,
+    "note": "External sector FY26 (RBI Balance of Payments releases for 2025-26; DGCI&S; PPAC; IMF WEO 2026). Goods trade is in deficit, and the services surplus offsets much of it. The current account deficit for 2025-26 was 0.6% of GDP. Goods deficit and FPI outflow are the RBI balance-of-payments figures for 2025-26 ($337.3 bn and $16.4 bn). Crude import dependence is 88.7% in 2025-26 (PPAC provisional, as reported).",
+    "goodsDeficitBn": -337,
     "servicesSurplusBn": 217,
     "cadPctGDP": 0.6,
     "reservesBn": 691,
@@ -751,8 +751,8 @@
     "rupeeRecordLow": 96.8,
     "goldImportsBn": 72,
     "crudeImportsBn": 123,
-    "crudeImportDependence": 88,
-    "fpiOutflowBn": -16.5
+    "crudeImportDependence": 89,
+    "fpiOutflowBn": -16.4
   },
   "distribution": {
     "note": "Monthly income and where it places you (WIR 2022/2026; HCES 2023-24; PLFS; NCAER). Thresholds approximate. The salaried, tax-paying middle is ~80-120 million, against the 300-400 million quoted by market research. MPCE is HCES 2023-24 without imputation, a mean.",
@@ -791,27 +791,27 @@
     "bottom50WealthShare": 6.4
   },
   "structure": {
-    "note": "Output and jobs sit in different sectors (MoSPI GVA at current prices, 2024-25; PLFS employment shares). 'Other' is mining, utilities and construction. Agriculture makes under a fifth of output but holds over two-fifths of jobs.",
+    "note": "Output and jobs sit in different sectors. Output: MoSPI GVA at current prices, 2024-25 First Revised Estimates on the 2022-23 base (released 27 February 2026). Jobs: PLFS calendar year 2025, usual status, all India. 'Other' is mining, utilities and construction. Agriculture makes about a fifth of output and holds over two-fifths of jobs.",
     "sectors": [
       {
         "sector": "Agriculture",
-        "gva": 18,
-        "emp": 42
+        "gva": 19,
+        "emp": 43
       },
       {
         "sector": "Manufacturing",
-        "gva": 14,
-        "emp": 11
+        "gva": 15,
+        "emp": 12
       },
       {
         "sector": "Services",
-        "gva": 55,
-        "emp": 33
+        "gva": 53,
+        "emp": 32
       },
       {
         "sector": "Other",
         "gva": 13,
-        "emp": 14
+        "emp": 13
       }
     ]
   },
@@ -1070,11 +1070,11 @@
     ]
   },
   "states": {
-    "note": "Per-capita NSDP 2023-24 at current prices, 2011-12 series (MoSPI state accounts via api.mospi.gov.in, retrieved 10 October 2026; Haryana, which that table does not carry, from the Economic Survey 2023-24 Statistical Appendix Table 1.11A, as on 15 March 2024); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); population as on 1 March 2026 from the National Commission on Population, 'Population Projections for India and States 2011-2036' (Report of the Technical Group on Population Projections, Registrar General of India), Table 21, converted from thousands to crore; 2011 Census population shown alongside for the comparison; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of India's projected 2026 population and 477 of 543 Lok Sabha seats.",
+    "note": "Per-capita NSDP 2023-24 at current prices, 2011-12 series (MoSPI state accounts via api.mospi.gov.in, retrieved 10 October 2026; Haryana, which that table does not carry, from the Economic Survey 2023-24 Statistical Appendix Table 1.11A, as on 15 March 2024); current Lok Sabha seats (543-seat distribution frozen on the 1971 census); population as on 1 March 2026 from the National Commission on Population, 'Population Projections for India and States 2011-2036' (Report of the Technical Group on Population Projections, Registrar General of India), Table 21, converted from thousands to crore; 2011 Census population shown alongside for the comparison; total fertility rate (NFHS-5, 2019-21). 16 states covering about 90% of India's projected 2026 population and 477 of 543 Lok Sabha seats. Region is the state's zonal council under the States Reorganisation Act, 1956 (Ministry of Home Affairs).",
     "items": [
       {
         "state": "Karnataka",
-        "region": "South",
+        "region": "Southern",
         "perCapita": 346737,
         "seats": 28,
         "pop2011": 6.11,
@@ -1084,7 +1084,7 @@
       },
       {
         "state": "Telangana",
-        "region": "South",
+        "region": "Southern",
         "perCapita": 346165,
         "seats": 17,
         "pop2011": 3.52,
@@ -1093,7 +1093,7 @@
       },
       {
         "state": "Haryana",
-        "region": "North",
+        "region": "Northern",
         "perCapita": 325759,
         "seats": 10,
         "pop2011": 2.54,
@@ -1102,7 +1102,7 @@
       },
       {
         "state": "Tamil Nadu",
-        "region": "South",
+        "region": "Southern",
         "perCapita": 313329,
         "seats": 39,
         "pop2011": 7.21,
@@ -1113,7 +1113,7 @@
       },
       {
         "state": "Gujarat",
-        "region": "West",
+        "region": "Western",
         "perCapita": 299861,
         "seats": 26,
         "pop2011": 6.04,
@@ -1123,7 +1123,7 @@
       },
       {
         "state": "Maharashtra",
-        "region": "West",
+        "region": "Western",
         "perCapita": 285290,
         "seats": 48,
         "pop2011": 11.24,
@@ -1133,7 +1133,7 @@
       },
       {
         "state": "Kerala",
-        "region": "South",
+        "region": "Southern",
         "perCapita": 281269,
         "seats": 20,
         "pop2011": 3.34,
@@ -1143,7 +1143,7 @@
       },
       {
         "state": "Andhra Pradesh",
-        "region": "South",
+        "region": "Southern",
         "perCapita": 239311,
         "seats": 25,
         "pop2011": 4.94,
@@ -1152,7 +1152,7 @@
       },
       {
         "state": "Punjab",
-        "region": "North",
+        "region": "Northern",
         "perCapita": 201062,
         "seats": 13,
         "pop2011": 2.77,
@@ -1161,7 +1161,7 @@
       },
       {
         "state": "Rajasthan",
-        "region": "North",
+        "region": "Northern",
         "perCapita": 167027,
         "seats": 25,
         "pop2011": 6.85,
@@ -1170,7 +1170,7 @@
       },
       {
         "state": "Odisha",
-        "region": "East",
+        "region": "Eastern",
         "perCapita": 155125,
         "seats": 21,
         "pop2011": 4.2,
@@ -1179,7 +1179,7 @@
       },
       {
         "state": "West Bengal",
-        "region": "East",
+        "region": "Eastern",
         "perCapita": 150221,
         "seats": 42,
         "pop2011": 9.13,
@@ -1189,7 +1189,7 @@
       },
       {
         "state": "Madhya Pradesh",
-        "region": "North",
+        "region": "Central",
         "perCapita": 141756,
         "seats": 29,
         "pop2011": 7.27,
@@ -1199,7 +1199,7 @@
       },
       {
         "state": "Jharkhand",
-        "region": "North",
+        "region": "Eastern",
         "perCapita": 106529,
         "seats": 14,
         "pop2011": 3.3,
@@ -1208,7 +1208,7 @@
       },
       {
         "state": "Uttar Pradesh",
-        "region": "North",
+        "region": "Central",
         "perCapita": 98048,
         "seats": 80,
         "pop2011": 19.98,
@@ -1219,7 +1219,7 @@
       },
       {
         "state": "Bihar",
-        "region": "North",
+        "region": "Eastern",
         "perCapita": 62204,
         "seats": 40,
         "pop2011": 10.41,
@@ -1362,19 +1362,19 @@
     ],
     "convergence": [
       {
-        "measure": "Electoral democracy",
-        "grier": "Polyarchy gap -0.391, equal to -60.2% of India's 2013 level",
+        "measure": "Liberal democracy",
+        "grier": "Liberal-democracy gap -0.360, equal to 69.1% of India's 2013 level",
         "sp": "V-Dem LDI India 0.488 (2014) -> 0.260 (2025), -46.7%"
       },
       {
-        "measure": "Overall democratic quality",
-        "grier": "Liberal-democracy gap -0.360, equal to -69.1% of India's 2013 level",
-        "sp": "DQI 0.49 (2014) -> 0.28 (2026), -42.9%"
+        "measure": "Electoral democracy",
+        "grier": "Polyarchy gap -0.391, equal to 60.2% of India's 2013 level",
+        "sp": "V-Dem electoral democracy index India 0.617 (2014) -> 0.377 (2025), -38.9%"
       },
       {
-        "measure": "Press & expression",
-        "grier": "Freedom-of-expression gap -0.488, equal to -56.2% of India's 2013 level",
-        "sp": "RSF rank 140 (2014) -> 157 (2026)"
+        "measure": "Overall democratic quality",
+        "grier": "No single counterpart; the liberal-democracy gap is the nearest",
+        "sp": "DQI 0.49 (2014) -> 0.28 (2026), -42.9%"
       },
       {
         "measure": "Corruption",
@@ -1385,7 +1385,7 @@
     "divergence": "The two projects agree on direction and differ on scope. Grier & Grier make an absolute income claim, that India ended roughly $1,000 per person per year below its counterfactual, which this project does not test. The authors report that gap as larger than every placebo (p = 0.00) in three of the first four years and larger than all but one (p = 0.08) in the other seven. Some Perspective documents the decoupling of growth from employment and the concentration of its gains, but makes no claim that aggregate income would have been higher under a different government. Their income donor pool is also heavily weighted to Ethiopia (38%) and Bangladesh (25%), a defensible fit to India's pre-2014 trajectory but the part of the design most exposed to challenge. Treat the governance findings as the strongly corroborated result and the income finding as a separate, contestable claim."
   },
   "eraHistory": {
-    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. Sources: GDP growth and CPI inflation from the World Bank (the same continuous World Bank series used for 2014+); fiscal deficit from the Union Budget/RBI (centre, % GDP); top 1% and bottom 50% income share from the World Inequality Lab (Bharti, Chancel, Piketty and Somanchi 2024, Statistical Appendix), published for 2004-2022; press-freedom rank from RSF. SSI, FCI and DQI before 2014 are computed by the same method as the later years: the SSI from the documented record of survey timeliness, the FCI from published Finance Commission, Union Budget and RBI fiscal series, and the DQI from published V-Dem, Freedom House and RSF scores. See Methodology. Unemployment and formal/informal employment are not extended before 2014, because no annual series on the PLFS basis exists for the UPA decade. Unemployment is shown from 2014, and formal and informal employment for the PLFS survey years 2017-18 to 2023-24.",
+    "note": "UPA-decade (2004-2013) values, on the same basis as the 2014+ series so the splice is consistent. Sources: GDP growth and CPI inflation from the World Bank, which for these years carries MoSPI's national accounts (2011-12 base with its back-series) and CPI. From 2014 GDP growth is taken from MoSPI directly, with a basis break at 2023 (see sources.gdpGrowth); fiscal deficit from the Union Budget/RBI (centre, % GDP); top 1% and bottom 50% income share from the World Inequality Lab (Bharti, Chancel, Piketty and Somanchi 2024, Statistical Appendix), published for 2004-2022; press-freedom rank from RSF. SSI, FCI and DQI before 2014 are computed by the same method as the later years: the SSI from the documented record of survey timeliness, the FCI from published Finance Commission, Union Budget and RBI fiscal series, and the DQI from published V-Dem, Freedom House and RSF scores. See Methodology. Unemployment and formal/informal employment are not extended before 2014, because no annual series on the PLFS basis exists for the UPA decade. Unemployment is shown for 2015 (Labour Bureau) and from 2017 (PLFS), and formal and informal employment for the PLFS survey years 2017-18 to 2023-24.",
     "years": [
       2004,
       2005,
@@ -1559,33 +1559,52 @@
         "note": "₹22.7 lakh crore. The most conservative published figure."
       },
       {
-        "source": "Ministry of Women and Child Development (2024 submission)",
+        "source": "Ministry of Women and Child Development, 2024 submission (as reported by Policy Circle; ORF, September 2025, cites a PIB release)",
         "method": "not fully specified",
         "pctGDPLow": 15.0,
         "pctGDPHigh": 17.0,
-        "note": "The government's own working range."
+        "note": "15 to 17 per cent, for women's unpaid care and domestic work. The submission itself could not be traced, and no method is stated."
       },
       {
-        "source": "Generalised opportunity cost, 2019-20",
+        "source": "Opportunity cost, 2019-20 (study on CMIE household data, reported November 2024)",
         "method": "opportunity cost",
         "pctGDPLow": 24.6,
         "pctGDPHigh": 24.6,
         "note": "₹49.5 lakh crore. Values an hour at what the person could have earned instead."
       },
       {
-        "source": "Economic and Political Weekly (2024), 2022-23",
+        "source": "Economic and Political Weekly (2024), 2022-23, as reported by Policy Circle",
         "method": "replacement and opportunity cost",
         "pctGDPLow": 26.0,
         "pctGDPHigh": 36.0,
-        "note": "Range reflects the two methods."
+        "note": "Range reflects the two methods. The article itself could not be traced, so this is the least certain figure in the table."
       },
       {
-        "source": "Replacement cost method, 2019-20",
+        "source": "Replacement cost, 2019-20 (same study)",
         "method": "replacement cost",
         "pctGDPLow": 32.4,
         "pctGDPHigh": 32.4,
         "note": "₹65.1 lakh crore. Values an hour at what it would cost to hire someone to do it."
       }
     ]
+  },
+  "estimates": {
+    "_note": "Published estimates and projections that are not outturns. Charts draw them as hollow markers joined to the last observed year by a dotted line; no period average, index or scorecard uses them.",
+    "fiscalDeficit": {
+      "2026": {
+        "value": 4.3,
+        "label": "Budget Estimate for 2026-27 (Union Budget, 1 February 2026)"
+      }
+    },
+    "gigWorkers": {
+      "2020": {
+        "value": 7.7,
+        "label": "NITI Aayog projection for 2020-21 (Table 14), which the Ministry of Labour cites as the current estimate"
+      },
+      "2025": {
+        "value": 14.3,
+        "label": "NITI Aayog projection for 2025-26 (Table 14)"
+      }
+    }
   }
 }

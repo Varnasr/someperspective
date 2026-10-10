@@ -100,13 +100,17 @@ table.data thead th{font-size:.7rem;font-weight:800;font-stretch:112.5%;letter-s
 border-bottom:2px solid var(--ink);color:var(--ink)}
 table.data td.na{color:var(--muted)}
 .crumb{font-size:.8rem;color:var(--muted);margin-bottom:.8rem}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:800;font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(--ink)}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.nav{font-size:.88rem;display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+.note{font-size:.85rem;color:var(--muted)}
 .crumb a{color:var(--ink-soft);font-weight:700}
 """
 
 
 def fmtv(v, dp, unit=""):
     if v is None:
-        return "no figure"
+        return "none published"
     return f"{bf.fmt(v, dp)}{unit}"
 
 
@@ -151,10 +155,16 @@ def series_block(d, key, note=None):
             f"latest {fmtv(lv, dp, unit)} in {ly}." if lv is not None else "")
     chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
                           lo=0 if key in ("ssi",) else (0 if key in ("fci", "dqi") else None),
-                          hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None))
+                          hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
+                          est=bf.estimates(d, key))
     about = (f'<details class="about"><summary>Source and method</summary><p>{escape(src)}</p></details>'
              if src else "")
     extra = f"<p>{escape(note)}</p>" if note else ""
+    est = bf.estimates(d, key)
+    if est:
+        extra += ("<p>Hollow markers are published estimates or projections, not outturns, and no average uses "
+                  "them: " + "; ".join(f"{YEARS[i]}, {fmtv(e['value'], dp, unit)}, {escape(e['label'])}"
+                                       for i, e in sorted(est.items())) + ".</p>")
     return (f'<section class="series" id="{key}"><div class="slab"><h2>{escape(label)}</h2>'
             f'<div class="stat">{"".join(stats)}</div><p>{escape(lead)}</p>{extra}{about}</div>{chart}</section>')
 
@@ -193,8 +203,10 @@ def topic_extras(d, slug):
         return ('<div class="slab"><h2>What the index is made of</h2>'
                 '<p>The first four rows are published ratios; the last two are coded events. Each is scaled 0 to 1 '
                 'over the years it is published, and the index is the average of the components available in a '
-                'year. On the four published ratios alone the two periods are close; the higher score after 2014 '
-                'comes from GST and the borrowing conditions of 2020-21.</p>'
+                'year. On the four published ratios alone the earlier period was slightly more centralised; the higher '
+                'score after 2014 comes from the two coded components, '
+                'GST and the borrowing conditions of 2020-21. The 2014 value is lifted by an accounting change, '
+                'when centrally sponsored scheme funds began to flow through state budgets.</p>'
                 + year_table("Fiscal Centralisation Index components", rows) + "</div>")
     if slug == "democracy":
         names = ["V-Dem Liberal Democracy Index", "Freedom House score, of 100", "RSF press freedom rank",
@@ -211,17 +223,20 @@ def topic_extras(d, slug):
         src = escape(d.get("sources", {}).get("international", ""))
         return ('<div class="slab"><h2>The published scores behind the index</h2>'
                 '<p>The Democratic Quality Index is the geometric mean of these four published series, each scaled '
-                '0 to 1. The values are as their publishers released them.</p>'
+                '0 to 1. The values are as their publishers released them. V-Dem and Freedom House have published nothing '
+                'for 2026 yet, so the 2026 index uses their 2025 scores, the latest published. RSF ranked 167 to 179 '
+                'countries in 2004-2013 and 180 since; the index divides every rank by 180, and scaling each year by '
+                'the countries actually ranked lowers the 2004-2013 average by about 0.01.</p>'
                 + year_table("Democratic Quality Index inputs", rows)
                 + '<h2 style="margin-top:2rem">India beside four peers</h2>'
                 '<div class="tw"><table class="data"><thead><tr><th scope="col">Country</th>'
-                '<th scope="col">V-Dem 2014</th><th scope="col">V-Dem 2026</th><th scope="col">RSF rank 2014</th>'
+                '<th scope="col">V-Dem 2014</th><th scope="col">V-Dem 2025</th><th scope="col">RSF rank 2014</th>'
                 f'<th scope="col">RSF rank 2026</th></tr></thead><tbody>{trs}</tbody></table></div>'
                 f'<details class="about"><summary>Source</summary><p>{src}</p></details></div>')
     return ""
 
 
-def shell(title, desc, canonical, body, depth=1):
+def shell(title, desc, canonical, body, depth=1, head=""):
     """Page shell shared by every /explore/ page; header and footer match the front page."""
     up = "../" * depth
     return f"""<!DOCTYPE html>
@@ -248,7 +263,7 @@ def shell(title, desc, canonical, body, depth=1):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>{bf.CSS}{EXTRA_CSS}</style>
-</head>
+{head}</head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top split">
@@ -270,6 +285,30 @@ def shell(title, desc, canonical, body, depth=1):
 </body>
 </html>
 """
+
+
+def topic_of(key):
+    for slug, _t, _i, keys in TOPICS:
+        if key in keys:
+            return slug
+    return None
+
+
+def chart_block(d, key):
+    """A compact chart of one series for pages outside /explore/, linked to its topic page."""
+    label, unit, dp, invert = SERIES[key]
+    vals = ci.build()[key] if key in ("ssi", "fci", "dqi") else bf.series(d, key)
+    mu, mn = bf.era_means(vals)
+    lv, ly = latest(vals)
+    desc = (f"2004-2013 average {fmtv(mu, dp, unit)}; 2014-2026 average {fmtv(mn, dp, unit)}; "
+            f"latest {fmtv(lv, dp, unit)} in {ly}.")
+    chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
+                          lo=0 if key in ("ssi", "fci", "dqi") else None,
+                          hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
+                          est=bf.estimates(d, key))
+    t = topic_of(key)
+    return (f'<section class="series"><div class="slab"><h2>{escape(label)}</h2><p>{escape(desc)} '
+            f'<a href="/explore/{t}/#{key}">Source, method and every year</a>.</p></div>{chart}</section>')
 
 
 def topic_page(d, slug, title, intro, keys):
@@ -332,8 +371,8 @@ def states_page(d):
             + (f'<td data-v="{ret}">{ret}</td>' if ret is not None else '<td class="na" data-v="">.</td>')
             + (f'<td data-v="{delim}">{delim:+d}</td>' if delim is not None else '<td class="na" data-v="">.</td>')
             + '</tr>')
-    cols = ["State", "Region", "Income per person, ₹ (2023-24)", "Lok Sabha seats", "Population 2026, crore",
-            "People per seat, millions", "Fertility rate", "Return per ₹100 of Union taxes", "Projected seat change"]
+    cols = ["State", "Zonal council", "Income per person, ₹ (2023-24)", "Lok Sabha seats", "Population 2026, crore",
+            "People per seat, millions", "Fertility rate (NFHS-5, 2019-21)", "Return per ₹100 of Union taxes", "Projected seat change"]
     ths = "".join(f'<th scope="col"><button type="button" data-col="{i}">{escape(c)}</button></th>'
                   for i, c in enumerate(cols))
     script = """<script>(function(){var t=document.getElementById('states');var b=t.tBodies[0];var dir={};
@@ -344,10 +383,12 @@ if(va===''&&vb!=='')return 1;if(vb===''&&va!=='')return -1;var na=parseFloat(va)
 var r=(!isNaN(na)&&!isNaN(nb))?na-nb:String(va).localeCompare(String(vb));return dir[c]?r:-r;});
 rows.forEach(function(r){b.appendChild(r);});t.querySelectorAll('thead th').forEach(function(th,i){
 th.setAttribute('aria-sort',i===c?(dir[c]?'ascending':'descending'):'none');});});});})();</script>"""
+    seats = sum(it["seats"] for it in st["items"])
+    share = sum(it["pop2026"] for it in st["items"]) / st["indiaPop2026"] * 100
     body = (f'<div class="slab"><p class="crumb"><a href="/explore/">Data</a> &rsaquo; The states</p>'
             f'<p class="kicker">Sixteen states</p><h1>The states</h1>'
             f'<p class="dek">Income, population, representation and fiscal transfers for the sixteen largest states, '
-            f'which hold about 90% of India\'s projected 2026 population and 477 of the 543 Lok Sabha seats. '
+            f'which hold {share:.0f}% of India\'s projected 2026 population and {seats} of the 543 Lok Sabha seats. '
             f'Select a column heading to sort by it.</p></div>'
             f'<div class="slab"><div class="tw" tabindex="0" role="region" aria-label="State table, scrolls sideways">'
             f'<table class="data sortable" id="states"><thead><tr>{ths}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
@@ -436,6 +477,60 @@ def methods_page(d):
                  f"{SITE}/explore/methods/", body)
 
 
+def forecasts_page(d):
+    f = json.load(open(os.path.join(ROOT, "data", "forecasts.json"), encoding="utf-8"))
+    rows = f["rows"]
+    num = lambda v: '<td class="na">none</td>' if v is None else f"<td>{bf.fmt(v, 1)}</td>"
+    trs = "".join(
+        f'<tr><th scope="row"><a href="{escape(r["url"])}">{escape(r["who"])}</a><br>'
+        f'<span class="sub">{escape(r["pub"])}, {escape(r["date"])}</span></th>'
+        f'{num(r["g27"])}{num(r["g28"])}{num(r["i27"])}</tr>' for r in rows)
+    table = ('<div class="tw" tabindex="0" role="region" aria-label="Published forecasts, scrolls sideways">'
+             '<table class="data"><caption class="sr">Published forecasts for India</caption><thead><tr>'
+             '<th scope="col">Institution and publication</th><th scope="col">Growth 2026-27</th>'
+             '<th scope="col">Growth 2027-28</th><th scope="col">CPI inflation 2026-27</th></tr></thead>'
+             f'<tbody>{trs}</tbody></table></div>')
+    # Dot strip in HTML, so the labels keep their type size on a phone.
+    lo, hi = 6.0, 8.0
+    pc = lambda v: (v - lo) / (hi - lo) * 100
+    rowsh = "".join(
+        f'<div class="dr"><span class="dn">{escape(r["who"].split(",")[0])}</span>'
+        f'<span class="dt"><span class="rl" style="left:{pc(7.7):.1f}%"></span><span class="dd" style="left:{pc(r["g27"]):.1f}%"></span>'
+        f'<span class="dv" style="left:{pc(r["g27"]):.1f}%">{bf.fmt(r["g27"], 1)}</span></span></div>'
+        for r in rows if r["g27"] is not None)
+    axis = "".join(f'<span style="left:{pc(t):.1f}%">{t:.1f}%</span>' for t in (6.0, 6.5, 7.0, 7.5, 8.0))
+    alt = ("Published forecasts of real GDP growth for 2026-27: " +
+           "; ".join(f'{r["who"].split(",")[0]} {bf.fmt(r["g27"], 1)} per cent' for r in rows if r["g27"] is not None) +
+           ". The dashed line is the 2025-26 outturn of 7.7 per cent.")
+    svg = (f'<figure class="dots" role="img" aria-label="{escape(alt)}"><div aria-hidden="true">'
+           f'<div class="dr ax"><span class="dn"></span><span class="dt">{axis}</span></div>{rowsh}'
+           '</div><figcaption class="note">Real GDP growth forecast for 2026-27, per cent. The dashed line is MoSPI\'s '
+           'Provisional Estimate for 2025-26, 7.7 per cent.</figcaption></figure>')
+    notes = "".join(f'<li><strong>{escape(r["who"])}.</strong> {escape(r["note"])} The publication says: '
+                    f'&ldquo;{escape(r["quote"])}&rdquo;</li>' for r in rows)
+    body = ('<style>.sub{font-size:.78rem;color:var(--muted);font-weight:400}.notes li{margin:.5rem 0;font-size:.9rem}'
+            '.notes{padding-left:1.1rem}'
+            '.dots{margin:1rem 0}.dr{display:grid;grid-template-columns:minmax(7rem,30%) 1fr;align-items:center;min-height:2rem;font-size:.86rem}'
+            '.dt{position:relative;height:2rem;border-left:1px solid var(--line);border-right:1px solid var(--line);margin-right:1.4rem}'
+            '.dd{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--nda)}'
+            '.dv{position:absolute;top:50%;transform:translate(10px,-50%);font-weight:700}'
+            '.ax .dt span{position:absolute;bottom:.2rem;transform:translateX(-50%);font-size:.72rem;color:var(--muted)}'
+            '.dr:not(.ax) .dt{align-self:stretch;height:auto;min-height:2rem}.rl{position:absolute;top:0;bottom:0;border-left:2px dashed var(--ink)}</style>'
+            '<div class="slab" id="economic-trajectory"><p class="crumb"><a href="/explore/">Data</a> &rsaquo; Forecasts</p>'
+            f'<p class="kicker">Retrieved {escape(f["retrieved"])}</p><h1>What the forecasters expect</h1>'
+            f'<p class="dek">{escape(f["about"])}</p>'
+            f'<p>{escape(f["outturn"]["text"])} <a href="{escape(f["outturn"]["url"])}">Source</a>.</p></div>'
+            f'<div class="slab"><h2>Growth and inflation forecasts</h2>{svg}{table}'
+            f'<p class="note">{escape(f["budget"]["text"])} <a href="{escape(f["budget"]["url"])}">Budget at a Glance 2026-27</a>.</p></div>'
+            f'<div class="slab"><h2>What each forecast says, in its own words</h2><ul class="notes">{notes}</ul>'
+            '<p>The forecasts disagree by more than a point, and the IMF is the low outlier because its July figure '
+            'predates the first-quarter outturn of 7.8 per cent. None of them is a measurement. When a forecast year '
+            'ends, the site replaces it with MoSPI\'s published estimate.</p></div>')
+    return shell("Forecasts: Some Perspective",
+                 "Published forecasts of India's growth and inflation from the RBI, the World Bank, the OECD, the ADB and the IMF.",
+                 f"{SITE}/explore/forecasts/", body)
+
+
 def build():
     d, _meta, _version = bf.load()
     out = {}
@@ -446,8 +541,10 @@ def build():
     out[os.path.join(OUT, "states", "index.html")] = states_page(d)
     out[os.path.join(OUT, "compare", "index.html")] = correlation_page(d)
     out[os.path.join(OUT, "methods", "index.html")] = methods_page(d)
+    out[os.path.join(OUT, "forecasts", "index.html")] = forecasts_page(d)
     pages += [("states", "The states", "Income, population, seats and transfers for the sixteen largest states."),
               ("compare", "Compare two series", "Plot any two series against each other, year by year."),
+              ("forecasts", "Forecasts", "What the RBI, the World Bank, the OECD, the ADB and the IMF expect for 2026-27 and 2027-28."),
               ("methods", "Sources and method", "The publisher behind every series, and how the indices are built.")]
     out[os.path.join(OUT, "index.html")] = hub(d, pages)
     return out

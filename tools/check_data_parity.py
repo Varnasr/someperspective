@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-DATA PARITY GUARD — fail loudly if the inline FALLBACK_DATA in index.html ever
-drifts from data.json, and if either drifts from the canonical index engine.
+DATA PARITY GUARD — fail loudly if data.json drifts from the canonical index
+engine, or if a published estimate sits on a year that already has an outturn.
 
 The site keeps a copy of the economic/eraHistory series inline (so it renders
 even when data.json can't be fetched). That convenience is a correctness hazard:
@@ -55,20 +55,22 @@ def main():
     errors = []
 
     data = json.load(open(os.path.join(ROOT, 'data.json'), encoding='utf-8'))
-    html = open(os.path.join(ROOT, 'explore', 'index.html'), encoding='utf-8').read()
-
-    # 1 + 2: inline economic/eraHistory must equal data.json.
-    # (economic lives in FALLBACK_DATA; eraHistory lives in the Alpine app state —
-    # both are sliced from the whole file by their first `key: {` definition.)
-    for block_name in ('economic', 'eraHistory'):
-        inline = _parse_arrays(_slice_block(html, block_name) or '')
-        canon = {k: v for k, v in data.get(block_name, {}).items() if isinstance(v, list)}
-        shared = set(inline) & set(canon)
-        if not shared:
-            errors.append(f'{block_name}: no shared arrays found (parser drift?)')
-        for k in sorted(shared):
-            if inline[k] != canon[k]:
-                errors.append(f'{block_name}.{k}: inline {inline[k]} != data.json {canon[k]}')
+    # 1: the old dashboard kept an inline copy of the series. The generated
+    # /explore/ pages read data.json at build time, so there is no second copy
+    # to drift. What can drift is the estimates block: an estimate for a year
+    # that also has an outturn would be drawn twice.
+    years = data['economic']['years']
+    for key, est in (data.get('estimates') or {}).items():
+        if key.startswith('_'):
+            continue
+        if key not in data['economic']:
+            errors.append(f'estimates.{key}: not a series in economic')
+            continue
+        for y in est:
+            if int(y) not in years:
+                errors.append(f'estimates.{key}.{y}: outside {years[0]}-{years[-1]}')
+            elif data['economic'][key][years.index(int(y))] is not None:
+                errors.append(f'estimates.{key}.{y}: the year also has an outturn')
 
     # 3: data.json indices must equal the canonical engine
     sys.path.insert(0, os.path.join(ROOT, 'data'))
@@ -93,7 +95,7 @@ def main():
         for e in errors:
             print('  -', e)
         sys.exit(1)
-    print('Data parity OK: inline fallback == data.json == compute_indices.py')
+    print('Data parity OK: estimates do not overlap outturns, data.json == compute_indices.py')
 
 
 if __name__ == '__main__':

@@ -29,7 +29,7 @@
         "The 2021 census was postponed in 2020 with no new date. Houselisting began in April 2026 and population enumeration is notified for February 2027.",
         "The 2017-18 consumption survey was completed, then withheld after it showed rural consumption falling.",
         "The national accounts moved to a 2011-12 base in 2015, which raised measured growth for the years it covered. In 2018 a back-series drafted by a National Statistical Commission committee, which raised UPA-era growth, was shelved, and the back-series the CSO and NITI Aayog released instead lowered it. Neither revision was independently reviewed.",
-        "Two statistical commissioners resigned, and the NSSO was merged into the NSO.",
+        "The two remaining non-official members of the National Statistical Commission resigned in January 2019, and the NSSO and the CSO were merged into the NSO.",
         "Official COVID mortality was ~0.5 million against independent excess-mortality estimates of 3-5 million."
       ],
       "note": "Each is individually documented. The pattern matters because the withheld numbers were, with high consistency, the unfavourable ones."
@@ -50,9 +50,9 @@
       "kicker": "All three, 2004-2026",
       "title": "Suppression rose and democratic quality fell after 2014",
       "chart": "indices",
-      "body": "SSI is zero across the entire UPA decade, peaks at {{max:economic.ssi}} in 2021-22, and is {{last:economic.ssi}} in 2026. DQI falls from {{first:eraHistory.dqi}} to {{last:economic.dqi}}. FCI averages {{avg:eraHistory.fci}} under UPA and {{avg:economic.fci}} under NDA, peaks at {{max:economic.fci}} in 2020 and is {{last:economic.fci}} in 2026. Most of its NDA-era rise comes from GST and the 2020 borrowing conditions.",
+      "body": "SSI is zero across the entire UPA decade, peaks at {{max:economic.ssi}} in 2021-22, and is {{last:economic.ssi}} in 2026. DQI falls from {{first:eraHistory.dqi}} to {{last:economic.dqi}}; the 2026 value uses the latest published V-Dem and Freedom House scores, which cover 2025. FCI averages {{avg:eraHistory.fci}} under UPA and {{avg:economic.fci}} under NDA, peaks at {{max:economic.fci}} in 2020 and is {{last:economic.fci}} in 2026. Most of its NDA-era rise comes from GST and the 2020 borrowing conditions.",
       "note": "The shaded band marks the NDA period. SSI is shown on its own 0-10 scale.",
-      "chartAlt": "Line chart, 2004 to 2026. The Statistical Suppression Index, the Fiscal Centralisation Index and the Democratic Quality Index, all rescaled to 0-10. The SSI rises after 2014 and peaks in 2021-22, the FCI peaks in 2020 and then falls, and the DQI falls throughout the NDA period."
+      "chartAlt": "Line chart, 2004 to 2026. The Statistical Suppression Index, the Fiscal Centralisation Index and the Democratic Quality Index, all rescaled to 0-10. The SSI rises after 2014 and peaks in 2021-22, the FCI peaks in 2020 and then falls, and the DQI falls from 0.49 in 2014 to 0.28 in 2026, with small rises in 2021 and 2025."
     },
     {
       "id": "ssi",
@@ -71,7 +71,7 @@
       "title": "Growth was about the same in both periods",
       "body": "Real GDP growth averaged {{avg:eraHistory.gdpGrowth}}% across 2004-05 to 2013-14 and {{avg:economic.gdpGrowth}}% across 2014-15 to 2025-26. There is no annual estimate for 2026-27 yet.",
       "points": [
-        "The later figure includes the 2020-21 pandemic contraction of 5.8%, which accounts for all of the gap. Without that year the NDA average is 7.32%, above the UPA figure.",
+        "The later figure includes the 2020-21 pandemic contraction of 5.8%, which accounts for all of the gap. Without that year the NDA average is 7.29%, above the UPA figure.",
         "The earlier figure includes the 2008-09 global financial crisis year. Without it the UPA average is 7.23%, so with both shock years set aside the two periods grew at almost the same rate.",
         "The two periods are also not cleanly comparable. The UPA years rest on a back-series whose method was disputed, and the years from 2023-24 sit on a new 2022-23 base released in February 2026.",
         "Taking the official numbers at face value, growth did not accelerate after 2014."
@@ -84,7 +84,7 @@
       "chart": "decoupling",
       "body": "On the Periodic Labour Force Survey, the share of all workers in regular wage or salaried jobs with any social security was {{first:economic.formalEmployment}}% in 2017-18. It fell to a low of {{min:economic.formalEmployment}}% in 2022-23 and was {{last:economic.formalEmployment}}% in 2023-24, while GDP grew in every year of that period except the pandemic year. Roughly nine in ten Indian workers have no social-security cover.",
       "note": "Among regular wage and salaried employees, the share with no social security rose from 49.6% in 2017-18 to 53.4% in 2023-24. The survey begins in 2017-18, so it cannot show the years before it. The finding does not depend on the disputed national accounts.",
-      "chartAlt": "Combination chart. Bars show annual GDP growth from 2004 to 2026 against the left axis. A line shows formal employment as a percentage of all workers against the right axis, for the PLFS years 2017-18 to 2023-24 only. The line falls from 2017-18 to 2022-23 and turns up in 2023-24."
+      "chartAlt": "Combination chart. Bars show annual GDP growth from 2004 to 2026 against the left axis. A line shows formal employment as a percentage of all workers against the right axis, for the PLFS years 2017-18 to 2023-24 only. The line falls from 11.5% in 2017-18 to 9.6% in 2022-23, with a rise in 2021-22, and is 10.1% in 2023-24."
     },
     {
       "id": "structure",
@@ -101,7 +101,7 @@
       "title": "The top 1% gained and the bottom half lost ground",
       "chart": "distribution",
       "body": "The top 1% income share rose from {{first:eraHistory.top1Share}}% in 2004 to {{last:economic.top1Share}}% in 2022-23. The bottom 50% share fell from {{first:eraHistory.bottom50Share}}% in 2004 to a low of {{min:economic.bottom50Share}}% in 2017 and was {{last:economic.bottom50Share}}% in 2022-23.",
-      "note": "At {{last:economic.top1Share}}%, the top 1% share is the highest recorded since 1922, higher than in the inter-war colonial period (World Inequality Lab). The bottom 50% share rose a little in 2018-2020, which its authors describe as temporary. No annual figure is published for 2023 to 2026.",
+      "note": "At {{last:economic.top1Share}}%, the top 1% share is the highest in a series that begins in 1922, higher than in the inter-war colonial period (World Inequality Lab). The bottom 50% share rose a little in 2018-2020, which its authors describe as temporary. No annual figure is published for 2023 to 2026.",
       "chartAlt": "Line chart of income shares from 2004 to 2022, the last published year. The top 1 per cent share rises. The bottom 50 per cent share falls to 2017 and then partly recovers."
     },
     {
@@ -126,7 +126,7 @@
         "India already counts the hours. The Time Use Survey found that women aged 6 and above who do unpaid domestic work spent 289 minutes a day on it in 2024 (305 minutes for women aged 15-59). Men spent 88.",
         "At 289 minutes that is about 1,758 hours a year for a woman, in no employment figure and no output series.",
         "Two survey rounds, five years apart, show little change in who does this work. The share of men doing any unpaid domestic work rose from 26.1% to 27.1%, against 81.2% and 81.5% for women. The minutes fell for both sexes, so the gap between a woman who does it and a man who does it went from 202 minutes to 201, a change of one minute in five years.",
-        "Published estimates of what the work is worth run from 7.5% to 36% of GDP. That spread is a disagreement about the price of an hour. There is little doubt about the hours.",
+        "Published estimates of what the work is worth run from 7.5% to 32.4% of GDP, and one reported estimate reaches 36%. That spread is a disagreement about the price of an hour. There is little doubt about the hours.",
         "It changes how to read one of our own numbers. About 40% of women aged 15 and over are counted in the labour force (PLFS, 2025), and the rest are often described as not working. The Time Use Survey found 81.5% of women aged 6 and above doing unpaid domestic work on the day it asked about in 2024."
       ],
       "note": "Nothing in this deck is adjusted for any of it. These are the official figures on the official boundary. The full argument is at someperspective.info/care."
@@ -155,8 +155,8 @@
       "title": "A different method reaches the same conclusion",
       "chart": "grier",
       "body": "Kevin and Robin Grier (Texas Tech) build a synthetic counterfactual, a weighted blend of comparator countries fitted to India's path over 1984-2013, and measure the gap that opens after 2014. All ten governance indicators they test deteriorate, and the authors report a p-value of 0.00 for each.",
-      "note": "The method, the data and the authors are all different, and there is no shared machinery with this project. Their electoral-democracy gap is -60.2% against the counterfactual. India's own V-Dem Electoral Democracy Index fell from 0.617 in 2014 to 0.377 in 2025, a decline of 38.9%. The two measure different things, so the numbers are not directly comparable.",
-      "chartAlt": "Horizontal bar chart. For each indicator, the percentage deterioration against the synthetic-control counterfactual."
+      "note": "The method, the data and the authors are all different, and there is no shared machinery with this project. Their electoral-democracy gap in the final year is 0.391 points below the synthetic counterfactual, equal to 60.2% of India's 2013 score. India's own V-Dem Electoral Democracy Index fell from 0.617 in 2014 to 0.377 in 2025, a decline of 38.9%. The two measure different things, so the numbers are not directly comparable.",
+      "chartAlt": "Horizontal bar chart. For each indicator, the gap between India and its synthetic counterfactual, expressed as a percentage of India's 2013 level."
     },
     {
       "id": "limits",

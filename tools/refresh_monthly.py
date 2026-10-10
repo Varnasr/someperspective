@@ -3,7 +3,7 @@
 Refresh the 2026 unemployment and inflation figures from MoSPI's monthly releases.
 
     python3 tools/refresh_monthly.py            # fetch, show what would change
-    python3 tools/refresh_monthly.py --write    # fetch and write data.json + index.html
+    python3 tools/refresh_monthly.py --write    # fetch and write data.json, then rebuild the pages
     python3 tools/refresh_monthly.py --from FILE [--write]   # use saved responses
 
 The current-year value of each series is the average of every month MoSPI has
@@ -162,27 +162,16 @@ def main():
         print("\nDry run. Pass --write to apply.")
         return
 
-    html_path = os.path.join(ROOT, "explore", "index.html")
-    html = open(html_path, encoding="utf-8").read()
     for key, (old, new, note, _) in changes.items():
         eco[key][-1] = new
         data["sources"][key] = note
-        # The inline fallback copy in index.html: `key:   [ ... ],` inside economic.
-        pat = re.compile(r"(\b" + key + r":\s*\[)([^\]]*)(\])")
-        m = pat.search(html)
-        if not m:
-            sys.exit(f"index.html: no inline {key} array")
-        # Replace only the last element, so the other values keep their spelling.
-        tokens = m.group(2).split(",")
-        tokens[-1] = fmt(new)
-        html = html[:m.start(2)] + ",".join(tokens) + html[m.end(2):]
     data["meta"]["updated"] = dt.date.today().isoformat()
 
     with open(data_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
-    open(html_path, "w", encoding="utf-8").write(html)
-    print("\nWrote data.json and index.html. Prose quoting the old values:")
+    print("\nWrote data.json. Rebuild the generated pages (build_master, build_front, build_explore,"
+          " build_site, build_paper). Prose quoting the old values:")
     for key, (old, *_r) in changes.items():
         for rel in ("paper/paper.md", "data/features.json", "data/METHODOLOGY.md"):
             text = open(os.path.join(ROOT, rel), encoding="utf-8").read()

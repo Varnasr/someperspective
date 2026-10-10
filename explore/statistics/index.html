@@ -90,6 +90,8 @@ border:2px solid var(--ink);padding:.12rem .45rem}
 .chart .s-upa{stroke:var(--upa)}.chart .s-nda{stroke:var(--nda)}
 .chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
 .chart .m-upa{stroke:var(--upa)}.chart .m-nda{stroke:var(--nda)}
+.chart .s-est{stroke:var(--nda);stroke-width:2;stroke-dasharray:2 4;vector-effect:non-scaling-stroke}
+.chart .est{position:absolute;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border:2.5px solid var(--nda);background:var(--paper);border-radius:50%;box-sizing:border-box}
 .labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}
 .yt{position:absolute;left:.4rem;transform:translateY(-120%)}
 .xt{position:absolute;bottom:-1.5rem;transform:translateX(-50%)}.xt.first{transform:translateX(.4rem)}.xt.end{transform:translateX(calc(-100% - .4rem))}
@@ -158,6 +160,10 @@ table.data thead th{font-size:.7rem;font-weight:800;font-stretch:112.5%;letter-s
 border-bottom:2px solid var(--ink);color:var(--ink)}
 table.data td.na{color:var(--muted)}
 .crumb{font-size:.8rem;color:var(--muted);margin-bottom:.8rem}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:800;font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(--ink)}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.nav{font-size:.88rem;display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+.note{font-size:.85rem;color:var(--muted)}
 .crumb a{color:var(--ink-soft);font-weight:700}
 </style>
 </head>
