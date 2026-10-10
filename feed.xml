@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>Youth and graduate unemployment now follow MoSPI's published rates</title>
+    <link>https://someperspective.info/updates.html#v2.49.0</link>
+    <guid isPermaLink="false">someperspective-v2.49.0</guid>
+    <pubDate>Sat, 10 Oct 2026 12:00:00 +0000</pubDate>
+    <description>The youth and graduate unemployment series did not match any published source. Both now use MoSPI's published PLFS rates, and the years MoSPI does not cover are left empty. Fixed: Graduate unemployment had read 26.5% to 31% for recent years. MoSPI's published rate for graduates aged 15 and over is 13.0% for 2023-24, down from 17.2% in 2017-18. The site now uses MoSPI's series for 2017-18 to 2023-24 and leaves the other years empty, because MoSPI publishes no graduate figure for them. Graduate unemployment is four times the overall rate, not five, and the analysis and the paper now say so. Fixed: Youth (15-29) unemployment ran 2.5 to 3 points above MoSPI's published rates and put its peak in 2020. MoSPI's series peaks at 17.8% in 2017-18 and falls to 9.9% in 2025. The analysis that said youth unemployment peaked during COVID now says it has fallen since 2017-18 and stays about three times the all-age rate. Changed: The three worker quotations in the homepage data stories are now attributed to primary research.</description>
+  </item>
+  <item>
     <title>New 2026 figures, three changes of measure marked, and the prose rewritten</title>
     <link>https://someperspective.info/updates.html#v2.48.0</link>
     <guid isPermaLink="false">someperspective-v2.48.0</guid>

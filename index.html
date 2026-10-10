@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0c0d12" media="(prefers-color-scheme: dark)">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta name="version" content="2.48.0">
+    <meta name="version" content="2.49.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://translate.google.com https://translate.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://cdn.jsdelivr.net https://translate.googleapis.com https://www.gstatic.com; connect-src 'self' https://translate.googleapis.com; frame-src https://translate.googleapis.com; object-src 'none'; base-uri 'self';">
     <title>Some Perspective | India's Economy, Inequality & Democracy 2004-2026 | Data-Driven Analysis</title>
     <meta name="description" content="Independent data-driven research on India's political economy (2004-2026). On nearly every cross-era measure of accountability (democratic quality, statistical integrity, fiscal centralisation, press freedom and income inequality), India is measurably worse under NDA (2014-26) than under UPA (2004-14). Inflation is the one exception. Three novel indices (SSI, FCI, DQI), interactive charts, downloadable data.">
@@ -180,7 +180,7 @@
                 "name": "Why is India's unemployment high despite GDP growth?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "India's employment elasticity collapsed to 0.01 during 2014-2017, meaning GDP growth did not translate into jobs. Formal employment declined from 13% to 10.9%, while ~80% of new jobs are precarious or informal. Graduate unemployment stands at 26.5% (PLFS 2025-26)."
+                    "text": "India's employment elasticity collapsed to 0.01 during 2014-2017, meaning GDP growth did not translate into jobs. Formal employment declined from 13% to 10.9%, while ~80% of new jobs are precarious or informal. Graduate unemployment was 13.0% in 2023-24 (PLFS), four times the overall rate of 3.2%."
                 }
             },
             {
@@ -210,7 +210,7 @@
          stylesheet. GitHub Pages serves everything with max-age=600, so without
          this a returning visitor could hold a 10-minute-old stylesheet against
          freshly deployed markup. Bump with the version meta above; CI enforces it. -->
-    <link rel="stylesheet" href="/styles.css?v=2.48.0">
+    <link rel="stylesheet" href="/styles.css?v=2.49.0">
     
     <!-- Alpine.js for interactivity.
          integrity/crossorigin: the CSP allows all of cdn.jsdelivr.net, so without a
@@ -1047,8 +1047,8 @@
                         <div id="sparkWealth" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-900/30">
-                        <div class="text-2xl sm:text-3xl font-extrabold text-orange-700 dark:text-orange-400" x-text="currentIndex('graduateUnemployment', 1) + '%'"></div>
-                        <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Graduate unemployment</div>
+                        <div class="text-2xl sm:text-3xl font-extrabold text-orange-700 dark:text-orange-400" x-text="lastObserved('graduateUnemployment', 1) + '%'"></div>
+                        <div class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 font-medium">Graduate unemployment (<span x-text="lastObservedYear('graduateUnemployment')"></span>)</div>
                         <div id="sparkGradUnemp" style="width:80px;height:30px;margin:6px auto 0;"></div>
                     </div>
                     <div class="stat-card bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-900/30">
@@ -1171,7 +1171,7 @@
                                 <li>• Employment elasticity collapsed to 0.01 (2014-17)</li>
                                 <li>• Formal jobs declined from 13% to 11%</li>
                                 <li>• 80% of new jobs are precarious/informal</li>
-                                <li>• Graduate unemployment: 26.5% (2026)</li>
+                                <li>• Graduate unemployment: 13.0% (2023-24)</li>
                             </ul>
                         </div>
                         
@@ -1697,10 +1697,10 @@
                             </p>
                             <p class="text-sm mb-3">
                                 <strong>Quote:</strong> "They call us 'partners' but treat us like servants. No fuel reimbursement when 
-                                petrol hits ₹120. Algorithm decides everything—one bad rating and income drops 40%."
+                                petrol hits ₹120. Algorithm decides everything—one bad rating and income drops 40%." <span style="color:var(--muted);">(Primary research.)</span>
                             </p>
                             <p class="text-sm">
-                                <strong>Impact:</strong> Graduate unemployment at 26.5% forces educated youth into precarious work. 
+                                <strong>Impact:</strong> Graduate unemployment was 13.0% in 2023-24, four times the overall rate, and educated young people take precarious work. 
                                 The "world's fastest-growing economy" depends on educated young people working in precarious jobs.
                             </p>
                         </div>
@@ -1727,7 +1727,7 @@
                             </p>
                             <p class="text-sm mb-3">
                                 <strong>Quote:</strong> "₹6,000 is a cruel joke. Fertilizer bag costs ₹1,400. They give us drops 
-                                while drowning us in debt. My son will never farm—I'll sell the land first."
+                                while drowning us in debt. My son will never farm—I'll sell the land first." <span style="color:var(--muted);">(Primary research.)</span>
                             </p>
                             <p class="text-sm">
                                 <strong>Impact:</strong> Direct transfers mask a structural crisis. 45% of rural households are in debt. 
@@ -1757,7 +1757,7 @@
                             </p>
                             <p class="text-sm mb-3">
                                 <strong>Quote:</strong> "Society judges working mothers, offices demand 14-hour days, zero support systems. 
-                                It's not a choice—it's survival. My education is wasted, but my child needs me."
+                                It's not a choice—it's survival. My education is wasted, but my child needs me." <span style="color:var(--muted);">(Primary research.)</span>
                             </p>
                             <p class="text-sm">
                                 <strong>Impact:</strong> 170 million women could enter workforce with proper support. 
@@ -3313,8 +3313,8 @@ reduces overall score</pre>
             yearLabels:          ["2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
             gdpGrowth:           [7.4,8.0,8.2,7.2,6.1,4.2,-7.3,8.7,7.2,7.6,7.8,6.5,7.8],
             unemployment:        [4.9,5.0,5.0,6.0,5.8,4.8,4.2,4.1,3.2,3.2,3.2,3.1,5.2],
-            youthUnemployment:   [13.5,13.8,14.2,15.6,16.1,14.8,17.8,13.2,12.9,12.9,12.8,12.5,12.3],
-            graduateUnemployment:[18.5,19.2,21.0,23.5,25.0,23.0,31.0,25.0,22.0,29.1,28.5,27.0,26.5],
+            youthUnemployment:   [null,null,null,17.8,17.3,15.0,12.9,12.4,10.0,10.2,10.3,9.9,null],
+            graduateUnemployment:[null,null,null,17.2,16.9,17.2,15.5,14.9,13.4,13.0,null,null,null],
             top1Share:           [21.3,21.7,21.5,21.5,21.7,22.1,22.3,22.5,22.6,22.6,22.6,22.8,23.0],
             bottom50Share:       [15.0,14.7,14.9,14.9,14.7,13.5,13.3,13.1,13.1,13.1,13.1,13.0,12.9],
             formalEmployment:    [13.0,12.8,12.5,12.2,11.9,11.6,11.4,11.5,11.3,11.2,11.2,11.0,10.9],
@@ -3352,7 +3352,7 @@ reduces overall score</pre>
         indicators: [
             { key:'gdpGrowth',        label:'GDP growth',              unit:'%',     goodHigh:true,  trendYears:5, reform:0.55, stress:-1.6,  uncertainty:1.1,  min:-10, max:12,  decimals:1, drivers:'Post-COVID base-effect rebounds are fading; the level itself is contested after the 2015 MCA21 revision.', breaks:'An external oil/rupee shock, a weak monsoon, or investment that keeps growing output without jobs or consumption.' },
             { key:'formalEmployment', label:'Formal employment share', unit:'%',     goodHigh:true,  trendYears:6, reform:0.65, stress:-0.35, uncertainty:0.6,  min:6,   max:25,  decimals:1, drivers:'Twelve straight years of informalisation; capital-intensive PLI adds output without adding much payroll.', breaks:'A pivot to labour-intensive manufacturing (garments) or enforced EPF/ESI formalisation would reverse it.' },
-            { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1, drivers:'The headline is held low by self-employment and discouraged workers; graduate joblessness runs ~26%.', breaks:'A serious youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up.' },
+            { key:'unemployment',     label:'Unemployment rate',       unit:'%',     goodHigh:false, trendYears:4, reform:-0.5, stress:1.2,   uncertainty:0.9,  min:0,   max:15,  decimals:1, drivers:'The headline is held low by self-employment and discouraged workers; graduate joblessness runs about 13%, four times the overall rate.', breaks:'A serious youth-jobs push pulls it down; a hiring freeze in a stress year pushes it up.' },
             { key:'top1Share',        label:'Top 1% income share',     unit:'%',     goodHigh:false, trendYears:6, reform:-0.5, stress:0.4,   uncertainty:0.7,  min:10,  max:30,  decimals:1, drivers:'Inequality has risen every decade since 1981; the 2019 corporate tax cut widened it further.', breaks:'A redesigned wealth tax or progressive shift; absent that, concentration keeps climbing.' },
             { key:'cpiInflation',     label:'CPI inflation',           unit:'%',     goodHigh:false, trendYears:5, reform:-0.3, stress:2.2,   uncertainty:1.0,  min:0,   max:14,  decimals:1, drivers:'Food is ~half the CPI basket and ~50% of farmland is rainfed, so inflation tracks the monsoon.', breaks:'A deficient monsoon or an oil spike pushes CPI above the RBI\'s 6% ceiling.' },
             { key:'fiscalDeficit',    label:'Fiscal deficit',          unit:'% GDP', goodHigh:false, trendYears:5, reform:-0.3, stress:1.3,   uncertainty:0.7,  min:0,   max:12,  decimals:1, drivers:'Consolidation leans on a record RBI dividend and off-budget borrowing.', breaks:'A growth slowdown, a smaller RBI surplus, or new cash-transfer commitments widen it.' },
@@ -5006,6 +5006,18 @@ reduces overall score</pre>
             },
             // Every index figure quoted in prose is read through these two helpers, so a
             // number on one tab cannot drift away from the same number on another.
+            // Latest published value of a series that stops before the final year
+            // (graduate unemployment ends with PLFS 2023-24), and the year it is for.
+            lastObserved(key, dp) {
+                const a = this.economicData[key] || [];
+                for (let i = a.length - 1; i >= 0; i--) if (typeof a[i] === 'number') return a[i].toFixed(dp);
+                return 'n/a';
+            },
+            lastObservedYear(key) {
+                const a = this.economicData[key] || [], y = this.economicData.years || [];
+                for (let i = a.length - 1; i >= 0; i--) if (typeof a[i] === 'number') return y[i] === 2023 ? '2023-24' : String(y[i]);
+                return '';
+            },
             currentIndex(key, dp) {
                 const a = this.economicData[key] || [];
                 const v = a[this.latestObservedIndex()];

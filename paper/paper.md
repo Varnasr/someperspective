@@ -182,8 +182,8 @@ We distinguish four provenance classes, and label every series accordingly, beca
 |---|---|
 | GDP growth | MoSPI national accounts and Economic Survey 2025–26 (2011–12 base) for 2014–2025; MoSPI Provisional Estimates 2025–26 (2022–23 base) for 2026 |
 | Unemployment | PLFS Annual Reports, usual status, for 2014–2025; average of the PLFS Monthly Bulletins for January to August 2026, current weekly status, for 2026 |
-| Youth unemployment | PLFS Annual; ILOSTAT youth (15–29) |
-| Graduate unemployment | PLFS unit-level tabulation |
+| Youth unemployment | MoSPI PLFS, usual status, ages 15–29 (2017–2025) |
+| Graduate unemployment | MoSPI PLFS, usual status, graduates aged 15 and over (2017-18 to 2023-24) |
 | Top 1% income share | World Inequality Database (WID.world) India series; WIR 2026 |
 | Bottom 50% income share | World Inequality Database (WID.world) India series; WIR 2026 |
 | Formal employment | PLFS workers with social-security cover; EPFO net additions cross-check |
@@ -380,9 +380,9 @@ The employment result is the clearest in the dataset, because it does not depend
 
 The formal employment share (workers with any social-security cover) falls from 13.0 per cent in 2014 to 10.9 per cent in 2026. This is a decline in the share itself. The share fell in ten of the twelve year-on-year changes, held level from 2023 to 2024, and rose once, from 11.4 to 11.5 per cent, in 2021. Informal employment correspondingly rises from 87.0 to 89.1 per cent.
 
-Headline unemployment is 4.9 per cent in 2014 and 3.1 per cent in 2025 on the usual-status measure of the annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment stands at 26.5 per cent in 2026, against 18.5 per cent in 2014.
+Headline unemployment is 4.9 per cent in 2014 and 3.1 per cent in 2025 on the usual-status measure of the annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment, on MoSPI's published usual-status series, was 13.0 per cent in 2023-24, down from 17.2 per cent in 2017-18. MoSPI publishes no figure for graduates before PLFS began or after 2023-24.
 
-An unemployment rate above one in four among degree-holders, in an economy whose headline unemployment rate is 3.1 per cent on usual status (2025) and 5.2 per cent on the weekly measure (2026), cannot be explained by weak aggregate labour demand. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
+An unemployment rate of 13.0 per cent among degree-holders, four times the 3.2 per cent for all workers on the same measure in the same year, cannot be explained by weak aggregate labour demand. The graduate rate has fallen since 2017-18, and the ratio to the overall rate has stayed at about three to four. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
 
 The conjunction of positive aggregate growth with a formal-employment share that fell in ten of twelve years is the single most consistent multi-year pattern in the dataset. It is difficult to reconcile with any account in which the period's institutional changes purchased broad-based material progress.
 
