@@ -71,7 +71,7 @@ jobs:
         run: |
           python3 -c "
           import re, os, sys
-          html = open('index.html').read()
+          html = open('index.html').read() + open('explore/index.html').read()
           # Negative lookbehind skips Alpine bindings (:href=\"expr\", x-bind:href=\"expr\"),
           # whose values are JS expressions rather than URLs and are not files on disk.
           hrefs = set(re.findall(r'(?<![:\w-])href=\"([^\"#][^\"]*?)\"', html))
@@ -96,7 +96,7 @@ jobs:
         # press release of 25 February 2025") is a fact, not a vintage, and passes.
         run: |
           ! grep -rEi '(through|as of|updated|last updated|data to|current to) (January|February|March|April|May|June|July|August|September|October|November|December) 2025\b' \
-              index.html downloads/ --include='*.html' || {
+              index.html explore/index.html downloads/ --include='*.html' || {
             echo "ERROR: Stale <Month> 2025 references found (see hits above)"
             exit 1
           }
@@ -109,7 +109,7 @@ jobs:
         run: |
           python3 -c "
           import re
-          html = open('index.html').read()
+          html = open('index.html').read() + open('explore/index.html').read()
           s = ''.join(re.findall(r'<script[^>]*>(.*?)</script>', html, re.DOTALL))
           o, c = s.count('{'), s.count('}')
           print(f'inline JS braces: {o} open, {c} close')
@@ -130,6 +130,7 @@ jobs:
           python3 tools/build_paper.py --check
           python3 tools/build_site.py --check
           python3 tools/build_master.py --check
+          python3 tools/build_front.py --check
           python3 replication_code.py
 
       - name: Check downloads/ docs agree with data.json
@@ -145,7 +146,7 @@ jobs:
         run: |
           python3 -c "
           import re, sys
-          h = open('index.html').read()
+          h = open('explore/index.html').read()
           ver = re.search(r'<meta name=\"version\" content=\"([^\"]+)\"', h).group(1)
           css = re.search(r'href=\"/styles\.css\?v=([^\"]+)\"', h)
           assert css, 'styles.css link is missing its ?v= cache-buster'

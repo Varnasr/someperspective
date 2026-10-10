@@ -24,7 +24,7 @@ PUBLISHED = {
     ".nojekyll", "CNAME", "robots.txt", "sitemap.xml", "feed.xml",
     "manifest.json", "sw.js", "og-preview.png", "og-preview.svg",
     "index.html", "updates.html", "styles.css", "data.json",
-    "analysis", "care", "inflation", "walkthrough", "downloads", "fonts", "js",
+    "analysis", "care", "explore", "inflation", "walkthrough", "downloads", "fonts", "js",
     "data", "replication_code.py", "replication_code.R",
     "LICENSE", "CITATION.cff", "README.md", "data_dictionary.md",
 }
@@ -81,6 +81,9 @@ def main():
     for rel in sorted(f for f in files if f.endswith(".html")):
         html = open(os.path.join(ROOT, rel), encoding="utf-8").read()
         html = re.sub(r"<script\b[^>]*>.*?</script>", "", html, flags=re.S)
+        # explore/index.html carries <base href="/">, so its relative links
+        # resolve from the site root, not from its own folder.
+        base = "" if re.search(r'<base href="/"', html) else os.path.dirname(rel)
         for ref in REF.findall(html):
             if re.match(r"^(https?:|mailto:|data:|javascript:|//|\{)", ref):
                 continue
@@ -90,7 +93,7 @@ def main():
             if target.startswith("/"):
                 path = target.lstrip("/")
             else:
-                path = os.path.normpath(os.path.join(os.path.dirname(rel), target))
+                path = os.path.normpath(os.path.join(base, target))
             if path in ("", "."):
                 continue
             if path.endswith("/") or os.path.isdir(os.path.join(ROOT, path)):

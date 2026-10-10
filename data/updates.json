@@ -2,6 +2,30 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.53.0",
+      "date": "2026-10-10",
+      "title": "A new design, split where the governments changed",
+      "summary": "The site has a new design. Every page is divided where the UPA decade ends and the NDA period begins, at the share of the page width that each period holds in years, so a chart's 2013/2014 boundary falls on the dividing line. The front page is now a short reading page built from the data, and the interactive dashboard has moved to its own address. No figure changed.",
+      "changes": [
+        {
+          "kind": "Changed",
+          "text": "The front page now opens with the scorecard and six findings, each with its series drawn across the dividing line. The interactive dashboard is at /explore/, and old links to its tabs still work."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The declaration of interest said the author is a Manmohan Singh Fellow of the All India Professionals' Congress. The author is a former fellow, and this work began before the fellowship. The paper, the dashboard, the walkthrough, the media kit and the repository now say so, and the front page carries the declaration in its footer."
+        },
+        {
+          "kind": "Changed",
+          "text": "A new palette and typeface on every page: teal for the UPA decade, violet for the NDA period, and one sans-serif family in place of the serif. Every text colour clears 4.5:1 in both light and dark mode."
+        },
+        {
+          "kind": "Fixed",
+          "text": "An accessibility audit of every dashboard tab found eleven text colours below the contrast threshold and four scrolling blocks a keyboard could not reach. All are fixed."
+        }
+      ]
+    },
+    {
       "version": "2.52.0",
       "date": "2026-10-10",
       "title": "A full fact check of every page",
