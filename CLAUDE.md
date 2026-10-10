@@ -90,6 +90,31 @@ shown up in a token check:
 - **Wide tables that no keyboard could reach.** `.table-scroll` scrolls
   horizontally on a phone with no way in from the keyboard, in six files.
 
+## Published data wins
+
+The owner's rule (2026-10-10): where a figure on the site is contradicted by the
+published source it names, or by the official publisher of that statistic, the
+site changes to the published figure. No permission is needed. A year with no
+published figure is left empty (`null`), never filled by interpolation, and the
+source note in `data.json` says which years are empty and why. Projections
+(NITI's gig workforce after 2020-21, for example) are not observations and do not
+go in an observed series.
+
+Checked against the publishers on 2026-10-10, and the series they replaced:
+`unemployment` 2017-2020 (MoSPI PLFS), `youthUnemployment` and
+`graduateUnemployment` (MoSPI PLFS), `femaleLFPR` (MoSPI PLFS; it had shown a
+fall to 21%, PLFS shows a rise to 40%), `gigWorkers` (NITI Aayog 2022, Table 14),
+`ruralIncome` (NABARD NAFIS, two rounds only). Not yet checked against a
+publisher: `formalEmployment`, `rupeeUSD`, `fiscalDeficit`, `top1Share`,
+`bottom50Share` and the inputs to the three indices. Check those before quoting
+them as findings.
+
+MoSPI's PLFS API (`api.mospi.gov.in/api/plfs/getData`) answers with
+`frequency_code=1` for annual rates; pass `religion_code=1&social_category_code=1`
+or the agricultural-year rows do not come back, and keep `limit` at 100 or less
+(a larger limit returns 400). The host needs `OP_LEGACY_SERVER_CONNECT`; see
+`tools/refresh_monthly.py`.
+
 ## Watch out for
 
 - **The audit is worthless without the CDN.** Alpine and ECharts come from

@@ -120,9 +120,9 @@ two periods being handled differently.
 ### 1. Employment: growth without jobs
 
 - **2011-2016:** Employment elasticity collapsed to 0.01, the lowest in India's post-independence history
-- **Formal employment** declined from 17.5% (2014) to 11% (2024) of the workforce
-- **Youth unemployment** reached 23% for graduates, 17% overall
-- **Recovery (2017-2023):** Elasticity increased to 1.11, driven by precarious gig work (median income ₹15,000/month)
+- **Formal employment** declined from 13.0% (2014) to 10.9% (2026) of the workforce
+- **Youth unemployment** (ages 15-29) was 17.8% in 2017-18 and 9.9% in 2025; graduate unemployment was 13.0% in 2023-24, four times the overall rate
+- **Recovery (2017-2023):** Elasticity increased to 1.11, driven by precarious gig work
 
 Economic growth came apart from employment generation, which runs against what standard development theory expects.
 

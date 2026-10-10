@@ -10,6 +10,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.49.0] - 2026-10-10
+
+### Fixed
+- `graduateUnemployment` replaced with MoSPI PLFS, usual status, graduates 15+ (api.mospi.gov.in): 2017-18 17.2 to 2023-24 13.0. The old series (18.5 rising to 26.5-31.0, "PLFS unit-level tabulation") matched no published figure. 2014-2016 and 2024-2026 are null: MoSPI publishes no graduate rate for them. The homepage tile shows the latest published year (13.0%, 2023-24) via `lastObserved()`.
+- `youthUnemployment` replaced with MoSPI PLFS, usual status, 15-29: survey years 2017-2023, calendar 2024 and 2025 (17.8 to 9.9). 2014-2016 and 2026 are null; the 2026 monthly CWS average (15.4) is given in the source note only, because the youth charts carry no basis-break marker.
+- "Graduate unemployment is five times the headline rate" becomes four times (13.0 against 3.2 on the same measure). "Youth unemployment peaked at 18% during COVID" becomes "has fallen from 17.8% to 9.9% since 2017-18"; the published series peaks in 2017-18. Slugs unchanged. The paper, the homepage, the forecast driver note and the README follow.
+
+- `femaleLFPR` replaced with MoSPI PLFS, usual status, women 15+: 23.3 (2017-18) to 41.7 (2023-24), calendar 2024 40.3 and 2025 40.0. The old series (22.5 falling to 21.0, "PLFS ps+ss") contradicted PLFS. The analysis, Story 3, the paper (§6.11 and the PLI paragraph, now giving men's 79.1), the care explainer, the walkthrough, the technical appendix, the citizen guide and the policy brief follow.
+- `gigWorkers` replaced with NITI Aayog (June 2022) Table 14: 2017-18 5.3, 2018-19 5.4, 2019-20 6.8, 2020-21 7.7 million. The old series (0.8 to 8.8) matched neither NITI's actuals nor its projections. Projected years are null. Analysis retitled "nearly tripled between 2011-12 and 2019-20" (2.5 to 6.8 million).
+- `ruralIncome` replaced with NABARD NAFIS: two rounds, 2016-17 = 100 and 2021-22 = 126.8 (nominal +57.6%, deflated by CPI-Rural +24.2%). The old annual "NABARD" index (100 falling to 93, flat to 97) cannot exist; NAFIS has two rounds. Analysis retitled; Story 2 rewritten; the primer chart that used household income as a proxy for wages removed (its sourced text kept).
+- Story 4: the consumption quotation attributed to P.C. Mohanan, the "last consumption survey 2011-12" line, the unsourced "108 reports" and "Rs 3 lakh crore" claims and an unattributed quotation removed; rewritten from the published record (resignation 28 January 2019 over PLFS 2017-18; consumption survey withheld November 2019; HCES 2022-23 published February 2024).
+
+- The international V-Dem chart was titled "India Shows Steepest Decline", which the 2.39.0 correction made false (Turkey's proportional fall is larger). Now "largest absolute fall".
+
+### Changed
+- The three worker quotations in the data stories are attributed to primary research.
+
 ## [2.48.0] - 2026-10-10
 
 ### Data
