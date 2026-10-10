@@ -37,13 +37,20 @@ SSI_WEIGHTS = {
     "mortality":     2.0,  # COVID death undercount (official ~0.5M vs 3-5M excess)
 }
 # Graded annual severity (0..1). Absent year => 0. Scar = post-resolution decay.
+# CORRECTION (2026-10-10): the employment stream was coded from 2017 and the
+# consumption stream from 2018, before either event happened. The PLFS
+# 2017-18 report was approved in December 2018 and withheld until 31 May 2019;
+# the 2017-18 consumption survey was scrapped in November 2019. Both are now
+# coded from those dates. SSI 2017 2.05 -> 1.05, 2018 4.0 -> 1.8,
+# 2019 4.8 -> 5.5, 2020 7.0 -> 7.3; NDA mean 4.95 -> 4.79.
 SSI_SEVERITY = {
     "census":        {**{y: 1.0 for y in range(2020, 2026)},          # postponed, no date
                       2026: 0.3},                                     # on a notified schedule: houselisting
                                                                       # Apr-Sep 2026, enumeration Feb 2027 (MHA)
-    "consumption":   {**{y: 1.0 for y in range(2018, 2024)},          # active gap
-                      2024: 0.5, 2025: 0.3, 2026: 0.2},               # scar: gap is permanent
-    "employment":    {2017: 1.0, 2018: 1.0, 2019: 0.3},               # resolved; small scar
+    "consumption":   {**{y: 1.0 for y in range(2019, 2024)},          # scrapped Nov 2019; HCES
+                      2024: 0.5, 2025: 0.3, 2026: 0.2},               # 2022-23 out Feb 2024; scar
+    "employment":    {2018: 0.3, 2019: 1.0, 2020: 0.3},               # PLFS 2017-18 withheld
+                                                                      # Dec 2018 to 31 May 2019; scar
     "gdp":           {2015: 0.7, 2016: 0.7, 2017: 0.7,                # new-series concerns
                       **{y: 1.0 for y in range(2018, 2027)}},         # back-series shelved, unresolved
     "institutional": {y: 1.0 for y in range(2019, 2027)},             # merger is permanent
