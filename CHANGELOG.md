@@ -14,7 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Redesign: every page is split at 10/23 of its width, the UPA decade's share of 2004-2026, with a teal field on the left, a violet field on the right and an ink seam. Text sits in flat slabs; one type family, Archivo. The burnt-orange accent and the serif are gone.
-- The front page is a reading page generated from the data by `tools/build_front.py`: the scorecard with a sparkline under each pair, six findings whose charts cross the seam at 2013/2014, the three indices and the declared interest. CI checks it is current.
+- The front page is a reading page generated from the data by `tools/build_front.py`: the scorecard with a sparkline under each pair, six findings whose charts cross the seam at 2013/2014 and the three indices, with the declared interest as a note in the footer. CI checks it is current.
+- The declaration of interest now says the author is a former Manmohan Singh Fellow of the AIPC and that this work began before the fellowship (README, CITATION, paper, dashboard, walkthrough, media kit).
 - The dashboard moved to `/explore/`; links to `/#tab` forward there. Analysis pages, explainers and the walkthrough link to it directly, and the sitemap lists it.
 - Tokens: `--accent` is now ink; `--upa`, `--nda`, `--field-upa`, `--field-nda` added, plus `--good` and `--bad` on the downloads pages. `tools/check_palette.py` measures the new pairs.
 

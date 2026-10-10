@@ -19,7 +19,7 @@ Everything the site publishes is generated from `data.json` by scripts in this r
 
 ### Declaration of interests
 
-The author is a Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This project compares a Congress-led government with its successor and concludes against the successor on eight of nine measures, so the author holds a political interest in the direction of the finding. The research is unfunded, and no party body commissioned, reviewed or approved it. The project makes no claim of neutrality. What it offers in response is full publication of the dataset, the construction code and the paper source, so any figure here can be recomputed under different assumptions. The full declaration is on the site under Methodology, and in the paper's Declarations.
+The author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship. This project compares a Congress-led government with its successor and concludes against the successor on eight of nine measures, so the author holds a political interest in the direction of the finding. The research is unfunded, and no party body commissioned, reviewed or approved it. The project makes no claim of neutrality. What it offers in response is full publication of the dataset, the construction code and the paper source, so any figure here can be recomputed under different assumptions. The full declaration is on the site under Methodology, and in the paper's Declarations.
 
 ## Abstract
 

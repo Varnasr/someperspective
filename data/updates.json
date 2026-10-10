@@ -12,6 +12,10 @@
           "text": "The front page now opens with the scorecard and six findings, each with its series drawn across the dividing line. The interactive dashboard is at /explore/, and old links to its tabs still work."
         },
         {
+          "kind": "Fixed",
+          "text": "The declaration of interest said the author is a Manmohan Singh Fellow of the All India Professionals' Congress. The author is a former fellow, and this work began before the fellowship. The paper, the dashboard, the walkthrough, the media kit and the repository now say so, and the front page carries the declaration in its footer."
+        },
+        {
           "kind": "Changed",
           "text": "A new palette and typeface on every page: teal for the UPA decade, violet for the NDA period, and one sans-serif family in place of the serif. Every text colour clears 4.5:1 in both light and dark mode."
         },

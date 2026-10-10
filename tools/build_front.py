@@ -244,6 +244,7 @@ width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
 .interest{border-left:6px solid var(--ink);padding-left:1rem;margin-top:.6rem}
 .foot{border-top:2px solid var(--ink);font-size:.8rem}
 .foot .l,.foot .r{padding-top:1.1rem;padding-bottom:2.5rem}
+.foot .note{margin-top:.6rem;color:var(--muted);max-width:40rem}
 @media (max-width:600px){body{font-size:1rem}.top nav{gap:.1rem .8rem;font-size:.8rem}.m .lab{font-size:.7rem}
 .src{width:auto;text-align:left}}
 @media print{.top nav,.more{display:none}body{background:none}.slab{border-width:1px}}
@@ -438,7 +439,7 @@ def build():
 <p class="kicker">India's political economy, 2004-2026</p>
 <h1>On {worse} of {total} measures, India's record since 2014 is worse than in the decade before</h1>
 <p class="dek">The page is split where the governments changed. The UPA decade sits on the left and the NDA period on the right, each at its own width in years, so every chart below changes side between 2013 and 2014. Inflation is the one measure that improved. Growth was lower overall and higher once the pandemic year is left out.</p>
-<p class="byline">By Dr. Varna Sri Raman &middot; Updated {escape(updated)} &middot; Version {escape(version)} &middot; <a href="#interest">Declared interest</a></p>
+<p class="byline">By Dr. Varna Sri Raman &middot; Updated {escape(updated)} &middot; Version {escape(version)}</p>
 </div>
 
 <section id="scorecard" aria-labelledby="h-score">
@@ -475,14 +476,6 @@ def build():
 </div>
 </section>
 
-<section id="interest" aria-labelledby="h-int">
-<div class="slab">
-<p class="kicker">Declared interest</p>
-<h2 id="h-int">Who wrote this, and what they stand to gain</h2>
-<div class="interest"><p>The author is a Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This study compares a Congress-led government (UPA, 2004-2014) with its successor (NDA, 2014-2026) and reports against the successor on {worse} of {total} comparable measures. The author therefore holds a political interest in the direction of the finding. For that reason every figure is taken from its publisher, every correction is dated on the updates page, and the data and code are public so that anyone can check the result.</p></div>
-</div>
-</section>
-
 <section id="more" aria-labelledby="h-more">
 <div class="slab">
 <p class="kicker">Read further</p>
@@ -493,7 +486,8 @@ def build():
 </main>
 <footer class="foot split">
 <div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
-<div class="r"><p><a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="feed.xml">Updates feed</a> &middot; Version {escape(version)}</p></div>
+<div class="r"><p><a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="feed.xml">Updates feed</a> &middot; Version {escape(version)}</p>
+<p class="note" id="interest">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
 </footer>
 <script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
 </body>
