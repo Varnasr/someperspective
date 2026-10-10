@@ -130,7 +130,7 @@
     "slug": "statistical-suppression-spiked-to-a-peak-then-stayed-high",
     "category": "Statistics",
     "title": "Statistical suppression spiked to a peak and has eased since",
-    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams, including suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years. It peaked at 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent merger of the NSSO into the NSO. It was 4.65 in 2026. The largest single change that year is the census, which now has a schedule: houselisting runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs), so it is scored as a delay rather than a postponement with no date.",
+    "body": "SSI is a 0-10 weighted sum of graded suppression severities across six documented streams, including suppressed surveys, delayed releases, methodology disputes, and statistical-body resignations. It was 0 across the UPA years. It peaked at 9.0 in 2021-22, when the COVID-mortality undercount (official ~0.5M deaths against 3-5M excess) stacked on the census delay, the withheld consumption survey, the shelved GDP back-series and the permanent merger of the NSSO into the NSO. It was 4.65 in 2026. The largest single change that year is the census, which now has a schedule. Houselisting runs from April to September 2026 and population enumeration is notified for February 2027 (Ministry of Home Affairs). Under the rubric that is a delay, scored 0.3.",
     "takeaway": "The acute events have eased and the census is back on a schedule. The shelved GDP back-series and the NSSO-NSO merger still count at full weight.",
     "tab": "Three Indices",
     "chart": {
@@ -172,7 +172,7 @@
     "slug": "central-cess-and-surcharge-share-of-tax-revenue-tripled",
     "category": "Federalism",
     "title": "Cesses and surcharges reached a quarter of Union tax revenue in 2020-21",
-    "body": "Cesses and surcharges are not shared with states under the Finance Commission formula. Their share of the Union's gross tax revenue was 10.4% in 2011-12 and 13.5% in 2014-15 (15th Finance Commission, Table 3.8). It rose to 19.9% in 2018-19, when the GST compensation cess was first counted in a full year, and peaked at 24.4% in 2020-21 (20.2% without the compensation cess). It has fallen since, to 18.0% in 2024-25 and 14.3% in the 2026-27 budget estimate (Union Receipt Budgets).",
+    "body": "Cesses and surcharges are not shared with states under the Finance Commission formula. Their share of the Union's gross tax revenue was 10.4% in 2011-12 and 13.5% in 2014-15 (15th Finance Commission, Table 3.8). It rose to 19.9% in 2018-19, with the GST compensation cess included from 2017-18, and peaked at 24.4% in 2020-21 (20.2% without the compensation cess). It has fallen since, to 18.0% in 2024-25 and 14.3% in the 2026-27 budget estimate (Union Receipt Budgets).",
     "takeaway": "Revenue raised as a cess stays with the Union, so the cess share measures how much of the tax take sits outside the pool that states share in.",
     "tab": "Deep Analysis",
     "chart": {
