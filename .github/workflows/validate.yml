@@ -31,6 +31,16 @@ jobs:
           fi
           echo "styles.css is up to date"
 
+      - name: npm audit (build dependencies)
+        # Tailwind is the only Node dependency and runs at build time over our
+        # own CSS, so the exposure is small; the advisories were still real
+        # (braces via @parcel/watcher, source-map-js) and package.json carries
+        # overrides for both. This keeps them from coming back unnoticed.
+        run: npm audit --audit-level=high
+
+      - name: Only the site is published, and every page link resolves
+        run: python3 tools/check_publish.py
+
       - name: Every page is indexed on purpose or excluded on purpose
         run: python3 tools/check_indexability.py
 
