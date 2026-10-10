@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self';">
 <title>Guided walkthrough | Some Perspective</title>
@@ -34,7 +37,7 @@ line-height:1.6;overflow:hidden;-webkit-text-size-adjust:100%}
 .top{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
 gap:.75rem;padding:.85rem 1rem;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);
 backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
-.home{font-size:.82rem;font-weight:800;font-stretch:112.5%;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);text-decoration:none;
+.home{gap:.5rem;font-size:.82rem;font-weight:800;font-stretch:112.5%;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);text-decoration:none;
 min-height:44px;display:inline-flex;align-items:center;padding:0 .4rem}
 .count{font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 /* deck */
@@ -90,7 +93,7 @@ font-size:.95rem;color:var(--ink-soft)}
 <body>
 <div class="bar" id="bar" style="width:0"></div>
 <header class="top" data-dyslexia-slot>
-  <a class="home" href="../">← Some Perspective</a>
+  <a class="home" href="../"><svg class="mark" viewBox="0 0 64 64" width="20" height="20" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a>
   <span class="count" id="count"></span>
 </header>
 

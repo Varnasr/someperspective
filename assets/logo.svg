@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Some Perspective">
+  <title>Some Perspective</title>
+  <rect width="64" height="64" fill="#0d0e12"/>
+  <rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/>
+  <rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/>
+</svg>

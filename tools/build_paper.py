@@ -252,6 +252,9 @@ def build_html(meta, body, toc):
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{ihtml.escape(title)}</title>
 <meta name="description" content="Full research paper: India's institutional and distributional transformation, 2004-2026.">

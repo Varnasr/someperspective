@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Women's labour force participation has risen sharply since 2017-18 | Some Perspective</title>
 <meta name="description" content="The headline rate does not show what kind of work the rise is made of.">
@@ -33,7 +36,7 @@ a:hover{text-decoration-thickness:2px}
 .top{display:grid;grid-template-columns:var(--seam) 1fr;border-bottom:2px solid var(--ink);align-items:center}
 .top>*{padding:.8rem clamp(.75rem,2.5vw,2rem)}
 .top .l{text-align:right}
-.top .name{font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
+.top .name{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-stretch:125%;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;text-decoration:none}
 .top nav{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.85rem;font-weight:600}
 .top nav a{text-decoration:none;padding:.3rem 0}
 .top nav a:hover{text-decoration:underline}
@@ -71,7 +74,8 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 @media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
 /* On a phone the page runs on plain paper; the split stays in the header bar,
    where a bordered panel would only leave two slivers of field at the edges. */
-@media (max-width:700px){body{background:var(--paper)}
+@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+body{background:var(--paper)}
 .top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
@@ -79,7 +83,7 @@ th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Women's labour force participation has risen sharply since 2017-18", "description": "The headline rate does not show what kind of work the rise is made of.", "author": {"@type": "Person", "name": "Dr. Varna Sri Raman"}, "isPartOf": {"@type": "Dataset", "name": "Some Perspective dataset", "url": "https://someperspective.info/data.json"}, "url": "https://someperspective.info/analysis/womens-labour-force-participation-has-fallen-since-2014.html", "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
 </head>
 <body>
-<header class="top"><div class="l"><a class="name" href="/">Some Perspective</a></div>
+<header class="top"><div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
 <nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a></nav></header>
 <main class="wrap">
 <p class="crumb"><a href="../">Some Perspective</a> &rsaquo; <a href="./">Analysis</a></p>

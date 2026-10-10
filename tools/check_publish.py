@@ -23,6 +23,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUBLISHED = {
     ".nojekyll", "CNAME", "robots.txt", "sitemap.xml", "feed.xml",
     "manifest.json", "sw.js", "og-preview.png", "og-preview.svg",
+    "favicon.svg", "favicon-32.png", "apple-touch-icon.png", "assets",
     "index.html", "updates.html", "styles.css", "data.json",
     "analysis", "care", "explore", "inflation", "walkthrough", "downloads", "fonts", "js",
     "data", "replication_code.py", "replication_code.R",
