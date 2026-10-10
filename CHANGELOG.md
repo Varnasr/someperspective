@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.53.2] - 2026-10-10
+
+### Fixed
+- The SSI's NDA-period mean is 4.7846, which rounds to 4.78; the paper, technical appendix, METHODOLOGY, data dictionary and the 2.52.0 update note said 4.79. Every other quoted index average was recomputed and holds (DQI 0.37, FCI 0.43, FCI on the four ratios 0.49 against 0.45, SSI without the census stream 3.57, SSI cut 20% 3.83).
+- One title for the paper: *Growth Without Accountability: Measuring India's Institutional and Distributional Transformation, 2004-2026*. The executive summary, the research package and the dashboard's citation metadata still carried *Narratives, Numbers, and Democratic Accountability*.
+- The dashboard's touch icon and the web-app manifest still carried the old orange; the manifest description had an em dash.
+
 ## [2.53.1] - 2026-10-10
 
 ### Fixed

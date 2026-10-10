@@ -42,7 +42,7 @@ SSI_WEIGHTS = {
 # 2017-18 report was approved in December 2018 and withheld until 31 May 2019;
 # the 2017-18 consumption survey was scrapped in November 2019. Both are now
 # coded from those dates. SSI 2017 2.05 -> 1.05, 2018 4.0 -> 1.8,
-# 2019 4.8 -> 5.5, 2020 7.0 -> 7.3; NDA mean 4.95 -> 4.79.
+# 2019 4.8 -> 5.5, 2020 7.0 -> 7.3; NDA mean 4.95 -> 4.78 (4.7846).
 SSI_SEVERITY = {
     "census":        {**{y: 1.0 for y in range(2020, 2026)},          # postponed, no date
                       2026: 0.3},                                     # on a notified schedule: houselisting
