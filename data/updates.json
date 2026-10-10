@@ -2,6 +2,22 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.53.2",
+      "date": "2026-10-10",
+      "title": "One rounding error and one old title",
+      "summary": "A check of every index average quoted across the site found one figure rounded the wrong way, and three pages still used an earlier title for the paper.",
+      "changes": [
+        {
+          "kind": "Fixed",
+          "text": "The Statistical Suppression Index averages 4.78 over the NDA period (4.7846), not 4.79 as the paper and the technical appendix said. Every other index average was recomputed and is unchanged."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The paper has one title, Growth Without Accountability: Measuring India's Institutional and Distributional Transformation, 2004-2026. The executive summary and the research package now use it."
+        }
+      ]
+    },
+    {
       "version": "2.53.1",
       "date": "2026-10-10",
       "title": "The new design, fixed for phones",
@@ -53,7 +69,7 @@
         },
         {
           "kind": "Fixed",
-          "text": "The Statistical Suppression Index had scored the withheld jobs survey from 2017 and the scrapped consumption survey from 2018, before either happened. They are now dated to December 2018 and November 2019. The NDA average is 4.79."
+          "text": "The Statistical Suppression Index had scored the withheld jobs survey from 2017 and the scrapped consumption survey from 2018, before either happened. They are now dated to December 2018 and November 2019. The NDA average is 4.78."
         },
         {
           "kind": "Fixed",

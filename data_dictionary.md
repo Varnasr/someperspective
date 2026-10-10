@@ -138,7 +138,7 @@ All three indices are computed identically for both eras by `data/compute_indice
 - **Definition:** Weighted count of datable government-interference events in official statistics
 - **Unit:** Index score 0–10 (higher = more suppression)
 - **Source:** Constructed for this research (`data/compute_indices.py`)
-- **Methodology:** SSI = Σ(weight × graded severity) with persistence; six streams (census, consumption, employment, GDP back-series, institutional, COVID-mortality undercount), weights 2.5/1.5/1.0/1.5/1.5/2.0. UPA = 0; peak 9.0 (2021-22); 4.65 (2026), when the census is scored 0.3 as a scheduled delay; NDA mean 4.79
+- **Methodology:** SSI = Σ(weight × graded severity) with persistence; six streams (census, consumption, employment, GDP back-series, institutional, COVID-mortality undercount), weights 2.5/1.5/1.0/1.5/1.5/2.0. UPA = 0; peak 9.0 (2021-22); 4.65 (2026), when the census is scored 0.3 as a scheduled delay; NDA mean 4.78
 - **Coverage:** 2004-2026
 
 #### `fiscal_centralization_index`

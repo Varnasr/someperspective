@@ -431,7 +431,7 @@ The peak is a stacking effect: the COVID mortality undercount at full severity, 
 
 The index then declines (8.20 in 2023, 7.05 in 2024, 6.55 in 2025) and stands at 4.65 in 2026. It does not return to zero, and this is the persistence term working as designed. The NSO merger is not reversed and the back-series was never independently reviewed, so both still count at full weight. The census moves from full severity to 0.3 in 2026, because houselisting is under way and population enumeration is notified for February 2027, which under the rubric is a delay. The decline after 2022 reflects the end of the acute phase, and the structural changes remain in the index.
 
-The cross-era contrast is the sharpest in this paper: an era mean of 0.00 against 4.79.
+The cross-era contrast is the sharpest in this paper: an era mean of 0.00 against 4.78.
 
 ## 6.5 Fiscal centralisation
 
@@ -501,7 +501,7 @@ Comparing period means across the nine directly comparable measures:
 | Top 1% income share (%) | 20.39 | 21.92 | Worse |
 | Bottom 50% income share (%) | 16.75 | 14.69 | Worse |
 | Press freedom rank | 119.8 | 145.0 | Worse |
-| Statistical Suppression Index | 0.00 | 4.79 | Worse |
+| Statistical Suppression Index | 0.00 | 4.78 | Worse |
 | Fiscal Centralisation Index | 0.30 | 0.43 | Worse |
 | Democratic Quality Index | 0.57 | 0.37 | Worse |
 
@@ -627,11 +627,11 @@ We would add one observation about their design, offered as a reader's caution. 
 
 The SSI's severities are author-coded, making it the most subjective construction here. We assess sensitivity by re-computing under alternative codings.
 
-Because the index is a weighted sum with weights summing to 10, a uniform proportional error in severity coding scales the index without changing its shape or the cross-era comparison: if every severity were cut by 20 per cent, the NDA-era mean would fall from 4.79 to 3.83 and the UPA mean would remain 0.00. The cross-era conclusion is invariant to any uniform mis-calibration.
+Because the index is a weighted sum with weights summing to 10, a uniform proportional error in severity coding scales the index without changing its shape or the cross-era comparison: if every severity were cut by 20 per cent, the NDA-era mean would fall from 4.78 to 3.83 and the UPA mean would remain 0.00. The cross-era conclusion is invariant to any uniform mis-calibration.
 
 The conclusion is sensitive, in principle, to differential mis-coding, that is, systematically overstating NDA-era severities relative to UPA-era ones. But the UPA-era value is zero because no event in that period met the coding threshold, so there was nothing to code leniently. Differential mis-coding would therefore have to take the form of omitting UPA-era events entirely, which is the objection we address in Section 9.2.
 
-Dropping the single highest-weighted stream (census delay, weight 2.5) reduces the NDA-era mean from 4.79 to 3.57 and lowers the 2021–22 peak from 9.00 to 6.50. The cross-era contrast survives the removal of any single stream, because no single stream accounts for more than a quarter of the total weight.
+Dropping the single highest-weighted stream (census delay, weight 2.5) reduces the NDA-era mean from 4.78 to 3.57 and lowers the 2021–22 peak from 9.00 to 6.50. The cross-era contrast survives the removal of any single stream, because no single stream accounts for more than a quarter of the total weight.
 
 ## 8.2 Sensitivity of the DQI to component selection
 
@@ -667,7 +667,7 @@ The specific claim we defend is narrower than a causal one and, we think, suffic
 
 This is the strongest objection to the paper and we treat it at length.
 
-An index that assigns exactly zero to one political era and a mean of 4.79 to the other invites the suspicion that the coder found what they were looking for. Indian statistical administration before 2014 was not beyond criticism: there were delays, methodological disputes, and instances of political discomfort with unwelcome findings.
+An index that assigns exactly zero to one political era and a mean of 4.78 to the other invites the suspicion that the coder found what they were looking for. Indian statistical administration before 2014 was not beyond criticism: there were delays, methodological disputes, and instances of political discomfort with unwelcome findings.
 
 Three responses, in ascending order of force.
 
@@ -675,7 +675,7 @@ First, the SSI codes a specific and narrow class of event: suppression, disconti
 
 Second, the zero is a falsifiable claim. The rubric is published; the streams are enumerated; the weights are fixed. A critic who identifies a qualifying UPA-era event can code it and recompute, and the code to do so is public. We would regard such a contribution as an improvement to the index.
 
-Third, the cross-era conclusion does not depend on the zero. Suppose a critic assigns the UPA decade a mean of 2.0, a substantial concession implying suppression activity at over 40 per cent of the NDA average. The comparison would still be 2.0 against 4.79. The result is a difference in kind that survives a generous re-coding.
+Third, the cross-era conclusion does not depend on the zero. Suppose a critic assigns the UPA decade a mean of 2.0, a substantial concession implying suppression activity at over 40 per cent of the NDA average. The comparison would still be 2.0 against 4.78. The result is a difference in kind that survives a generous re-coding.
 
 We nonetheless record that the zero is the single most contestable number in this paper, and that a reader who rejects it is applying appropriate scrutiny.
 
@@ -753,7 +753,7 @@ The growth series was replaced with the published one. Years 2017 to 2022 had ca
 
 The inflation series was put on calendar-year averages throughout. Its 2025 value of 4.0 per cent was replaced by the calendar-2025 average of 2.2 per cent, and Section 6.10 now gives 2013 as 10.0 per cent, the published figure, where it had 10.9. The UPA mean moves from 8.05 to 7.98 per cent and the NDA mean from 4.93 to 4.80. The earlier figures understated the later period's improvement and ran in this paper's favour.
 
-The SSI's employment and consumption streams were redated to the events. The employment stream had been coded at full severity in 2017 and 2018, before the PLFS 2017–18 report fell due in December 2018, and the consumption stream from 2018, before the survey was scrapped in November 2019. Both now start in the year of the event, and the text on the GDP stream now matches its coding (0.7 for 2015 to 2017 and full severity from 2018). The SSI for 2017 moves from 2.05 to 1.05, 2018 from 4.00 to 1.80, 2019 from 4.80 to 5.50 and 2020 from 7.00 to 7.30, and the NDA-era mean falls from 4.95 to 4.79. The earlier dating ran in this paper's favour.
+The SSI's employment and consumption streams were redated to the events. The employment stream had been coded at full severity in 2017 and 2018, before the PLFS 2017–18 report fell due in December 2018, and the consumption stream from 2018, before the survey was scrapped in November 2019. Both now start in the year of the event, and the text on the GDP stream now matches its coding (0.7 for 2015 to 2017 and full severity from 2018). The SSI for 2017 moves from 2.05 to 1.05, 2018 from 4.00 to 1.80, 2019 from 4.80 to 5.50 and 2020 from 7.00 to 7.30, and the NDA-era mean falls from 4.95 to 4.78. The earlier dating ran in this paper's favour.
 
 The RSF ranks for the comparison countries in Section 6.8 were corrected to RSF's own indices. Brazil's 2014 rank was 111, where the table had 99, and the 2026 ranks are Brazil 52, Turkey 163, Hungary 74 and South Africa 21, where the table had 80, 159, 70 and 38. These ranks enter no index. The corrections show Brazil and South Africa improving more, and Turkey and Hungary falling further, than the table had shown.
 

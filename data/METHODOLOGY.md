@@ -116,7 +116,7 @@ population enumeration is notified for February 2027 (Ministry of Home Affairs);
 back-series still count at full weight. The employment stream starts with the withholding of the
 PLFS 2017-18 report (December 2018 to 31 May 2019), the consumption stream with the scrapping of
 the 2017-18 survey in November 2019, and the GDP stream scores 0.7 for 2015-2017 (the disputed new
-series) and 1.0 from 2018 (the back-series shelved). NDA-era mean 4.79.
+series) and 1.0 from 2018 (the back-series shelved). NDA-era mean 4.78.
 
 ### Fiscal Centralisation Index (FCI), scale 0-1 (relative)
 The mean of the components published for each year. C1-C4 are min-max normalised over the
