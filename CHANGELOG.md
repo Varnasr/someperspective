@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.54.1] - 2026-10-12
+
+### Added
+- The four accounts from the old dashboard are back, on a page of their own: three from the author's fieldwork interviews, with the quotations as recorded, and one from the public record. Each sits beside the charts of the series it relates to. The account of the withheld consumption survey now dates MoSPI's decision correctly (15 November 2019).
+
+### Fixed
+- The writing check now reads every /explore/ page and the primer, forecasts and fieldwork sources.
+
 ## [2.54.0] - 2026-10-10
 
 ### Changed

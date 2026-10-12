@@ -1,0 +1,54 @@
+{
+  "intro": "Statistics describe trends. These four accounts show what some of those trends mean for particular people. The first three come from the author's own fieldwork interviews; the quotations are as the people interviewed said them. The fourth is a matter of public record. Each sits beside the published figures it relates to.",
+  "stories": [
+    {
+      "id": "gig",
+      "title": "The gig economy trap",
+      "source": "Author's fieldwork",
+      "lead": "Rajesh, 28, has an engineering degree from a reputed college. Today he delivers food for 12 hours a day and earns ₹15,000 a month.",
+      "quote": "They call us 'partners' but treat us like servants. No fuel reimbursement when petrol hits ₹120. Algorithm decides everything—one bad rating and income drops 40%.",
+      "numbers": "NITI Aayog estimated 6.8 million gig and platform workers in 2019-20, up from 2.5 million in 2011-12, and projects 23.5 million by 2029-30.",
+      "impact": "Graduate unemployment was 13.0% in 2023-24, about four times the overall rate (PLFS). Educated young people who cannot find regular jobs take work like Rajesh's.",
+      "series": [
+        "gigWorkers",
+        "graduateUnemployment"
+      ]
+    },
+    {
+      "id": "farmer",
+      "title": "The farmer's paradox",
+      "source": "Author's fieldwork",
+      "lead": "In Vidarbha, the cotton farmer Shankar received ₹6,000 under PM-KISAN. His input costs rose by ₹45,000. He now works as a construction labourer in Mumbai.",
+      "quote": "₹6,000 is a cruel joke. Fertilizer bag costs ₹1,400. They give us drops while drowning us in debt. My son will never farm—I'll sell the land first.",
+      "numbers": "NABARD's rural surveys put average monthly household income at ₹8,059 in 2016-17 and ₹12,698 in 2021-22, a rise of about 27% after rural inflation. The Shanta Kumar committee (2015) found that only 6% of farmers sell at the minimum support price.",
+      "impact": "Incomes rose, and so did borrowing: the share of rural households in debt went from 47.4% to 52% over the same five years (NABARD). PM-KISAN's ₹6,000 a year is about 4% of the average rural household's yearly income of about ₹1.5 lakh.",
+      "series": [
+        "ruralIncome"
+      ]
+    },
+    {
+      "id": "women",
+      "title": "The missing women workers",
+      "source": "Author's fieldwork",
+      "lead": "Priya, an MBA from an IIM, left a job that paid ₹18 lakh a year. \"Childcare costs ₹25,000 a month. After taxes and expenses, I was paying to work.\"",
+      "quote": "Society judges working mothers, offices demand 14-hour days, zero support systems. It's not a choice—it's survival. My education is wasted, but my child needs me.",
+      "numbers": "On MoSPI's usual-status series the labour force participation rate of women aged 15 and over rose from 23.3% in 2017-18 to 41.7% in 2023-24, and was 40.0% in 2025. PLFS counts a woman who helps without pay in a household enterprise as a worker.",
+      "impact": "Nearly 90% of India's workers are informally employed (ILO and IHD, India Employment Report 2024). The Maternity Benefit Act covers establishments, so most women in informal work have no statutory maternity benefit.",
+      "series": [
+        "femaleLFPR"
+      ]
+    },
+    {
+      "id": "statistics",
+      "title": "The statistical darkness",
+      "source": "Public record",
+      "lead": "P.C. Mohanan, acting chair of the National Statistical Commission, resigned on 28 January 2019 with the fellow member J.V. Meenakshi. The government had held back the 2017-18 Periodic Labour Force Survey, which the Commission had approved in December 2018. When it came out in May 2019 it put unemployment at 6.1% for all ages, reported as the highest since 1972-73.",
+      "quote": "",
+      "numbers": "The last census was taken in 2011, and the next is scheduled for 2027. The 2017-18 consumption survey was never released. On 15 November 2019 Business Standard reported that its draft showed monthly spending per person 3.7% lower than in 2011-12, and 8.8% lower in villages; the same day MoSPI said it would not release the survey, citing data quality. The next consumption survey, for 2022-23, was published in February 2024.",
+      "impact": "For eleven years India had no published consumption survey, the survey poverty is measured from. Policy in those years was made without it.",
+      "series": [
+        "ssi"
+      ]
+    }
+  ]
+}

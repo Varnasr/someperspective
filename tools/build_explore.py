@@ -327,7 +327,7 @@ def topic_page(d, slug, title, intro, keys):
 LEGACY = {
     "main-content": "", "what-is-this": "", "executive-summary": "/", "key-findings": "/#findings",
     "interactive-data": "", "your-state": "states/", "correlation-explorer": "compare/",
-    "three-indices": "statistics/", "human-stories": "", "methodology": "methods/",
+    "three-indices": "statistics/", "human-stories": "voices/", "methodology": "methods/",
     "implications": "", "era-comparison": "/#scorecard", "scenario-lab": "compare/",
     "deep-analysis": "", "what-next": "", "economic-trajectory": "forecasts/",
     "reading-the-economy": "primer/", "cite-download": "methods/", "independent-check": "methods/",
@@ -534,6 +534,27 @@ def forecasts_page(d):
                  f"{SITE}/explore/forecasts/", body)
 
 
+def voices_page(d):
+    v = json.load(open(os.path.join(ROOT, "data", "voices.json"), encoding="utf-8"))
+    blocks = []
+    for st in v["stories"]:
+        q = (f'<blockquote class="vq"><p>&ldquo;{escape(st["quote"])}&rdquo;</p></blockquote>' if st["quote"] else "")
+        charts = "".join(chart_block(d, k) for k in st["series"] if k in SERIES)
+        blocks.append(
+            f'<section class="series" id="{st["id"]}"><div class="slab"><p class="kicker">{escape(st["source"])}</p>'
+            f'<h2>{escape(st["title"])}</h2><p class="dek">{escape(st["lead"])}</p>{q}'
+            f'<p><strong>The numbers.</strong> {escape(st["numbers"])}</p>'
+            f'<p><strong>What it means.</strong> {escape(st["impact"])}</p></div>{charts}</section>')
+    body = ('<style>.vq{border-left:4px solid var(--nda);margin:1rem 0;padding:.2rem 0 .2rem 1rem;'
+            'font-size:1.15rem;font-weight:600}</style>'
+            '<div class="slab" id="human-stories"><p class="crumb"><a href="/explore/">Data</a> &rsaquo; People behind the data</p>'
+            '<p class="kicker">Fieldwork</p><h1>The people behind the data</h1>'
+            f'<p class="dek">{escape(v["intro"])}</p></div>' + "".join(blocks))
+    return shell("The people behind the data: Some Perspective",
+                 "Four accounts from the author's fieldwork and the public record, each beside the published figures.",
+                 f"{SITE}/explore/voices/", body)
+
+
 def build():
     d, _meta, _version = bf.load()
     out = {}
@@ -545,10 +566,12 @@ def build():
     out[os.path.join(OUT, "compare", "index.html")] = correlation_page(d)
     out[os.path.join(OUT, "methods", "index.html")] = methods_page(d)
     out[os.path.join(OUT, "forecasts", "index.html")] = forecasts_page(d)
+    out[os.path.join(OUT, "voices", "index.html")] = voices_page(d)
     import primer_page
     out[os.path.join(OUT, "primer", "index.html")] = primer_page.primer_page(d, sys.modules[__name__])
     pages += [("states", "The states", "Income, population, seats and transfers for the sixteen largest states."),
               ("compare", "Compare two series", "Plot any two series against each other, year by year."),
+              ("voices", "The people behind the data", "Four accounts from the author's fieldwork and the public record, beside the figures."),
               ("primer", "Reading the Indian economy", "A primer on what the main numbers measure, how they are built and where they mislead."),
               ("forecasts", "Forecasts", "What the RBI, the World Bank, the OECD, the ADB and the IMF expect for 2026-27 and 2027-28."),
               ("methods", "Sources and method", "The publisher behind every series, and how the indices are built.")]

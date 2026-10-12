@@ -24,8 +24,9 @@ SOURCES = [
     "index.html", "explore/index.html", "data.json", "paper/paper.md", "data/METHODOLOGY.md",
     "data/updates.json", "data/features.json", "data/walkthrough.json",
     "data/inflation.json", "data/care.json", "tools/walkthrough_shell.html",
+    "data/primer.json", "data/forecasts.json", "data/voices.json",
 ]
-GENERATED_DIRS = ["analysis", "care", "inflation", "walkthrough", "downloads"]
+GENERATED_DIRS = ["analysis", "care", "inflation", "walkthrough", "downloads", "explore"]
 GENERATED_FILES = ["updates.html", "feed.xml"]
 
 DASH = re.compile(r"—|&mdash;|&#8212;|&#x2014;| -- ")
@@ -47,7 +48,16 @@ BANNED = re.compile(r"\b(" + "|".join([
 ]) + r")\b", re.I)
 
 # (file, exact text, reason). Keep each one a verbatim quotation or a title.
-EXEMPT = []
+EXEMPT = [
+    # The three fieldwork quotations keep their dashes. Each fragment is the
+    # dash and the words either side, so it matches in JSON and in escaped HTML.
+    ("explore/voices/index.html", "everything—one bad rating", "Fieldwork quotation from the author's own interviews, kept verbatim."),
+    ("explore/voices/index.html", "never farm—I", "Fieldwork quotation, as above."),
+    ("explore/voices/index.html", "choice—it", "Fieldwork quotation, as above."),
+    ("data/voices.json", "everything—one bad rating", "Source of the fieldwork quotation above."),
+    ("data/voices.json", "never farm—I", "Source of the fieldwork quotation above."),
+    ("data/voices.json", "choice—it", "Source of the fieldwork quotation above."),
+]
 
 
 def files():

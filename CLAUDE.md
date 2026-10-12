@@ -55,9 +55,10 @@ split design, all read from `data.json` at build time, so there is no second cop
 of any figure. Old tab links (`/explore/#economic-trajectory` and the rest) are
 forwarded by `LEGACY` in that script.
 
-Three things from the old app were deliberately not carried over, after a fact
-check on 2026-10-10. The "human stories" quoted three named people with no
-interview record behind them. The methodology tab drew an SSI component chart
+The four "human stories" are on `/explore/voices/`, from `data/voices.json`.
+Three are the author's own fieldwork interviews (confirmed by the author on
+2026-10-12); their quotations are verbatim and exempt from the writing check.
+Two things from the old app were deliberately not carried over. The methodology tab drew an SSI component chart
 and a "data coverage" chart from literals that matched nothing the index
 computes. The scenario lab and the 2030 "trajectory" ran on hand-set
 coefficients. The trajectory is replaced by `/explore/forecasts/`, which shows

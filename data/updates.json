@@ -2,6 +2,22 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.54.1",
+      "date": "2026-10-12",
+      "title": "The fieldwork accounts are back",
+      "summary": "The people behind the data, restored on their own page.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "The four accounts from the old dashboard are back, on a page of their own: three from the author's fieldwork interviews, with the quotations as recorded, and one from the public record. Each sits beside the charts of the series it relates to. The account of the withheld consumption survey now dates MoSPI's decision correctly (15 November 2019)."
+        },
+        {
+          "kind": "Fixed",
+          "text": "The writing check now reads every /explore/ page and the primer, forecasts and fieldwork sources."
+        }
+      ]
+    },
+    {
       "version": "2.54.0",
       "date": "2026-10-10",
       "title": "The data pages, rebuilt and rechecked",

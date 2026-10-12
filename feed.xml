@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>The fieldwork accounts are back</title>
+    <link>https://someperspective.info/updates.html#v2.54.1</link>
+    <guid isPermaLink="false">someperspective-v2.54.1</guid>
+    <pubDate>Mon, 12 Oct 2026 12:00:00 +0000</pubDate>
+    <description>The people behind the data, restored on their own page. Added: The four accounts from the old dashboard are back, on a page of their own: three from the author's fieldwork interviews, with the quotations as recorded, and one from the public record. Each sits beside the charts of the series it relates to. The account of the withheld consumption survey now dates MoSPI's decision correctly (15 November 2019). Fixed: The writing check now reads every /explore/ page and the primer, forecasts and fieldwork sources.</description>
+  </item>
+  <item>
     <title>The data pages, rebuilt and rechecked</title>
     <link>https://someperspective.info/updates.html#v2.54.0</link>
     <guid isPermaLink="false">someperspective-v2.54.0</guid>
