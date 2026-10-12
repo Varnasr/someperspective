@@ -83,8 +83,7 @@ someperspective/
 ├── analysis/                  # 37 generated standing analyses, one permalink each
 ├── walkthrough/               # Generated guided deck (source: tools/walkthrough_shell.html)
 ├── tools/                     # Build + guard scripts (see below)
-├── sitemap.xml, robots.txt    # Search/crawler metadata
-└── CNAME                      # GitHub Pages domain
+└── sitemap.xml, robots.txt    # Search/crawler metadata
 ```
 
 ## Build and verify

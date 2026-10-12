@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-What GitHub Pages publishes, and what it must not.
+What the site publishes, and what it must not.
 
 Until v2.48.0 the deploy uploaded the whole checkout. CLAUDE.md, .claude/,
 .githooks/, the Tailwind source, the build tools and ai-image-prompts.md were
@@ -21,7 +21,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PUBLISHED = {
-    ".nojekyll", "CNAME", "robots.txt", "sitemap.xml", "feed.xml",
+    "robots.txt", "sitemap.xml", "feed.xml",
     "manifest.json", "sw.js", "og",
     "favicon.svg", "favicon-32.png", "apple-touch-icon.png", "assets",
     "index.html", "updates.html", "data.json",
