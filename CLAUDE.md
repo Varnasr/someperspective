@@ -98,14 +98,16 @@ navigation covers the foot of the page.
 ## Hosting and DNS
 
 The owner's rule for every site (2026-10-12): Porkbun is the registrar and
-nothing else; Netlify does everything else, DNS included. someperspective.info
-is the exception still being moved. Its zone is in Netlify DNS (team Idealog
-Works, nameservers `dns1-4.p03.nsone.net`) with the records copied from Porkbun:
-the four GitHub Pages A and AAAA records, `www` as a CNAME to
-`varnasr.github.io`, Porkbun's two MX records and SPF line for mail
-forwarding, and the Google Search Console TXT record. The site itself is still
-served by GitHub Pages (`.github/workflows/static.yml`, `CNAME`), not by
-Netlify. Change a record in Netlify, not at Porkbun.
+nothing else; Netlify does everything else. The site is served by Netlify from
+this repository (`netlify.toml`): the build runs
+`tools/check_publish.py --stage _site`, which copies only the published files,
+so the build tools, paper sources and notes here are never served, and a page
+linking to something unpublished fails the deploy. The DNS zone is in Netlify
+DNS (team Idealog Works, nameservers `dns1-4.p03.nsone.net`) and also carries
+Porkbun's two MX records and SPF line for mail forwarding, and the Google
+Search Console TXT record. Change a record in Netlify, not at Porkbun.
+GitHub Pages (`.github/workflows/static.yml`, `CNAME`) served the site until
+2026-10-12 and stays only until the nameserver switch has propagated.
 
 ## Estimates are drawn, never averaged
 
