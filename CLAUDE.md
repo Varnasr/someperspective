@@ -106,8 +106,8 @@ linking to something unpublished fails the deploy. The DNS zone is in Netlify
 DNS (team Idealog Works, nameservers `dns1-4.p03.nsone.net`) and also carries
 Porkbun's two MX records and SPF line for mail forwarding, and the Google
 Search Console TXT record. Change a record in Netlify, not at Porkbun.
-GitHub Pages (`.github/workflows/static.yml`, `CNAME`) served the site until
-2026-10-12 and stays only until the nameserver switch has propagated.
+GitHub Pages served the site until 2026-10-12; its workflow and `CNAME` file
+are gone.
 
 ## Estimates are drawn, never averaged
 
