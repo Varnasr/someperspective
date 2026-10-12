@@ -1,0 +1,8 @@
+# The site is served by Netlify from this repository. The build copies only the
+# published files into _site, so the build tools, the paper sources and the
+# notes in this repository are never served. tools/check_publish.py names
+# every top-level entry as published or kept back, and fails the build on a
+# page link that points at something unpublished.
+[build]
+  command = "python3 tools/check_publish.py --stage _site"
+  publish = "_site"

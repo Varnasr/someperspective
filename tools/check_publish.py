@@ -33,7 +33,7 @@ PUBLISHED = {
 KEPT_BACK = {
     ".git", ".github", ".claude", ".githooks", ".gitmessage", ".gitignore",
     ".gitattributes", ".editorconfig", "node_modules", "_site",
-    "CLAUDE.md", "CONTRIBUTING.md", "CHANGELOG.md", "ROADMAP.md",
+    "CLAUDE.md", "CONTRIBUTING.md", "netlify.toml", "CHANGELOG.md", "ROADMAP.md",
     "ai-image-prompts.md", "paper", "package.json", "package-lock.json", "src", "tools",
 }
 
