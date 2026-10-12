@@ -9,12 +9,21 @@
 <title>Updates | Some Perspective</title>
 <meta name="description" content="Dated record of data refreshes, corrections and changes to Some Perspective.">
 <link rel="canonical" href="https://someperspective.info/updates.html">
-<meta property="og:title" content="Updates | Some Perspective">
+<meta property="og:site_name" content="Some Perspective">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Updates">
 <meta property="og:description" content="Dated record of data refreshes, corrections and changes to Some Perspective.">
 <meta property="og:url" content="https://someperspective.info/updates.html">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://someperspective.info/og-preview.png">
+<meta property="og:image" content="https://someperspective.info/og/updates.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Updates. Some Perspective, India 2004-2026.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Updates">
+<meta name="twitter:description" content="Dated record of data refreshes, corrections and changes to Some Perspective.">
+<meta name="twitter:image" content="https://someperspective.info/og/updates.png">
+<meta name="twitter:image:alt" content="Updates. Some Perspective, India 2004-2026.">
 <link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="https://someperspective.info/feed.xml">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
@@ -79,6 +88,13 @@ body{background:var(--paper)}
 .top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
+
+.share{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:1rem;font-size:.85rem}
+.share span{font-weight:800;font-stretch:112.5%;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-right:.25rem}
+.share a,.share button{all:unset;cursor:pointer;display:inline-block;border:2px solid var(--ink,#0d0e12);padding:.3rem .7rem;
+font-weight:700;color:var(--ink,#0d0e12);background:var(--paper,#f5f5f2);min-height:1.6rem;line-height:1.6rem}
+.share a:hover,.share button:hover{background:var(--ink,#0d0e12);color:var(--paper,#f5f5f2)}
+.share a:focus-visible,.share button:focus-visible{outline:3px solid var(--nda,#5a2a8c);outline-offset:2px}
 </style>
 
 </head>
@@ -93,6 +109,11 @@ body{background:var(--paper)}
 <p class="rel"><a class="btn" href="feed.xml">Subscribe by RSS</a>
 &nbsp; <a href="analysis/">Browse the analysis library &rarr;</a></p>
 <div class="card">
+<span class="kicker">2026-10-12 &nbsp;·&nbsp; v2.56.0</span>
+<h2 style="margin-top:.3rem">Link previews and sharing</h2>
+<p class="lede">Each page now shows its own title, summary and chart when shared, and every page has a share row.</p>
+<ul class="list" style="margin-top:.6rem"><li><strong>Added:</strong> Every page has its own link-preview card, drawn from the page's own title, summary and first chart in the site's split design, so a link shared on WhatsApp, X or LinkedIn shows what the page says. The cards are rebuilt by tools/build_og.py and CI fails when one is out of date.</li><li><strong>Added:</strong> Every page has a share row: WhatsApp with the title, summary and link already written, X, LinkedIn, email, and a copy-link button where the browser allows it. The links load nothing from those services until a reader taps one.</li><li><strong>Added:</strong> Structured data for search engines: each topic page under /explore/ is described as a dataset (licence, coverage, the series it measures and the CSV and JSON downloads), and the working paper as a scholarly article.</li><li><strong>Removed:</strong> The old social card (og-preview.png), which showed the earlier design and figures since corrected.</li></ul>
+</div><div class="card">
 <span class="kicker">2026-10-12 &nbsp;·&nbsp; v2.55.0</span>
 <h2 style="margin-top:.3rem">Forecast arithmetic and the site's own projections</h2>
 <p class="lede">What the published forecasts do to the comparison, and back-tested projections for series nobody else forecasts.</p>
@@ -224,6 +245,6 @@ body{background:var(--paper)}
 <ul class="list" style="margin-top:.6rem"><li><strong>Changed:</strong> The Statistical Suppression Index now includes the COVID mortality undercount and the NSO merger. The Fiscal Centralisation Index now treats GST as a structural shift in state taxing power as well as counting cesses.</li><li><strong>Method:</strong> Both the UPA and NDA decades are now generated by the same script, so no difference between the eras can come from how they were computed.</li></ul>
 </div>
 <p class="meta">Full technical detail for every release, including internal refactors not listed here,
-is in <a href="https://github.com/Varnasr/someperspective/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p></main>
+is in <a href="https://github.com/Varnasr/someperspective/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p><p class="share" aria-label="Share this page"><span>Share</span><a href="https://wa.me/?text=Updates%0ADated%20record%20of%20data%20refreshes%2C%20corrections%20and%20changes%20to%20Some%20Perspective.%0Ahttps%3A//someperspective.info/updates.html" rel="noopener" target="_blank">WhatsApp</a><a href="https://twitter.com/intent/tweet?text=Updates&amp;url=https%3A//someperspective.info/updates.html" rel="noopener" target="_blank">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//someperspective.info/updates.html" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:?subject=Updates&amp;body=Dated%20record%20of%20data%20refreshes%2C%20corrections%20and%20changes%20to%20Some%20Perspective.%0A%0Ahttps%3A//someperspective.info/updates.html">Email</a><button type="button" data-copy="https://someperspective.info/updates.html" hidden>Copy link</button></p><script>document.querySelectorAll('[data-copy]').forEach(function(b){if(!navigator.clipboard)return;b.hidden=false;b.addEventListener('click',function(){navigator.clipboard.writeText(b.dataset.copy).then(function(){b.textContent='Link copied';setTimeout(function(){b.textContent='Copy link';},2000);});});});</script></main>
 <script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body></html>

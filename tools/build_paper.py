@@ -23,12 +23,16 @@ so a machine without Chromium can still build the site.
 Run: python3 tools/build_paper.py            (--check to verify freshness)
 """
 import html as ihtml
+import json
 import os
 import re
 import shutil
 import subprocess
 import sys
 import tempfile
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import social  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "paper", "paper.md")
@@ -260,16 +264,20 @@ def build_html(meta, body, toc):
 <meta name="description" content="Full research paper: India's institutional and distributional transformation, 2004-2026.">
 <meta name="author" content="{ihtml.escape(meta.get('author',''))}">
 <link rel="canonical" href="https://someperspective.info/downloads/paper.html">
-<meta property="og:title" content="{ihtml.escape(title)}">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://someperspective.info/downloads/paper.html">
-<meta property="og:image" content="https://someperspective.info/og-preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>{CSS}</style>
+{social.head(title, "The working paper: India's institutional and distributional record, 2004-2026, with every figure checked against its publisher.", "https://someperspective.info/downloads/paper.html", "article")}<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@type": "ScholarlyArticle",
+    "headline": title, "author": {"@type": "Person", "name": meta.get("author", "")},
+    "datePublished": meta.get("date", ""), "version": meta.get("version", ""),
+    "url": "https://someperspective.info/downloads/paper.html",
+    "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf",
+                 "contentUrl": "https://someperspective.info/downloads/paper.pdf"},
+    "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": True,
+    "image": social.og_image("https://someperspective.info/downloads/paper.html")}, ensure_ascii=False)}</script>
+<style>{CSS}{social.SHARE_CSS}</style>
 </head>
 <body><div class="wrap">
 <p class="back"><a href="../">&larr; Some Perspective</a> &nbsp;·&nbsp; <a href="paper.pdf">Download PDF</a></p>
+{social.share(title, "The working paper, with every figure checked against its publisher.", "https://someperspective.info/downloads/paper.html")}
 <div class="hdr">
 <span class="kicker">Working paper · v{ihtml.escape(meta.get('version','1.0'))}</span>
 <h1>{ihtml.escape(title)}</h1>

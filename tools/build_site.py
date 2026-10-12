@@ -38,6 +38,8 @@ import zipfile
 from xml.sax.saxutils import escape
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+import social  # noqa: E402
 SITE = "https://someperspective.info"
 
 # Retired documents. These files still exist under downloads/ but contain only a
@@ -131,13 +133,7 @@ HEAD = """<!DOCTYPE html>
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
-<meta property="og:title" content="{ogtitle}">
-<meta property="og:description" content="{desc}">
-<meta property="og:url" content="{canonical}">
-<meta property="og:type" content="article">
-<meta property="og:image" content="{site}/og-preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="{site}/feed.xml">
+{social}<link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="{site}/feed.xml">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>{css}</style>
 {ld}
@@ -155,10 +151,12 @@ FOOT = """</main>
 
 
 def page(title, desc, canonical, body, ld=""):
+    plain = title.split(" | Some Perspective")[0]
     return (
         HEAD.format(title=escape(title), desc=escape(desc), canonical=canonical,
-                    ogtitle=escape(title), css=CSS, site=SITE, ld=ld)
-        + body + FOOT
+                    social=social.head(plain, desc, canonical, "article"),
+                    css=CSS + social.SHARE_CSS, site=SITE, ld=ld)
+        + body + social.share(plain, desc, canonical) + social.COPY_JS + FOOT
     )
 
 
@@ -207,7 +205,8 @@ def build_analysis(features, vintage):
         rel = os.path.join("analysis", f["slug"] + ".html")
         write(rel, be.shell(f["title"] + ": Some Perspective", f["takeaway"],
                             f"{SITE}/analysis/{f['slug']}.html", body,
-                            head=f'<script type="application/ld+json">{ld}</script>\n'))
+                            head=f'<script type="application/ld+json">{ld}</script>\n', typ="article",
+                            share_text=f["takeaway"]))
         written.append(rel)
         for old in f.get("redirectFrom", []):
             url = f"/analysis/{f['slug']}.html"

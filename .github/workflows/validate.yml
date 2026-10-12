@@ -113,6 +113,7 @@ jobs:
           python3 tools/build_site.py --check
           python3 tools/build_master.py --check
           python3 tools/build_front.py --check
+          python3 tools/build_og.py --check
           python3 replication_code.py
 
       - name: Check downloads/ docs agree with data.json

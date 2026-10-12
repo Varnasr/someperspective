@@ -24,6 +24,8 @@ import sys
 from html import escape
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
 import compute_indices as ci  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import social  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "index.html")
@@ -466,16 +468,10 @@ def build():
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self';">
 <meta name="version" content="{escape(version)}">
 <title>Some Perspective: India's political economy, 2004-2026</title>
-<meta name="description" content="On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before; inflation is the exception. Data, three indices, a working paper and an interactive dashboard, every figure checked against its publisher.">
+<meta name="description" content="On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before; inflation is the exception. Data by topic, three indices, a working paper and a guided walkthrough, every figure checked against its publisher.">
 <meta name="author" content="Dr. Varna Sri Raman">
 <link rel="canonical" href="{SITE}/">
-<meta property="og:title" content="Some Perspective: India's political economy, 2004-2026">
-<meta property="og:description" content="On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before. Inflation is the exception.">
-<meta property="og:url" content="{SITE}/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="{SITE}/og-preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
+{social.head("Some Perspective: India's political economy, 2004-2026", f"On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before. Inflation is the exception.", SITE + "/")}<meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="/manifest.json">
 <link rel="alternate" type="application/rss+xml" title="Some Perspective updates" href="/feed.xml">
@@ -488,7 +484,7 @@ def build():
 (function(){{var h=location.hash;if(h&&h.length>1&&!document.getElementById(h.slice(1))){{location.replace('/explore/'+h);}}}})();
 </script>
 <script type="application/ld+json">{ld}</script>
-<style>{CSS}</style>
+<style>{CSS}{social.SHARE_CSS}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -510,7 +506,7 @@ def build():
 <p class="kicker">India's political economy, 2004-2026</p>
 <h1>On {worse} of {total} measures, India's record since 2014 is worse than in the decade before</h1>
 <p class="dek">The page is split where the governments changed. The UPA decade sits on the left and the NDA period on the right, each at its own width in years, so every chart below changes side between 2013 and 2014. Inflation is the one measure that improved. Growth was lower overall and higher once the pandemic year is left out.</p>
-<p class="byline">By Dr. Varna Sri Raman &middot; Updated {escape(updated)} &middot; Version {escape(version)}</p>
+<p class="byline">By Dr. Varna Sri Raman &middot; Updated {escape(updated)} &middot; Version {escape(version)}</p>{social.share("Some Perspective: India's political economy, 2004-2026", f"On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before. Inflation is the exception.", SITE + "/")}
 </div>
 
 <section id="scorecard" aria-labelledby="h-score">
@@ -561,6 +557,7 @@ def build():
 <p class="note" id="interest">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
 </footer>
 <script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
+{social.COPY_JS}
 </body>
 </html>
 """

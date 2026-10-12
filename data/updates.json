@@ -2,6 +2,30 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.56.0",
+      "date": "2026-10-12",
+      "title": "Link previews and sharing",
+      "summary": "Each page now shows its own title, summary and chart when shared, and every page has a share row.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "Every page has its own link-preview card, drawn from the page's own title, summary and first chart in the site's split design, so a link shared on WhatsApp, X or LinkedIn shows what the page says. The cards are rebuilt by tools/build_og.py and CI fails when one is out of date."
+        },
+        {
+          "kind": "Added",
+          "text": "Every page has a share row: WhatsApp with the title, summary and link already written, X, LinkedIn, email, and a copy-link button where the browser allows it. The links load nothing from those services until a reader taps one."
+        },
+        {
+          "kind": "Added",
+          "text": "Structured data for search engines: each topic page under /explore/ is described as a dataset (licence, coverage, the series it measures and the CSV and JSON downloads), and the working paper as a scholarly article."
+        },
+        {
+          "kind": "Removed",
+          "text": "The old social card (og-preview.png), which showed the earlier design and figures since corrected."
+        }
+      ]
+    },
+    {
       "version": "2.55.0",
       "date": "2026-10-12",
       "title": "Forecast arithmetic and the site's own projections",

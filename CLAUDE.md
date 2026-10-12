@@ -17,6 +17,7 @@ python3 tools/build_front.py     # index.html
 python3 tools/build_paper.py     # downloads/paper.html and the PDF
 python3 tools/build_explore.py   # /explore/ pages (and tools/primer_page.py)
 python3 tools/build_site.py      # analyses, explainers, walkthrough, sitemap, feed, dataset, ZIP
+python3 tools/build_og.py        # link-preview cards, og/<name>.png; run last
 python3 replication_code.py      # must reproduce the scorecard
 python3 tools/check_palette.py   # palette copies + contrast, run by CI
 python3 tools/check_indexability.py
@@ -72,6 +73,27 @@ three series currently pick "no change". Run it after any change to those series
 before `build_explore`; CI runs `--check`. The site does not forecast GDP or
 inflation itself: 22 annual points with two base changes cannot beat forecasters
 working from monthly and quarterly data.
+
+## Link previews and sharing
+
+`tools/social.py` writes every page's Open Graph and Twitter tags and its share
+row (WhatsApp with the text written, X, LinkedIn, email, copy link). Every
+builder calls it; the hand-maintained `downloads/*.html` and
+`tools/walkthrough_shell.html` carry its output pasted in, so if the tag set
+changes, change those too. A page's card is `og/<name>.png`, where the name
+comes from its canonical address (`social.og_name`), so a builder and the card
+generator agree without reading each other.
+
+`tools/build_og.py` draws the cards from the built pages, so it runs after every
+other builder. Each card is the page's own og:title and og:description, and the
+first seam chart on the page redrawn across the bottom: a seam chart gives each
+year 1/23 of the width, so on a card split at 10/23 the 2013/2014 boundary falls
+on the card's seam. `og/manifest.json` holds a hash of what each card was drawn
+from, and `--check` (in CI, needs no Pillow) fails on a stale or missing card, a
+card with no page, or a page whose og:image points anywhere else. Bump `VERSION`
+in the script when the drawing changes. On the walkthrough the share row is
+moved into the last slide by the deck script, because the fixed slide
+navigation covers the foot of the page.
 
 ## Estimates are drawn, never averaged
 

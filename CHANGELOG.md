@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.56.0] - 2026-10-12
+
+### Added
+- Every page has its own link-preview card, drawn from the page's own title, summary and first chart in the site's split design, so a link shared on WhatsApp, X or LinkedIn shows what the page says. The cards are rebuilt by tools/build_og.py and CI fails when one is out of date.
+- Every page has a share row: WhatsApp with the title, summary and link already written, X, LinkedIn, email, and a copy-link button where the browser allows it. The links load nothing from those services until a reader taps one.
+- Structured data for search engines: each topic page under /explore/ is described as a dataset (licence, coverage, the series it measures and the CSV and JSON downloads), and the working paper as a scholarly article.
+
+### Removed
+- The old social card (og-preview.png), which showed the earlier design and figures since corrected.
+
 ## [2.55.0] - 2026-10-12
 
 ### Added
