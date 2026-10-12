@@ -470,6 +470,7 @@ def build():
 <title>Some Perspective: India's political economy, 2004-2026</title>
 <meta name="description" content="On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before; inflation is the exception. Data by topic, three indices, a working paper and a guided walkthrough, every figure checked against its publisher.">
 <meta name="author" content="Dr. Varna Sri Raman">
+<meta name="google-site-verification" content="uavQl59BP1IBBVW84ryCVyCyiaWF41JmJ6tf9vFj3Wg">
 <link rel="canonical" href="{SITE}/">
 {social.head("Some Perspective: India's political economy, 2004-2026", f"On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before. Inflation is the exception.", SITE + "/")}<meta name="theme-color" content="#f5f5f2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)">
