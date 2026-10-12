@@ -72,6 +72,15 @@ def main():
             elif data['economic'][key][years.index(int(y))] is not None:
                 errors.append(f'estimates.{key}.{y}: the year also has an outturn')
 
+    # 2: the site's own projections must sit only on years with no outturn.
+    pp = os.path.join(ROOT, 'data', 'projections.json')
+    if os.path.exists(pp):
+        for key, ser in json.load(open(pp, encoding='utf-8'))['series'].items():
+            for pt in ser['points']:
+                y = pt['year']
+                if y in years and data['economic'][key][years.index(y)] is not None:
+                    errors.append(f'projections.{key}.{y}: the year has an outturn; rebuild projections')
+
     # 3: data.json indices must equal the canonical engine
     sys.path.insert(0, os.path.join(ROOT, 'data'))
     try:

@@ -68,6 +68,19 @@ def estimates(d, key):
     return out
 
 
+def projections(d, key):
+    """The site's own back-tested projections for a series, keyed by year index."""
+    path = os.path.join(ROOT, "data", "projections.json")
+    if not os.path.exists(path):
+        return {}
+    p = json.load(open(path, encoding="utf-8"))["series"].get(key)
+    if not p:
+        return {}
+    return {YEARS.index(x["year"]): {"value": x["value"], "lo": x["lo"], "hi": x["hi"],
+                                     "label": f"this site's projection ({p['model']} model, 80% interval {x['lo']:g} to {x['hi']:g})"}
+            for x in p["points"] if x["year"] in YEARS}
+
+
 def era_means(vals):
     return mean(vals[:10]), mean(vals[10:])
 
@@ -106,7 +119,7 @@ def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=Tru
     that do not scale), and every label is HTML positioned in per cent, so the
     text never stretches with it."""
     est = est or {}
-    have = [v for v in vals if v is not None] + [e["value"] for e in est.values()]
+    have = [v for v in vals if v is not None] + [e.get(k) for e in est.values() for k in ("value", "lo", "hi") if e.get(k) is not None]
     vmin = min(have) if lo is None else lo
     vmax = max(have) if hi is None else hi
     if lo is None and vmin >= 0 and vmin < (vmax - vmin) * 0.6:
@@ -154,6 +167,8 @@ def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=Tru
         j = max((k for k in range(i) if vals[k] is not None), default=None)
         if j is not None:
             svg.insert(-1, f'<line x1="{X(j):.2f}" x2="{X(i):.2f}" y1="{Y(vals[j]):.2f}" y2="{Y(e["value"]):.2f}" class="s-est"/>')
+        if e.get("lo") is not None:
+            svg.insert(-1, f'<line x1="{X(i):.2f}" x2="{X(i):.2f}" y1="{Y(e["lo"]):.2f}" y2="{Y(e["hi"]):.2f}" class="s-rng"/>')
         lab.append(f'<span class="est" style="left:{X(i):.2f}%;top:{Y(e["value"]):.2f}%"></span>')
     if tall:
         tdp = 0 if step >= 1 else (1 if step >= 0.1 else 2)
@@ -246,6 +261,7 @@ border:2px solid var(--ink);padding:.12rem .45rem}
 .chart .s-upa{stroke:var(--upa)}.chart .s-nda{stroke:var(--nda)}
 .chart .m-upa,.chart .m-nda{stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
 .chart .m-upa{stroke:var(--upa)}.chart .m-nda{stroke:var(--nda)}
+.chart .s-rng{stroke:var(--nda);stroke-opacity:.45;stroke-width:6;vector-effect:non-scaling-stroke}
 .chart .s-est{stroke:var(--nda);stroke-width:2;stroke-dasharray:2 4;vector-effect:non-scaling-stroke}
 .chart .est{position:absolute;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border:2.5px solid var(--nda);background:var(--paper);border-radius:50%;box-sizing:border-box}
 .labels{position:absolute;inset:0;pointer-events:none;font-size:.72rem;font-weight:600;color:var(--muted)}

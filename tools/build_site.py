@@ -657,7 +657,7 @@ def build_sitemap(features, vintage):
             (f"{SITE}/inflation/", "0.9"), (f"{SITE}/care/", "0.9"),
             (f"{SITE}/updates.html", "0.8"), (f"{SITE}/analysis/", "0.8")]
     for slug in ("economy", "jobs", "inequality", "democracy", "statistics", "federalism",
-                 "states", "compare", "forecasts", "primer", "methods"):
+                 "states", "compare", "forecasts", "primer", "voices", "methods"):
         if os.path.exists(os.path.join(ROOT, "explore", slug, "index.html")):
             urls.append((f"{SITE}/explore/{slug}/", "0.8"))
     for rel in sorted(os.listdir(os.path.join(ROOT, "downloads"))):

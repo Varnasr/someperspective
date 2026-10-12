@@ -55,14 +55,23 @@ split design, all read from `data.json` at build time, so there is no second cop
 of any figure. Old tab links (`/explore/#economic-trajectory` and the rest) are
 forwarded by `LEGACY` in that script.
 
-Three things from the old app were deliberately not carried over, after a fact
-check on 2026-10-10. The "human stories" quoted three named people with no
-interview record behind them. The methodology tab drew an SSI component chart
+The four "human stories" are on `/explore/voices/`, from `data/voices.json`.
+Three are the author's own fieldwork interviews (confirmed by the author on
+2026-10-12); their quotations are verbatim and exempt from the writing check.
+Two things from the old app were deliberately not carried over. The methodology tab drew an SSI component chart
 and a "data coverage" chart from literals that matched nothing the index
 computes. The scenario lab and the 2030 "trajectory" ran on hand-set
 coefficients. The trajectory is replaced by `/explore/forecasts/`, which shows
 only forecasts other institutions have published (RBI, World Bank, OECD, ADB,
-IMF), from `data/forecasts.json`. The site makes no forecast of its own.
+IMF), from `data/forecasts.json`, with the arithmetic of what each GDP forecast
+does to the period averages. Below that, the site's own projections for series no
+institution forecasts (the two income shares and formal-job coverage), from
+`tools/build_projections.py`: three simple models scored by a rolling-origin
+back-test, the winner used, and an 80% interval from its back-test errors. All
+three series currently pick "no change". Run it after any change to those series,
+before `build_explore`; CI runs `--check`. The site does not forecast GDP or
+inflation itself: 22 annual points with two base changes cannot beat forecasters
+working from monthly and quarterly data.
 
 ## Estimates are drawn, never averaged
 

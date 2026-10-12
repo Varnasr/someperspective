@@ -156,13 +156,13 @@ def series_block(d, key, note=None):
     chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
                           lo=0 if key in ("ssi",) else (0 if key in ("fci", "dqi") else None),
                           hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
-                          est=bf.estimates(d, key))
+                          est={**bf.estimates(d, key), **bf.projections(d, key)})
     about = (f'<details class="about"><summary>Source and method</summary><p>{escape(src)}</p></details>'
              if src else "")
     extra = f"<p>{escape(note)}</p>" if note else ""
-    est = bf.estimates(d, key)
+    est = {**bf.estimates(d, key), **bf.projections(d, key)}
     if est:
-        extra += ("<p>Hollow markers are published estimates or projections, not outturns, and no average uses "
+        extra += ("<p>Hollow markers are estimates or projections, not outturns, and no average uses "
                   "them: " + "; ".join(f"{YEARS[i]}, {fmtv(e['value'], dp, unit)}, {escape(e['label'])}"
                                        for i, e in sorted(est.items())) + ".</p>")
     return (f'<section class="series" id="{key}"><div class="slab"><h2>{escape(label)}</h2>'
@@ -306,7 +306,7 @@ def chart_block(d, key):
     chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
                           lo=0 if key in ("ssi", "fci", "dqi") else None,
                           hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
-                          est=bf.estimates(d, key))
+                          est={**bf.estimates(d, key), **bf.projections(d, key)})
     t = topic_of(key)
     return (f'<section class="series"><div class="slab"><h2>{escape(label)}</h2><p>{escape(desc)} '
             f'<a href="/explore/{t}/#{key}">Source, method and every year</a>.</p></div>{chart}</section>')
@@ -327,7 +327,7 @@ def topic_page(d, slug, title, intro, keys):
 LEGACY = {
     "main-content": "", "what-is-this": "", "executive-summary": "/", "key-findings": "/#findings",
     "interactive-data": "", "your-state": "states/", "correlation-explorer": "compare/",
-    "three-indices": "statistics/", "human-stories": "", "methodology": "methods/",
+    "three-indices": "statistics/", "human-stories": "voices/", "methodology": "methods/",
     "implications": "", "era-comparison": "/#scorecard", "scenario-lab": "compare/",
     "deep-analysis": "", "what-next": "", "economic-trajectory": "forecasts/",
     "reading-the-economy": "primer/", "cite-download": "methods/", "independent-check": "methods/",
@@ -529,9 +529,81 @@ def forecasts_page(d):
             '<p>The forecasts disagree by more than a point, and the IMF is the low outlier because its July figure '
             'predates the first-quarter outturn of 7.8 per cent. None of them is a measurement. When a forecast year '
             'ends, the site replaces it with MoSPI\'s published estimate.</p></div>')
+    # What each published GDP forecast does to the 2014-2026 average. Pure
+    # arithmetic: 2026 is the fiscal year 2026-27, which has no outturn yet.
+    g = bf.series(d, "gdpGrowth")
+    upa = [v for v in g[:10] if v is not None]
+    nda = [v for v in g[10:] if v is not None]
+    upa_m = sum(upa) / len(upa)
+    arow = "".join(
+        f'<tr><th scope="row">{escape(r["who"].split(",")[0])}</th><td>{bf.fmt(r["g27"], 1)}</td>'
+        f'<td>{(sum(nda) + r["g27"]) / (len(nda) + 1):.2f}</td>'
+        f'<td>{(sum(nda) + r["g27"]) / (len(nda) + 1) - upa_m:+.2f}</td></tr>'
+        for r in rows if r["g27"] is not None)
+    need = upa_m * (len(nda) + 1) - sum(nda)
+    arith = ('<div class="slab" id="arithmetic"><h2>What the forecasts do to the comparison</h2>'
+             f'<p>The NDA-period average of real GDP growth is {sum(nda) / len(nda):.2f}% over the {len(nda)} fiscal '
+             f'years with an outturn, against {upa_m:.2f}% for 2004-05 to 2013-14. Adding 2026-27 at each published '
+             'forecast gives the averages below. This is arithmetic, with no model.</p>'
+             '<div class="tw" tabindex="0" role="region" aria-label="Averages with each forecast, scrolls sideways">'
+             '<table class="data"><thead><tr><th scope="col">Forecaster</th><th scope="col">2026-27 forecast</th>'
+             '<th scope="col">NDA average with it</th><th scope="col">Gap to the UPA average</th></tr></thead>'
+             f'<tbody>{arow}</tbody></table></div>'
+             f'<p>For the NDA period to match the UPA average, 2026-27 would have to grow {need:.1f}%. No forecaster '
+             'expects that, so the scorecard row for growth stays where it is whichever forecast comes true. The '
+             'inflation forecasts are for fiscal 2026-27 and the site\'s inflation series is by calendar year, so they '
+             'are not added to its average.</p></div>')
+    pj = json.load(open(os.path.join(ROOT, "data", "projections.json"), encoding="utf-8"))
+    prow = "".join(
+        f'<tr><th scope="row">{escape(sp["label"])}</th><td>{sp["observed_to"]}</td><td>{escape(sp["model"])}</td>'
+        + "".join(f'<td>{bf.fmt(x["value"], 1)} ({bf.fmt(x["lo"], 1)} to {bf.fmt(x["hi"], 1)})</td>' for x in sp["points"][-1:])
+        + f'<td>{sp["backtest_rmse"][sp["model"]]:.2f}</td></tr>'
+        for sp in pj["series"].values())
+    pcharts = "".join(chart_block(d, k) for k in pj["series"] if k in SERIES)
+    own = ('<div class="slab" id="own-projections"><h2>This site\'s own projections</h2>'
+           '<p>No institution forecasts these series, so the site projects them itself, to 2026. '
+           f'{escape(pj["method"])}</p>'
+           '<p>For all three series the model that wins the back-test is the simplest one: no change from the last '
+           'published value. The trends in these series have reversed often enough that extending them did worse '
+           'than standing still. The projections therefore say little about direction. What they do give is the '
+           'range a reader should expect the next published figures to fall in, with an 80% interval built from '
+           'how wrong the same method would have been in the past.</p>'
+           '<div class="tw" tabindex="0" role="region" aria-label="The site\'s projections, scrolls sideways">'
+           '<table class="data"><thead><tr><th scope="col">Series</th><th scope="col">Last published</th>'
+           '<th scope="col">Model</th><th scope="col">2026, with 80% interval</th>'
+           '<th scope="col">Back-test error</th></tr></thead>'
+           f'<tbody>{prow}</tbody></table></div>'
+           '<p class="note">Projections are drawn as hollow markers with a shaded interval and are never part of an '
+           'average, an index or the scorecard. The code is tools/build_projections.py and the output '
+           'data/projections.json.</p>'
+           '<p>The Fiscal Centralisation Index is not projected. The 16th Finance Commission fixes the states\' share '
+           'of the divisible pool for 2026-31, but the index also moves with cesses, own revenue and grants, which '
+           'nobody has fixed, so a projection would be a guess about those.</p></div>' + pcharts)
+    body = body + arith + own
     return shell("Forecasts: Some Perspective",
                  "Published forecasts of India's growth and inflation from the RBI, the World Bank, the OECD, the ADB and the IMF.",
                  f"{SITE}/explore/forecasts/", body)
+
+
+def voices_page(d):
+    v = json.load(open(os.path.join(ROOT, "data", "voices.json"), encoding="utf-8"))
+    blocks = []
+    for st in v["stories"]:
+        q = (f'<blockquote class="vq"><p>&ldquo;{escape(st["quote"])}&rdquo;</p></blockquote>' if st["quote"] else "")
+        charts = "".join(chart_block(d, k) for k in st["series"] if k in SERIES)
+        blocks.append(
+            f'<section class="series" id="{st["id"]}"><div class="slab"><p class="kicker">{escape(st["source"])}</p>'
+            f'<h2>{escape(st["title"])}</h2><p class="dek">{escape(st["lead"])}</p>{q}'
+            f'<p><strong>The numbers.</strong> {escape(st["numbers"])}</p>'
+            f'<p><strong>What it means.</strong> {escape(st["impact"])}</p></div>{charts}</section>')
+    body = ('<style>.vq{border-left:4px solid var(--nda);margin:1rem 0;padding:.2rem 0 .2rem 1rem;'
+            'font-size:1.15rem;font-weight:600}</style>'
+            '<div class="slab" id="human-stories"><p class="crumb"><a href="/explore/">Data</a> &rsaquo; People behind the data</p>'
+            '<p class="kicker">Fieldwork</p><h1>The people behind the data</h1>'
+            f'<p class="dek">{escape(v["intro"])}</p></div>' + "".join(blocks))
+    return shell("The people behind the data: Some Perspective",
+                 "Four accounts from the author's fieldwork and the public record, each beside the published figures.",
+                 f"{SITE}/explore/voices/", body)
 
 
 def build():
@@ -545,10 +617,12 @@ def build():
     out[os.path.join(OUT, "compare", "index.html")] = correlation_page(d)
     out[os.path.join(OUT, "methods", "index.html")] = methods_page(d)
     out[os.path.join(OUT, "forecasts", "index.html")] = forecasts_page(d)
+    out[os.path.join(OUT, "voices", "index.html")] = voices_page(d)
     import primer_page
     out[os.path.join(OUT, "primer", "index.html")] = primer_page.primer_page(d, sys.modules[__name__])
     pages += [("states", "The states", "Income, population, seats and transfers for the sixteen largest states."),
               ("compare", "Compare two series", "Plot any two series against each other, year by year."),
+              ("voices", "The people behind the data", "Four accounts from the author's fieldwork and the public record, beside the figures."),
               ("primer", "Reading the Indian economy", "A primer on what the main numbers measure, how they are built and where they mislead."),
               ("forecasts", "Forecasts", "What the RBI, the World Bank, the OECD, the ADB and the IMF expect for 2026-27 and 2027-28."),
               ("methods", "Sources and method", "The publisher behind every series, and how the indices are built.")]

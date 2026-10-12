@@ -1,0 +1,137 @@
+{
+  "generated_from": "data.json",
+  "method": "Three simple models compete: no change from the last value, the last value plus the average yearly change over the previous five years, and a straight line fitted to the previous eight years. Each is scored by a rolling-origin back-test: from every starting year with enough history it forecasts one to four years ahead using only the data available then, and the forecast is compared with what was later published. The model with the smallest average error is used. The interval is the 80th percentile of its back-test errors at that horizon, never narrower than at a shorter horizon; where fewer than three errors exist at a horizon, the one-year error is scaled by the square root of the horizon.",
+  "series": {
+    "top1Share": {
+      "label": "Income share of the top 1%",
+      "observed_to": 2022,
+      "model": "no change",
+      "backtest_rmse": {
+        "no change": 0.59,
+        "recent average change": 0.75,
+        "eight-year straight line": 0.77
+      },
+      "backtest_n": {
+        "1": 13,
+        "2": 12,
+        "3": 11,
+        "4": 10
+      },
+      "points": [
+        {
+          "year": 2023,
+          "value": 22.6,
+          "lo": 22.1,
+          "hi": 23.1,
+          "interval": "80th percentile of 13 back-test errors at 1 years"
+        },
+        {
+          "year": 2024,
+          "value": 22.6,
+          "lo": 21.7,
+          "hi": 23.5,
+          "interval": "80th percentile of 12 back-test errors at 2 years"
+        },
+        {
+          "year": 2025,
+          "value": 22.6,
+          "lo": 21.7,
+          "hi": 23.5,
+          "interval": "80th percentile of 11 back-test errors at 3 years"
+        },
+        {
+          "year": 2026,
+          "value": 22.6,
+          "lo": 21.7,
+          "hi": 23.5,
+          "interval": "80th percentile of 10 back-test errors at 4 years"
+        }
+      ]
+    },
+    "bottom50Share": {
+      "label": "Income share of the bottom 50%",
+      "observed_to": 2022,
+      "model": "no change",
+      "backtest_rmse": {
+        "no change": 0.79,
+        "recent average change": 0.93,
+        "eight-year straight line": 1.13
+      },
+      "backtest_n": {
+        "1": 13,
+        "2": 12,
+        "3": 11,
+        "4": 10
+      },
+      "points": [
+        {
+          "year": 2023,
+          "value": 15.0,
+          "lo": 14.5,
+          "hi": 15.5,
+          "interval": "80th percentile of 13 back-test errors at 1 years"
+        },
+        {
+          "year": 2024,
+          "value": 15.0,
+          "lo": 14.1,
+          "hi": 15.9,
+          "interval": "80th percentile of 12 back-test errors at 2 years"
+        },
+        {
+          "year": 2025,
+          "value": 15.0,
+          "lo": 14.0,
+          "hi": 16.0,
+          "interval": "80th percentile of 11 back-test errors at 3 years"
+        },
+        {
+          "year": 2026,
+          "value": 15.0,
+          "lo": 13.6,
+          "hi": 16.4,
+          "interval": "80th percentile of 10 back-test errors at 4 years"
+        }
+      ]
+    },
+    "formalEmployment": {
+      "label": "Workers in regular jobs with social security",
+      "observed_to": 2023,
+      "model": "no change",
+      "backtest_rmse": {
+        "no change": 0.51,
+        "recent average change": 1.08,
+        "eight-year straight line": 1.1
+      },
+      "backtest_n": {
+        "1": 4,
+        "2": 3,
+        "3": 2,
+        "4": 1
+      },
+      "points": [
+        {
+          "year": 2024,
+          "value": 10.1,
+          "lo": 9.3,
+          "hi": 10.9,
+          "interval": "80th percentile of 4 back-test errors at 1 years"
+        },
+        {
+          "year": 2025,
+          "value": 10.1,
+          "lo": 9.3,
+          "hi": 10.9,
+          "interval": "80th percentile of 3 back-test errors at 2 years"
+        },
+        {
+          "year": 2026,
+          "value": 10.1,
+          "lo": 8.7,
+          "hi": 11.5,
+          "interval": "one-year error scaled by the square root of the horizon"
+        }
+      ]
+    }
+  }
+}

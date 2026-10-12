@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.55.0] - 2026-10-12
+
+### Added
+- The forecasts page now shows what each published GDP forecast for 2026-27 does to the NDA-period average. With any of them the average stays below the UPA decade's 6.82%; matching it would need 14.3% growth in 2026-27.
+- The site's own projections, to 2026, for three series no institution forecasts: the top 1% and bottom 50% income shares and formal-job coverage. Three simple models are scored by a rolling-origin back-test, the winner is used, and each projection carries an 80% interval built from its past errors. They are drawn as hollow markers with a shaded interval and never enter an average. The site does not forecast GDP or inflation itself.
+
+## [2.54.1] - 2026-10-12
+
+### Added
+- The four accounts from the old dashboard are back, on a page of their own: three from the author's fieldwork interviews, with the quotations as recorded, and one from the public record. Each sits beside the charts of the series it relates to. The account of the withheld consumption survey now dates MoSPI's decision correctly (15 November 2019).
+
+### Fixed
+- The writing check now reads every /explore/ page and the primer, forecasts and fieldwork sources.
+
 ## [2.54.0] - 2026-10-10
 
 ### Changed
