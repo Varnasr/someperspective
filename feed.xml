@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>Forecast arithmetic and the site's own projections</title>
+    <link>https://someperspective.info/updates.html#v2.55.0</link>
+    <guid isPermaLink="false">someperspective-v2.55.0</guid>
+    <pubDate>Mon, 12 Oct 2026 12:00:00 +0000</pubDate>
+    <description>What the published forecasts do to the comparison, and back-tested projections for series nobody else forecasts. Added: The forecasts page now shows what each published GDP forecast for 2026-27 does to the NDA-period average. With any of them the average stays below the UPA decade's 6.82%; matching it would need 14.3% growth in 2026-27. Added: The site's own projections, to 2026, for three series no institution forecasts: the top 1% and bottom 50% income shares and formal-job coverage. Three simple models are scored by a rolling-origin back-test, the winner is used, and each projection carries an 80% interval built from its past errors. They are drawn as hollow markers with a shaded interval and never enter an average. The site does not forecast GDP or inflation itself.</description>
+  </item>
+  <item>
     <title>The fieldwork accounts are back</title>
     <link>https://someperspective.info/updates.html#v2.54.1</link>
     <guid isPermaLink="false">someperspective-v2.54.1</guid>

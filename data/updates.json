@@ -2,6 +2,22 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
   "releases": [
     {
+      "version": "2.55.0",
+      "date": "2026-10-12",
+      "title": "Forecast arithmetic and the site's own projections",
+      "summary": "What the published forecasts do to the comparison, and back-tested projections for series nobody else forecasts.",
+      "changes": [
+        {
+          "kind": "Added",
+          "text": "The forecasts page now shows what each published GDP forecast for 2026-27 does to the NDA-period average. With any of them the average stays below the UPA decade's 6.82%; matching it would need 14.3% growth in 2026-27."
+        },
+        {
+          "kind": "Added",
+          "text": "The site's own projections, to 2026, for three series no institution forecasts: the top 1% and bottom 50% income shares and formal-job coverage. Three simple models are scored by a rolling-origin back-test, the winner is used, and each projection carries an 80% interval built from its past errors. They are drawn as hollow markers with a shaded interval and never enter an average. The site does not forecast GDP or inflation itself."
+        }
+      ]
+    },
+    {
       "version": "2.54.1",
       "date": "2026-10-12",
       "title": "The fieldwork accounts are back",

@@ -63,7 +63,15 @@ and a "data coverage" chart from literals that matched nothing the index
 computes. The scenario lab and the 2030 "trajectory" ran on hand-set
 coefficients. The trajectory is replaced by `/explore/forecasts/`, which shows
 only forecasts other institutions have published (RBI, World Bank, OECD, ADB,
-IMF), from `data/forecasts.json`. The site makes no forecast of its own.
+IMF), from `data/forecasts.json`, with the arithmetic of what each GDP forecast
+does to the period averages. Below that, the site's own projections for series no
+institution forecasts (the two income shares and formal-job coverage), from
+`tools/build_projections.py`: three simple models scored by a rolling-origin
+back-test, the winner used, and an 80% interval from its back-test errors. All
+three series currently pick "no change". Run it after any change to those series,
+before `build_explore`; CI runs `--check`. The site does not forecast GDP or
+inflation itself: 22 annual points with two base changes cannot beat forecasters
+working from monthly and quarterly data.
 
 ## Estimates are drawn, never averaged
 

@@ -156,13 +156,13 @@ def series_block(d, key, note=None):
     chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
                           lo=0 if key in ("ssi",) else (0 if key in ("fci", "dqi") else None),
                           hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
-                          est=bf.estimates(d, key))
+                          est={**bf.estimates(d, key), **bf.projections(d, key)})
     about = (f'<details class="about"><summary>Source and method</summary><p>{escape(src)}</p></details>'
              if src else "")
     extra = f"<p>{escape(note)}</p>" if note else ""
-    est = bf.estimates(d, key)
+    est = {**bf.estimates(d, key), **bf.projections(d, key)}
     if est:
-        extra += ("<p>Hollow markers are published estimates or projections, not outturns, and no average uses "
+        extra += ("<p>Hollow markers are estimates or projections, not outturns, and no average uses "
                   "them: " + "; ".join(f"{YEARS[i]}, {fmtv(e['value'], dp, unit)}, {escape(e['label'])}"
                                        for i, e in sorted(est.items())) + ".</p>")
     return (f'<section class="series" id="{key}"><div class="slab"><h2>{escape(label)}</h2>'
@@ -306,7 +306,7 @@ def chart_block(d, key):
     chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
                           lo=0 if key in ("ssi", "fci", "dqi") else None,
                           hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
-                          est=bf.estimates(d, key))
+                          est={**bf.estimates(d, key), **bf.projections(d, key)})
     t = topic_of(key)
     return (f'<section class="series"><div class="slab"><h2>{escape(label)}</h2><p>{escape(desc)} '
             f'<a href="/explore/{t}/#{key}">Source, method and every year</a>.</p></div>{chart}</section>')
@@ -529,6 +529,57 @@ def forecasts_page(d):
             '<p>The forecasts disagree by more than a point, and the IMF is the low outlier because its July figure '
             'predates the first-quarter outturn of 7.8 per cent. None of them is a measurement. When a forecast year '
             'ends, the site replaces it with MoSPI\'s published estimate.</p></div>')
+    # What each published GDP forecast does to the 2014-2026 average. Pure
+    # arithmetic: 2026 is the fiscal year 2026-27, which has no outturn yet.
+    g = bf.series(d, "gdpGrowth")
+    upa = [v for v in g[:10] if v is not None]
+    nda = [v for v in g[10:] if v is not None]
+    upa_m = sum(upa) / len(upa)
+    arow = "".join(
+        f'<tr><th scope="row">{escape(r["who"].split(",")[0])}</th><td>{bf.fmt(r["g27"], 1)}</td>'
+        f'<td>{(sum(nda) + r["g27"]) / (len(nda) + 1):.2f}</td>'
+        f'<td>{(sum(nda) + r["g27"]) / (len(nda) + 1) - upa_m:+.2f}</td></tr>'
+        for r in rows if r["g27"] is not None)
+    need = upa_m * (len(nda) + 1) - sum(nda)
+    arith = ('<div class="slab" id="arithmetic"><h2>What the forecasts do to the comparison</h2>'
+             f'<p>The NDA-period average of real GDP growth is {sum(nda) / len(nda):.2f}% over the {len(nda)} fiscal '
+             f'years with an outturn, against {upa_m:.2f}% for 2004-05 to 2013-14. Adding 2026-27 at each published '
+             'forecast gives the averages below. This is arithmetic, with no model.</p>'
+             '<div class="tw" tabindex="0" role="region" aria-label="Averages with each forecast, scrolls sideways">'
+             '<table class="data"><thead><tr><th scope="col">Forecaster</th><th scope="col">2026-27 forecast</th>'
+             '<th scope="col">NDA average with it</th><th scope="col">Gap to the UPA average</th></tr></thead>'
+             f'<tbody>{arow}</tbody></table></div>'
+             f'<p>For the NDA period to match the UPA average, 2026-27 would have to grow {need:.1f}%. No forecaster '
+             'expects that, so the scorecard row for growth stays where it is whichever forecast comes true. The '
+             'inflation forecasts are for fiscal 2026-27 and the site\'s inflation series is by calendar year, so they '
+             'are not added to its average.</p></div>')
+    pj = json.load(open(os.path.join(ROOT, "data", "projections.json"), encoding="utf-8"))
+    prow = "".join(
+        f'<tr><th scope="row">{escape(sp["label"])}</th><td>{sp["observed_to"]}</td><td>{escape(sp["model"])}</td>'
+        + "".join(f'<td>{bf.fmt(x["value"], 1)} ({bf.fmt(x["lo"], 1)} to {bf.fmt(x["hi"], 1)})</td>' for x in sp["points"][-1:])
+        + f'<td>{sp["backtest_rmse"][sp["model"]]:.2f}</td></tr>'
+        for sp in pj["series"].values())
+    pcharts = "".join(chart_block(d, k) for k in pj["series"] if k in SERIES)
+    own = ('<div class="slab" id="own-projections"><h2>This site\'s own projections</h2>'
+           '<p>No institution forecasts these series, so the site projects them itself, to 2026. '
+           f'{escape(pj["method"])}</p>'
+           '<p>For all three series the model that wins the back-test is the simplest one: no change from the last '
+           'published value. The trends in these series have reversed often enough that extending them did worse '
+           'than standing still. The projections therefore say little about direction. What they do give is the '
+           'range a reader should expect the next published figures to fall in, with an 80% interval built from '
+           'how wrong the same method would have been in the past.</p>'
+           '<div class="tw" tabindex="0" role="region" aria-label="The site\'s projections, scrolls sideways">'
+           '<table class="data"><thead><tr><th scope="col">Series</th><th scope="col">Last published</th>'
+           '<th scope="col">Model</th><th scope="col">2026, with 80% interval</th>'
+           '<th scope="col">Back-test error</th></tr></thead>'
+           f'<tbody>{prow}</tbody></table></div>'
+           '<p class="note">Projections are drawn as hollow markers with a shaded interval and are never part of an '
+           'average, an index or the scorecard. The code is tools/build_projections.py and the output '
+           'data/projections.json.</p>'
+           '<p>The Fiscal Centralisation Index is not projected. The 16th Finance Commission fixes the states\' share '
+           'of the divisible pool for 2026-31, but the index also moves with cesses, own revenue and grants, which '
+           'nobody has fixed, so a projection would be a guess about those.</p></div>' + pcharts)
+    body = body + arith + own
     return shell("Forecasts: Some Perspective",
                  "Published forecasts of India's growth and inflation from the RBI, the World Bank, the OECD, the ADB and the IMF.",
                  f"{SITE}/explore/forecasts/", body)

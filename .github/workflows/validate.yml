@@ -108,6 +108,7 @@ jobs:
         # and the sitemap lists the /explore/ pages, so those come before build_site.
         run: |
           python3 tools/build_paper.py --check
+          python3 tools/build_projections.py --check
           python3 tools/build_explore.py --check
           python3 tools/build_site.py --check
           python3 tools/build_master.py --check
