@@ -22,6 +22,7 @@ from html import escape
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_front as bf  # noqa: E402  (shared CSS, chart and series helpers)
+import social  # noqa: E402  (preview tags and the share row)
 
 ROOT = bf.ROOT
 SITE = bf.SITE
@@ -237,7 +238,7 @@ def topic_extras(d, slug):
     return ""
 
 
-def shell(title, desc, canonical, body, depth=1, head=""):
+def shell(title, desc, canonical, body, depth=1, head="", typ="website", share_text=None):
     """Page shell shared by every /explore/ page; header and footer match the front page."""
     up = "../" * depth
     return f"""<!DOCTYPE html>
@@ -253,17 +254,11 @@ def shell(title, desc, canonical, body, depth=1, head=""):
 <meta name="description" content="{escape(desc)}">
 <meta name="author" content="Dr. Varna Sri Raman">
 <link rel="canonical" href="{canonical}">
-<meta property="og:title" content="{escape(title)}">
-<meta property="og:description" content="{escape(desc)}">
-<meta property="og:url" content="{canonical}">
-<meta property="og:type" content="website">
-<meta property="og:image" content="{SITE}/og-preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="manifest" href="/manifest.json">
+{social.head(title, desc, canonical, typ)}<link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
-<style>{bf.CSS}{EXTRA_CSS}</style>
+<style>{bf.CSS}{EXTRA_CSS}{social.SHARE_CSS}</style>
 {head}</head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -276,6 +271,7 @@ def shell(title, desc, canonical, body, depth=1, head=""):
 </header>
 <main id="main">
 {body}
+<div class="slab">{social.share(title.split(": Some Perspective")[0], share_text if share_text is not None else desc, canonical)}</div>
 </main>
 <footer class="foot split">
 <div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
@@ -283,6 +279,7 @@ def shell(title, desc, canonical, body, depth=1, head=""):
 <p class="note">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
 </footer>
 <script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
+{social.COPY_JS}
 </body>
 </html>
 """
@@ -319,7 +316,21 @@ def topic_page(d, slug, title, intro, keys):
             f'<p class="byline">Every chart runs from 2004 at the left edge to 2026 at the right and changes side '
             f'between 2013 and 2014. Dashed lines are the two period averages. A gap is a year with no published '
             f'figure.</p></div>{blocks}{topic_extras(d, slug)}')
-    return shell(f"{title}: Some Perspective", intro, f"{SITE}/explore/{slug}/", body)
+    ld = json.dumps({
+        "@context": "https://schema.org", "@type": "Dataset",
+        "name": f"{title}: India, 2004-2026", "description": intro,
+        "url": f"{SITE}/explore/{slug}/",
+        "creator": {"@type": "Person", "name": "Dr. Varna Sri Raman"},
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "isAccessibleForFree": True, "temporalCoverage": "2004/2026",
+        "spatialCoverage": {"@type": "Country", "name": "India"},
+        "variableMeasured": [SERIES[k][0] for k in keys],
+        "distribution": [
+            {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": f"{SITE}/downloads/dataset.csv"},
+            {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": f"{SITE}/data.json"}],
+    }, ensure_ascii=False)
+    return shell(f"{title}: Some Perspective", intro, f"{SITE}/explore/{slug}/", body,
+                 head=f'<script type="application/ld+json">{ld}</script>\n')
 
 
 # Old dashboard tab hashes, so a link shared before 10 October 2026 lands on

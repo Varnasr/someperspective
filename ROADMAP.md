@@ -58,9 +58,6 @@ Not committed to a version, in rough priority order.
 - **`dailyFeatures` extraction.** The 34-entry array is ~40 KB inline in
   `index.html`; split to `data/features.json` and lazy-fetch. Would shrink
   the initial HTML meaningfully.
-- **Refresh `og-preview` art.** The v2.9.0 redesign moved the site to a
-  paper-canvas + Fraunces-serif aesthetic; the social card still uses the
-  earlier dark-slate look.
 
 ## Deliberately not doing
 

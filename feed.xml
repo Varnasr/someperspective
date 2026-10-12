@@ -7,6 +7,13 @@
   <description>Data refreshes, corrections and changes to Some Perspective.</description>
   <language>en</language>
   <item>
+    <title>Link previews and sharing</title>
+    <link>https://someperspective.info/updates.html#v2.56.0</link>
+    <guid isPermaLink="false">someperspective-v2.56.0</guid>
+    <pubDate>Mon, 12 Oct 2026 12:00:00 +0000</pubDate>
+    <description>Each page now shows its own title, summary and chart when shared, and every page has a share row. Added: Every page has its own link-preview card, drawn from the page's own title, summary and first chart in the site's split design, so a link shared on WhatsApp, X or LinkedIn shows what the page says. The cards are rebuilt by tools/build_og.py and CI fails when one is out of date. Added: Every page has a share row: WhatsApp with the title, summary and link already written, X, LinkedIn, email, and a copy-link button where the browser allows it. The links load nothing from those services until a reader taps one. Added: Structured data for search engines: each topic page under /explore/ is described as a dataset (licence, coverage, the series it measures and the CSV and JSON downloads), and the working paper as a scholarly article. Removed: The old social card (og-preview.png), which showed the earlier design and figures since corrected.</description>
+  </item>
+  <item>
     <title>Forecast arithmetic and the site's own projections</title>
     <link>https://someperspective.info/updates.html#v2.55.0</link>
     <guid isPermaLink="false">someperspective-v2.55.0</guid>
