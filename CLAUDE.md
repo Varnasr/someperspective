@@ -95,6 +95,18 @@ in the script when the drawing changes. On the walkthrough the share row is
 moved into the last slide by the deck script, because the fixed slide
 navigation covers the foot of the page.
 
+## Hosting and DNS
+
+The owner's rule for every site (2026-10-12): Porkbun is the registrar and
+nothing else; Netlify does everything else, DNS included. someperspective.info
+is the exception still being moved. Its zone is in Netlify DNS (team Idealog
+Works, nameservers `dns1-4.p03.nsone.net`) with the records copied from Porkbun:
+the four GitHub Pages A and AAAA records, `www` as a CNAME to
+`varnasr.github.io`, Porkbun's two MX records and SPF line for mail
+forwarding, and the Google Search Console TXT record. The site itself is still
+served by GitHub Pages (`.github/workflows/static.yml`, `CNAME`), not by
+Netlify. Change a record in Netlify, not at Porkbun.
+
 ## Estimates are drawn, never averaged
 
 `data.json` has an `estimates` block for published figures that are not
