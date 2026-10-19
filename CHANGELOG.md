@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.57.0] - 2026-10-19
+
+### Changed
+- CPI inflation for 2026 is now 4.0%, the average of the nine monthly prints from January to September 2026 on the 2024=100 base. It was 3.8% over eight months. The NDA-period average moves from 4.82% to 4.83%.
+- Unemployment for 2026 is now 5.1%, the average of the nine PLFS monthly bulletins from January to September 2026, on the current weekly status measure. It was 5.2%. Youth unemployment on the same monthly measure averages 15.3% over the nine months.
+- The IMF row on the forecasts page now carries the October 2026 World Economic Outlook: 7.0% growth for 2026-27 and for 2027-28, and 5.0% consumer price inflation for 2026-27, on India's fiscal year. It had the July Update's 6.4% and 6.7%. All five published forecasts for 2026-27 now lie between 7.0% and 7.1%.
+
 ## [2.56.0] - 2026-10-12
 
 ### Added

@@ -80,7 +80,7 @@
       "id": "unemployment",
       "title": "Unemployment depends on how it is measured",
       "paras": [
-        "In 2025 the unemployment rate on usual status, which records a person's main activity over the past year, was {u2025}%. On current weekly status, which records the past week, MoSPI's rate for the same year was 5.3%. Among people aged 15 to 29 the usual-status rate in 2025 was {y2025}%, and the monthly bulletins for January to August 2026, on the weekly measure, average 15.4%.",
+        "In 2025 the unemployment rate on usual status, which records a person's main activity over the past year, was {u2025}%. On current weekly status, which records the past week, MoSPI's rate for the same year was 5.3%. Among people aged 15 to 29 the usual-status rate in 2025 was {y2025}%, and the monthly bulletins for January to September 2026, on the weekly measure, average 15.3%.",
         "The ILO and the Institute for Human Development find that nearly 90% of workers are informally employed. Women's labour force participation rose from {flfpr2017}% in 2017-18 to {flfpr2023}% in 2023-24 and was {flfpr2025}% in 2025. The same report finds that nearly two thirds of the employment added after 2019 was self-employment, among whom unpaid women family workers predominate."
       ],
       "source": "MoSPI, Periodic Labour Force Survey, annual and monthly bulletins (sources.unemployment and sources.youthUnemployment in data.json); ILO and Institute for Human Development, India Employment Report 2024.",

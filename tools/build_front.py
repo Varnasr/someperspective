@@ -374,6 +374,7 @@ def build():
     _r4y = [[c[i] for c in _r4 if c[i] is not None] for i in range(len(ci.YEARS))]
     _r4y = [sum(v) / len(v) if v else None for v in _r4y]
     r4u, r4n = era_means(_r4y)
+    cpi_months = (re.search(r"\((January to \w+) \d{4}", d["sources"]["cpiInflation"]) or [None, "the months published so far"])[1]
     findings = [
         ("Growth was lower over the whole period, and higher once the pandemic year is left out",
          f"The economy grew {fmt(gn,1)}% a year on average from 2014-15 to 2025-26, against {fmt(gu,1)}% from 2004-05 "
@@ -392,7 +393,7 @@ def build():
          f"how much of the fall each explanation can carry.",
          seam_chart(S["cpiInflation"], "CPI inflation, per cent, 2004-2026",
                     f"UPA average {fmt(cu,1)}%, NDA average {fmt(cn,1)}%.", dp=1),
-         "World Bank for 2004-2013; MoSPI CPI (Combined) after. Calendar years; 2026 is January to August on the new 2024 base."),
+         f"World Bank for 2004-2013; MoSPI CPI (Combined) after. Calendar years; 2026 is {cpi_months} on the new 2024 base."),
         ("The top 1% took a larger share of income than at any time since 1922",
          f"The richest 1% of adults received {fmt(t1[last_t1],1)}% of national income in 2022-23, up from "
          f"{fmt(t1[0],1)}% in 2004, the highest in the World Inequality Lab's series, which begins in 1922. The bottom "

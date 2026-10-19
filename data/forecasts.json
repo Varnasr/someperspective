@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-10-10",
+  "retrieved": "2026-10-19",
   "about": "Forecasts published by other institutions for India's real GDP growth and CPI inflation. The site does not forecast GDP or inflation itself; its own projections, for series nobody forecasts, are further down. India's fiscal year runs April to March, and every row is on that basis unless its note says otherwise.",
   "outturn": {
     "text": "MoSPI's Provisional Estimates of 5 June 2026 put real GDP growth for 2025-26 at 7.7 per cent; growth in April to June 2026, the first quarter of 2026-27, was 7.8 per cent (NSO, 31 August 2026).",
@@ -57,14 +57,14 @@
     },
     {
       "who": "IMF",
-      "pub": "World Economic Outlook Update, July 2026, Table 1",
-      "date": "2026-07-08",
-      "g27": 6.4,
-      "g28": 6.7,
-      "i27": 4.7,
-      "url": "https://www.imf.org/-/media/files/publications/weo/2026/update/july/english/text.pdf",
-      "quote": "India 5/ 7.1 7.7 6.4 6.7",
-      "note": "The July Update carries no inflation projection; the 4.7 per cent is the April 2026 WEO. The October 2026 WEO is due in mid-October and replaces this row."
+      "pub": "World Economic Outlook, October 2026, Chapter 1, Table 1.1 and Annex Table 1.1.2",
+      "date": "2026-10-13",
+      "g27": 7.0,
+      "g28": 7.0,
+      "i27": 5.0,
+      "url": "https://www.imf.org/-/media/files/publications/weo/2026/october/english/ch1.pdf",
+      "quote": "India 7.8 7.0 7.0 ... For India, data and projections are presented on a fiscal year (FY) basis, with FY 2025/26 (starting in April 2025) shown in the 2025 column.",
+      "note": "Consumer prices are from Annex Table 1.1.2, also on a fiscal-year basis. Takes 2025-26 as 7.8 per cent, against MoSPI's Provisional Estimate of 7.7. On a calendar-year basis the IMF projects 7.4 per cent for 2026."
     }
   ]
 }

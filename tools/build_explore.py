@@ -522,6 +522,7 @@ def forecasts_page(d):
            'Provisional Estimate for 2025-26, 7.7 per cent.</figcaption></figure>')
     notes = "".join(f'<li><strong>{escape(r["who"])}.</strong> {escape(r["note"])} The publication says: '
                     f'&ldquo;{escape(r["quote"])}&rdquo;</li>' for r in rows)
+    g27s = [r["g27"] for r in rows if r["g27"] is not None]
     body = ('<style>.sub{font-size:.78rem;color:var(--muted);font-weight:400}.notes li{margin:.5rem 0;font-size:.9rem}'
             '.notes{padding-left:1.1rem}'
             '.dots{margin:1rem 0}.dr{display:grid;grid-template-columns:minmax(7rem,30%) 1fr;align-items:center;min-height:2rem;font-size:.86rem}'
@@ -537,9 +538,9 @@ def forecasts_page(d):
             f'<div class="slab"><h2>Growth and inflation forecasts</h2>{svg}{table}'
             f'<p class="note">{escape(f["budget"]["text"])} <a href="{escape(f["budget"]["url"])}">Budget at a Glance 2026-27</a>.</p></div>'
             f'<div class="slab"><h2>What each forecast says, in its own words</h2><ul class="notes">{notes}</ul>'
-            '<p>The forecasts disagree by more than a point, and the IMF is the low outlier because its July figure '
-            'predates the first-quarter outturn of 7.8 per cent. None of them is a measurement. When a forecast year '
-            'ends, the site replaces it with MoSPI\'s published estimate.</p></div>')
+            f'<p>The {["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"][len(g27s)] if len(g27s) < 10 else len(g27s)} published forecasts for 2026-27 lie between {min(g27s):.1f} and {max(g27s):.1f} per '
+            'cent. None of them is a measurement. When a forecast year ends, the site replaces it with MoSPI\'s '
+            'published estimate.</p></div>')
     # What each published GDP forecast does to the 2014-2026 average. Pure
     # arithmetic: 2026 is the fiscal year 2026-27, which has no outturn yet.
     g = bf.series(d, "gdpGrowth")
