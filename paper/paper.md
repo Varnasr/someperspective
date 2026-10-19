@@ -181,7 +181,7 @@ We distinguish four provenance classes, and label every series accordingly, beca
 | Series | Source |
 |---|---|
 | GDP growth | Year Y is the fiscal year starting in April of Y. MoSPI national accounts, latest estimates on the 2011–12 base for 2014–15 to 2022–23 and the new series on base 2022–23 (released 27 February 2026) for 2023–24 to 2025–26, the last being the Provisional Estimate of 5 June 2026; no annual estimate for 2026–27 yet. World Bank series on the same convention for 2004–2013 |
-| Unemployment | Labour Bureau, Fifth Employment-Unemployment Survey (2015–16), usual principal status, for 2015, a different survey from PLFS; no figure for 2014 or 2016; PLFS Annual Reports, usual status, for 2017–2025; average of the PLFS Monthly Bulletins for January to August 2026, current weekly status, for 2026 |
+| Unemployment | Labour Bureau, Fifth Employment-Unemployment Survey (2015–16), usual principal status, for 2015, a different survey from PLFS; no figure for 2014 or 2016; PLFS Annual Reports, usual status, for 2017–2025; average of the PLFS Monthly Bulletins for January to September 2026, current weekly status, for 2026 |
 | Youth unemployment | MoSPI PLFS, usual status, ages 15–29 (2017–2025) |
 | Graduate unemployment | MoSPI PLFS, usual status, graduates aged 15 and over (2017-18 to 2023-24) |
 | Top 1% income share | World Inequality Lab, Bharti, Chancel, Piketty and Somanchi (2024), Statistical Appendix, per-adult pre-tax national income shares (2004–2022; no published figure for 2023–2026) |
@@ -189,7 +189,7 @@ We distinguish four provenance classes, and label every series accordingly, beca
 | Formal employment | MoSPI PLFS published tables, usual status: regular wage/salaried share of all workers times the share of those employees with any social security (2017-18 to 2023-24) |
 | Press freedom rank | Reporters Without Borders, World Press Freedom Index |
 | Fiscal deficit | Union Budget documents, central government, % of GDP |
-| CPI inflation | Calendar-year averages. World Bank series for 2004–2013; MoSPI CPI (Combined), base 2012=100, for 2014–2025; 2026 is the average of the January to August 2026 prints on base 2024=100 |
+| CPI inflation | Calendar-year averages. World Bank series for 2004–2013; MoSPI CPI (Combined), base 2012=100, for 2014–2025; 2026 is the average of the January to September 2026 prints on base 2024=100 |
 | Rupee / USD | Federal Reserve H.10 release, calendar-year average of monthly averages |
 
 **Derived.** Computed from an official series by an explicit rule. An example is the informal employment share, which is 100 minus the formal employment share by construction.
@@ -208,9 +208,9 @@ The consequential change is the weight on food and beverages, which falls from 4
 
 This is a defensible and overdue revision: food's share of household expenditure does fall as incomes rise, and a basket fixed in 2012 had become unrepresentative. But it has a direct analytical consequence. Headline CPI computed on the new basket responds substantially less to a food-price shock than the old series did. A monsoon failure that would have moved the old index by a given amount moves the new one by roughly four-fifths as much, through the weighting change alone.
 
-Our 2026 inflation figure (3.8 per cent, the average of the eight monthly prints from January to August 2026) is therefore not on the same basis as the 2014–2025 values, and we flag it as such in the dataset. Readers comparing 2026 inflation to earlier years should treat the comparison as approximate. This is the class of methodological change that the SSI is designed to make visible: legitimate in itself, consequential for comparison, and easy to miss.
+Our 2026 inflation figure (4.0 per cent, the average of the nine monthly prints from January to September 2026) is therefore not on the same basis as the 2014–2025 values, and we flag it as such in the dataset. Readers comparing 2026 inflation to earlier years should treat the comparison as approximate. This is the class of methodological change that the SSI is designed to make visible: legitimate in itself, consequential for comparison, and easy to miss.
 
-Two other series change basis. Unemployment for 2017 to 2025 is the usual-status rate of the PLFS annual reports, and the 2015 value is from the Labour Bureau's 2015–16 survey, which is a different survey; the 2026 value is the average of the 2026 monthly bulletins, which report current weekly status and run well above usual status. On that weekly measure the 2025 calendar-year rate was 5.3 per cent, against the 2026 average of 5.2 per cent. From 2017 each year in the unemployment series is the PLFS survey year that starts in July of it, through 2023, and 2024 and 2025 are MoSPI's calendar-year rates. GDP growth for 2014–15 to 2022–23 is on the 2011–12 national accounts base, and 2023–24 to 2025–26 are on the new 2022–23 base released on 27 February 2026, which covers 2023–24 onward only (7.2 and 7.1 per cent for 2023–24 and 2024–25 in MoSPI's release of 27 February 2026, and 7.7 per cent for 2025–26 in its Provisional Estimates of 5 June 2026). On the old base 2023–24 had been 9.2 per cent and 2024–25 6.5 per cent, which would raise the later-period mean by about a tenth of a point. No annual estimate for 2026–27 exists yet, so the growth series ends in 2025–26. Both breaks are flagged in the dataset and marked on the site's charts, and neither changes the direction of any comparison in Section 6.9.
+Two other series change basis. Unemployment for 2017 to 2025 is the usual-status rate of the PLFS annual reports, and the 2015 value is from the Labour Bureau's 2015–16 survey, which is a different survey; the 2026 value is the average of the 2026 monthly bulletins, which report current weekly status and run well above usual status. On that weekly measure the 2025 calendar-year rate was 5.3 per cent, against the 2026 average of 5.1 per cent. From 2017 each year in the unemployment series is the PLFS survey year that starts in July of it, through 2023, and 2024 and 2025 are MoSPI's calendar-year rates. GDP growth for 2014–15 to 2022–23 is on the 2011–12 national accounts base, and 2023–24 to 2025–26 are on the new 2022–23 base released on 27 February 2026, which covers 2023–24 onward only (7.2 and 7.1 per cent for 2023–24 and 2024–25 in MoSPI's release of 27 February 2026, and 7.7 per cent for 2025–26 in its Provisional Estimates of 5 June 2026). On the old base 2023–24 had been 9.2 per cent and 2024–25 6.5 per cent, which would raise the later-period mean by about a tenth of a point. No annual estimate for 2026–27 exists yet, so the growth series ends in 2025–26. Both breaks are flagged in the dataset and marked on the site's charts, and neither changes the direction of any comparison in Section 6.9.
 
 ## 4.4 The pre-2014 reconstruction
 
@@ -384,7 +384,7 @@ The formal employment share is the share of all workers who are regular wage or 
 
 Two movements lie underneath the share. Regular wage and salaried work fell from 22.8 to 21.7 per cent of all workers between 2017-18 and 2023-24. Among those employees, the share without any social security rose from 49.6 per cent to 53.4 per cent, after a peak of 54.2 per cent in 2019-20. By 2023-24 more than half of India's regular salaried employees had no social security, so most of the jobs that look formal by their pay arrangement lacked the protection the word implies.
 
-Headline unemployment was 5.0 per cent in 2015–16 on the Labour Bureau's survey, a different survey from PLFS, 6.0 per cent in 2017–18, the first PLFS year, and 3.1 per cent in 2025 on the usual-status measure of the PLFS annual reports. The 2026 figure, 5.2 per cent, is the average of the January to August 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment, on MoSPI's published usual-status series, was 13.0 per cent in 2023-24, down from 17.2 per cent in 2017-18. MoSPI publishes no figure for graduates before PLFS began or after 2023-24.
+Headline unemployment was 5.0 per cent in 2015–16 on the Labour Bureau's survey, a different survey from PLFS, 6.0 per cent in 2017–18, the first PLFS year, and 3.1 per cent in 2025 on the usual-status measure of the PLFS annual reports. The 2026 figure, 5.1 per cent, is the average of the January to September 2026 monthly bulletins, which report current weekly status. That measure counts a person as unemployed on the past week's activity and runs well above usual status, so most of the rise from 2025 to 2026 is the change of measure. On the weekly measure MoSPI's calendar-year rate for 2025 was 5.3 per cent, so on a like-for-like basis unemployment in 2026 is close to level (Section 4.3). Part of the series' volatility comes from the definitional treatment of self-employment and does not reflect labour-market change. Graduate unemployment, on MoSPI's published usual-status series, was 13.0 per cent in 2023-24, down from 17.2 per cent in 2017-18. MoSPI publishes no figure for graduates before PLFS began or after 2023-24.
 
 An unemployment rate of 13.0 per cent among degree-holders, four times the 3.2 per cent for all workers on the same measure in the same year, cannot be explained by weak aggregate labour demand. The graduate rate has fallen since 2017-18, and the ratio to the overall rate has stayed at about three to four. It describes an economy that has expanded low-productivity informal work while contracting the formal salaried positions that education is an investment in obtaining.
 
@@ -496,7 +496,7 @@ Comparing period means across the nine directly comparable measures:
 | Measure | UPA (2004–13) | NDA (2014–26) | Direction |
 |---|---|---|---|
 | GDP growth (%) | 6.82 | 6.20 | Worse |
-| CPI inflation (%) | 7.98 | 4.82 | Better |
+| CPI inflation (%) | 7.98 | 4.83 | Better |
 | Fiscal deficit (% GDP) | 4.64 | 5.01 | Worse |
 | Top 1% income share (%) | 20.39 | 21.92 | Worse |
 | Bottom 50% income share (%) | 16.75 | 14.69 | Worse |
@@ -507,7 +507,7 @@ Comparing period means across the nine directly comparable measures:
 
 Eight of the nine measures deteriorate and one improves. The two income shares average the years with a published figure, 2004–2013 and 2014–2022, and GDP growth averages the fiscal years 2014–15 to 2025–26. The growth row is the one most sensitive to the pandemic year: without 2020–21 the later period averages 7.29 per cent and is higher (Section 6.1). The FCI is the narrowest of the eight. Its gap of 0.13 comes from the two coded components, GST and the 2020 borrowing conditions; on the four measured fiscal ratios alone the UPA years average 0.49 and the NDA years 0.45 (Section 6.5).
 
-The exception is real as a measurement: average CPI inflation of 4.82 per cent against 7.98 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
+The exception is real as a measurement: average CPI inflation of 4.83 per cent against 7.98 per cent is a large difference in a variable that bears directly and regressively on household welfare. Section 6.10 examines it in full, because eight results in the paper's direction are credible only if the ninth receives the same care.
 
 ## 6.10 The inflation exception, in full
 
@@ -1014,7 +1014,7 @@ Full machine-readable data: `data.json`; flat export: `downloads/dataset.csv`. G
 | 2023 | 7.2 | 5.6 | n/a | n/a | 161 | 8.20 | 0.45 | 0.28 |
 | 2024 | 7.1 | 4.9 | n/a | n/a | 159 | 7.05 | 0.44 | 0.28 |
 | 2025 | 7.7 | 2.4 | n/a | n/a | 151 | 6.55 | 0.41 | 0.30 |
-| 2026 | n/a | 3.8 | n/a | n/a | 157 | 4.65 | 0.35 | 0.28 |
+| 2026 | n/a | 4.0 | n/a | n/a | 157 | 4.65 | 0.35 | 0.28 |
 
 ---
 
