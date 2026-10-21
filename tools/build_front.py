@@ -26,6 +26,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 import compute_indices as ci  # noqa: E402
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import social  # noqa: E402
+import topbar  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "index.html")
@@ -286,18 +287,22 @@ width:var(--seam);text-align:right;padding-right:clamp(.75rem,2.5vw,2rem)}
 .foot{border-top:2px solid var(--ink);font-size:.8rem}
 .foot .l,.foot .r{padding-top:1.1rem;padding-bottom:2.5rem}
 .foot .note{margin-top:.6rem;color:var(--muted);max-width:40rem}
-@media (max-width:600px){body{font-size:1rem}.top nav{gap:.1rem .8rem;font-size:.8rem}.m .lab{font-size:.7rem}
+@media (max-width:600px){body{font-size:1rem}.m .lab{font-size:.7rem}
 .src{width:auto;text-align:left}}
 /* On a phone the split stays only where it carries data (the era header, the
    scorecard rows, the charts). Text runs on plain paper, edge to edge, because
    a bordered panel at full width left two 12px slivers of field that meant
    nothing. */
-@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+@media (max-width:700px){""" + topbar.PHONE + """
 
 body{background:var(--paper)}
-.top,.eras,.m,.chart.tall{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.eras,.m,.chart.tall{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .slab{border:0;border-top:2px solid var(--ink);width:auto;margin:0;padding:1.6rem 1rem 1.4rem}
 .chart.tall{height:220px;margin:0 0 1.9rem;border-top:2px solid var(--ink)}
+.eras .l,.eras .r{padding-top:1.4rem;padding-bottom:1rem}
+.yr{font-size:clamp(2.3rem,11vw,3.4rem)}
+.who{margin-top:.6rem;font-size:.8rem}
+.kicker{letter-spacing:.09em;font-size:.68rem}
 .src{background:var(--paper);margin:0;padding:.2rem 1rem 1.6rem;text-align:left;width:auto}
 .rows{border-bottom:2px solid var(--ink)}
 .idx{gap:0;border-top:2px solid var(--ink);margin-top:1.2rem}
