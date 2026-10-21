@@ -40,6 +40,7 @@ from xml.sax.saxutils import escape
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import social  # noqa: E402
+import topbar  # noqa: E402
 SITE = "https://someperspective.info"
 
 # Retired documents. These files still exist under downloads/ but contain only a
@@ -112,12 +113,11 @@ font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(-
 .rel{font-size:.85rem}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
-@media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
+@media (max-width:600px){body{font-size:1rem}}
 /* On a phone the page runs on plain paper; the split stays in the header bar,
    where a bordered panel would only leave two slivers of field at the edges. */
-@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+@media (max-width:700px){""" + topbar.PHONE + """
 body{background:var(--paper)}
-.top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
 """

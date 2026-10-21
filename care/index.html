@@ -80,12 +80,23 @@ font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(-
 .rel{font-size:.85rem}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
-@media (max-width:600px){.top nav{gap:.1rem .8rem;font-size:.8rem}body{font-size:1rem}}
+@media (max-width:600px){body{font-size:1rem}}
 /* On a phone the page runs on plain paper; the split stays in the header bar,
    where a bordered panel would only leave two slivers of field at the edges. */
-@media (max-width:700px){.top>*{padding-left:.6rem;padding-right:.6rem}.top .name{font-size:.78rem;letter-spacing:.01em;gap:.4rem}.top .name span{white-space:nowrap}.top nav{font-size:.78rem;gap:.05rem .75rem}
+@media (max-width:700px){
+.top{display:block;position:relative;background:var(--paper)}
+.top::before{content:"";display:block;height:6px;background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
+.top>.l,.top>.r{padding:0;text-align:left}
+.top .l{padding:.15rem 4.2rem .15rem 1rem;min-height:48px;display:flex;align-items:center}
+.top .name{font-size:.82rem;letter-spacing:.02em;gap:.5rem;min-height:44px}
+.top .name span{white-space:nowrap}
+.top nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0;font-size:.82rem;border-top:1px solid var(--line)}
+.top nav a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:.35rem .3rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.15}
+.top nav a:nth-of-type(3n){border-right:0}
+.top nav a:nth-of-type(n+4){border-bottom:0}
+.top #dys-font-btn{position:absolute;top:8px;right:.6rem;min-width:44px;min-height:44px}
+
 body{background:var(--paper)}
-.top{background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%)}
 .wrap{border:0;width:auto;margin:0;padding:1.4rem 1rem 2rem}}
 @media print{body{background:none}.top nav{display:none}.wrap{border:0;margin:0;width:auto}}
 
