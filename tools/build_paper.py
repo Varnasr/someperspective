@@ -261,10 +261,10 @@ def build_html(meta, body, toc):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{ihtml.escape(title)}</title>
-<meta name="description" content="Full research paper: India's institutional and distributional transformation, 2004-2026.">
+<meta name="description" content="The full research paper on India's institutional and distributional transformation, 2004-2026.">
 <meta name="author" content="{ihtml.escape(meta.get('author',''))}">
 <link rel="canonical" href="https://someperspective.info/downloads/paper.html">
-{social.head(title, "The working paper: India's institutional and distributional record, 2004-2026, with every figure checked against its publisher.", "https://someperspective.info/downloads/paper.html", "article")}<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+{social.head(title, "The working paper on India's institutional and distributional record, 2004-2026, with every figure checked against its publisher.", "https://someperspective.info/downloads/paper.html", "article")}<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@type": "ScholarlyArticle",
     "headline": title, "author": {"@type": "Person", "name": meta.get("author", "")},
     "datePublished": meta.get("date", ""), "version": meta.get("version", ""),
