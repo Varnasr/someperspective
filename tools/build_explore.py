@@ -163,7 +163,7 @@ def series_block(d, key, note=None):
     extra = f"<p>{escape(note)}</p>" if note else ""
     est = {**bf.estimates(d, key), **bf.projections(d, key)}
     if est:
-        extra += ("<p>Hollow markers are estimates or projections, not outturns, and no average uses "
+        extra += ("<p>Hollow markers are estimates or projections, and no average uses "
                   "them: " + "; ".join(f"{YEARS[i]}, {fmtv(e['value'], dp, unit)}, {escape(e['label'])}"
                                        for i, e in sorted(est.items())) + ".</p>")
     return (f'<section class="series" id="{key}"><div class="slab"><h2>{escape(label)}</h2>'

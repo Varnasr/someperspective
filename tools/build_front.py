@@ -187,7 +187,7 @@ def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=Tru
                 cls = " first" if y == 2014 else (" end" if y == 2026 else "")
                 lab.append(f'<span class="xt{cls}" style="left:{pos:.2f}%">{y}</span>')
     label = f"{title}. {desc}" + "".join(
-        f" {YEARS[i]}: {fmt(e['value'], dp)}, {e['label']}, not an outturn." for i, e in sorted(est.items()))
+        f" {YEARS[i]}: {fmt(e['value'], dp)}, {e['label']}, drawn as an estimate." for i, e in sorted(est.items()))
     return (f'<div class="chart{" tall" if tall else ""}" role="img" aria-label="{escape(label)}">'
             f'{"".join(svg)}<div class="labels" aria-hidden="true">{"".join(lab)}</div></div>')
 

@@ -1,6 +1,6 @@
 {
   "generated_from": "data.json",
-  "method": "Three simple models compete: no change from the last value, the last value plus the average yearly change over the previous five years, and a straight line fitted to the previous eight years. Each is scored by a rolling-origin back-test: from every starting year with enough history it forecasts one to four years ahead using only the data available then, and the forecast is compared with what was later published. The model with the smallest average error is used. The interval is the 80th percentile of its back-test errors at that horizon, never narrower than at a shorter horizon; where fewer than three errors exist at a horizon, the one-year error is scaled by the square root of the horizon.",
+  "method": "Three simple models compete: no change from the last value, the last value plus the average yearly change over the previous five years, and a straight line fitted to the previous eight years. Each is scored by a rolling-origin back-test. From every starting year with enough history it forecasts one to four years ahead using only the data available then, and the forecast is compared with what was later published. The model with the smallest average error is used. The interval is the 80th percentile of its back-test errors at that horizon, never narrower than at a shorter horizon; where fewer than three errors exist at a horizon, the one-year error is scaled by the square root of the horizon.",
   "series": {
     "top1Share": {
       "label": "Income share of the top 1%",
