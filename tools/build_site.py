@@ -198,8 +198,8 @@ def build_analysis(features, vintage):
                 f'<p><strong>What follows.</strong> {he(f["takeaway"])}</p>'
                 f'<p><a class="btn" href="{more}">The data behind this reading</a></p></div>'
                 f'{charts}'
-                f'<div class="slab"><p class="note">One of {len(features)} readings of the dataset, rebuilt whenever the '
-                f'data are refreshed. Data vintage {he(vintage)}. Cite as Raman, V.S., Some Perspective: India\'s '
+                f'<div class="slab"><p class="note">One of {len(features)} readings of the dataset. '
+                f'Data vintage {he(vintage)}. Cite as Raman, V.S., Some Perspective: India\'s '
                 f'Political Economy, 2004-2026, someperspective.info, CC BY 4.0.</p>'
                 f'<p class="nav">{" &middot; ".join(nav)}</p></div>')
         rel = os.path.join("analysis", f["slug"] + ".html")
@@ -226,7 +226,7 @@ def build_analysis(features, vintage):
         blocks.append(f'<div class="slab"><h2>{he(cat)}</h2><div class="cards">{items}</div></div>')
     body = (f'<div class="slab"><p class="kicker">Analyses</p><h1>{len(features)} readings of the data</h1>'
             f'<p class="dek">Each takes one relationship in the dataset and states what it shows and what follows '
-            f'from it. They carry no date and are rebuilt from the data on every refresh. Data vintage '
+            f'from it. Data vintage '
             f'{he(vintage)}. Dated changes are listed on the <a href="/updates.html">updates page</a>.</p></div>'
             + "".join(blocks))
     write("analysis/index.html", be.shell(
