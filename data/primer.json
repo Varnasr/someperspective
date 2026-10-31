@@ -64,7 +64,7 @@
       ],
       "table": {"build": "structure", "label": "Share of output and of jobs, by sector"},
       "table2": {"build": "jobsPerLakh", "label": "Jobs per one lakh rupees of fixed investment, by industry"},
-      "source": "Sector shares: the structure block of data.json (MoSPI GVA and PLFS employment shares). Jobs per investment: Economic Survey 2016-17, Volume 1, Chapter 7, Table 2, from ASI 2012-13 and the NSSO 68th round. Electronics: Minister of State for Electronics and IT, written reply to the Rajya Sabha, February 2025, as reported by ANI and The Tribune on 9 February 2025; incentives released, DPIIT data as on 30 June 2026, as reported by Deccan Chronicle on 25 September 2026.",
+      "source": "Sector shares: the structure series in the site's dataset (MoSPI GVA and PLFS employment shares). Jobs per investment: Economic Survey 2016-17, Volume 1, Chapter 7, Table 2, from ASI 2012-13 and the NSSO 68th round. Electronics: Minister of State for Electronics and IT, written reply to the Rajya Sabha, February 2025, as reported by ANI and The Tribune on 9 February 2025; incentives released, DPIIT data as on 30 June 2026, as reported by Deccan Chronicle on 25 September 2026.",
       "from": ["structure", "jobsLesson"]
     },
     {
@@ -73,7 +73,7 @@
       "paras": [
         "Real wage rates in rural India grew by less than 1% a year in almost every farm and non-farm occupation between 2014-15 and 2022-23, on the Labour Bureau's Wage Rates in Rural India series. A later analysis that extends the series to 2023-24 finds real wage growth over the ten years close to zero. Real GDP grew by {nda_g}% a year over a similar period. The Labour Bureau's older and newer wage series are not strictly comparable."
       ],
-      "source": "Das and Usami, Downturn in Wages in Rural India, Review of Agrarian Studies, 2023; Ideas for India, The problem of India's stagnant real wages; growth from data.json.",
+      "source": "Das and Usami, Downturn in Wages in Rural India, Review of Agrarian Studies, 2023; Ideas for India, The problem of India's stagnant real wages; growth from the site's dataset.",
       "from": ["economic"]
     },
     {
@@ -83,7 +83,7 @@
         "In 2025 the unemployment rate on usual status, which records a person's main activity over the past year, was {u2025}%. On current weekly status, which records the past week, MoSPI's rate for the same year was 5.3%. Among people aged 15 to 29 the usual-status rate in 2025 was {y2025}%, and the monthly bulletins for January to September 2026, on the weekly measure, average 15.3%.",
         "The ILO and the Institute for Human Development find that nearly 90% of workers are informally employed. Women's labour force participation rose from {flfpr2017}% in 2017-18 to {flfpr2023}% in 2023-24 and was {flfpr2025}% in 2025. The same report finds that nearly two thirds of the employment added after 2019 was self-employment, among whom unpaid women family workers predominate."
       ],
-      "source": "MoSPI, Periodic Labour Force Survey, annual and monthly bulletins (sources.unemployment and sources.youthUnemployment in data.json); ILO and Institute for Human Development, India Employment Report 2024.",
+      "source": "MoSPI, Periodic Labour Force Survey, annual and monthly bulletins (the source notes for the unemployment and youth unemployment series in the site's dataset); ILO and Institute for Human Development, India Employment Report 2024.",
       "from": ["economic", "sources"]
     },
     {
@@ -111,7 +111,7 @@
         "About {rainfed}% of India's net sown area has no irrigation and depends on the rain. A weak monsoon passes through the economy in a chain that runs from {monsoon_chain}."
       ],
       "table": {"build": "realInflation", "label": "Consumer price sub-indices, December 2014 and December 2025"},
-      "source": "MoSPI, CPI 2024=100 first release, 12 February 2026; MoSPI CPI 2012=100, All India combined, December 2014 and December 2025 (api.mospi.gov.in); RBI Monetary Policy Committee resolution, 7 October 2026; Land Use Statistics 2018-19 as given in a Rajya Sabha answer of 23 December 2022; inflation averages from data.json.",
+      "source": "MoSPI, CPI 2024=100 first release, 12 February 2026; MoSPI CPI 2012=100, All India combined, December 2014 and December 2025 (api.mospi.gov.in); RBI Monetary Policy Committee resolution, 7 October 2026; Land Use Statistics 2018-19 as given in a Rajya Sabha answer of 23 December 2022; inflation averages from the site's dataset.",
       "from": ["cpiBasket", "realInflation", "monsoonChain", "eraHistory", "economic"]
     },
     {
@@ -165,7 +165,7 @@
       ],
       "table": {"build": "modiAsks", "label": "Figures behind the Prime Minister's appeal of 10 May 2026"},
       "table2": {"build": "pumpPrice", "label": "Where the petrol price went, illustration at the pre-April 2025 excise rate"},
-      "source": "External sector: the external block of data.json (RBI balance of payments for 2025-26; DGCI&S; FRED DEXINUS). The appeal: The Quint and Deccan Chronicle, 10 May 2026. Imports: Department of Commerce, merchandise imports by principal commodity group, 2025-26. Travel: RBI Liberalised Remittance Scheme data for 2023-24, as reported by Business Standard; Ministry of Tourism, India Tourism Statistics, December 2024. Petrol: PPAC, PRS and Ministry of Finance notifications; Delhi price as reported by The Hans India. Gold: World Gold Council and Metals Focus, as reported in 2024. Accounts: World Bank Global Findex. Insurance: IRDAI Annual Report 2024-25, citing Swiss Re.",
+      "source": "External sector: the external-sector series in the site's dataset (RBI balance of payments for 2025-26; DGCI&S; FRED DEXINUS). The appeal: The Quint and Deccan Chronicle, 10 May 2026. Imports: Department of Commerce, merchandise imports by principal commodity group, 2025-26. Travel: RBI Liberalised Remittance Scheme data for 2023-24, as reported by Business Standard; Ministry of Tourism, India Tourism Statistics, December 2024. Petrol: PPAC, PRS and Ministry of Finance notifications; Delhi price as reported by The Hans India. Gold: World Gold Council and Metals Focus, as reported in 2024. Accounts: World Bank Global Findex. Insurance: IRDAI Annual Report 2024-25, citing Swiss Re.",
       "from": ["external", "modiAsks", "pumpPrice", "gold"]
     },
     {

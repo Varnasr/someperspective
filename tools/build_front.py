@@ -423,7 +423,7 @@ def build():
          f"The severities are the author's coding and the most contestable part of the study.",
          seam_chart(ss, "Statistical Suppression Index, 0-10, 2004-2026",
                     f"Zero for 2004-2014, peak {fmt(ss_peak,1)} in 2021-22, {fmt(ss[-1],2)} in 2026.", dp=1, lo=0),
-         "Author's coding of dated events, data/compute_indices.py."),
+         "Author's coding of dated events, set out in the methodology and the research package."),
         ("The fiscal index is higher after 2014 because of GST and the 2020 borrowing conditions",
          f"The Fiscal Centralisation Index averaged {fmt(fcu,2)} in the UPA decade and {fmt(fcn,2)} after 2014, with a "
          f"peak of {fmt(max(v for v in fc if v is not None),2)} in 2020. On the four measured fiscal ratios alone the "
@@ -525,14 +525,15 @@ def build():
 </div>
 <div class="rows">{"".join(rows)}</div>
 <div class="slab"><p class="count">{worse}<small>of {total} measures worse after 2014</small></p>
-<p>Series that begin in 2017-18 with the labour force survey have no earlier counterpart on the same basis and are left out. The averages are computed from data.json each time the site is built, and the replication script in the repository reproduces them.</p></div>
+<p>Only measures with a published figure in both periods are compared, so series that begin in 2017-18 with the labour force survey have no earlier counterpart on the same basis and are left out. Each average uses the years with a published figure, and the periods differ in length: ten years for the UPA and thirteen for the NDA, with the two income shares ending in 2022.</p>
+<p>The count records the direction of each difference and gives no weight to its size. Some gaps are small, and the growth row reverses once the pandemic year is left out, as the first finding shows. The comparison describes how the two periods differ. It does not say that a government caused each change, and the paper makes no causal claim. The research package holds the dataset and the code that reproduces every average on this page.</p></div>
 </section>
 
 <section id="findings" aria-labelledby="h-find">
 <div class="slab">
 <p class="kicker">What the numbers show</p>
 <h2 id="h-find">Six findings, each with the series behind it</h2>
-<p>Every chart runs from 2004 at the left edge of the page to 2026 at the right, and the change of government falls on the dividing line.</p>
+<p>Each finding gives the claim, the series behind it and the publisher of the data. Where a result turns on a choice of years or on the author's coding, the text says so. All the charts share one time axis, so the change of government falls on the dividing line in every one.</p>
 </div>
 {"".join(fhtml)}
 </section>
@@ -540,8 +541,8 @@ def build():
 <section id="indices" aria-labelledby="h-idx">
 <div class="slab">
 <p class="kicker">The three indices</p>
-<h2 id="h-idx">Built the same way for both periods, from one script</h2>
-<p>All three are computed by data/compute_indices.py for every year from 2004 to 2026. The inputs and their sources are listed in the code and in the methodology.</p>
+<h2 id="h-idx">One method applied to both periods</h2>
+<p>All three are computed for every year from 2004 to 2026 under the same rules for both periods. The inputs and their sources are set out in the methodology, and the research package holds the code that computes them. The SSI severities are the author's coding against a published rubric, and a different coder could score some events differently.</p>
 <div class="idx">
 <div><p class="kicker">SSI</p><p class="big">{fmt(ssv,2)}<small>of 10, {ssy}</small></p><p>Statistical Suppression Index. Graded severities of documented events across six streams, with a decay after an event is resolved. UPA average {fmt(ssu,2)}, NDA average {fmt(ssn,2)}.</p></div>
 <div><p class="kicker">FCI</p><p class="big">{fmt(fcv,2)}<small>of 1, {fcy}</small></p><p>Fiscal Centralisation Index. Four published fiscal ratios and two coded events, GST and the 2020 borrowing conditions. UPA average {fmt(fcu,2)}, NDA average {fmt(fcn,2)}.</p></div>
