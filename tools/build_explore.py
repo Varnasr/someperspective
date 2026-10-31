@@ -266,7 +266,7 @@ def shell(title, desc, canonical, body, depth=1, head="", typ="website", share_t
 <div class="l"><a class="name" href="/">{bf.MARK}<span>Some Perspective</span></a></div>
 <nav class="r" aria-label="Site" data-dyslexia-slot>
 <a href="/">Overview</a><a href="/explore/">Data</a><a href="/analysis/">Analyses</a>
-<a href="/downloads/paper.html">Paper</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a>
+<a href="/downloads/paper.html">Paper</a><a href="/walkthrough/">Walkthrough</a>
 </nav>
 </header>
 <main id="main">
@@ -275,7 +275,7 @@ def shell(title, desc, canonical, body, depth=1, head="", typ="website", share_t
 </main>
 <footer class="foot split">
 <div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
-<div class="r"><p><a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
+<div class="r"><p><a href="/updates.html">Updates and corrections</a> &middot; <a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
 <p class="note">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
 </footer>
 <script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>

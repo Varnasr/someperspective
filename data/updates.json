@@ -553,11 +553,11 @@
         },
         {
           "kind": "Fixed",
-          "text": "The dataset request now retries three times with backoff, and the warning banner carries a working retry button that clears itself if the retry succeeds. Previously one failed request left the banner up for the rest of the session with no way back."
+          "text": "If the data fails to load, the site now tries again on its own, and the warning banner has a working retry button that clears itself once the data arrives. Before, one failed attempt left the banner up for the rest of the visit with no way back."
         },
         {
           "kind": "Fixed",
-          "text": "The site's main page is a single large file. If the transfer was cut part-way through (a dropped mobile connection, or an intermediary that truncates), the page came up looking almost normal but with computed figures silently blank: an empty scorecard, and a sentence reading 'On [nothing] cross-era measures'. There is now a check that detects a page which failed to start and says so, with a reload button."
+          "text": "The site's main page is a single large file. If the transfer was cut part-way through (a dropped mobile connection, or an intermediary that truncates), the page came up looking almost normal but with computed figures silently blank: an empty scorecard, and a sentence reading 'On [nothing] cross-era measures'. The page now notices when it has not loaded completely, says so, and offers a reload button."
         },
         {
           "kind": "Fixed",
