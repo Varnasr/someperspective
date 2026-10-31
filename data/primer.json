@@ -46,7 +46,7 @@
       "paras": [
         "The employment elasticity of output is the percentage rise in employment that comes with a 1% rise in GDP. An RBI working paper put it at 0.50 for 1999-2000 to 2004-05, 0.01 for 2004-05 to 2009-10 and 0.18 for 2009-10 to 2011-12. An elasticity of 0.01 means that output grew with almost no rise in employment.",
         "Between 2014-15 and 2021-22, {gov_apps} crore people applied for central government jobs and {gov_jobs} lakh were recommended for appointment by the recruiting agencies, about {gov_rate}.",
-        "Real GDP growth averaged {upa_g}% a year from 2004-05 to 2013-14 and {nda_g}% from 2014-15 to 2025-26, or {nda_g_ex}% leaving out the pandemic year 2020-21. The two periods are measured on different national accounts bases from 2023-24, and the [growth page](/explore/economy/) shows each year."
+        "Real GDP growth averaged {upa_g}% a year from 2004-05 to 2013-14 and {nda_g}% from 2014-15 to 2025-26, or {nda_g_ex}% leaving out the pandemic year 2020-21. The earlier decade had a crisis year of its own, and without 2008-09 it averaged {upa_g_ex}%. The two periods are measured on different national accounts bases from 2023-24, and the [growth page](/explore/economy/) shows each year."
       ],
       "table": {"head": ["Period", "Employment growth, % a year", "GDP growth, % a year", "Employment elasticity"],
                 "rows": [["1999-2000 to 2004-05", "2.8", "5.7", "0.50"], ["2004-05 to 2009-10", "0.1", "8.7", "0.01"], ["2009-10 to 2011-12", "1.4", "7.4", "0.18"]],

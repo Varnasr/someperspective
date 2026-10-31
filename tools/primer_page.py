@@ -134,6 +134,7 @@ def values(d):
     v["upa_g"] = f1(mean(upa_g))
     v["nda_g"] = f1(mean(nda_g))
     v["nda_g_ex"] = f1(mean([x for y, x in zip(nda_years, nda_g) if y != 2020]))
+    v["upa_g_ex"] = f1(mean([x for y, x in zip(era["years"], upa_g) if y != 2008]))
     v["upa_cpi"] = f1(mean(era["cpiInflation"]))
     v["nda_cpi"] = f1(mean([at(eco, "cpiInflation", y) for y in range(2014, 2026)]))
 
