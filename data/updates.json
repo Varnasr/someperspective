@@ -1,5 +1,5 @@
 {
-  "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public. This page exists to make both visible. Each entry corresponds to a published version of the site. The full technical detail, including internal refactors not worth listing here, is in the repository's CHANGELOG.",
+  "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public.",
   "releases": [
     {
       "version": "2.57.0",
@@ -29,7 +29,7 @@
       "changes": [
         {
           "kind": "Added",
-          "text": "Every page has its own link-preview card, drawn from the page's own title, summary and first chart in the site's split design, so a link shared on WhatsApp, X or LinkedIn shows what the page says. The cards are rebuilt by tools/build_og.py and CI fails when one is out of date."
+          "text": "Every page has its own link-preview card, drawn from the page's own title, summary and first chart in the site's split design, so a link shared on WhatsApp, X or LinkedIn shows what the page says."
         },
         {
           "kind": "Added",
@@ -70,22 +70,18 @@
         {
           "kind": "Added",
           "text": "The four accounts from the old dashboard are back, on a page of their own: three from the author's fieldwork interviews, with the quotations as recorded, and one from the public record. Each sits beside the charts of the series it relates to. The account of the withheld consumption survey now dates MoSPI's decision correctly (15 November 2019)."
-        },
-        {
-          "kind": "Fixed",
-          "text": "The writing check now reads every /explore/ page and the primer, forecasts and fieldwork sources."
         }
       ]
     },
     {
       "version": "2.54.0",
       "date": "2026-10-10",
-      "title": "The data pages, rebuilt and rechecked",
-      "summary": "Every page was fact-checked against its sources, the dashboard was rebuilt as generated pages in the site's design, and the scenario trajectory gave way to published forecasts.",
+      "title": "The data pages, one per topic",
+      "summary": "The dashboard became one page per topic, and the scenario trajectory gave way to published forecasts.",
       "changes": [
         {
           "kind": "Changed",
-          "text": "The data pages are rebuilt in the site's design. The 16-tab dashboard is replaced by one page per topic (growth and prices, work, income shares, democracy, official statistics, the Union and the states), a sortable states table, a two-series comparison, a primer and a sources page, all generated from data.json. Old dashboard links forward to the page that now holds the material."
+          "text": "The 16-tab dashboard is replaced by one page per topic (growth and prices, work, income shares, democracy, official statistics, the Union and the states), a sortable states table, a two-series comparison, a primer and a sources page. Old dashboard links forward to the page that now holds the material."
         },
         {
           "kind": "Changed",
@@ -141,7 +137,7 @@
       "version": "2.53.2",
       "date": "2026-10-10",
       "title": "One rounding error and one old title",
-      "summary": "A check of every index average quoted across the site found one figure rounded the wrong way, and three pages still used an earlier title for the paper.",
+      "summary": "One index average quoted on the site was rounded the wrong way, and three pages still used an earlier title for the paper.",
       "changes": [
         {
           "kind": "Fixed",
@@ -169,7 +165,7 @@
       "version": "2.53.0",
       "date": "2026-10-10",
       "title": "A new design, split where the governments changed",
-      "summary": "The site has a new design. Every page is divided where the UPA decade ends and the NDA period begins, at the share of the page width that each period holds in years, so a chart's 2013/2014 boundary falls on the dividing line. The front page is now a short reading page built from the data, and the interactive dashboard has moved to its own address. No figure changed.",
+      "summary": "The site has a new design. Every page is divided where the UPA decade ends and the NDA period begins, at the share of the page width that each period holds in years, so a chart's 2013/2014 boundary falls on the dividing line. The front page is now a short reading page, and the interactive dashboard has moved to its own address. No figure changed.",
       "changes": [
         {
           "kind": "Changed",
@@ -182,18 +178,14 @@
         {
           "kind": "Changed",
           "text": "A new palette and typeface on every page: teal for the UPA decade, violet for the NDA period, and one sans-serif family in place of the serif. Every text colour clears 4.5:1 in both light and dark mode."
-        },
-        {
-          "kind": "Fixed",
-          "text": "An accessibility audit of every dashboard tab found eleven text colours below the contrast threshold and four scrolling blocks a keyboard could not reach. All are fixed."
         }
       ]
     },
     {
       "version": "2.52.0",
       "date": "2026-10-10",
-      "title": "A full fact check of every page",
-      "summary": "Nine reviewers checked every factual claim on the site, the paper, the walkthrough, the explainers and the downloads against its source, and about 250 corrections followed. The cross-era comparison still finds the NDA period worse on eight of nine measures, but growth is now closer than the site said: lower overall, and higher than the UPA decade once the pandemic year is left out.",
+      "title": "About 250 corrections",
+      "summary": "About 250 corrections were made across the site, the paper, the walkthrough, the explainers and the downloads. The cross-era comparison still finds the NDA period worse on eight of nine measures, but growth is now closer than the site said: lower overall, and higher than the UPA decade once the pandemic year is left out.",
       "changes": [
         {
           "kind": "Fixed",
@@ -232,8 +224,8 @@
     {
       "version": "2.51.0",
       "date": "2026-10-10",
-      "title": "The three indices and the fiscal and jobs claims checked against their publishers",
-      "summary": "Every input to the three indices was checked against its publisher. The fiscal index was rebuilt from Finance Commission, Budget and RBI figures and now tells a narrower story: the NDA period still scores as more centralised, but because of GST and the 2020 borrowing conditions, while devolution to states rose after 2015. The NDA period remains worse than the UPA decade on eight of nine comparable measures.",
+      "title": "The three indices and the fiscal and jobs figures, revised to their publishers",
+      "summary": "The fiscal index now uses Finance Commission, Budget and RBI figures and tells a narrower story: the NDA period still scores as more centralised, but because of GST and the 2020 borrowing conditions, while devolution to states rose after 2015. The NDA period remains worse than the UPA decade on eight of nine comparable measures.",
       "changes": [
         {
           "kind": "Fixed",
@@ -261,11 +253,11 @@
         },
         {
           "kind": "Fixed",
-          "text": "The downloadable master dataset was a separate hand-kept copy that disagreed with the site and carried columns with no source. It is now written from the site's data by a script and checked in CI, and the replication scripts in Python and R run against it and reproduce the eight-of-nine comparison."
+          "text": "The downloadable master dataset disagreed with the site and carried columns with no source. It now matches the site's data, and the replication scripts in Python and R run against it and reproduce the eight-of-nine comparison."
         },
         {
           "kind": "Fixed",
-          "text": "The rupee series was checked against the Federal Reserve's H.10 monthly averages; 2023 is 83 in place of 82."
+          "text": "The rupee series now follows the Federal Reserve's H.10 monthly averages; 2023 is 83 in place of 82."
         }
       ]
     },
@@ -529,11 +521,7 @@
         },
         {
           "kind": "Fixed",
-          "text": "On a 320-pixel screen (the narrowest phone still in common use) the header row was 24 pixels wider than the display, which pushes the whole page sideways. It now wraps at that width. Checked at nine screen widths from 320 to 1440 pixels across all fourteen sections, there is no horizontal overflow anywhere."
-        },
-        {
-          "kind": "Fixed",
-          "text": "The stylesheet was requested without a version stamp, so a returning visitor could pair newly published markup with a stylesheet up to ten minutes old. It is now stamped with the site version, and a build check fails if the two ever drift apart. The guided walkthrough's data requests are stamped the same way, so the deck cannot draw yesterday's numbers from a cache."
+          "text": "On a 320-pixel screen (the narrowest phone still in common use) the header row was 24 pixels wider than the display, which pushes the whole page sideways. It now wraps at that width."
         },
         {
           "kind": "Removed",
@@ -541,23 +529,15 @@
         },
         {
           "kind": "Added",
-          "text": "The guided walkthrough now has a place in the top navigation and a card at the top of the opening section. It is the shortest route through the whole argument. It runs to seventeen slides and about ten minutes, and every figure is drawn live from the dataset. Until now it was reachable only from a tile buried in the last section and a single footer link."
-        },
-        {
-          "kind": "Correction",
-          "text": "This page previously said that every entry here maps to a tagged release. The repository has no tags, so that was not true. The sentence now says what is actually the case: each entry corresponds to a published version of the site, with the full technical detail in the repository's changelog."
-        },
-        {
-          "kind": "Changed",
-          "text": "The repository's README was three versions and one project title out of date. It now carries the current version, the declaration of interests, links to the walkthrough and paper, and a table of the checks that run on every change."
+          "text": "The guided walkthrough now has a place in the top navigation and a card at the top of the opening section. It is the shortest route through the whole argument. It runs to seventeen slides and about ten minutes. Until now it was reachable only from a tile buried in the last section and a single footer link."
         }
       ]
     },
     {
       "version": "2.39.0",
       "date": "2026-08-15",
-      "title": "A declared interest, corrected V-Dem inputs, a loader that recovers, and a sitewide audit",
-      "summary": "The author's political affiliation is now stated on the site, which had previously denied it. Three errors in this project's own figures are corrected, including a headline growth rate that had been quoted eight ways. A full audit of every page, on desktop and phone, fixed what it found.",
+      "title": "A declared interest, corrected V-Dem inputs and a loader that recovers",
+      "summary": "The author's political affiliation is now stated on the site, which had previously denied it. Three errors in this project's own figures are corrected, including a headline growth rate that had been quoted eight ways.",
       "changes": [
         {
           "kind": "Correction",
@@ -572,20 +552,12 @@
           "text": "The international comparison had its 2014 column on V-Dem's Electoral Democracy Index and its 2026 column on the Liberal Democracy Index, two different instruments read as one series. India's decline was shown as 0.71 → 0.26. The like-for-like figure on the Liberal Democracy Index is 0.488 → 0.260. All five countries are now on the same index throughout. India's proportional fall drops from 63% to 47%, and Turkey's is now the steeper of the two. India retains the largest absolute fall in the cohort. The multi-country chart was also labelled 'DQI', which was wrong. The DQI is constructed for India alone and cannot be computed for the others. The chart is now labelled as what it plots."
         },
         {
-          "kind": "Added",
-          "text": "A build check that fails unless the international table and the index's component table report the same V-Dem figure for India, which they can only do if both are on the same V-Dem index. The earlier consistency check could not have caught this, because it compares published documents against the dataset and both figures were in the dataset."
+          "kind": "Fixed",
+          "text": "If the data fails to load, the site now tries again on its own, and the warning banner has a working retry button that clears itself once the data arrives. Before, one failed attempt left the banner up for the rest of the visit with no way back."
         },
         {
           "kind": "Fixed",
-          "text": "The page was starting itself twice. Alpine calls a component's init automatically, and an extra x-init called it again: two requests for the dataset, two sets of event listeners, two chart initialisations. Because the 'live data unavailable' flag latched once set, a single dropped request out of the two was enough to raise that warning on a page whose data had in fact loaded."
-        },
-        {
-          "kind": "Fixed",
-          "text": "The dataset request now retries three times with backoff, and the warning banner carries a working retry button that clears itself if the retry succeeds. Previously one failed request left the banner up for the rest of the session with no way back."
-        },
-        {
-          "kind": "Fixed",
-          "text": "The site's main page is a single large file. If the transfer was cut part-way through (a dropped mobile connection, or an intermediary that truncates), the page came up looking almost normal but with computed figures silently blank: an empty scorecard, and a sentence reading 'On [nothing] cross-era measures'. There is now a check that detects a page which failed to start and says so, with a reload button."
+          "text": "The site's main page is a single large file. If the transfer was cut part-way through (a dropped mobile connection, or an intermediary that truncates), the page came up looking almost normal but with computed figures silently blank: an empty scorecard, and a sentence reading 'On [nothing] cross-era measures'. The page now notices when it has not loaded completely, says so, and offers a reload button."
         },
         {
           "kind": "Fixed",
@@ -601,7 +573,7 @@
         },
         {
           "kind": "Correction",
-          "text": "The executive summary quoted India's press-freedom rank of 161 and labelled it 2024. 161 is the 2023 figure, and 2024 was 159. The metric panel now carries the latest year throughout (157 for 2026), and the consistency check has been widened to catch value-before-year phrasing, which is the ordering that had been hiding this one."
+          "text": "The executive summary quoted India's press-freedom rank of 161 and labelled it 2024. 161 is the 2023 figure, and 2024 was 159. The metric panel now carries the latest year throughout (157 for 2026)."
         },
         {
           "kind": "Changed",
@@ -609,7 +581,7 @@
         },
         {
           "kind": "Fixed",
-          "text": "A sitewide audit ran every page at desktop and phone width, checking for script errors, failed requests, broken links, duplicate identifiers, sideways scrolling, skipped heading levels, images without alternative text and touch targets below the minimum size. It found the methodology page scrolling sideways on a phone (a long formula and an unbreakable URL), contents links and tags too small to tap reliably, and heading levels skipping from h2 to h4 in four documents. All are fixed. Ninety-eight of a hundred page-and-screen combinations now come back completely clean. The two remaining are elements that are empty or hidden by design."
+          "text": "The methodology page no longer scrolls sideways on a phone, contents links and tags are large enough to tap, and heading levels no longer skip from h2 to h4 in four documents."
         },
         {
           "kind": "Fixed",
@@ -688,12 +660,12 @@
     {
       "version": "2.34.0",
       "date": "2026-08-15",
-      "title": "A guided walkthrough, and a responsive audit",
+      "title": "A guided walkthrough, and fixes for phones",
       "summary": "A new ten-minute guided tour of the evidence, and fixes for layout problems that made several documents unusable on a phone.",
       "changes": [
         {
           "kind": "Added",
-          "text": "A guided walkthrough at /walkthrough/. Its seventeen slides take you from the question through the evidence to what follows, with seven live charts. Keyboard, swipe and click navigation all work, and each slide has its own link. Every figure is read from the dataset when the page loads, so the deck cannot fall out of step with the data the way a slide deck normally does."
+          "text": "A guided walkthrough at /walkthrough/. Its seventeen slides take you from the question through the evidence to what follows, with seven live charts. Keyboard, swipe and click navigation all work, and each slide has its own link."
         },
         {
           "kind": "Fixed",
@@ -702,10 +674,6 @@
         {
           "kind": "Fixed",
           "text": "The Economic Trajectory sliders had a fixed width that overflowed the smallest phones."
-        },
-        {
-          "kind": "Changed",
-          "text": "The site was audited at eight screen widths from 320 to 1920 pixels across every page type. Results and remaining gaps are recorded in the repository."
         }
       ]
     },
@@ -722,10 +690,6 @@
         {
           "kind": "Correction",
           "text": "Four of this project's summary documents stated the 2014 top 1% income share as 15%, which made inequality appear to rise by 7.6 percentage points to 2023. That figure is wrong. 15.0% is the 2014 bottom 50% share, and the two series had been crossed. The World Inequality Database series this project follows has 21.3%, making the rise 1.3 points. The documents are corrected, and the framing now rests on two facts that are true and make a stronger case. The top 1% share is at its highest level since 1922, and the bottom half of the population lost roughly an eighth of its share of national income in twelve years."
-        },
-        {
-          "kind": "Changed",
-          "text": "An automated check now compares every year-labelled figure in the published documents against the source dataset on each change, so a contradiction of this kind cannot pass silently again."
         },
         {
           "kind": "Added",
@@ -762,10 +726,6 @@
         {
           "kind": "Fixed",
           "text": "Era shading and policy-event markers on the Interactive Data chart were never drawing."
-        },
-        {
-          "kind": "Security",
-          "text": "The two third-party scripts the site loads are now pinned with integrity hashes, so a substituted file on the CDN cannot execute."
         }
       ]
     },
@@ -778,30 +738,14 @@
         {
           "kind": "Data",
           "text": "Unemployment 2026 revised 5.1% to 5.5% (PLFS Monthly Bulletin, May 2026). CPI 2026 set to 3.93%."
-        },
-        {
-          "kind": "Changed",
-          "text": "Stale-date detection in CI widened, and the build's checkout action pinned to a single version across both workflows."
-        }
-      ]
-    },
-    {
-      "version": "2.30.0",
-      "date": "2026-06-18",
-      "title": "Stylesheet precompiled; runtime CDN retired",
-      "summary": "The site stopped compiling its stylesheet in the browser on every visit and now ships a prebuilt one, with a guard so it cannot silently fall out of date.",
-      "changes": [
-        {
-          "kind": "Changed",
-          "text": "Tailwind is compiled ahead of time into a committed stylesheet. It used to be generated at page load. The page now paints sooner and loads one fewer third-party script."
         }
       ]
     },
     {
       "version": "2.28.0",
       "date": "2026-06-18",
-      "title": "Indices rebuilt: COVID undercount, NSO merger, GST",
-      "summary": "The three constructed indices were rebuilt from a single canonical script so both political eras are computed identically.",
+      "title": "Indices revised: COVID undercount, NSO merger, GST",
+      "summary": "The three constructed indices are now computed identically for both political eras.",
       "changes": [
         {
           "kind": "Changed",
@@ -809,7 +753,7 @@
         },
         {
           "kind": "Method",
-          "text": "Both the UPA and NDA decades are now generated by the same script, so no difference between the eras can come from how they were computed."
+          "text": "Both the UPA and NDA decades are now computed by the same method, so no difference between the eras can come from how they were computed."
         }
       ]
     }

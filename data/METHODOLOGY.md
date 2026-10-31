@@ -29,11 +29,9 @@ UPA I (2004-09), UPA II (2009-14), Modi I (2014-19), Modi II (2019-24) and Modi 
 ## 1. The supplementary CSV series
 
 ### 1.1 Sanitation (`sanitation_odf_verified.csv`, rural household toilet coverage, %)
-Rebuilt on 10 October 2026 from published figures. The earlier file was a logistic curve with
-parameters L = 99, k = 0.8 and t0 = 2018, which did not pass through its own anchors (it gave 3.9%
-for 2014 and 49.5% for 2018), so the file overwrote the anchor years and jumped from 49.5% in 2018
-to 95% in 2019. Its anchors of 95% (2019) and 98.5% (2024) had no source. The file now holds
-five published figures and leaves every other year empty.
+The series holds five published figures and leaves every other year empty. An earlier version
+was a fitted curve whose later values (95% for 2019, 98.5% for 2024) had no source; it was
+replaced in October 2026, as recorded on the site's updates page.
 
 | Year | Value | Source |
 |---|---|---|
@@ -48,34 +46,34 @@ definition. Parliamentary replies made before 2018 put coverage at the launch at
 earlier baseline, which was later revised to 38.7%, so their figures for 2015, 2016 and early 2017
 are left out.
 The independent NSS 76th round (July to December 2018) found 71.3% of rural households with access
-to a latrine, well below the MIS figure for the same months. The file name is kept for the
-site's code. The series is rural toilet coverage, and no published series measures verified
+to a latrine, well below the MIS figure for the same months. Despite the
+file's name, the series is rural toilet coverage, and no published series measures verified
 open-defecation-free status by year.
 
 ### 1.2 State finances (cesses and surcharges, % of gross tax revenue)
-This series is no longer estimated. Since 10 October 2026 it holds the published figures:
+The series holds published figures:
 2011-12 to 2018-19 from the 15th Finance Commission report, Vol I Table 3.8 (with the GST
 compensation cess included from 2017-18), and 2019-20 to 2026-27 summed from every cess and
 surcharge line of the Union Receipt Budgets (actuals to 2024-25, 2025-26 revised estimate,
 2026-27 budget estimate). The share was 10.4% in 2011-12, 13.5% in 2014-15, 24.4% at its peak
 in 2020-21 (20.2% without the GST compensation cess), 18.0% in 2024-25 and 14.3% in the 2026-27
 budget estimate. No figure is published on this definition before 2011-12, so 2004-2010 are empty.
-The earlier version of this file interpolated between nine anchors running from 8.0% (2004) to
-29.0% (2024), which matched no published series.
+An earlier version interpolated between anchors that matched no published series; it was
+replaced in October 2026.
 
 ### 1.3 Society (`society_communal_incidents.csv`, communal incidents, count)
-Rebuilt on 10 October 2026 from the Ministry of Home Affairs' own counts for 2004 to 2017:
+The series holds the Ministry of Home Affairs' own counts for 2004 to 2017:
 677, 779, 698, 761, 943, 849, 701, 580, 668, 823, 644, 751, 703 and 822 incidents. They come
 from an MHA reply to an RTI application, reported by PTI and published by The Wire on 3 January
 2019, and the 2008-2017 figures sum to the 7,484 incidents IndiaSpend reported from MHA Lok Sabha
 replies for that decade. The notes column carries the deaths and injuries for each year. MHA has
-published no count after 2017, so the file ends there. The earlier version carried anchors
-that did not match MHA (764 for 2014, 723 for 2017) and extended the series after 2017 by an
-assumed 25 incidents a year.
+published no count after 2017, so the file ends there. An earlier version
+carried figures that did not match MHA (764 for 2014, 723 for 2017) and extended the series after
+2017 by an assumed 25 incidents a year; it was replaced in October 2026.
 
-### 1.4 Series removed on 10 October 2026
+### 1.4 Series removed in October 2026
 `education_exam_events.csv` (exam leaks and cancellations) and
-`politics_opposition_incarceration.csv` (opposition leaders jailed) were deleted. Both were
+`politics_opposition_incarceration.csv` (opposition leaders jailed) were removed. Both were
 interpolated between unnamed milestone counts. No published source gives either count year by
 year. The Ministry of Education told Parliament in 2024 that it does not maintain data on paper
 leaks, and the press compilations that exist (Newslaundry, July 2024, 89 cases over ten years)
@@ -85,11 +83,10 @@ report totals over a period.
 
 ## 2. The three constructed indices (SSI, FCI, DQI)
 
-All three indices constructed for this project are computed by a single deterministic
-script, `data/compute_indices.py`, applied identically to both eras (2004-2026), so the
-UPA-vs-NDA comparison rests on one consistent footing. Run `python3 data/compute_indices.py`
-to regenerate the series. The same numbers populate `data.json`, the site, and the
-technical appendix.
+All three indices constructed for this project are computed by one set of rules, applied
+identically to both eras (2004-2026), so the UPA-vs-NDA comparison rests on one consistent
+footing. The calculation is published in this folder as `compute_indices.py`, and the same
+numbers appear on the site and in the technical appendix.
 
 The DQI inputs are published third-party series
 (V-Dem Liberal Democracy and Civil Society indices, Freedom House, RSF). The SSI
@@ -139,8 +136,8 @@ FCI is relative to the sample. It averages 0.30 under UPA and 0.43 under NDA, pe
 2020 and is 0.35 in 2026. On C1-C4 alone the UPA years average 0.49 and the NDA years 0.45, so the
 NDA's higher score comes from the two coded components. The Finance Commission share of the
 divisible pool was 29.5% (11th FC, 2004-05), 30.5% (12th), 32% (13th), 42% (14th, 2015-20) and
-41% (15th and 16th). The index was rebuilt from these published figures on 10 October 2026; the
-earlier component table matched no published series.
+41% (15th and 16th). An earlier component table that matched no published series was replaced with
+these figures in October 2026.
 
 ### Democratic Quality Index (DQI), scale 0-1
 The geometric mean of four published third-party measures:
@@ -152,19 +149,19 @@ separates the eras (India was mediocre throughout), while civil-society space co
 UPA-era average of 0.57 (peak 0.61, in 2005 and 2006) to 0.28 in 2026 (0.49 → 0.28 within the NDA
 period, a fall of 42.9%; NDA-era mean 0.37),
 with the steepest drop after 2019. V-Dem first classified India as an electoral autocracy in its March 2021 Democracy Report.
-The Freedom House and RSF columns were checked against the publishers on 10 October 2026. The
-Freedom House scores for the UPA years had been 78-79 against published scores of 76-77, and 2024-2025
-had carried 66 against published scores of 63 and 62; the RSF rank for 2012 had carried 140, the 2013
-rank, where RSF's 2011-12 index gives 131. Both V-Dem columns match V-Dem's March 2026 release.
+The Freedom House and RSF columns match the publishers' figures. Earlier versions carried Freedom
+House scores of 78-79 for the UPA years against published scores of 76-77, and 66 for 2024-2025
+against published scores of 63 and 62; the RSF rank for 2012 had carried 140, the 2013 rank, where
+RSF's 2011-12 index gives 131. These were corrected in October 2026. Both V-Dem columns match V-Dem's March 2026 release.
 
 ---
 
 ## 3. Principles
 
-1. **Published figures only.** A CSV holds what a named publisher printed, and nothing is fitted or extrapolated.
-2. **Gaps stay gaps.** A year with no published figure is empty, or the file stops at the last published year.
-3. **Sources in the file.** Every row's notes name the publisher, document and date.
-4. **One definition per series.** Where a source changes definition, the notes say so.
+1. Published figures only. A CSV holds what a named publisher printed, and nothing is fitted or extrapolated.
+2. Gaps stay gaps. A year with no published figure is empty, or the file stops at the last published year.
+3. Sources in the file. Every row's notes name the publisher, document and date.
+4. One definition per series. Where a source changes definition, the notes say so.
 
 ---
 
@@ -177,7 +174,7 @@ data/
 ├── society_communal_incidents.csv
 ├── _regime_periods.csv
 ├── compute_indices.py
-└── SP_masterdataset.csv   (generated by tools/build_master.py)
+└── SP_masterdataset.csv   (every series in one table)
 ```
 
 ---

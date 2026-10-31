@@ -508,8 +508,8 @@
   {
     "slug": "a-regime-comparison-computed-live-from-the-data",
     "category": "Comparative",
-    "title": "A regime comparison, computed live from the data",
-    "body": "Averaged over the UPA period, the data give 6.8% GDP growth, a 20.4% top 1% income share, and a press-freedom rank of about 120. NDA's same averages are computed live from the loaded series. Unemployment and formal employment have no series on the PLFS basis for the UPA years, so those two are marked as not available.",
+    "title": "A regime comparison of the two periods' averages",
+    "body": "Averaged over the UPA period, the data give 6.8% GDP growth, a 20.4% top 1% income share, and a press-freedom rank of about 120. Unemployment and formal employment have no series on the PLFS basis for the UPA years, so those two are marked as not available.",
     "takeaway": "The regime comparison is mechanical. It averages the data and interprets nothing, and it does not flatter either side.",
     "tab": "Deep Analysis",
     "chart": {
