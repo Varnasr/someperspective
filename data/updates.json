@@ -13,11 +13,11 @@
         },
         {
           "kind": "Added",
-          "text": "A front-page section, 'What would change these conclusions', states for each finding the evidence that would weaken it. It draws on the limits, robustness and falsification sections of the paper and adds no new claim."
+          "text": "A front-page section, 'What would change these conclusions', states for each finding the evidence that would weaken it. It draws on the limits, robustness and falsification sections of the paper and adds no claim of its own."
         },
         {
           "kind": "Changed",
-          "text": "The scorecard now says which measures are compared, how each average is taken, that the two periods differ in length, and that the count records direction and not size and makes no causal claim. Text that described how the site is built was removed from the front page, the data pages and the care and inflation notes."
+          "text": "The scorecard now says which measures are compared, how each average is taken, that the two periods differ in length, and that the count tallies direction and ignores size, and makes no causal claim. Text that described how the site is built was removed from the front page, the data pages and the care and inflation notes."
         }
       ]
     },
@@ -133,19 +133,19 @@
         },
         {
           "kind": "Fixed",
-          "text": "The paper: the 2026-27 deficit is below the earlier era's average; the current-account deficit was 0.6% of GDP in 2025-26; the services surplus about $217 billion; the CPI weights are MoSPI's (housing and utilities 17.67%, transport 8.80%, health 6.10%); the recruitment figures cover central government, 2014-15 to 2021-22; the April 2026 delimitation amendment that failed is recorded; the 2013-14 growth figure was later revised to 6.4%; and a robustness check on the RSF country count is added."
+          "text": "In the paper, the 2026-27 deficit is now stated as below the earlier era's average and the current-account deficit as 0.6% of GDP in 2025-26. The services surplus is given as about $217 billion, the CPI weights are MoSPI's (housing and utilities 17.67%, transport 8.80%, health 6.10%), and the recruitment figures cover central government, 2014-15 to 2021-22. The April 2026 delimitation amendment that failed is recorded, and the 2013-14 growth figure was later revised to 6.4%. A robustness check on the RSF country count is added."
         },
         {
           "kind": "Fixed",
-          "text": "Sector shares use the 2022-23 national accounts base and PLFS 2025; the goods deficit and FPI outflow use the RBI balance of payments; states are grouped by zonal council."
+          "text": "Sector shares use the 2022-23 national accounts base and PLFS 2025. The goods deficit and FPI outflow use the RBI balance of payments, and states are grouped by zonal council."
         },
         {
           "kind": "Fixed",
-          "text": "The front page: the growth series joins two national-accounts bases (it had said three); RSF ranked 167 to 179 countries in the UPA years; the fiscal index is higher after 2014 because of GST and the 2020 borrowing conditions, while the measured ratios were slightly more centralised before."
+          "text": "On the front page, the growth series joins two national-accounts bases (it had said three), RSF ranked 167 to 179 countries in the UPA years, and the fiscal index is higher after 2014 because of GST and the 2020 borrowing conditions, while the measured ratios were slightly more centralised before."
         },
         {
           "kind": "Fixed",
-          "text": "The downloads: the share of workers in regular jobs with social security (10.1%) replaces a residual presented as a count of workers without cover; worked examples are labelled as made up; the policy brief no longer sets deadlines it did not model; the licence notice states that CC BY allows commercial use; the research package lists what its files contain and now includes the index code and the master dataset."
+          "text": "In the downloads, the share of workers in regular jobs with social security (10.1%) replaces a residual that had been presented as a count of workers without cover. Worked examples are labelled as made up. The policy brief no longer sets deadlines it did not model. The licence notice states that CC BY allows commercial use. The research package lists what its files contain and now includes the index code and the master dataset."
         },
         {
           "kind": "Fixed",
@@ -233,7 +233,7 @@
         },
         {
           "kind": "Fixed",
-          "text": "The primer's budget charts now match the Budget 2026-27 rupee charts; the wealth-tax proposal uses the World Inequality Lab's Rs 10 crore threshold; the current account deficit for 2025-26 is 0.6% of GDP; state incomes use one MoSPI vintage; India is the sixth-largest economy (IMF April 2026); crude import dependence is about 88%."
+          "text": "The primer's budget charts now match the Budget 2026-27 rupee charts. The wealth-tax proposal uses the World Inequality Lab's Rs 10 crore threshold. The current account deficit for 2025-26 is 0.6% of GDP. State incomes use one MoSPI vintage. India is the sixth-largest economy (IMF April 2026), and crude import dependence is about 88%."
         },
         {
           "kind": "Fixed",
@@ -441,7 +441,7 @@
         },
         {
           "kind": "Fixed",
-          "text": "Both long-form explainers were badly buried. The GDP page was reachable from one sentence inside another section and a single footer link, and neither page was in the navigation at all. There is now an Explainers menu in the top navigation and a card near the top of the opening section carrying both. The list is held as data, so the next explainer appears in both places from one line."
+          "text": "Both long-form explainers were badly buried. The GDP page was reachable from one sentence inside another section and a single footer link, and neither page was in the navigation at all. There is now an Explainers menu in the top navigation and a card near the top of the opening section carrying both."
         },
         {
           "kind": "Added",
@@ -589,7 +589,7 @@
         },
         {
           "kind": "Correction",
-          "text": "The headline growth figure was wrong. 'India's GDP grew at 6.8% annually since 2014' appeared in eight places across the site and the documents, and it is not what the published series says on any basis. The arithmetic mean for 2014-2026 is 6.1%, which is what the research paper has always reported, so the site's front page and its own paper disagreed. This error ran in the government's favour, and it was an error all the same. Every instance now reads 6.1%, with the ex-pandemic figure of 7.2% given alongside it so that the 2020 contraction does not quietly drive the comparison in either direction. The UPA comparison figure is corrected from 7.7% to 7.1% on the same basis."
+          "text": "The headline growth figure was wrong. 'India's GDP grew at 6.8% annually since 2014' appeared in eight places across the site and the documents, and no published series gives that figure on any basis. The arithmetic mean for 2014-2026 is 6.1%, which is what the research paper has always reported, so the site's front page and its own paper disagreed. This error ran in the government's favour, and it was an error all the same. Every instance now reads 6.1%, with the ex-pandemic figure of 7.2% given alongside it so that a reader can see how far the 2020 contraction drives the comparison in either direction. The UPA comparison figure is corrected from 7.7% to 7.1% on the same basis."
         },
         {
           "kind": "Correction",
@@ -665,7 +665,7 @@
       "changes": [
         {
           "kind": "Added",
-          "text": "The paper gains a section setting out where this work sits in the literature and what it adds. It offers a refinement of modernisation theory (growth can legitimise erosion as well as produce democracy), an extension of Levitsky and Way's competitive authoritarianism toward incremental and legal erosion, and a proposed concept, 'fiscal authoritarianism', which names the use of federal fiscal architecture to centralise power while leaving the constitution formally intact. It also gains a research agenda covering state-level variation, sectoral and social disaggregation, district-level indices, and comparative work."
+          "text": "The paper gains a section setting out where this work sits in the literature and what it adds. It offers a refinement of modernisation theory (growth can legitimise erosion as well as produce democracy), an extension of Levitsky and Way's competitive authoritarianism toward incremental and legal erosion, and a proposed concept, 'fiscal authoritarianism', which names the use of the federal fiscal system to centralise power while leaving the constitution formally intact. It also gains a research agenda covering state-level variation, sectoral and social disaggregation, district-level indices, and comparative work."
         },
         {
           "kind": "Changed",

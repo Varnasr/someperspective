@@ -434,7 +434,7 @@ def build_updates(updates):
     entries = []
     for u in updates["releases"]:
         changes = "".join(
-            f'<li><strong>{escape(c["kind"])}:</strong> {escape(c["text"])}</li>'
+            f'<li><span style="text-transform:uppercase;letter-spacing:.07em;font-size:.72em;margin-right:.55em">{escape(c["kind"])}</span>{escape(c["text"])}</li>'
             for c in u["changes"])
         entries.append(f"""<div class="card">
 <span class="kicker">{escape(u['date'])} &nbsp;·&nbsp; v{escape(u['version'])}</span>
@@ -450,8 +450,8 @@ def build_updates(updates):
 <p class="rel"><a class="btn" href="feed.xml">Subscribe by RSS</a>
 &nbsp; <a href="analysis/">Browse the analysis library &rarr;</a></p>
 {''.join(entries)}
-<p class="meta">Full technical detail for every release, including internal refactors not listed here,
-is in <a href="https://github.com/Varnasr/someperspective/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p>"""
+<p class="meta">Changes that do not affect what a reader sees are listed in
+<a href="https://github.com/Varnasr/someperspective/blob/main/CHANGELOG.md">CHANGELOG.md</a> on GitHub.</p>"""
 
     write("updates.html", page("Updates | Some Perspective",
                                "Dated record of data refreshes, corrections and changes to Some Perspective.",
@@ -462,7 +462,7 @@ is in <a href="https://github.com/Varnasr/someperspective/blob/main/CHANGELOG.md
         # RFC-822 date; all releases are day-precision so noon UTC is used consistently.
         y, m, d = (int(x) for x in u["date"].split("-"))
         rfc = f"{DAYS[weekday(y, m, d)]}, {d:02d} {MONTHS[m - 1]} {y} 12:00:00 +0000"
-        desc = u["summary"] + " " + " ".join(f'{c["kind"]}: {c["text"]}' for c in u["changes"])
+        desc = u["summary"] + " " + " ".join(f'{c["kind"]}. {c["text"]}' for c in u["changes"])
         items.append(f"""  <item>
     <title>{escape(u['title'])}</title>
     <link>{SITE}/updates.html#v{u['version']}</link>

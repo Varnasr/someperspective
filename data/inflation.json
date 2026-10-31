@@ -56,10 +56,10 @@
     {
       "n": 6,
       "head": "A headline average is not what a household experiences",
-      "weight": "Stated as a limitation. It is not a finding.",
+      "weight": "Stated as a limitation, since the project has no finding on it.",
       "body": [
         "A single national CPI average conceals distribution. A household spending most of its income on food faces something much closer to food inflation than to the headline, and the reweighting described above mechanically reduces how much food shows up in the headline for everyone.",
-        "We flag this because it is true and because readers raise it. This project has not measured it. Establishing what inflation different income deciles actually faced over 2004-2026 would require expenditure-weighted price indices by decile, which is a substantial piece of work that has not been done here. Treat this section as a caveat on the headline."
+        "We flag this because it is true and because readers raise it. This project has not measured it. Establishing what inflation different income deciles actually faced over 2004-2026 would require expenditure-weighted price indices by decile, which is a large piece of work that has not been done here. Treat this section as a caveat on the headline."
       ]
     }
   ],

@@ -344,8 +344,8 @@ def build():
         spark = seam_chart(S[key], label, f"UPA average {fmt(u, dp)}{unit}, NDA average {fmt(n, dp)}{unit}.",
                            dp=dp, invert=(key == "pressFreedom"), tall=False)
         rows.append(
-            f'<div class="m"><p class="sr">{escape(label)}: UPA average {fmt(u, dp)}{unit}, NDA average '
-            f'{fmt(n, dp)}{unit}. {"Worse" if is_worse else "Better"} after 2014.</p>'
+            f'<div class="m"><p class="sr">{escape(label)}. The UPA average is {fmt(u, dp)}{unit} and the NDA average '
+            f'is {fmt(n, dp)}{unit}, which is {"worse" if is_worse else "better"} after 2014.</p>'
             f'<div class="split" aria-hidden="true"><div class="l"><p class="lab">{escape(label)}</p>'
             f'<p class="v">{fmt(u, dp)}<small>{unit}</small></p></div>'
             f'<div class="r"><p class="lab"><span class="tag {verdict}">{verdict}</span></p>'
@@ -422,11 +422,12 @@ def build():
                     f"From {int(pf[0])} in 2004 to {int(pf[-1])} in 2026.", dp=0, invert=True),
          "Reporters Without Borders, yearly index files. RSF published no separate 2011 index; its 2011-12 rank is used for both years."),
         ("Official statistics were withheld, delayed or disputed in ways they were not before 2014",
-         f"The Statistical Suppression Index scores documented events: the census postponed in 2020, the 2017-18 "
-         f"consumption survey scrapped in 2019, the jobs survey held back before the 2019 election, the merger of the "
-         f"statistical offices and the COVID death count. It is zero for every UPA year, peaked at {fmt(ss_peak,1)} in "
-         f"2021-22 and was {fmt(ss[-1],2)} in 2026, when the census, now on a notified schedule, counts as a delay. "
-         f"The severities are the author's coding and the most contestable part of the study.",
+         f"The Statistical Suppression Index scores documented events. The census was postponed in 2020, the 2017-18 "
+         f"consumption survey was scrapped in 2019, the jobs survey was held back before the 2019 election, the "
+         f"statistical offices were merged and the COVID death count was disputed. The index is zero for every UPA "
+         f"year, peaked at {fmt(ss_peak,1)} in 2021-22 and stood at {fmt(ss[-1],2)} in 2026, a year in which the census, "
+         f"now on a notified schedule, still counts as a delay. The severities are the author's coding, and they are "
+         f"the most contestable part of the study.",
          seam_chart(ss, "Statistical Suppression Index, 0-10, 2004-2026",
                     f"Zero for 2004-2014, peak {fmt(ss_peak,1)} in 2021-22, {fmt(ss[-1],2)} in 2026.", dp=1, lo=0),
          "Author's coding of dated events, set out in the methodology and the research package."),
@@ -452,7 +453,7 @@ def build():
     dqv, dqy = last(dq)
 
     more = [
-        ("explore/", "Explore the data", "The interactive dashboard: every series, the scorecard, scenario lab and trajectories."),
+        ("explore/", "Explore the data", "Every series by topic, the states table, a two-series comparison and the published forecasts."),
         ("downloads/paper.html", "Read the paper", "Growth Without Accountability, the full working paper (HTML, with a PDF)."),
         ("walkthrough/", "The walkthrough", "Eighteen slides that take the argument one step at a time."),
         ("analysis/", "Analyses", "Short pieces, each on one finding and the data behind it."),
@@ -532,7 +533,7 @@ def build():
 <div class="rows">{"".join(rows)}</div>
 <div class="slab"><p class="count">{worse}<small>of {total} measures worse after 2014</small></p>
 <p>Only measures with a published figure in both periods are compared, so series that begin in 2017-18 with the labour force survey have no earlier counterpart on the same basis and are left out. Each average uses the years with a published figure, and the periods differ in length: ten years for the UPA and thirteen for the NDA, with the two income shares ending in 2022.</p>
-<p>The count records the direction of each difference and gives no weight to its size. Some gaps are small, and the growth row closes to within a tenth of a point once each period's crisis year is left out, as the first finding shows. The comparison describes how the two periods differ. It does not say that a government caused each change, and the paper makes no causal claim. The research package holds the dataset and the code that reproduces every average on this page.</p></div>
+<p>The count tallies the direction of each gap and ignores its size. Some gaps are small. The growth row closes to within a tenth of a point once each period's crisis year is left out, as the first finding shows. The comparison describes how the periods differ and does not say that a government caused each change. The paper makes no causal claim. The research package holds the dataset and the code that reproduces every average on this page.</p></div>
 </section>
 
 <section id="findings" aria-labelledby="h-find">
@@ -559,21 +560,21 @@ def build():
 
 <section id="limits" aria-labelledby="h-lim">
 <div class="slab">
-<p class="kicker">What would change this</p>
+<p class="kicker">Limits</p>
 <h2 id="h-lim">What would change these conclusions</h2>
-<p>The paper is descriptive and identifies no causal effect. Global conditions, demographic change and technology could move both the institutional and the economic series. Below is the evidence that would weaken each finding. The paper sets out every case in full in <a href="downloads/paper.html#s-9-limitations-and-objections">section 9</a>, <a href="downloads/paper.html#s-6-10-2-what-would-change-our-reading">section 6.10.2</a> and <a href="downloads/paper.html#s-10-7-what-would-falsify-this">section 10.7</a>.</p>
+<p>The paper describes two periods and identifies no causes. Global conditions, demographic change and technology could move the institutional and the economic series together. Below is the evidence that would weaken each finding. The full argument is in <a href="downloads/paper.html#s-9-limitations-and-objections">section 9</a>, <a href="downloads/paper.html#s-6-10-2-what-would-change-our-reading">section 6.10.2</a> and <a href="downloads/paper.html#s-10-7-what-would-falsify-this">section 10.7</a> of the paper.</p>
 <h3>Growth</h3>
-<p>The growth row is the one most sensitive to treatment. With each period's crisis year left out the two periods are level to within a tenth of a point. The national accounts were rebased in 2015 and again in 2026, and past revisions have been larger than the present gap, so a further revision could move this row either way.</p>
+<p>Growth is the row that moves most with the treatment. Leave out each period's crisis year and the two periods sit within a tenth of a point of each other. The national accounts were rebased in 2015 and again in 2026, and earlier revisions were larger than today's gap.</p>
 <h3>Statistical suppression</h3>
-<p>The zero for every UPA year is the most contestable number in the study. A documented UPA-era event that meets the index's threshold would raise it, and the published code lets a critic recompute the index. A generous re-coding that gave the UPA decade an average of 2.0 would still leave 2.0 against {fmt(ssn,2)}.</p>
+<p>Every UPA year scores zero, the most contestable number in the study. One documented UPA-era event that meets the index's threshold would raise it, and the published code lets anyone recompute the index. If a critic scored the whole decade at 2.0, the NDA average of {fmt(ssn,2)} would still be more than twice as high.</p>
 <h3>Fiscal centralisation</h3>
-<p>On the four measured fiscal ratios alone the UPA years average {fmt(r4u,2)} and the NDA years {fmt(r4n,2)}, so the NDA years are slightly less centralised. The higher NDA index comes from counting GST and the 2020 borrowing conditions as centralisation, and a reader who rejects that reading rejects this finding.</p>
+<p>On the four measured fiscal ratios the UPA years average {fmt(r4u,2)} and the NDA years {fmt(r4n,2)}, so the NDA years look slightly less centralised. The higher NDA index comes from counting GST and the 2020 borrowing conditions as centralisation. A reader who rejects that reading rejects this finding.</p>
 <h3>Democracy and press freedom</h3>
-<p>A demonstration that the movements in the V-Dem, Freedom House and RSF scores come from drift in the instruments would weaken the democracy result. It would also have to account for an independent synthetic-control study, Grier and Grier (2026), which finds the same direction by a different method.</p>
+<p>If the movements in the V-Dem, Freedom House and RSF scores came from drift in the instruments, the democracy result would weaken. That case would also have to explain Grier and Grier (2026), an independent synthetic-control study that finds the same direction by a different method.</p>
 <h3>Income and jobs</h3>
-<p>The income shares are World Inequality Lab estimates, which are revised from time to time, and no annual figure exists after 2022. The jobs finding rests on a direct survey measure. It would weaken if later labour force survey rounds showed regular-job coverage with social security back above its 2017-18 level of {fmt(fe[0],1)}%.</p>
+<p>The income shares are World Inequality Lab estimates, and estimates get revised. No annual figure exists after 2022. The jobs finding rests on a direct survey measure, the share of workers in regular jobs with social security, and it would weaken if later survey rounds put that share back above its 2017-18 level of {fmt(fe[0],1)}%.</p>
 <h3>Inflation</h3>
-<p>Inflation is the one measure that improved. A consistent core-inflation series, which leaves out food and fuel, showing a fall of comparable size would be strong evidence of something beyond the oil-price cycle. The paper does not carry such a series back to 2004 and has not run that test.</p>
+<p>Inflation is the one measure that improved. A core-inflation series without food and fuel that fell by a similar amount would point to something beyond the oil-price cycle. The paper has no such series back to 2004 and has not run that test.</p>
 </div>
 </section>
 

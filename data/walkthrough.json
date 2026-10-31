@@ -16,7 +16,7 @@
       "body": "The strongest case for the period runs like this. A decisive executive, unencumbered by coalition bargaining, judicial review and federal veto points, can do things a constrained one cannot. Institutional constraint is the price, and material progress is what it buys.",
       "points": [
         "That is a serious argument, and this project tests it.",
-        "A bargain requires both halves to be measured: what was given up, and what was received.",
+        "A bargain requires measuring both halves, what was given up and what was received.",
         "Most accounts measure only one half."
       ]
     },
@@ -24,7 +24,7 @@
       "id": "problem",
       "kicker": "The obstacle",
       "title": "The instruments needed to check also degraded",
-      "body": "Assessing performance after 2014 runs into a specific difficulty. The statistical apparatus that would register the answer was itself weakened during the period.",
+      "body": "Assessing performance after 2014 runs into a specific difficulty. The statistical apparatus that would record the answer was itself weakened during the period.",
       "points": [
         "The 2021 census was postponed in 2020 with no new date. Houselisting began in April 2026 and population enumeration is notified for February 2027.",
         "The 2017-18 consumption survey was completed, then withheld after it showed rural consumption falling.",
@@ -146,7 +146,7 @@
       "title": "A decline comparable to Turkey's, from a higher base",
       "chart": "international",
       "body": "India's V-Dem Liberal Democracy Index fell from 0.488 in 2014 to 0.260 in 2025, a fall of 0.228 points. Turkey fell from 0.252 to 0.110, and Hungary from 0.521 to 0.315. Turkey's proportional fall is steeper, from a base already near the floor. India's is the largest absolute fall of the three.",
-      "note": "2025 is V-Dem's latest observation (v16, March 2026). Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. Whatever is happening in the measure globally, it is not marking every country down.",
+      "note": "2025 is V-Dem's latest observation (v16, March 2026). Brazil and South Africa, large democracies under real political stress over the same years, moved comparatively little. A measure that marked every country down would have moved them too.",
       "chartAlt": "Grouped bar chart comparing V-Dem liberal democracy scores in 2014 and 2025 for India and its peer countries."
     },
     {
@@ -169,7 +169,7 @@
         "The DQI inherits whatever biases exist in V-Dem, Freedom House and RSF.",
         "The FCI is relative to its own sample and means nothing outside it.",
         "The three indices are not independent evidence of one another. They plausibly measure one underlying process.",
-        "The window contains a pandemic, which supplies a legitimate reason for some of what the indices register."
+        "The window contains a pandemic, which supplies a legitimate reason for some of what the indices record."
       ],
       "note": "An error in this project's own documents, one that ran in its favour, was found and corrected in August 2026. It is reported in the paper."
     },

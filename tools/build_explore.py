@@ -109,6 +109,13 @@ table.data td.na{color:var(--muted)}
 """
 
 
+def era_sentence(mu, mn, lv, ly, dp, unit):
+    """The two period averages and the latest value, as sentences."""
+    first = (f"The 2004-2013 average is {fmtv(mu, dp, unit)}." if mu is not None
+             else "No 2004-2013 figure is published on the same basis.")
+    return f"{first} The 2014-2026 average is {fmtv(mn, dp, unit)}, and the latest value is {fmtv(lv, dp, unit)} in {ly}."
+
+
 def fmtv(v, dp, unit=""):
     if v is None:
         return "none published"
@@ -150,10 +157,9 @@ def series_block(d, key, note=None):
         lead = (f"Published from {fy}. There is no earlier figure on the same basis, so the two periods "
                 f"cannot be compared on this series.")
     else:
-        lead = f"{have} of the 23 years have a published figure; the others are left empty."
+        lead = f"{have} of the 23 years have a published figure. The others are left empty."
     src = (d.get("sources", {}).get(key) or "").strip()
-    desc = (f"2004-2013 average {fmtv(mu, dp, unit)}; 2014-2026 average {fmtv(mn, dp, unit)}; "
-            f"latest {fmtv(lv, dp, unit)} in {ly}." if lv is not None else "")
+    desc = era_sentence(mu, mn, lv, ly, dp, unit) if lv is not None else ""
     chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
                           lo=0 if key in ("ssi",) else (0 if key in ("fci", "dqi") else None),
                           hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
@@ -163,9 +169,9 @@ def series_block(d, key, note=None):
     extra = f"<p>{escape(note)}</p>" if note else ""
     est = {**bf.estimates(d, key), **bf.projections(d, key)}
     if est:
-        extra += ("<p>Hollow markers are estimates or projections, and no average uses "
-                  "them: " + "; ".join(f"{YEARS[i]}, {fmtv(e['value'], dp, unit)}, {escape(e['label'])}"
-                                       for i, e in sorted(est.items())) + ".</p>")
+        extra += ("<p>Hollow markers are estimates or projections, and no average uses them. "
+                  + " ".join(f"For {YEARS[i]} the figure is {fmtv(e['value'], dp, unit)}, {escape(e['label'])}."
+                             for i, e in sorted(est.items())) + "</p>")
     return (f'<section class="series" id="{key}"><div class="slab"><h2>{escape(label)}</h2>'
             f'<div class="stat">{"".join(stats)}</div><p>{escape(lead)}</p>{extra}{about}</div>{chart}</section>')
 
@@ -298,8 +304,7 @@ def chart_block(d, key):
     vals = ci.build()[key] if key in ("ssi", "fci", "dqi") else bf.series(d, key)
     mu, mn = bf.era_means(vals)
     lv, ly = latest(vals)
-    desc = (f"2004-2013 average {fmtv(mu, dp, unit)}; 2014-2026 average {fmtv(mn, dp, unit)}; "
-            f"latest {fmtv(lv, dp, unit)} in {ly}.")
+    desc = era_sentence(mu, mn, lv, ly, dp, unit)
     chart = bf.seam_chart(vals, label, desc, dp=dp, invert=invert,
                           lo=0 if key in ("ssi", "fci", "dqi") else None,
                           hi=10 if key == "ssi" else (1 if key in ("fci", "dqi") else None),
