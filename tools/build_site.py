@@ -216,8 +216,8 @@ def build_analysis(features, vintage):
             write(os.path.join("analysis", old + ".html"),
                   f'<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8"><title>{he(f["title"])}</title>'
                   f'<meta name="robots" content="noindex"><link rel="canonical" href="{SITE}{url}">'
-                  f'<meta http-equiv="refresh" content="0; url={url}"></head><body><p>This reading has moved to '
-                  f'<a href="{url}">{he(f["title"])}</a>.</p></body></html>\n')
+                  f'<meta http-equiv="refresh" content="0; url={url}"><style>{social.CONTACT_CSS}</style></head><body><p>This reading has moved to '
+                  f'<a href="{url}">{he(f["title"])}</a>.</p>{social.contact()}</body></html>\n')
 
     by_cat = {}
     for f in features:
