@@ -356,8 +356,8 @@ def hub(d, pages):
     body = (f'<script>(function(){{var m={legacy};var h=location.hash.slice(1);'
             f'if(h&&m.hasOwnProperty(h)&&m[h]){{location.replace(m[h].charAt(0)==="/"?m[h]:"/explore/"+m[h]);}}}})();</script>'
             '<div class="slab"><p class="kicker">The data</p><h1>Every series, by topic</h1>'
-            '<p class="dek">The site\'s data, one topic to a page, each drawn from data.json and the index script '
-            'that the front page and the paper use. Every series names its publisher, and a year with no '
+            '<p class="dek">The site\'s data, one topic to a page, using the same series and indices as the front page '
+            'and the paper. Every series names its publisher, and a year with no '
             'published figure is left empty.</p></div>'
             f'<div class="slab"><h2>Topics</h2><div class="cards">{cards}</div></div>'
             '<div class="slab"><h2>All series, all years</h2><p>The full table, as published. A dot is a year with '
@@ -473,15 +473,15 @@ def methods_page(d):
              ("/downloads/technical-appendix.html", "Technical appendix", "Index construction, robustness tests and full result tables."),
              ("/downloads/paper.html", "The working paper", "Growth Without Accountability, with a PDF."),
              ("/downloads/research-package.html", "Research package", "The dataset as CSV and Excel, the replication code and the briefs."),
-             ("/data.json", "data.json", "The site's source of truth, every series and every source note."),
+             ("/data.json", "Full dataset (JSON)", "Every series on the site with its source note, for reuse."),
              ("/data/SP_masterdataset.csv", "Master dataset", "One row per year, every column the scorecard and the indices use.")]
     cards = "".join(f'<a href="{h}"><strong>{escape(t)}</strong><span>{escape(s)}</span></a>' for h, t, s in links)
     body = (f'<style>.src h3{{margin-top:1.2rem}}.src p{{font-size:.92rem;color:var(--ink-soft)}}</style>'
             f'<div class="slab" id="cite-download"><p class="crumb"><a href="/explore/">Data</a> &rsaquo; Sources and method</p>'
             f'<p class="kicker">Sources and method</p><h1>Where every number comes from</h1>'
             f'<p class="dek">Each series names its publisher and the table it was read from. The three indices are '
-            f'computed by one script, data/compute_indices.py, for every year from 2004 to 2026, and the replication '
-            f'code reproduces the scorecard from the published dataset.</p>'
+            f'computed under the same rules for every year from 2004 to 2026, and the replication code in the research '
+            f'package reproduces the scorecard from the published dataset.</p>'
             f'<p><strong>Cite this work.</strong> Raman, V.S. (2026). Some Perspective: India\'s Political Economy, '
             f'2004-2026. someperspective.info. Data and analysis CC BY 4.0.</p>'
             f'<div class="cards">{cards}</div></div>'
@@ -586,8 +586,7 @@ def forecasts_page(d):
            '<th scope="col">Back-test error</th></tr></thead>'
            f'<tbody>{prow}</tbody></table></div>'
            '<p class="note">Projections are drawn as hollow markers with a shaded interval and are never part of an '
-           'average, an index or the scorecard. The code is tools/build_projections.py and the output '
-           'data/projections.json.</p>'
+           'average, an index or the scorecard. The method and the numbers are in the research package.</p>'
            '<p>The Fiscal Centralisation Index is not projected. The 16th Finance Commission fixes the states\' share '
            'of the divisible pool for 2026-31, but the index also moves with cesses, own revenue and grants, which '
            'nobody has fixed, so a projection would be a guess about those.</p></div>' + pcharts)

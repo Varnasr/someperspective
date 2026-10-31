@@ -356,6 +356,9 @@ def build():
     gu, gn = era_means(g)
     g_nda_ex = mean([v for i, v in enumerate(g[10:]) if YEARS[10 + i] != 2020])
     g_upa_ex = mean([v for i, v in enumerate(g[:10]) if YEARS[i] != 2008])
+    g_nda_ex2 = mean([v for i, v in enumerate(g[10:]) if YEARS[10 + i] not in (2020, 2021)])
+    g_upa_ex2 = mean([v for i, v in enumerate(g[:10]) if YEARS[i] not in (2008, 2009)])
+    fe = [v for v in d["economic"]["formalEmployment"] if v is not None]
     cu, cn = era_means(S["cpiInflation"])
     t1 = S["top1Share"]
     last_t1 = max(i for i, v in enumerate(t1) if v is not None)
@@ -381,11 +384,14 @@ def build():
     r4u, r4n = era_means(_r4y)
     cpi_months = (re.search(r"\((January to \w+) \d{4}", d["sources"]["cpiInflation"]) or [None, "the months published so far"])[1]
     findings = [
-        ("Growth was lower over the whole period, and higher once the pandemic year is left out",
+        ("Growth was lower over the whole period, and about the same once each period's crisis year is left out",
          f"The economy grew {fmt(gn,1)}% a year on average from 2014-15 to 2025-26, against {fmt(gu,1)}% from 2004-05 "
          f"to 2013-14. The difference comes from 2020-21, when output fell 5.8%. Without that year the later period "
-         f"averaged {fmt(g_nda_ex,1)}%, above the earlier decade's {fmt(gu,1)}% ({fmt(g_upa_ex,1)}% without the 2008-09 "
-         f"crisis year). The series joins two bases, 2011-12 (with its back-series for the earlier years) and 2022-23 "
+         f"averaged {fmt(g_nda_ex,1)}%, above the earlier decade's {fmt(gu,1)}%. The earlier decade had a crisis year "
+         f"of its own, and without 2008-09 it averaged {fmt(g_upa_ex,1)}%, so with each period's crisis year set aside "
+         f"the two are within a tenth of a point of each other. Setting aside the rebound years as well, 2009-10 and "
+         f"2021-22, gives {fmt(g_upa_ex2,2)}% for the UPA decade and {fmt(g_nda_ex2,2)}% for the NDA period. The growth "
+         f"row therefore depends on how the crisis years are treated. The series joins two bases, 2011-12 (with its back-series for the earlier years) and 2022-23 "
          f"from 2023-24, and the 2015 rebasing first moved 2013-14 from 4.7% to 6.9%, so a gap of under one point is "
          f"smaller than past revisions.",
          seam_chart(g, "Real GDP growth, per cent, 2004-05 to 2025-26",
@@ -423,7 +429,7 @@ def build():
          f"The severities are the author's coding and the most contestable part of the study.",
          seam_chart(ss, "Statistical Suppression Index, 0-10, 2004-2026",
                     f"Zero for 2004-2014, peak {fmt(ss_peak,1)} in 2021-22, {fmt(ss[-1],2)} in 2026.", dp=1, lo=0),
-         "Author's coding of dated events, data/compute_indices.py."),
+         "Author's coding of dated events, set out in the methodology and the research package."),
         ("The fiscal index is higher after 2014 because of GST and the 2020 borrowing conditions",
          f"The Fiscal Centralisation Index averaged {fmt(fcu,2)} in the UPA decade and {fmt(fcn,2)} after 2014, with a "
          f"peak of {fmt(max(v for v in fc if v is not None),2)} in 2020. On the four measured fiscal ratios alone the "
@@ -512,7 +518,7 @@ def build():
 <div class="slab">
 <p class="kicker">India's political economy, 2004-2026</p>
 <h1>On {worse} of {total} measures, India's record since 2014 is worse than in the decade before</h1>
-<p class="dek">The page is split where the governments changed. The UPA decade sits on the left and the NDA period on the right, each at its own width in years, so every chart below changes side between 2013 and 2014. Inflation is the one measure that improved. Growth was lower overall and higher once the pandemic year is left out.</p>
+<p class="dek">The page is split where the governments changed. The UPA decade sits on the left and the NDA period on the right, each at its own width in years, so every chart below changes side between 2013 and 2014. Inflation is the one measure that improved. Growth was lower overall and about the same once each period's crisis year is left out.</p>
 <p class="byline">By Dr. Varna Sri Raman &middot; Updated {escape(updated)} &middot; Version {escape(version)}</p>{social.share("Some Perspective: India's political economy, 2004-2026", f"On {worse} of {total} comparable measures India's record since 2014 is worse than in the decade before. Inflation is the exception.", SITE + "/")}
 </div>
 
@@ -525,14 +531,15 @@ def build():
 </div>
 <div class="rows">{"".join(rows)}</div>
 <div class="slab"><p class="count">{worse}<small>of {total} measures worse after 2014</small></p>
-<p>Series that begin in 2017-18 with the labour force survey have no earlier counterpart on the same basis and are left out. The averages are computed from data.json each time the site is built, and the replication script in the repository reproduces them.</p></div>
+<p>Only measures with a published figure in both periods are compared, so series that begin in 2017-18 with the labour force survey have no earlier counterpart on the same basis and are left out. Each average uses the years with a published figure, and the periods differ in length: ten years for the UPA and thirteen for the NDA, with the two income shares ending in 2022.</p>
+<p>The count records the direction of each difference and gives no weight to its size. Some gaps are small, and the growth row closes to within a tenth of a point once each period's crisis year is left out, as the first finding shows. The comparison describes how the two periods differ. It does not say that a government caused each change, and the paper makes no causal claim. The research package holds the dataset and the code that reproduces every average on this page.</p></div>
 </section>
 
 <section id="findings" aria-labelledby="h-find">
 <div class="slab">
 <p class="kicker">What the numbers show</p>
 <h2 id="h-find">Six findings, each with the series behind it</h2>
-<p>Every chart runs from 2004 at the left edge of the page to 2026 at the right, and the change of government falls on the dividing line.</p>
+<p>Each finding gives the claim, the series behind it and the publisher of the data. Where a result turns on a choice of years or on the author's coding, the text says so. All the charts share one time axis, so the change of government falls on the dividing line in every one.</p>
 </div>
 {"".join(fhtml)}
 </section>
@@ -540,13 +547,33 @@ def build():
 <section id="indices" aria-labelledby="h-idx">
 <div class="slab">
 <p class="kicker">The three indices</p>
-<h2 id="h-idx">Built the same way for both periods, from one script</h2>
-<p>All three are computed by data/compute_indices.py for every year from 2004 to 2026. The inputs and their sources are listed in the code and in the methodology.</p>
+<h2 id="h-idx">One method applied to both periods</h2>
+<p>All three are computed for every year from 2004 to 2026 under the same rules for both periods. The inputs and their sources are set out in the methodology, and the research package holds the code that computes them. The SSI severities are the author's coding against a published rubric, and a different coder could score some events differently.</p>
 <div class="idx">
 <div><p class="kicker">SSI</p><p class="big">{fmt(ssv,2)}<small>of 10, {ssy}</small></p><p>Statistical Suppression Index. Graded severities of documented events across six streams, with a decay after an event is resolved. UPA average {fmt(ssu,2)}, NDA average {fmt(ssn,2)}.</p></div>
 <div><p class="kicker">FCI</p><p class="big">{fmt(fcv,2)}<small>of 1, {fcy}</small></p><p>Fiscal Centralisation Index. Four published fiscal ratios and two coded events, GST and the 2020 borrowing conditions. UPA average {fmt(fcu,2)}, NDA average {fmt(fcn,2)}.</p></div>
 <div><p class="kicker">DQI</p><p class="big">{fmt(dqv,2)}<small>of 1, {dqy}</small></p><p>Democratic Quality Index. The geometric mean of V-Dem's liberal democracy and civil society scores, Freedom House and RSF. UPA average {fmt(dqu,2)}, NDA average {fmt(dqn,2)}.</p></div>
 </div>
+</div>
+</section>
+
+<section id="limits" aria-labelledby="h-lim">
+<div class="slab">
+<p class="kicker">What would change this</p>
+<h2 id="h-lim">What would change these conclusions</h2>
+<p>The paper is descriptive and identifies no causal effect. Global conditions, demographic change and technology could move both the institutional and the economic series. Below is the evidence that would weaken each finding. The paper sets out every case in full in <a href="downloads/paper.html#s-9-limitations-and-objections">section 9</a>, <a href="downloads/paper.html#s-6-10-2-what-would-change-our-reading">section 6.10.2</a> and <a href="downloads/paper.html#s-10-7-what-would-falsify-this">section 10.7</a>.</p>
+<h3>Growth</h3>
+<p>The growth row is the one most sensitive to treatment. With each period's crisis year left out the two periods are level to within a tenth of a point. The national accounts were rebased in 2015 and again in 2026, and past revisions have been larger than the present gap, so a further revision could move this row either way.</p>
+<h3>Statistical suppression</h3>
+<p>The zero for every UPA year is the most contestable number in the study. A documented UPA-era event that meets the index's threshold would raise it, and the published code lets a critic recompute the index. A generous re-coding that gave the UPA decade an average of 2.0 would still leave 2.0 against {fmt(ssn,2)}.</p>
+<h3>Fiscal centralisation</h3>
+<p>On the four measured fiscal ratios alone the UPA years average {fmt(r4u,2)} and the NDA years {fmt(r4n,2)}, so the NDA years are slightly less centralised. The higher NDA index comes from counting GST and the 2020 borrowing conditions as centralisation, and a reader who rejects that reading rejects this finding.</p>
+<h3>Democracy and press freedom</h3>
+<p>A demonstration that the movements in the V-Dem, Freedom House and RSF scores come from drift in the instruments would weaken the democracy result. It would also have to account for an independent synthetic-control study, Grier and Grier (2026), which finds the same direction by a different method.</p>
+<h3>Income and jobs</h3>
+<p>The income shares are World Inequality Lab estimates, which are revised from time to time, and no annual figure exists after 2022. The jobs finding rests on a direct survey measure. It would weaken if later labour force survey rounds showed regular-job coverage with social security back above its 2017-18 level of {fmt(fe[0],1)}%.</p>
+<h3>Inflation</h3>
+<p>Inflation is the one measure that improved. A consistent core-inflation series, which leaves out food and fuel, showing a fall of comparable size would be strong evidence of something beyond the oil-price cycle. The paper does not carry such a series back to 2004 and has not run that test.</p>
 </div>
 </section>
 

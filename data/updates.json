@@ -2,6 +2,26 @@
   "intro": "A plain-language record of what changed on this site and when. Data on this site is revised as official releases land, and corrections are made in public.",
   "releases": [
     {
+      "version": "2.58.0",
+      "date": "2026-10-31",
+      "title": "Growth read like for like, and what would change the conclusions",
+      "summary": "The growth finding now sets each period's crisis year aside alike, and the front page lists the evidence that would weaken each finding.",
+      "changes": [
+        {
+          "kind": "Correction",
+          "text": "The front page said growth was higher once the pandemic year was left out, and did not say that the earlier decade had a crisis year of its own. With 2008-09 left out of the UPA decade and 2020-21 out of the NDA period the averages are 7.2% and 7.3%, within a tenth of a point, and with the rebound years 2009-10 and 2021-22 left out as well they are 7.15% and 7.05%. The headline finding, the introduction, the primer and section 9.3 of the paper now give both. The scorecard count is unchanged, because it compares whole periods, and the paper's section 6.1 already reported the like-for-like figures."
+        },
+        {
+          "kind": "Added",
+          "text": "A front-page section, 'What would change these conclusions', states for each finding the evidence that would weaken it. It draws on the limits, robustness and falsification sections of the paper and adds no new claim."
+        },
+        {
+          "kind": "Changed",
+          "text": "The scorecard now says which measures are compared, how each average is taken, that the two periods differ in length, and that the count records direction and not size and makes no causal claim. Text that described how the site is built was removed from the front page, the data pages and the care and inflation notes."
+        }
+      ]
+    },
+    {
       "version": "2.57.0",
       "date": "2026-10-19",
       "title": "September data and the IMF's October outlook",
@@ -165,7 +185,7 @@
       "version": "2.53.0",
       "date": "2026-10-10",
       "title": "A new design, split where the governments changed",
-      "summary": "The site has a new design. Every page is divided where the UPA decade ends and the NDA period begins, at the share of the page width that each period holds in years, so a chart's 2013/2014 boundary falls on the dividing line. The front page is now a short reading page, and the interactive dashboard has moved to its own address. No figure changed.",
+      "summary": "The site has a new design. Every page is divided where the UPA decade ends and the NDA period begins, so the change of government falls on the dividing line in every chart. The front page is now a short reading page drawn from the data, and the interactive dashboard has moved to its own address. No figure changed.",
       "changes": [
         {
           "kind": "Changed",
@@ -173,7 +193,7 @@
         },
         {
           "kind": "Fixed",
-          "text": "The declaration of interest said the author is a Manmohan Singh Fellow of the All India Professionals' Congress. The author is a former fellow, and this work began before the fellowship. The paper, the dashboard, the walkthrough, the media kit and the repository now say so, and the front page carries the declaration in its footer."
+          "text": "The declaration of interest said the author is a Manmohan Singh Fellow of the All India Professionals' Congress. The author is a former fellow, and this work began before the fellowship. The paper, the dashboard, the walkthrough, the media kit and the project's README now say so, and the front page carries the declaration in its footer."
         },
         {
           "kind": "Changed",

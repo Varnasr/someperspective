@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > cache trapped browsers on the broken build; a cleanup rides in-page and the
 > shipping line continued at `2.x`. Do not treat any `3.0.0` item as active.
 
+## [2.58.0] - 2026-10-31
+
+### Fixed
+- The front page said growth was higher once the pandemic year was left out and did not say that the earlier decade had a crisis year of its own. With 2008-09 left out of the UPA decade and 2020-21 out of the NDA period the averages are 7.2% and 7.3%, and with the rebound years 2009-10 and 2021-22 left out as well, 7.15% and 7.05%. The headline finding, the scorecard note, the primer and section 9.3 of the paper now give both. The scorecard count is unchanged.
+
+### Added
+- A front-page section, "What would change these conclusions", drawn from sections 6.10.2, 8, 9 and 10.7 of the paper.
+
+### Changed
+- The scorecard note states which measures are compared, how the averages are taken and what the count does not show.
+- Reader-facing text no longer describes the build: `data.json`, scripts, CI and layout mechanics were removed from the front page, the data pages, the care and inflation notes, the primer sources, one walkthrough slide and the updates log. The paper, methodology and appendix are unchanged apart from section 9.3.
+
 ## [2.57.0] - 2026-10-19
 
 ### Changed

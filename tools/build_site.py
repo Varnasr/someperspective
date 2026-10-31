@@ -320,8 +320,8 @@ cross-era measure on which the later period performs better.</p>
 <p class="rel"><a class="btn" href="../downloads/paper.html#s-6-10-the-inflation-exception-in-full">Read this in the paper &rarr;</a>
 &nbsp; <a href="../explore/#era-comparison">See the cross-era scorecard</a>
 &nbsp; <a href="../walkthrough/#s-11">The walkthrough version</a></p>
-<p class="meta">Every figure above is either in
-<a href="../data.json">data.json</a> or carries its citation in the text.
+<p class="meta">Every figure above is either in the
+<a href="../data.json">site's dataset</a> or carries its citation in the text.
 Crude price movements: ICE Brent. Excise duty: Ministry of Finance, as stated in Parliament.
 Monetary framework: Reserve Bank of India Act 1934 as amended by the Finance Act 2016.
 CPI basis change: MoSPI, January 2026 print.</p>"""
@@ -415,8 +415,8 @@ range and does not pick a number.</p>
 &nbsp; <a href="../walkthrough/#s-12">The walkthrough version</a>
 &nbsp; <a href="../explore/#reading-the-economy">How GDP is built</a></p>
 <p class="meta">Time use figures: {escape(c['source'])} Ages 15&ndash;59; minutes are the daily average
-among participants only. Held in
-<a href="../data.json">data.json</a> under <code>careEconomy</code>. Valuation estimates are cited in the
+among participants only. The figures are in the
+<a href="../data.json">site's dataset</a>. Valuation estimates are cited in the
 table above and are the work of other researchers.</p>"""
 
     write("care/index.html",
