@@ -111,6 +111,7 @@ ul.list p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
 font-stretch:112.5%;padding:.65rem 1.1rem;font-size:.9rem;border:2px solid var(--ink)}
 .btn:hover{background:var(--paper);color:var(--ink)}
 .rel{font-size:.85rem}
+.sitefoot{margin-top:2.2rem;padding-top:1rem;border-top:2px solid var(--ink);font-size:.85rem;color:var(--muted)}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th,td{border-bottom:1px solid var(--line);padding:.5rem .4rem;text-align:left}
 @media (max-width:600px){body{font-size:1rem}}
@@ -140,11 +141,12 @@ HEAD = """<!DOCTYPE html>
 </head>
 <body>
 <header class="top"><div class="l"><a class="name" href="/"><svg class="mark" viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" focusable="false"><rect width="64" height="64" fill="#0d0e12"/><rect x="4" y="4" width="22.33" height="56" fill="#86d8ca"/><rect x="30.33" y="4" width="29.67" height="56" fill="#c9adf3"/></svg><span>Some Perspective</span></a></div>
-<nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a><a href="/updates.html">Updates</a></nav></header>
+<nav class="r" aria-label="Site" data-dyslexia-slot><a href="/explore/">Explore the data</a><a href="/downloads/paper.html">Paper</a><a href="/analysis/">Analyses</a><a href="/walkthrough/">Walkthrough</a></nav></header>
 <main class="wrap">
 """
 
-FOOT = """</main>
+FOOT = """<p class="sitefoot"><a href="/updates.html">Updates and corrections</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
+</main>
 <script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body></html>
 """
@@ -198,8 +200,8 @@ def build_analysis(features, vintage):
                 f'<p><strong>What follows.</strong> {he(f["takeaway"])}</p>'
                 f'<p><a class="btn" href="{more}">The data behind this reading</a></p></div>'
                 f'{charts}'
-                f'<div class="slab"><p class="note">One of {len(features)} readings of the dataset, rebuilt whenever the '
-                f'data are refreshed. Data vintage {he(vintage)}. Cite as Raman, V.S., Some Perspective: India\'s '
+                f'<div class="slab"><p class="note">One of {len(features)} readings of the dataset. '
+                f'Data vintage {he(vintage)}. Cite as Raman, V.S., Some Perspective: India\'s '
                 f'Political Economy, 2004-2026, someperspective.info, CC BY 4.0.</p>'
                 f'<p class="nav">{" &middot; ".join(nav)}</p></div>')
         rel = os.path.join("analysis", f["slug"] + ".html")
@@ -226,7 +228,7 @@ def build_analysis(features, vintage):
         blocks.append(f'<div class="slab"><h2>{he(cat)}</h2><div class="cards">{items}</div></div>')
     body = (f'<div class="slab"><p class="kicker">Analyses</p><h1>{len(features)} readings of the data</h1>'
             f'<p class="dek">Each takes one relationship in the dataset and states what it shows and what follows '
-            f'from it. They carry no date and are rebuilt from the data on every refresh. Data vintage '
+            f'from it. Data vintage '
             f'{he(vintage)}. Dated changes are listed on the <a href="/updates.html">updates page</a>.</p></div>'
             + "".join(blocks))
     write("analysis/index.html", be.shell(

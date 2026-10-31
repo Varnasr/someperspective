@@ -252,7 +252,7 @@ Applied to the material here, these questions are what generate the paper's prin
 
 ## 4.7 Reproducibility
 
-Every figure in this paper derives from `data.json`, which is published under CC BY 4.0. The three constructed indices regenerate from `data/compute_indices.py`. Replication scripts are provided in Python and R. A continuous-integration guard verifies on every commit that the site's inline copy, the published `data.json`, and the output of the construction script agree to within 10⁻⁹. The check was introduced after the possibility of silent divergence between the three was identified.
+Every figure in this paper derives from `data.json`, which is published under CC BY 4.0. The three constructed indices regenerate from `data/compute_indices.py`. Replication scripts are provided in Python and R.
 
 ---
 
@@ -725,7 +725,7 @@ This paper is about aggregate national indicators. It does not address state-lev
 
 ## 9.8 An error corrected in preparation
 
-As reported in Section 6.3, preparation of this paper surfaced an error in three of the project's own previously-published summary documents, which had stated the 2014 top 1 per cent income share as 15 per cent. That figure belongs to the bottom 50 per cent series, whose 2014 value is 14.7 per cent, and using it overstated the rise in top-end concentration as 7.6 percentage points against a correct 1.3. The documents have been corrected and a continuous-integration check now compares every year-labelled figure in the project's published documents against the source dataset, failing the build on any contradiction.
+As reported in Section 6.3, preparation of this paper surfaced an error in three of the project's own previously-published summary documents, which had stated the 2014 top 1 per cent income share as 15 per cent. That figure belongs to the bottom 50 per cent series, whose 2014 value is 14.7 per cent, and using it overstated the rise in top-end concentration as 7.6 percentage points against a correct 1.3. The documents have been corrected.
 
 We report this in the paper for two reasons. The error ran in the direction of the project's thesis, which is the kind of error that should be corrected in public. And a project whose central argument concerns the integrity of published statistics has an obligation to hold its own output to the standard it applies to others.
 
@@ -1043,4 +1043,4 @@ To verify that the published data matches the construction:
 python3 tools/check_data_parity.py
 ```
 
-*Data vintage: 10 October 2026. This paper is generated from `paper/paper.md`; the HTML and PDF editions are built by `tools/build_paper.py` and regenerated whenever the source or the dataset changes.*
+*Data vintage: 10 October 2026.*
