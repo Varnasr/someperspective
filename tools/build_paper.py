@@ -273,7 +273,7 @@ def build_html(meta, body, toc):
                  "contentUrl": "https://someperspective.info/downloads/paper.pdf"},
     "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": True,
     "image": social.og_image("https://someperspective.info/downloads/paper.html")}, ensure_ascii=False)}</script>
-<style>{CSS}{social.SHARE_CSS}</style>
+<style>{CSS}{social.SHARE_CSS}{social.CONTACT_CSS}</style>
 </head>
 <body><div class="wrap">
 <p class="back"><a href="../">&larr; Some Perspective</a> &nbsp;·&nbsp; <a href="paper.pdf">Download PDF</a></p>
@@ -288,6 +288,7 @@ def build_html(meta, body, toc):
 </div>
 <nav class="toc"><div>Contents</div>{toc_html}</nav>
 {body}
+{social.contact()}
 </div>
 <script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body></html>
