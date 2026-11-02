@@ -146,6 +146,7 @@ HEAD = """<!DOCTYPE html>
 """
 
 FOOT = """<p class="sitefoot"><a href="/updates.html">Updates and corrections</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
+""" + social.contact() + """
 </main>
 <script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body></html>
@@ -157,7 +158,7 @@ def page(title, desc, canonical, body, ld=""):
     return (
         HEAD.format(title=escape(title), desc=escape(desc), canonical=canonical,
                     social=social.head(plain, desc, canonical, "article"),
-                    css=CSS + social.SHARE_CSS, site=SITE, ld=ld)
+                    css=CSS + social.SHARE_CSS + social.CONTACT_CSS, site=SITE, ld=ld)
         + body + social.share(plain, desc, canonical) + social.COPY_JS + FOOT
     )
 
@@ -215,8 +216,8 @@ def build_analysis(features, vintage):
             write(os.path.join("analysis", old + ".html"),
                   f'<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8"><title>{he(f["title"])}</title>'
                   f'<meta name="robots" content="noindex"><link rel="canonical" href="{SITE}{url}">'
-                  f'<meta http-equiv="refresh" content="0; url={url}"></head><body><p>This reading has moved to '
-                  f'<a href="{url}">{he(f["title"])}</a>.</p></body></html>\n')
+                  f'<meta http-equiv="refresh" content="0; url={url}"><style>{social.CONTACT_CSS}</style></head><body><p>This reading has moved to '
+                  f'<a href="{url}">{he(f["title"])}</a>.</p>{social.contact()}</body></html>\n')
 
     by_cat = {}
     for f in features:

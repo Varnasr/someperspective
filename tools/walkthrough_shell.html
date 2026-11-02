@@ -446,6 +446,8 @@ font-size:.95rem;color:var(--ink-soft)}
     var share = document.getElementById('wt-share');
     var lastIn = deck.lastElementChild && deck.lastElementChild.querySelector('.inner');
     if (share && lastIn) lastIn.appendChild(share);
+    var contact = document.getElementById('wt-contact');
+    if (contact && lastIn) lastIn.appendChild(contact);
     document.getElementById('dots').innerHTML = SLIDES.map(function (s, i) {
       return '<button class="dotwrap" data-i="' + i + '" role="tab" aria-label="Go to slide ' + (i + 1) + '">' +
              '<span class="dot"></span></button>';
@@ -529,8 +531,12 @@ font-size:.95rem;color:var(--ink-soft)}
 font-weight:700;color:var(--ink,#0d0e12);background:var(--paper,#f5f5f2);min-height:1.6rem;line-height:1.6rem}
 .share a:hover,.share button:hover{background:var(--ink,#0d0e12);color:var(--paper,#f5f5f2)}
 .share a:focus-visible,.share button:focus-visible{outline:3px solid var(--nda,#5a2a8c);outline-offset:2px}
-.share{max-width:60rem;margin:2rem auto;padding:0 1rem}.slide .share{margin:1.5rem 0 0;padding:0}</style>
+.share{max-width:60rem;margin:2rem auto;padding:0 1rem}.slide .share{margin:1.5rem 0 0;padding:0}.contact{margin-top:.7rem;padding-top:.7rem;border-top:2px solid var(--ink,#0d0e12);max-width:40rem;color:var(--ink,#0d0e12)}
+.contact a{color:var(--ink,#0d0e12);text-decoration:underline}
+@media (max-width:700px){.slide:last-child{padding-bottom:12rem}}
+.contact{max-width:60rem;margin:1rem auto 2rem;padding-left:1rem;padding-right:1rem}.slide .contact{margin:1.2rem 0 0;padding-left:0;padding-right:0}</style>
 <p class="share" id="wt-share" aria-label="Share this page"><span>Share</span><a href="https://wa.me/?text=Guided%20walkthrough%0AA%20ten-minute%20guided%20tour%20of%20the%20evidence%20on%20India%27s%20economy%2C%20institutions%20and%20inequality%2C%202004-2026.%0Ahttps%3A//someperspective.info/walkthrough/" rel="noopener" target="_blank">WhatsApp</a><a href="https://twitter.com/intent/tweet?text=Guided%20walkthrough&amp;url=https%3A//someperspective.info/walkthrough/" rel="noopener" target="_blank">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//someperspective.info/walkthrough/" rel="noopener" target="_blank">LinkedIn</a><a href="mailto:?subject=Guided%20walkthrough&amp;body=A%20ten-minute%20guided%20tour%20of%20the%20evidence%20on%20India%27s%20economy%2C%20institutions%20and%20inequality%2C%202004-2026.%0A%0Ahttps%3A//someperspective.info/walkthrough/">Email</a><button type="button" data-copy="https://someperspective.info/walkthrough/" hidden>Copy link</button></p>
+<p class="contact" id="wt-contact">Need help setting out your story, what sets your work apart, the context, the return on investment and the projections? Pinpoint Ventures can help. Write to <a href="mailto:hello@pinpointventures.in?subject=Enquiry%20from%20someperspective.info">hello@pinpointventures.in</a> or message on <a href="https://wa.me/919871777110?text=Hi%20Pinpoint%20Ventures%2C%20I%20found%20you%20through%20someperspective.info.%20I%27d%20like%20to%20discuss%20a%20research%20or%20advisory%20engagement." target="_blank" rel="noopener">WhatsApp</a>.</p>
 <script>document.querySelectorAll('[data-copy]').forEach(function(b){if(!navigator.clipboard)return;b.hidden=false;b.addEventListener('click',function(){navigator.clipboard.writeText(b.dataset.copy).then(function(){b.textContent='Link copied';setTimeout(function(){b.textContent='Copy link';},2000);});});});</script>
 </body>
 </html>

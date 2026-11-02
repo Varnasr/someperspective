@@ -258,7 +258,7 @@ def shell(title, desc, canonical, body, depth=1, head="", typ="website", share_t
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
-<style>{bf.CSS}{EXTRA_CSS}{social.SHARE_CSS}</style>
+<style>{bf.CSS}{EXTRA_CSS}{social.SHARE_CSS}{social.CONTACT_CSS}</style>
 {head}</head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -276,7 +276,8 @@ def shell(title, desc, canonical, body, depth=1, head="", typ="website", share_t
 <footer class="foot split">
 <div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
 <div class="r"><p><a href="/updates.html">Updates and corrections</a> &middot; <a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="/feed.xml">Updates feed</a> &middot; <a href="/downloads/research-package.html">Downloads</a></p>
-<p class="note">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
+<p class="note">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p>
+{social.contact()}</div>
 </footer>
 <script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
 {social.COPY_JS}

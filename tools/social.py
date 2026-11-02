@@ -68,6 +68,25 @@ font-weight:700;color:var(--ink,#0d0e12);background:var(--paper,#f5f5f2);min-hei
 """
 
 
+CONTACT_CSS = """
+.contact{margin-top:.7rem;padding-top:.7rem;border-top:2px solid var(--ink,#0d0e12);max-width:40rem;color:var(--ink,#0d0e12)}
+.contact a{color:var(--ink,#0d0e12);text-decoration:underline}
+"""
+
+CONTACT = ('<p class="contact">Need help setting out your story, what sets your work apart, the context, '
+           'the return on investment and the projections? Pinpoint Ventures can help. Write to '
+           '<a href="mailto:hello@pinpointventures.in?subject=Enquiry%20from%20someperspective.info">'
+           'hello@pinpointventures.in</a> or message on '
+           '<a href="https://wa.me/919871777110?text=Hi%20Pinpoint%20Ventures%2C%20I%20found%20you%20through%20'
+           'someperspective.info.%20I%27d%20like%20to%20discuss%20a%20research%20or%20advisory%20engagement." '
+           'target="_blank" rel="noopener">WhatsApp</a>.</p>')
+
+
+def contact():
+    """The Pinpoint Ventures contact line shared by every generated page's footer."""
+    return CONTACT
+
+
 def share(title, text, url):
     """A row of share links. `text` is the sentence the WhatsApp message carries."""
     msg = f"{title}\n{text}\n{url}" if text else f"{title}\n{url}"

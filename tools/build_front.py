@@ -497,7 +497,7 @@ def build():
 (function(){{var h=location.hash;if(h&&h.length>1&&!document.getElementById(h.slice(1))){{location.replace('/explore/'+h);}}}})();
 </script>
 <script type="application/ld+json">{ld}</script>
-<style>{CSS}{social.SHARE_CSS}</style>
+<style>{CSS}{social.SHARE_CSS}{social.CONTACT_CSS}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -588,7 +588,8 @@ def build():
 <footer class="foot split">
 <div class="l"><p>Some Perspective. Analysis and data CC BY 4.0, code MIT.</p></div>
 <div class="r"><p><a href="updates.html">Updates and corrections</a> &middot; <a href="https://github.com/Varnasr/someperspective">Source and data on GitHub</a> &middot; <a href="feed.xml">Updates feed</a> &middot; Version {escape(version)}</p>
-<p class="note" id="interest">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p></div>
+<p class="note" id="interest">Declared interest: the author is a former Manmohan Singh Fellow of the All India Professionals' Congress (AIPC), a department of the Indian National Congress. This work began before the fellowship.</p>
+{social.contact()}</div>
 </footer>
 <script src="/js/dyslexia-font.js" data-accent="var(--ink)" data-radius="0" defer></script>
 {social.COPY_JS}
