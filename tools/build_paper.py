@@ -247,6 +247,17 @@ margin:0 0 2.4rem;font-size:.85rem}
 """
 
 
+# The colophon. A paper is not a sales page, so it carries a plain credit and not
+# the site-wide Pinpoint Ventures pitch that social.contact() puts in other footers.
+CREDIT = ('<p class="credit">Website developed by Varna Sri Raman at '
+          '<a href="https://www.pinpointventures.in">Pinpoint Ventures</a>.</p>')
+CREDIT_CSS = """
+.credit{margin-top:2rem;padding-top:.7rem;border-top:1px solid var(--ink,#0d0e12);font-size:.85rem}
+.credit a{color:var(--ink,#0d0e12);text-decoration:underline}
+@media print{.credit a::after{content:" (" attr(href) ")"}}
+"""
+
+
 def build_html(meta, body, toc):
     toc_html = "".join(
         f'<a class="l{lvl}" href="#{sid}">{ihtml.escape(txt)}</a>'
@@ -273,7 +284,7 @@ def build_html(meta, body, toc):
                  "contentUrl": "https://someperspective.info/downloads/paper.pdf"},
     "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": True,
     "image": social.og_image("https://someperspective.info/downloads/paper.html")}, ensure_ascii=False)}</script>
-<style>{CSS}{social.SHARE_CSS}{social.CONTACT_CSS}</style>
+<style>{CSS}{social.SHARE_CSS}{CREDIT_CSS}</style>
 </head>
 <body><div class="wrap">
 <p class="back"><a href="../">&larr; Some Perspective</a> &nbsp;·&nbsp; <a href="paper.pdf">Download PDF</a></p>
@@ -288,7 +299,7 @@ def build_html(meta, body, toc):
 </div>
 <nav class="toc"><div>Contents</div>{toc_html}</nav>
 {body}
-{social.contact()}
+{CREDIT}
 </div>
 <script src="/js/dyslexia-font.js" data-accent="var(--accent)" data-radius="0" defer></script>
 </body></html>
