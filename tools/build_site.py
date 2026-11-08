@@ -68,7 +68,8 @@ CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--seam:43.4783%}
 html{-webkit-text-size-adjust:100%}
-body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;color:var(--ink);line-height:1.6;font-size:1.0625rem;
+@font-face{font-family:"Archivo Fallback";src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:88.2%;ascent-override:99.5%;descent-override:23.8%;line-gap-override:0%}
+body{font-family:Archivo,"Archivo Fallback","Helvetica Neue",Arial,system-ui,sans-serif;color:var(--ink);line-height:1.6;font-size:1.0625rem;
 background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
 var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%);
 padding:0 0 4rem;overflow-x:clip}
