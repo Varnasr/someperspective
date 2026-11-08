@@ -206,7 +206,8 @@ CSS = """
 --upa:#86d8ca;--nda:#c9adf3;--field-upa:#0f2621;--field-nda:#1e1630}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{font-family:Archivo,"Helvetica Neue",Arial,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;color:var(--ink);
+@font-face{font-family:"Archivo Fallback";src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:88.2%;ascent-override:99.5%;descent-override:23.8%;line-gap-override:0%}
+body{font-family:Archivo,"Archivo Fallback","Helvetica Neue",Arial,system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;color:var(--ink);
 background:linear-gradient(90deg,var(--field-upa) 0,var(--field-upa) calc(var(--seam) - 1px),var(--ink) calc(var(--seam) - 1px),
 var(--ink) calc(var(--seam) + 1px),var(--field-nda) calc(var(--seam) + 1px),var(--field-nda) 100%);
 font-variant-numeric:tabular-nums;overflow-x:clip}
