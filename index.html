@@ -176,6 +176,25 @@ h1{font-size:1.85rem}
 }
 @media print{.top nav,.more{display:none}body{background:none}.slab{border-width:1px}}
 
+/* Space held for the front page while Archivo loads. Only this page: other pages' headings and deks are different lengths. */
+/* The dek wraps to a different number of lines once Archivo replaces its fallback. Hold the lines it will take at each width (counted with the font loaded) so what follows it does not move. */
+@media (max-width:343px){.dek{min-height:10lh}}
+@media (min-width:344px) and (max-width:381px){.dek{min-height:9lh}}
+@media (min-width:382px) and (max-width:419px){.dek{min-height:8lh}}
+@media (min-width:420px) and (max-width:475px){.dek{min-height:7lh}}
+@media (min-width:476px) and (max-width:555px){.dek{min-height:6lh}}
+@media (min-width:556px) and (max-width:691px){.dek{min-height:5lh}}
+/* On a phone the byline is one line in the fallback face and two in Archivo, which a local face cannot match (width axis). Hold both lines so the share row does not move when the font arrives. */
+@media (max-width:410px){.byline{min-height:2lh}}
+/* The share buttons are wider in Archivo, so the row wraps to two lines up to 491px instead of 435px. */
+@media (max-width:491px){.slab .share{min-height:86px}}
+/* Between 440 and 511px the era labels take one more line in Archivo than in the fallback. The row is 98px plus 19vw tall with the font loaded (measured every 2px). */
+@media (min-width:440px) and (max-width:511px){.eras{min-height:calc(98px + 19vw)}}
+/* The headline is set in a condensed width the fallback face cannot match, so it takes more lines once Archivo arrives. Hold the lines counted with the font loaded. */
+@media (max-width:381px){h1{min-height:4lh}}
+@media (min-width:382px) and (max-width:547px){h1{min-height:3lh}}
+@media (min-width:548px) and (max-width:700px){h1{min-height:2lh}}
+
 .share{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:1rem;font-size:.85rem}
 .share span{font-weight:800;font-stretch:112.5%;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-right:.25rem}
 .share a,.share button{all:unset;cursor:pointer;display:inline-block;border:2px solid var(--ink,#0d0e12);padding:.3rem .7rem;

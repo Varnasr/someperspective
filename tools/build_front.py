@@ -195,6 +195,27 @@ def seam_chart(vals, title, desc, dp=1, invert=False, lo=None, hi=None, tall=Tru
 # --------------------------------------------------------------------------
 # Page
 # --------------------------------------------------------------------------
+FRONT_ONLY_CSS = """
+/* Space held for the front page while Archivo loads. Only this page: other pages' headings and deks are different lengths. */
+/* The dek wraps to a different number of lines once Archivo replaces its fallback. Hold the lines it will take at each width (counted with the font loaded) so what follows it does not move. */
+@media (max-width:343px){.dek{min-height:10lh}}
+@media (min-width:344px) and (max-width:381px){.dek{min-height:9lh}}
+@media (min-width:382px) and (max-width:419px){.dek{min-height:8lh}}
+@media (min-width:420px) and (max-width:475px){.dek{min-height:7lh}}
+@media (min-width:476px) and (max-width:555px){.dek{min-height:6lh}}
+@media (min-width:556px) and (max-width:691px){.dek{min-height:5lh}}
+/* On a phone the byline is one line in the fallback face and two in Archivo, which a local face cannot match (width axis). Hold both lines so the share row does not move when the font arrives. */
+@media (max-width:410px){.byline{min-height:2lh}}
+/* The share buttons are wider in Archivo, so the row wraps to two lines up to 491px instead of 435px. */
+@media (max-width:491px){.slab .share{min-height:86px}}
+/* Between 440 and 511px the era labels take one more line in Archivo than in the fallback. The row is 98px plus 19vw tall with the font loaded (measured every 2px). */
+@media (min-width:440px) and (max-width:511px){.eras{min-height:calc(98px + 19vw)}}
+/* The headline is set in a condensed width the fallback face cannot match, so it takes more lines once Archivo arrives. Hold the lines counted with the font loaded. */
+@media (max-width:381px){h1{min-height:4lh}}
+@media (min-width:382px) and (max-width:547px){h1{min-height:3lh}}
+@media (min-width:548px) and (max-width:700px){h1{min-height:2lh}}
+"""
+
 CSS = """
 :root{--seam:43.4783%;
 --paper:#f5f5f2;--surface:#ffffff;--surface-2:#ededea;--ink:#0d0e12;--ink-soft:#26282f;--muted:#50545e;
@@ -498,7 +519,7 @@ def build():
 (function(){{var h=location.hash;if(h&&h.length>1&&!document.getElementById(h.slice(1))){{location.replace('/explore/'+h);}}}})();
 </script>
 <script type="application/ld+json">{ld}</script>
-<style>{CSS}{social.SHARE_CSS}{social.CONTACT_CSS}</style>
+<style>{CSS}{FRONT_ONLY_CSS}{social.SHARE_CSS}{social.CONTACT_CSS}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
